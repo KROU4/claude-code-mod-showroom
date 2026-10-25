@@ -2,7 +2,7 @@
   "ok": true,
   "hooks": [
     "session.start",
-    "prompt.compose",
+    "session.compact",
     "session.end",
     "prompt.submit",
     "command.run{command=img}",
@@ -47,6 +47,10 @@
     "$.ui.toast"
   ],
   "gating": [
+    {
+      "hook": "session.compact",
+      "hasCatch": false
+    },
     {
       "hook": "prompt.submit",
       "hasCatch": false
