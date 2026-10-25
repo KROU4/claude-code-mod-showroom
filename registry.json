@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-24T08:08:19.245Z",
+  "generatedAt": "2026-10-25T08:25:54.977Z",
   "repo": {
     "owner": "KROU4",
     "name": "claude-code-mod-showroom",
@@ -4529,8 +4529,8 @@
       },
       "addedAt": "2026-10-20T18:50:35Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 280,
-      "pushedAt": "2026-10-24T07:45:45Z"
+      "stars": 288,
+      "pushedAt": "2026-10-24T19:27:47Z"
     },
     {
       "name": "glowup",
@@ -5875,7 +5875,7 @@
       },
       "addedAt": "2026-10-20T18:50:35Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 251,
+      "stars": 252,
       "pushedAt": "2026-10-12T10:02:19Z"
     },
     {
@@ -8801,7 +8801,7 @@
       },
       "addedAt": "2026-10-20T18:50:35Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 1,
+      "stars": 2,
       "pushedAt": "2026-10-23T21:40:57Z"
     },
     {
@@ -11054,7 +11054,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 372,
+      "stars": 382,
       "pushedAt": "2026-10-23T23:02:30Z"
     },
     {
@@ -11317,7 +11317,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 285,
+      "stars": 287,
       "pushedAt": "2026-10-14T07:53:11Z"
     },
     {
@@ -12862,7 +12862,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 372,
+      "stars": 382,
       "pushedAt": "2026-10-23T23:02:30Z"
     },
     {
@@ -13927,8 +13927,8 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 415,
-      "pushedAt": "2026-10-22T01:12:28Z"
+      "stars": 417,
+      "pushedAt": "2026-10-24T08:26:41Z"
     },
     {
       "name": "code-pet",
@@ -14981,7 +14981,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 372,
+      "stars": 382,
       "pushedAt": "2026-10-23T23:02:30Z"
     },
     {
@@ -16129,7 +16129,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 269,
+      "stars": 272,
       "pushedAt": "2026-10-23T14:30:11Z"
     },
     {
@@ -16872,6 +16872,7 @@
           "session.append",
           "agent.spawn",
           "turn.complete",
+          "ui.fault",
           "ui.render{component=Pane, requestId=flightdeck}"
         ],
         "calls": [
@@ -16881,6 +16882,8 @@
           "$.state.get",
           "$.state.set",
           "$.ui.close",
+          "$.ui.invalidate",
+          "$.ui.log",
           "$.ui.open",
           "$.ui.resolve",
           "$.ui.status"
@@ -16943,8 +16946,8 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 138,
-      "pushedAt": "2026-10-12T14:20:14Z"
+      "stars": 151,
+      "pushedAt": "2026-10-24T12:49:02Z"
     },
     {
       "name": "fm",
@@ -17162,8 +17165,8 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 8276,
-      "pushedAt": "2026-10-24T06:20:06Z"
+      "stars": 8295,
+      "pushedAt": "2026-10-25T06:22:49Z"
     },
     {
       "name": "focus-timer",
@@ -17912,8 +17915,8 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 88,
-      "pushedAt": "2026-10-23T21:20:54Z"
+      "stars": 89,
+      "pushedAt": "2026-10-24T22:23:24Z"
     },
     {
       "name": "mod-store",
@@ -18580,7 +18583,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 1101,
+      "stars": 1090,
       "pushedAt": "2026-10-23T16:30:45Z"
     },
     {
@@ -18771,8 +18774,8 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 4757,
-      "pushedAt": "2026-10-24T07:52:46Z"
+      "stars": 4764,
+      "pushedAt": "2026-10-25T07:51:07Z"
     },
     {
       "name": "pin-memo",
@@ -19047,7 +19050,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 1101,
+      "stars": 1090,
       "pushedAt": "2026-10-23T16:30:45Z"
     },
     {
@@ -19561,7 +19564,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 285,
+      "stars": 287,
       "pushedAt": "2026-10-14T07:53:11Z"
     },
     {
@@ -20255,7 +20258,7 @@
         "ok": true,
         "hooks": [
           "session.start",
-          "prompt.compose",
+          "session.compact",
           "session.end",
           "prompt.submit",
           "command.run{command=img}",
@@ -20301,6 +20304,10 @@
         ],
         "gating": [
           {
+            "hook": "session.compact",
+            "hasCatch": false
+          },
+          {
             "hook": "prompt.submit",
             "hasCatch": false
           },
@@ -20332,8 +20339,8 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 262,
-      "pushedAt": "2026-10-15T14:29:56Z"
+      "stars": 263,
+      "pushedAt": "2026-10-25T06:20:47Z"
     },
     {
       "name": "skins",
@@ -20893,7 +20900,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 199,
+      "stars": 205,
       "pushedAt": "2026-10-23T20:02:09Z"
     },
     {
@@ -21177,8 +21184,8 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 199,
-      "pushedAt": "2026-10-22T13:15:41Z"
+      "stars": 205,
+      "pushedAt": "2026-10-24T09:02:12Z"
     },
     {
       "name": "textless",
@@ -21448,7 +21455,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 269,
+      "stars": 272,
       "pushedAt": "2026-10-23T14:30:11Z"
     },
     {
@@ -21596,8 +21603,8 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 199,
-      "pushedAt": "2026-10-22T13:15:41Z"
+      "stars": 205,
+      "pushedAt": "2026-10-24T09:02:12Z"
     },
     {
       "name": "token-weather",
@@ -21787,7 +21794,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 285,
+      "stars": 287,
       "pushedAt": "2026-10-14T07:53:11Z"
     },
     {

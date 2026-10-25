@@ -15,6 +15,7 @@
     "session.append",
     "agent.spawn",
     "turn.complete",
+    "ui.fault",
     "ui.render{component=Pane, requestId=flightdeck}"
   ],
   "calls": [
@@ -24,6 +25,8 @@
     "$.state.get",
     "$.state.set",
     "$.ui.close",
+    "$.ui.invalidate",
+    "$.ui.log",
     "$.ui.open",
     "$.ui.resolve",
     "$.ui.status"
