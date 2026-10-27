@@ -1,0 +1,29 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "tts",
+  "title": "TTS",
+  "tagline": "Reads Claude's replies aloud as they stream, through VOICEVOX, Irodori-TTS or any command.",
+  "tagline_ru": "Читает ответы Claude вслух по предложению прямо во время вывода через VOICEVOX, Irodori-TTS или команду.",
+  "description": "Splits the streamed reply into sentences and sends them to a speech engine: a VOICEVOX-compatible server (`localhost:50021` by default), Irodori-TTS (`localhost:8088`) or a command you set, then plays the WAV with ffplay, paplay, aplay, afplay or PowerShell. Code blocks, tables and URLs are skipped with a short spoken notice. Modes: `stream`, `final` (only the final answer) or `notify` (short notices for done, errors, questions, plans and permission dialogs). In stream and final mode it adds a line to the system prompt (by default asking for progress notes in Japanese). Several sessions take turns speaking. `/tts` controls it; the docs and default notices are in Japanese.",
+  "description_ru": "Делит выводимый ответ на предложения и отправляет их в движок речи: сервер, совместимый с VOICEVOX (AivisSpeech, COEIROINK; по умолчанию `http://localhost:50021`), Irodori-TTS (`http://localhost:8088`) или вашу команду, а затем проигрывает WAV через ffplay, paplay, aplay, afplay или PowerShell. Блоки кода, таблицы и URL пропускаются с коротким устным пояснением, пути и идентификаторы читаются по-человечески. Режимы: `stream`, `final` (только итоговый ответ) и `notify` (короткие сообщения о завершении, ошибке, вопросе, плане и запросе разрешения). В режимах stream и final мод добавляет строку в системный промпт (по умолчанию просьбу писать пояснения по-японски). Несколько сессий говорят по очереди. Управление — `/tts`; интерфейс и стандартные фразы на японском.",
+  "author": { "name": "kajidog", "github": "kajidog", "url": "https://github.com/kajidog" },
+  "maintainers": ["kajidog"],
+  "category": "accessibility",
+  "tags": ["tts", "speech", "voicevox", "audio", "japanese", "read-aloud"],
+  "license": "MIT",
+  "version": "0.11.0",
+  "homepage": "https://github.com/kajidog/cc-mods-tts",
+  "source": { "type": "marketplace", "marketplace": "kajidog/cc-mods-tts", "plugin": "tts" },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": { "network": true, "processes": true, "filesystem": "write", "model": false, "promptRewrite": true, "blocksTools": false },
+  "preview": {
+    "surface": "terminal",
+    "scene": "coding",
+    "caption": "While Claude answers, each finished sentence is synthesized and played; code blocks are announced and skipped.",
+    "caption_ru": "Пока Claude отвечает, каждое готовое предложение синтезируется и звучит; блоки кода объявляются и пропускаются.",
+    "elements": [
+      { "slot": "command", "command": "/tts", "output": [["on (mode: stream, summary: off)"], ["engine: ● voicevox (ずんだもん ノーマル)"], ["speed: 1.1, volume: 1"]] },
+      { "slot": "background", "text": "Speaks each sentence of the reply as it streams, through a local VOICEVOX server" }
+    ]
+  }
+}

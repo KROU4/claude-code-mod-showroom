@@ -1,0 +1,59 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "veneer",
+  "title": "Veneer",
+  "tagline": "Syntax highlighting in 100+ languages with any VS Code theme, diagrams, math and images in the chat.",
+  "tagline_ru": "Подсветка синтаксиса для 100+ языков в любой теме VS Code, диаграммы, формулы и картинки в чате.",
+  "description": "Restyles the terminal transcript: your messages as bubbles, cards for tool rows, reads, diffs and output, tables and alerts, Copy buttons on hover and a button that folds every edit. Code is highlighted for over 100 languages with a theme you pick in `/syntax`, from a local file or downloaded from Open VSX (the only network use, on request). Mermaid fences (21 kinds) and display math are drawn as images in kitty-graphics terminals (resvg converts them) or as text elsewhere; images from Read, MCP tools and prompts show under their row. A line in the system prompt asks Claude to use diagrams, math and alerts (`diagramHint` turns it off). `/veneer` opens the settings.",
+  "description_ru": "Перерисовывает транскрипт в терминале: ваши сообщения пузырями, карточки для строк инструментов, чтения файлов, диффов и вывода команд, таблицы, заголовки и врезки, кнопки Copy при наведении и кнопка, сворачивающая все правки. Код подсвечивается для более чем 100 языков в теме, выбранной в `/syntax`, из локального файла или скачанной с Open VSX (единственное обращение к сети, по запросу). Блоки mermaid (21 вид) и выносные формулы рисуются картинками в терминалах с kitty-графикой (конвертирует resvg) или текстом в остальных; изображения из Read, MCP-инструментов и запросов показываются под своей строкой. Строка в системном промпте просит Claude пользоваться диаграммами, формулами и врезками (`diagramHint` отключает). Внутри MathJax и beautiful-mermaid. `/veneer` открывает настройки.",
+  "author": { "name": "Mitchell Medeiros", "github": "MitchMedeiros", "url": "https://github.com/MitchMedeiros" },
+  "maintainers": ["MitchMedeiros"],
+  "category": "interface",
+  "tags": ["syntax-highlighting", "themes", "mermaid", "math", "images", "markdown"],
+  "license": "MIT",
+  "version": "0.1.3",
+  "homepage": "https://github.com/MitchMedeiros/veneer",
+  "source": { "type": "marketplace", "marketplace": "MitchMedeiros/veneer", "plugin": "veneer" },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "surfaces": ["terminal"],
+  "capabilities": {
+    "network": true,
+    "processes": true,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "How does the cart total handle discount codes now?" }
+    ],
+    "caption": "A read drawn as a highlighted card with a Copy button, and a reply with a Mermaid flowchart drawn as text.",
+    "caption_ru": "Чтение файла карточкой с подсветкой и кнопкой Copy и ответ со схемой mermaid, нарисованной текстом.",
+    "elements": [
+      {
+        "slot": "tool-row",
+        "tool": "Read",
+        "input": "src/cart/total.ts",
+        "row": [{ "text": "  src/cart/total.ts", "underline": true }, { "text": " · 24 lines", "dim": true }, "   ", { "button": "Copy" }],
+        "result": [
+          [{ "text": "export function ", "color": "#c678dd" }, { "text": "total", "color": "#61afef" }, "(items: ", { "text": "Item", "color": "#e5c07b" }, "[], code?: ", { "text": "string", "color": "#e5c07b" }, ") {"],
+          ["  ", { "text": "const ", "color": "#c678dd" }, "sum = items.", { "text": "reduce", "color": "#61afef" }, "((s, i) => s + i.price * i.qty, ", { "text": "0", "color": "#d19a66" }, ")"],
+          ["  ", { "text": "return ", "color": "#c678dd" }, { "text": "applyCode", "color": "#61afef" }, "(sum, code)"],
+          ["}"]
+        ]
+      },
+      {
+        "slot": "message",
+        "role": "assistant",
+        "rows": [
+          ["The code is applied once, after the sum:"],
+          [{ "text": "╭───────────╮    ╭─────────────╮    ╭─────────╮", "color": "claude" }],
+          [{ "text": "│", "color": "claude" }, " sum items ", { "text": "│", "color": "claude" }, "───▶", { "text": "│", "color": "claude" }, " apply code  ", { "text": "│", "color": "claude" }, "───▶", { "text": "│", "color": "claude" }, " total   ", { "text": "│", "color": "claude" }],
+          [{ "text": "╰───────────╯    ╰─────────────╯    ╰─────────╯", "color": "claude" }]
+        ]
+      }
+    ]
+  }
+}

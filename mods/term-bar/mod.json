@@ -1,0 +1,53 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "term-bar",
+  "title": "Term Bar",
+  "tagline": "Footer buttons in the terminal: resume a recent conversation, pick the model, pick the effort.",
+  "tagline_ru": "Кнопки в нижней строке терминала: вернуться к недавнему разговору, выбрать модель и уровень усилий.",
+  "description": "Adds three buttons to the mode labels at the bottom right of the terminal prompt: 🕐, the current model (`Sonnet ▾`) and the current effort (`medium ▾`). 🕐 lists this folder's last 7 conversations above the prompt with their title (or first message) and how long ago; press one to `/resume` it. The list is read with PowerShell from `~/.claude/projects`, so 🕐 works on Windows only. The model button expands Haiku, Sonnet, Opus and Fable in place, the effort button low to max; a pick goes through the `/config` row when there is one, else `/model` or `/effort`, which also saves it as the default. Draws nothing outside the terminal.",
+  "description_ru": "Добавляет три кнопки к меткам режима в правом нижнем углу поля ввода в терминале: 🕐, текущую модель (`Sonnet ▾`) и текущий уровень усилий (`medium ▾`). 🕐 показывает над полем ввода 7 последних разговоров в этой папке с заголовком (или первым сообщением) и давностью; нажатие возобновляет разговор через `/resume`. Список читается через PowerShell из `~/.claude/projects`, поэтому 🕐 работает только в Windows. Кнопка модели раскрывает на месте Haiku, Sonnet, Opus и Fable, кнопка усилий варианты от low до max; выбор применяется через строку `/config`, если она есть, иначе через `/model` или `/effort`, которые заодно сохраняют его по умолчанию. Вне терминала мод ничего не рисует.",
+  "author": { "name": "hyun8935181-ux", "github": "hyun8935181-ux", "url": "https://github.com/hyun8935181-ux" },
+  "maintainers": ["hyun8935181-ux"],
+  "category": "productivity",
+  "tags": ["model", "effort", "resume", "history", "buttons"],
+  "license": "MIT",
+  "version": "1.0.3",
+  "homepage": "https://github.com/hyun8935181-ux/claude-code-mods/tree/HEAD/term-bar",
+  "source": {
+    "type": "github",
+    "repo": "hyun8935181-ux/claude-code-mods",
+    "path": "term-bar",
+    "sha": "82f32f6d92ecb8984ef8f10fe9a74ab6b68ab964"
+  },
+  "surfaces": ["terminal"],
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "🕐 pressed: the folder's recent conversations above the prompt, and the model and effort buttons in the footer.",
+    "caption_ru": "Нажата 🕐: недавние разговоры этой папки над полем ввода, а в нижней строке кнопки модели и усилий.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [{ "text": "────────────────────────────────────────────────────────────", "dim": true }],
+          [{ "text": "Recent conversations", "bold": true }, "                                    ", { "button": "✕" }],
+          [{ "text": "● Discount codes for the cart · current", "dim": true }],
+          [{ "button": "Fix invoice date formatting" }, " ", { "text": "2h", "dim": true }],
+          [{ "button": "Rate limiting middleware" }, " ", { "text": "1d", "dim": true }],
+          [{ "button": "Upgrade to Vite 7" }, " ", { "text": "3d", "dim": true }],
+          [{ "text": "────────────────────────────────────────────────────────────", "dim": true }]
+        ]
+      },
+      { "slot": "session-mode", "row": [{ "button": "🕐" }, " ", { "button": "Sonnet ▾" }, " ", { "button": "medium ▾" }] }
+    ]
+  }
+}

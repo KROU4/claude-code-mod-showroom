@@ -1,0 +1,55 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "ascii-dungeon",
+  "title": "ASCII Dungeon",
+  "tagline": "A pixel roguelike in a pane, played by your coding session: each tool call moves the hero.",
+  "tagline_ru": "Пиксельный рогалик в панели, в который играет ваша сессия: каждый вызов инструмента двигает героя.",
+  "description": "`/dungeon` opens a pane with a pixel roguelike driven by the main session: every tool call is a step or a blow, a failed call lets the foe strike, passing tests land a critical, a commit is a shrine that restores HP, a push or PR drops loot and a finished answer takes the stairs down. Subagents' calls play no part. Gear, talents, a town with merchants and quests, standing orders (when to drink, when to throw smoke) and a play-by-hand mode are yours to manage with clicks. Sound effects and music play through Claude Code's audio player. The save is kept in the mod's store; a hero card can be saved as an SVG to `~/Downloads`. No network.",
+  "description_ru": "`/dungeon` открывает панель с пиксельным рогаликом, которым управляет основная сессия: каждый вызов инструмента — шаг или удар, неудачный вызов даёт врагу ответить, прошедшие тесты дают критический удар, коммит — святилище, восстанавливающее здоровье, пуш или PR приносят добычу, а законченный ответ ведёт вниз по лестнице. Вызовы субагентов не участвуют. Снаряжение, таланты, город с торговцами и заданиями, постоянные приказы (когда пить зелье, когда бросать дым) и ручной режим настраиваются кликами. Звуки и музыка играют через аудиоплеер Claude Code. Сохранение лежит в хранилище мода; карточку героя можно сохранить как SVG в `~/Downloads`. В сеть не ходит.",
+  "author": { "name": "ilovepixelart", "github": "ilovepixelart", "url": "https://github.com/ilovepixelart" },
+  "maintainers": ["ilovepixelart"],
+  "category": "fun",
+  "tags": ["game", "roguelike", "pixel-art", "pane", "sound"],
+  "license": "MIT",
+  "version": "0.6.0",
+  "homepage": "https://github.com/ilovepixelart/ascii-dungeon-mod",
+  "source": { "type": "marketplace", "marketplace": "ilovepixelart/ascii-dungeon-mod", "plugin": "ascii-dungeon" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "debugging",
+    "caption": "The session's failing test lets the foe strike back; the fix lands a critical.",
+    "caption_ru": "Упавший тест в сессии даёт врагу ответить, а исправление наносит критический удар.",
+    "elements": [
+      { "slot": "command", "command": "/dungeon", "output": [["The dungeon pane is open. Click the map to walk and fight, the hero to explore, the portrait for the bag, the level for the character sheet."]] },
+      {
+        "slot": "pane",
+        "title": "ascii-dungeon",
+        "width": "wide",
+        "rows": [
+          [{ "text": "  ####################", "color": "#5c5f77" }],
+          [{ "text": "  #", "color": "#5c5f77" }, "  .  .  ", { "text": "@", "color": "#ffd166", "bold": true }, "  .  ", { "text": "g", "color": "#ef4565", "bold": true }, "  .  ", { "text": "#", "color": "#5c5f77" }],
+          [{ "text": "  #", "color": "#5c5f77" }, "  .  ", { "text": "$", "color": "#f4d35e" }, "  .  .  .  .  ", { "text": ">", "color": "#7fd1a8" }, " ", { "text": "#", "color": "#5c5f77" }],
+          [{ "text": "  ####################", "color": "#5c5f77" }],
+          [{ "text": "HP ", "color": "#ef4565", "bold": true }, { "bar": 0.62, "width": 10, "color": "#ef4565" }, "  ", { "text": "XP ", "color": "#f4d35e", "bold": true }, { "bar": 0.35, "width": 10, "color": "#f4d35e" }, { "text": "  depth 4 · 128 gold", "dim": true }],
+          [{ "text": "Bash failed: the goblin hits you for 3.", "color": "#ef4565" }],
+          [{ "text": "Tests pass: a sure critical, the goblin falls.", "color": "#2cb67d" }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/ilovepixelart/ascii-dungeon-mod/eef2acb22da283b12295a1e2511810eda9020820/docs/img/dungeon.png",
+      "alt": "The knight in a lit dungeon room, with the HP and XP orbs, the belt and a plaque of depth and gold below",
+      "surface": "terminal"
+    }
+  ]
+}

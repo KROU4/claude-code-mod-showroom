@@ -1,0 +1,59 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "pinboard",
+  "title": "Pinboard",
+  "tagline": "A pinboard of decisions, todos and links beside the chat; Claude pins them with its own tool.",
+  "tagline_ru": "Доска с решениями, задачами и ссылками рядом с чатом; Claude закрепляет их своим инструментом.",
+  "description": "Gives Claude a `pin` tool (a decision, todo, link or note, one line each), and you `/pin <text>`. `/pin` on its own opens a Pins pane where each pin, coloured by kind, has a ○/✓ button to mark it done; a dim line above the prompt counts what is still open (`Pins: 3 open · 1 todo · /pin`). Pins are kept per project in the plugin's store, the latest 100. The tool's description asks Claude to pin decisions, follow-ups and important links, so its listing costs a few tokens. One of the templates shipped with the givememod skill. No files, processes or network.",
+  "description_ru": "Даёт Claude инструмент `pin` (решение, задача, ссылка или заметка, по одной строке), а вам команду `/pin <текст>`. `/pin` без текста открывает панель Pins: у каждой записи свой цвет по типу и кнопка ○/✓, чтобы отметить её выполненной; тусклая строка над полем ввода показывает, сколько записей ещё открыто (`Pins: 3 open · 1 todo · /pin`). Записи хранятся для каждого проекта в хранилище плагина, последние 100. Описание инструмента просит Claude закреплять решения, задачи для вас и важные ссылки, поэтому его описание занимает несколько токенов. Это один из шаблонов, которые идут со скиллом givememod. Файлы, процессы и сеть не используются.",
+  "author": { "name": "timoncool", "github": "timoncool", "url": "https://github.com/timoncool" },
+  "maintainers": ["timoncool"],
+  "category": "productivity",
+  "tags": ["pins", "notes", "todo", "pane", "model-tool"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/timoncool/givememod/tree/HEAD/plugins/givememod/skills/givememod/templates/pinboard",
+  "source": {
+    "type": "github",
+    "repo": "timoncool/givememod",
+    "path": "plugins/givememod/skills/givememod/templates/pinboard",
+    "sha": "197200ab39d2d0c22246ac5ceec40c3fbbefb945"
+  },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "Claude pins a decision with its pin tool; /pin opens the board and the line above the prompt counts open pins.",
+    "caption_ru": "Claude закрепляет решение своим инструментом pin; /pin открывает доску, а строка над полем ввода считает открытые записи.",
+    "elements": [
+      {
+        "slot": "model-tool",
+        "name": "pin",
+        "input": "kind: \"decision\", text: \"Keep sessions in Redis, not in JWT\"",
+        "result": [["Pinned #3 (decision)."]]
+      },
+      {
+        "slot": "pane",
+        "title": "Pins",
+        "width": "narrow",
+        "rows": [
+          [{ "text": "✓", "color": "success" }, " ", { "text": "todo", "color": "warning" }, " ", { "text": "Add a test for expired tokens", "dim": true }],
+          [{ "text": "○", "color": "subtle" }, " ", { "text": "link", "color": "inactive" }, " https://redis.io/docs/latest/develop/"],
+          [{ "text": "○", "color": "subtle" }, " ", { "text": "decision", "color": "claude" }, " Keep sessions in Redis, not in JWT"],
+          [{ "text": "○", "color": "subtle" }, " ", { "text": "todo", "color": "warning" }, " Ask ops for a Redis instance on staging"]
+        ]
+      },
+      {
+        "slot": "above-prompt",
+        "rows": [[{ "text": "Pins: 3 open · 1 todo · /pin", "dim": true }]]
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "allowlist-coach",
+  "title": "Allowlist Coach",
+  "tagline": "Counts the permission prompts you approve and offers to allow a rule once it keeps coming back.",
+  "tagline_ru": "Считает одобренные запросы разрешений и предлагает разрешить правило, когда оно повторяется.",
+  "description": "Each time you answer a permission dialog, the coach counts it per rule and project. After 5 approvals with no refusal a toast and a note in the dialog offer the rule; `/allowlist` opens a pane with every counted rule in tabs (ready, counting, refused), a filter, and why a risky rule is never offered. `/allowlist allow 1` adds the rule to `permissions.allow` in `.claude/settings.local.json`, or `.claude/settings.json` if you pick it, only after you confirm, and refuses to write through a symlink. `remove`, `dismiss` and `reset` undo or forget; `/allowlist demo` shows sample rules without reading or writing anything. Nothing leaves the machine.",
+  "description_ru": "Каждый раз, когда вы отвечаете на запрос разрешения, мод считает ответы по правилу и проекту. После 5 одобрений без единого отказа уведомление и строка в самом диалоге предлагают это правило; `/allowlist` открывает панель со всеми правилами по вкладкам (готовые, в подсчёте, отклонённые), фильтром и объяснением, почему рискованное правило никогда не предлагается. `/allowlist allow 1` добавляет правило в `permissions.allow` в `.claude/settings.local.json` (или в `.claude/settings.json`, если выбрать его), только после подтверждения и никогда через символическую ссылку. `remove`, `dismiss` и `reset` отменяют или забывают; `/allowlist demo` показывает примеры, ничего не читая и не записывая. Данные никуда не уходят.",
+  "author": { "name": "Lucas Fernandes", "github": "ice-lfernandes", "url": "https://github.com/ice-lfernandes" },
+  "maintainers": ["ice-lfernandes"],
+  "category": "productivity",
+  "tags": ["permissions", "allowlist", "settings", "pane", "toast"],
+  "license": "MIT",
+  "version": "0.7.0",
+  "homepage": "https://github.com/ice-lfernandes/claude-code-mods/tree/HEAD/allowlist-coach",
+  "source": { "type": "marketplace", "marketplace": "ice-lfernandes/claude-code-mods", "plugin": "allowlist-coach", "path": "allowlist-coach" },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "debugging",
+    "surface": "terminal",
+    "caption": "After the fifth approval of the same command: the offer as a toast, and the rule ready in the /allowlist pane.",
+    "caption_ru": "После пятого одобрения одной и той же команды: предложение во всплывающем уведомлении и готовое правило в панели /allowlist.",
+    "elements": [
+      { "slot": "toast", "text": "You approved Bash(npm run lint:*) 5 times here. /allowlist to add it to permissions.allow." },
+      {
+        "slot": "pane",
+        "title": "allowlist",
+        "width": "wide",
+        "rows": [
+          [{ "text": "Permission dialogs answered in ~/code/shop. A rule is offered after 5 approvals and no refusal.", "dim": true }],
+          [{ "text": "all", "bold": true }, "  ready  counting  refused"],
+          [{ "text": "1", "dim": true }, " Bash(npm run lint:*)      ", { "text": "ready", "color": "success" }, "  5 ✓ 0 ✗  ", { "button": "allow" }],
+          [{ "text": "2", "dim": true }, " Bash(docker compose up:*) ", { "text": "refused", "color": "error" }, " 6 ✓ 1 ✗"],
+          [{ "text": "3", "dim": true }, " Bash(rm -rf:*)            ", { "text": "risky", "color": "warning" }, "   9 ✓ 0 ✗  never offered"]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/ice-lfernandes/claude-code-mods/82c3ab9c7fa0e92828cc51205b906a9a9b08b6b0/screenshots/allowlist-coach.svg",
+      "alt": "allowlist-coach: the line under the permission dialog, the toast and the /allowlist pane",
+      "surface": "terminal"
+    }
+  ]
+}

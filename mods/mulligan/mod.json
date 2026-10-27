@@ -1,0 +1,66 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "mulligan",
+  "title": "Mulligan",
+  "tagline": "Saves your files before a destructive shell command runs; /mulligan restore puts them back.",
+  "tagline_ru": "Сохраняет файлы перед разрушительной командой в shell; /mulligan restore возвращает их обратно.",
+  "description": "Covers what `/rewind` does not: shell commands. Before Claude runs `rm -r`, `find -delete`, `git reset --hard`, `git checkout`/`restore` over changes, `git clean` or a `>` over a file, it saves what the command can destroy: the named paths with `tar`, tracked changes with `git stash create` (no branch or stash list touched). A dim line then names the do-over. `/mulligan` lists the last ten per project with Restore and Diff; a restore waits for your Yes, writes files back without deleting newer ones and tells Claude to re-read them. Archives go to `~/.claude/mulligan/`, copies of your files included. Runs git, tar, mkdir and mv; no network.",
+  "description_ru": "Закрывает то, чего не делает `/rewind`: команды в shell. Прежде чем Claude выполнит `rm -r`, `find -delete`, `git reset --hard`, `git checkout`/`restore` поверх изменений, `git clean` или `>` в существующий файл, мод сохраняет то, что команда может уничтожить: названные пути — через `tar`, отслеживаемые изменения — через `git stash create` (ветки и список stash не трогаются). Затем бледная строка сообщает, что есть «переигровка». `/mulligan` показывает последние десять снимков проекта с кнопками Restore и Diff; восстановление ждёт вашего «Yes», записывает файлы обратно, не удаляя более новых, и просит Claude перечитать их. Архивы лежат в `~/.claude/mulligan/` и содержат копии ваших файлов. Запускает git, tar, mkdir и mv; сети нет.",
+  "author": { "name": "modmyclaude", "github": "modmyclaude", "url": "https://github.com/modmyclaude" },
+  "maintainers": ["modmyclaude"],
+  "category": "safety",
+  "tags": ["undo", "snapshot", "restore", "bash", "git", "tar"],
+  "license": "MIT",
+  "version": "0.2.0",
+  "homepage": "https://github.com/modmyclaude/claude-code-mods/tree/HEAD/mods/mulligan",
+  "source": { "type": "marketplace", "marketplace": "modmyclaude/claude-code-mods", "plugin": "mulligan", "path": "mods/mulligan" },
+  "surfaces": ["terminal", "desktop"],
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Clean out the old build and rebuild." },
+      { "role": "tool", "tool": "Bash", "input": "rm -rf dist", "status": "done" },
+      { "role": "assistant", "text": "Removed dist. Rebuilding now." }
+    ],
+    "caption": "After rm -rf dist: the do-over line above the prompt, then /mulligan with Restore waiting on a confirm.",
+    "caption_ru": "После rm -rf dist: строка о сохранённой копии над полем ввода, затем /mulligan с подтверждением восстановления.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [[{ "text": "mulligan: saved a do-over before \"rm -rf dist\" (dist) · /mulligan restore 3", "dim": true }]]
+      },
+      { "slot": "command", "command": "/mulligan", "args": "restore 3" },
+      {
+        "slot": "pane",
+        "title": "mulligan",
+        "width": "wide",
+        "rows": [
+          [{ "text": "3 do-overs for this project", "bold": true }],
+          [{ "text": "#3  ", "dim": true }, "rm -rf dist                 ", { "button": "Restore" }, " ", { "button": "Diff" }],
+          [{ "text": "    dist · 4.2 MB · just now", "dim": true }],
+          [{ "text": "╭───────────────────────────────────────────╮", "color": "warning" }],
+          [{ "text": "│", "color": "warning" }, " Put back dist as it was before #3? Files it ", { "text": "│", "color": "warning" }],
+          [{ "text": "│", "color": "warning" }, " holds are written over what is there now;   ", { "text": "│", "color": "warning" }],
+          [{ "text": "│", "color": "warning" }, " nothing newer is deleted.                   ", { "text": "│", "color": "warning" }],
+          [{ "text": "│", "color": "warning" }, " ", { "button": "Yes, restore" }, "  ", { "button": "Cancel", "variant": "primary" }, "              ", { "text": "│", "color": "warning" }],
+          [{ "text": "╰───────────────────────────────────────────╯", "color": "warning" }],
+          [{ "text": "#2  ", "dim": true }, "git reset --hard            ", { "button": "Restore" }, " ", { "button": "Diff" }],
+          [{ "text": "    tracked changes · 2h ago", "dim": true }],
+          [{ "text": "#1  ", "dim": true }, "git clean -fd               ", { "button": "Restore" }, " ", { "button": "Diff" }],
+          [{ "text": "    untracked files · 52 KB · 26h ago", "dim": true }],
+          [{ "text": "Files in this project only: a database, a remote or anything outside the folder is not covered.", "dim": true }]
+        ]
+      },
+      { "slot": "toast", "text": "mulligan: restored #3 (dist). Claude was told to re-read files." }
+    ]
+  }
+}

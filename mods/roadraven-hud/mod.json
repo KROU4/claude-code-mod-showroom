@@ -1,0 +1,63 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "roadraven-hud",
+  "title": "RoadRaven HUD",
+  "tagline": "A live pane for the RoadRaven roadmap app: agents on nodes, UAT pass/fail and a backlog to start.",
+  "tagline_ru": "Живая панель для приложения-роадмапа RoadRaven: агенты на узлах, приёмка Pass/Fail и бэклог для запуска.",
+  "description": "Needs the RoadRaven desktop app with a roadmap open; it reads it through the RoadRaven MCP server on 127.0.0.1 every few seconds. The pane (`/roadraven`, or by itself once the app is up) shows in-progress nodes with the agent on each (model, effort, current action, tokens), UAT nodes to Pass or Fail with notes, and the backlog. Send writes the statuses and notes to the roadmap and submits one prompt; Run asks first, then starts a general-purpose subagent on a node; Next marks a node to take next. A status entry reads `RR 2 active · 1 UAT`. Optional `spinner: raven` puts raven verbs and the active node on the spinner. It reads the app's theme files and HOME/XDG_CONFIG_HOME to find them.",
+  "description_ru": "Нужно запущенное приложение RoadRaven с открытым роадмапом; мод читает его через MCP-сервер RoadRaven на 127.0.0.1 раз в несколько секунд. Панель (`/roadraven` или сама, когда приложение запущено) показывает узлы в работе с агентом на каждом (модель, усилия, текущее действие, токены), узлы приёмки (UAT), которые можно отметить Pass или Fail с заметками, и бэклог. Send записывает статусы и заметки в роадмап и отправляет один запрос в сессию; Run сначала спрашивает, а потом запускает на узле субагента general-purpose; Next помечает узел следующим. В строке состояния видно `RR 2 active · 1 UAT`. Опция `spinner: raven` выводит в индикаторе работы «вороньи» глаголы и активный узел. Мод читает файлы темы приложения, а чтобы их найти, переменные HOME и XDG_CONFIG_HOME.",
+  "author": { "name": "Shuffzord", "github": "Shuffzord", "url": "https://github.com/Shuffzord" },
+  "maintainers": ["Shuffzord"],
+  "category": "integrations",
+  "tags": ["roadmap", "agents", "uat", "mcp", "pane", "backlog"],
+  "license": "FSL-1.1-MIT",
+  "version": "0.9.2",
+  "homepage": "https://github.com/Shuffzord/RoadRaven/tree/HEAD/plugins/roadraven-hud",
+  "source": { "type": "marketplace", "marketplace": "Shuffzord/RoadRaven", "plugin": "roadraven-hud", "path": "plugins/roadraven-hud" },
+  "surfaces": ["terminal"],
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "Two agents on roadmap nodes and one UAT item marked Pass, ready to send to the orchestrator.",
+    "caption_ru": "Два агента на узлах роадмапа и одна приёмка с отметкой Pass, готовая к отправке оркестратору.",
+    "elements": [
+      { "slot": "status", "text": "RR 2 active · 0 awaiting · 1 UAT" },
+      {
+        "slot": "pane",
+        "title": "RoadRaven",
+        "width": "wide",
+        "rows": [
+          [{ "text": "Active work", "bold": true, "color": "#e0a040" }],
+          [{ "text": "◐", "color": "warning" }, " Wire auth  ", { "text": "rr-wire-auth · opus · high · 4m", "dim": true }],
+          ["   ", { "text": "Edit src/auth/session.ts", "dim": true }],
+          [{ "text": "◐", "color": "warning" }, " Billing export  ", { "text": "rr-billing · sonnet · 1m", "dim": true }],
+          ["   ", { "bar": 0.4, "width": 16, "color": "#e0a040" }, { "text": " 2/5", "dim": true }],
+          [" "],
+          [{ "text": "UAT", "bold": true, "color": "#e0a040" }],
+          ["Login keeps session after refresh  ", { "button": "Pass", "variant": "primary" }, " ", { "button": "Fail" }],
+          [{ "button": "Send 1 decision(s) to orchestrator", "variant": "primary" }],
+          [" "],
+          [{ "text": "Backlog", "bold": true, "color": "#e0a040" }, " ", { "text": "[hide]", "dim": true }],
+          ["○ CSV import  ", { "button": "Run" }, " ", { "button": "Next" }],
+          ["○ Dark mode  ", { "button": "Run" }, " ", { "button": "Next" }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/Shuffzord/RoadRaven/bf061a71b30dade75dc0ca08b010787df6786515/screenshots/hud-uat.png",
+      "alt": "The RoadRaven pane in Claude Code: a UAT section with Pass and Fail buttons per item",
+      "surface": "terminal"
+    }
+  ]
+}

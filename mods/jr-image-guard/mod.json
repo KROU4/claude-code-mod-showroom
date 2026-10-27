@@ -1,0 +1,43 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "jr-image-guard",
+  "title": "jr image guard",
+  "tagline": "Keeps oversized images out of the conversation: Claude reads a resized copy instead.",
+  "tagline_ru": "Не пускает в разговор слишком большие картинки: Claude читает уменьшенную копию.",
+  "description": "An image over about 8000 px on a side is refused by the API and breaks the turn. When Claude reads a PNG, JPEG, WebP, GIF, TIFF, HEIC or BMP, the mod measures it with `sips`; if either side is over the limit (7800 px by default) it writes a resized copy to `/tmp/jr-image-guard` with ImageMagick (`magick`) when installed, `sips` otherwise, and lets Claude read the copy, with a toast. Your file is never touched. A Playwright `browser_resize` to a viewport over the limit is refused. An image that cannot be measured or resized is not read. Relies on macOS `sips`. No network.",
+  "description_ru": "API отклоняет картинки больше примерно 8000 px по стороне, и ход ломается. Когда Claude читает PNG, JPEG, WebP, GIF, TIFF, HEIC или BMP, мод измеряет её через `sips`; если любая сторона больше лимита (по умолчанию 7800 px), он записывает уменьшенную копию в `/tmp/jr-image-guard` через ImageMagick (`magick`), если он установлен, иначе через `sips`, и подсовывает Claude эту копию с уведомлением. Ваш файл не меняется. Вызов Playwright `browser_resize` с окном больше лимита отклоняется. Картинку, которую не удалось измерить или уменьшить, мод не даёт прочитать. Опирается на `sips` из macOS. В сеть не ходит.",
+  "author": { "name": "jrlprost", "github": "jrlprost", "url": "https://github.com/jrlprost" },
+  "maintainers": ["jrlprost"],
+  "category": "safety",
+  "tags": ["images", "screenshots", "resize", "macos"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-image-guard",
+  "source": {
+    "type": "github",
+    "repo": "jrlprost/claude-code-mods",
+    "path": "plugins/jr-image-guard",
+    "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+  },
+  "surfaces": ["terminal"],
+  "requires": { "claudeCode": ">=2.1.301" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": true
+  },
+  "preview": {
+    "transcript": [
+      { "role": "user", "text": "Look at the full-page screenshot in shots/home.png and list layout bugs." }
+    ],
+    "caption": "A 1440×12000 screenshot is read through a resized copy instead of breaking the turn.",
+    "caption_ru": "Скриншот 1440×12000 читается через уменьшенную копию вместо того, чтобы сломать ход.",
+    "elements": [
+      { "slot": "tool-row", "tool": "Read", "input": "shots/home.png", "result": [[{ "text": "Read image (resized copy in /tmp/jr-image-guard)", "dim": true }]] },
+      { "slot": "toast", "text": "jr image guard · 1440×12000 px → resized to fit 7800 px" }
+    ]
+  }
+}

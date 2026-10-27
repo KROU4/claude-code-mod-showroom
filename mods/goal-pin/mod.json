@@ -1,0 +1,48 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "goal-pin",
+  "title": "Goal Pin",
+  "tagline": "Pin the goal of the conversation above the prompt, with how long you have been at it.",
+  "tagline_ru": "Цель разговора закреплена над полем ввода вместе со временем, которое вы над ней работаете.",
+  "description": "`/goal <text>` pins one line above the prompt, `Goal ship the login fix  12m`, with the minutes since you set it, updated once a minute. The goal is kept per project in the plugin's store, so it comes back after /clear, a resume or a new session in the same folder; `/goal done` clears it. The command's reply tells Claude the goal once, when you set it, and nothing is added to later prompts. One of the templates shipped with the givememod skill. No files, processes, network or model calls.",
+  "description_ru": "`/goal <текст>` закрепляет над полем ввода одну строку, `Goal ship the login fix  12m`, и раз в минуту обновляет, сколько минут прошло с момента, когда цель задана. Цель хранится для каждого проекта в хранилище плагина, поэтому возвращается после /clear, при возобновлении сессии и в новой сессии в той же папке; `/goal done` её снимает. Ответ команды один раз сообщает цель Claude в момент, когда вы её задаёте, и к следующим запросам ничего не добавляется. Это один из шаблонов, которые идут со скиллом givememod. Файлы, процессы, сеть и вызовы модели не используются.",
+  "author": { "name": "timoncool", "github": "timoncool", "url": "https://github.com/timoncool" },
+  "maintainers": ["timoncool"],
+  "category": "productivity",
+  "tags": ["goal", "focus", "band", "timer"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/timoncool/givememod/tree/HEAD/plugins/givememod/skills/givememod/templates/goal-pin",
+  "source": {
+    "type": "github",
+    "repo": "timoncool/givememod",
+    "path": "plugins/givememod/skills/givememod/templates/goal-pin",
+    "sha": "197200ab39d2d0c22246ac5ceec40c3fbbefb945"
+  },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "The goal set with /goal stays above the prompt with the minutes spent on it.",
+    "caption_ru": "Цель, заданная через /goal, остаётся над полем ввода вместе с потраченными на неё минутами.",
+    "elements": [
+      {
+        "slot": "command",
+        "command": "/goal",
+        "args": "ship the login fix",
+        "output": [["Goal for this conversation: ship the login fix. Keep the work on it and say so when something is off-goal."]]
+      },
+      {
+        "slot": "above-prompt",
+        "rows": [[{ "text": "Goal ", "color": "claude", "bold": true }, "ship the login fix", { "text": "  12m", "dim": true }]]
+      }
+    ]
+  }
+}

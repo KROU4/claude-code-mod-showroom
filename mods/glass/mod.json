@@ -1,0 +1,63 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "glass",
+  "title": "Glass",
+  "tagline": "A desktop-app look for the terminal transcript: colored commands, code and diff cards, 13 palettes.",
+  "tagline_ru": "Вид десктопного приложения для истории в терминале: цветные команды, карточки кода и диффов, 13 палитр.",
+  "description": "Redraws the terminal transcript: shell commands in backticks and prose painted by role (command, flag, string, path), paths with line numbers and real OSC 8 links, a tinted card for replies that open with **Bottom line**, a `▎` gutter mark beside paragraphs that ask something of you, code fences as cards sized to the code, Edit and Write results as rounded diff cards, borderless tables, painted tool rows, turn headers and a spinner. `/fold`, `/unfold`, `/collapse` and `/expand` fold groups; `/glass-theme` writes a matching theme to `~/.claude/themes`. Pick one of 13 palettes in `/config`. Optional notifications when a background agent finishes or a turn ends with failed calls.",
+  "description_ru": "Перерисовывает историю в терминале: команды оболочки в обратных кавычках и в тексте раскрашены по ролям (команда, флаг, строка, путь), пути с номерами строк и настоящие ссылки OSC 8, ответ, начинающийся с **Bottom line**, — тонированная карточка, абзацы, где от вас что-то нужно, отмечены `▎` на полях, блоки кода — карточки по размеру кода, результаты Edit и Write — скруглённые карточки диффов, таблицы без рамок, перекрашенные строки инструментов, заголовки ходов и индикатор работы. `/fold`, `/unfold`, `/collapse` и `/expand` сворачивают группы; `/glass-theme` записывает подходящую тему в `~/.claude/themes`. Одна из 13 палитр выбирается в `/config`. По желанию уведомления, когда фоновый агент закончил или ход завершился с ошибками вызовов.",
+  "author": { "name": "rashed parvez", "github": "rashedInt32", "url": "https://github.com/rashedInt32" },
+  "maintainers": ["rashedInt32"],
+  "category": "interface",
+  "tags": ["transcript", "markdown", "syntax", "diff", "palettes", "themes"],
+  "license": "MIT",
+  "version": "0.16.0",
+  "homepage": "https://github.com/rashedInt32/glass",
+  "source": { "type": "marketplace", "marketplace": "rashedInt32/glass", "plugin": "glass" },
+  "surfaces": ["terminal"],
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "caption": "A diff card for an edit, and a Bottom line card with a gutter mark beside the paragraph that needs you.",
+    "caption_ru": "Карточка диффа для правки и карточка Bottom line с отметкой на полях у абзаца, где нужно ваше решение.",
+    "elements": [
+      {
+        "slot": "tool-row",
+        "tool": "Edit",
+        "input": "src/cart.ts",
+        "result": [
+          [{ "text": "╭─ src/cart.ts +1 -1 ─────────────────────────╮", "color": "inactive" }],
+          [{ "text": "│ ", "color": "inactive" }, { "text": "12 ", "dim": true }, { "text": "- return items.reduce((s, i) => s + i.price, 0)", "color": "error" }],
+          [{ "text": "│ ", "color": "inactive" }, { "text": "12 ", "dim": true }, { "text": "+ return items.reduce((s, i) => s + i.price * i.qty, 0)", "color": "success" }],
+          [{ "text": "╰─────────────────────────────────────────────╯", "color": "inactive" }]
+        ]
+      },
+      {
+        "slot": "message",
+        "role": "assistant",
+        "rows": [
+          [{ "text": "▌ ", "color": "#5fb3a1" }, { "text": "Bottom line", "bold": true, "color": "#5fb3a1" }],
+          [{ "text": "▌ ", "color": "#5fb3a1" }, { "text": "Verified: ", "bold": true, "color": "success" }, { "text": "npm test", "color": "#e5c07b" }, " passes, 14 of 14."],
+          [{ "text": "▌ ", "color": "#5fb3a1" }, { "text": "Fix: ", "bold": true, "color": "suggestion" }, "totals now multiply by ", { "text": "qty", "color": "#c678dd" }, " in ", { "text": "src/cart.ts:12", "color": "#61afef" }, "."],
+          [" "],
+          [{ "text": "▎", "color": "warning" }, "Should I also round to cents here, or leave that to checkout?"]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/rashedInt32/glass/bf78be75a82fcb6d59067c338020679b8a4852ac/docs/shots/tidepool.png",
+      "alt": "The demo turn under glass's default tidepool palette",
+      "surface": "terminal"
+    }
+  ]
+}

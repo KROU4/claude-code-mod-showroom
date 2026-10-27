@@ -1,0 +1,50 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "change-ledger",
+  "title": "Change Ledger",
+  "tagline": "A /changes pane of every file this session edited, with line counts and who edited it, beside git.",
+  "tagline_ru": "Панель /changes со всеми файлами, которые правила сессия: сколько строк, кто правил, и рядом git.",
+  "description": "`/changes` opens a Changes pane. A glance row sums the files, lines added and removed, and the branch with commits ahead and behind. Edits lists each file Claude changed with Edit or Write, newest first: a +/− bar, a `new` tag for created files, its folder, which agents touched it, how many edits and how long ago. Working tree runs `git status --porcelain` and `git diff --numstat HEAD` after each turn and marks the files this session edited `●` and other changes `○`, so edits made outside the session stand out. Shell edits show only in the working tree. Before a Write it reads the old file to count removed lines.",
+  "description_ru": "`/changes` открывает панель Changes. Верхняя строка суммирует файлы, добавленные и удалённые строки, ветку и коммиты впереди и позади. В блоке Edits — каждый файл, который Claude менял через Edit или Write, новые сверху: полоса +/−, метка `new` для созданных файлов, папка, какие агенты его трогали, сколько правок и как давно. Блок Working tree после каждого хода запускает `git status --porcelain` и `git diff --numstat HEAD` и помечает файлы этой сессии `●`, а прочие изменения `○`, так что правки извне сразу видны. Правки из shell видны только в рабочем дереве. Перед Write мод читает старый файл, чтобы посчитать удалённые строки.",
+  "author": { "name": "Mehmet Aras", "github": "arasovic", "url": "https://github.com/arasovic" },
+  "maintainers": ["arasovic"],
+  "category": "git",
+  "tags": ["pane", "edits", "git-status", "diffstat", "files"],
+  "license": "MIT",
+  "version": "0.1.5",
+  "homepage": "https://github.com/arasovic/claude-code-mods/tree/HEAD/change-ledger",
+  "source": { "type": "github", "repo": "arasovic/claude-code-mods", "path": "change-ledger", "sha": "3c3f25ee3a12b982fd63ee858297baab9385dd33" },
+  "capabilities": { "network": false, "processes": true, "filesystem": "read", "model": false, "promptRewrite": false, "blocksTools": false },
+  "preview": {
+    "surface": "terminal",
+    "scene": "coding",
+    "caption": "/changes: the files Claude edited with their +/− counts, and the git working tree with outside edits marked ○.",
+    "caption_ru": "/changes: файлы, которые правил Claude, со счётчиками +/−, и рабочее дерево git, где правки извне помечены ○.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "Changes",
+        "width": "wide",
+        "rows": [
+          [{ "text": "3 files  ", "bold": true }, { "text": "+48", "color": "success" }, { "text": " −12", "color": "error" }, { "text": "   main", "color": "suggestion" }, { "text": " ↑1", "dim": true }],
+          [{ "text": "╭─ Edits ─────────────────────────────╮", "color": "suggestion", "dim": true }],
+          [{ "text": "│ ", "dim": true }, { "text": "total.ts", "bold": true }, "      ", { "text": "■■■■", "color": "success" }, { "text": "■", "color": "error" }, { "text": "···", "dim": true }, { "text": "  +31", "color": "success" }, { "text": " −6", "color": "error" }],
+          [{ "text": "│   src/cart/        main · 3× · 2m ago", "dim": true }],
+          [{ "text": "│ ", "dim": true }, { "text": "discount.ts", "bold": true }, { "text": " new", "color": "success" }, "  ", { "text": "■■", "color": "success" }, { "text": "······", "dim": true }, { "text": "  +17", "color": "success" }, { "text": " −0", "color": "error" }],
+          [{ "text": "╭─ Working tree ───────── 3 changed ──╮", "color": "warning", "dim": true }],
+          [{ "text": "│ ", "dim": true }, { "text": "● ", "color": "suggestion" }, { "text": "M  ", "color": "warning" }, "src/cart/total.ts"],
+          [{ "text": "│ ", "dim": true }, { "text": "● ", "color": "suggestion" }, { "text": "?? ", "color": "success" }, "src/cart/discount.ts"],
+          [{ "text": "│ ", "dim": true }, { "text": "○ ", "dim": true }, { "text": "M  ", "color": "warning" }, { "text": "package.json", "dim": true }]
+        ]
+      },
+      { "slot": "command", "command": "/changes", "output": [["Changes pane opened."]] }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/arasovic/claude-code-mods/3c3f25ee3a12b982fd63ee858297baab9385dd33/docs/change-ledger.png",
+      "alt": "The change-ledger pane listing edited files with line counts, above the git working tree"
+    }
+  ]
+}

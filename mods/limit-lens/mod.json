@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "limit-lens",
+  "title": "Limit Lens",
+  "tagline": "This session's share of your 5-hour and weekly limits, and its cost on each model.",
+  "tagline_ru": "Доля этой сессии в ваших 5-часовом и недельном лимитах и сколько та же работа стоила бы на каждой модели.",
+  "description": "A panel above the prompt, one line until expanded: the account's 5-hour and weekly usage with a pace marker and time to reset, this session's share of each, a forecast (`limit in ~1h 20m`), and the same work priced on the newest Opus, Sonnet, Haiku and Fable as a share of each window (dollars on API billing). To split usage across sessions it reads token counts and models from your local logs under `~/.claude/projects/` (via `tail`), keeping no message text. It fetches Anthropic's public pricing page and keeps the table in the plugin store. `/limits` or Details opens a pane with each session's and project's share, cache re-reads and context fill.",
+  "description_ru": "Панель над полем ввода, в одну строку, пока её не развернуть: 5-часовой и недельный расход аккаунта с отметкой темпа (зелёная, жёлтая, красная) и временем до сброса, доля этой сессии в каждом окне, прогноз (`limit in ~1h 20m` или `≈70% at reset`) и та же работа в ценах новейших Opus, Sonnet, Haiku и Fable как доля каждого окна (в долларах при оплате по API). Чтобы разделить расход между сессиями, мод читает число токенов и модели из локальных журналов в `~/.claude/projects/` (через `tail`), не сохраняя текст сообщений. Цены берёт с открытой страницы цен Anthropic и хранит таблицу в хранилище плагина. `/limits` или Details открывают панель по сессиям и проектам с перечитываниями кэша и заполнением контекста.",
+  "author": { "name": "cristi71000", "github": "cristi71000", "url": "https://github.com/cristi71000" },
+  "maintainers": ["cristi71000"],
+  "category": "insights",
+  "tags": ["usage-limits", "rate-limits", "cost", "models", "forecast", "pricing"],
+  "license": "MIT",
+  "version": "0.4.4",
+  "homepage": "https://github.com/cristi71000/limit-lens",
+  "source": { "type": "marketplace", "marketplace": "cristi71000/limit-lens", "plugin": "limit-lens" },
+  "capabilities": { "network": true, "processes": true, "filesystem": "read", "model": false, "promptRewrite": false, "blocksTools": false },
+  "preview": {
+    "surface": "terminal",
+    "scene": "coding",
+    "caption": "Expanded: account usage and this session's share per window, with the same work priced on each model.",
+    "caption_ru": "В развёрнутом виде: расход аккаунта и доля этой сессии по окнам, с ценой той же работы на каждой модели.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [{ "text": "◆ Limits", "color": "claude", "bold": true }, "       5h            week             ", { "text": "If all on     5h      week", "dim": true }],
+          ["This session   3%            0.6%             ", { "text": "○ Fable 5.1   11.1%   2.2%", "dim": true }],
+          ["Account        ", { "text": "██", "color": "success" }, { "text": "░░░░░░", "dim": true }, " 23%  ", { "text": "████", "color": "warning" }, { "text": "░░░░", "dim": true }, " 40.6%   ● Opus 5.5    4.4%    0.9%"],
+          [{ "text": "Resets in      2h 10m        3d 4h            ", "dim": true }, { "text": "○ Sonnet 5.5  2.2%    0.4%", "dim": true }],
+          [{ "text": "Models  ", "dim": true }, { "text": "████████", "color": "claude" }, { "text": "████", "color": "success" }, "   ● Opus 5.5 2 req   ○ Haiku 5.5 1 req   ", { "button": "Details", "hotkey": "d" }]
+        ]
+      }
+    ]
+  }
+}

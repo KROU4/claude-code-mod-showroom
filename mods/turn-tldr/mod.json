@@ -1,0 +1,139 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "turn-tldr",
+  "title": "TL;DR",
+  "tagline": "Every turn folded into one row: files changed, tests before and after, and what to check.",
+  "tagline_ru": "Каждый ход свёрнут в одну строку: какие файлы изменены, тесты до и после и что стоит проверить.",
+  "description": "In the terminal, folds a turn's tool calls into one TL;DR row: the goal, files changed with +/− counts by folder, the first and last test run (pytest, jest, vitest, go test, cargo and more), and amber lines to check: test files changed to pass, writes outside the project, deletes, skip markers, `--no-verify` or a force push. A band above the prompt shows the running step against its last duration; a context bar shows what fills the window. `/tldr show`, `context`, `history`, `copy` and `diff` open details, kept rows, the clean reply or the turn's net diff. A turn over 30 s ends with a notification. Every feature is a switch.",
+  "description_ru": "В терминале сворачивает вызовы инструментов за ход в одну строку TL;DR: цель, изменённые файлы с числом добавленных и удалённых строк по папкам, первый и последний прогон тестов (pytest, jest, vitest, go test, cargo и другие) и янтарные строки «проверьте»: тесты, изменённые ради зелёного прогона, запись вне проекта, удаления, пропуски тестов, `--no-verify` или force push. Над полем ввода полоса показывает текущий шаг против его прошлой длительности, шкала контекста — чем занято окно. `/tldr show`, `context`, `history`, `copy` и `diff` открывают подробности, сохранённые строки, чистый текст ответа или итоговый дифф хода. Ход дольше 30 секунд заканчивается уведомлением. Каждую функцию можно выключить.",
+  "author": {
+    "name": "Kushal Banda",
+    "github": "kushalBanda",
+    "url": "https://github.com/kushalBanda"
+  },
+  "maintainers": [
+    "kushalBanda"
+  ],
+  "category": "interface",
+  "tags": [
+    "summary",
+    "tests",
+    "diff",
+    "trust",
+    "transcript",
+    "turns"
+  ],
+  "license": "MIT",
+  "version": "0.1.6",
+  "homepage": "https://github.com/kushalBanda/claude-tldr",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "kushalBanda/claude-tldr",
+    "plugin": "tldr"
+  },
+  "requires": {
+    "claudeCode": ">=2.1.301"
+  },
+  "surfaces": [
+    "terminal"
+  ],
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      {
+        "role": "user",
+        "text": "fix the login bug, users get logged out after refresh"
+      }
+    ],
+    "caption": "A whole turn as one row: three files, tests from 3 failed to 12 passed, and an amber flag on the changed test file.",
+    "caption_ru": "Весь ход одной строкой: три файла, тесты от 3 упавших до 12 пройденных и янтарная пометка об изменённом тесте.",
+    "elements": [
+      {
+        "slot": "message",
+        "role": "assistant",
+        "rows": [
+          [
+            {
+              "text": "⏺ ",
+              "color": "warning"
+            },
+            {
+              "text": "TL;DR ",
+              "bold": true
+            },
+            "fix the login bug, users get logged out after refresh",
+            {
+              "text": " · 1m 12s",
+              "color": "inactive"
+            }
+          ],
+          [
+            {
+              "text": "  ⎿  ",
+              "color": "inactive"
+            },
+            "3 files ",
+            {
+              "text": "+18",
+              "color": "success"
+            },
+            " ",
+            {
+              "text": "−6",
+              "color": "error"
+            },
+            {
+              "text": " in ",
+              "color": "inactive"
+            },
+            "src, tests",
+            {
+              "text": " · ",
+              "color": "inactive"
+            },
+            {
+              "text": "pytest ✗ 3 failed",
+              "color": "error"
+            },
+            {
+              "text": " → ",
+              "color": "inactive"
+            },
+            {
+              "text": "✓ 12 passed",
+              "color": "success"
+            }
+          ],
+          [
+            "     ",
+            {
+              "text": "⚠ tests/test_auth.py changed in the same turn as the fix",
+              "color": "warning"
+            }
+          ]
+        ]
+      },
+      {
+        "slot": "notification",
+        "title": "Claude Code",
+        "text": "TL;DR: 12 passed · 1 to check (1m 12s)"
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/kushalBanda/claude-tldr/9ea152dc7bb80c71e925521fe7e7b54655ef6305/.github/assets/before-after.png",
+      "alt": "Left: a turn as 33 lines of reads, edits and test logs. Right: the same turn as one TL;DR row with an amber flag",
+      "surface": "terminal"
+    }
+  ]
+}

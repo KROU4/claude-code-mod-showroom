@@ -1,0 +1,48 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "suggest",
+  "title": "Suggest",
+  "tagline": "Likely replies as buttons under Claude's last message: click one to send it.",
+  "tagline_ru": "Вероятные ответы кнопками под последним сообщением Claude: щёлкните, чтобы отправить.",
+  "description": "Under Claude's last reply, Claude Code's own grey suggestion (marked ✻) becomes a button, and a small model (Haiku at low effort by default, via `$.model.complete`) adds up to `maxReplies` more from the last ~6,000 characters of conversation. In `smart` mode (default) it only asks the model when Claude asks or offers something; `auto` asks after every reply, `manual` only on `/suggest` (which also takes a hint, such as `/suggest shorter`). A click sends the reply as your prompt, or with `click: fill` puts it in the box; ✎ fills it for editing. Slash commands run as commands and `!` replies go to shell mode. With no engine suggestion, the model's first reply becomes the ghost text.",
+  "description_ru": "Под последним ответом Claude серая подсказка самого Claude Code (с пометкой ✻) становится кнопкой, а небольшая модель (по умолчанию Haiku с низким усилием, через `$.model.complete`) добавляет ещё до `maxReplies` вариантов по последним ~6000 символам диалога. В режиме `smart` (по умолчанию) модель вызывается, только когда Claude что-то спрашивает или предлагает; `auto` — после каждого ответа, `manual` — только по `/suggest` (можно с подсказкой, например `/suggest shorter`). Щелчок отправляет ответ как ваше сообщение, а с `click: fill` кладёт его в поле ввода; ✎ — тоже в поле, для правки. Слэш-команды выполняются как команды, ответы с `!` идут в режим shell. Если своей подсказки у Claude Code нет, первая из модели становится подсказкой в поле.",
+  "author": { "name": "Alex Pakhaliuk", "github": "dophamine", "url": "https://github.com/dophamine" },
+  "maintainers": ["dophamine"],
+  "category": "productivity",
+  "tags": ["suggestions", "replies", "buttons", "haiku", "quick-reply"],
+  "license": "MIT",
+  "version": "1.0.8",
+  "homepage": "https://github.com/dophamine/claude-suggest",
+  "source": { "type": "marketplace", "marketplace": "dophamine/claude-suggest", "plugin": "suggest" },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": { "network": false, "processes": false, "filesystem": "none", "model": true, "promptRewrite": true, "blocksTools": false },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Add percentage discount codes to the cart total." },
+      { "role": "tool", "tool": "Edit", "input": "src/cart/total.ts", "status": "done" },
+      { "role": "assistant", "text": "Discount codes such as SAVE10 now apply in src/cart/total.ts. Want me to add tests for expired and stacked codes?" }
+    ],
+    "caption": "Claude Code's own guess (✻) and two more from Haiku as buttons under the reply; a click sends one.",
+    "caption_ru": "Собственная догадка Claude Code (✻) и ещё две от Haiku кнопками под ответом; щелчок отправляет вариант.",
+    "elements": [
+      {
+        "slot": "message",
+        "role": "assistant",
+        "rows": [
+          [{ "text": "✻ ", "dim": true }, { "button": "yes, add the tests", "variant": "primary" }, " ", { "text": "✎", "dim": true }],
+          ["  ", { "button": "only expired codes for now" }, " ", { "text": "✎", "dim": true }],
+          ["  ", { "button": "run the existing tests first" }, " ", { "text": "✎", "dim": true }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/dophamine/claude-suggest/6a7066306aead027ccc28d4383770eb226e701ef/assets/demo.gif",
+      "alt": "Screen recording of Suggest: reply buttons under Claude's last message, one clicked and sent",
+      "surface": "terminal"
+    }
+  ]
+}

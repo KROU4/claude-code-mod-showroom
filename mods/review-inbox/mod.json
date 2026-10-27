@@ -1,0 +1,57 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "review-inbox",
+  "title": "Review Inbox",
+  "tagline": "PRs waiting for your review, each summarized in plain language, plus your own PRs and issues.",
+  "tagline_ru": "PR, которые ждут вашего ревью, с понятным кратким пересказом, а также ваши PR и задачи.",
+  "description": "A band above the prompt counts PRs to review, your PRs to act on and issues that pull you in, coloured by how long the oldest request has waited. `/review-inbox` opens a drawer: To review, where Sonnet summarizes each PR from its title, description and file paths; My PRs with reviews, CI and conflicts; Assigned & mentioned; saved searches; notifications. Buttons add Review with Claude, Fix CI or Address comments to your prompt. GitHub is read only through your `gh`, cached in `~/.claude/plugins/data/review-inbox` for all sessions. Opt-in: `directActions` (approve, rerun CI after a confirm) and `autoReview`, a background reviewer that leaves pending reviews on GitHub. Nine languages.",
+  "description_ru": "Полоса над полем ввода считает то, что ждёт вас (PR на ревью, ваши PR, требующие действий, задачи, назначенные вам или с упоминанием), и окрашивается по тому, как долго ждёт самый старый запрос. `/review-inbox` открывает выдвижную панель: To review, где Sonnet пересказывает каждый PR по заголовку, описанию и путям файлов; My PRs с ревью, CI и конфликтами; Assigned & mentioned; сохранённые поиски; уведомления. Кнопки добавляют в поле ввода Review with Claude, Fix CI или Address comments. GitHub читается только через ваш `gh`, с общим для всех сессий кэшем в `~/.claude/plugins/data/review-inbox`. По желанию: `directActions` (одобрить, перезапустить CI после подтверждения) и `autoReview`, фоновый ревьюер, оставляющий черновики ревью на GitHub. Девять языков.",
+  "author": { "name": "SummerRiversound", "github": "SummerRiversound", "url": "https://github.com/SummerRiversound" },
+  "maintainers": ["SummerRiversound"],
+  "category": "git",
+  "tags": ["github", "code-review", "pull-requests", "issues", "inbox", "summaries"],
+  "license": "MIT",
+  "version": "0.15.3",
+  "homepage": "https://github.com/SummerRiversound/review-inbox",
+  "source": { "type": "marketplace", "marketplace": "SummerRiversound/review-inbox", "plugin": "review-inbox" },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": true,
+    "processes": true,
+    "filesystem": "write",
+    "model": true,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "The band counts what needs you; the drawer's To review tab shows each PR with a plain-language summary.",
+    "caption_ru": "Полоса считает, что ждёт вас; вкладка To review показывает каждый PR с понятным пересказом.",
+    "elements": [
+      { "slot": "above-prompt", "rows": [[{ "text": "To review 3 · My PRs to act on 1 · Assigned & mentioned 2 · oldest waiting 4 days", "color": "warning" }, "  ", { "button": "Open", "variant": "primary" }]] },
+      {
+        "slot": "pane",
+        "title": "Review inbox",
+        "width": "wide",
+        "rows": [
+          [{ "text": "To review 3", "bold": true, "underline": true }, "   My PRs 4   Assigned & mentioned 2   Saved searches   Notifications 5"],
+          [" "],
+          [{ "text": "acme/app #482", "dim": true }, "  Retry uploads with backoff  ", { "text": "4 days", "color": "warning" }, { "text": " · direct request", "dim": true }],
+          [{ "text": "Summary", "bold": true }, "  Failed uploads now retry three times with growing waits instead of failing at once."],
+          [{ "text": "Impact", "bold": true }, "   Users on bad networks lose fewer files; the upload queue changes."],
+          [{ "text": "6 files (+120 −14)", "dim": true }, "  ", { "button": "Review with Claude", "variant": "primary" }, " ", { "button": "Hide" }]
+        ]
+      },
+      { "slot": "toast", "text": "New review request · acme/app #491 Add rate limit headers" }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/SummerRiversound/review-inbox/85277e878daac5ed963c90d299cd8aa2ece52bea/docs/images/en/overview.gif",
+      "alt": "The band above the prompt, then the drawer's three tabs: To review, My PRs and My issues",
+      "surface": "terminal"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "desk-asana",
+  "title": "Desk Asana",
+  "tagline": "Your Asana tasks in a side pane: by project, search, details, comments, assignee and status.",
+  "tagline_ru": "Ваши задачи из Asana в боковой панели: по проектам, поиск, подробности, комментарии, исполнитель и статус.",
+  "description": "`/desk-asana` shows your open Asana tasks grouped by project with due dates (red when overdue), your projects by section, and a workspace search, read through the Asana MCP server Claude Code already has connected. Open a task for its fields, description and latest comments; add a comment with @-mentions, change the assignee or a dropdown field, or press `Hand to Claude` to put the task into the prompt. Editing your own comments and changing a task type's status go to Asana's REST API, only with a personal access token you add in the plugin's settings. Calls go through Claude Code's permission check; the allow rules it asks for also let Claude change tasks.",
+  "description_ru": "`/desk-asana` показывает ваши открытые задачи в Asana по проектам со сроками (просроченные красным), ваши проекты по разделам и поиск по рабочему пространству; данные идут через MCP-сервер Asana, уже подключённый к Claude Code. Откройте задачу, чтобы увидеть поля, описание и последние комментарии; добавьте комментарий с упоминаниями через @, смените исполнителя или значение поля-списка, или нажмите `Hand to Claude`, чтобы положить задачу в поле ввода. Правка своих комментариев и смена статуса задачи идут через REST API Asana и только с личным токеном, который вы сами указываете в настройках плагина. Вызовы проходят обычную проверку разрешений Claude Code; правила, которые мод просит добавить, разрешают и Claude менять задачи.",
+  "author": { "name": "KyongSik-Yoon", "github": "KyongSik-Yoon", "url": "https://github.com/KyongSik-Yoon" },
+  "maintainers": ["KyongSik-Yoon"],
+  "category": "integrations",
+  "tags": ["asana", "tasks", "pane", "mcp"],
+  "license": "MIT",
+  "version": "0.65.0",
+  "homepage": "https://github.com/KyongSik-Yoon/cc-desktop-mod/tree/HEAD/desk-asana",
+  "source": { "type": "marketplace", "marketplace": "KyongSik-Yoon/cc-desktop-mod", "plugin": "desk-asana", "path": "desk-asana" },
+  "surfaces": ["terminal"],
+  "capabilities": {
+    "network": true,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "/desk-asana beside the conversation: your open tasks by project, with due dates and an overdue one in red.",
+    "caption_ru": "/desk-asana рядом с перепиской: ваши открытые задачи по проектам, со сроками и просроченной задачей красным.",
+    "elements": [
+      { "slot": "command", "command": "/desk-asana" },
+      {
+        "slot": "pane",
+        "title": "Asana",
+        "width": "narrow",
+        "rows": [
+          [{ "text": "● My tasks", "bold": true }, "  ", { "text": "○ Projects", "dim": true }],
+          [{ "text": "Search…", "dim": true }],
+          [" "],
+          [{ "text": "Checkout v2", "bold": true }],
+          ["  Fix rounding in cart total", "    ", { "text": "Oct 24", "color": "error" }],
+          ["  Add discount codes", "            ", { "text": "Oct 30", "dim": true }],
+          [{ "text": "Mobile app", "bold": true }],
+          ["  Review push permission copy", "  ", { "text": "Nov 3", "dim": true }],
+          [" "],
+          [{ "text": "Done in the last 14 days", "dim": true }],
+          [{ "text": "  Release 4.2 notes  ● On hold", "dim": true }]
+        ]
+      }
+    ]
+  }
+}

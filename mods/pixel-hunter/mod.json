@@ -1,0 +1,59 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "pixel-hunter",
+  "title": "Pixel Hunter",
+  "tagline": "An 8-bit hunter fights one of nine monsters in a side pane while Claude works.",
+  "tagline_ru": "8-битный охотник сражается с одним из девяти монстров в боковой панели, пока Claude работает.",
+  "description": "A side pane where a pixel hunter leaves camp when you send a prompt and hunts one of nine monsters, each on its own ground with its own moves, and runs back to roast meat when Claude answers. The fight plays itself: the hunter dodges, closes in and swings only when a blow would land. A hunt takes two to seven minutes of Claude's working time; a wounded monster waits across turns and sessions, and a strip counts your kills. Pick a great sword, long sword, bow or random at camp. `/hunt` opens the pane, `/hunt-demo` plays without a turn. Traditional Chinese or English. A fan project based on Monster Hunter; the code is MIT, the pixel art is not. No tokens, files or network.",
+  "description_ru": "Боковая панель, в которой пиксельный охотник уходит из лагеря, когда вы отправляете запрос, и охотится на одного из девяти монстров, у каждого своя местность и свои приёмы, а когда Claude отвечает, бежит обратно жарить мясо. Бой идёт сам: охотник уворачивается, сближается и бьёт, только когда удар достанет. Охота занимает от двух до семи минут работы Claude; раненый монстр ждёт между ходами и сессиями, а полоска считает ваши победы. В лагере можно выбрать большой меч, длинный меч, лук или случайное оружие. `/hunt` открывает панель, `/hunt-demo` запускает охоту без хода Claude. Язык традиционный китайский или английский. Фанатский проект по мотивам Monster Hunter: код под MIT, пиксельная графика нет. Токены, файлы и сеть не используются.",
+  "author": { "name": "s7788", "github": "s7788", "url": "https://github.com/s7788" },
+  "maintainers": ["s7788"],
+  "category": "fun",
+  "tags": ["game", "pixel-art", "8-bit", "pane", "companion", "idle"],
+  "license": "MIT",
+  "version": "0.10.0",
+  "homepage": "https://github.com/s7788/pixel-hunter",
+  "source": { "type": "marketplace", "marketplace": "s7788/pixel-hunter", "plugin": "pixel-hunter" },
+  "surfaces": ["desktop"],
+  "requires": { "claudeCode": ">=2.1.275" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "desktop",
+    "caption": "Mid-hunt while Claude works: the hunter against Tigrex on the snowfield, with HP bars and the kill count.",
+    "caption_ru": "Охота в разгаре, пока Claude работает: охотник против Тигрекса на снежном поле, с полосками здоровья и счётом побед.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "pixel-hunter",
+        "width": "narrow",
+        "rows": [
+          [{ "text": "Tigrex", "bold": true }, " · Snowfield", "        ", { "text": "Great Sword", "color": "inactive" }],
+          [{ "text": "        ▄▄██▄       ", "color": "#c9a24a" }],
+          [{ "text": "  ▄█▄   ██████▄▄    ", "color": "#c9a24a" }],
+          [{ "text": " ▐███▌  ▀██▀▀███▀   ", "color": "#7fa6d6" }],
+          [{ "text": "  █ █    ▀    ▀▀    ", "color": "#7fa6d6" }],
+          [{ "text": "▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔", "color": "#e8eef5" }],
+          ["Hunter  ", { "bar": 0.82, "width": 12, "color": "success" }],
+          ["Tigrex  ", { "bar": 0.47, "width": 12, "color": "error" }],
+          [{ "text": "Kills: Great Jagras 3 · Zinogre 1", "dim": true }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/s7788/pixel-hunter/4d061822ac162f9a3097928bc6209ec3c915b3d4/docs/media/demo.gif",
+      "alt": "The hunter roasts meat at camp, then fights Tigrex with the great sword, Zinogre with the long sword and Velkhana with the bow",
+      "surface": "desktop"
+    }
+  ]
+}

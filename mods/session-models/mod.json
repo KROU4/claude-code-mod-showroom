@@ -1,0 +1,53 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "session-models",
+  "title": "Session Models",
+  "tagline": "The main model and effort, every live agent by model and effort, and warnings about agent crowds.",
+  "tagline_ru": "Основная модель и усилие, все работающие агенты по моделям и усилию и предупреждения о толпе агентов.",
+  "description": "A dim line above the prompt with the main thread's model and effort, the agents running now grouped by model and effort (`Opus (12 medium, 1 high), Sonnet (2 low)`), named agent crews with their size, and the working directory. It warns with ⚠ and a toast when `liveAgentsWarn` (6) agents run at once, and when one sends at least `contextWarnK` (300) thousand tokens of context per request. In VS Code and on a phone it falls back to the status entry. It only reads the session's agent list and usage.",
+  "description_ru": "Тусклая строка над полем ввода: модель и усилие основного потока, работающие сейчас агенты по моделям и усилию (`Opus (12 medium, 1 high), Sonnet (2 low)`), именованные команды агентов с их размером и рабочая папка. Предупреждает знаком ⚠ и уведомлением, когда одновременно работает `liveAgentsWarn` (6) агентов и когда кто-то из них отправляет в каждом запросе от `contextWarnK` (300) тысяч токенов контекста. В VS Code и на телефоне строка переезжает в статус. Мод только читает список агентов сессии и расход.",
+  "author": { "name": "Abhiram Dwivedi", "github": "AbhiramDwivedi", "url": "https://github.com/AbhiramDwivedi" },
+  "maintainers": ["AbhiramDwivedi"],
+  "category": "insights",
+  "tags": ["models", "effort", "subagents", "crews", "warnings"],
+  "license": "MIT",
+  "version": "0.7.0",
+  "homepage": "https://github.com/AbhiramDwivedi/claude-ops/tree/HEAD/plugins/session-models",
+  "source": { "type": "marketplace", "marketplace": "AbhiramDwivedi/claude-ops", "plugin": "session-models", "path": "plugins/session-models" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "scene": "coding",
+    "caption": "Fifteen agents at once and one carrying 910K of context: both warnings in the warning color.",
+    "caption_ru": "Пятнадцать агентов одновременно и у одного 910K контекста: оба предупреждения цветом предупреждения.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [
+            { "text": "model: Opus · effort: high · agents: Opus (12 medium, 1 high), Sonnet (2 low) · ", "dim": true },
+            { "text": "⚠ 15 live · ⚠ ctx 910K", "color": "warning" },
+            { "text": " · cwd: ~/src/app", "dim": true }
+          ],
+          [{ "text": "crews: export 4 (sonnet 3, opus 1) · staffing 3 (sonnet 2, opus 1)", "dim": true }]
+        ]
+      },
+      { "slot": "toast", "text": "15 agents running at once" }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/AbhiramDwivedi/claude-ops/573f8ad3721b23172d743da3631180bb8fe324e9/assets/mods.png",
+      "alt": "The session-models line above the usage-limits line in a terminal",
+      "surface": "terminal"
+    }
+  ]
+}

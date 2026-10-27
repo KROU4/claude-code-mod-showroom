@@ -1,0 +1,41 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "cost-meter",
+  "title": "Cost Meter",
+  "tagline": "Session cost, context and rate limits on the status line, each turn's price, and an optional budget.",
+  "tagline_ru": "Стоимость сессии, контекст и лимиты в строке статуса, цена каждого хода и необязательный бюджет.",
+  "description": "The status line shows only what the session reports: `💸 $4.12 · ctx 71% · 5h 38% · 7d 12%`. Under the line that closes each turn it adds that turn's cost, subagents included (terminal). Toasts warn at 70%, 85% and 95% context and re-arm after `/compact`. With `budgetUsd` set, each time the session passes another multiple of it the next tool call asks Keep going / Stop here; Stop refuses the call and tells the model to wrap up, and a new prompt is held once and put back in the box. `/spend` shows totals, rate limits with reset times, the priciest turn and the last 10 turns; `/spend budget 5` sets a budget for this session. It reads only the session's usage ledger.",
+  "description_ru": "Строка статуса показывает только то, что сообщает сама сессия: `💸 $4.12 · ctx 71% · 5h 38% · 7d 12%`. Под строкой, закрывающей ход, добавляется стоимость этого хода вместе с субагентами (в терминале). Уведомления предупреждают о заполнении контекста на 70%, 85% и 95% и снова срабатывают после `/compact`. Если задан `budgetUsd`, то каждый раз, когда сессия переходит очередное кратное этой суммы, следующий вызов инструмента спрашивает Keep going / Stop here; Stop отклоняет вызов и просит модель закругляться, а новый запрос один раз задерживается и возвращается в поле ввода. `/spend` показывает итоги, лимиты со временем сброса, самый дорогой ход и 10 последних ходов; `/spend budget 5` задаёт бюджет на эту сессию. Читает только учёт использования самой сессии.",
+  "author": { "name": "Amrit Preet Singh", "github": "Singh-AP", "url": "https://github.com/Singh-AP" },
+  "maintainers": ["Singh-AP"],
+  "category": "insights",
+  "tags": ["cost", "budget", "context", "rate-limits", "status-line"],
+  "license": "MIT",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Singh-AP/awesome-claude-mods/tree/HEAD/mods/cost/cost-meter",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "Singh-AP/awesome-claude-mods",
+    "plugin": "cost-meter",
+    "path": "mods/cost/cost-meter"
+  },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": true
+  },
+  "preview": {
+    "scene": "coding",
+    "caption": "The turn's cost beside its closing line, the status line, and a context warning toast.",
+    "caption_ru": "Стоимость хода рядом с его итоговой строкой, строка статуса и предупреждение о контексте.",
+    "elements": [
+      { "slot": "turn-duration", "text": "Baked for 1m 35s · $0.31" },
+      { "slot": "status", "text": "💸 $4.12 · ctx 71% · 5h 38% · 7d 12%" },
+      { "slot": "toast", "text": "context 85% full: /compact soon" }
+    ]
+  }
+}

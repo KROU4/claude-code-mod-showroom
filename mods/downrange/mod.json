@@ -1,0 +1,62 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "downrange",
+  "title": "Downrange",
+  "tagline": "Progress, ETA and last output line for background shells and Monitor watches, read from the output.",
+  "tagline_ru": "Прогресс, оставшееся время и последняя строка вывода фоновых команд и Monitor — по их настоящему выводу.",
+  "description": "A band above the prompt, a live pane and a `/downrange` table that prints mid-turn list your session's background work: shells, Monitor watches, subagents, teammates, workflow runs and the next dynamic `/loop` wakeup. Progress comes from the output itself (`45%`, `[12/40]`, `Step 3 of 7`, Docker, cargo, pytest and git lines), including a file a command redirects to; the ETA from the progress rate, the median of the last 5 runs of the same command in the same folder, or a Monitor deadline. Rows flag `quiet 3m 00s` and `3 failed calls in a row`. Read-only: it never stops tasks, makes no network request and no model call, and runs only `tail` on outputs over 4 MiB.",
+  "description_ru": "Полоса над полем ввода, живая панель и таблица `/downrange`, которая печатается даже посреди хода, показывают фоновую работу сессии: команды оболочки, Monitor, субагентов, тиммейтов, workflow и следующее пробуждение динамического `/loop`. Прогресс берётся из самого вывода (`45%`, `[12/40]`, `Step 3 of 7`, строки Docker, cargo, pytest и git), в том числе из файла, куда команда перенаправляет вывод; оставшееся время — из скорости прогресса, медианы последних 5 запусков той же команды в той же папке или из срока Monitor. Строки помечаются `quiet 3m 00s` и `3 failed calls in a row`. Мод только читает: задачи не останавливает, в сеть не ходит, модель не вызывает и запускает лишь `tail` для вывода больше 4 МиБ.",
+  "author": { "name": "dot-agi", "github": "dot-agi", "url": "https://github.com/dot-agi" },
+  "maintainers": ["dot-agi"],
+  "category": "productivity",
+  "tags": ["background-tasks", "progress", "eta", "monitor", "subagents", "status"],
+  "license": "MIT",
+  "version": "1.1.7",
+  "homepage": "https://github.com/dot-agi/downrange",
+  "source": { "type": "marketplace", "marketplace": "dot-agi/downrange", "plugin": "downrange" },
+  "surfaces": ["terminal", "desktop"],
+  "requires": { "claudeCode": ">=2.1.288" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Start the count job in the background, watch it for step 80 and run the 40-second wait in a subagent." },
+      { "role": "tool", "tool": "Bash", "input": "for i in $(seq 1 90); do echo \"step $i/90\"; sleep 2; done", "result": "Running in the background", "status": "running" },
+      { "role": "assistant", "text": "All three are started. I will report when the monitor or the subagent notifies me." }
+    ],
+    "caption": "A shell at 65/90 with its ETA, a Monitor watch with its deadline and a finished subagent, in the band and in /downrange.",
+    "caption_ru": "Команда на шаге 65/90 с оставшимся временем, Monitor со сроком и завершённый субагент — в полосе и в /downrange.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [{ "text": "●", "color": "success" }, " 2 running │ count to 90 68/90 (76%) <1m · wait for step 80 ends in ~9m · ", { "text": "✓ wait 40s", "dim": true }, "  ", { "button": "Open", "hotkey": "j" }, " ", { "button": "Hide", "hotkey": "h" }]
+        ]
+      },
+      {
+        "slot": "command",
+        "command": "/downrange",
+        "markdown": "downrange: 2 running\n\n|   | Job | Kind | Age | Progress | ETA | Last output |\n| --- | --- | --- | --- | --- | --- | --- |\n| ● | count to 90 | shell | 2m 09s | 65/90 (72%) | <1m | step 65/90 |\n| ● | wait for step 80 | monitor | 1m 08s | — | ends in ~9m | — |\n| ✓ | wait 40s | agent | took 45s | — | — | SubagentHandback |"
+      },
+      {
+        "slot": "pane",
+        "title": "Downrange",
+        "width": "wide",
+        "rows": [
+          [{ "text": "3 running", "bold": true }, "   ", { "button": "Clear finished", "hotkey": "c" }, " ", { "button": "Close", "hotkey": "x" }],
+          [{ "text": "Running", "dim": true }],
+          [{ "text": "●", "color": "success" }, " count to 90  ", { "text": "shell  30s", "dim": true }, "  ", { "bar": 0.17, "width": 10, "color": "claude" }, " 15/90 (17%) ~3m"],
+          [{ "text": "●", "color": "success" }, " wait 40s  ", { "text": "agent  12s", "dim": true }, "  Bash sleep 40"],
+          [{ "text": "●", "color": "success" }, " wait for step 80  ", { "text": "monitor  28s", "dim": true }, "  ends in ~10m"]
+        ]
+      }
+    ]
+  }
+}

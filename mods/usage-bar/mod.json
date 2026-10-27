@@ -1,0 +1,98 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "usage-bar",
+  "title": "Usage Bar",
+  "tagline": "Context, session cost and plan limits on one quiet line above the prompt, with a cache-cold warning.",
+  "tagline_ru": "Контекст, стоимость и лимиты подписки тихой строкой над полем ввода, с предупреждением об остывшем кэше.",
+  "description": "A grey line at the right edge above the prompt: context fill, session cost, and the 5-hour and weekly limits with the time until each resets (yellow at 75%, red at 90%). A red `cache cold` appears once the prompt cache has expired on a conversation of at least `coldTokens` (100,000), so you know the next message re-reads it all at full price. Toasts at 50, 75 and 90% fire once per limit period, even across restarts. When the line does not fit it shortens step by step instead of wrapping. It leaves your status line alone and reads the tail of the transcript with `tail` to learn the cache lifetime.",
+  "description_ru": "Серая строка у правого края над полем ввода: заполнение контекста, стоимость сессии, лимиты на 5 часов и неделю со временем до сброса (жёлтым от 75%, красным от 90%). Красное `cache cold` появляется, когда кэш промпта истёк, а разговор не меньше `coldTokens` (100 000) токенов: следующее сообщение перечитает всё по полной цене. Уведомления на 50, 75 и 90% показываются по одному разу за период лимита, даже после перезапуска. Если строка не помещается, она укорачивается по шагам, а не переносится. Строку состояния не трогает; чтобы узнать срок жизни кэша, читает хвост журнала разговора через `tail`.",
+  "author": {
+    "name": "andrej-kolic",
+    "github": "andrej-kolic",
+    "url": "https://github.com/andrej-kolic"
+  },
+  "maintainers": [
+    "andrej-kolic"
+  ],
+  "category": "insights",
+  "tags": [
+    "usage",
+    "limits",
+    "context",
+    "cost",
+    "cache",
+    "alerts"
+  ],
+  "license": "MIT",
+  "version": "0.2.0",
+  "homepage": "https://github.com/andrej-kolic/claude-mods/tree/HEAD/plugins/usage-bar",
+  "source": {
+    "type": "github",
+    "repo": "andrej-kolic/claude-mods",
+    "path": "plugins/usage-bar",
+    "sha": "8e8a80ff8736ee8e482e929b69073dc9ec3db3d0"
+  },
+  "requires": {
+    "claudeCode": ">=2.1.275"
+  },
+  "surfaces": [
+    "terminal",
+    "desktop"
+  ],
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "scene": "coding",
+    "caption": "The cache expired during a break: `cache cold` in red, and the session limit in yellow past 75%.",
+    "caption_ru": "Кэш остыл за время перерыва: `cache cold` красным, а сессионный лимит жёлтым после 75%.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [
+            "                    ",
+            {
+              "text": "context 62% · ",
+              "color": "inactive"
+            },
+            {
+              "text": "cache cold",
+              "color": "error"
+            },
+            {
+              "text": " · $1.84 · session ",
+              "color": "inactive"
+            },
+            {
+              "text": "78%",
+              "color": "warning"
+            },
+            {
+              "text": " (↻ 1h05m) · week 18% (↻ 3d2h)",
+              "color": "inactive"
+            }
+          ]
+        ]
+      },
+      {
+        "slot": "toast",
+        "text": "session 78%"
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/andrej-kolic/claude-mods/8e8a80ff8736ee8e482e929b69073dc9ec3db3d0/plugins/usage-bar/images/cold.png",
+      "alt": "The usage line above the prompt with cache cold in red after the context percentage",
+      "surface": "terminal"
+    }
+  ]
+}

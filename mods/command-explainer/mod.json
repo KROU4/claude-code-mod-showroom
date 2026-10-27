@@ -1,0 +1,52 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "command-explainer",
+  "title": "Command Explainer",
+  "tagline": "A plain-English line on what a shell command will do, with its risk, right where you approve it.",
+  "tagline_ru": "Простое объяснение того, что сделает команда оболочки, с оценкой риска, прямо там, где вы её одобряете.",
+  "description": "When a Bash call is about to open a permission dialog (it asks Claude Code's own `$.tool.check` first), command-explainer sends the command to a small model (`haiku` by default, falling back to the session's model if your organization blocks it; ≤80 tokens, 15 s timeout) and draws one sentence about its concrete effect with a risk level, 💡 Safe, ⚠️ Caution or 🛑 Danger, under the call's row while the dialog is open. The call is never delayed. Plain read-only commands (`ls`, `cat file`, `git status`) are not sent; the last 200 explanations are cached. `/explain <command>` explains any command on demand, also in `claude -p`. Each new explanation is a small billed request.",
+  "description_ru": "Когда вызов Bash вот-вот откроет окно разрешения (мод сначала спрашивает собственную проверку Claude Code `$.tool.check`), command-explainer отправляет команду небольшой модели (по умолчанию `haiku`, а если организация её запрещает — модели сессии; до 80 токенов, таймаут 15 секунд) и под строкой вызова, пока открыто окно, рисует одно предложение о том, что именно она сделает, с уровнем риска: 💡 Safe, ⚠️ Caution или 🛑 Danger. Сам вызов не задерживается. Простые команды только для чтения (`ls`, `cat file`, `git status`) не отправляются; последние 200 объяснений кэшируются. `/explain <команда>` объясняет любую команду по запросу, в том числе в `claude -p`. Каждое новое объяснение — небольшой платный запрос.",
+  "author": { "name": "Amrit Preet Singh", "github": "Singh-AP", "url": "https://github.com/Singh-AP" },
+  "maintainers": ["Singh-AP"],
+  "category": "safety",
+  "tags": ["bash", "permissions", "explain", "risk", "haiku"],
+  "license": "MIT",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Singh-AP/awesome-claude-mods/tree/HEAD/mods/safety/command-explainer",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "Singh-AP/awesome-claude-mods",
+    "plugin": "command-explainer",
+    "path": "mods/safety/command-explainer"
+  },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": true,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "caption": "The explanation under a find … -delete call, while the permission dialog waits for you.",
+    "caption_ru": "Объяснение под вызовом find … -delete, пока окно разрешения ждёт вашего ответа.",
+    "elements": [
+      {
+        "slot": "tool-row",
+        "tool": "Bash",
+        "input": "find /tmp/acm-demo -name '*.tmp' -mtime +30 -delete",
+        "result": [[{ "text": "🛑 Danger: Permanently deletes every .tmp file under /tmp/acm-demo and its subdirectories last modified more than 30 days ago, with no confirmation.", "color": "error" }]]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/Singh-AP/awesome-claude-mods/b82b96062224abc66f3509cff95731e9924c607e/assets/screens/command-explainer.svg",
+      "alt": "command-explainer drawing a risk line above a Bash permission dialog",
+      "surface": "terminal"
+    }
+  ]
+}

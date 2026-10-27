@@ -1,0 +1,64 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "bingo",
+  "title": "Bingo",
+  "tagline": "75-ball bingo against Claude in a pane: call numbers, mark your card and shout Bingo first.",
+  "tagline_ru": "Бинго на 75 шаров против Claude в панели: вызывайте числа, отмечайте карточку и кричите «Бинго» первым.",
+  "description": "`/bingo` opens a pane with your card and Claude's. Press `c` to call a number (or `a` for Auto, one call every 8 seconds while the pane is open), mark called numbers on your card with Tab or a click and Enter, and press `b` when you have a row, column or diagonal. Claude marks its own card and claims a line one call late, so you always get a window to shout first. Called cells light up yellow, marks turn green, a finished line takes the accent color. `/bingo new`, `/bingo speed 5` and `/bingo stats` (your wins and Claude's). It never calls a model or watches the session: zero tokens. The game and record are kept in the plugin store.",
+  "description_ru": "`/bingo` открывает панель с вашей карточкой и карточкой Claude. Нажмите `c`, чтобы вызвать число (или `a` для автовызова раз в 8 секунд, пока панель открыта), отмечайте вызванные числа Tab или щелчком и Enter, а когда соберёте ряд, столбец или диагональ, жмите `b`. Claude отмечает свою карточку сам и заявляет линию на один вызов позже, так что у вас всегда есть шанс крикнуть первым. Вызванные клетки подсвечиваются жёлтым, отмеченные становятся зелёными, готовая линия окрашивается акцентным цветом. Есть `/bingo new`, `/bingo speed 5` и `/bingo stats` (ваши победы и победы Claude). Модель не вызывается и за сессией игра не следит, токены не тратятся. Партия и счёт хранятся в хранилище плагина.",
+  "author": { "name": "Mohammed Mubarak", "github": "MDmubarak786", "url": "https://github.com/MDmubarak786" },
+  "maintainers": ["MDmubarak786"],
+  "category": "fun",
+  "tags": ["game", "bingo", "pane", "zero-tokens"],
+  "license": "MIT",
+  "version": "0.1.1",
+  "homepage": "https://github.com/MDmubarak786/claude-mods/tree/HEAD/mods/bingo",
+  "source": { "type": "marketplace", "marketplace": "MDmubarak786/claude-mods", "plugin": "bingo", "path": "mods/bingo" },
+  "surfaces": ["terminal", "desktop"],
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "Mid-game: G-52 was just called and is lit on your card, waiting to be marked.",
+    "caption_ru": "Середина партии: только что вызвано G-52, на вашей карточке оно подсвечено и ждёт отметки.",
+    "elements": [
+      { "slot": "command", "command": "/bingo" },
+      {
+        "slot": "pane",
+        "title": "Bingo",
+        "width": "wide",
+        "rows": [
+          [{ "text": "BINGO", "bold": true }, "  you vs Claude  called 23/75  ", { "text": " last G-52 ", "bold": true, "bg": "#d97757", "color": "#ffffff" }],
+          [{ "text": "recent: B-7  N-33  O-68  I-21  G-52", "dim": true }],
+          [{ "text": "On your card: G-52. Tab or click the lit cell, then Enter to mark it.", "color": "warning" }],
+          [" "],
+          [{ "text": "Your card", "bold": true, "color": "success" }],
+          ["   B    I    N    G    O"],
+          [{ "text": "   3", "bg": "#2f6b3a" }, { "text": "   17", "dim": true }, { "text": "   31", "bg": "#2f6b3a" }, { "text": "   58", "dim": true }, { "text": "   65", "dim": true }],
+          [{ "text": "   9", "dim": true }, { "text": "   21", "bg": "#2f6b3a" }, { "text": "   33", "bg": "#2f6b3a" }, { "text": "   52 ", "bg": "#8a6d1f", "bold": true }, { "text": "  70", "bg": "#2f6b3a" }],
+          [{ "text": "  14", "dim": true }, { "text": "   25", "dim": true }, "  FREE", { "text": "  48", "dim": true }, { "text": "   68", "bg": "#2f6b3a" }],
+          [{ "text": "   7", "bg": "#2f6b3a" }, { "text": "   19", "dim": true }, { "text": "   40", "dim": true }, { "text": "   60", "dim": true }, { "text": "   61", "dim": true }],
+          [{ "text": "  11", "dim": true }, { "text": "   30", "dim": true }, { "text": "   45", "dim": true }, { "text": "   55", "dim": true }, { "text": "   73", "dim": true }],
+          [" "],
+          [{ "button": "Call", "hotkey": "c" }, " ", { "button": "Auto off", "hotkey": "a" }, " ", { "button": "Bingo!", "hotkey": "b", "variant": "primary" }, " ", { "button": "New game", "hotkey": "n" }],
+          [{ "text": "Esc closes · you 2 · Claude 1", "dim": true }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/MDmubarak786/claude-mods/808996691ca39af660249d926053a836e63349cc/mods/bingo/screenshots/bingo.gif",
+      "alt": "Bingo against Claude in a pane: one call completes your row and Claude's, and you shout first",
+      "surface": "terminal"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "burn-baby-burn",
+  "title": "Burn Baby Burn",
+  "tagline": "Session and weekly usage gauges under the prompt, and fiery nags when your week would go unspent.",
+  "tagline_ru": "Шкалы использования за сессию и неделю под полем ввода и огненные напоминания, если неделя пропадает зря.",
+  "description": "Draws a row under the prompt hint: `🔥🔥 session ▰▰▰▱▱▱▱▱ 38% ↻ 2h 12m   week ▰▰▰▰▰▱▱▱ 59% ↻ 16h 4m`, coloured by state and counting down even while idle. In the last 72 hours before your weekly reset, while too much of the limit is still unused (25%, then 15%, then 5%), toasts nag you to use it with one of 33 quotes, more often as the reset nears. Burning through a window much faster than it refills gets one 🧯 \"slow down\" toast per window instead. `/burn` shows the status any time. It keeps two timestamps in the plugin store; no files, processes, network or model calls. Needs a plan with a weekly limit.",
+  "description_ru": "Рисует строку под подсказкой у поля ввода: `🔥🔥 session ▰▰▰▱▱▱▱▱ 38% ↻ 2h 12m   week ▰▰▰▰▰▱▱▱ 59% ↻ 16h 4m`, с цветом по состоянию и обратным отсчётом даже в простое. За последние 72 часа до недельного сброса, пока слишком большая часть лимита не использована (25%, затем 15%, затем 5%), всплывающие уведомления с одной из 33 цитат подталкивают его потратить, и чем ближе сброс, тем чаще. Если вы тратите окно намного быстрее, чем оно восполняется, вместо этого приходит одно уведомление 🧯 «притормози» на окно. `/burn` в любой момент показывает состояние. В хранилище плагина хранятся две отметки времени; файлы, процессы, сеть и вызовы модели не используются. Нужен тариф с недельным лимитом.",
+  "author": { "name": "Mehdi", "github": "qorvyx", "url": "https://github.com/qorvyx" },
+  "maintainers": ["qorvyx"],
+  "category": "insights",
+  "tags": ["usage-limits", "weekly-limit", "gauges", "toast", "nag"],
+  "license": "MIT",
+  "version": "0.4.1",
+  "homepage": "https://github.com/qorvyx/burn-baby-burn",
+  "source": { "type": "marketplace", "marketplace": "qorvyx/burn-baby-burn", "plugin": "burn-baby-burn" },
+  "requires": { "claudeCode": ">=2.1.302" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "idle",
+    "surface": "terminal",
+    "caption": "A day before the reset with 41% of the week left: two flames, the usage row under the hint and a nag.",
+    "caption_ru": "За день до сброса, когда осталось 41% недели: два огонька, строка использования под подсказкой и напоминание.",
+    "elements": [
+      {
+        "slot": "prompt-hint",
+        "row": [
+          "🔥🔥 ",
+          { "text": "session ▰▰▰▱▱▱▱▱ 38% ↻ 2h 12m", "color": "inactive" },
+          "   ",
+          { "text": "week ▰▰▰▰▰▱▱▱ 59% ↻ 16h 4m", "color": "#ff8c1a" }
+        ]
+      },
+      { "slot": "toast", "text": "We didn't start the fire, but 41% of your week says you should." },
+      {
+        "slot": "command",
+        "command": "/burn",
+        "output": [["🔥🔥 41% of the week left · resets in 16h 4m"], ["Tokens don't roll over. Neither does regret."]]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/qorvyx/burn-baby-burn/e50bddddbdaf816fc121deeb8fefc80796dd8da7/assets/demo.svg",
+      "alt": "A nag toast, /burn with the weekly status and a quote, and the usage row with two flames under the prompt hint",
+      "surface": "terminal"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "pr-inbox",
+  "title": "PR Inbox",
+  "tagline": "Review requests and your own PRs as an inbox, with AI risk, AI review, merging and CI fixes.",
+  "tagline_ru": "Запросы на ревью и ваши PR как входящие: оценка риска, AI-ревью, слияние и исправление CI.",
+  "description": "`/pr-inbox` opens a pane ordered by what needs you next. To review: requests longest-waiting first, bots apart, each with an AI summary, a risk level (▲ HIGH, ◆ MED, ○ LOW) and release impact; My PRs: fix, ready, in review, gone quiet; Issues assigned to you. A status line keeps the counts; new requests raise a toast and an OS notification. Keys read the description and diff, approve, ask reviewers, merge (gh stack too) or hand a CI fix to Claude. All GitHub access goes through your `gh`. By default every review request's title, description and diff go to the model when Claude Code starts (`analysis`). AI review approves only after a confirm unless `ai_approve` is `auto`.",
+  "description_ru": "`/pr-inbox` открывает панель, упорядоченную по тому, что нужно сделать дальше. To review: запросы от самых давних, боты отдельно, у каждого AI-пересказ, уровень риска (▲ HIGH, ◆ MED, ○ LOW) и влияние на релиз; My PRs: исправить, готово, на ревью, затихшие; назначенные вам задачи. Строка статуса держит счётчики, а новые запросы приходят уведомлением и системным оповещением (`osascript` или `notify-send`). Клавиши открывают описание и дифф, одобряют, зовут ревьюеров, сливают (в том числе стеки gh stack) или передают исправление CI Claude. Весь доступ к GitHub идёт через ваш `gh`. По умолчанию заголовок, описание и дифф каждого запроса на ревью уходят модели при запуске Claude Code (`analysis`). AI-ревью одобряет только после подтверждения, если `ai_approve` не равен `auto`.",
+  "author": { "name": "2bo", "github": "2bo", "url": "https://github.com/2bo" },
+  "maintainers": ["2bo"],
+  "category": "git",
+  "tags": ["github", "pull-requests", "code-review", "inbox", "merge", "ci"],
+  "license": "MIT",
+  "version": "1.11.0",
+  "homepage": "https://github.com/2bo/pr-inbox",
+  "source": { "type": "marketplace", "marketplace": "2bo/pr-inbox", "plugin": "pr-inbox" },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": true,
+    "processes": true,
+    "filesystem": "none",
+    "model": true,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "The status line with the counts, and the To review tab with risk levels and the selected PR's summary.",
+    "caption_ru": "Строка статуса со счётчиками и вкладка To review с уровнями риска и пересказом выбранного PR.",
+    "elements": [
+      { "slot": "status", "text": "to review 3 ⚙2 · ▲1 high │ my PRs ✗1 fix · ✓1 ready · …2 in review │ issues 4" },
+      {
+        "slot": "pane",
+        "title": "pr-inbox",
+        "width": "wide",
+        "rows": [
+          [{ "text": "To review", "bold": true, "underline": true }, "   My PRs   Issues"],
+          [{ "text": "▸", "color": "claude" }, " ", { "text": "▲ HIGH", "color": "error" }, "  acme/api #311 Move sessions to Redis      ", { "text": "3d", "dim": true }],
+          ["  ", { "text": "◆ MED ", "color": "warning" }, "  acme/web #902 Paginate the orders table  ", { "text": "1d", "dim": true }],
+          ["  ", { "text": "○ LOW ", "color": "success" }, "  acme/web #905 Fix typo in settings copy  ", { "text": "2h", "dim": true }],
+          [{ "text": "⚙ bots", "dim": true }],
+          ["  ", { "text": "○ LOW ", "color": "success" }, "  acme/api #312 Bump vitest to 3.2.4       ", { "text": "5h", "dim": true }],
+          [" "],
+          [{ "text": "Summary", "bold": true }, "  Sessions move from memory to Redis with a 24h TTL; logins survive restarts."],
+          [{ "text": "Risk", "bold": true }, "     High: touches auth and adds a production dependency."],
+          [{ "text": "d read · a approve · v AI review · e explain · u keys", "dim": true }]
+        ]
+      },
+      { "slot": "toast", "text": "New review request: acme/web #907 Add CSV export" }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/2bo/pr-inbox/1ae01d75ceefa5eac018c747f3a0d04a50ccd5f8/docs/screenshot.png",
+      "alt": "The To review tab: review requests with their risk, wait time, CI and AI review, bots under their heading, and the selected PR's summary",
+      "surface": "terminal"
+    }
+  ]
+}

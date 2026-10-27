@@ -1,0 +1,58 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "outline-sidebar",
+  "title": "Outline Sidebar",
+  "tagline": "Your session as a foldable outline: conclusions, what waits on you, and evidence for each done item.",
+  "tagline_ru": "Сессия как сворачиваемый план в боковой панели: выводы, что ждёт вас, и доказательства к каждому «сделано».",
+  "description": "A Logseq-style outline sidebar, one block per turn, nested by topic, with views on number keys: conclusions, what needs me, what I asked, everything, what it did (each item with the files edited and commands run as evidence) and technical info. Blocks carry statuses such as ToReview, Rework or Done; approving a ToReview first opens its evidence, and status changes or Y/N answers reach Claude. After each turn it asks Haiku, through your session, to summarize the turn. `/outline export` writes Markdown, `/agenda` gathers open items. UI text is in Chinese; terminal icons need its bundled fonts. On macOS it compiles a bundled Swift helper to switch the keyboard layout.",
+  "description_ru": "Боковая панель-план в духе Logseq: один блок на ход, вложенность по темам, виды на цифровых клавишах: выводы, что нужно от меня, о чём я просил, всё, что сделано (у каждого пункта есть доказательства: изменённые файлы и запущенные команды) и техническая информация. У блоков есть статусы вроде ToReview, Rework или Done; чтобы одобрить ToReview, сначала нужно раскрыть доказательства, а смены статусов и ответы Y/N передаются Claude. После каждого хода мод просит Haiku через вашу сессию пересказать ход. `/outline export` сохраняет Markdown, `/agenda` собирает открытые пункты. Интерфейс на китайском; для значков в терминале нужны шрифты из репозитория. На macOS мод компилирует встроенный помощник на Swift для переключения раскладки.",
+  "author": { "name": "MatsuriMW", "github": "MatsuriMW", "url": "https://github.com/MatsuriMW" },
+  "maintainers": ["MatsuriMW"],
+  "category": "productivity",
+  "tags": ["outline", "review", "sidebar", "todo", "evidence", "haiku"],
+  "license": "MIT",
+  "version": "0.10.0",
+  "homepage": "https://github.com/MatsuriMW/outline-sidebar",
+  "source": { "type": "marketplace", "marketplace": "MatsuriMW/outline-sidebar", "plugin": "outline-sidebar" },
+  "surfaces": ["terminal", "desktop"],
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "write",
+    "model": true,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "View 2, what needs me: a block waiting for review with its evidence, and a question to answer with Y or N.",
+    "caption_ru": "Вид 2, что нужно от меня: блок ждёт проверки, к нему приложены доказательства, и есть вопрос, на который можно ответить Y или N.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "Outline",
+        "width": "wide",
+        "rows": [
+          [{ "text": "1 结论  ", "dim": true }, { "text": "2 需要我做的", "bold": true, "color": "claude" }, { "text": "  3 我让它做的  4 全部  5 它已做的  6 技术信息", "dim": true }],
+          [" "],
+          ["▾ ", { "text": "ToReview", "color": "#b39a3e" }, " 购物车支持百分比折扣码"],
+          ["    ", { "text": "Edit src/cart/total.ts ✓", "dim": true }],
+          ["    ", { "text": "Bash npm test ✓  Tests 14 passed (14)", "dim": true }],
+          ["▾ ", { "text": "NeedOK?", "color": "#bf7a45" }, " 要不要顺便给结账页加上折扣显示？"],
+          ["    ", { "button": "Yes", "hotkey": "y" }, " ", { "button": "No", "hotkey": "n" }],
+          ["▸ ", { "text": "Waiting", "color": "#8f7fb6" }, " 重启终端看效果"],
+          ["▸ ", { "text": "Done", "color": "#629c7f" }, " 修复发票日期格式 ", { "text": "(3)", "dim": true }]
+        ]
+      },
+      { "slot": "background", "text": "After each turn Haiku summarizes it into the outline; statuses you change reach Claude with your next message." }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/MatsuriMW/outline-sidebar/487ad12fdfa9b22bf6a6882082aa2745db0b5def/docs/outline-sidebar.png",
+      "alt": "Outline Sidebar: what I asked it to do on the left, what it has done on the right with evidence under each item"
+    }
+  ]
+}

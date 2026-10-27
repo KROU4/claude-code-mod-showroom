@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "guardrails",
+  "title": "Guardrails",
+  "tagline": "Refuses shell commands you switch on in /config: cf deploys, attribution lines, claude/ branches.",
+  "tagline_ru": "Отклоняет shell-команды, которые вы включите в /config: деплой cf, строки атрибуции, ветки claude/.",
+  "description": "Three rules, each off until you turn it on in `/config`, refuse a Bash call by its text and tell Claude why: `cfWrites` blocks Cloudflare's `cf deploy`, `cf migrate` and `cf init`; `attribution` blocks `git commit`, `gh pr` and `gh issue` commands carrying a Co-Authored-By or \"Generated with Claude\" line, so Claude retries without it; `claudeBranches` blocks creating or pushing a branch named `claude/…`, so Claude picks a prefix such as `fix/`. It matches command text only, so `git commit -F file`, aliases and scripts get through; with no rule on it adds no hook.",
+  "description_ru": "Три правила, каждое выключено, пока вы не включите его в `/config`, отклоняют вызов Bash по тексту команды и объясняют Claude причину: `cfWrites` запрещает `cf deploy`, `cf migrate` и `cf init` из CLI Cloudflare; `attribution` запрещает `git commit`, `gh pr` и `gh issue` со строкой Co-Authored-By или «Generated with Claude», и Claude повторяет без неё; `claudeBranches` запрещает создавать или пушить ветку `claude/…`, и Claude берёт префикс вроде `fix/`. Проверяется только текст команды, поэтому `git commit -F file`, алиасы и скрипты проходят; если ни одно правило не включено, хук не ставится.",
+  "author": { "name": "Mehmet Aras", "github": "arasovic", "url": "https://github.com/arasovic" },
+  "maintainers": ["arasovic"],
+  "category": "safety",
+  "tags": ["guard", "bash", "git", "commits", "branches", "cloudflare"],
+  "license": "MIT",
+  "version": "0.4.0",
+  "homepage": "https://github.com/arasovic/claude-code-mods/tree/HEAD/guardrails",
+  "source": { "type": "github", "repo": "arasovic/claude-code-mods", "path": "guardrails", "sha": "3c3f25ee3a12b982fd63ee858297baab9385dd33" },
+  "capabilities": { "network": false, "processes": false, "filesystem": "none", "model": false, "promptRewrite": false, "blocksTools": true },
+  "preview": {
+    "surface": "terminal",
+    "scene": "coding",
+    "caption": "With the attribution rule on: a commit carrying a Co-Authored-By line is refused and Claude retries without it.",
+    "caption_ru": "С правилом attribution: коммит со строкой Co-Authored-By отклонён, и Claude повторяет без неё.",
+    "elements": [
+      {
+        "slot": "tool-deny",
+        "tool": "Bash",
+        "input": "git commit -m \"Fix discount rounding\" -m \"Co-Authored-By: Claude <noreply@example.com>\"",
+        "message": "guardrails: Remove the Co-Authored-By / tool-attribution line and retry."
+      }
+    ]
+  }
+}

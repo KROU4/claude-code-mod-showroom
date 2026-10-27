@@ -1,0 +1,46 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "swiss-knife",
+  "title": "Swiss Knife",
+  "tagline": "A ping when Claude needs you, plan-limit gauges with a forecast, and a handoff to a fresh chat.",
+  "tagline_ru": "Сигнал, когда Claude ждёт вас, шкалы лимитов с прогнозом и передача дел в новый чат.",
+  "description": "A bundle for people who build with Claude without being developers. A chime, a notification and a red strip when Claude asks a question, wants permission or a plan approved. 5-hour and weekly limit gauges with a run-out forecast and warnings at 80% and 95%. Near 70% context, Haiku or Sonnet (through the session's client) writes a handoff note into `.claude/handoffs/` that goes with the next chat's first message. Also time and cost per project, a daily budget, a guard that sends `rm -rf`, `git reset --hard`, force-push and `curl | bash` to the permission prompt, pins, on-screen masking of secrets, a pixel mascot and `/report`. On Windows sounds play via PowerShell.",
+  "description_ru": "Набор для тех, кто делает проекты с Claude, не будучи разработчиком. «Нужны вы»: звук, уведомление и красная полоса, когда Claude задаёт вопрос, просит разрешение или одобрение плана. Лимиты плана: шкалы окна на 5 часов и недели с прогнозом, когда они кончатся, и предупреждениями на 80% и 95%. Передача дел: около 70% контекста Haiku или Sonnet (через клиент сессии) пишет по разговору записку в `.claude/handoffs/`, и она уходит с первым сообщением нового чата. Ещё: время и стоимость по проектам, дневной бюджет, страж, который отправляет `rm -rf`, `git reset --hard`, force-push и `curl | bash` на подтверждение, закладки, маскировка секретов на экране, пиксельный талисман и `/report`. Звук в Windows играет через PowerShell.",
+  "author": { "name": "nocodehack", "github": "nocodehack", "url": "https://github.com/nocodehack" },
+  "maintainers": ["nocodehack"],
+  "category": "productivity",
+  "tags": ["notifications", "rate-limits", "handoff", "guard", "mascot", "beginners"],
+  "license": "MIT",
+  "version": "1.0.2",
+  "homepage": "https://github.com/nocodehack/swiss-knife",
+  "source": { "type": "marketplace", "marketplace": "nocodehack/swiss-knife", "plugin": "swiss-knife" },
+  "surfaces": ["terminal", "desktop"],
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "write",
+    "model": true,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "caption": "Claude is waiting for your answer: the red strip above the prompt and a notification.",
+    "caption_ru": "Claude ждёт вашего ответа: красная полоса над полем ввода и уведомление.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [[{ "text": "🔔 Claude needs you", "bold": true, "color": "error" }, { "text": " · Claude has a question for you. · waiting 0:32", "dim": true }]]
+      },
+      { "slot": "notification", "title": "Swiss Knife", "text": "Claude has a question for you." }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/nocodehack/swiss-knife/2ffc109939bba5fb48f982e3ca4e99a43b4f68d8/docs/panel.png",
+      "alt": "The Swiss Knife panel: Claude needs you, the last task, today's time and cost, and the plan limits"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "loadout",
+  "title": "Loadout",
+  "tagline": "A mod manager: unapproved mods and versions stay blocked until Claude audits them and you approve.",
+  "tagline_ru": "Менеджер модов: неодобренные моды и версии не загружаются, пока Claude их не проверит и вы не одобрите.",
+  "description": "Every user-scope mod whose name and version are not in `~/.claude/loadout/approved.json` is refused at load, logged and shown as held. Audit with Claude submits a prompt asking Claude to review the code and approve it only if safe; Allow without audit and Always trust skip that. A ⚙ Loadout band and `/loadout` open an inventory of cards colored by what each mod's code can do (from `claude plugin validate`), with enable, disable, uninstall and per-mod model spend. It runs `claude plugin` commands, and for updates `git fetch` on pinned clones and `claude plugin marketplace update`, at most every 6 hours when the panel opens; updates and Pin are prompts Claude carries out.",
+  "description_ru": "Любой мод уровня пользователя, имени и версии которого нет в `~/.claude/loadout/approved.json`, не загружается, попадает в журнал и показывается как задержанный. Кнопка Audit with Claude отправляет запрос: Claude проверяет код и одобряет мод, только если он безопасен; Allow without audit и Always trust пропускают проверку. Полоса ⚙ Loadout и `/loadout` открывают инвентарь: карточки окрашены по тому, что умеет код мода (по `claude plugin validate`), есть включение, выключение, удаление и расход модели по модам. Мод запускает команды `claude plugin`, а для обновлений `git fetch` в закреплённых клонах и `claude plugin marketplace update` не чаще раза в 6 часов при открытии панели; обновления и Pin выполняет Claude по запросу.",
+  "author": { "name": "Br4inergy", "github": "Br4inergy", "url": "https://github.com/Br4inergy" },
+  "maintainers": ["Br4inergy"],
+  "category": "safety",
+  "tags": ["mod-manager", "audit", "updates", "inventory", "pane"],
+  "license": "MIT",
+  "version": "0.8.2",
+  "homepage": "https://github.com/Br4inergy/claude-loadout",
+  "source": { "type": "marketplace", "marketplace": "Br4inergy/claude-loadout", "plugin": "loadout" },
+  "requires": { "claudeCode": ">=2.1.275" },
+  "capabilities": {
+    "network": true,
+    "processes": true,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "idle",
+    "surface": "terminal",
+    "caption": "A newly installed mod is held; the band flags it and the inventory offers an audit.",
+    "caption_ru": "Только что установленный мод задержан; полоса предупреждает об этом, а инвентарь предлагает проверку.",
+    "elements": [
+      { "slot": "toast", "text": "Loadout blocked «drawer»: not audited yet. Open Loadout to audit it." },
+      { "slot": "above-prompt", "rows": [["                                        ", { "button": "⚠ 1 mod blocked", "variant": "primary" }, " ", { "button": "⚙ Loadout", "hotkey": "l" }]] },
+      {
+        "slot": "pane",
+        "title": "Loadout",
+        "width": "wide",
+        "rows": [
+          [{ "text": "⚔ Inventory · 6 of 7 active", "bold": true }],
+          [" "],
+          [{ "text": "drawer", "bold": true, "color": "warning" }, "  v0.9.0"],
+          [{ "text": "Waiting for audit: its code has not run", "color": "warning" }],
+          [{ "text": "+runs commands  +writes files  +network", "color": "error" }],
+          [{ "button": "Audit with Claude", "variant": "primary" }, " ", { "button": "Allow without audit" }, " ", { "button": "🛡 Always trust" }],
+          [" "],
+          [{ "text": "⚙ Loadout", "bold": true, "color": "#d9730d" }, "  Legendary · v0.8.2"],
+          [{ "text": "filetree", "bold": true, "color": "#1f6feb" }, "  Rare Mod · v1.4.0 · own panel"],
+          [{ "text": "git-glance", "bold": true, "color": "#8b3fd9" }, "  Epic Mod · v0.3.1 · +runs commands"],
+          [{ "text": "token-meter", "bold": true, "color": "success" }, "  Enhanced Mod · v0.2.0"],
+          [" "],
+          [{ "button": "↻ Check for updates" }, " ", { "button": "Refresh", "hotkey": "r" }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/Br4inergy/claude-loadout/d83a9d73ff4c1107be90a40cb8a0380cc3f62c46/docs/inventory.svg",
+      "alt": "Loadout inventory panel: a Legendary card in orange, an Epic card in purple, a Rare card in blue and a Poor card in grey"
+    }
+  ]
+}

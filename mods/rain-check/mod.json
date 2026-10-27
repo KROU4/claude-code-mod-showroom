@@ -1,0 +1,52 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "rain-check",
+  "title": "Rain Check",
+  "tagline": "Hit your usage limit? The prompt you send waits and goes out by itself when the limit resets.",
+  "tagline_ru": "Упёрлись в лимит? Отправленный запрос подождёт и уйдёт сам, когда лимит сбросится.",
+  "description": "Stays out of the way until Claude Code ends a turn on your 5-hour or weekly usage limit. Then a line above the prompt shows when it resets, with Continue then (pick the cut-off turn up at the reset) and Dismiss. A prompt you send meanwhile is held instead of failing, a second one joins it, and both go out one minute after the reset; Send now and Cancel (your words go back to the prompt box) sit beside it. Slash commands and `!` lines are never held, attachments are not kept, and nothing waits across a restart. `/rain-check`, `now`, `cancel`. No files, processes, network or model calls.",
+  "description_ru": "Ничего не делает, пока Claude Code не оборвёт ход из-за пятичасового или недельного лимита. Тогда над полем ввода появляется строка со временем сброса и кнопками Continue then (продолжить оборванный ход после сброса) и Dismiss. Запрос, отправленный в это время, не падает, а ждёт; следующий присоединяется к нему, и оба уходят через минуту после сброса. Рядом кнопки Send now и Cancel (текст возвращается в поле ввода). Слэш-команды и строки с `!` не задерживаются, вложения не сохраняются, после перезапуска ничего не ждёт. Команды `/rain-check`, `now`, `cancel`. Без файлов, процессов, сети и запросов к модели.",
+  "author": { "name": "modmyclaude", "github": "modmyclaude", "url": "https://github.com/modmyclaude" },
+  "maintainers": ["modmyclaude"],
+  "category": "productivity",
+  "tags": ["rate-limit", "usage-limit", "queue", "resume", "band", "command"],
+  "license": "MIT",
+  "version": "0.2.0",
+  "homepage": "https://github.com/modmyclaude/claude-code-mods/tree/HEAD/mods/rain-check",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "modmyclaude/claude-code-mods",
+    "plugin": "rain-check",
+    "path": "mods/rain-check"
+  },
+  "surfaces": ["terminal", "desktop"],
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Refactor the export job to stream rows instead of loading them all." },
+      { "role": "tool", "tool": "Edit", "input": "src/export/job.ts", "status": "error", "result": "Turn stopped: usage limit reached" },
+      { "role": "user", "text": "run the tests, then update the changelog" }
+    ],
+    "caption": "At the usage limit: the next prompt waits above the input and goes out a minute after the reset.",
+    "caption_ru": "Лимит исчерпан: следующий запрос ждёт над полем ввода и уйдёт через минуту после сброса.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [{ "text": "Sends 2:01pm · in 3h 12m", "color": "warning" }, " ", { "button": "Send now" }, " ", { "button": "Cancel" }],
+          [{ "text": "\"run the tests, then update the changelog\"", "dim": true }]
+        ]
+      },
+      { "slot": "background", "text": "Holds prompts you send after a usage-limit refusal and submits them, unchanged, once the window resets." }
+    ]
+  }
+}

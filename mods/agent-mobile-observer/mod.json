@@ -1,0 +1,40 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "agent-mobile-observer",
+  "title": "Agent Mobile Observer",
+  "tagline": "Companion for the agent-mobile-control phone chat server: reports turn starts and ends to it.",
+  "tagline_ru": "Спутник сервера agent-mobile-control для чата с телефона: сообщает ему о начале и конце ходов локально.",
+  "description": "Part of agent-mobile-control, a self-hosted server (in the same repository) that lets you drive Claude Code sessions from your phone as chat rooms. This mod draws nothing and changes nothing: on every turn start and turn end, and when a message sent from the phone arrives in a desktop session, it POSTs the session id, a timestamp and the event to `http://127.0.0.1:8899/api/observe`, so the server can show a session as running and mark a phone message as delivered. The port is fixed at 8899. If the server is not running, the request fails silently. Without that server the mod has no use.",
+  "description_ru": "Часть agent-mobile-control, самостоятельно размещаемого сервера (в том же репозитории), который позволяет управлять сессиями Claude Code с телефона как чатами. Мод ничего не рисует и ничего не меняет: при каждом начале и конце хода, а также когда в десктопную сессию приходит сообщение с телефона, он отправляет POST с идентификатором сессии, отметкой времени и событием на `http://127.0.0.1:8899/api/observe`, чтобы сервер видел, что сессия работает, и помечал сообщение с телефона доставленным. Порт жёстко задан: 8899. Если сервер не запущен, запрос молча не проходит. Без этого сервера мод бесполезен.",
+  "author": { "name": "Coolkidlab-Yin", "github": "Coolkidlab-Yin", "url": "https://github.com/Coolkidlab-Yin" },
+  "maintainers": ["Coolkidlab-Yin"],
+  "category": "integrations",
+  "tags": ["mobile", "remote", "self-hosted", "observer"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/Coolkidlab-Yin/agent-mobile-control/tree/HEAD/mods/observer",
+  "source": {
+    "type": "github",
+    "repo": "Coolkidlab-Yin/agent-mobile-control",
+    "path": "mods/observer",
+    "sha": "48ebc6c244f409791af65388cbd53007b3fa1c72"
+  },
+  "requires": { "claudeCode": ">=2.1.288" },
+  "capabilities": {
+    "network": true,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "Nothing on screen: each turn start and end is reported to the phone chat server on this machine.",
+    "caption_ru": "На экране ничего: начало и конец каждого хода сообщаются серверу чата для телефона на этом компьютере.",
+    "elements": [
+      { "slot": "background", "text": "POSTs {sid, ts, kind: turn.start | turn.complete | receive} to http://127.0.0.1:8899/api/observe" }
+    ]
+  }
+}

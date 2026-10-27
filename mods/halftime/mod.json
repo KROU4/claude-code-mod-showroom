@@ -1,0 +1,46 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "halftime",
+  "title": "Halftime",
+  "tagline": "Four small games above the prompt while Claude works; a whistle freezes the run when it needs you.",
+  "tagline_ru": "Четыре маленькие игры над полем ввода, пока Claude работает; свисток ставит игру на паузу, когда нужны вы.",
+  "description": "`/halftime` puts one of four original games in the band above the prompt: cratehop (a runner that jumps crates), tailchase (a snake), merge (a 4x4 board of lettered tiles) and sweep (a 16x6 mine field that never needs a guess). Each has a daily board seeded by the date, plus practice boards. A permission prompt, a question, an input request or the turn ending blows the whistle: the run freezes, keys go back to the prompt, and a 3-2-1 brings it back when Claude moves on. Auto mode offers a game after 10 s of a turn. Bests and totals stay in the plugin's own store; `copy` puts a result line on the clipboard. No files, processes, network or model calls.",
+  "description_ru": "`/halftime` ставит в полосу над полем ввода одну из четырёх оригинальных игр: cratehop (бегун прыгает через ящики), tailchase (змейка), merge (поле 4x4 с буквенными плитками) и sweep (сапёр 16x6, который всегда решается без угадывания). У каждой есть ежедневное поле, одинаковое для всех в этот день, и тренировочные. Запрос разрешения, вопрос, запрос ввода или конец хода дают свисток: игра замирает, клавиши возвращаются полю ввода, а когда Claude продолжает работу, после отсчёта 3-2-1 игра идёт дальше. Автоматический режим предлагает игру через 10 секунд хода. Рекорды и итоги хранятся в собственном хранилище плагина; `copy` копирует строку с результатом в буфер обмена. Файлы, процессы, сеть и модель не используются.",
+  "author": { "name": "modmyclaude", "github": "modmyclaude", "url": "https://github.com/modmyclaude" },
+  "maintainers": ["modmyclaude"],
+  "category": "fun",
+  "tags": ["games", "waiting", "daily", "snake", "minesweeper", "band"],
+  "license": "MIT",
+  "version": "0.1.6",
+  "homepage": "https://github.com/modmyclaude/claude-code-mods/tree/HEAD/mods/halftime",
+  "source": { "type": "marketplace", "marketplace": "modmyclaude/claude-code-mods", "plugin": "halftime", "path": "mods/halftime" },
+  "surfaces": ["terminal", "desktop"],
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "Today's merge board above the prompt while Claude works; a permission prompt would freeze it with the whistle.",
+    "caption_ru": "Сегодняшнее поле merge над полем ввода, пока Claude работает; запрос разрешения остановит игру свистком.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [{ "text": "merge", "bold": true }, "  ", { "text": "48", "color": "suggestion", "bold": true }, { "text": "  best 212", "color": "subtle", "dim": true }, { "text": "  daily 10-27", "color": "subtle", "dim": true }],
+          [{ "text": "│", "dim": true }, "  ", { "text": " C ", "inverse": true }, " ", { "text": " B ", "inverse": true }, " ", { "text": " A ", "inverse": true }, "  ·  ", "  ", { "text": "│", "dim": true }],
+          [{ "text": "│", "dim": true }, "  ", { "text": " B ", "inverse": true }, " ", { "text": " A ", "inverse": true }, "  ·    ·  ", "  ", { "text": "│", "dim": true }],
+          [{ "text": "│", "dim": true }, "  ", { "text": " A ", "inverse": true }, "  ·    ·    ·  ", "  ", { "text": "│", "dim": true }],
+          [{ "text": "│", "dim": true }, "   ·    ·    ·    ·  ", "  ", { "text": "│", "dim": true }],
+          [{ "text": "arrows or wasd: slide  ·  two equal letters make the next  ·  esc: keys back", "dim": true }]
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "daily-standup",
+  "title": "Daily Standup",
+  "tagline": "Logs every turn across your sessions; /standup turns today's work into a short update.",
+  "tagline_ru": "Записывает каждый ход во всех сессиях; /standup превращает сегодняшнюю работу в короткую сводку.",
+  "description": "After each finished main-conversation turn, standup logs the project, the files Claude edited and the first line of its answer to the plugin store, for every session on the machine; logs older than 14 days are pruned. `/standup` gathers today's log, asks Haiku (through your own session) for three to five past-tense bullets and answers with them; `/standup 3` covers the last three days, `/standup raw` shows the log itself without a model call, and `/standup --md notes.md` also writes the update to that file (relative to the project root).",
+  "description_ru": "После каждого завершённого хода основного диалога standup записывает в хранилище плагина проект, файлы, которые правил Claude, и первую строку его ответа, для всех сессий на этом компьютере; записи старше 14 дней удаляются. `/standup` собирает сегодняшний журнал, просит Haiku (через вашу же сессию) составить три–пять пунктов в прошедшем времени и выводит их; `/standup 3` охватывает последние три дня, `/standup raw` показывает сам журнал без обращения к модели, а `/standup --md notes.md` ещё и записывает сводку в этот файл (относительно корня проекта).",
+  "author": { "name": "Mohammed Mubarak", "github": "MDmubarak786", "url": "https://github.com/MDmubarak786" },
+  "maintainers": ["MDmubarak786"],
+  "category": "productivity",
+  "tags": ["standup", "summary", "log", "haiku"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/MDmubarak786/claude-mods/tree/HEAD/mods/standup",
+  "source": { "type": "marketplace", "marketplace": "MDmubarak786/claude-mods", "plugin": "standup", "path": "mods/standup" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "write",
+    "model": true,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "idle",
+    "surface": "terminal",
+    "caption": "/standup at the end of the day: today's turns in two projects, summarized by Haiku.",
+    "caption_ru": "/standup в конце дня: сегодняшние ходы в двух проектах, пересказанные Haiku.",
+    "elements": [
+      {
+        "slot": "command",
+        "command": "/standup",
+        "markdown": "- Added percentage discount codes to the shop cart and made the 14 checkout tests pass.\n- Fixed date formatting in the invoice view (`src/ui/invoice.tsx`).\n- In api-gateway, moved rate limiting into middleware and added tests for the 429 path."
+      },
+      { "slot": "background", "text": "Logs each finished turn: project, files edited and the answer's first line." }
+    ]
+  }
+}

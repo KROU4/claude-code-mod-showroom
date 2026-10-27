@@ -1,0 +1,50 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "plan-checklist",
+  "title": "Plan Checklist",
+  "tagline": "An approved plan becomes a checklist above the prompt; Claude ticks a step only with evidence.",
+  "tagline_ru": "Одобренный план становится чек-листом над полем ввода; Claude отмечает шаг только с доказательством проверки.",
+  "description": "When you approve a plan in plan mode, its checkboxes (or numbered list, or bullets; up to 20) become a progress band above the prompt with the next step and a Show all button. Claude marks a step done only through its `plan_check` tool, stating the verification it ran and what came out (`pytest tests/test_refund.py → 12 passed`); checks without evidence, or from subagents, are refused. Each prompt carries a reminder of the steps left, and a turn ending with unchecked steps is sent back once per bit of progress. The list survives `/compact` and is rebuilt on resume. `/checklist` lists steps with evidence, `/checklist close` stops tracking. English or Korean. No network, no files.",
+  "description_ru": "Когда вы одобряете план в режиме планирования, его чекбоксы (или нумерованный список, или пункты; до 20) превращаются в полосу прогресса над полем ввода со следующим шагом и кнопкой Show all. Claude отмечает шаг выполненным только через свой инструмент `plan_check`, указывая, какую проверку запустил и что вышло (`pytest tests/test_refund.py → 12 passed`); отметки без доказательства или от субагентов отклоняются. К каждому запросу добавляется напоминание об оставшихся шагах, а ход, закончившийся с неотмеченными шагами, возвращается в работу (один раз на каждый прогресс). Список переживает `/compact` и восстанавливается при возобновлении. `/checklist` показывает шаги с доказательствами, `/checklist close` прекращает слежение. Английский или корейский. Без сети и файлов.",
+  "author": { "name": "Jaehyuk Han", "github": "Jh-jaehyuk", "url": "https://github.com/Jh-jaehyuk" },
+  "maintainers": ["Jh-jaehyuk"],
+  "category": "productivity",
+  "tags": ["plan-mode", "checklist", "verification", "progress", "band"],
+  "license": "MIT",
+  "version": "0.4.0",
+  "homepage": "https://github.com/Jh-jaehyuk/plan-checklist",
+  "source": { "type": "marketplace", "marketplace": "Jh-jaehyuk/plan-checklist", "plugin": "plan-checklist" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "debugging",
+    "caption": "Step 1 of the approved plan checked off with evidence; the band shows the next step.",
+    "caption_ru": "Шаг 1 одобренного плана отмечен с доказательством; полоса показывает следующий шаг.",
+    "elements": [
+      {
+        "slot": "model-tool",
+        "name": "plan_check",
+        "input": "item: 1, evidence: \"pytest tests/test_refund.py → 12 passed\"",
+        "result": [["Checked step 1 (1/3 done)."]]
+      },
+      {
+        "slot": "above-prompt",
+        "rows": [[{ "text": "━━━━", "color": "suggestion" }, { "text": "────────", "color": "subtle" }, "  ", { "text": "1/3", "bold": true }, "  ", { "text": "Next  ", "dim": true }, "Fix the refund logic", "  ", { "button": "Show all" }]]
+      },
+      { "slot": "toast", "text": "1/3 steps checked" }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/Jh-jaehyuk/plan-checklist/e4dc484bfd0402d7e4f1d8dc835f5886ae4242c3/docs/social-preview.png",
+      "alt": "Claude checks a plan step off with evidence while a progress bar fills above the prompt"
+    }
+  ]
+}

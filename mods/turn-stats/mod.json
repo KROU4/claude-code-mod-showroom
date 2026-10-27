@@ -1,0 +1,35 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "turn-stats",
+  "title": "Turn Stats",
+  "tagline": "Under the line that closes a turn: tool calls by tool, failures, files changed and cost.",
+  "tagline_ru": "Под строкой окончания хода: вызовы по инструментам, ошибки, изменённые файлы и стоимость.",
+  "description": "Adds a dim row beneath Claude Code's own turn-duration line (`✻ Baked for 2m 3s`): every tool call of the turn, subagents' included, with the most used tools named first, calls that failed or were denied, the distinct files Edit, Write and NotebookEdit changed, and what the turn cost when the session reports a cost. A turn that did nothing worth saying keeps the plain line. The last 200 summaries are kept in the plugin store, so a resumed transcript shows them too. Options: `cost` and `topTools` (3).",
+  "description_ru": "Добавляет приглушённую строку под собственной строкой Claude Code о длительности хода (`✻ Baked for 2m 3s`): все вызовы инструментов за ход, включая субагентов, самые частые названы первыми, вызовы с ошибкой или отказом, сколько разных файлов изменили Edit, Write и NotebookEdit, и сколько стоил ход, если сессия сообщает стоимость. Если ход ничего заметного не сделал, строка остаётся обычной. Последние 200 сводок хранятся в хранилище плагина, поэтому и в возобновлённом диалоге они видны. Настройки: `cost` и `topTools` (3).",
+  "author": { "name": "Stanislav Kozachenko", "github": "StanislavKozachenko", "url": "https://github.com/StanislavKozachenko" },
+  "maintainers": ["StanislavKozachenko"],
+  "category": "insights",
+  "tags": ["turns", "tools", "cost", "files", "stats"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/StanislavKozachenko/claude-mods/tree/HEAD/plugins/turn-stats",
+  "source": { "type": "marketplace", "marketplace": "StanislavKozachenko/claude-mods", "plugin": "turn-stats", "path": "plugins/turn-stats" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "debugging",
+    "surface": "terminal",
+    "caption": "The turn's own line, with what the turn did on a dim row beneath it.",
+    "caption_ru": "Строка окончания хода и под ней приглушённой строкой то, что ход сделал.",
+    "elements": [
+      { "slot": "turn-duration", "text": "Baked for 2m 3s" },
+      { "slot": "message", "role": "note", "rows": [["  ", { "text": "15 tools (Bash 6, Edit 5, Read 3, …) · 2 failed · 4 files · $0.42", "dim": true }]] }
+    ]
+  }
+}

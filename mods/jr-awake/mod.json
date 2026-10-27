@@ -1,0 +1,44 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "jr-awake",
+  "title": "jr awake",
+  "tagline": "Keeps the Mac awake while Claude works in any session, and warns a minute before it sleeps.",
+  "tagline_ru": "Не даёт Mac уснуть, пока Claude работает в любой сессии, и предупреждает за минуту до сна.",
+  "description": "Holds macOS idle sleep off with `caffeinate -i` (`-d` too if you ask) while Claude works, or as long as any session is open. The mode is shared by every session on the machine through the mod's own store, and the Mac stays awake while at least one session needs it. Every 15 seconds it reads `pmset -g` and the keyboard idle time from `ioreg`; when the Mac is about to sleep and nothing holds it, a toast and a red row above the prompt warn you. `/jr-awake working | session | off` switches the mode, `/jr-awake show` adds a quiet status row. macOS only; silent elsewhere. No network.",
+  "description_ru": "Пока Claude работает (или пока открыта любая сессия), отключает сон macOS через `caffeinate -i` (по желанию ещё и `-d` для экрана). Режим общий для всех сессий на компьютере и хранится в собственном хранилище мода: Mac не засыпает, пока он нужен хотя бы одной сессии. Каждые 15 секунд мод читает `pmset -g` и время бездействия клавиатуры из `ioreg`; если Mac вот-вот уснёт и его ничто не держит, появляются уведомление и красная строка над полем ввода. `/jr-awake working | session | off` переключает режим, `/jr-awake show` добавляет тихую строку состояния. Только macOS, на других системах мод молчит. В сеть ничего не отправляет.",
+  "author": { "name": "jrlprost", "github": "jrlprost", "url": "https://github.com/jrlprost" },
+  "maintainers": ["jrlprost"],
+  "category": "productivity",
+  "tags": ["macos", "caffeinate", "sleep", "sessions"],
+  "license": "MIT",
+  "version": "0.4.0",
+  "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-awake",
+  "source": {
+    "type": "github",
+    "repo": "jrlprost/claude-code-mods",
+    "path": "plugins/jr-awake",
+    "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+  },
+  "surfaces": ["terminal"],
+  "requires": { "claudeCode": ">=2.1.301" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "idle",
+    "caption": "The Mac is about to sleep and no session holds it: a warning row above the prompt and a toast.",
+    "caption_ru": "Mac вот-вот уснёт, и его не держит ни одна сессия: предупреждение над полем ввода и уведомление.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [[{ "text": "▲ ", "color": "#ef4565" }, "Mac sleeps in 0:48", { "text": " · /jr-awake on", "dim": true }]]
+      },
+      { "slot": "toast", "text": "jr awake · your Mac sleeps in 0:48 · /jr-awake session keeps it awake" }
+    ]
+  }
+}

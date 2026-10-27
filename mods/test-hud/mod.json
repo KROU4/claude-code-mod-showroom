@@ -1,0 +1,57 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "test-hud",
+  "title": "Test HUD",
+  "tagline": "Passing over total on the hint line after every test run, failing tests by file and flaky alerts.",
+  "tagline_ru": "Пройдено из общего на строке подсказки после каждого прогона, падения по файлам и сигнал о нестабильных.",
+  "description": "Whenever a test runner runs in Bash (jest, vitest, bun, pytest, go, cargo, rspec, Maven, Gradle and more), the hint line under the prompt shows passing over total, red, yellow or green, with a sparkline of failures across runs. `/test-hud` opens a pane: the last run, failing tests grouped by file, class or suite (new ones marked), fixed tests and the last 10 runs. Pressing a failing test, `run` or `run again` only drafts a request in the prompt. Toasts say when the suite turns green or a test turns flaky. When Bash cut a long output short, it reads the saved copy under the Claude config folder. `keepHistory` carries runs to the next session.",
+  "description_ru": "Каждый раз, когда в Bash запускается тест-раннер (jest, vitest, bun, pytest, go, cargo, rspec, Maven, Gradle и другие), строка подсказки под полем ввода показывает пройденные из общего числа красным, жёлтым или зелёным, с мини-графиком падений по прогонам. `/test-hud` открывает панель: последний прогон, упавшие тесты по файлам, классам или наборам (новые отмечены), исправленные и последние 10 прогонов. Нажатие на упавший тест, `run` или `run again` только вписывает запрос в поле ввода. Уведомления сообщают, когда набор позеленел или тест стал нестабильным. Если Bash обрезал длинный вывод, мод читает сохранённую копию в папке конфигурации Claude. `keepHistory` переносит прогоны в следующую сессию.",
+  "author": { "name": "Lucas Fernandes", "github": "ice-lfernandes", "url": "https://github.com/ice-lfernandes" },
+  "maintainers": ["ice-lfernandes"],
+  "category": "productivity",
+  "tags": ["tests", "ci", "flaky", "sparkline", "hint-line", "pane"],
+  "license": "MIT",
+  "version": "0.7.1",
+  "homepage": "https://github.com/ice-lfernandes/claude-code-mods/tree/HEAD/test-hud",
+  "source": { "type": "marketplace", "marketplace": "ice-lfernandes/claude-code-mods", "plugin": "test-hud", "path": "test-hud" },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "debugging",
+    "surface": "terminal",
+    "caption": "After a failing run: the tests line on the hint row and the /test-hud pane with failures grouped by file.",
+    "caption_ru": "После прогона с падениями: строка тестов в подсказке и панель /test-hud с падениями по файлам.",
+    "elements": [
+      { "slot": "prompt-hint", "row": [{ "text": "✗ tests 41/43", "color": "error", "bold": true }, " ", { "text": "2 failing", "color": "error" }, "  ", { "spark": [0, 3, 5, 2, 2], "color": "error" }, "  ", { "text": "? for shortcuts", "dim": true }] },
+      {
+        "slot": "pane",
+        "title": "Tests",
+        "width": "wide",
+        "rows": [
+          [{ "text": "vitest · 41/43 passing · 2 failed", "bold": true }],
+          [{ "text": "Failing (2 in 1 file)", "color": "error" }],
+          [{ "text": "▾ src/cart/total.test.ts", "bold": true }, "  ", { "button": "show" }, " ", { "button": "run" }],
+          ["   ✗ applies SAVE10 to the subtotal ", { "text": "new", "color": "warning" }],
+          ["   ✗ rounds the discount to cents"],
+          [{ "spark": [0, 3, 5, 2, 2], "color": "error" }, { "text": "  failures over the last 5 vitest runs (most 5)", "dim": true }]
+        ]
+      },
+      { "slot": "toast", "text": "! Flaky test: rounds the discount to cents (5 runs)" }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/ice-lfernandes/claude-code-mods/82c3ab9c7fa0e92828cc51205b906a9a9b08b6b0/screenshots/test-hud.svg",
+      "alt": "test-hud: the /test-hud pane, the tests line and the toasts",
+      "surface": "terminal"
+    }
+  ]
+}

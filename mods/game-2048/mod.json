@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "game-2048",
+  "title": "2048",
+  "tagline": "2048 in a pane: slide tiles with w a s d, two undos and a best score that survives restarts.",
+  "tagline_ru": "2048 в боковой панели: плитки двигаются клавишами w a s d, две отмены хода и рекорд, который не сбрасывается.",
+  "description": "`/2048` opens a pane with a 4×4 board of boxed tiles. Slide with `w`, `a`, `s` and `d` (or the Up/Left/Down/Right buttons), merge equal numbers and reach 2048; play goes on past it. `u` undoes up to two moves, `n` starts a new game, `h` shows help. The header shows the score, your best, the highest tile and the move count; each board replays from its seed. `/2048 new` and `/2048 stats` (games, best score, highest tile). Zero tokens: no model calls, nothing watched; the game and record are kept in the plugin store.",
+  "description_ru": "`/2048` открывает панель с полем 4×4 из плиток в рамках. Двигайте их клавишами `w`, `a`, `s` и `d` (или кнопками Up/Left/Down/Right), складывайте одинаковые числа и дойдите до 2048; после этого игра продолжается. `u` отменяет до двух ходов, `n` начинает новую партию, `h` показывает справку. В заголовке счёт, рекорд, самая крупная плитка и номер хода; каждое поле можно воспроизвести по его зерну. Есть `/2048 new` и `/2048 stats` (партии, рекорд, самая крупная плитка). Токены не тратятся: модель не вызывается, за сессией никто не следит; партия и статистика хранятся в хранилище плагина.",
+  "author": { "name": "Mohammed Mubarak", "github": "MDmubarak786", "url": "https://github.com/MDmubarak786" },
+  "maintainers": ["MDmubarak786"],
+  "category": "fun",
+  "tags": ["game", "2048", "pane", "zero-tokens"],
+  "license": "MIT",
+  "version": "0.2.0",
+  "homepage": "https://github.com/MDmubarak786/claude-mods/tree/HEAD/mods/game-2048",
+  "source": { "type": "marketplace", "marketplace": "MDmubarak786/claude-mods", "plugin": "game-2048", "path": "mods/game-2048" },
+  "surfaces": ["terminal", "desktop"],
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "Move 83 of a game heading for 1024, with two undos left.",
+    "caption_ru": "83-й ход партии, которая идёт к 1024; в запасе две отмены.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "2048",
+        "width": "narrow",
+        "rows": [
+          [{ "text": "2048", "bold": true }, "  score 1256"],
+          [{ "text": "best 4512 · highest 512 · move 83", "dim": true }],
+          [" "],
+          ["  ", {"text": "       ", "bg": "#cdc1b4"}, {"text": "       ", "bg": "#eee4da"}, {"text": "       ", "bg": "#f2b179"}, {"text": "       ", "bg": "#ede0c8"}],
+          ["  ", {"text": "       ", "bg": "#cdc1b4"}, {"text": "   2   ", "bg": "#eee4da", "color": "#776e65", "bold": true}, {"text": "   8   ", "bg": "#f2b179", "color": "#f9f6f2", "bold": true}, {"text": "   4   ", "bg": "#ede0c8", "color": "#776e65", "bold": true}],
+          ["  ", {"text": "       ", "bg": "#cdc1b4"}, {"text": "       ", "bg": "#eee4da"}, {"text": "       ", "bg": "#f2b179"}, {"text": "       ", "bg": "#ede0c8"}],
+          ["  ", {"text": "       ", "bg": "#eee4da"}, {"text": "       ", "bg": "#f59563"}, {"text": "       ", "bg": "#f67c5f"}, {"text": "       ", "bg": "#f59563"}],
+          ["  ", {"text": "   2   ", "bg": "#eee4da", "color": "#776e65", "bold": true}, {"text": "  16   ", "bg": "#f59563", "color": "#f9f6f2", "bold": true}, {"text": "  32   ", "bg": "#f67c5f", "color": "#f9f6f2", "bold": true}, {"text": "  16   ", "bg": "#f59563", "color": "#f9f6f2", "bold": true}],
+          ["  ", {"text": "       ", "bg": "#eee4da"}, {"text": "       ", "bg": "#f59563"}, {"text": "       ", "bg": "#f67c5f"}, {"text": "       ", "bg": "#f59563"}],
+          ["  ", {"text": "       ", "bg": "#f2b179"}, {"text": "       ", "bg": "#f65e3b"}, {"text": "       ", "bg": "#edcf72"}, {"text": "       ", "bg": "#f67c5f"}],
+          ["  ", {"text": "   8   ", "bg": "#f2b179", "color": "#f9f6f2", "bold": true}, {"text": "  64   ", "bg": "#f65e3b", "color": "#f9f6f2", "bold": true}, {"text": "  128  ", "bg": "#edcf72", "color": "#f9f6f2", "bold": true}, {"text": "  32   ", "bg": "#f67c5f", "color": "#f9f6f2", "bold": true}],
+          ["  ", {"text": "       ", "bg": "#f2b179"}, {"text": "       ", "bg": "#f65e3b"}, {"text": "       ", "bg": "#edcf72"}, {"text": "       ", "bg": "#f67c5f"}],
+          ["  ", {"text": "       ", "bg": "#f59563"}, {"text": "       ", "bg": "#edcc61"}, {"text": "       ", "bg": "#edc850"}, {"text": "       ", "bg": "#f65e3b"}],
+          ["  ", {"text": "  16   ", "bg": "#f59563", "color": "#f9f6f2", "bold": true}, {"text": "  256  ", "bg": "#edcc61", "color": "#f9f6f2", "bold": true}, {"text": "  512  ", "bg": "#edc850", "color": "#f9f6f2", "bold": true}, {"text": "  64   ", "bg": "#f65e3b", "color": "#f9f6f2", "bold": true}],
+          ["  ", {"text": "       ", "bg": "#f59563"}, {"text": "       ", "bg": "#edcc61"}, {"text": "       ", "bg": "#edc850"}, {"text": "       ", "bg": "#f65e3b"}],
+          [" "],
+          [{ "button": "Up", "hotkey": "w" }, " ", { "button": "Left", "hotkey": "a" }, " ", { "button": "Down", "hotkey": "s" }, " ", { "button": "Right", "hotkey": "d" }],
+          [{ "button": "New game", "hotkey": "n" }, " ", { "button": "Undo (2)", "hotkey": "u" }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/MDmubarak786/claude-mods/808996691ca39af660249d926053a836e63349cc/mods/game-2048/screenshots/2048.gif",
+      "alt": "2048 in a Claude Code pane: tiles slide and merge as w, a, s and d are pressed",
+      "surface": "terminal"
+    }
+  ]
+}

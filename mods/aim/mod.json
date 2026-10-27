@@ -1,0 +1,47 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "aim",
+  "title": "Aim",
+  "tagline": "Pin one goal for the session above the prompt with a timer; Claude is told to stay on it.",
+  "tagline_ru": "Одна цель на сессию над полем ввода с таймером; Claude просят держаться её.",
+  "description": "`/aim <goal>` pins a goal in the band above the prompt as `🎯 <goal> · 12m` with Done and Clear buttons. While it is set, a section is appended to the end of Claude's system prompt (after the cached part, so the prompt cache holds) telling Claude to keep to the goal, mention unrelated work in one line instead of doing it, and say when a request moves away from it. `/aim done` records it with a toast (`Aim done in 34m 🎉`), `/aim history` lists recent goals and their times, `/aim clear` drops it. The goal is kept per project root in the mod's store and survives `/clear`, `/resume` and restarts; whatever other mods draw in the band stays below it.",
+  "description_ru": "`/aim <цель>` закрепляет цель в полосе над полем ввода в виде `🎯 <цель> · 12m` с кнопками Done и Clear. Пока цель задана, в конец системного промпта Claude (после кэшируемой части, так что кэш не сбрасывается) добавляется раздел: держаться цели, о посторонней работе упоминать одной строкой, а не делать её, и говорить, когда запрос уводит в сторону. `/aim done` фиксирует цель с уведомлением (`Aim done in 34m 🎉`), `/aim history` показывает недавние цели и их время, `/aim clear` убирает цель. Цель хранится по корню проекта в хранилище мода и переживает `/clear`, `/resume` и перезапуск; то, что рисуют в полосе другие моды, остаётся под ней.",
+  "author": { "name": "Amrit Preet Singh", "github": "Singh-AP", "url": "https://github.com/Singh-AP" },
+  "maintainers": ["Singh-AP"],
+  "category": "productivity",
+  "tags": ["focus", "goal", "timer", "band", "system-prompt"],
+  "license": "MIT",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Singh-AP/awesome-claude-mods/tree/HEAD/mods/productivity/aim",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "Singh-AP/awesome-claude-mods",
+    "plugin": "aim",
+    "path": "mods/productivity/aim"
+  },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Fix the login redirect bug. Also the footer looks off on mobile." },
+      { "role": "tool", "tool": "Edit", "input": "auth/callback.ts", "status": "done" },
+      { "role": "assistant", "text": "Fixed the redirect: the callback now keeps ?next= through the OAuth round-trip (auth/callback.ts:42). Outside the current focus: the footer overlaps on narrow screens. Want me to look at it after this?" }
+    ],
+    "caption": "The pinned goal above the prompt; Claude flags the footer as off-goal instead of fixing it.",
+    "caption_ru": "Закреплённая цель над полем ввода; Claude отмечает подвал как работу вне цели, а не чинит его сразу.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [["🎯 fix the login redirect bug · 12m  ", { "button": "Done" }, " ", { "button": "Clear" }]]
+      }
+    ]
+  }
+}

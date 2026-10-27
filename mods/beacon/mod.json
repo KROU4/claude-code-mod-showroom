@@ -1,0 +1,37 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "beacon",
+  "title": "Beacon",
+  "tagline": "A status glyph at the front of each desktop session title: working, waiting, needs you, done, error.",
+  "tagline_ru": "Значок статуса в начале названия каждой сессии в десктопе: работает, ждёт, нужны вы, готово, ошибка.",
+  "description": "For the desktop app's Code tab. Beacon keeps one glyph at the front of the session title so the sidebar shows what every session is doing: 🔵 working, ⏳ waiting on background work or a slow tool call, ❓ needs you (a permission prompt, a question, plan approval, or a last reply that asks for a decision), ✅ done, ⚠️ error. A settled glyph is followed by the local time, such as `✅ 14:05 Fix the parser`, and a finished turn sets the sidebar's unread dot (`markUnread`). Titles are set through the app's own session tools. Opt-in `classify` asks the small model whether a long last reply needs you. It writes a status file per session to `~/.claude/state/beacon` for an optional macOS widget.",
+  "description_ru": "Для вкладки Code в десктопном приложении. Beacon держит в начале названия сессии один значок, чтобы в боковой панели было видно, чем занята каждая сессия: 🔵 работает, ⏳ ждёт фоновую работу или долгий вызов инструмента, ❓ нужны вы (запрос разрешения, вопрос, одобрение плана или последний ответ, где просят решения), ✅ готово, ⚠️ ошибка. После устоявшегося значка стоит местное время, например `✅ 14:05 Fix the parser`, а завершённый ход ставит в боковой панели точку непрочитанного (`markUnread`). Названия меняются через собственные инструменты сессий приложения. По желанию `classify` спрашивает малую модель, ждёт ли длинный последний ответ вашего решения. Мод пишет файл статуса каждой сессии в `~/.claude/state/beacon` для необязательного виджета macOS.",
+  "author": { "name": "Andrei Shivalin", "github": "VaitaR", "url": "https://github.com/VaitaR" },
+  "maintainers": ["VaitaR"],
+  "category": "productivity",
+  "tags": ["sidebar", "session-status", "desktop", "titles", "unread"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/VaitaR/claude-code-beacon",
+  "source": { "type": "marketplace", "marketplace": "VaitaR/claude-code-beacon", "plugin": "beacon" },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "surfaces": ["desktop"],
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "write",
+    "model": true,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "idle",
+    "surface": "desktop",
+    "caption": "Nothing new inside the session: the change is in the sidebar, where each title starts with its state.",
+    "caption_ru": "Внутри сессии ничего нового: меняется боковая панель, где каждое название начинается с состояния.",
+    "elements": [
+      { "slot": "background", "text": "Sidebar titles: 🔵 Add discount codes · ❓ 14:12 Migrate the auth tables · ✅ 14:05 Fix the parser · ⏳ Nightly e2e run" },
+      { "slot": "background", "text": "A finished turn also sets the session's blue unread dot." }
+    ]
+  }
+}

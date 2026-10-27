@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "done-notify",
+  "title": "Done Notify",
+  "tagline": "A desktop notification when a long turn ends, saying whether Claude is done or waiting for you.",
+  "tagline_ru": "Системное уведомление по окончании долгого хода: Claude закончил или ждёт вашего ответа.",
+  "description": "When a main-conversation turn of at least `min_seconds` (15 by default) ends, and you did not interrupt it, a desktop notification goes out with the reply's first line. Its title is `Claude is waiting for you` when the reply ends with a question or a list of choices, `Claude is done` otherwise. It tries `terminal-notifier` (with sound, and on macOS a click brings back your terminal app), then `osascript`, then `notify-send` on Linux. Nothing else leaves the machine.",
+  "description_ru": "Когда ход основного диалога длительностью не меньше `min_seconds` (по умолчанию 15 секунд) заканчивается, а вы его не прерывали, приходит системное уведомление с первой строкой ответа. Заголовок — `Claude is waiting for you`, если ответ заканчивается вопросом или списком вариантов, иначе `Claude is done`. Мод пробует `terminal-notifier` (со звуком, а на macOS щелчок возвращает окно терминала), затем `osascript`, затем `notify-send` в Linux. Больше ничего с компьютера не уходит.",
+  "author": { "name": "Benjamin Benoudis", "github": "benjaminb10", "url": "https://github.com/benjaminb10" },
+  "maintainers": ["benjaminb10"],
+  "category": "productivity",
+  "tags": ["notifications", "desktop", "long-turns", "macos", "linux"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/benjaminb10/encore-mods/tree/HEAD/plugins/done-notify",
+  "source": { "type": "marketplace", "marketplace": "benjaminb10/encore-mods", "plugin": "done-notify", "path": "plugins/done-notify" },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": { "network": false, "processes": true, "filesystem": "none", "model": false, "promptRewrite": false, "blocksTools": false },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Migrate the checkout tests to the new fixtures." },
+      { "role": "tool", "tool": "Bash", "input": "npm test", "result": "Tests  42 passed (42)", "status": "done" },
+      { "role": "assistant", "text": "Two fixtures overlap in what they set up. Which should I keep?\n1. cartWithDiscount\n2. cartFactory" }
+    ],
+    "caption": "A two-minute turn ends with a choice for you: the notification says Claude is waiting and quotes the first line.",
+    "caption_ru": "Двухминутный ход закончился вопросом к вам: уведомление говорит, что Claude ждёт, и цитирует первую строку.",
+    "elements": [
+      { "slot": "notification", "title": "Claude is waiting for you", "text": "Two fixtures overlap in what they set up. Which should I keep?" }
+    ]
+  }
+}

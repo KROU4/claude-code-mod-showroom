@@ -1,0 +1,56 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "usage-meter",
+  "title": "Usage Meter",
+  "tagline": "A cyberpunk band of plan limits, context and tokens, plus a pane with charts, agents, git and PRs.",
+  "tagline_ru": "Киберпанк-полоса с лимитами плана, контекстом и токенами и панель с графиками, агентами, git и PR.",
+  "description": "A band above the prompt in cyan-to-magenta gradients: how much is left of the 5-hour and weekly windows with reset times, the context used and tokens spent (kept across sessions). A side pane, opened at session start and with `/usage-meter`, shows the context breakdown by category, charts of context use and output per turn, each subagent's task, tools, model and effort, and, refreshed every 30 seconds in the session's folder, a git graph of the last 20 commits (`git status`, `git log`), open PRs through the GitHub CLI (`gh pr list`, which contacts GitHub) and Docker containers (`docker ps -a`; names can be hidden in `/config`). Missing tools are skipped.",
+  "description_ru": "Полоса над полем ввода в градиентах от бирюзового к пурпурному: сколько осталось в окнах на 5 часов и неделю и когда они сбросятся, занятый контекст и потраченные токены (копятся между сессиями). Боковая панель, которая открывается при старте сессии и по `/usage-meter`, показывает разбивку контекста по категориям, графики занятости контекста и вывода за ход, задачу, инструменты, модель и усилие каждого субагента, а также, с обновлением раз в 30 секунд в папке сессии, граф последних 20 коммитов (`git status`, `git log`), открытые PR через GitHub CLI (`gh pr list`, который обращается к GitHub) и контейнеры Docker (`docker ps -a`; имена можно скрыть в `/config`). Отсутствующие инструменты пропускаются.",
+  "author": { "name": "PointerLex", "github": "PointerLex", "url": "https://github.com/PointerLex" },
+  "maintainers": ["PointerLex"],
+  "category": "insights",
+  "tags": ["usage", "rate-limits", "context", "subagents", "git", "docker"],
+  "license": "MIT",
+  "version": "0.4.0",
+  "homepage": "https://github.com/PointerLex/claude-usage-meter",
+  "source": { "type": "marketplace", "marketplace": "PointerLex/claude-usage-meter", "plugin": "usage-meter" },
+  "capabilities": {
+    "network": true,
+    "processes": true,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "caption": "The usage band above the prompt: what is left of each window, context used and tokens spent.",
+    "caption_ru": "Полоса над полем ввода: остаток каждого окна, занятый контекст и потраченные токены.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [[
+          { "text": "▓▒░ USAGE ░▒▓", "color": "#b967ff", "bold": true },
+          { "text": " │ ", "color": "#ff00e6" }, { "text": "5H ", "color": "#00f0ff", "bold": true }, { "bar": 0.72, "width": 12, "color": "#00f0ff" }, { "text": " 72% left", "color": "#00f0ff", "bold": true }, { "text": " resets 2h14m", "dim": true },
+          { "text": " │ ", "color": "#ff00e6" }, { "text": "WEEK ", "color": "#00f0ff", "bold": true }, { "bar": 0.41, "width": 12, "color": "#00f0ff" }, { "text": " 41% left", "color": "#00f0ff", "bold": true },
+          { "text": " │ ", "color": "#ff00e6" }, { "text": "CTX ", "color": "#00f0ff", "bold": true }, { "bar": 0.34, "width": 8, "color": "#ff00e6" }, { "text": " 34% used", "color": "#00f0ff", "bold": true },
+          { "text": " │ ", "color": "#ff00e6" }, { "text": "↑12.4M ", "color": "#00f0ff" }, { "text": "↓312.0k", "color": "#ff00e6" }, { "text": " TOK", "dim": true }
+        ]]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/PointerLex/claude-usage-meter/b53ec7611b1004bf73a8db3a98c572a44f33907e/assets/panel.png",
+      "alt": "The black usage pane beside the chat: context breakdown, charts, limits, tokens, git graph and containers",
+      "surface": "terminal"
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/PointerLex/claude-usage-meter/b53ec7611b1004bf73a8db3a98c572a44f33907e/assets/agents.gif",
+      "alt": "Subagent tasks checked off as they finish, with each agent's model and a flowing rainbow for max effort",
+      "surface": "terminal"
+    }
+  ]
+}

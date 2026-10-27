@@ -1,0 +1,41 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "agent-usage-guard",
+  "title": "Agent Usage Guard",
+  "tagline": "Holds subagent fan-out, heavy-context prompts and retry loops before they burn your usage window.",
+  "tagline_ru": "Сдерживает лавину субагентов, тяжёлые по контексту запросы и циклы повторов, пока они не съели лимит.",
+  "description": "Gates what spends a plan window fastest. New agents need approval from 80% of a window and are refused from 95%, or when more than 4 run at once or 12 start in 10 minutes across all sessions on the machine; subagents may not start their own. A prompt that would re-read 500k tokens asks: compact then send, send anyway, or cancel. Heavy-context tool bursts, heavy idle sessions and a failing call repeated three times are held too. It asks in Claude Code's own dialog, and refuses where nobody can answer (`claude -p`, dontAsk). From 95% it adds a wrap-up note to the prompt. `/agent-guard status | allow | pause | report`; thresholds via `AGENT_GUARD_*`.",
+  "description_ru": "Сдерживает то, что быстрее всего тратит окно плана. Новые агенты требуют подтверждения с 80% окна и запрещаются с 95%, а также когда разом работает больше 4 или за 10 минут запущено больше 12 во всех сессиях на компьютере; субагентам нельзя запускать своих. Запрос, который заново прочитает 500k токенов, спрашивает: сжать и отправить, отправить как есть или отменить. Придерживаются и частые вызовы при тяжёлом контексте, тяжёлая простаивавшая сессия, трижды повторённый неудачный вызов. Спрашивает в диалоге Claude Code, а где ответить некому (`claude -p`, dontAsk), отказывает. С 95% добавляет к запросу просьбу закругляться. `/agent-guard status | allow | pause | report`; пороги в `AGENT_GUARD_*`.",
+  "author": { "name": "Riccardo Bartoli", "github": "rbartoli", "url": "https://github.com/rbartoli" },
+  "maintainers": ["rbartoli"],
+  "category": "safety",
+  "tags": ["usage", "subagents", "rate-limits", "context", "guard"],
+  "license": "MIT",
+  "version": "1.1.2",
+  "homepage": "https://github.com/rbartoli/agent-usage-guard",
+  "source": { "type": "marketplace", "marketplace": "rbartoli/agent-usage-guard", "plugin": "agent-usage-guard" },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": true
+  },
+  "preview": {
+    "transcript": [
+      { "role": "user", "text": "Audit every package in the monorepo for outdated dependencies, one agent per package." }
+    ],
+    "caption": "Fan-out past four running agents is held; with nobody to ask, the call is refused.",
+    "caption_ru": "Запуск больше четырёх агентов придержан; если спросить некого, вызов отклоняется.",
+    "elements": [
+      {
+        "slot": "tool-deny",
+        "tool": "Agent",
+        "input": "audit packages/billing",
+        "message": "Not started: 4 agents are already running across this machine (limit 4). Nobody can approve it in this session. Wait for a running agent to finish before starting another. [agent-usage-guard]"
+      }
+    ]
+  }
+}

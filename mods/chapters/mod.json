@@ -1,0 +1,59 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "chapters",
+  "title": "Chapters",
+  "tagline": "/chapters turns your diff into ordered review chapters with risk marks, read in a pane by the hunks.",
+  "tagline_ru": "/chapters превращает дифф в главы ревью с отметками риска и показывает их в панели рядом с изменениями.",
+  "description": "Type `/chapters` before you commit: it reads the diff with read-only git plumbing (`diff-index`, `diff-tree`, `merge-base`, `ls-files`) and sends it to a small model (`haiku` by default, one call, two for a big diff), with secret-looking values replaced by `[REDACTED]` and secrets files by name only. The reply becomes chapters, most important first: what changed, why it matters, a risk mark (`!` high, `~` low, `·` none) and one question to check, in a pane beside the matching hunks with prev, next and mark read. ask Claude puts the question in your prompt box without sending it. `/chapters staged`, `branch [base]` and `last` (Claude's last-turn edits) pick other scopes.",
+  "description_ru": "Наберите `/chapters` перед коммитом: мод читает дифф только читающими командами git (`diff-index`, `diff-tree`, `merge-base`, `ls-files`, без необязательных блокировок) и отправляет его небольшой модели (по умолчанию `haiku`, один вызов, для большого диффа два), заменив похожие на секреты значения на `[REDACTED]`, а файлы с секретами передаёт только по имени. Ответ превращается в главы, от самой важной: что изменилось, почему это важно, отметка риска (`!` высокий, `~` низкий, `·` не замечен) и один вопрос для проверки. Главы открываются в панели рядом с нужными фрагментами, с кнопками prev, next и mark read. Кнопка ask Claude вставляет вопрос в поле ввода, но не отправляет. `/chapters staged`, `branch [base]` и `last` (правки Claude за последний ход) выбирают другой охват.",
+  "author": { "name": "modmyclaude", "github": "modmyclaude", "url": "https://github.com/modmyclaude" },
+  "maintainers": ["modmyclaude"],
+  "category": "git",
+  "tags": ["review", "diff", "git", "pane", "small-model", "risk"],
+  "license": "MIT",
+  "version": "0.2.0",
+  "homepage": "https://github.com/modmyclaude/claude-code-mods/tree/HEAD/mods/chapters",
+  "source": { "type": "marketplace", "marketplace": "modmyclaude/claude-code-mods", "plugin": "chapters", "path": "mods/chapters" },
+  "surfaces": ["terminal", "desktop"],
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "read",
+    "model": true,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "review",
+    "surface": "terminal",
+    "caption": "A review of uncommitted changes: three chapters ranked by risk, the second one open beside its hunk.",
+    "caption_ru": "Ревью незакоммиченных изменений: три главы по степени риска, вторая открыта рядом со своим фрагментом.",
+    "elements": [
+      { "slot": "command", "command": "/chapters" },
+      {
+        "slot": "pane",
+        "title": "chapters",
+        "width": "wide",
+        "rows": [
+          [{ "text": "uncommitted changes · 1 of 3 read", "dim": true }],
+          [{ "text": "! ", "color": "error" }, "1. Retry on 429", { "text": "                read", "dim": true }],
+          [{ "text": "~ ", "color": "warning" }, { "text": "2. Config loader", "bold": true }],
+          [{ "text": "· ", "dim": true }, "3. Docs"],
+          [" "],
+          [{ "text": "Chapter 2 of 3: Config loader", "bold": true }],
+          ["What: settings now load from .apprc before the environment."],
+          ["Why it matters: a stale .apprc overrides a fresh variable."],
+          [{ "text": "~ low risk: the order changed for every setting", "color": "warning" }],
+          ["Check: should the environment still win?"],
+          [" "],
+          [{ "text": "src/config.ts", "bold": true }],
+          [{ "text": "@@ -12,4 +12,6 @@", "color": "subtle" }],
+          [{ "text": "-  return { ...env }", "color": "error" }],
+          [{ "text": "+  return { ...readRc('.apprc'), ...env }", "color": "success" }],
+          [{ "button": "prev" }, " ", { "button": "next" }, " ", { "button": "mark read" }, " ", { "button": "ask Claude" }]
+        ]
+      }
+    ]
+  }
+}

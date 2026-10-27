@@ -1,0 +1,45 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "claudinho",
+  "title": "Claudinho",
+  "tagline": "Live football for the competition you follow: score or countdown above the prompt, goal toasts.",
+  "tagline_ru": "Футбол в прямом эфире для вашего турнира: счёт или отсчёт до матча над полем ввода, уведомления о голах.",
+  "description": "Needs the separate `claudinho` CLI (`npm i -g @claudinho/cli`), which fetches the data from ESPN; the mod itself makes no requests. On a timer it runs `claudinho ambient --json` (looking for the CLI on PATH and the usual nvm, volta, pnpm and bun folders) and draws the line it returns above the prompt: the live score or the countdown to the next match. Toasts announce goals with the scorer and full-time results (your pinned team by default), with a short goal celebration. `/claudinho` prints the line, `/claudinho match` opens a pane with the match's goals and cards. With `context` on (default) the latest score is added to your prompts as context for Claude.",
+  "description_ru": "Нужен отдельный CLI `claudinho` (`npm i -g @claudinho/cli`), который берёт данные у ESPN; сам мод запросов не делает. По таймеру он запускает `claudinho ambient --json` (ищет CLI в PATH и в обычных папках nvm, volta, pnpm и bun) и рисует над полем ввода строку, которую тот вернул: текущий счёт или отсчёт до следующего матча. Уведомления сообщают о голах с автором и об итоговом счёте (по умолчанию для закреплённой команды), с короткой анимацией гола. `/claudinho` выводит строку, `/claudinho match` открывает панель с голами и карточками матча. При включённом `context` (по умолчанию) свежий счёт добавляется к вашим запросам как контекст для Claude.",
+  "author": { "name": "Arturo Garrido", "github": "arturogarrido", "url": "https://github.com/arturogarrido" },
+  "maintainers": ["arturogarrido"],
+  "category": "fun",
+  "tags": ["football", "soccer", "live-scores", "toast", "pane"],
+  "license": "MIT",
+  "version": "0.6.0",
+  "homepage": "https://github.com/arturogarrido/claudinho/tree/HEAD/packages/plugin",
+  "source": { "type": "marketplace", "marketplace": "arturogarrido/claudinho", "plugin": "claudinho", "path": "packages/plugin" },
+  "capabilities": {
+    "network": true,
+    "processes": true,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "caption": "A goal for the pinned team mid-session: the score above the prompt and a toast.",
+    "caption_ru": "Гол закреплённой команды посреди работы: счёт над полем ввода и уведомление.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [["⚽ ", "Real Betis ", { "text": "0–1", "bold": true }, " Barcelona", { "text": " · 41' · LALIGA", "dim": true }]]
+      },
+      { "slot": "toast", "text": "GOAL! Barcelona, Rodri 41' · Real Betis 0–1 Barcelona" }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/arturogarrido/claudinho/54e76c4e2ea8286c2e6a534b5d8f0ad81f543262/.github/assets/plugin.gif",
+      "alt": "Claude Code during a match: a goal toast and the mascot beside a coding answer, the score in the band and the match pane",
+      "surface": "terminal"
+    }
+  ]
+}

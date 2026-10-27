@@ -1,0 +1,54 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "reply-choices",
+  "title": "Reply Choices",
+  "tagline": "Numbered options at the end of Claude's answer become buttons above the prompt.",
+  "tagline_ru": "Пронумерованные варианты в конце ответа Claude превращаются в кнопки над полем ввода.",
+  "description": "When an answer ends with a list of two or more options (`1.`, `2)`, `-`, `(a)`), up to five of them show as buttons above the prompt once Claude is done. Click one, or press its digit while the prompt is empty, and that option's text goes into the prompt box for you to edit or send; nothing is sent by itself. The buttons clear when you send the next prompt. One of the templates shipped with the givememod skill. No files, processes, network or model calls.",
+  "description_ru": "Если ответ заканчивается списком из двух и более вариантов (`1.`, `2)`, `-`, `(a)`), то, когда Claude закончит, до пяти из них появятся кнопками над полем ввода. Нажмите кнопку или её цифру при пустом поле ввода, и текст варианта окажется в поле: его можно поправить или отправить, сам он не отправляется. Кнопки исчезают, когда вы отправляете следующий запрос. Это один из шаблонов, которые идут со скиллом givememod. Файлы, процессы, сеть и вызовы модели не используются.",
+  "author": { "name": "timoncool", "github": "timoncool", "url": "https://github.com/timoncool" },
+  "maintainers": ["timoncool"],
+  "category": "productivity",
+  "tags": ["buttons", "options", "prompt", "band"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/timoncool/givememod/tree/HEAD/plugins/givememod/skills/givememod/templates/reply-choices",
+  "source": {
+    "type": "github",
+    "repo": "timoncool/givememod",
+    "path": "plugins/givememod/skills/givememod/templates/reply-choices",
+    "sha": "197200ab39d2d0c22246ac5ceec40c3fbbefb945"
+  },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "The checkout test fails about once in ten runs. What can we do?" },
+      { "role": "tool", "tool": "Read", "input": "tests/checkout.test.ts", "status": "done" },
+      { "role": "assistant", "text": "It races the 30 s session timer. Pick one: 1. Mock the clock in the test  2. Retry the request with backoff  3. Raise the timeout to 60 s" }
+    ],
+    "caption": "The options from the end of the answer as buttons; a click or its digit puts the text into the prompt box.",
+    "caption_ru": "Варианты из конца ответа стали кнопками; нажатие или цифра кладёт текст варианта в поле ввода.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [
+            { "button": "Mock the clock in the test", "hotkey": "1" },
+            "  ",
+            { "button": "Retry the request with backoff", "hotkey": "2" },
+            "  ",
+            { "button": "Raise the timeout to 60 s", "hotkey": "3" }
+          ]
+        ]
+      }
+    ]
+  }
+}

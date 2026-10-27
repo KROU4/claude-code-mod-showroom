@@ -1,0 +1,74 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "context-status-bar",
+  "title": "Claude Context Bar",
+  "tagline": "A skinnable bar above the prompt: context gauge, 5-hour usage, git, turn time and session age.",
+  "tagline_ru": "Полоса над полем ввода со сменными скинами: контекст, пятичасовой лимит, git, время хода и возраст сессии.",
+  "description": "A bar above the prompt with a gradient context gauge (percent, tokens and what the last turn added, ⚠ near auto-compaction and a Compact button from 70%), 5-hour usage as five dots with a reset countdown, the git branch with changed files and ahead/behind, the last turn's time, the session's age and the tool or subagents running now. Clicking a percentage opens a Context panel (what fills the window, turns left before compaction, cost) or a Usage panel (windows, run-out pace, a reply bell, Clear chat and ten skins). Runs `git status` at most every 5 seconds; runs `/compact` only on a press or with Early compact on (off by default). `/contextbar` sets it.",
+  "description_ru": "Полоса над полем ввода: градиентная шкала контекста (процент, токены и сколько добавил последний ход, ⚠ перед автосжатием и кнопка Compact от 70%), пятичасовой лимит пятью точками с отсчётом до сброса, ветка git с изменёнными файлами и опережением/отставанием, время последнего хода, возраст сессии и инструмент или субагенты, которые работают сейчас. Щелчок по проценту открывает панель Context (чем занято окно, сколько ходов до сжатия, стоимость) или Usage (окна лимитов, темп расхода, звонок по окончании ответа, Clear chat и десять скинов). Запускает `git status` не чаще раза в 5 секунд; `/compact` — только по нажатию или при включённом Early compact (по умолчанию выключен). Настраивается командой `/contextbar`.",
+  "author": { "name": "Eddy Wong", "github": "eddywong888", "url": "https://github.com/eddywong888" },
+  "maintainers": ["eddywong888"],
+  "category": "insights",
+  "tags": ["context", "usage", "git", "status-bar", "skins", "compact"],
+  "license": "MIT",
+  "version": "0.1.1",
+  "homepage": "https://github.com/eddywong888/claude-context-bar",
+  "source": { "type": "marketplace", "marketplace": "eddywong888/claude-context-bar", "plugin": "context-bar" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "scene": "coding",
+    "caption": "The bar in the default meadow skin while Claude runs a test; click a percentage for its panel.",
+    "caption_ru": "Полоса в стандартном скине meadow, пока Claude запускает тесты; щелчок по проценту открывает панель.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [
+            { "text": "Context", "dim": true },
+            " ",
+            { "text": "██████████", "color": "success" },
+            { "text": "███", "color": "warning" },
+            { "text": "░░░┃░░░", "dim": true },
+            " ",
+            { "button": "62%" },
+            { "text": " 124k/200k +3.1k", "dim": true },
+            "  ",
+            { "text": "5h", "dim": true },
+            " ",
+            { "text": "●●", "color": "success" },
+            { "text": "○○○", "dim": true },
+            " ",
+            { "button": "41%" },
+            " ",
+            { "text": "↻ 1h12m", "color": "suggestion", "bold": true }
+          ],
+          [
+            { "text": "⎇ main", "color": "suggestion", "bold": true },
+            " ",
+            { "text": "✎3", "color": "warning", "bold": true },
+            { "text": " ↑1  L 42s  Age 1h05m", "dim": true },
+            "  ",
+            { "text": "▶ Bash", "color": "claude", "bold": true },
+            { "text": " npm test", "dim": true }
+          ]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/eddywong888/claude-context-bar/2cdbcc57f212f9a3080f2b30cc44a37b4b281e3d/media/bar-ember.png",
+      "alt": "The context bar above the prompt in the ember skin",
+      "surface": "terminal"
+    }
+  ]
+}

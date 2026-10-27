@@ -1,0 +1,58 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "agent-watch",
+  "title": "Agent Watch",
+  "tagline": "Subagents at a glance: a card per agent with a mascot, its step and tokens, and a stall toast.",
+  "tagline_ru": "Субагенты с первого взгляда: карточка с талисманом, шагом и токенами и уведомление о зависании.",
+  "description": "While subagents run, a band above the prompt shows what each is doing now and a status entry counts agents and tokens. `/watch` opens a pane with a card per agent: its mascot and color, the current step and the two calls before it, a bar of its tokens against the heaviest agent's, and an estimate of its share of the 5-hour window and the week; from five agents each becomes one boxed line. A stalled agent raises a toast and gets an `investigate` button that drafts a question about it in the prompt. When they all finish, a toast sums the run and names the heaviest agent. `/watch demo` adds three fake agents. Nothing is sent anywhere and no model is called.",
+  "description_ru": "Пока работают субагенты, полоса над полем ввода показывает, чем занят каждый, а запись в строке статуса считает агентов и токены. `/watch` открывает панель с карточкой на каждого агента: талисман и цвет, текущий шаг и два предыдущих вызова, полоса токенов относительно самого «тяжёлого» агента и оценка его доли в 5-часовом окне и неделе; с пяти агентов карточки сворачиваются в строки в рамке. О зависшем агенте сообщит уведомление, а кнопка `investigate` впишет в поле ввода вопрос о нём. Когда все закончат, уведомление подведёт итог и назовёт самого «тяжёлого». `/watch demo` добавляет трёх ненастоящих агентов. Мод ничего никуда не отправляет и модель не вызывает.",
+  "author": { "name": "Lucas Fernandes", "github": "ice-lfernandes", "url": "https://github.com/ice-lfernandes" },
+  "maintainers": ["ice-lfernandes"],
+  "category": "insights",
+  "tags": ["subagents", "agents", "tokens", "pane", "band", "toast"],
+  "license": "MIT",
+  "version": "0.7.2",
+  "homepage": "https://github.com/ice-lfernandes/claude-code-mods/tree/HEAD/agent-watch",
+  "source": { "type": "marketplace", "marketplace": "ice-lfernandes/claude-code-mods", "plugin": "agent-watch", "path": "agent-watch" },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "review",
+    "surface": "terminal",
+    "caption": "Three subagents at work: the status entry, a stall toast and the /watch pane with a card per agent.",
+    "caption_ru": "Три субагента в работе: запись в статусе, уведомление о зависании и панель /watch с карточкой на каждого.",
+    "elements": [
+      { "slot": "status", "text": "◇ 3 agents · 148k · ⚠ 1 stalled" },
+      { "slot": "toast", "text": "test-runner looks stalled: no tool call for 4m. /watch" },
+      {
+        "slot": "pane",
+        "title": "Agents",
+        "width": "wide",
+        "rows": [
+          [{ "text": "Running", "bold": true }],
+          [{ "text": "▣ code-review", "color": "suggestion", "bold": true }, "  Reading src/cart/total.ts"],
+          ["  ", { "bar": 0.9, "width": 20, "color": "suggestion" }, " 71k · 5h 3% · wk 1%"],
+          [{ "text": "▣ test-runner", "color": "warning", "bold": true }, "  Bash npm test ", { "text": "stalled 4m", "color": "warning" }, " ", { "button": "investigate" }],
+          ["  ", { "bar": 0.5, "width": 20, "color": "warning" }, " 39k · 5h 2% · wk 1%"],
+          [{ "text": "Finished", "bold": true }],
+          [{ "text": "▣ docs-scan", "color": "success" }, "  ✓ done in 1m 12s · 38k"]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/ice-lfernandes/claude-code-mods/82c3ab9c7fa0e92828cc51205b906a9a9b08b6b0/screenshots/agent-watch.svg",
+      "alt": "agent-watch: the /watch pane, the status line and its toasts",
+      "surface": "terminal"
+    }
+  ]
+}

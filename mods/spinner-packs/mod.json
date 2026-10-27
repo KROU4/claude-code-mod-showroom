@@ -1,0 +1,40 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "spinner-packs",
+  "title": "Spinner Packs",
+  "tagline": "Ten themed word packs for the spinner, from pirate to noir, with the closing line in the past tense.",
+  "tagline_ru": "Десять тематических наборов слов для индикатора работы, от пиратского до нуара; итог хода в прошедшем времени.",
+  "description": "Replaces the spinner's word with one from a themed pack for the whole turn, and the line that closes the turn uses the same word in the past tense (`Charting a course…` → `Charted a course for 51s`, terminal only). Packs of 27 words each: pirate, shakespeare, corporate, wizard, chef, space, noir, genz, zen and retro; `random` (the default) picks one per session, and the `custom` option takes your own words (`Frobbing|Frobbed`). `/spinner <pack>` switches mid-session and is remembered; `/spinner` lists the packs with samples. It only rewrites the word, so the glyph, timer and tokens stay, status texts such as compacting are left alone, and other mods on the same lines still apply.",
+  "description_ru": "Заменяет слово индикатора работы словом из тематического набора на весь ход, а строка, закрывающая ход, повторяет его в прошедшем времени (`Charting a course…` → `Charted a course for 51s`, только в терминале). Наборы по 27 слов: pirate, shakespeare, corporate, wizard, chef, space, noir, genz, zen и retro; `random` (по умолчанию) выбирает набор на сессию, а опция `custom` принимает ваши слова (`Frobbing|Frobbed`). `/spinner <набор>` переключает набор посреди сессии и запоминает выбор; `/spinner` показывает наборы с примерами. Меняется только слово, поэтому значок, таймер и счётчик токенов остаются, служебные надписи вроде сжатия контекста не трогаются, а другие моды на тех же строках продолжают работать.",
+  "author": { "name": "Amrit Preet Singh", "github": "Singh-AP", "url": "https://github.com/Singh-AP" },
+  "maintainers": ["Singh-AP"],
+  "category": "fun",
+  "tags": ["spinner", "verbs", "themes", "words"],
+  "license": "MIT",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Singh-AP/awesome-claude-mods/tree/HEAD/mods/fun/spinner-packs",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "Singh-AP/awesome-claude-mods",
+    "plugin": "spinner-packs",
+    "path": "mods/fun/spinner-packs"
+  },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "caption": "The pirate pack: the spinner's word while Claude works and the same word closing the turn.",
+    "caption_ru": "Пиратский набор: слово индикатора во время работы и то же слово в итоговой строке хода.",
+    "elements": [
+      { "slot": "spinner", "verb": "Charting a course" },
+      { "slot": "turn-duration", "text": "Charted a course for 51s" }
+    ]
+  }
+}

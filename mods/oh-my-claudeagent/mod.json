@@ -1,0 +1,59 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "oh-my-claudeagent",
+  "title": "Oh My ClaudeAgent",
+  "tagline": "Plans with you, hands tasks to specialist agents and won't call work done until it is verified.",
+  "tagline_ru": "Планирует вместе с вами, раздаёт задачи агентам-специалистам и не считает работу готовой без проверки.",
+  "description": "A full plugin with a mod. `/oh-my-claudeagent:plan` writes a reviewed plan; `start-work` hands each task to an executor, logs a verification after it and ticks the plan's boxes. Stop gates send a session back while tasks are unchecked or no final verification is logged. The mod draws a band with plan progress, the next task and proven counts, an `/omca` pane (plan board, agents, evidence, doctor), receipts on turn lines and a guard dialog that holds destructive shell commands. Needs bun: a local MCP server and its hooks read prompts and tool calls, run `git` and keep state in `.omca/`; the plugin makes its orchestrator the session's main agent. No network calls of its own.",
+  "description_ru": "Полноценный плагин с модом. `/oh-my-claudeagent:plan` пишет проверенный план; `start-work` передаёт каждую задачу исполнителю, после неё записывает проверку и отмечает пункты плана. Стоп-контроль возвращает сессию в работу, пока есть неотмеченные задачи или нет итоговой проверки. Мод рисует полосу с прогрессом плана, следующей задачей и счётчиками подтверждённых и неподтверждённых, панель `/omca` (доска плана, агенты с талисманами, журнал доказательств, диагностика), отметки в строках хода и окно защиты, которое задерживает разрушительные команды оболочки. Нужен bun: локальный MCP-сервер и его хуки настроек читают запросы и вызовы инструментов, запускают `git`, хранят состояние в `.omca/` проекта, а плагин делает своего оркестратора основным агентом сессии. Сам в сеть не ходит.",
+  "author": { "name": "UtsavBalar1231", "github": "UtsavBalar1231", "url": "https://github.com/UtsavBalar1231" },
+  "maintainers": ["UtsavBalar1231"],
+  "category": "productivity",
+  "tags": ["agents", "orchestration", "planning", "verification", "pane", "guard"],
+  "license": "MIT",
+  "version": "3.3.2",
+  "homepage": "https://github.com/UtsavBalar1231/oh-my-claudeagent",
+  "source": { "type": "marketplace", "marketplace": "UtsavBalar1231/oh-my-claudeagent", "plugin": "oh-my-claudeagent" },
+  "requires": { "claudeCode": ">=2.1.300" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": true
+  },
+  "preview": {
+    "scene": "coding",
+    "caption": "The plan band at 6 of 14 tasks with an unlogged test run, and the guard holding rm -rf build.",
+    "caption_ru": "Полоса плана на 6 из 14 задач с незаписанным прогоном тестов и защита, задержавшая rm -rf build.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [{ "text": "6/14", "bold": true }, " · next ", { "text": "7 Wire the order summary panel", "bold": true }, " · ", { "text": "6 proven", "color": "success" }, " · ", { "text": "just test not logged", "color": "warning" }],
+          [{ "button": "Log evidence", "hotkey": "1" }]
+        ]
+      },
+      {
+        "slot": "message",
+        "role": "note",
+        "markdown": "**OMCA guard:** OMCA held `rm -rf build` for review. It would remove the build directory with 4 entries.\n\n❯ Refuse  ·  Run it"
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/UtsavBalar1231/oh-my-claudeagent/181fe2fff42fe450dc4ade5ab9f9e65d168fbea2/.github/assets/band.png",
+      "alt": "The OMCA band above the prompt: 6/14, next task 7, 6 proven, and a warning that the evidence for just test was not logged",
+      "surface": "terminal"
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/UtsavBalar1231/oh-my-claudeagent/181fe2fff42fe450dc4ade5ab9f9e65d168fbea2/.github/assets/plan.png",
+      "alt": "The Plan tab of the OMCA pane: tasks grouped by milestone with state, proof and the agent working on each",
+      "surface": "terminal"
+    }
+  ]
+}

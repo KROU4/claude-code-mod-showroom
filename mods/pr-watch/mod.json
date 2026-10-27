@@ -1,0 +1,59 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "pr-watch",
+  "title": "PR Watch",
+  "tagline": "A live pane of the GitHub PRs a session opens or pushes to: CI, reviews, conflicts and merge.",
+  "tagline_ru": "Живая панель GitHub PR, которые сессия открыла или куда пушила: CI, ревью, конфликты и слияние.",
+  "description": "PRs Claude opens, pushes to, comments on or checks through `gh` or GitHub MCP tools get a card in a pane (or short lines above the prompt with `layout: band`): CI with the checks named, reviewers, unresolved threads, conflicts, whether it can merge, with a toast when the state changes or a review lands. One `gh api graphql` poller is shared by every session on the machine through files in its cache folder, and a meter shows each gh login's hourly budget. Buttons merge or set auto-merge after a confirm, post a comment, or draft Fix, Address or Resolve with Claude in the prompt. Runs `gh` with each login's own token. Seven themes; an update notice is on by default.",
+  "description_ru": "PR, которые Claude открывает, куда пушит, комментирует или проверяет через `gh` или MCP-инструменты GitHub, получают карточку в панели (или короткие строки над полем ввода при `layout: band`): CI с названиями проверок, ревьюеры, нерешённые обсуждения, конфликты, можно ли сливать; при смене состояния или новом ревью всплывает уведомление. Один опросчик `gh api graphql` общий для всех сессий на машине через файлы в его папке кэша, а шкала показывает часовой лимит каждого входа gh. Кнопки сливают PR или включают auto-merge после подтверждения, отправляют комментарий или вписывают в поле ввода просьбу Fix, Address или Resolve with Claude. `gh` запускается с токеном нужного входа. Семь тем оформления; уведомление о новой версии включено по умолчанию.",
+  "author": { "name": "eliraz-refael", "github": "ElirazKed", "url": "https://github.com/ElirazKed" },
+  "maintainers": ["ElirazKed"],
+  "category": "git",
+  "tags": ["github", "pull-requests", "ci", "reviews", "merge", "pane"],
+  "license": "MIT",
+  "version": "0.15.0",
+  "homepage": "https://github.com/ElirazKed/claude-code-pr-watch",
+  "source": { "type": "marketplace", "marketplace": "ElirazKed/claude-code-pr-watch", "plugin": "pr-watch" },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": true,
+    "processes": true,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "Claude opened a PR: its card follows CI in the pane, with the gh budget meter underneath.",
+    "caption_ru": "Claude открыл PR: карточка в панели следит за CI, внизу шкала лимита gh.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "pr-watch",
+        "width": "wide",
+        "rows": [
+          [{ "text": "╭──────────────────────────────────────────╮", "color": "warning" }],
+          [{ "text": "│", "color": "warning" }, { "text": " ● CI RUNNING", "color": "warning", "bold": true }, "                    acme/app ", { "text": "│", "color": "warning" }],
+          [{ "text": "│", "color": "warning" }, " #12 Retry uploads with exponential backoff", { "text": "│", "color": "warning" }],
+          [{ "text": "│", "color": "warning" }, { "text": " feat/retry → main  +120 −14  @octocat    ", "dim": true }, { "text": "│", "color": "warning" }],
+          [{ "text": "│", "color": "warning" }, " ", { "text": "✓ Open ━━━━", "color": "success" }, " ⠹ CI ┈┈┈┈ ○ Review ┈┈ ○ Merge   ", { "text": "│", "color": "warning" }],
+          [{ "text": "│", "color": "warning" }, " ", { "bar": 0.33, "width": 36, "color": "warning" }, " 1/3  ", { "text": "│", "color": "warning" }],
+          [{ "text": "│", "color": "warning" }, " Running build · 1 queued · 1/3 passed    ", { "text": "│", "color": "warning" }],
+          [{ "text": "╰──────────────────────────────────────────╯", "color": "warning" }],
+          [{ "text": "gh octocat ", "dim": true }, { "bar": 0.94, "width": 16, "color": "success" }, "  94% ↻42m   ?"]
+        ]
+      },
+      { "slot": "toast", "text": "✓ alice approved #12" }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/ElirazKed/claude-code-pr-watch/2bcb552dd0556495e58c91e94a594faa2316bd04/docs/screenshot.png",
+      "alt": "The pr-watch pane docked beside a Claude Code session, showing the repo's PR #1 just merged",
+      "surface": "terminal"
+    }
+  ]
+}

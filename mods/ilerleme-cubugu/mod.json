@@ -1,0 +1,49 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "ilerleme-cubugu",
+  "title": "İlerleme Çubuğu",
+  "tagline": "A progress bar above the prompt for Claude's task list or your PLAN.md, in Turkish.",
+  "tagline_ru": "Полоса прогресса над полем ввода по списку задач Claude или вашему PLAN.md, с текущим шагом (на турецком).",
+  "description": "Draws a bar such as `▓▓▓░░░░░ 3/8 · %38 · Şu an: <step>` above the prompt from one of two sources: Claude's own task list, or a plan file (`PLAN.md`, `.workflow/PLAN.md`, `.workflow/STATE.md` or `.workflow/plans/<folder>/PLAN.md`, with checkboxes, numbered steps or `- id: T1` items, and step states from a `PROGRESS.md` next to it). A plan's bar shows only in a session that mentions or touches those files. It names the running step, says how many run in parallel, or names the next one. Click the bar for the step list (✓ done, ● running, ○ waiting); it flashes `✓ Tamamlandı` when everything is done. `/ilerleme detay`, `gizle`, `goster`. It only reads plan files; the interface is in Turkish.",
+  "description_ru": "Рисует над полем ввода полосу вида `▓▓▓░░░░░ 3/8 · %38 · Şu an: <шаг>` по одному из двух источников: собственному списку задач Claude или файлу плана (`PLAN.md`, `.workflow/PLAN.md`, `.workflow/STATE.md` или `.workflow/plans/<папка>/PLAN.md` с чекбоксами, нумерованными шагами или пунктами `- id: T1`, а состояние шагов берётся из `PROGRESS.md` рядом). Полоса плана появляется только в сессии, где эти файлы упоминаются или используются. Она называет текущий шаг, число параллельных или следующий шаг. По щелчку раскрывается список шагов (✓ готово, ● идёт, ○ ждёт); когда всё готово, на миг появляется `✓ Tamamlandı`. `/ilerleme detay`, `gizle`, `goster`. Мод только читает файлы плана; интерфейс на турецком.",
+  "author": { "name": "Mustafa Dikmen", "github": "muctebadikmen", "url": "https://github.com/muctebadikmen" },
+  "maintainers": ["muctebadikmen"],
+  "category": "productivity",
+  "tags": ["progress", "plan", "tasks", "band", "turkish"],
+  "license": "MIT",
+  "version": "0.3.0",
+  "homepage": "https://github.com/muctebadikmen/claude-code-araclari/tree/HEAD/modlar/ilerleme-cubugu",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "muctebadikmen/claude-code-araclari",
+    "plugin": "ilerleme-cubugu",
+    "path": "modlar/ilerleme-cubugu"
+  },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "caption": "The bar while step 4 of an eight-step plan runs, opened to the step list.",
+    "caption_ru": "Полоса, пока идёт шаг 4 из восьми, с раскрытым списком шагов.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [{ "text": "▓▓▓░░░░░", "color": "claude" }, " 3/8 · %38 · Şu an: Ödeme formunu doğrula"],
+          [{ "text": "✓ Sepet modelini ekle", "dim": true }],
+          [{ "text": "✓ Ürün listesini bağla", "dim": true }],
+          [{ "text": "✓ Kupon kodlarını hesapla", "dim": true }],
+          [{ "text": "● Ödeme formunu doğrula", "bold": true }],
+          ["○ Sipariş özetini göster"]
+        ]
+      }
+    ]
+  }
+}

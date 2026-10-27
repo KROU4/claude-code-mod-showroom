@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "guard",
+  "title": "Guard",
+  "tagline": "Refuses destructive shell commands and secret files anywhere in a command, in Bash and PowerShell.",
+  "tagline_ru": "Не пускает разрушительные команды и чтение секретных файлов в любой части команды, в Bash и PowerShell.",
+  "description": "Checks every tool call before it runs. Compound commands are split and wrappers such as `sudo`, `env` and `VAR=1` are seen through, so `cd app && rm -rf ~` is caught: recursive force deletes of roots, home or the project, `git push --force`, `git reset --hard`, `git clean -f`, `chmod -R 777`, `mkfs`, `dd` to a device, `curl | sh` and a fork bomb. Secret files (`.env*`, keys, certificates, `.npmrc`, `.netrc`, cloud credentials) are refused to Read, Edit, Write, NotebookEdit, Grep and to shell commands that read, send or copy them, also through a symlink. PowerShell gets the same rules in its own syntax. Options add patterns and globs; `/guard` lists what it blocked, `/guard off` pauses it.",
+  "description_ru": "Проверяет каждый вызов инструмента до запуска. Составные команды разбираются по частям, обёртки вроде `sudo`, `env` и `VAR=1` не мешают, так что `cd app && rm -rf ~` тоже ловится: рекурсивное удаление корня, домашней папки или проекта, `git push --force`, `git reset --hard`, `git clean -f`, `chmod -R 777`, `mkfs`, `dd` на устройство, `curl | sh` и fork-бомба. Секретные файлы (`.env*`, ключи, сертификаты, `.npmrc`, `.netrc`, облачные учётные данные) закрыты для Read, Edit, Write, NotebookEdit, Grep и для команд, которые их читают, отправляют или копируют, в том числе через символическую ссылку. Для PowerShell те же правила в его синтаксисе. В настройках можно добавить шаблоны и маски; `/guard` показывает, что было заблокировано, `/guard off` ставит защиту на паузу.",
+  "author": { "name": "Stanislav Kozachenko", "github": "StanislavKozachenko", "url": "https://github.com/StanislavKozachenko" },
+  "maintainers": ["StanislavKozachenko"],
+  "category": "safety",
+  "tags": ["guardrails", "secrets", "bash", "powershell", "rm-rf", "force-push"],
+  "license": "MIT",
+  "version": "0.2.0",
+  "homepage": "https://github.com/StanislavKozachenko/claude-mods/tree/HEAD/plugins/guard",
+  "source": { "type": "marketplace", "marketplace": "StanislavKozachenko/claude-mods", "plugin": "guard", "path": "plugins/guard" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": true
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "A cleanup command with a home-folder delete hidden after && is refused, and the status row counts the blocks.",
+    "caption_ru": "Команда уборки, где после && спрятано удаление домашней папки, отклонена, а строка статуса считает блокировки.",
+    "elements": [
+      { "slot": "tool-deny", "tool": "Bash", "input": "cd build && rm -rf ~", "message": "guard blocked this (rm-rf): it force-deletes recursively. Delete specific files, or ask the user to run it." },
+      { "slot": "tool-deny", "tool": "Read", "input": ".env.production", "message": "guard blocked this (secret-file): it is a secret file (credentials, keys, environment). Work from an example file such as .env.example, or ask the user for the value you need." },
+      { "slot": "status", "text": "guard: 2 blocked" }
+    ]
+  }
+}

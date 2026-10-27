@@ -1,0 +1,59 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "pairs",
+  "title": "Pairs",
+  "tagline": "A memory game in a pane: sixteen face-down cards, eight pairs, fewest turns and fastest time kept.",
+  "tagline_ru": "Игра на память в боковой панели: шестнадцать карт рубашкой вверх, восемь пар, рекорды по ходам и времени.",
+  "description": "`/pairs` deals sixteen face-down cards in a 4×4 pane. Press a card's letter (or click it) to turn it, then find its twin; a miss turns back after a moment. Cards that are up sit on yellow, found pairs on green. The header shows turns, pairs found, a running clock that pauses when the pane closes, and your best turns and time. `r` deals a new game, `t` shows how to play. `/pairs new` and `/pairs stats` (games dealt, finished, fewest turns, fastest time). Zero tokens; the deal and records are kept in the plugin store.",
+  "description_ru": "`/pairs` раскладывает в панели 4×4 шестнадцать карт рубашкой вверх. Нажмите букву карты (или щёлкните по ней), чтобы открыть её, и найдите пару; если не совпало, карты через мгновение переворачиваются обратно. Открытые карты на жёлтом фоне, найденные пары на зелёном. В заголовке число ходов, найденные пары, часы, которые останавливаются при закрытии панели, и ваши лучшие ходы и время. `r` раздаёт заново, `t` показывает правила. Есть `/pairs new` и `/pairs stats` (сколько раздач, сколько доиграно, меньше всего ходов, лучшее время). Токены не тратятся; раздача и рекорды хранятся в хранилище плагина.",
+  "author": { "name": "Mohammed Mubarak", "github": "MDmubarak786", "url": "https://github.com/MDmubarak786" },
+  "maintainers": ["MDmubarak786"],
+  "category": "fun",
+  "tags": ["game", "memory", "pane", "zero-tokens"],
+  "license": "MIT",
+  "version": "0.1.1",
+  "homepage": "https://github.com/MDmubarak786/claude-mods/tree/HEAD/mods/pairs",
+  "source": { "type": "marketplace", "marketplace": "MDmubarak786/claude-mods", "plugin": "pairs", "path": "mods/pairs" },
+  "surfaces": ["terminal", "desktop"],
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "Two pairs found; the last two cards turned don't match and will flip back.",
+    "caption_ru": "Найдено две пары; две последние открытые карты не совпали и сейчас перевернутся.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "Pairs",
+        "width": "narrow",
+        "rows": [
+          [{ "text": "PAIRS", "bold": true }, "  turns 5  found 2/8  ", { "text": "time 0:41", "bold": true, "color": "warning" }],
+          [{ "text": "best 11 turns, 1:12 · game 3", "dim": true }],
+          [{ "text": "Not a pair. They turn back in a moment.", "color": "warning" }],
+          [" "],
+          ["  ", { "text": " @ ", "bg": "#2f6b3a", "bold": true }, "  ", { "text": " b ", "dim": true }, "  ", { "text": " c ", "dim": true }, "  ", { "text": " # ", "bg": "#2f6b3a", "bold": true }],
+          ["  ", { "text": " e ", "dim": true }, "  ", { "text": " * ", "bg": "#8a6d1f", "bold": true }, "  ", { "text": " g ", "dim": true }, "  ", { "text": " h ", "dim": true }],
+          ["  ", { "text": " @ ", "bg": "#2f6b3a", "bold": true }, "  ", { "text": " j ", "dim": true }, "  ", { "text": " k ", "dim": true }, "  ", { "text": " # ", "bg": "#2f6b3a", "bold": true }],
+          ["  ", { "text": " m ", "dim": true }, "  ", { "text": " + ", "bg": "#8a6d1f", "bold": true }, "  ", { "text": " o ", "dim": true }, "  ", { "text": " p ", "dim": true }],
+          [" "],
+          [{ "button": "New deal", "hotkey": "r" }, " ", { "button": "How to play", "hotkey": "t" }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/MDmubarak786/claude-mods/808996691ca39af660249d926053a836e63349cc/mods/pairs/screenshots/pairs.gif",
+      "alt": "Pairs in a Claude Code pane: cards turn by letter, a match stays up on green",
+      "surface": "terminal"
+    }
+  ]
+}

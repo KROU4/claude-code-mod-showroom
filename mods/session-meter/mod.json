@@ -1,0 +1,53 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "session-meter",
+  "title": "Session Meter",
+  "tagline": "A /ctx pane with context by category, usage limits and their pace, tool calls and model requests.",
+  "tagline_ru": "Панель /ctx: контекст по категориям, лимиты и темп их расхода, вызовы инструментов и запросы к модели.",
+  "description": "`/ctx` opens a Session pane (by itself in wide terminals; `autoOpen`): Context by category with the auto-compact point, its size over turns and the heaviest items; the 5-hour and 7-day Limits with time to reset and whether the pace lasts; the last tool calls with target and duration; each model request with tokens, cache hit and time. When a limit or the context (`contextAt`, 60%) crosses a threshold, the model gets one hidden note in your next prompt. With `contextAction` set to `compact` or `compact-or-clear`, Claude gets a `context_reset` tool: at a natural break the mod compacts, or clears after saving a handoff to `~/.claude/handoffs/`, and sends the next step.",
+  "description_ru": "`/ctx` открывает панель Session (в широком терминале сама; опция `autoOpen`): контекст по категориям с точкой автосжатия, его рост по ходам и самые тяжёлые элементы; лимиты на 5 часов и 7 дней со временем до сброса и прогнозом, хватит ли темпа; последние вызовы инструментов с целью и длительностью; каждый запрос к модели с токенами, попаданием в кэш и временем. Когда лимит или контекст (`contextAt`, 60%) пересекает порог, модель один раз получает скрытую заметку в вашем следующем сообщении. С `contextAction` = `compact` или `compact-or-clear` у Claude появляется инструмент `context_reset`: в удобный момент мод сжимает контекст или очищает его, сохранив передачу в `~/.claude/handoffs/`, и отправляет следующий шаг.",
+  "author": { "name": "Mehmet Aras", "github": "arasovic", "url": "https://github.com/arasovic" },
+  "maintainers": ["arasovic"],
+  "category": "insights",
+  "tags": ["context", "usage-limits", "pane", "requests", "compact", "cache"],
+  "license": "MIT",
+  "version": "0.4.26",
+  "homepage": "https://github.com/arasovic/claude-code-mods/tree/HEAD/session-meter",
+  "source": { "type": "github", "repo": "arasovic/claude-code-mods", "path": "session-meter", "sha": "3c3f25ee3a12b982fd63ee858297baab9385dd33" },
+  "capabilities": { "network": false, "processes": false, "filesystem": "write", "model": false, "promptRewrite": true, "blocksTools": false },
+  "preview": {
+    "surface": "terminal",
+    "scene": "coding",
+    "caption": "The Session pane: context by category, the 5h and 7d windows with their pace, recent tools and model requests.",
+    "caption_ru": "Панель Session: контекст по категориям, окна 5h и 7d с темпом, последние инструменты и запросы к модели.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "Session",
+        "width": "wide",
+        "rows": [
+          [{ "text": "ctx ", "dim": true }, { "text": "42%", "color": "success", "bold": true }, { "text": "   5h ", "dim": true }, { "text": "61%", "color": "warning", "bold": true }, { "text": "   7d ", "dim": true }, { "text": "23%", "color": "success", "bold": true }],
+          [{ "text": "╭─ Context ────────────────────────────────╮", "dim": true }],
+          [{ "text": "│ ", "dim": true }, { "text": "84k", "bold": true }, { "text": " of 200k", "dim": true }, "                        ", { "text": "42%", "color": "success", "bold": true }],
+          [{ "text": "│ ", "dim": true }, { "spark": [12, 18, 25, 31, 38, 44, 52, 61, 70, 84], "color": "suggestion" }, "  ", { "text": "+14k", "bold": true }, { "text": "  last turn", "dim": true }],
+          [{ "text": "╭─ Limits ─────────────────────────────────╮", "color": "warning", "dim": true }],
+          [{ "text": "│ ", "dim": true }, { "text": "5h ", "bold": true }, { "bar": 0.61, "width": 22, "color": "warning" }, { "text": "  61%", "color": "warning", "bold": true }],
+          [{ "text": "│    full in ~1h 40m at this pace", "color": "warning" }],
+          [{ "text": "╭─ Tools ──────────────────────────────────╮", "dim": true }],
+          [{ "text": "│ ", "dim": true }, { "text": "✓", "color": "success" }, { "text": " Edit    ", "bold": true }, { "text": "src/cart/total.ts", "dim": true }],
+          [{ "text": "│ ", "dim": true }, { "text": "◌", "color": "warning" }, { "text": " Bash    ", "bold": true }, { "text": "npm test", "dim": true }],
+          [{ "text": "╭─ Requests ─────────────── opus-5-5 ──────╮", "color": "success", "dim": true }],
+          [{ "text": "│ main        84k    1.2k    96%    6.1s", "dim": true }]
+        ]
+      },
+      { "slot": "background", "text": "Sends the model one hidden note when a limit or the context crosses its threshold" }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/arasovic/claude-code-mods/3c3f25ee3a12b982fd63ee858297baab9385dd33/docs/session-meter.png",
+      "alt": "The session-meter pane with context, limits, tools and requests"
+    }
+  ]
+}

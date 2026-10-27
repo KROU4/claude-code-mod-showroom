@@ -1,0 +1,52 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "jr-dictation",
+  "title": "jr dictation",
+  "tagline": "Fixes what dictation mishears (\"type script\" → TypeScript) before Claude reads your prompt.",
+  "tagline_ru": "Исправляет ошибки диктовки («type script» → TypeScript) до того, как Claude прочтёт запрос.",
+  "description": "For people who dictate prompts. Before a typed prompt is sent, the mod rewrites common speech-to-text mishears of developer words, whole words only: about 35 built in (`cloud code` → Claude Code, `type script` → TypeScript, `package json` → package.json, `dot env` → .env, `local host` → localhost, `c l i` → CLI…), plus your own pairs from `/config` or taught with `/jr-dictation add acme corp => ACME` (`remove`, `list`). Your prompt row then shows each fix: what was heard struck through in red, what Claude reads in green, and a count. Slash commands are never rewritten. Taught words live in the mod's store; reads no files, runs nothing, no network.",
+  "description_ru": "Для тех, кто надиктовывает запросы. Перед отправкой набранного запроса мод исправляет частые ошибки распознавания речи в словах разработчика, только целыми словами: около 35 встроенных (`cloud code` → Claude Code, `type script` → TypeScript, `package json` → package.json, `dot env` → .env, `local host` → localhost, `c l i` → CLI…) и ваши пары из `/config` или выученные через `/jr-dictation add acme corp => ACME` (`remove`, `list`). Строка вашего запроса показывает каждую правку: услышанное зачёркнуто красным, то, что прочтёт Claude, зелёным, и их число. Слеш-команды не трогаются. Выученные слова хранятся в хранилище мода; файлов не читает, ничего не запускает, в сеть не ходит.",
+  "author": { "name": "jrlprost", "github": "jrlprost", "url": "https://github.com/jrlprost" },
+  "maintainers": ["jrlprost"],
+  "category": "accessibility",
+  "tags": ["dictation", "voice", "speech-to-text", "prompt"],
+  "license": "MIT",
+  "version": "0.2.0",
+  "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-dictation",
+  "source": {
+    "type": "github",
+    "repo": "jrlprost/claude-code-mods",
+    "path": "plugins/jr-dictation",
+    "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+  },
+  "surfaces": ["terminal"],
+  "requires": { "claudeCode": ">=2.1.301" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "idle",
+    "caption": "A dictated prompt: three mishears fixed before Claude reads it, each fix shown in the prompt row.",
+    "caption_ru": "Надиктованный запрос: три ошибки исправлены до того, как его прочтёт Claude, каждая правка видна в строке запроса.",
+    "elements": [
+      {
+        "slot": "prompt-rewrite",
+        "before": "open the cloud md in cloud code and check the package json",
+        "after": "open the CLAUDE.md in Claude Code and check the package.json"
+      },
+      {
+        "slot": "message",
+        "role": "user",
+        "rows": [
+          [{ "text": "> ", "dim": true }, "open the ", { "text": "cloud md", "color": "#ef4565" }, { "text": "CLAUDE.md", "color": "#2cb67d" }, " in ", { "text": "cloud code", "color": "#ef4565" }, { "text": "Claude Code", "color": "#2cb67d" }, " and check the ", { "text": "package json", "color": "#ef4565" }, { "text": "package.json", "color": "#2cb67d" }],
+          [{ "text": "  ✎ ", "dim": true }, { "text": "dictation", "color": "#ff5ca8" }, { "text": " · 3 corrections · /jr-dictation add to teach a word", "dim": true }]
+        ]
+      }
+    ]
+  }
+}

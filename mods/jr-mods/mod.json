@@ -1,0 +1,51 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "jr-mods",
+  "title": "jr mods",
+  "tagline": "Every installed plugin and mod in one list: tick several on or off and apply them at once.",
+  "tagline_ru": "Все установленные плагины и моды одним списком: отметьте несколько и примените разом.",
+  "description": "`/jr-mods` runs `claude plugin list --json`, reads each installed plugin's `plugin.json` and `hooks/hooks.json` for its description and whether it is a mod, and opens a list with a mods tab and a plugins tab. Arrows or j/k move, ←/→ switch tabs, space ticks, a/n tick all or none, Enter applies every change with `claude plugin enable` or `disable` and a toast says to run `/reload-plugins`. Clicks work too. The first session after install opens a welcome pane once listing what each installed jr mod shows and its command; `/jr-mods welcome` opens it again. No network.",
+  "description_ru": "`/jr-mods` запускает `claude plugin list --json`, читает у каждого установленного плагина `plugin.json` и `hooks/hooks.json` (описание и мод ли это) и открывает список с вкладками модов и плагинов. Стрелки или j/k двигают курсор, ←/→ переключают вкладку, пробел ставит отметку, a/n отмечают всё или ничего, Enter применяет все изменения через `claude plugin enable` или `disable`, а уведомление напоминает выполнить `/reload-plugins`. Работают и клики. В первой сессии после установки один раз открывается приветственная панель: что показывает каждый установленный jr-мод и его команда; `/jr-mods welcome` открывает её снова. В сеть не ходит.",
+  "author": { "name": "jrlprost", "github": "jrlprost", "url": "https://github.com/jrlprost" },
+  "maintainers": ["jrlprost"],
+  "category": "productivity",
+  "tags": ["plugins", "mods", "toggle", "manager"],
+  "license": "MIT",
+  "version": "0.3.0",
+  "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-mods",
+  "source": {
+    "type": "github",
+    "repo": "jrlprost/claude-code-mods",
+    "path": "plugins/jr-mods",
+    "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+  },
+  "surfaces": ["terminal"],
+  "requires": { "claudeCode": ">=2.1.301" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "idle",
+    "caption": "/jr-mods: tick plugins on or off, then Enter applies every change at once.",
+    "caption_ru": "/jr-mods: отметьте плагины, Enter применит все изменения разом.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "jr mods",
+        "width": "wide",
+        "rows": [
+          [{ "text": "jr mods", "bold": true, "color": "#ff5ca8" }, "   ", { "text": " mods 3 ", "bg": "#ff5ca8", "color": "#000000", "bold": true }, { "text": " plugins 22 ", "color": "#6b7089" }, { "text": "      2 on · 1 off", "color": "#6b7089" }],
+          [{ "text": "❯ ", "color": "#ff5ca8", "bold": true }, { "text": "◉ ", "color": "#2cb67d" }, { "text": "jr-context      ", "bold": true }, { "text": "The context window in one quiet row…", "color": "#6b7089" }],
+          [{ "text": "  " }, { "text": "◉ ", "color": "#2cb67d" }, "jr-limits       ", { "text": "Plan limits in one quiet row…", "color": "#6b7089" }],
+          [{ "text": "  " }, { "text": "○ ", "color": "#6b7089" }, { "text": "jr-badge        ", "color": "#ffb86b" }, { "text": "A coloured project badge…", "color": "#6b7089" }],
+          [{ "text": "←→", "color": "#ffb86b", "bold": true }, { "text": " mods/plugins  ", "color": "#6b7089" }, { "text": "space", "color": "#ffb86b", "bold": true }, { "text": " toggle  ", "color": "#6b7089" }, { "text": "enter", "color": "#ffb86b", "bold": true }, { "text": " apply 1 change  ", "color": "#6b7089" }, { "text": "esc", "color": "#ffb86b", "bold": true }, { "text": " close", "color": "#6b7089" }]
+        ]
+      }
+    ]
+  }
+}

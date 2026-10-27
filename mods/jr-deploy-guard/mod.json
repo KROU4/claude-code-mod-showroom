@@ -1,0 +1,48 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "jr-deploy-guard",
+  "title": "jr deploy guard",
+  "tagline": "Production deploys and pushes to main always come to you for a yes, whatever your rules allow.",
+  "tagline_ru": "Деплой в прод и пуш в main всегда ждут вашего «да», что бы ни разрешали правила.",
+  "description": "Checks every Bash call as its permission is decided. Production actions (`vercel --prod`, `netlify deploy --prod`, `fly deploy`, `firebase deploy`, `wrangler deploy`, `railway up`, `terraform apply`, `pulumi up`, kubectl or helm on a prod context, a push to main/master/prod/release or Heroku, and a bare `git push` on such a branch, found with `git branch --show-current`) are turned into a question naming what ships. Where nobody would be asked (auto or dontAsk mode, headless runs, an unknown mode) the command is refused and Claude is told to hand it to you as `! <command>`. Optional: no production deploys on Fridays unless the command carries `JR_FRIDAY_DEPLOY=yes`. No network.",
+  "description_ru": "Проверяет каждый вызов Bash в момент решения о разрешении. Действия, которые уходят в прод (`vercel --prod`, `netlify deploy --prod`, `fly deploy`, `firebase deploy`, `wrangler deploy`, `railway up`, `terraform apply`, `pulumi up`, kubectl или helm на прод-контексте, пуш в main/master/prod/release или Heroku и голый `git push` с такой ветки, определяемой через `git branch --show-current`), превращаются в вопрос с названием того, что выкатывается. Там, где спросить некого (режимы auto и dontAsk, запуск без интерфейса, неизвестный режим), команда отклоняется, и Claude просят передать её вам как `! <команда>`. По желанию: никаких деплоев в пятницу, если в команде нет `JR_FRIDAY_DEPLOY=yes`. В сеть не ходит.",
+  "author": { "name": "jrlprost", "github": "jrlprost", "url": "https://github.com/jrlprost" },
+  "maintainers": ["jrlprost"],
+  "category": "safety",
+  "tags": ["deploy", "permissions", "git-push", "production"],
+  "license": "MIT",
+  "version": "0.1.3",
+  "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-deploy-guard",
+  "source": {
+    "type": "github",
+    "repo": "jrlprost/claude-code-mods",
+    "path": "plugins/jr-deploy-guard",
+    "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+  },
+  "surfaces": ["terminal"],
+  "requires": { "claudeCode": ">=2.1.301" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": true
+  },
+  "preview": {
+    "transcript": [
+      { "role": "user", "text": "Ship the pricing page fix to production." },
+      { "role": "tool", "tool": "Bash", "input": "npm run build", "result": "Compiled successfully", "status": "done" }
+    ],
+    "caption": "In auto mode nobody would be asked, so the production deploy is refused and handed back to you.",
+    "caption_ru": "В режиме auto спросить некого, поэтому деплой в прод отклонён и возвращён вам.",
+    "elements": [
+      {
+        "slot": "tool-deny",
+        "tool": "Bash",
+        "input": "vercel deploy --prod",
+        "message": "jr-deploy-guard: Vercel production deploy, and in auto mode nobody is asked before it runs, so it is refused. Do not retry it: ask the person to run it themselves at the prompt with `! vercel deploy --prod`."
+      }
+    ]
+  }
+}

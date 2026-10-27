@@ -1,0 +1,58 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "bash-guard",
+  "title": "Bash Guard",
+  "tagline": "Blocks catastrophic shell commands and asks before risky ones, even with permissions bypassed.",
+  "tagline_ru": "Блокирует катастрофические команды оболочки и спрашивает перед рискованными, даже в режиме без разрешений.",
+  "description": "Sits on every Bash call, subagents included, below the permission system, so it holds in bypass mode. It parses the shell (quotes, `&&`/`;`/`|` chains, `$(…)`, `bash -c`, `eval`, `sudo`/`env`/`xargs` wrappers) rather than grepping text. Always blocked, with the reason sent to Claude: `rm -rf` on `/`, `~` or system folders, `mkfs`, `dd` to a disk, fork bombs, recursive `chmod` on system folders, `shutdown`, `gh repo delete` and similar. Asked first (refused when nobody can answer): force-push, `reset --hard`, `clean -f`, `curl … | sh`, `DROP TABLE`, `terraform destroy`, `kubectl delete`, `sudo`, `npm publish` and more. Add your own block/confirm regexes; `/bash-guard <command>` dry-runs one.",
+  "description_ru": "Перехватывает каждый вызов Bash, включая субагентов, ниже системы разрешений, поэтому работает и в режиме обхода разрешений. Разбирает синтаксис оболочки (кавычки, цепочки `&&`/`;`/`|`, `$(…)`, `bash -c`, `eval`, обёртки `sudo`/`env`/`xargs`), а не ищет подстроки. Всегда блокируются, с причиной для Claude: `rm -rf` по `/`, `~` или системным папкам, `mkfs`, `dd` на диск, fork-бомбы, рекурсивный `chmod` системных папок, `shutdown`, `gh repo delete` и подобное. Сначала спрашивают (а если ответить некому, отказывают): force-push, `reset --hard`, `clean -f`, `curl … | sh`, `DROP TABLE`, `terraform destroy`, `kubectl delete`, `sudo`, `npm publish` и другое. Можно добавить свои регулярные выражения для блокировки и подтверждения; `/bash-guard <команда>` проверяет команду без запуска.",
+  "author": { "name": "Amrit Preet Singh", "github": "Singh-AP", "url": "https://github.com/Singh-AP" },
+  "maintainers": ["Singh-AP"],
+  "category": "safety",
+  "tags": ["bash", "guardrails", "yolo", "destructive-commands", "confirm"],
+  "license": "MIT",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Singh-AP/awesome-claude-mods/tree/HEAD/mods/safety/bash-guard",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "Singh-AP/awesome-claude-mods",
+    "plugin": "bash-guard",
+    "path": "mods/safety/bash-guard"
+  },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": true
+  },
+  "preview": {
+    "scene": "coding",
+    "caption": "A catastrophic command is refused outright; a force-push to main is held for a yes.",
+    "caption_ru": "Катастрофическая команда отклоняется сразу; force-push в main ждёт вашего «да».",
+    "elements": [
+      {
+        "slot": "tool-deny",
+        "tool": "Bash",
+        "input": "rm -rf ~/",
+        "message": "bash-guard blocked this command because it recursively deletes ~/. Do not retry it or work around the guard; tell the user what you wanted to do and let them run it themselves if they mean it."
+      },
+      { "slot": "toast", "text": "bash-guard blocked: recursively deletes ~/" },
+      {
+        "slot": "message",
+        "role": "note",
+        "markdown": "**bash-guard:** this command force-pushes over a protected branch.\n\n`$ git push --force origin main`\n\nRun it?  ❯ 1. Run it  2. Block it"
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/Singh-AP/awesome-claude-mods/b82b96062224abc66f3509cff95731e9924c607e/assets/screens/bash-guard.svg",
+      "alt": "bash-guard in a Claude Code session refusing a destructive shell command",
+      "surface": "terminal"
+    }
+  ]
+}

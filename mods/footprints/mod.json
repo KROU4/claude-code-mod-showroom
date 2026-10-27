@@ -1,0 +1,56 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "footprints",
+  "title": "Footprints",
+  "tagline": "A live file tree in a pane that colors what Claude read, edited, created, deleted and committed.",
+  "tagline_ru": "Живое дерево файлов на панели: видно, что Claude прочитал, изменил, создал, удалил и закоммитил.",
+  "description": "`/footprints` opens a pane with the project's files (from `git ls-files`, or a folder walk outside git). Names Claude read with Read, Glob or Grep turn blue, edited ones amber (shimmering while the edit runs), committed ones green; new files are tagged, deleted ones struck through, and Bash changes are marked `(shell)` by comparing read-only `git status` before and after each call (paused if git is slow). The header counts `read 12 · edited 4 · new 1`, the status line shows `edited 4`, and `t` or `/footprints touched` folds away untouched folders. Reads only file names and modification times, never contents; no network.",
+  "description_ru": "`/footprints` открывает панель с файлами проекта (из `git ls-files`, а вне git — обходом папок). Файлы, которые Claude прочитал через Read, Glob или Grep, становятся синими, изменённые — янтарными (мерцают, пока идёт правка), закоммиченные — зелёными; новые помечаются, удалённые зачёркиваются, а изменения из Bash отмечаются `(shell)`: для этого до и после каждого вызова запускается `git status` только на чтение (если git медленный, отслеживание приостанавливается). В заголовке счётчики `read 12 · edited 4 · new 1`, в строке статуса — `edited 4`, а `t` или `/footprints touched` сворачивает нетронутые папки. Читает только имена и время изменения файлов, без содержимого; сеть не использует.",
+  "author": { "name": "modmyclaude", "github": "modmyclaude", "url": "https://github.com/modmyclaude" },
+  "maintainers": ["modmyclaude"],
+  "category": "insights",
+  "tags": ["file-tree", "pane", "git", "activity", "status"],
+  "license": "MIT",
+  "version": "0.1.2",
+  "homepage": "https://github.com/modmyclaude/claude-code-mods/tree/HEAD/mods/footprints",
+  "source": { "type": "marketplace", "marketplace": "modmyclaude/claude-code-mods", "plugin": "footprints", "path": "mods/footprints" },
+  "surfaces": ["terminal", "desktop"],
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "Mid-session: blue for read, amber for edited, green for committed, a new file and a shell change, untouched files folded.",
+    "caption_ru": "В середине сессии: синим прочитанное, янтарным изменённое, зелёным закоммиченное, новый файл и изменение из shell, нетронутые файлы свёрнуты.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "Footprints",
+        "width": "narrow",
+        "rows": [
+          [{ "text": "read 5", "color": "suggestion" }, { "text": " · ", "dim": true }, { "text": "edited 4", "color": "warning" }, { "text": " · ", "dim": true }, "new 1", { "text": " · ", "dim": true }, { "text": "committed 2", "color": "success" }],
+          [{ "text": "show all files", "bold": true }, "  ", { "text": "shop-app", "dim": true }],
+          [{ "text": "▾ ", "bold": true }, { "text": "src/", "bold": true }],
+          ["  ", { "text": "▾ ", "bold": true }, { "text": "cart/", "bold": true }],
+          ["      ", { "text": "discount.ts", "color": "warning" }, { "text": " new", "bold": true }],
+          ["      ", { "text": "total.ts", "color": "success" }],
+          ["      ", { "text": "+ 3 untouched files", "dim": true }],
+          ["    ", { "text": "checkout.ts", "color": "success" }],
+          ["    ", { "text": "config.ts", "color": "suggestion" }],
+          ["    ", { "text": "+ 6 untouched files", "dim": true }],
+          [{ "text": "▾ ", "bold": true }, { "text": "tests/", "bold": true }],
+          ["    ", { "text": "total.test.ts", "color": "warning" }, { "text": " (shell)", "dim": true }],
+          ["  ", { "text": "package.json", "color": "suggestion" }]
+        ]
+      },
+      { "slot": "status", "text": "edited 4" }
+    ]
+  }
+}

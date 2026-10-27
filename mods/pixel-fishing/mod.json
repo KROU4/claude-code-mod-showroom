@@ -1,0 +1,58 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "pixel-fishing",
+  "title": "Pixel Fishing",
+  "tagline": "An 8-bit angler in a side pane casts while Claude works and lands a fish when the answer arrives.",
+  "tagline_ru": "8-битный рыбак в боковой панели забрасывает спиннинг, пока Claude работает, и вываживает рыбу с ответом.",
+  "description": "A pane opens at session start with a pixel-art fishing scene. Send a prompt and the angler casts and works a lure; when Claude answers, the trip ends in a catch played out as hookset, fight, net, catch card and release, or in an empty line; an interrupted turn loses the fish. Longer turns raise the odds of rare and bigger fish. Pick a lake, coast or boat spot and one of six lures between turns, collect 18 species in a Dex with longest and heaviest records. Progress lives in the plugin's own store; no model calls, network, processes or files. The terminal shows a text status and tally; the scene needs a surface that draws Svg. `/pixel-fishing-demo` casts without a turn.",
+  "description_ru": "При старте сессии открывается панель с пиксельной рыбалкой. Отправьте запрос, и рыбак забрасывает приманку и ведёт её; когда Claude отвечает, рыбалка заканчивается уловом (подсечка, вываживание, подсачек, карточка улова и отпуск рыбы) или пустым забросом, а прерванный ход упускает рыбу. Чем дольше ход, тем выше шанс на редкую и крупную рыбу. Между ходами выбирайте место (озеро, берег моря или лодка) и одну из шести приманок, собирайте 18 видов в справочник с рекордами длины и веса. Прогресс хранится в собственном хранилище плагина; без вызовов модели, сети, процессов и файлов. В терминале видны текстовый статус и счёт улова, сама сцена рисуется там, где поддерживается Svg. `/pixel-fishing-demo` забрасывает без хода.",
+  "author": { "name": "s7788", "github": "s7788", "url": "https://github.com/s7788" },
+  "maintainers": ["s7788"],
+  "category": "fun",
+  "tags": ["game", "pixel-art", "8-bit", "fishing", "pane", "idle"],
+  "license": "MIT",
+  "version": "0.2.2",
+  "homepage": "https://github.com/s7788/pixel-fishing",
+  "source": { "type": "marketplace", "marketplace": "s7788/pixel-fishing", "plugin": "pixel-fishing" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "caption": "The pane in the terminal while Claude works: text status and catch tally (desktop draws the pixel-art scene instead).",
+    "caption_ru": "Панель в терминале, пока Claude работает: текстовый статус и счёт улова (в десктопе вместо них пиксельная сцена).",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "pixel-fishing",
+        "width": "wide",
+        "rows": [
+          [{ "text": "(this surface draws no Svg; fishing scene skipped)", "dim": true }],
+          [{ "text": "Fishing · Lake · Popper · 01:42", "bold": true }],
+          ["Shadow: large"],
+          ["Caught 7: Largemouth Bass×3 Topmouth Culter×2 Rainbow Trout×1 Peacock Bass×1"],
+          [{ "text": "Lure: Popper · pick after the turn", "dim": true }],
+          [{ "text": "Favors this lure: Striped Snakehead, Peacock Bass", "dim": true }],
+          [{ "text": "pixel-fishing v0.2.2", "dim": true }],
+          ["Dex ▾"],
+          ["★Peacock Bass longest 54.2 cm · heaviest 3.10 kg ×1 Lake"],
+          [" Largemouth Bass longest 41.7 cm · heaviest 1.45 kg ×3 Lake"],
+          [{ "text": "??? Coast", "dim": true }],
+          [{ "text": "Caught 7 / skunked 2 / lost 1", "dim": true }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/s7788/pixel-fishing/e66cc80284a04340553eadecbdc0d2d66c0d0260/docs/media/demo.gif",
+      "alt": "Pixel-art fishing trips at the lake, the coast and on a boat: casting, a fight, landing the fish, a catch card and the release"
+    }
+  ]
+}

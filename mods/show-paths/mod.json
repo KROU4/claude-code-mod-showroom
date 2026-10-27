@@ -1,0 +1,38 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "show-paths",
+  "title": "Show Paths",
+  "tagline": "Every Read, Edit, Write, Glob and Grep row in the transcript shows the path it touched.",
+  "tagline_ru": "В каждой строке Read, Edit, Write, Glob и Grep в переписке виден путь, с которым работал инструмент.",
+  "description": "Claude Code draws a tool row like `Read 1 file (ctrl+o to expand)`. show-paths keeps that row and adds, dimmed beside it, the file path relative to the project root (for Read, Edit, Write, MultiEdit and NotebookEdit) or the search pattern and folder (for Glob and Grep, such as `**/*.test.ts in src`). Long paths are cut from the start so the file name stays visible. It changes only what you see, not what Claude reads. `/show-paths off|on`, kept across sessions.",
+  "description_ru": "Claude Code рисует строку инструмента вроде `Read 1 file (ctrl+o to expand)`. show-paths оставляет её и добавляет рядом приглушённым цветом путь к файлу относительно корня проекта (для Read, Edit, Write, MultiEdit и NotebookEdit) или шаблон поиска и папку (для Glob и Grep, например `**/*.test.ts in src`). Длинный путь обрезается с начала, чтобы имя файла оставалось видно. Меняется только то, что видите вы, а не то, что читает Claude. `/show-paths off|on`, настройка сохраняется между сессиями.",
+  "author": { "name": "Mohammed Mubarak", "github": "MDmubarak786", "url": "https://github.com/MDmubarak786" },
+  "maintainers": ["MDmubarak786"],
+  "category": "interface",
+  "tags": ["tool-rows", "paths", "transcript"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/MDmubarak786/claude-mods/tree/HEAD/mods/show-paths",
+  "source": { "type": "marketplace", "marketplace": "MDmubarak786/claude-mods", "plugin": "show-paths", "path": "mods/show-paths" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Why does the checkout total ignore the discount?" }
+    ],
+    "caption": "Collapsed tool rows keep Claude Code's text and gain the path or pattern beside it.",
+    "caption_ru": "Свёрнутые строки инструментов сохраняют текст Claude Code, а рядом появляется путь или шаблон.",
+    "elements": [
+      { "slot": "tool-row", "tool": "Grep", "input": "discount", "row": ["Searched for 1 pattern  ", { "text": "discount in src", "dim": true }] },
+      { "slot": "tool-row", "tool": "Read", "input": "src/cart/total.ts", "row": ["Read 1 file (ctrl+o to expand)  ", { "text": "src/cart/total.ts", "dim": true }] },
+      { "slot": "tool-row", "tool": "Edit", "input": "src/cart/total.ts", "row": ["Updated 1 file  ", { "text": "src/cart/total.ts", "dim": true }] }
+    ]
+  }
+}

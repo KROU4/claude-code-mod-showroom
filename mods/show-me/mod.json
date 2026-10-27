@@ -1,0 +1,54 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "show-me",
+  "title": "Show Me",
+  "tagline": "Mermaid diagrams in an answer are drawn as pictures in a pane once the turn ends.",
+  "tagline_ru": "Диаграммы mermaid из ответа рисуются картинками в панели, как только ход заканчивается.",
+  "description": "When an answer holds ```mermaid fences, a Show me pane opens after the turn and draws each one as a PNG, rendered by `mmdc` (mermaid-cli, which you install; it launches a headless browser, the installed Chrome on macOS) into `$TMPDIR/show-me/<turn>/`. Its own turn folders older than a day are removed with `rm -rf`. The pane keeps the last 30 diagrams; `p`/`n` step through them, `o` opens the PNG with `open`, `x` or Esc closes. `/show-me <question>` sends your question asking for diagrams; `/show-me` reopens the pane. Pictures need a kitty-graphics terminal (Ghostty, kitty) or the desktop app; a failed render shows its error and source.",
+  "description_ru": "Если в ответе есть блоки ```mermaid, после хода открывается панель Show me и рисует каждый как PNG через `mmdc` (mermaid-cli, ставится отдельно; запускает браузер без окна, на macOS — установленный Chrome) в `$TMPDIR/show-me/<ход>/`. Свои папки ходов старше суток мод удаляет через `rm -rf`. Панель хранит последние 30 диаграмм; `p`/`n` листают их, `o` открывает PNG через `open`, `x` или Esc закрывают. `/show-me <вопрос>` отправляет вопрос с просьбой ответить диаграммами; `/show-me` снова открывает панель. Для картинок нужен терминал с графикой kitty (Ghostty, kitty) или десктопное приложение; при ошибке видны её текст и исходник.",
+  "author": { "name": "Mehmet Aras", "github": "arasovic", "url": "https://github.com/arasovic" },
+  "maintainers": ["arasovic"],
+  "category": "interface",
+  "tags": ["mermaid", "diagrams", "pane", "images", "mmdc"],
+  "license": "MIT",
+  "version": "0.4.7",
+  "homepage": "https://github.com/arasovic/claude-code-mods/tree/HEAD/show-me",
+  "source": { "type": "github", "repo": "arasovic/claude-code-mods", "path": "show-me", "sha": "3c3f25ee3a12b982fd63ee858297baab9385dd33" },
+  "capabilities": { "network": false, "processes": true, "filesystem": "write", "model": false, "promptRewrite": false, "blocksTools": false },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "How does a checkout request flow through the services?" },
+      { "role": "assistant", "text": "```mermaid\nflowchart LR\n  Cart --> Checkout --> Payments\n  Checkout --> Orders\n```\nThe cart hands off to checkout, which charges through payments and records the order." }
+    ],
+    "caption": "After the turn: the answer's mermaid flowchart drawn as a picture in the Show me pane, with keys to step and open.",
+    "caption_ru": "После хода: flowchart из ответа нарисован картинкой в панели Show me, с клавишами для листания и открытия.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "Show me",
+        "width": "wide",
+        "rows": [
+          [{ "text": "flowchart LR", "bold": true }, { "text": "  1/1 · this turn", "dim": true }],
+          [""],
+          [{ "text": "  ╭──────╮    ╭──────────╮    ╭──────────╮", "color": "claude" }],
+          [{ "text": "  │ Cart │ ─▶ │ Checkout │ ─▶ │ Payments │", "color": "claude" }],
+          [{ "text": "  ╰──────╯    ╰────┬─────╯    ╰──────────╯", "color": "claude" }],
+          [{ "text": "                   ▼", "color": "claude" }],
+          [{ "text": "              ╭────────╮", "color": "claude" }],
+          [{ "text": "              │ Orders │", "color": "claude" }],
+          [{ "text": "              ╰────────╯", "color": "claude" }],
+          [""],
+          [{ "button": "prev", "hotkey": "p" }, " ", { "button": "next", "hotkey": "n" }, " ", { "button": "open", "hotkey": "o" }, " ", { "button": "close", "hotkey": "x" }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/arasovic/claude-code-mods/3c3f25ee3a12b982fd63ee858297baab9385dd33/docs/show-me.png",
+      "alt": "The show-me pane drawing a flowchart from an answer, with keys to step through, open and close"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "cloakroom",
+  "title": "Cloakroom",
+  "tagline": "Secrets reach Claude as tickets; the real value comes back only in local edits and vetted commands.",
+  "tagline_ru": "Секреты доходят до Claude жетонами; настоящее значение вернётся только в локальных правках и командах.",
+  "description": "Learns the secret-named values in your project's `.env` files at session start and spots known key shapes (AWS, GitHub, Stripe, OpenAI, JWTs, private keys and more), then swaps them for tickets like `[secret:STRIPE_SECRET_KEY#k3x9qa]` in tool results, prompts, pastes, attachments, the system prompt, the stored transcript and agent messages. Tickets become real values again only in Write, Edit, NotebookEdit and Bash made of local file tools; another command carrying a secret (curl, ssh, `sh -c`, scripts) is refused and held in a red band until you press Allow once. `/cloakroom` lists tickets, `show` reveals one on your screen, `audit` scans old transcripts. Memory only, no network.",
+  "description_ru": "При старте сессии запоминает значения с «секретными» именами из `.env`-файлов проекта и узнаёт ключи известных форматов (AWS, GitHub, Stripe, OpenAI, JWT, приватные ключи), а затем заменяет их жетонами вида `[secret:STRIPE_SECRET_KEY#k3x9qa]` в результатах инструментов, запросах, вставках, вложениях, системном промпте, истории и сообщениях агентов. Настоящим значением жетон снова становится только в Write, Edit, NotebookEdit и Bash-командах из локальных файловых утилит; другая команда с секретом (curl, ssh, `sh -c`, скрипты) отклоняется и ждёт в красной полосе, пока вы не нажмёте Allow once. `/cloakroom` показывает жетоны, `show` открывает значение только вам, `audit` ищет утечки в прошлых историях. Только память, без записи на диск и сети.",
+  "author": { "name": "modmyclaude", "github": "modmyclaude", "url": "https://github.com/modmyclaude" },
+  "maintainers": ["modmyclaude"],
+  "category": "safety",
+  "tags": ["secrets", "redaction", "privacy", "api-keys", "env", "egress"],
+  "license": "MIT",
+  "version": "0.1.5",
+  "homepage": "https://github.com/modmyclaude/claude-code-mods/tree/HEAD/mods/cloakroom",
+  "source": { "type": "marketplace", "marketplace": "modmyclaude/claude-code-mods", "plugin": "cloakroom", "path": "mods/cloakroom" },
+  "surfaces": ["terminal", "desktop"],
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": true
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Check that the Stripe key in .env works." },
+      { "role": "tool", "tool": "Read", "input": ".env", "result": "STRIPE_SECRET_KEY=[secret:STRIPE_SECRET_KEY#k3x9qa]", "status": "done" }
+    ],
+    "caption": "Claude only sees a ticket; a command that would send the real key over the network is held for you.",
+    "caption_ru": "Claude видит только жетон; команда, которая отправила бы настоящий ключ по сети, ждёт вашего решения.",
+    "elements": [
+      {
+        "slot": "tool-deny",
+        "tool": "Bash",
+        "input": "curl https://api.stripe.com/v1/balance -u [secret:STRIPE_SECRET_KEY#k3x9qa]:",
+        "message": "cloakroom held this command: STRIPE_SECRET_KEY#k3x9qa would leave this machine via curl to api.stripe.com. The person decides in the red band above the prompt (Allow once or Deny); wait for them before running it again."
+      },
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [{ "text": "held: STRIPE_SECRET_KEY#k3x9qa was about to leave via curl to api.stripe.com", "color": "error", "bold": true }],
+          [{ "text": "Claude was told to wait. Allow once lets this exact command run one time.", "dim": true }],
+          [{ "button": "Deny", "hotkey": "d" }, " ", { "button": "Allow once" }]
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "cache-timer",
+  "title": "Cache Timer",
+  "tagline": "A countdown above the prompt to when the prompt cache expires, and what a cold cache will re-write.",
+  "tagline_ru": "Обратный отсчёт над полем ввода до истечения кэша промпта и сколько токенов перезапишет холодный кэш.",
+  "description": "After each main-conversation request a line above the prompt counts down the prompt cache's life: a green `● cache 54:12`, a yellow dot with `send soon` in the last fifth, and once it has expired a red `cache cold · next message re-writes 182k tokens`. The lifetime (5 minutes or 1 hour) is worked out like the engine does, from `FORCE_PROMPT_CACHING_5M`, `CLAUDE_CODE_PROMPT_CACHE_TTL`, the `promptCacheTtl` setting, `ENABLE_PROMPT_CACHING_1H` and whether you are on a subscription within its limits (the last limits are kept in the plugin store). Subagent requests do not count; `/clear` and compactions clear the line. Nothing leaves the machine.",
+  "description_ru": "После каждого запроса основного диалога строка над полем ввода отсчитывает жизнь кэша промпта: зелёное `● cache 54:12`, жёлтая точка с `send soon` в последней пятой части срока, а после истечения — красное `cache cold · next message re-writes 182k tokens`. Срок жизни (5 минут или час) определяется так же, как в самом движке: по `FORCE_PROMPT_CACHING_5M`, `CLAUDE_CODE_PROMPT_CACHE_TTL`, настройке `promptCacheTtl`, `ENABLE_PROMPT_CACHING_1H` и тому, есть ли подписка в пределах лимитов (последние лимиты хранятся в хранилище плагина). Запросы субагентов не учитываются; `/clear` и сжатие контекста сбрасывают строку. Ничего не уходит с компьютера.",
+  "author": { "name": "Mehmet Aras", "github": "arasovic", "url": "https://github.com/arasovic" },
+  "maintainers": ["arasovic"],
+  "category": "insights",
+  "tags": ["prompt-cache", "cache", "countdown", "cost", "ttl"],
+  "license": "MIT",
+  "version": "0.1.4",
+  "homepage": "https://github.com/arasovic/claude-code-mods/tree/HEAD/cache-timer",
+  "source": { "type": "github", "repo": "arasovic/claude-code-mods", "path": "cache-timer", "sha": "3c3f25ee3a12b982fd63ee858297baab9385dd33" },
+  "capabilities": { "network": false, "processes": false, "filesystem": "none", "model": false, "promptRewrite": false, "blocksTools": false },
+  "preview": {
+    "surface": "terminal",
+    "scene": "coding",
+    "caption": "Warm cache: time left counts down above the prompt; it turns yellow near the end and red once the cache is cold.",
+    "caption_ru": "Кэш тёплый: над полем ввода идёт обратный отсчёт; к концу строка желтеет, а когда кэш остыл, краснеет.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [{ "text": "●", "color": "success" }, " ", { "text": "cache", "dim": true }, " ", { "text": "54:12", "bold": true }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/arasovic/claude-code-mods/3c3f25ee3a12b982fd63ee858297baab9385dd33/docs/cache-timer.png",
+      "alt": "cache-timer's line above the prompt with the time left on the prompt cache"
+    }
+  ]
+}

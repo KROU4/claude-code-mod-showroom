@@ -1,0 +1,78 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "prompt-polish",
+  "title": "Prompt Polish",
+  "tagline": "Rewrites your prompt with a prompting guide for the session's model, and asks before it is sent.",
+  "tagline_ru": "Переписывает запрос по гайду для модели сессии и спрашивает, какой вариант отправить.",
+  "description": "With AUTO on (the default), a prompt of 20+ characters typed in the prompt box is first rewritten by a separate model call (sonnet at low effort unless you change it) using a guide for the session's model (Opus 5.5, Sonnet 5.5, GPT-6 Astra or GPT-5.6). A question dialog then offers Apply Polish, Keep Original or Retry Polish, and only your choice is sent. The call is given the project's file list, CLAUDE.md, manifests, the start of files the prompt names (secrets skipped) and the last answer. The `/p_polish` pane, or a band in the desktop app, polishes on demand with undo, versions and history. Opt-in extras carry notes from an earlier session over after a yes.",
+  "description_ru": "Когда включён AUTO (по умолчанию), запрос длиннее 20 символов, набранный в поле ввода, сначала переписывается отдельным вызовом модели (sonnet с низким усилием, если не поменять) по гайду для модели сессии (Opus 5.5, Sonnet 5.5, GPT-6 Astra или GPT-5.6). Затем диалог предлагает Apply Polish, Keep Original или Retry Polish, и отправляется только выбранный вариант. Вызову передаются список файлов проекта, CLAUDE.md, манифесты, начало упомянутых в запросе файлов (секреты пропускаются) и последний ответ. Панель `/p_polish` или полоса в десктопном приложении шлифуют запрос по кнопке, с отменой, версиями и историей. Дополнительно, по желанию, можно после подтверждения перенести заметки из прошлой сессии.",
+  "author": { "name": "jheroorehj", "github": "jheroorehj", "url": "https://github.com/jheroorehj" },
+  "maintainers": ["jheroorehj"],
+  "category": "productivity",
+  "tags": ["prompts", "rewrite", "prompt-engineering", "pane", "band", "handoff"],
+  "license": "MIT",
+  "version": "0.10.1",
+  "homepage": "https://github.com/jheroorehj/prompt-polish",
+  "source": { "type": "marketplace", "marketplace": "jheroorehj/prompt-polish", "plugin": "prompt-polish" },
+  "surfaces": ["terminal", "desktop"],
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "read",
+    "model": true,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "the login thing is broken again after yesterday, can you fix it and make sure it works" }
+    ],
+    "caption": "AUTO ON: the prompt is polished first, a question offers Apply Polish, Keep Original or Retry Polish, and the chosen text is sent.",
+    "caption_ru": "AUTO ON: запрос сначала шлифуется, вопрос предлагает Apply Polish, Keep Original или Retry Polish, и уходит выбранный текст.",
+    "elements": [
+      {
+        "slot": "prompt-rewrite",
+        "before": "the login thing is broken again after yesterday, can you fix it and make sure it works",
+        "after": "Login fails again since yesterday's changes. Find the cause in src/auth/login.ts and fix it. Done when npm test passes and signing in with a valid account works."
+      },
+      {
+        "slot": "pane",
+        "title": "Prompt Polish",
+        "width": "wide",
+        "rows": [
+          [{ "text": "Reference : Opus 5.5 Guide", "color": "claude" }, "          ", { "text": "Review", "color": "suggestion" }],
+          [{ "text": "AUTO ON", "color": "success", "bold": true }, "  Session Model : claude-opus-5-5 (Detected)"],
+          [{ "text": "Polish Model : sonnet (low)", "dim": true }],
+          [" "],
+          [{ "text": "Original Prompt", "bold": true }, { "text": "  86 chars", "dim": true }],
+          [{ "text": "the login thing is broken again after yesterday, can you fix…", "dim": true }],
+          [{ "text": "Polished Prompt", "bold": true }, { "text": "  161 chars", "dim": true }],
+          ["Login fails again since yesterday's changes. Find the cause…"],
+          [" "],
+          [{ "button": "Apply Polish", "variant": "primary", "hotkey": "y" }, " ", { "button": "Retry Polish", "hotkey": "r" }, " ", { "button": "Keep Original", "hotkey": "x" }],
+          [{ "text": "Keys · History  Polished 14:02:11", "dim": true }]
+        ]
+      },
+      {
+        "slot": "background",
+        "text": "The polish is one text-only model call outside the conversation; only the text you choose is sent."
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/jheroorehj/prompt-polish/bbe09aaf7fb8b65d98ac96cf4019b6b0e8756113/docs/images/hero.svg",
+      "alt": "The terminal pane: a prompt is polished, Original and Polished Prompt are shown side by side, Apply Polish fills the prompt box",
+      "surface": "terminal"
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/jheroorehj/prompt-polish/bbe09aaf7fb8b65d98ac96cf4019b6b0e8756113/docs/images/desktop-auto.svg",
+      "alt": "Desktop app with AUTO ON: the band shows Polishing, then a question with the polished text and Apply Polish, Keep Original, Retry Polish",
+      "surface": "desktop"
+    }
+  ]
+}

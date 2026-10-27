@@ -1,0 +1,47 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "editor-context",
+  "title": "Editor Context",
+  "tagline": "Your Cursor or VS Code file and selection above the prompt, sent to Claude with every message.",
+  "tagline_ru": "Файл и выделение из Cursor или VS Code над полем ввода, которые уходят Claude с каждым сообщением.",
+  "description": "For the desktop app, which lacks the terminal's `/ide` selection. The mod finds Node 22+ (trying login shells for nvm-style installs) and starts a small Node helper that reads `~/.claude/ide/*.lock`, connects with its auth token to the Claude Code extension's local websocket in Cursor or VS Code, and shares that link between sessions over a Unix socket in the temp folder. An Editor tab above the prompt shows the file and line range; each message you send carries the file path, the selected code, up to 10 pinned selections and an unsaved-changes note as context, with a Sent with chip above it. Click the tab, or start the first message with `++`, to turn it on.",
+  "description_ru": "Для десктопного приложения, которое не получает выделение из редактора так, как терминал через `/ide`. Мод находит Node 22+ (заглядывая в login-оболочки ради установок вроде nvm) и запускает небольшой помощник на Node: тот читает `~/.claude/ide/*.lock`, подключается с токеном к локальному websocket расширения Claude Code в Cursor или VS Code и делит это соединение между сессиями через Unix-сокет во временной папке. Вкладка Editor над полем ввода показывает файл и диапазон строк; каждое ваше сообщение несёт как контекст путь к файлу, выделенный код, до 10 закреплённых фрагментов и пометку о несохранённых изменениях, а над пузырём сообщения появляется плашка «Sent with». Включается кликом по вкладке или `++` в начале первого сообщения.",
+  "author": { "name": "Tal Barina", "github": "talbarina", "url": "https://github.com/talbarina" },
+  "maintainers": ["talbarina"],
+  "category": "integrations",
+  "tags": ["vscode", "cursor", "editor", "selection", "context"],
+  "license": "MIT",
+  "version": "1.8.1",
+  "homepage": "https://github.com/talbarina/claude-editor-context/tree/HEAD/plugins/editor-context",
+  "source": { "type": "marketplace", "marketplace": "talbarina/claude-editor-context", "plugin": "editor-context", "path": "plugins/editor-context" },
+  "surfaces": ["desktop"],
+  "capabilities": {
+    "network": true,
+    "processes": true,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "desktop",
+    "scene": "coding",
+    "caption": "The Editor tab with the selected lines; the next message carries them to Claude.",
+    "caption_ru": "Вкладка Editor с выделенными строками; следующее сообщение передаст их Claude.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [[{ "text": "● ", "color": "#D97757" }, { "text": "Editor", "bold": true }, { "text": "  parser.ts · L42–58", "dim": true }]]
+      },
+      { "slot": "background", "text": "Sends with each message: \"The user has lines 42-58 of src/parser.ts selected in Cursor\" and the selected code." }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/talbarina/claude-editor-context/4d45eeb2e34cb6ba5d34053d6e1a209f17fb66c8/assets/demo.gif",
+      "alt": "Selecting lines in the editor updates the Editor tab above the prompt in the desktop app, and the message goes with them",
+      "surface": "desktop"
+    }
+  ]
+}

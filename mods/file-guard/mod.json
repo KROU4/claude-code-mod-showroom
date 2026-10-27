@@ -1,0 +1,49 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "file-guard",
+  "title": "File Guard",
+  "tagline": "Keeps Claude's file edits inside the project; lockfiles, CI, migrations and secrets ask first.",
+  "tagline_ru": "Держит правки Claude внутри проекта; lock-файлы, CI, миграции и секреты требуют подтверждения.",
+  "description": "Checks every Read, Edit, Write, MultiEdit and NotebookEdit call, subagents included, below the permission system. Each path is resolved first (`..` and symlinks, via `$.fs.stat`); a write outside the project root is refused, except temp folders, Claude's memory, plan and todo folders under `~/.claude` (never `settings.json`) and your `extraRoots`. Nothing writes into `.git/`. Files matching `protect` (CI workflows, migrations, lockfiles, `.env*` but not `.env.example`, keys) ask Allow once / Allow for the session / Block; with nobody to ask they are refused. Deny messages tell Claude to ask you instead. `fenceReads` also fences Read. POSIX paths only; Bash is not covered.",
+  "description_ru": "Проверяет каждый вызов Read, Edit, Write, MultiEdit и NotebookEdit, включая субагентов, ниже системы разрешений. Сначала путь разворачивается (`..`, относительные пути и символические ссылки, через `$.fs.stat`), и запись за пределами корня проекта отклоняется; исключения — временные папки, собственные папки Claude для памяти, планов и задач в `~/.claude` (но не `settings.json`) и папки из `extraRoots`. В `.git/` ничего не пишется. Для файлов из `protect` (CI-процессы, миграции, lock-файлы, `.env*`, но не `.env.example`, ключи) мод спрашивает: разрешить один раз, на сессию или запретить; если спросить некого, отказывает. Сообщение об отказе просит Claude обратиться к вам. `fenceReads` ограничивает и чтение. Только POSIX-пути; Bash не покрывается.",
+  "author": { "name": "Amrit Preet Singh", "github": "Singh-AP", "url": "https://github.com/Singh-AP" },
+  "maintainers": ["Singh-AP"],
+  "category": "safety",
+  "tags": ["files", "sandbox", "guardrails", "yolo", "symlinks"],
+  "license": "MIT",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Singh-AP/awesome-claude-mods/tree/HEAD/mods/safety/file-guard",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "Singh-AP/awesome-claude-mods",
+    "plugin": "file-guard",
+    "path": "mods/safety/file-guard"
+  },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": true
+  },
+  "preview": {
+    "scene": "coding",
+    "caption": "A write to ~/.zshrc is refused; an edit to a CI workflow asks first.",
+    "caption_ru": "Запись в ~/.zshrc отклонена; правка CI-процесса сначала спрашивает разрешение.",
+    "elements": [
+      {
+        "slot": "tool-deny",
+        "tool": "Write",
+        "input": "/Users/me/.zshrc",
+        "message": "file-guard refused to change this file: ~/.zshrc is outside this project (~/code/shop). Keep your work inside the project. If this file really has to be touched, tell the user why and let them do it, or ask them to add the folder to file-guard's extraRoots option."
+      },
+      {
+        "slot": "message",
+        "role": "note",
+        "markdown": "**file-guard:** .github/workflows/deploy.yml is protected (matches .github/workflows/**).\n\nAllow this change?  ❯ 1. Allow once  2. Allow this file for the session  3. Block it"
+      }
+    ]
+  }
+}

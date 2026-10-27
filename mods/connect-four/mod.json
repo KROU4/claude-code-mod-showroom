@@ -1,0 +1,62 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "connect-four",
+  "title": "Connect Four",
+  "tagline": "Connect Four against Claude in a pane, at three levels from beatable to a seven-move lookahead.",
+  "tagline_ru": "«Четыре в ряд» против Claude в боковой панели: три уровня, от простого до просчёта на семь ходов.",
+  "description": "`/connect-four` opens a pane with a 7×6 board. Press a column's digit (1-7) to drop your disc; Claude answers half a second later with a local search, no model call: easy is beatable, normal takes wins and blocks yours, hard looks seven moves ahead. Your discs are green, Claude's in Claude's color, the winning four in the accent color. `n` new game, `u` undo, `s` swap sides, `l` level, `h` help. `/connect-four level hard`, `/connect-four as o` and `/connect-four stats` (wins, losses, draws). Zero tokens; the game and record are kept in the plugin store.",
+  "description_ru": "`/connect-four` открывает панель с полем 7×6. Нажмите цифру столбца (1–7), чтобы бросить фишку; через полсекунды Claude отвечает локальным перебором, без обращения к модели: на лёгком уровне его можно обыграть, на среднем он забирает выигрыши и блокирует ваши, на сложном просчитывает на семь ходов вперёд. Ваши фишки зелёные, фишки Claude в его фирменном цвете, выигрышная четвёрка в акцентном. `n` новая партия, `u` отмена хода, `s` смена стороны, `l` уровень, `h` справка. Есть `/connect-four level hard`, `/connect-four as o` и `/connect-four stats` (победы, поражения, ничьи). Токены не тратятся; партия и счёт хранятся в хранилище плагина.",
+  "author": { "name": "Mohammed Mubarak", "github": "MDmubarak786", "url": "https://github.com/MDmubarak786" },
+  "maintainers": ["MDmubarak786"],
+  "category": "fun",
+  "tags": ["game", "connect-four", "pane", "zero-tokens"],
+  "license": "MIT",
+  "version": "0.1.1",
+  "homepage": "https://github.com/MDmubarak786/claude-mods/tree/HEAD/mods/connect-four",
+  "source": { "type": "marketplace", "marketplace": "MDmubarak786/claude-mods", "plugin": "connect-four", "path": "mods/connect-four" },
+  "surfaces": ["terminal", "desktop"],
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "Claude just dropped in column 4 and threatens a vertical four; your move.",
+    "caption_ru": "Claude только что сходил в четвёртый столбец и грозит вертикальной четвёркой; ваш ход.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "Connect Four",
+        "width": "wide",
+        "rows": [
+          [{ "text": "CONNECT FOUR", "bold": true }, "  you X · Claude O  level normal"],
+          [{ "text": "you 1 · Claude 0 · draws 0", "dim": true }],
+          ["Claude dropped in column 4. Your move."],
+          [" "],
+          ["  1    2    3    4    5    6    7"],
+          [{ "text": "  .    .    .    .    .    .    .", "dim": true }],
+          [{ "text": "  .    .    .    .    .    .    .", "dim": true }],
+          [{ "text": "  .    .    .    .    .    .    .", "dim": true }],
+          [{ "text": "  .    .    .  ", "dim": true }, { "text": "  O", "color": "claude", "bold": true }, { "text": "    .    .    .", "dim": true }],
+          [{ "text": "  .    .  ", "dim": true }, { "text": "  X", "color": "success" }, { "text": "    O", "color": "claude" }, { "text": "    .    .    .", "dim": true }],
+          [{ "text": "  .  ", "dim": true }, { "text": "  X    X", "color": "success" }, { "text": "    O", "color": "claude" }, { "text": "    X", "color": "success" }, { "text": "    O", "color": "claude" }, { "text": "    .", "dim": true }],
+          [" "],
+          [{ "button": "New game", "hotkey": "n" }, " ", { "button": "Undo", "hotkey": "u" }, " ", { "button": "Play O", "hotkey": "s" }, " ", { "button": "Level: normal", "hotkey": "l" }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/MDmubarak786/claude-mods/808996691ca39af660249d926053a836e63349cc/mods/connect-four/screenshots/connect-four.gif",
+      "alt": "Connect Four against Claude in a pane: discs drop by column digit and Claude answers",
+      "surface": "terminal"
+    }
+  ]
+}

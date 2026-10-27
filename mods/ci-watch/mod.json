@@ -1,0 +1,45 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "ci-watch",
+  "title": "CI Watch",
+  "tagline": "GitHub Actions runs above the prompt after Claude pushes or opens a PR, until they pass or fail.",
+  "tagline_ru": "После push или PR от Claude запуски GitHub Actions видны над полем ввода с полосой, затем успех или провал.",
+  "description": "When a Bash call by Claude pushes a branch, pushes a tag or opens a PR in the session's repo (one with `.github/workflows`), a band above the prompt shows each workflow run: `⟳ push main · CI ████████░░░░ 1m10s / ~2m45s`, the bar measured against the workflow's last successful run. It polls `gh run list` every 10 seconds for up to an hour, then shows `✓ … passed` or `✗ … failure` in green or red, also as a toast, until your next prompt. A push and the PR on that branch share one row. With the `scheduled` option it also lists workflows whose latest scheduled run failed in the last 14 days, with Dismiss. Needs `gh` logged in; it runs `gh` and `git`.",
+  "description_ru": "Когда Claude через Bash пушит ветку или тег или открывает PR в репозитории сессии (где есть `.github/workflows`), над полем ввода появляется полоса с каждым запуском workflow: `⟳ push main · CI ████████░░░░ 1m10s / ~2m45s`, где полоса считается от длительности последнего успешного запуска. Мод опрашивает `gh run list` каждые 10 секунд до часа, затем показывает `✓ … passed` или `✗ … failure` зелёным или красным и всплывающим уведомлением — до вашего следующего сообщения. Push и PR той же ветки идут одной строкой. С опцией `scheduled` при старте показывает workflow, чей последний запуск по расписанию за 14 дней упал, с кнопкой Dismiss. Нужен `gh` с входом в аккаунт; мод запускает `gh` и `git`.",
+  "author": { "name": "Mehmet Aras", "github": "arasovic", "url": "https://github.com/arasovic" },
+  "maintainers": ["arasovic"],
+  "category": "git",
+  "tags": ["ci", "github-actions", "gh", "push", "pull-request"],
+  "license": "MIT",
+  "version": "0.1.4",
+  "homepage": "https://github.com/arasovic/claude-code-mods/tree/HEAD/ci-watch",
+  "source": { "type": "github", "repo": "arasovic/claude-code-mods", "path": "ci-watch", "sha": "3c3f25ee3a12b982fd63ee858297baab9385dd33" },
+  "capabilities": { "network": true, "processes": true, "filesystem": "read", "model": false, "promptRewrite": false, "blocksTools": false },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Commit the discount fix and push it." },
+      { "role": "tool", "tool": "Bash", "input": "git commit -am \"Apply percentage discounts\" && git push", "result": "main -> main", "status": "done" },
+      { "role": "assistant", "text": "Committed and pushed to main." }
+    ],
+    "caption": "After a push: one row per running workflow with a progress bar against its last successful run.",
+    "caption_ru": "После push: по строке на каждый идущий workflow с полосой относительно его последнего успешного запуска.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          ["⟳ push main · CI ████████░░░░░░░░░░░░ 1m10s / ~2m45s"],
+          ["⟳ push main · Lint ███████████████░░░░░ 0m48s / ~1m02s"]
+        ]
+      },
+      { "slot": "toast", "text": "✓ push main: CI, Lint passed" }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/arasovic/claude-code-mods/3c3f25ee3a12b982fd63ee858297baab9385dd33/docs/ci-watch.png",
+      "alt": "A CI run with its progress bar above the prompt, then the passed result"
+    }
+  ]
+}

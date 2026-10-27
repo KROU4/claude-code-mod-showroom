@@ -1,0 +1,54 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "files-touched",
+  "title": "Files Touched",
+  "tagline": "Every file Claude changed this session in a band above the prompt, with +/− counts and @mentions.",
+  "tagline_ru": "Все файлы, которые Claude изменил за сессию, в полосе над полем ввода, со счётчиками +/− и @-ссылками.",
+  "description": "Keeps a ledger of every successful Edit, Write and NotebookEdit: which files, how many edits, lines added and removed (read from the tool's own patch). In a git repository it also runs `git status`, `hash-object` and `diff --numstat` around each Bash command, so heredocs, `sed -i` and formatters show up marked `(bash)`. A dim band above the prompt lists the newest files; `/touched` prints a table, `/touched pane` opens a pane where pressing a file (or 1-9) inserts `@path` into your prompt, and `/touched copy` copies the paths. The list resets on `/clear`.",
+  "description_ru": "Ведёт учёт всех успешных Edit, Write и NotebookEdit: какие файлы, сколько правок, сколько строк добавлено и удалено (по патчу самого инструмента). В git-репозитории вокруг каждой команды Bash он запускает `git status`, `hash-object` и `diff --numstat`, так что heredoc, `sed -i` и форматтеры тоже попадают в список с пометкой `(bash)`. Тусклая полоса над полем ввода показывает последние файлы; `/touched` выводит таблицу, `/touched pane` открывает панель, где нажатие на файл (или 1–9) вставляет `@путь` в запрос, а `/touched copy` копирует пути. Список сбрасывается по `/clear`.",
+  "author": { "name": "Amrit Preet Singh", "github": "Singh-AP", "url": "https://github.com/Singh-AP" },
+  "maintainers": ["Singh-AP"],
+  "category": "insights",
+  "tags": ["files", "diff", "changes", "git", "mentions", "pane"],
+  "license": "MIT",
+  "version": "1.1.0",
+  "homepage": "https://github.com/Singh-AP/awesome-claude-mods/tree/HEAD/mods/awareness/files-touched",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "Singh-AP/awesome-claude-mods",
+    "plugin": "files-touched",
+    "path": "mods/awareness/files-touched"
+  },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "caption": "The band above the prompt and the /touched pane: press a file to drop its @path into the prompt.",
+    "caption_ru": "Полоса над полем ввода и панель /touched: нажмите на файл, и его @путь появится в запросе.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [[{ "text": "✎ 4 files · register.ts +12 −3 · README.md +40 · a/index.ts +2 · +1 more", "dim": true }]]
+      },
+      {
+        "slot": "pane",
+        "title": "Files touched",
+        "width": "narrow",
+        "rows": [
+          [{ "text": "4 files · +57 −5 · press one to @mention it", "bold": true }],
+          [{ "button": "Copy paths", "hotkey": "y" }, " ", { "button": "Clear", "hotkey": "c" }, " ", { "button": "Close", "hotkey": "x" }],
+          [{ "button": "hooks/register.ts", "hotkey": "1" }, " ", { "text": "+12 −3", "dim": true }],
+          [{ "button": "README.md", "hotkey": "2" }, " ", { "text": "new +40 −0", "color": "success" }],
+          [{ "button": "gen/schema.ts", "hotkey": "3" }, " ", { "text": "+9 −2", "dim": true }]
+        ]
+      }
+    ]
+  }
+}

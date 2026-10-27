@@ -1,0 +1,62 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "launchpad",
+  "title": "Launchpad",
+  "tagline": "One-click buttons for your commands, skills and agents, plus a panel for model and effort.",
+  "tagline_ru": "Кнопки в один клик для ваших команд, навыков и агентов и панель выбора модели и усилий.",
+  "description": "When a session starts, and after `/clear`, a menu of up to 8 buttons shows under the header, above the prompt or in a pane (`/pad place`); each runs an installed command, skill or agent. `◆ pad` under the hint line opens a control panel: the session's model and effort as buttons (a press runs `/model` or `/effort`; `opus` and `max` turn yellow past 70% of the 5-hour window), a switchboard for the other mods of this collection and the shortcuts. `/pad configuration` orders, adds and removes buttons; a team can ship its menu in `.claude/launchpad.json`. It reads that file and the agent files in `.claude/agents/` of the project and your home folder. `/pad quiet` silences what mods draw.",
+  "description_ru": "При старте сессии и после `/clear` под заголовком, над полем ввода или в панели (`/pad place`) появляется меню до 8 кнопок; каждая запускает установленную команду, навык или агента. `◆ pad` под строкой подсказки открывает пульт: модель и усилия сессии кнопками (нажатие запускает `/model` или `/effort`; `opus` и `max` желтеют, когда 5-часовое окно израсходовано больше чем на 70%), переключатели для остальных модов этой коллекции и сочетания клавиш. `/pad configuration` упорядочивает, добавляет и убирает кнопки; команда может положить своё меню в `.claude/launchpad.json`. Мод читает этот файл и файлы агентов в `.claude/agents/` проекта и домашней папки. `/pad quiet` выключает всё, что моды рисуют сами.",
+  "author": { "name": "Lucas Fernandes", "github": "ice-lfernandes", "url": "https://github.com/ice-lfernandes" },
+  "maintainers": ["ice-lfernandes"],
+  "category": "productivity",
+  "tags": ["buttons", "launcher", "commands", "skills", "model", "effort"],
+  "license": "MIT",
+  "version": "0.10.1",
+  "homepage": "https://github.com/ice-lfernandes/claude-code-mods/tree/HEAD/launchpad",
+  "source": { "type": "marketplace", "marketplace": "ice-lfernandes/claude-code-mods", "plugin": "launchpad", "path": "launchpad" },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "idle",
+    "surface": "terminal",
+    "caption": "A fresh session: the button menu above the prompt and ◆ pad on the hint line.",
+    "caption_ru": "Новая сессия: меню кнопок над полем ввода и ◆ pad в строке подсказки.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [{ "button": "🔎 Review", "variant": "primary" }, " ", { "button": "🧪 Tests" }, " ", { "button": "📝 Commit" }, " ", { "button": "🧭 Explore" }, " ", { "button": "📋 Plan" }]
+        ]
+      },
+      { "slot": "prompt-hint", "row": [{ "text": "? for shortcuts", "dim": true }, "  ", { "text": "◆ pad", "color": "claude" }] },
+      {
+        "slot": "pane",
+        "title": "◆ pad",
+        "width": "narrow",
+        "rows": [
+          [{ "text": "Model", "bold": true }],
+          [{ "button": "haiku" }, " ", { "button": "sonnet", "variant": "primary" }, " ", { "text": "[ opus ]", "color": "warning" }],
+          [{ "text": "Effort", "bold": true }],
+          [{ "button": "low" }, " ", { "button": "medium" }, " ", { "button": "high", "variant": "primary" }, " ", { "text": "[ max ]", "color": "warning" }],
+          [{ "text": "Mods", "bold": true }, "  Shortcuts"],
+          ["● limits-meter  👁   ● test-hud  👁"]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/ice-lfernandes/claude-code-mods/82c3ab9c7fa0e92828cc51205b906a9a9b08b6b0/screenshots/launchpad.svg",
+      "alt": "launchpad: the welcome menu under the header, the row above the prompt, ◆ pad and the control panel",
+      "surface": "terminal"
+    }
+  ]
+}

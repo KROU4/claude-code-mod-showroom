@@ -1,0 +1,42 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "style-cop",
+  "title": "Style Cop",
+  "tagline": "Enforces style rules on every edit: banned phrases, a comment-density cap and no-comment files.",
+  "tagline_ru": "Следит за стилем в каждой правке: запрещённые слова, предел доли комментариев и файлы без комментариев.",
+  "description": "Rules live in `<project>/.claude/style-cop.md`, one per line: `banned: delve, \"as an AI\"`, `max-comment-ratio: 0.25`, `no-comments-in: *.json, migrations/**` and free-form `rule:` lines. Every prompt carries the rules as context for Claude. The measurable ones are enforced on Edit, Write and MultiEdit: an edit that adds a banned phrase, puts a comment in a no-comment file, or adds more comment lines than the ratio allows (from 5 added lines) is refused with the exact line, and Claude is asked to rewrite it. `/style-cop ban <phrase>` bans a phrase in every project, `/style-cop unban`, `/style-cop reload`, `/style-cop` shows the rules. If the check itself fails, the edit is refused.",
+  "description_ru": "Правила лежат в `<проект>/.claude/style-cop.md`, по одному в строке: `banned: delve, \"as an AI\"`, `max-comment-ratio: 0.25`, `no-comments-in: *.json, migrations/**` и свободные строки `rule:`. Каждый запрос передаёт правила Claude как контекст. Измеримые правила проверяются в Edit, Write и MultiEdit: правка, которая добавляет запрещённое слово, вставляет комментарий в файл без комментариев или превышает долю комментариев (если добавлено от 5 строк), отклоняется с указанием строки, и Claude просят переписать её. `/style-cop ban <фраза>` запрещает фразу во всех проектах, есть `/style-cop unban` и `/style-cop reload`, а `/style-cop` показывает правила и число отказов. Если проверка сама не удалась, правка отклоняется.",
+  "author": { "name": "Mohammed Mubarak", "github": "MDmubarak786", "url": "https://github.com/MDmubarak786" },
+  "maintainers": ["MDmubarak786"],
+  "category": "safety",
+  "tags": ["style", "lint", "comments", "guard"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/MDmubarak786/claude-mods/tree/HEAD/mods/style-cop",
+  "source": { "type": "marketplace", "marketplace": "MDmubarak786/claude-mods", "plugin": "style-cop", "path": "mods/style-cop" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": true
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Add a helper that formats prices." }
+    ],
+    "caption": "The project bans \"leverage\"; an edit that uses it is refused with the line, and Claude rewrites it.",
+    "caption_ru": "В проекте запрещено слово «leverage»; правка с ним отклонена с указанием строки, и Claude её переписывает.",
+    "elements": [
+      {
+        "slot": "tool-deny",
+        "tool": "Write",
+        "input": "src/lib/price.ts",
+        "message": "style-cop: this edit was refused because of the banned phrase \"leverage\" on the line: // leverage Intl to format the price. Rewrite it without the violation and try again. The project style rules are in your context."
+      },
+      { "slot": "background", "text": "Every prompt carries: Style rules for this project (edits that break the measurable ones are refused): Never use these words or phrases… leverage, delve." }
+    ]
+  }
+}

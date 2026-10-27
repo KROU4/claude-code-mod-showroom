@@ -1,0 +1,39 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "redact",
+  "title": "Redact",
+  "tagline": "Keys, tokens and passwords that tools print are replaced before the model reads them.",
+  "tagline_ru": "Ключи, токены и пароли из вывода инструментов заменяются до того, как их прочтёт модель.",
+  "description": "When a tool result, an attachment, hook context or another agent's message enters the conversation, redact swaps secrets for `[redacted:<kind>]` before the row is stored, so the value never reaches the model. It knows private keys, AWS, GitHub, GitLab, OpenAI, Slack, Stripe, Google, npm and other key formats, JWTs, URL passwords and `Authorization` headers, plus values under secret-looking names (`DB_PASSWORD=…`). Your screen and the local transcript still show the original. Your own prompts pass untouched unless `prompts` is on. Options add patterns and values to keep; `/redact` counts what was hidden, `/redact off` pauses it.",
+  "description_ru": "Когда в диалог попадает результат инструмента, вложение, контекст хука или сообщение другого агента, redact заменяет секреты на `[redacted:<вид>]` ещё до сохранения строки, так что значение не доходит ни до модели, ни до следующего запроса. Он знает блоки приватных ключей, форматы ключей AWS, GitHub, GitLab, Anthropic, OpenAI, Slack, Stripe, Google, npm, PyPI, Hugging Face и других, JWT, пароли в URL и заголовки `Authorization`, а также значения под «секретными» именами (`DB_PASSWORD=…`, `\"apiKey\": \"…\"`). На экране и в локальном транскрипте остаётся оригинал. Ваши собственные запросы не трогаются, если не включить `prompts`. В настройках можно добавить шаблоны и значения-исключения; `/redact` показывает, сколько скрыто, `/redact off` ставит паузу.",
+  "author": { "name": "Stanislav Kozachenko", "github": "StanislavKozachenko", "url": "https://github.com/StanislavKozachenko" },
+  "maintainers": ["StanislavKozachenko"],
+  "category": "safety",
+  "tags": ["secrets", "redaction", "privacy", "api-keys", "tokens"],
+  "license": "MIT",
+  "version": "0.2.0",
+  "homepage": "https://github.com/StanislavKozachenko/claude-mods/tree/HEAD/plugins/redact",
+  "source": { "type": "marketplace", "marketplace": "StanislavKozachenko/claude-mods", "plugin": "redact", "path": "plugins/redact" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Why can't the app connect to the database? Check the env." },
+      { "role": "tool", "tool": "Bash", "input": "cat .env.local", "result": "DB_HOST=db.local\nDB_PASSWORD=hunter2-prod\nGITHUB_TOKEN=ghp_9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3b2a", "status": "done" },
+      { "role": "assistant", "text": "DB_HOST points to db.local and the password is set ([redacted:secret-value]). The token is also there ([redacted:github-token]). Let me check whether db.local resolves." }
+    ],
+    "caption": "Your screen shows what cat printed; the model got the same rows with the secrets swapped out.",
+    "caption_ru": "На экране то, что вывел cat; модель получила те же строки с заменёнными секретами.",
+    "elements": [
+      { "slot": "status", "text": "redact: 2 hidden" },
+      { "slot": "background", "text": "Sent to the model: DB_PASSWORD=[redacted:secret-value], GITHUB_TOKEN=[redacted:github-token]" }
+    ]
+  }
+}

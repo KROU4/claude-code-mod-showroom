@@ -1,0 +1,68 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "wirepane",
+  "title": "Wirepane",
+  "tagline": "An HTTPS debugging proxy in a pane; Claude reads, replays and mocks your app's traffic via 16 tools.",
+  "tagline_ru": "HTTPS-прокси для отладки в панели; Claude читает, повторяет и подменяет трафик вашего приложения.",
+  "description": "`/proxy` starts a local debugging proxy (a Node.js sidecar shipped as source, 127.0.0.1:8899 by default) and a pane listing what a browser, the iOS Simulator or an iPhone, an Android emulator or phone send: HTTP/1.1, HTTP/2, gRPC, WebSockets and server-sent events, decrypted with a CA made on your Mac with openssl. Claude gets 16 tools to list, read, search, diff and replay requests, release breakpoints and write mock or rewrite rules, which may hold JavaScript the proxy runs (kept in .claude/proxy-rules.json), plus 3 skills. Trusting the CA and turning on the system proxy happen only when you press those buttons; recordings stay in ~/.claude/proxy-mod. macOS only, needs Node 18+.",
+  "description_ru": "`/proxy` запускает локальный прокси для отладки (Node.js-процесс, поставляется исходниками, по умолчанию 127.0.0.1:8899) и панель со списком того, что отправляют браузер, iOS Simulator или iPhone, эмулятор или телефон на Android: HTTP/1.1, HTTP/2, gRPC, WebSocket и server-sent events, расшифрованные с помощью CA, созданного на вашем Mac через openssl. Claude получает 16 инструментов: смотреть, читать, искать, сравнивать и повторять запросы, отпускать точки останова и писать правила подмены и моков, в том числе с JavaScript, который выполняет прокси (хранятся в .claude/proxy-rules.json), а также 3 навыка. Доверие к CA и системный прокси включаются только кнопками; записи хранятся в ~/.claude/proxy-mod. Только macOS, нужен Node 18+.",
+  "author": { "name": "Legostin Vyacheslav", "github": "legostin", "url": "https://github.com/legostin" },
+  "maintainers": ["legostin"],
+  "category": "integrations",
+  "tags": ["proxy", "https", "debugging", "grpc", "websocket", "android", "ios", "macos"],
+  "license": "MIT",
+  "version": "0.9.3",
+  "homepage": "https://github.com/legostin/wirepane",
+  "source": { "type": "marketplace", "marketplace": "legostin/wirepane", "plugin": "wirepane" },
+  "requires": { "claudeCode": ">=2.1.292" },
+  "capabilities": {
+    "network": true,
+    "processes": true,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Wait while I tap Log in on the phone, then tell me why it fails." }
+    ],
+    "caption": "The proxy pane with captured requests, and Claude reading the failing login through Wirepane's tools.",
+    "caption_ru": "Панель прокси с перехваченными запросами, и Claude разбирает упавший вход через инструменты Wirepane.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "Proxy",
+        "width": "wide",
+        "rows": [
+          [{ "text": "●", "color": "success" }, " 127.0.0.1:8899 · 342 requests  ", { "button": "Stop" }, " ", { "button": "Setup" }, " ", { "button": "Rules (2)" }, " ", { "button": "Health (1)" }],
+          [{ "text": "Filter ", "dim": true }, "host:*.api.example.com is:error"],
+          [{ "text": "401 ", "color": "warning" }, " POST ", "https://api.example.com/v1/login", { "text": "  1.2KB 180ms", "dim": true }],
+          [{ "text": "200 ", "color": "error" }, " POST ", { "text": "✎ ", "color": "claude" }, "/pkg.Cart/Checkout ", { "text": "gRPC FAILED_PRECONDITION", "color": "error" }],
+          [{ "text": "101 ", "color": "success" }, " GET  ", "wss://api.example.com/chat", { "text": "  ↑14 ↓52", "dim": true }],
+          [{ "text": "CERT", "color": "warning" }, " CONNECT ", "gateway.icloud.com:443", { "text": "  0B 0ms", "dim": true }]
+        ]
+      },
+      {
+        "slot": "model-tool",
+        "name": "wait_for_request",
+        "input": "filter: \"path:/v1/login\"",
+        "result": [["#343 POST https://api.example.com/v1/login → 401 · 180ms"]]
+      },
+      {
+        "slot": "model-tool",
+        "name": "get_request",
+        "input": "id: 343, part: \"response\"",
+        "result": [["401 {\"error\":\"invalid_token\",\"detail\":\"token expired\"}"]]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/legostin/wirepane/13d40e0bc4ec72a1a6e6628f785711370eee5cd3/docs/og.png",
+      "alt": "Wirepane card: the proxy's status line and three captured requests, a 401 login, a failed gRPC call and a WebSocket"
+    }
+  ]
+}

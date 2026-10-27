@@ -1,0 +1,52 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "buddy",
+  "title": "Buddy",
+  "tagline": "An ASCII pet above the prompt that reacts to Claude's tools, cheers green tests and levels up.",
+  "tagline_ru": "ASCII-питомец над полем ввода: реагирует на инструменты Claude, радуется зелёным тестам и растёт в уровнях.",
+  "description": "A small pet in the band above the prompt: it reads when Claude reads, types when Claude edits, looks startled when a tool fails, wary when a guard blocks a command, happy on a green test run and throws a party on a successful `git commit`; after `sleepAfterSeconds` of quiet it naps. Pick a cat, dog, blob, robot, ghost or duck and a name (`/buddy name`, `/buddy species`). It earns XP (+1 per tool call, +5 per turn, +10 per green run, +20 per commit) with a toast at each level, kept in the mod's store across sessions. The two-frame animation runs only while Claude works; under 44 columns it shrinks to one line.",
+  "description_ru": "Маленький питомец в полосе над полем ввода: читает, когда Claude читает, печатает, когда Claude правит файлы, пугается, когда инструмент падает, настораживается, когда защитный мод блокирует команду, радуется зелёным тестам и устраивает праздник после успешного `git commit`; после `sleepAfterSeconds` тишины засыпает. Выберите кота, собаку, каплю, робота, призрака или утку и имя (`/buddy name`, `/buddy species`). Он копит опыт (+1 за вызов инструмента, +5 за ход, +10 за зелёный прогон, +20 за коммит), о каждом новом уровне сообщает уведомление, а прогресс хранится в хранилище мода между сессиями. Анимация из двух кадров идёт только пока Claude работает; уже 44 колонок питомец сжимается в одну строку.",
+  "author": { "name": "Amrit Preet Singh", "github": "Singh-AP", "url": "https://github.com/Singh-AP" },
+  "maintainers": ["Singh-AP"],
+  "category": "fun",
+  "tags": ["pet", "ascii", "xp", "levels", "band"],
+  "license": "MIT",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Singh-AP/awesome-claude-mods/tree/HEAD/mods/fun/buddy",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "Singh-AP/awesome-claude-mods",
+    "plugin": "buddy",
+    "path": "mods/fun/buddy"
+  },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Fix the date parsing bug and run the tests." },
+      { "role": "tool", "tool": "Edit", "input": "src/date.ts", "status": "done" },
+      { "role": "tool", "tool": "Bash", "input": "npm test", "result": "Tests  18 passed (18)", "status": "done" }
+    ],
+    "caption": "Byte the cat after a green test run, with its level and XP bar.",
+    "caption_ru": "Кот Byte после зелёного прогона тестов, с уровнем и полосой опыта.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [" /\\_/\\  ", { "text": "♪", "color": "claude" }, "    ", { "text": "Byte", "bold": true }, "  Lv 4 cat"],
+          ["( ^w^ )      ", { "bar": 0.82, "width": 20, "color": "claude" }, { "text": " 423/500 XP", "dim": true }],
+          [" > ^ <       ✅ tests are green!"]
+        ]
+      },
+      { "slot": "toast", "text": "🎉 Byte reached level 4!" }
+    ]
+  }
+}

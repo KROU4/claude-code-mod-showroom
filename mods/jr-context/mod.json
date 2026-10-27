@@ -1,0 +1,54 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "jr-context",
+  "title": "jr context",
+  "tagline": "The context window in one quiet row above the prompt that turns into an alert before compaction.",
+  "tagline_ru": "Окно контекста одной тихой строкой над полем ввода, которая становится тревогой перед сжатием.",
+  "description": "A right-aligned row above the prompt: a mini bar colored by category (system prompt, tools, memory, skills, messages), the fill in green to red and the tokens used out of the window. Once the fill reaches 80% (configurable) of where auto-compaction starts, the row moves left as an alert with the tokens left before it compacts. `/jr-context details` opens a pane with the full stacked bar, the autocompact buffer and a legend of each category's tokens and share; `/jr-context` hides or shows the row for every session. The figures are the engine's own `/context` breakdown, refreshed after tool calls and turns. Runs nothing, no network.",
+  "description_ru": "Строка справа над полем ввода: мини-полоса, раскрашенная по категориям (системный промпт, инструменты, память, навыки, сообщения), заполненность цветом от зелёного к красному и число токенов из размера окна. Когда заполнение доходит до 80% (настраивается) от точки автосжатия, строка уходит влево и становится тревогой: сколько токенов осталось до сжатия. `/jr-context details` открывает панель с полной полосой, резервом автосжатия и легендой по каждой категории; `/jr-context` прячет или показывает строку во всех сессиях. Цифры берутся из той же разбивки, что и `/context`, и обновляются после вызовов инструментов и ходов. Ничего не запускает, в сеть не ходит.",
+  "author": { "name": "jrlprost", "github": "jrlprost", "url": "https://github.com/jrlprost" },
+  "maintainers": ["jrlprost"],
+  "category": "insights",
+  "tags": ["context", "compaction", "tokens", "pane"],
+  "license": "MIT",
+  "version": "0.6.0",
+  "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-context",
+  "source": {
+    "type": "github",
+    "repo": "jrlprost/claude-code-mods",
+    "path": "plugins/jr-context",
+    "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+  },
+  "surfaces": ["terminal"],
+  "requires": { "claudeCode": ">=2.1.301" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "caption": "The quiet row at 26% of a 1M window, and the details pane.",
+    "caption_ru": "Тихая строка при 26% окна в 1M и панель с подробностями.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [["                                        ", { "text": "ctx ▕", "dim": true }, { "text": "█", "color": "#7f5af0" }, { "text": "█", "color": "#3da9fc" }, { "text": "███", "color": "#ff8c42" }, { "text": "─────────────", "color": "#5c5f77", "dim": true }, { "text": "▏ ", "dim": true }, { "text": "26%", "color": "#7fc35a" }, { "text": " · 256k/1.0M", "dim": true }]]
+      },
+      {
+        "slot": "pane",
+        "title": "jr context",
+        "width": "wide",
+        "rows": [
+          [{ "text": "◆ ", "color": "#ff8c42" }, { "text": "context", "bold": true, "color": "#ff5ca8" }, { "text": "   256k of 1.0M · compacts at 967k ", "dim": true }, { "text": " 26% ", "bg": "#7fc35a", "color": "#000000", "bold": true }],
+          [{ "text": "█", "color": "#7f5af0" }, { "text": "██", "color": "#3da9fc" }, { "text": "█████████", "color": "#ff8c42" }, { "text": "──────────────────────────────", "color": "#5c5f77", "dim": true }, { "text": "██", "color": "#3b3d4f" }],
+          [{ "text": "■ ", "color": "#7f5af0" }, "system prompt ", { "text": "2.2k", "bold": true }, { "text": " 0.2%   ", "dim": true }, { "text": "■ ", "color": "#3da9fc" }, "system tools ", { "text": "21k", "bold": true }, { "text": " 2.1%", "dim": true }],
+          [{ "text": "■ ", "color": "#ff8c42" }, "messages ", { "text": "233k", "bold": true }, { "text": " 23%   ", "dim": true }, { "text": "─ free space 711k   autocompact buffer 33k", "dim": true }]
+        ]
+      }
+    ]
+  }
+}

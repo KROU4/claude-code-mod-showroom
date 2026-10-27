@@ -1,0 +1,44 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "jr-cache-clock",
+  "title": "jr cache clock",
+  "tagline": "A toast 30 seconds before the prompt cache goes cold, and an optional countdown above the prompt.",
+  "tagline_ru": "Уведомление за 30 секунд до остывания кэша промптов и обратный отсчёт над полем ввода по желанию.",
+  "description": "Counts down the prompt cache's life from the end of Claude's last main-loop reply (5 minutes, or 60 for the one-hour cache in `/config`). 30 seconds before it goes cold a toast says so, so you can send the next prompt while it is still cheap. `/jr-cache-clock` shows a quiet row on the right with the time left, going from green to red, then `cold`, and the share of the last turn's input read from the cache. The row is hidden by default; the choice is kept for every session. Reads only turn completions and their token usage: runs nothing, writes nothing, no network.",
+  "description_ru": "Отсчитывает время жизни кэша промптов с конца последнего ответа Claude в основном диалоге (5 минут или 60 для часового кэша, задаётся в `/config`). За 30 секунд до остывания появляется уведомление, чтобы следующий запрос успел уйти, пока он дешёвый. `/jr-cache-clock` показывает тихую строку справа: сколько осталось (цвет идёт от зелёного к красному, потом `cold`) и какая доля входа прошлого хода прочитана из кэша. По умолчанию строка скрыта, выбор сохраняется для всех сессий. Читает только завершения ходов и их расход токенов: ничего не запускает, не пишет и не ходит в сеть.",
+  "author": { "name": "jrlprost", "github": "jrlprost", "url": "https://github.com/jrlprost" },
+  "maintainers": ["jrlprost"],
+  "category": "insights",
+  "tags": ["prompt-cache", "countdown", "cost", "toast"],
+  "license": "MIT",
+  "version": "0.4.0",
+  "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-cache-clock",
+  "source": {
+    "type": "github",
+    "repo": "jrlprost/claude-code-mods",
+    "path": "plugins/jr-cache-clock",
+    "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+  },
+  "surfaces": ["terminal"],
+  "requires": { "claudeCode": ">=2.1.301" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "idle",
+    "caption": "Four and a half minutes after the last reply: the countdown row and the warning toast.",
+    "caption_ru": "Через четыре с половиной минуты после ответа: строка с отсчётом и предупреждение.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [["                                                          ", { "text": "cache ", "dim": true }, { "text": "0:28", "color": "#ef4565" }, { "text": " · hit 92%", "dim": true }]]
+      },
+      { "slot": "toast", "text": "jr cache · cache goes cold in 29 s" }
+    ]
+  }
+}

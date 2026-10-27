@@ -1,0 +1,29 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "visual-review",
+  "title": "Visual Review",
+  "tagline": "Your branch's design as a diagram in the browser; comment on it and send the review back to Claude.",
+  "tagline_ru": "/visual-review рисует дизайн изменений ветки диаграммой в браузере; комментарии уходят обратно в сессию.",
+  "description": "`/visual-review` finds the base branch and the changed files with read-only git commands, then asks the session to start one subagent (`analysisModel`, Sonnet by default) that reads the diff and sends a design model to the mod's `submit_model` tool: classes and modules, relations, size and cohesion notes, database tables. The mod checks coverage, measures line changes with `git diff -U0`, writes a view model to the temp folder and starts a small Node server (`server/server.mjs`) on 127.0.0.1 with a random token, then opens the page in your browser (a static page when `node` is missing). Click cards, arrows, tables or columns to comment, then send all comments to the session in one step.",
+  "description_ru": "`/visual-review` находит базовую ветку и изменённые файлы git-командами только на чтение и просит сессию запустить одного субагента (`analysisModel`, по умолчанию Sonnet), который читает diff и отправляет модель дизайна в инструмент мода `submit_model`: классы и модули, связи, размер и связность, таблицы БД. Мод проверяет покрытие, считает изменения строк через `git diff -U0`, пишет модель представления во временную папку и запускает небольшой Node-сервер (`server/server.mjs`) на 127.0.0.1 со случайным токеном, затем открывает страницу в браузере (статическую, если `node` нет). Кликайте по карточкам, стрелкам, таблицам и колонкам, чтобы оставить комментарий, и отправьте все комментарии в сессию одним действием.",
+  "author": { "name": "Douglas Cunha", "github": "dougcunha", "url": "https://github.com/dougcunha" },
+  "maintainers": ["dougcunha"],
+  "category": "git",
+  "tags": ["code-review", "diagram", "design", "browser", "diff", "subagent"],
+  "license": "MIT",
+  "version": "0.3.0",
+  "homepage": "https://github.com/dougcunha/claude-mods/tree/HEAD/visual-review",
+  "source": { "type": "github", "repo": "dougcunha/claude-mods", "path": "visual-review", "sha": "49337f5ffa1a2670737a882b480b412ddb128fdd" },
+  "capabilities": { "network": false, "processes": true, "filesystem": "write", "model": false, "promptRewrite": false, "blocksTools": false },
+  "preview": {
+    "surface": "terminal",
+    "scene": "review",
+    "caption": "/visual-review collects the branch's changes, a subagent models the design, and the diagram opens in the browser.",
+    "caption_ru": "/visual-review собирает изменения ветки, субагент строит модель дизайна, и диаграмма открывается в браузере.",
+    "elements": [
+      { "slot": "command", "command": "/visual-review", "output": [["Analyzing the design of 7 changed files against main."]] },
+      { "slot": "model-tool", "name": "mcp__visual-review__submit_model", "input": "units: 9, relations: 11, tables: 2", "result": [["Model accepted: every changed source file is covered."]] },
+      { "slot": "toast", "text": "visual-review: Visual review ready: http://127.0.0.1:53817/?t=…" }
+    ]
+  }
+}

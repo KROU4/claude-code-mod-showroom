@@ -1,0 +1,51 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "secret-shield",
+  "title": "Secret Shield",
+  "tagline": "Keys, tokens and passwords in tool output become [REDACTED:kind] before Claude sees them.",
+  "tagline_ru": "Ключи, токены и пароли в выводе инструментов становятся [REDACTED:вид] до того, как их увидит Claude.",
+  "description": "Rewrites every tool result in `tool.call`, so the model and the transcript file get redacted text; a `session.append` hook catches attachments and hook context too. It knows 20+ formats (AWS, GitHub, Anthropic, OpenAI, Slack, Stripe, Google, npm, PyPI and Hugging Face keys, JWTs, `Authorization: Bearer`, PEM private keys, passwords in URLs) and assignments like `API_KEY=…` in .env, shell, YAML, JSON and code, leaving lookalikes such as `MAX_TOKENS=1024` alone. A row it cannot scan is withheld. `blockSecretFiles` refuses Read/Edit/Write on `.env*`, keys, `~/.aws/credentials` and the like; `redactPrompts` also redacts your own prompts. `/secret-shield test <text>` dry-runs.",
+  "description_ru": "Переписывает каждый результат инструмента в `tool.call`, так что модель и файл транскрипта получают текст без секретов; хук `session.append` ловит ещё вложения и контекст хуков. Знает более 20 форматов (ключи AWS, GitHub, Anthropic, OpenAI, Slack, Stripe, Google, npm, PyPI и Hugging Face, JWT, `Authorization: Bearer`, приватные ключи PEM, пароли в URL) и присваивания вроде `API_KEY=…` в .env, оболочке, YAML, JSON и коде, не трогая похожие строки вроде `MAX_TOKENS=1024`. Строку, которую не удалось проверить, мод скрывает. По уведомлению на вид секрета. `blockSecretFiles` запрещает Read/Edit/Write для `.env*`, ключей, `~/.aws/credentials` и подобного; `redactPrompts` скрывает секреты и в ваших запросах. `/secret-shield test <текст>` — пробная проверка.",
+  "author": { "name": "Amrit Preet Singh", "github": "Singh-AP", "url": "https://github.com/Singh-AP" },
+  "maintainers": ["Singh-AP"],
+  "category": "safety",
+  "tags": ["secrets", "redaction", "api-keys", "tokens", "dlp"],
+  "license": "MIT",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Singh-AP/awesome-claude-mods/tree/HEAD/mods/safety/secret-shield",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "Singh-AP/awesome-claude-mods",
+    "plugin": "secret-shield",
+    "path": "mods/safety/secret-shield"
+  },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": true
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Why did the deploy step fail? Check build.log." },
+      { "role": "tool", "tool": "Bash", "input": "cat build.log", "result": "step 1: checkout ok\nstep 2: push with [REDACTED:github-token] ok\nstep 3: done", "status": "done" }
+    ],
+    "caption": "The token in the log reaches neither the model nor the transcript; a toast says what was hidden.",
+    "caption_ru": "Токен из лога не попадает ни к модели, ни в транскрипт; уведомление сообщает, что скрыто.",
+    "elements": [
+      { "slot": "toast", "text": "secret-shield hid 1 GitHub token from Bash output" }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/Singh-AP/awesome-claude-mods/b82b96062224abc66f3509cff95731e9924c607e/assets/screens/secret-shield.svg",
+      "alt": "secret-shield in a Claude Code session replacing a token in tool output with a redaction marker",
+      "surface": "terminal"
+    }
+  ]
+}

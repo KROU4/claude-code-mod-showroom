@@ -1,0 +1,52 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "bouncer",
+  "title": "Bouncer",
+  "tagline": "Lists what every installed mod can reach, read from Claude Code's own plugin validator.",
+  "tagline_ru": "Показывает, до чего может дотянуться каждый установленный мод, по отчёту валидатора плагинов Claude Code.",
+  "description": "At session start it runs `claude plugin validate --json` on every plugin folder it finds (the installed-plugins registry, local marketplaces and mods the engine names as they load, up to 60) and turns each report into plain words: reads files, runs programs, reaches the network, calls the model, can change tool calls. A line above the prompt appears only when a mod is new or its reach changed; `/bouncer` opens a pane with a row per mod and the validator's notes, `/bouncer check` runs it again, `/bouncer ok` clears the line. It reads the registry files and each plugin.json, keeps a short hash per folder in its own store and never blocks or changes a mod. No network or model calls.",
+  "description_ru": "При старте сессии запускает `claude plugin validate --json` для каждой найденной папки плагина (реестр установленных плагинов, локальные маркетплейсы и моды, о которых сообщает движок при загрузке, не больше 60) и пересказывает отчёт простыми словами: читает файлы, запускает программы, ходит в сеть, вызывает модель, может менять вызовы инструментов и так далее. Строка над полем ввода появляется, только если мод новый или его возможности изменились; `/bouncer` открывает панель со строкой на каждый мод и заметками валидатора, `/bouncer check` проверяет заново, `/bouncer ok` убирает строку. Читает JSON-файлы реестра и plugin.json каждого плагина, хранит короткий хеш на папку в своём хранилище и никогда не блокирует и не меняет моды. Без сети и вызовов модели.",
+  "author": { "name": "modmyclaude", "github": "modmyclaude", "url": "https://github.com/modmyclaude" },
+  "maintainers": ["modmyclaude"],
+  "category": "safety",
+  "tags": ["plugins", "audit", "validator", "trust", "pane"],
+  "license": "MIT",
+  "version": "0.2.0",
+  "homepage": "https://github.com/modmyclaude/claude-code-mods/tree/HEAD/mods/bouncer",
+  "source": { "type": "marketplace", "marketplace": "modmyclaude/claude-code-mods", "plugin": "bouncer", "path": "mods/bouncer" },
+  "surfaces": ["terminal", "desktop"],
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "idle",
+    "surface": "terminal",
+    "caption": "A newly installed mod shows up at session start; /bouncer lists every mod's reach in words.",
+    "caption_ru": "Только что установленный мод замечен при старте сессии; /bouncer перечисляет возможности каждого мода словами.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [[{ "text": "bouncer: 1 new mod: switchboard (runs programs)", "color": "warning" }, " ", { "button": "Show" }]]
+      },
+      {
+        "slot": "pane",
+        "title": "Bouncer",
+        "width": "wide",
+        "rows": [
+          [{ "text": "Checked 19 mods at 09:12. Facts from the validator, not a verdict.", "dim": true }],
+          [" "],
+          [{ "text": "switchboard", "bold": true }, { "text": " 0.1.0 ", "dim": true }, { "text": "new", "color": "warning" }, { "text": " loaded ", "dim": true }, "reads and writes files, ", { "text": "runs programs", "color": "warning" }, " ", { "button": "details" }],
+          ["cloakroom", { "text": " 0.1.5 loaded ", "dim": true }, "reads files, ", { "text": "can change tool calls", "color": "warning" }, " ", { "button": "details" }],
+          ["pager", { "text": " 0.1.0 loaded ", "dim": true }, { "text": "reaches the network", "color": "warning" }, ", plays sound ", { "button": "details" }],
+          ["zen", { "text": " 0.3.0 ", "dim": true }, "nothing declared ", { "button": "details" }]
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "ostrakon",
+  "title": "Ostrakon",
+  "tagline": "A scratchpad pane for thoughts mid-prompt, with saved notes as numbered chips above the prompt.",
+  "tagline_ru": "Панель для заметок посреди запроса; сохранённые заметки — пронумерованные чипы над полем ввода.",
+  "description": "Opens a notes pane while you type (the draft comes back when it closes); `/jot text` or `//` saves a note from an empty prompt. This project's open notes sit above the prompt as chips: `;2` in an empty prompt pulls note 2 in. Claude gets `jot`, `notes` and `archive` tools. Notes are Markdown files in `~/.local/share/ostrakon`, written through shell commands (`mv`, `mkdir`, `rm`), so Linux or macOS. Opt-in: `harvest` asks the model after each turn for side issues worth keeping; `hubUrl` syncs notes with your own hub over HTTP; `mirrorDir` mirrors them to a synced folder.",
+  "description_ru": "Открывает панель заметок прямо во время набора запроса (черновик возвращается, когда панель закрыта); `/jot текст` или `//` в пустом поле сохраняет заметку. Открытые заметки проекта лежат над полем ввода чипами: `;2` в пустом поле вставляет заметку 2. У Claude появляются инструменты `jot`, `notes` и `archive`. Заметки — файлы Markdown в `~/.local/share/ostrakon`, записываются через команды оболочки (`mv`, `mkdir`, `rm`), поэтому нужен Linux или macOS. По желанию: `harvest` после каждого хода спрашивает модель о побочных задачах, которые стоит записать; `hubUrl` синхронизирует заметки с вашим собственным хабом по HTTP; `mirrorDir` дублирует их в синхронизируемую папку.",
+  "author": { "name": "gaius-codius", "github": "gaius-codius", "url": "https://github.com/gaius-codius" },
+  "maintainers": ["gaius-codius"],
+  "category": "productivity",
+  "tags": ["notes", "scratchpad", "pane", "chips", "sync", "jot"],
+  "license": "MIT",
+  "version": "0.8.1",
+  "homepage": "https://github.com/gaius-codius/ostrakon/tree/HEAD/plugin",
+  "source": { "type": "marketplace", "marketplace": "gaius-codius/ostrakon", "plugin": "ostrakon", "path": "plugin" },
+  "capabilities": {
+    "network": true,
+    "processes": true,
+    "filesystem": "write",
+    "model": true,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "scene": "coding",
+    "caption": "This project's open notes as chips above the prompt; ◆ marks one Claude jotted. `;2` pulls a note into an empty prompt.",
+    "caption_ru": "Открытые заметки проекта чипами над полем ввода; ◆ — заметка, которую записал Claude. `;2` в пустом поле вставляет заметку.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [
+            { "text": "✎ shop-api", "dim": true },
+            "  ",
+            { "button": ";1 rate-limit the login route" },
+            " ",
+            { "button": ";2 ◆ cart test flakes on CI" },
+            " ",
+            { "button": ";3 rename utils/date.ts" },
+            " ",
+            { "text": "+2", "dim": true }
+          ]
+        ]
+      },
+      {
+        "slot": "model-tool",
+        "name": "jot",
+        "input": "text: \"cart test flakes on CI: timezone in fixtures\"",
+        "result": [["Saved to shop-api."]]
+      },
+      { "slot": "prompt-hint", "row": [{ "text": "? for shortcuts", "dim": true }, "  ", { "text": "saved to shop-api", "dim": true }] }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/gaius-codius/ostrakon/7577c40e0f15d705a7c9b089bea1619cc3c15f9e/docs/images/demo.gif",
+      "alt": "Half a prompt typed; the ostrakon pane opens, a note is saved, and the prompt comes back as it was",
+      "surface": "terminal"
+    }
+  ]
+}

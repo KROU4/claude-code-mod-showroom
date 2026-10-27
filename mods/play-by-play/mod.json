@@ -1,0 +1,62 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "play-by-play",
+  "title": "Play-by-Play",
+  "tagline": "Replays every file change of a turn step by step, including what shell commands changed.",
+  "tagline_ru": "Пошагово показывает все изменения файлов за ход, включая сделанные командами в shell.",
+  "description": "Records each change Claude makes in a turn: Edit, Write and NotebookEdit from the tools' own records, and changes made by Bash commands by comparing read-only git snapshots taken before and after each command (`--no-optional-locks`, nothing staged or written). After a turn a band reads `4 edits · 3 files · +38 −12` with Replay and Hide. `/replay` (or `/replay <n>` for up to 10 earlier turns) opens a pane: a scoreboard, a 1-9 jump list of files, Prev/Next and a red/green diff per step, marked via shell when a command made it. Shell tracking needs a git repo and pauses itself when git is slow. No network, no model calls.",
+  "description_ru": "Записывает каждое изменение, которое Claude делает за ход: Edit, Write и NotebookEdit — по собственным записям инструментов, а изменения от команд Bash — сравнивая читающие снимки git до и после каждой команды (`--no-optional-locks`, ничего не индексируется и не записывается). После хода полоса над полем ввода показывает `4 edits · 3 files · +38 −12` с кнопками Replay и Hide. `/replay` (или `/replay <n>` для одного из 10 предыдущих ходов) открывает панель: сводка, список файлов для перехода по клавишам 1–9, Prev/Next и красно-зелёный дифф для каждого шага с пометкой via shell, если его сделала команда. Отслеживание shell требует git-репозитория и само отключается, если git отвечает медленно. Без сети и вызовов модели.",
+  "author": { "name": "modmyclaude", "github": "modmyclaude", "url": "https://github.com/modmyclaude" },
+  "maintainers": ["modmyclaude"],
+  "category": "insights",
+  "tags": ["replay", "diff", "review", "git", "shell", "pane"],
+  "license": "MIT",
+  "version": "0.1.4",
+  "homepage": "https://github.com/modmyclaude/claude-code-mods/tree/HEAD/mods/play-by-play",
+  "source": { "type": "marketplace", "marketplace": "modmyclaude/claude-code-mods", "plugin": "play-by-play", "path": "mods/play-by-play" },
+  "surfaces": ["terminal", "desktop"],
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Rename formatPrice to formatMoney everywhere and fix the tests." },
+      { "role": "tool", "tool": "Bash", "input": "sed -i 's/formatPrice/formatMoney/g' src/cart/total.ts src/checkout.ts", "status": "done" },
+      { "role": "tool", "tool": "Edit", "input": "tests/total.test.ts", "status": "done" },
+      { "role": "assistant", "text": "Renamed formatPrice to formatMoney in both files and updated the test." }
+    ],
+    "caption": "After the turn: the band above the prompt, then /replay on step 1, a change the sed command made.",
+    "caption_ru": "После хода: полоса над полем ввода, затем /replay на первом шаге — изменении, которое сделала команда sed.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [["3 edits · 3 files · +3 −3 · press r or /replay ", { "button": "Replay", "hotkey": "r" }, " ", { "button": "Hide", "hotkey": "x" }]]
+      },
+      {
+        "slot": "pane",
+        "title": "Play-by-Play",
+        "width": "wide",
+        "rows": [
+          [{ "text": "Latest turn · \"Rename formatPrice to formatMoney everywhere and fix the tests.\"", "dim": true }],
+          [{ "text": "3 files · +3 −3 · 3 edits · biggest: src/cart/total.ts +1 −1", "bold": true }],
+          [{ "button": "src/cart/total.ts", "hotkey": "1" }, "  ", { "button": "src/checkout.ts", "hotkey": "2" }, "  ", { "button": "tests/total.test.ts", "hotkey": "3" }],
+          [{ "button": "Prev", "hotkey": "p" }, " ", { "button": "Next", "variant": "primary", "hotkey": "n" }, " ", { "button": "Close", "hotkey": "q" }, " Step 1 of 3"],
+          [{ "text": "Keys: n/p step, 1-9 jump to a file, q closes; click this line for the arrow keys", "dim": true }],
+          [{ "text": "src/cart/total.ts", "bold": true }, " ", { "text": "edit · +1 −1", "dim": true }, " ", { "text": "· via shell", "color": "warning" }],
+          [{ "text": "@@ -12,3 +12,3 @@", "color": "subtle" }],
+          [{ "text": "   const sum = items.reduce((s, i) => s + i.price * i.qty, 0)", "dim": true }],
+          [{ "text": "-  return formatPrice(sum)", "color": "error" }],
+          [{ "text": "+  return formatMoney(sum)", "color": "success" }],
+          [{ "text": " }", "dim": true }]
+        ]
+      }
+    ]
+  }
+}

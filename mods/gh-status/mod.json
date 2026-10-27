@@ -1,0 +1,55 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "gh-status",
+  "title": "GH Status",
+  "tagline": "Your branch's GitHub pull request live: checks, reviews, threads, merge queue, confirmed merges.",
+  "tagline_ru": "Pull request вашей ветки вживую: проверки, ревью, обсуждения, очередь слияния и слияние с подтверждением.",
+  "description": "A band above the prompt with the PR number, state, a verdict (green only when everything is clean), the pipeline, reviews, unresolved threads and the account; `main ✗ <workflow>` when the default branch fails. `/gh` (or `/pr`) opens a pane with PRs, Issues and Actions tabs: merge section, reviews, conversation, live jobs, open PRs and issues, workflow runs. Merge, merge queue, auto-merge, admin merge and reviews each need a confirm key, are bound to the head commit you saw and re-checked first; failed runs can be re-run. Claude gets no merge tool. It runs the `gh` CLI and git, polling every 5-30 s, with a `gh` login per owner. Needs `gh` logged in.",
+  "description_ru": "Полоса над полем ввода с номером PR, состоянием, вердиктом (зелёным, только когда всё чисто), конвейером, ревью, нерешёнными обсуждениями и аккаунтом; `main ✗ <workflow>`, если падает основная ветка. `/gh` (или `/pr`) открывает панель с вкладками PRs, Issues и Actions: раздел слияния, ревью, обсуждение, задания вживую, открытые PR и issue, запуски workflow. Слияние, очередь слияния, автослияние, слияние администратором и ревью требуют клавиши подтверждения, привязаны к увиденному вами head-коммиту и перед выполнением перепроверяются; упавшие запуски можно перезапустить. Инструмента слияния у Claude нет. Мод запускает `gh` CLI и git, опрашивая каждые 5–30 секунд, с отдельным логином `gh` на владельца. Нужен авторизованный `gh`.",
+  "author": { "name": "Oliver Borchers", "github": "oborchers", "url": "https://github.com/oborchers" },
+  "maintainers": ["oborchers"],
+  "category": "git",
+  "tags": ["github", "pull-requests", "ci", "merge-queue", "reviews", "pane"],
+  "license": "MIT",
+  "version": "0.3.1",
+  "homepage": "https://github.com/oborchers/claude-gh-status",
+  "source": { "type": "marketplace", "marketplace": "oborchers/claude-gh-status", "plugin": "gh-status" },
+  "requires": { "claudeCode": ">=2.1.290" },
+  "capabilities": {
+    "network": true,
+    "processes": true,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "review",
+    "caption": "The band for the branch's open PR while one check fails and two jobs still run.",
+    "caption_ru": "Полоса для открытого PR ветки: одна проверка упала, два задания ещё идут.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [{ "text": "#482", "bold": true }, " ", { "text": " open ", "bg": "#238636", "color": "#ffffff" }, " ", { "text": "ready to merge · 1 check failed", "color": "error" }, "  ", { "text": "✗ lint", "color": "error" }, " ", { "text": "● test ● build", "color": "warning" }, "  ✓ 1 review  💬 2  @oborchers  ", { "text": "6 open", "dim": true }],
+          [{ "button": "details", "hotkey": "d" }, " ", { "button": "open", "hotkey": "o" }, " ", { "button": "fix CI", "hotkey": "f" }]
+        ]
+      },
+      { "slot": "toast", "text": "#482: lint failed" }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/oborchers/claude-gh-status/eb5b81b2e10868a079c7bb3e7664f530810d14ed/docs/images/tab-view.png",
+      "alt": "gh-status in Claude Code: a band above the prompt and a detail pane with the merge verdict, reviews, open threads and the live pipeline",
+      "surface": "terminal"
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/oborchers/claude-gh-status/eb5b81b2e10868a079c7bb3e7664f530810d14ed/docs/images/confirm.png",
+      "alt": "The merge confirmation in the pane's Merge section and in the band, with a merge method selector",
+      "surface": "terminal"
+    }
+  ]
+}

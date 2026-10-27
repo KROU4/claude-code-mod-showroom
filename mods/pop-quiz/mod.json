@@ -1,0 +1,55 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "pop-quiz",
+  "title": "Pop Quiz",
+  "tagline": "Two short questions about Claude's latest code change above the prompt, each answer one press away.",
+  "tagline_ru": "Два коротких вопроса о последней правке Claude над полем ввода, ответ на каждый открывается одним нажатием.",
+  "description": "A learning mode, off until you type `/pop-quiz on`. Every third turn in which Claude changed files with Edit, Write or NotebookEdit, one small-model call (`haiku`, low effort, about $0.0004) writes two questions you could answer from the change alone, and they wait above the prompt with a show answer button each and skip. No grading; the next prompt clears it. The model is sent only the changed file names and a diff of at most 2,000 characters, with secrets replaced by `[REDACTED]` and env, key and credentials files sent by name only. `/pop-quiz every <n>`, `ask`, `off` and `score` (asked, shown, skipped and the cost).",
+  "description_ru": "Режим обучения, который включается только командой `/pop-quiz on`. Каждый третий ход, в котором Claude менял файлы через Edit, Write или NotebookEdit, один запрос к маленькой модели (`haiku`, низкое усилие, около $0.0004) составляет два вопроса, на которые можно ответить по самой правке. Они ждут над полем ввода: у каждого кнопка show answer, ниже кнопка skip. Оценок нет, следующий запрос убирает викторину. Модель получает только имена изменённых файлов и дифф не длиннее 2000 символов; похожее на секреты заменяется на `[REDACTED]`, а env-файлы, ключи и файлы с учётными данными передаются только по имени. Есть `/pop-quiz every <n>`, `ask`, `off` и `score` (сколько задано, открыто, пропущено и во что обошлось).",
+  "author": { "name": "modmyclaude", "github": "modmyclaude", "url": "https://github.com/modmyclaude" },
+  "maintainers": ["modmyclaude"],
+  "category": "productivity",
+  "tags": ["learning", "quiz", "small-model", "band", "command"],
+  "license": "MIT",
+  "version": "0.2.0",
+  "homepage": "https://github.com/modmyclaude/claude-code-mods/tree/HEAD/mods/pop-quiz",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "modmyclaude/claude-code-mods",
+    "plugin": "pop-quiz",
+    "path": "mods/pop-quiz"
+  },
+  "surfaces": ["terminal", "desktop"],
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": true,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Retry the billing client on a 429 and index invoices by user_id." },
+      { "role": "tool", "tool": "Edit", "input": "src/billing/retry.ts", "status": "done" },
+      { "role": "tool", "tool": "Write", "input": "migrations/0042_invoices_user_id.sql", "status": "done" },
+      { "role": "assistant", "text": "retry() now backs off on a 429 using Retry-After, and the migration adds an index on invoices.user_id." }
+    ],
+    "caption": "After the third turn that changed files: two questions about the change, one answer already shown.",
+    "caption_ru": "После третьего хода с правками файлов: два вопроса о правке, на один ответ уже открыт.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [{ "text": "pop quiz on the last change", "dim": true }],
+          ["1. Why does the migration add an index on user_id?  ", { "button": "show answer" }],
+          ["2. retry() waits for the Retry-After header before trying again."],
+          [{ "button": "skip" }, " ", { "text": "No grading. It clears when you send your next prompt.", "dim": true }]
+        ]
+      },
+      { "slot": "background", "text": "One haiku call per quiz with the changed file names and a redacted diff of at most 2,000 characters." }
+    ]
+  }
+}

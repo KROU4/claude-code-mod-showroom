@@ -1,0 +1,61 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "sandbox-tuner",
+  "title": "Sandbox Tuner",
+  "tagline": "Explains each sandbox block and turns recurring ones into reviewed, undoable settings edits.",
+  "tagline_ru": "Объясняет каждую блокировку песочницы, а повторяющиеся превращает в проверяемые правки настроек с отменой.",
+  "description": "Reads Bash results for sandbox network and write blocks (and hosts listed in `allowed_domains`) and counts each host or folder across sessions. A band above the prompt names the block, the command and the reason, also when no setting can fix it. After `minimumSightings` (3) it offers Allow (or Deny), showing the entry first; a press adds one entry to `sandbox.network.allowedDomains`, `deniedDomains` or `sandbox.filesystem.allowWrite` in `~/.claude/settings.json`, under a lock, after a backup, with Undo. Folder grants go only to cache and temp folders, never to credential, system or `PATH` folders; no wildcard hosts. `/sandbox-tuner` opens a ranked pane. Nothing changes unless you press.",
+  "description_ru": "Ищет в результатах Bash сетевые блокировки и запреты записи песочницы (и хосты из `allowed_domains`) и считает каждый хост и папку во всех сессиях. Полоса над полем ввода называет блокировку, команду и причину, даже если настройкой это не исправить. После `minimumSightings` (3) появляется Allow (или Deny), а перед этим — точная запись; нажатие добавляет одну запись в `sandbox.network.allowedDomains`, `deniedDomains` или `sandbox.filesystem.allowWrite` в `~/.claude/settings.json` под блокировкой, после резервной копии и с возможностью Undo. Запись разрешается только в папки кэша и временные, никогда — в папки с учётными данными, системные или из `PATH`; без хостов-масок. `/sandbox-tuner` открывает панель с рейтингом. Ничего не меняется, пока вы не нажмёте.",
+  "author": { "name": "dot-agi", "github": "dot-agi", "url": "https://github.com/dot-agi" },
+  "maintainers": ["dot-agi"],
+  "category": "safety",
+  "tags": ["sandbox", "settings", "network", "allowlist", "undo", "band"],
+  "license": "MIT",
+  "version": "1.3.1",
+  "homepage": "https://github.com/dot-agi/sandbox-tuner",
+  "source": { "type": "marketplace", "marketplace": "dot-agi/sandbox-tuner", "plugin": "sandbox-tuner" },
+  "requires": { "claudeCode": ">=2.1.288" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Run the same curl a third time, once, in the sandbox." },
+      { "role": "tool", "tool": "Bash", "input": "curl -sS -m 5 -o /dev/null https://example.org", "result": "curl: (56) CONNECT tunnel failed, response 403", "status": "error" }
+    ],
+    "caption": "After the third block of example.org: the band explains it and shows what Allow would change.",
+    "caption_ru": "После третьей блокировки example.org: полоса объясняет её и показывает, что изменит Allow.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [" Sandbox blocked example.org:443 for \"curl -sS -m 5 -o /dev/null https://example.org\". The host is not"],
+          [" on your sandbox allowlist, so Claude must list it on each command."],
+          [{ "text": " Seen 6 times in 2 sessions.", "dim": true }],
+          [" Allow adds \"example.org\" to sandbox.network.allowedDomains in ~/.claude/settings.json."],
+          [" ", { "button": "Allow", "variant": "primary" }, "  ", { "button": "Open Sandbox Tuner" }, "  ", { "button": "Dismiss" }, "  ", { "text": "ctrl+x tab to choose", "dim": true }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/dot-agi/sandbox-tuner/967a05c307ec4e2af19257d9ecd0a887a7d35fc2/docs/images/band.svg",
+      "alt": "A sandboxed curl to example.org fails; the band names the block, counts the sightings, states the settings change and shows Allow",
+      "surface": "terminal"
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/dot-agi/sandbox-tuner/967a05c307ec4e2af19257d9ecd0a887a7d35fc2/docs/images/pane.svg",
+      "alt": "The Sandbox Tuner pane: example.org ready with Allow and Hide, example.net waiting at 1 of 3 sightings",
+      "surface": "terminal"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "subagent-limits",
+  "title": "Subagent Limits",
+  "tagline": "Keeps subagents small: sizing rules, a checkpoint request, and refused tools past a hard limit.",
+  "tagline_ru": "Держит субагентов небольшими: правила дробления, просьба сохраниться и отказ в инструментах за лимитом.",
+  "description": "Adds a section on sizing and splitting work to the main agent's system prompt and a context budget to every subagent's brief. When a subagent's requests carry `nudgeAtK` (300) thousand tokens, it is asked to finish its item and write a handoff note; past `stopAtK` (450) it gets 8 more tool calls, then every tool call is refused so a fresh agent takes over. When a subagent's prompt cache expired over a long pause, you get a toast and the agent is told once. Ships the `split-work` skill and an optional Python script that studies your own subagent transcripts.",
+  "description_ru": "Добавляет в системный промпт основного агента раздел о том, как дробить работу, а в задание каждого субагента — бюджет контекста. Когда запросы субагента достигают `nudgeAtK` (300) тысяч токенов, его просят закончить текущий пункт и оставить записку для преемника; после `stopAtK` (450) у него остаётся 8 вызовов инструментов, затем все вызовы отклоняются, чтобы работу продолжил новый агент. Если кэш промпта субагента истёк за долгую паузу, вы получаете уведомление, а агенту сообщают об этом один раз. В комплекте навык `split-work` и необязательный скрипт на Python, который анализирует ваши собственные журналы субагентов.",
+  "author": { "name": "Abhiram Dwivedi", "github": "AbhiramDwivedi", "url": "https://github.com/AbhiramDwivedi" },
+  "maintainers": ["AbhiramDwivedi"],
+  "category": "safety",
+  "tags": ["subagents", "context", "limits", "checkpoint", "handoff"],
+  "license": "MIT",
+  "version": "0.3.1",
+  "homepage": "https://github.com/AbhiramDwivedi/claude-ops/tree/HEAD/plugins/subagent-limits",
+  "source": { "type": "marketplace", "marketplace": "AbhiramDwivedi/claude-ops", "plugin": "subagent-limits", "path": "plugins/subagent-limits" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": true
+  },
+  "preview": {
+    "surface": "terminal",
+    "scene": "coding",
+    "caption": "A subagent past 450K of context used its 8 wind-down calls; its next tool call is refused.",
+    "caption_ru": "Субагент перешёл 450K контекста и израсходовал 8 вызовов на завершение; следующий вызов отклонён.",
+    "elements": [
+      {
+        "slot": "tool-deny",
+        "tool": "Read",
+        "input": "src/billing/invoice.ts",
+        "message": "[subagent-limits] Refused: your context (462K tokens) is past the 450K limit. End now with a final report that starts with \"CHECKPOINT:\" and says what is done and what is left."
+      },
+      { "slot": "toast", "text": "Refusing tools for migrate-billing at 462K of context" }
+    ]
+  }
+}

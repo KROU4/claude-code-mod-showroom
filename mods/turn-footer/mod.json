@@ -1,0 +1,49 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "turn-footer",
+  "title": "Turn Footer",
+  "tagline": "Tools, requests, tokens and cache hit under each answer; the spinner names the running tool.",
+  "tagline_ru": "Итог под каждым ответом (инструменты, запросы, токены, попадание в кэш) и текущий инструмент в спиннере.",
+  "description": "Under Claude Code's own \"Worked for …\" line it adds a dim summary of the turn: tool calls and how many failed (in red), subagents, model requests, input and output tokens, and the cache hit rate, yellow under 50% and red under 20%. Subagent work counts toward the turn that started it. While a tool runs, the spinner ends with its name and how long it has been running (`… Bash 12s`). The summary line is terminal only, since the desktop app draws no \"Worked for\" line. Everything is counted in memory; no commands or settings.",
+  "description_ru": "Под собственной строкой Claude Code «Worked for …» появляется приглушённый итог хода: вызовы инструментов и сколько из них упало (красным), субагенты, запросы к модели, входные и выходные токены и доля попаданий в кэш — жёлтая ниже 50% и красная ниже 20%. Работа субагентов засчитывается ходу, который их запустил. Пока работает инструмент, спиннер заканчивается его именем и временем работы (`… Bash 12s`). Строка итога есть только в терминале: десктопное приложение не рисует «Worked for». Всё считается в памяти; ни команд, ни настроек.",
+  "author": { "name": "Mehmet Aras", "github": "arasovic", "url": "https://github.com/arasovic" },
+  "maintainers": ["arasovic"],
+  "category": "insights",
+  "tags": ["turns", "tokens", "cache", "spinner", "summary"],
+  "license": "MIT",
+  "version": "0.1.1",
+  "homepage": "https://github.com/arasovic/claude-code-mods/tree/HEAD/turn-footer",
+  "source": { "type": "github", "repo": "arasovic/claude-code-mods", "path": "turn-footer", "sha": "3c3f25ee3a12b982fd63ee858297baab9385dd33" },
+  "capabilities": { "network": false, "processes": false, "filesystem": "none", "model": false, "promptRewrite": false, "blocksTools": false },
+  "preview": {
+    "surface": "terminal",
+    "scene": "debugging",
+    "caption": "Under the turn's closing line: tools, a failure, requests, tokens and a cache hit rate; the spinner names the running tool.",
+    "caption_ru": "Под строкой окончания хода: инструменты, один провал, запросы, токены и попадание в кэш; спиннер называет текущий инструмент.",
+    "elements": [
+      { "slot": "spinner", "verb": "Brewing… Bash 12s" },
+      {
+        "slot": "message",
+        "role": "note",
+        "rows": [
+          [
+            "  ",
+            { "text": "9 tools", "dim": true }, { "text": "  ·  ", "dim": true },
+            { "text": "1 failed", "color": "error" }, { "text": "  ·  ", "dim": true },
+            { "text": "1 agent", "dim": true }, { "text": "  ·  ", "dim": true },
+            { "text": "7 requests", "dim": true }, { "text": "  ·  ", "dim": true },
+            { "text": "412k in  3.8k out", "dim": true }, { "text": "  ·  ", "dim": true },
+            { "text": "cache 91%", "dim": true }
+          ]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/arasovic/claude-code-mods/3c3f25ee3a12b982fd63ee858297baab9385dd33/docs/turn-footer.png",
+      "alt": "A turn summary line under the Worked for line"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "plain-view",
+  "title": "Plain View",
+  "tagline": "A quiet transcript: tool rows step aside and the agent's plan shows as a card with progress bars.",
+  "tagline_ru": "Тихий диалог: строки инструментов уходят, а план агента виден карточкой с полосами прогресса.",
+  "description": "Off until you run `/plain-view on`. Then successful tool rows draw at zero height, while failures, permission dialogs and the agent's questions show in full. Above the prompt a card follows the request: its title, `Step 2 of 4` with a bar and one row per task with its own bar (the current step's percentage is an estimate from its tool calls); running subagents get a row. When the turn ends the card turns green with the time and the files changed and read, or grey on Esc. With `askForTasks` (on by default) one line added to the system prompt asks the model to keep a task list, or a checklist in its reply, and a stale checklist gets a short reminder. `/plain-view` opens its settings.",
+  "description_ru": "Выключен, пока не набрать `/plain-view on`. После этого успешные строки инструментов не занимают места, а ошибки, запросы разрешений и вопросы агента видны полностью. Над полем ввода карточка следит за запросом: заголовок, `Step 2 of 4` с полосой и по строке с полосой на каждую задачу (процент текущего шага оценивается по вызовам инструментов); у работающих субагентов своя строка. Когда ход заканчивается, карточка зеленеет и показывает время и изменённые и прочитанные файлы, а после Esc сереет. С опцией `askForTasks` (включена по умолчанию) в системный промпт добавляется строка с просьбой вести список задач или чек-лист в ответе, а застрявший чек-лист получает короткое напоминание. `/plain-view` открывает панель настроек с 8 палитрами полос.",
+  "author": { "name": "Lucas Fernandes", "github": "ice-lfernandes", "url": "https://github.com/ice-lfernandes" },
+  "maintainers": ["ice-lfernandes"],
+  "category": "interface",
+  "tags": ["transcript", "plan", "progress", "tasks", "quiet", "card"],
+  "license": "MIT",
+  "version": "0.4.3",
+  "homepage": "https://github.com/ice-lfernandes/claude-code-mods/tree/HEAD/plain-view",
+  "source": { "type": "marketplace", "marketplace": "ice-lfernandes/claude-code-mods", "plugin": "plain-view", "path": "plain-view" },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Add a weather widget to the dashboard: fetch the forecast, style it, write a test." },
+      { "role": "assistant", "text": "I'll fetch the forecast first, then build the widget and its test." }
+    ],
+    "caption": "Tool rows are folded away; the card above the prompt tracks the plan step by step.",
+    "caption_ru": "Строки инструментов свёрнуты; карточка над полем ввода ведёт план шаг за шагом.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [{ "text": "Add a weather widget to the dashboard", "bold": true }, "  ", { "text": "Step 2 of 4", "color": "claude" }, " ", { "bar": 0.4, "width": 16, "color": "claude" }],
+          [{ "text": "✓", "color": "success" }, " Fetch the forecast       ", { "bar": 1, "width": 12, "color": "success" }, " Done"],
+          [{ "text": "◐", "color": "claude" }, " Build the widget         ", { "bar": 0.4, "width": 12, "color": "claude" }, " ~40%"],
+          [{ "text": "○", "color": "inactive" }, " Style it                 ", { "bar": 0, "width": 12, "color": "inactive" }, { "text": " Next", "dim": true }],
+          [{ "text": "○", "color": "inactive" }, " Write the test           ", { "bar": 0, "width": 12, "color": "inactive" }, { "text": " Up next", "dim": true }],
+          [{ "text": "◇ 1 agent running · code-review · 3m 12s", "dim": true }]
+        ]
+      },
+      { "slot": "background", "text": "A line in the system prompt asks the model to keep a task list for work of more than two steps." }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/ice-lfernandes/claude-code-mods/82c3ab9c7fa0e92828cc51205b906a9a9b08b6b0/screenshots/plain-view-tasks.gif",
+      "alt": "plain-view following a task list: the card above the prompt fills step by step while tool rows stay folded",
+      "surface": "terminal"
+    }
+  ]
+}

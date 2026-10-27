@@ -1,0 +1,40 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "done-ding",
+  "title": "Done Ding",
+  "tagline": "A desktop notification and a chime when a long turn ends or Claude waits on you, plus phone pushes.",
+  "tagline_ru": "Уведомление на рабочем столе и звук, когда долгий ход закончен или Claude ждёт вас; пуш на телефон по желанию.",
+  "description": "When a main-thread turn of at least `minSeconds` (30 by default) finishes, done-ding shows a desktop notification with the project name, the turn's length and the answer's first line (`Done in 2m 14s · Fixed the flaky test.`), via `osascript` on macOS or `notify-send` on Linux, else a toast. Permission prompts and the idle reminder ping too, at most once a minute. A two-note chime synthesized in code plays (or `say` speaks a line). Interrupted, subagent and headless turns stay quiet. With `ntfyTopic` set, each ping is also POSTed to your ntfy server (ntfy.sh by default) for a phone push: the text then leaves your machine. `/ding test`, `/ding mute`, `/ding unmute`.",
+  "description_ru": "Когда ход основного диалога длиной не меньше `minSeconds` (по умолчанию 30 секунд) завершается, done-ding показывает уведомление на рабочем столе с именем проекта, длительностью хода и первой строкой ответа (`Done in 2m 14s · Fixed the flaky test.`): через `osascript` на macOS или `notify-send` в Linux, иначе всплывающим сообщением. Запросы разрешений и напоминание о простое тоже вызывают уведомление, не чаще раза в минуту. Звучит двухнотный сигнал, синтезированный в коде (или `say` произносит фразу). Прерванные ходы, субагенты и запуски без интерфейса молчат. С `ntfyTopic` каждое уведомление ещё уходит POST-запросом на ваш сервер ntfy (по умолчанию ntfy.sh) как пуш на телефон: текст покидает компьютер. `/ding test`, `/ding mute`, `/ding unmute`.",
+  "author": { "name": "Amrit Preet Singh", "github": "Singh-AP", "url": "https://github.com/Singh-AP" },
+  "maintainers": ["Singh-AP"],
+  "category": "productivity",
+  "tags": ["notifications", "sound", "ntfy", "phone-push", "long-turns"],
+  "license": "MIT",
+  "version": "1.1.0",
+  "homepage": "https://github.com/Singh-AP/awesome-claude-mods/tree/HEAD/mods/notifications/done-ding",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "Singh-AP/awesome-claude-mods",
+    "plugin": "done-ding",
+    "path": "mods/notifications/done-ding"
+  },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": true,
+    "processes": true,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "caption": "After a 4-minute turn: the desktop notification (and a chime); a permission prompt pings the same way.",
+    "caption_ru": "После хода в 4 минуты: уведомление на рабочем столе (и звук); запрос разрешения вызывает такое же.",
+    "elements": [
+      { "slot": "notification", "title": "Claude Code · api", "text": "Done in 4m 12s · Refactored the auth module." },
+      { "slot": "background", "text": "Plays a two-note chime; with ntfyTopic set, also pushes the same text to your phone through ntfy" }
+    ]
+  }
+}

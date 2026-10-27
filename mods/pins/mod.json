@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "pins",
+  "title": "Pins",
+  "tagline": "Pin instructions that survive compaction, /clear and restarts; every prompt carries them to Claude.",
+  "tagline_ru": "Закреплённые указания переживают сжатие, /clear и перезапуск; каждый запрос передаёт их Claude.",
+  "description": "`/pin don't touch the migrations` saves an instruction for this project (keyed by the project root, up to 25). Every prompt you send then carries the numbered list as extra context Claude reads, headed \"Pinned instructions from the user for this project. They apply to every turn, including after compaction\"; the transcript does not show it. `/pin` lists the pins, `/pin rm 2` removes one, `/pin clear` removes all. At session start a log line says how many pins the project has. The pins are kept in the plugin store, not in any project file.",
+  "description_ru": "`/pin don't touch the migrations` сохраняет указание для этого проекта (по корню проекта, до 25 штук). После этого каждый ваш запрос несёт нумерованный список как дополнительный контекст для Claude с заголовком «Pinned instructions from the user for this project. They apply to every turn, including after compaction»; в переписке он не виден. `/pin` показывает закреплённое, `/pin rm 2` удаляет одно указание, `/pin clear` удаляет все. При старте сессии строка журнала сообщает, сколько закреплено в проекте. Указания хранятся в хранилище плагина, а не в файлах проекта.",
+  "author": { "name": "Mohammed Mubarak", "github": "MDmubarak786", "url": "https://github.com/MDmubarak786" },
+  "maintainers": ["MDmubarak786"],
+  "category": "productivity",
+  "tags": ["instructions", "context", "compaction", "memory"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/MDmubarak786/claude-mods/tree/HEAD/mods/pins",
+  "source": { "type": "marketplace", "marketplace": "MDmubarak786/claude-mods", "plugin": "pins", "path": "mods/pins" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "idle",
+    "surface": "terminal",
+    "caption": "Two pins for this project; each prompt carries them to Claude, even after compaction.",
+    "caption_ru": "Два закреплённых указания для проекта; каждый запрос передаёт их Claude, даже после сжатия.",
+    "elements": [
+      { "slot": "command", "command": "/pin", "args": "use pnpm, never npm", "output": [["Pinned (2): use pnpm, never npm"]] },
+      { "slot": "command", "command": "/pin", "output": [["Pinned for this project:"], ["1. don't touch the migrations"], ["2. use pnpm, never npm"]] },
+      { "slot": "background", "text": "Each prompt gets hidden context: \"Pinned instructions from the user for this project…\" with the numbered list." }
+    ]
+  }
+}

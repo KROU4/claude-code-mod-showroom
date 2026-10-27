@@ -1,0 +1,52 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "cc-esol",
+  "title": "cc-esol",
+  "tagline": "An English coach: your English prompts are corrected into a local learning log you can review.",
+  "tagline_ru": "Тренер английского: ваши запросы на английском исправляются в локальный журнал, который можно разбирать.",
+  "description": "With coaching on (off by default, in the 💡 esol pane), each prompt you type or dictate in English runs as usual, and a short hidden note beside it asks Claude to call the mod's `english_log` tool with a native version and the reasons. The entry is appended to `~/.claude/english-learning/learning.md` (`ENGLISH_COACH_LOG` moves it) through `sh` or `cmd`. Prompts in your own language, slash commands, short replies and already-natural English are left alone. The pane (`/esol`, or 💡 esol under the prompt) lists corrections newest first; Review sends the log to the model for your recurring patterns and three drills. A Voice button toggles Claude Code's own `/voice` dictation.",
+  "description_ru": "Когда коучинг включён (по умолчанию выключен, включается в панели 💡 esol), каждый запрос, который вы пишете или диктуете по-английски, выполняется как обычно, а рядом короткая скрытая заметка просит Claude вызвать инструмент мода `english_log` с естественным вариантом фразы и объяснением. Запись дописывается в `~/.claude/english-learning/learning.md` (путь меняет `ENGLISH_COACH_LOG`) через `sh` или `cmd`. Запросы на родном языке, слэш-команды, короткие ответы и уже естественный английский не трогаются. Панель (`/esol` или 💡 esol под полем ввода) показывает исправления, новые сверху; Review отправляет журнал модели и возвращает повторяющиеся ошибки и три упражнения. Кнопка Voice включает встроенную диктовку `/voice`.",
+  "author": { "name": "Rapha Rodrigues", "github": "rapha-rodrigues", "url": "https://github.com/rapha-rodrigues" },
+  "maintainers": ["rapha-rodrigues"],
+  "category": "productivity",
+  "tags": ["english", "learning", "esol", "language", "voice", "coaching"],
+  "license": "MIT",
+  "version": "2.0.0",
+  "homepage": "https://github.com/rapha-rodrigues/cc-esol/tree/HEAD/plugins/cc-esol",
+  "source": { "type": "marketplace", "marketplace": "rapha-rodrigues/cc-esol", "plugin": "cc-esol", "path": "plugins/cc-esol" },
+  "requires": { "claudeCode": ">=2.1.299" },
+  "capabilities": { "network": false, "processes": true, "filesystem": "write", "model": true, "promptRewrite": true, "blocksTools": false },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "please make the tests for the discount, i dont know if they works" },
+      { "role": "assistant", "text": "I'll add tests for the discount codes and run them." }
+    ],
+    "caption": "Claude logs a native version of the English prompt; the esol pane lists the corrections with the reasons.",
+    "caption_ru": "Claude записывает естественный вариант английского запроса; панель esol показывает исправления с объяснениями.",
+    "elements": [
+      { "slot": "model-tool", "name": "mcp__cc-esol__english_log", "input": "native: \"Please write tests for the discount. I don't know if it works.\"", "result": [["Logged to ~/.claude/english-learning/learning.md"]] },
+      {
+        "slot": "pane",
+        "title": "esol",
+        "width": "narrow",
+        "rows": [
+          [{ "text": "ESOL", "bold": true }, { "text": "  coaching on · 23 entries", "dim": true }],
+          [{ "text": "shop · today 14:32", "dim": true }],
+          [{ "text": "− make the tests … if they works", "color": "error" }],
+          [{ "text": "+ write tests … if it works", "color": "success" }],
+          [{ "text": "  \"write tests\" is the usual verb; \"it\" matches \"the discount\".", "dim": true }],
+          [{ "button": "Review" }, " ", { "button": "Settings" }]
+        ]
+      },
+      { "slot": "prompt-hint", "row": [{ "text": "? for shortcuts", "dim": true }, "   ", "💡 esol ▼", "  ", "Voice ", { "text": "off", "dim": true }] }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/rapha-rodrigues/cc-esol/048fb3c648807c996fdedce23a59d0066c73c59a/docs/screenshots/esol-tab.png",
+      "alt": "The ESOL pane with the latest corrections, one open with the original, the native version and the reasons"
+    }
+  ]
+}

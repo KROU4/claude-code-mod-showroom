@@ -1,0 +1,44 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "jr-limits",
+  "title": "jr limits",
+  "tagline": "Your 5-hour and 7-day plan limits in one quiet row above the prompt, with toasts at 80% and 95%.",
+  "tagline_ru": "Лимиты плана на 5 часов и 7 дней одной тихой строкой над полем ввода, с уведомлениями на 80% и 95%.",
+  "description": "A right-aligned row above the prompt with the fill of the 5-hour and 7-day windows, green, amber or red, and when the fullest resets (`5h 2% · 7d 48% ↻45h`). From 80% on any window the row moves left as an alert (`▲ 7d limit 84% · resets in 45h`), and a toast fires when a window crosses 80% and again at 95%, once per window. `/jr-limits details` opens a pane with every window as a gradient gauge and its exact reset time; `/jr-limits` hides or shows the row for every session. The figures are the session's own rate-limit readings, refreshed every minute; nothing is drawn on API-key sessions. Runs nothing, no network.",
+  "description_ru": "Строка справа над полем ввода: заполненность окон на 5 часов и 7 дней (зелёным, жёлтым или красным) и когда сбросится самое полное (`5h 2% · 7d 48% ↻45h`). С 80% в любом окне строка уходит влево и становится тревогой (`▲ 7d limit 84% · resets in 45h`), а уведомление приходит при пересечении 80% и снова на 95%, по разу на окно. `/jr-limits details` открывает панель со всеми окнами в виде градиентных шкал и точным временем сброса; `/jr-limits` прячет или показывает строку во всех сессиях. Цифры — собственные данные сессии о лимитах, обновляются раз в минуту; в сессиях с API-ключом ничего не рисуется. Ничего не запускает, в сеть не ходит.",
+  "author": { "name": "jrlprost", "github": "jrlprost", "url": "https://github.com/jrlprost" },
+  "maintainers": ["jrlprost"],
+  "category": "insights",
+  "tags": ["rate-limits", "usage", "plan", "toast"],
+  "license": "MIT",
+  "version": "0.4.0",
+  "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-limits",
+  "source": {
+    "type": "github",
+    "repo": "jrlprost/claude-code-mods",
+    "path": "plugins/jr-limits",
+    "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+  },
+  "surfaces": ["terminal"],
+  "requires": { "claudeCode": ">=2.1.301" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "caption": "The weekly window crossed 80%: the alert row and the toast.",
+    "caption_ru": "Недельное окно перешло 80%: строка-тревога и уведомление.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [[{ "text": "▲ 7d limit 84%", "color": "#ff8c42" }, { "text": " · resets in 45h", "dim": true }]]
+      },
+      { "slot": "toast", "text": "jr limits · 7d window at 84%, resets in 1d 21h" }
+    ]
+  }
+}

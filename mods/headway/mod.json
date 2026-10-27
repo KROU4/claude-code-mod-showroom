@@ -1,0 +1,47 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "headway",
+  "title": "Headway",
+  "tagline": "A line above the prompt with the plan's stage, current step, steps done and time left.",
+  "tagline_ru": "Строка над полем ввода: этап плана, текущий шаг, сколько шагов сделано и сколько примерно осталось.",
+  "description": "Headway follows the plan Claude already keeps (TodoWrite, the Task tools, a plan approved in plan mode) and draws `Build · Wire the routes (2/6) ▰▰▱▱▱▱ ~3m left` above the prompt. Time left is the session's median step time blended with the project's earlier pace; a step past three times its estimate turns amber, a rewritten plan flashes `plan revised +2 −1`, and a finished plan turns green and leaves a receipt toast. `/headway` opens a pane with every step and its time; `/headway hide|show` toggles the line. Where Claude has no todo tool (the desktop app) it gives the model a small `plan` tool. Pace history stays in the plugin's store; no files, processes, network or model calls.",
+  "description_ru": "Headway следит за планом, который Claude и так ведёт (TodoWrite, инструменты Task, план, одобренный в режиме планирования), и рисует над полем ввода `Build · Wire the routes (2/6) ▰▰▱▱▱▱ ~3m left`. Оставшееся время — медиана длительности шагов в сессии с поправкой на прежний темп проекта; шаг, идущий втрое дольше оценки, становится янтарным, переписанный план мигает `plan revised +2 −1`, а завершённый план становится зелёным и оставляет уведомление с итогом. `/headway` открывает панель со всеми шагами и их временем, `/headway hide|show` скрывает и возвращает строку. Если у Claude нет инструмента задач (десктопное приложение), мод даёт модели небольшой инструмент `plan`. История темпа (только длительности) хранится в хранилище плагина; файлы, процессы, сеть и модель не используются.",
+  "author": { "name": "modmyclaude", "github": "modmyclaude", "url": "https://github.com/modmyclaude" },
+  "maintainers": ["modmyclaude"],
+  "category": "insights",
+  "tags": ["progress", "plan", "todo", "eta", "band", "pane"],
+  "license": "MIT",
+  "version": "0.1.2",
+  "homepage": "https://github.com/modmyclaude/claude-code-mods/tree/HEAD/mods/headway",
+  "source": { "type": "marketplace", "marketplace": "modmyclaude/claude-code-mods", "plugin": "headway", "path": "mods/headway" },
+  "surfaces": ["terminal", "desktop"],
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Add the orders API: routes, validation, tests, then update the docs." },
+      { "role": "tool", "tool": "TodoWrite", "input": "6 todos", "status": "done" },
+      { "role": "tool", "tool": "Edit", "input": "src/routes/orders.ts", "status": "done" },
+      { "role": "tool", "tool": "Edit", "input": "src/validation/order.ts", "status": "running" }
+    ],
+    "caption": "Two of six steps done: the stage, the step, the bar and time left above the prompt; the toast comes when the plan finishes.",
+    "caption_ru": "Сделано два шага из шести: этап, шаг, полоса и оставшееся время над полем ввода; уведомление придёт, когда план завершится.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [{ "text": "Build", "bold": true }, " · Wire the routes ", { "text": "(2/6)", "dim": true }, " ", { "text": "▰▰▱▱▱▱", "color": "claude" }, " ", { "text": "~3m left", "dim": true }]
+        ]
+      },
+      { "slot": "toast", "text": "Plan done in 4m 12s, 18s ahead of estimate. Build 2m 1s · Verify 2m 11s" }
+    ]
+  }
+}

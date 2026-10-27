@@ -1,0 +1,45 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "circuit-breaker",
+  "title": "Circuit Breaker",
+  "tagline": "After the same shell command fails N times in a row, the next try waits for you: stop, or once more.",
+  "tagline_ru": "Если одна и та же команда упала N раз подряд, следующая попытка ждёт вашего решения: остановить или ещё раз.",
+  "description": "Counts identical failing Bash commands per agent (the main conversation and each subagent separately); the streak resets when that agent's turn ends or the command succeeds. From the second failure the spinner line adds `· same command failed 2×`. Once a command has failed the threshold number of times (3 by default) the next identical call asks you `Stop` or `Try once more`; Stop, a dismissed question or a `claude -p` run with nobody to ask refuses it, and Claude reads the last error and is told to explain or change approach. `/breaker 5` sets the threshold, `/breaker off` turns it off; the setting is kept across sessions.",
+  "description_ru": "Считает одинаковые упавшие команды Bash отдельно для каждого агента (основной диалог и каждый субагент); серия сбрасывается, когда ход агента заканчивается или команда проходит. Со второго сбоя к строке индикатора работы добавляется `· same command failed 2×`. Когда команда упала заданное число раз (по умолчанию 3), следующий такой же вызов спрашивает вас: `Stop` или `Try once more`. При Stop, закрытом вопросе или в режиме `claude -p`, где спросить некого, вызов отклоняется, а Claude получает последнюю ошибку и просьбу объяснить проблему или сменить подход. `/breaker 5` задаёт порог, `/breaker off` выключает; настройка сохраняется между сессиями.",
+  "author": { "name": "Mohammed Mubarak", "github": "MDmubarak786", "url": "https://github.com/MDmubarak786" },
+  "maintainers": ["MDmubarak786"],
+  "category": "safety",
+  "tags": ["bash", "guard", "loops", "retries"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/MDmubarak786/claude-mods/tree/HEAD/mods/circuit-breaker",
+  "source": { "type": "marketplace", "marketplace": "MDmubarak786/claude-mods", "plugin": "circuit-breaker", "path": "mods/circuit-breaker" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": true
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Get the dev server running." },
+      { "role": "tool", "tool": "Bash", "input": "npm run dev", "result": "Error: listen EADDRINUSE: address already in use :::3000", "status": "error" },
+      { "role": "tool", "tool": "Bash", "input": "npm run dev", "result": "Error: listen EADDRINUSE: address already in use :::3000", "status": "error" },
+      { "role": "tool", "tool": "Bash", "input": "npm run dev", "result": "Error: listen EADDRINUSE: address already in use :::3000", "status": "error" }
+    ],
+    "caption": "The fourth identical try is held; you chose Stop, so Claude gets the refusal and the last error.",
+    "caption_ru": "Четвёртая одинаковая попытка задержана; вы выбрали Stop, и Claude получает отказ и последнюю ошибку.",
+    "elements": [
+      {
+        "slot": "tool-deny",
+        "tool": "Bash",
+        "input": "npm run dev",
+        "message": "circuit-breaker: this command has failed 3 times in a row with the same result, and the user chose to stop. Do not run it again. Explain what you think is wrong, propose a different approach, or ask the user. Last error: Error: listen EADDRINUSE: address already in use :::3000"
+      },
+      { "slot": "background", "text": "Before the refusal it asks: \"npm run dev has failed 3 times in a row. Let Claude try it again?\" with Stop and Try once more." }
+    ]
+  }
+}

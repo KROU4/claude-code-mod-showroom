@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "prismantis",
+  "title": "Prismantis",
+  "tagline": "Colorful, themeable replies: tables, code, mermaid charts and diagrams, with copy buttons.",
+  "tagline_ru": "Цветные ответы с темами: таблицы, код, графики и схемы mermaid, тихие строки инструментов, кнопки копирования.",
+  "description": "Redraws replies, tool rows, the turn footer and your prompts in one of 16 palettes or `mono`: colored tables, syntax-highlighted code (a bundled Prism build), mermaid flowcharts, sequence, xychart, pie and gantt charts as terminal graphics, diff cards, alerts and right-to-left text, with copy buttons. With `latex` on and `ratex-render` installed, math is typeset as images in kitty or Ghostty. Rich copy runs `osascript`, `powershell` or `copyq` on click. With `diagramHints` on (default) each prompt carries about 630 tokens of model-only notes asking for charts where they help; `issueHint` adds a line about offering a repro issue. `/prismantis theme | setup | copy`.",
+  "description_ru": "Перерисовывает ответы, строки инструментов, итог хода и ваши запросы в одной из 16 палитр или `mono`: цветные таблицы, подсветка кода (встроенная сборка Prism), блок-схемы, диаграммы последовательностей, xychart, круговые и Ганта из mermaid в виде терминальной графики, карточки диффов, плашки и текст справа налево, с кнопками копирования. С `latex` и установленным `ratex-render` формулы набираются картинками в kitty и Ghostty. Расширенное копирование по клику запускает `osascript`, `powershell` или `copyq`. С `diagramHints` (включено по умолчанию) к каждому запросу добавляется около 630 токенов заметок для модели с просьбой рисовать графики, где они помогают; `issueHint` добавляет строку о предложении открыть issue. `/prismantis theme | setup | copy`.",
+  "author": { "name": "Nahum Litvin", "github": "NahumLitvin", "url": "https://github.com/NahumLitvin" },
+  "maintainers": ["NahumLitvin"],
+  "category": "interface",
+  "tags": ["themes", "markdown", "tables", "mermaid", "charts", "latex"],
+  "license": "MIT",
+  "version": "0.36.0",
+  "homepage": "https://github.com/NahumLitvin/prismantis",
+  "source": { "type": "marketplace", "marketplace": "NahumLitvin/prismantis", "plugin": "prismantis" },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "transcript": [
+      { "role": "user", "text": "Compare p95 latency across our three regions this week." }
+    ],
+    "caption": "A reply with a themed table and a mermaid bar chart drawn in the terminal.",
+    "caption_ru": "Ответ с таблицей в цветах темы и столбчатым графиком mermaid прямо в терминале.",
+    "elements": [
+      {
+        "slot": "message",
+        "role": "assistant",
+        "rows": [
+          [{ "text": "p95 latency by region", "bold": true, "color": "#cba6f7" }],
+          [{ "text": "┌────────┬────────┬────────┐", "color": "#6c7086" }],
+          [{ "text": "│ ", "color": "#6c7086" }, { "text": "Region", "bold": true, "color": "#89b4fa" }, { "text": " │ ", "color": "#6c7086" }, { "text": "p95 ms", "bold": true, "color": "#89b4fa" }, { "text": " │ ", "color": "#6c7086" }, { "text": "Change", "bold": true, "color": "#89b4fa" }, { "text": " │", "color": "#6c7086" }],
+          [{ "text": "│ ", "color": "#6c7086" }, "east  ", { "text": " │ ", "color": "#6c7086" }, { "text": "   182", "color": "#fab387" }, { "text": " │ ", "color": "#6c7086" }, { "text": "  -12%", "color": "#a6e3a1" }, { "text": " │", "color": "#6c7086" }],
+          [{ "text": "│ ", "color": "#6c7086" }, "west  ", { "text": " │ ", "color": "#6c7086" }, { "text": "   241", "color": "#fab387" }, { "text": " │ ", "color": "#6c7086" }, { "text": "   +4%", "color": "#f38ba8" }, { "text": " │", "color": "#6c7086" }],
+          [{ "text": "└────────┴────────┴────────┘", "color": "#6c7086" }],
+          [" "],
+          [{ "text": "east ", "color": "#89b4fa" }, { "text": "██████████████▌ ", "color": "#89b4fa" }, { "text": "182", "color": "#fab387" }],
+          [{ "text": "west ", "color": "#f5c2e7" }, { "text": "███████████████████▎ ", "color": "#f5c2e7" }, { "text": "241", "color": "#fab387" }],
+          [{ "text": "eu   ", "color": "#a6e3a1" }, { "text": "████████████▏ ", "color": "#a6e3a1" }, { "text": "155", "color": "#fab387" }]
+        ]
+      },
+      { "slot": "background", "text": "With diagramHints on, each prompt carries a model-only note that tables, mermaid charts and alerts render here." }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/NahumLitvin/prismantis/ed085d7c7d649241025a739d398f00c2d3b0c9a9/docs/themes.png",
+      "alt": "The same reply drawn in several of the prismantis palettes",
+      "surface": "terminal"
+    }
+  ]
+}

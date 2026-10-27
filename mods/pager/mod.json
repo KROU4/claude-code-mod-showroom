@@ -1,0 +1,39 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "pager",
+  "title": "Pager",
+  "tagline": "A sound and a toast when Claude finishes, needs you or hits an error; five packs and quiet hours.",
+  "tagline_ru": "Звук и уведомление, когда Claude закончил, ждёт вас или упал с ошибкой; пять наборов, mute и тихие часы.",
+  "description": "Plays one short sound with a toast naming the session when a turn of at least `minDuration` seconds (20 by default) ends, when a permission prompt, question or plan approval has waited on you, or when a turn ends on an API error or refusal. Five original packs: classic, arcade, zen and the spoken butler and coach. `/pager pack`, `/pager test`, `/pager mute 30m` and `/pager unmute`; `quietHours` such as `22:00-07:00`; at most one sound every 5 s. Sound plays on macOS only (Claude Code uses `afplay`); elsewhere you get the toasts. Optional `ntfyTopic`: then each alert also POSTs a fixed title and short text to `https://ntfy.sh/<topic>`, never conversation content.",
+  "description_ru": "Проигрывает короткий звук и показывает уведомление с именем сессии, когда закончился ход длиной от `minDuration` секунд (по умолчанию 20), когда запрос разрешения, вопрос или утверждение плана ждут вас или когда ход оборвался ошибкой API или отказом. Пять собственных наборов звуков: classic, arcade, zen и озвученные butler и coach. Команды `/pager pack`, `/pager test`, `/pager mute 30m` и `/pager unmute`; тихие часы `quietHours`, например `22:00-07:00`; не чаще одного звука в 5 секунд. Звук играет только на macOS (Claude Code использует `afplay`), на других системах остаются уведомления. Необязательный `ntfyTopic`: тогда каждое оповещение ещё и отправляется POST-запросом на `https://ntfy.sh/<topic>` с фиксированным заголовком и коротким текстом, без содержимого диалога.",
+  "author": { "name": "modmyclaude", "github": "modmyclaude", "url": "https://github.com/modmyclaude" },
+  "maintainers": ["modmyclaude"],
+  "category": "productivity",
+  "tags": ["sound", "alerts", "notifications", "ntfy", "mute", "quiet-hours"],
+  "license": "MIT",
+  "version": "0.1.1",
+  "homepage": "https://github.com/modmyclaude/claude-code-mods/tree/HEAD/mods/pager",
+  "source": { "type": "marketplace", "marketplace": "modmyclaude/claude-code-mods", "plugin": "pager", "path": "mods/pager" },
+  "surfaces": ["terminal", "desktop"],
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": true,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "A long turn ends: the done chime of the classic pack plays and a toast names the session.",
+    "caption_ru": "Долгий ход закончился: звучит сигнал «готово» из набора classic, а уведомление называет сессию.",
+    "elements": [
+      { "slot": "toast", "text": "Done - shop-api (2m 5s)" },
+      { "slot": "command", "command": "/pager", "args": "mute 30m" },
+      { "slot": "toast", "text": "Muted for 30m, until 15:42. Toasts still show. /pager unmute ends it early." },
+      { "slot": "background", "text": "Plays sounds/classic/done.wav through Claude Code's audio player (macOS); with ntfyTopic set, also POSTs \"Pager: done\" to ntfy.sh" }
+    ]
+  }
+}

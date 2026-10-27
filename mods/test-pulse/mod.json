@@ -1,0 +1,64 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "test-pulse",
+  "title": "Test Pulse",
+  "tagline": "Every test run Claude makes lands in the status line; a toast when tests go red or green again.",
+  "tagline_ru": "Каждый прогон тестов Claude попадает в строку статуса; уведомление, когда тесты краснеют или зеленеют.",
+  "description": "Spots test runs among Claude's Bash commands (jest, vitest, pytest, go test, cargo, mocha, rspec, phpunit, dotnet, gradle and more, also behind `cd … &&`, pipes or `timeout`) and reads the summary from the output. The status line shows `🧪 ✅ 44/44 passing · 2m ago`, a toast fires only when the colour changes, and `/tests` (or `/test-pulse`) lists the last 20 runs of this project with a pass-rate sparkline, failing names and likely flakes: tests that failed, then passed with no file edited in between. History is kept per project root in the mod's own store; `/tests clear` wipes it. Background runs are not recorded.",
+  "description_ru": "Находит прогоны тестов среди команд Bash, которые запускает Claude (jest, vitest, pytest, go test, cargo, mocha, rspec, phpunit, dotnet, gradle и другие, в том числе после `cd … &&`, в конвейере или с `timeout`), и читает итог из вывода. В строке статуса видно `🧪 ✅ 44/44 passing · 2m ago`, уведомление всплывает только при смене цвета, а `/tests` (или `/test-pulse`) показывает 20 последних прогонов проекта с мини-графиком доли успешных, именами упавших тестов и вероятными «мигающими»: упал, потом прошёл без правок файлов между прогонами. История хранится по корню проекта в собственном хранилище мода; `/tests clear` её стирает. Фоновые прогоны не учитываются.",
+  "author": { "name": "Amrit Preet Singh", "github": "Singh-AP", "url": "https://github.com/Singh-AP" },
+  "maintainers": ["Singh-AP"],
+  "category": "insights",
+  "tags": ["tests", "status-line", "flaky-tests", "sparkline", "toast"],
+  "license": "MIT",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Singh-AP/awesome-claude-mods/tree/HEAD/mods/awareness/test-pulse",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "Singh-AP/awesome-claude-mods",
+    "plugin": "test-pulse",
+    "path": "mods/awareness/test-pulse"
+  },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Add division to the calculator and run the tests." },
+      { "role": "tool", "tool": "Edit", "input": "src/calc.ts", "status": "done" },
+      { "role": "tool", "tool": "Bash", "input": "npm test", "result": "Tests  1 failed | 1 passed (2)", "status": "error" }
+    ],
+    "caption": "A run went red: the status line, the colour-change toast and the /tests history.",
+    "caption_ru": "Прогон покраснел: строка статуса, уведомление о смене цвета и история /tests.",
+    "elements": [
+      { "slot": "status", "text": "🧪 ❌ 1/2 passing · just now" },
+      { "slot": "toast", "text": "tests went red: 1 failing · divides" },
+      {
+        "slot": "command",
+        "command": "/tests",
+        "output": [
+          ["test-pulse: Last 4 runs · pass rate ", { "text": "▅▅██", "color": "success" }, " (oldest → newest)"],
+          ["  ❌ just now  1/2      npm test  ✗ divides"],
+          ["  ✅ 3m ago    44/44    npm test"],
+          ["  ✅ 5m ago    43/43    npx vitest run src/auth"],
+          [{ "text": "Possibly flaky: checkout › retries payment", "color": "warning" }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/Singh-AP/awesome-claude-mods/b82b96062224abc66f3509cff95731e9924c607e/assets/screens/test-pulse.svg",
+      "alt": "test-pulse in a Claude Code session: the status line after a test run and the colour-change toast",
+      "surface": "terminal"
+    }
+  ]
+}

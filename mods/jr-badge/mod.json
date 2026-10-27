@@ -1,0 +1,43 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "jr-badge",
+  "title": "jr badge",
+  "tagline": "A colored project badge and its branch above the prompt, so you know which window you type in.",
+  "tagline_ru": "Цветной значок проекта и его ветка над полем ввода, чтобы не перепутать окна.",
+  "description": "One quiet row on the right above the prompt: the project name on a colored chip (the color is derived from the name, so it is the same in every window; `HOME` in your home folder) and the current git branch. A `badge: LABEL #hex` line in the project's `CLAUDE.md` sets your own label and color. Hidden until you type `/jr-badge`, which toggles it for every session (`on`/`off` set it). Refreshed after each turn by running `git rev-parse --show-toplevel` and `git branch --show-current` with config that could run programs switched off. Reads `CLAUDE.md` and `HOME`; no network.",
+  "description_ru": "Тихая строка справа над полем ввода: имя проекта на цветной плашке (цвет выводится из имени, поэтому во всех окнах один и тот же; в домашней папке написано `HOME`) и текущая ветка git. Строка `badge: LABEL #hex` в `CLAUDE.md` проекта задаёт свою подпись и цвет. По умолчанию скрыт; `/jr-badge` показывает или прячет его во всех сессиях (`on`/`off` задают явно). Обновляется после каждого хода: мод запускает `git rev-parse --show-toplevel` и `git branch --show-current`, отключая настройки git, способные запускать программы. Читает `CLAUDE.md` и `HOME`, в сеть не ходит.",
+  "author": { "name": "jrlprost", "github": "jrlprost", "url": "https://github.com/jrlprost" },
+  "maintainers": ["jrlprost"],
+  "category": "interface",
+  "tags": ["badge", "branch", "multi-window", "git"],
+  "license": "MIT",
+  "version": "0.4.0",
+  "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-badge",
+  "source": {
+    "type": "github",
+    "repo": "jrlprost/claude-code-mods",
+    "path": "plugins/jr-badge",
+    "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+  },
+  "surfaces": ["terminal"],
+  "requires": { "claudeCode": ">=2.1.301" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "caption": "After /jr-badge: the project chip and its branch on the right above the prompt.",
+    "caption_ru": "После /jr-badge: плашка проекта и ветка справа над полем ввода.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [["                                                       ", { "text": " SHOP ", "bg": "#e5c07b", "color": "#000000", "bold": true }, { "text": " feature/cart", "dim": true }]]
+      }
+    ]
+  }
+}

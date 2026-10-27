@@ -1,0 +1,52 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "jr-heatmap",
+  "title": "jr heatmap",
+  "tagline": "Your last 26 weeks with Claude Code as a GitHub-style heatmap, with streaks and peak hours.",
+  "tagline_ru": "Последние 26 недель с Claude Code в виде тепловой карты как на GitHub, с сериями и пиковыми часами.",
+  "description": "From the moment it is installed, the mod records each prompt you send, each finished turn with its duration and cost, and each tool call's name, per day and project, in its own store. `/jr-heatmap` opens a pane with a 26-week grid, one square per day colored by prompts sent (each level a quarter of your busiest day), month labels, your current and longest streak, and a row of prompts per hour of the day with the peak hour. Earlier days stay empty. Reads the session's cost and project folder; writes no files, runs nothing, no network.",
+  "description_ru": "С момента установки мод записывает в собственное хранилище каждый отправленный запрос, каждый завершённый ход с длительностью и стоимостью и имена вызванных инструментов, по дням и проектам. `/jr-heatmap` открывает панель с сеткой на 26 недель: клетка на день, цвет по числу запросов (каждый уровень — четверть самого загруженного дня), подписи месяцев, текущая и самая длинная серия и строка запросов по часам суток с пиковым часом. Дни до установки остаются пустыми. Читает стоимость сессии и папку проекта; файлов не пишет, ничего не запускает, в сеть не ходит.",
+  "author": { "name": "jrlprost", "github": "jrlprost", "url": "https://github.com/jrlprost" },
+  "maintainers": ["jrlprost"],
+  "category": "insights",
+  "tags": ["heatmap", "stats", "streak", "history"],
+  "license": "MIT",
+  "version": "0.2.0",
+  "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-heatmap",
+  "source": {
+    "type": "github",
+    "repo": "jrlprost/claude-code-mods",
+    "path": "plugins/jr-heatmap",
+    "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+  },
+  "surfaces": ["terminal"],
+  "requires": { "claudeCode": ">=2.1.301" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "idle",
+    "caption": "/jr-heatmap: days colored by prompts sent, streaks and the hours you work most.",
+    "caption_ru": "/jr-heatmap: дни раскрашены по числу запросов, серии и часы, когда вы работаете больше всего.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "jr heatmap",
+        "width": "wide",
+        "rows": [
+          [{ "text": "jr heatmap", "bold": true, "color": "#ff5ca8" }, { "text": "   last 26 weeks · 1204 prompts on 97 days", "dim": true }],
+          [{ "text": "Mon ", "dim": true }, { "text": "■ ■ ", "color": "#24263a" }, { "text": "■ ", "color": "#3b2f6e" }, { "text": "■ ■ ", "color": "#7f5af0" }, { "text": "■ ", "color": "#ff5ca8" }, { "text": "■ ", "color": "#24263a" }, { "text": "■ ■ ", "color": "#7f5af0" }, { "text": "■ ", "color": "#ffb86b" }, { "text": "■ ■ ", "color": "#ff5ca8" }],
+          [{ "text": "Wed ", "dim": true }, { "text": "■ ", "color": "#3b2f6e" }, { "text": "■ ", "color": "#24263a" }, { "text": "■ ■ ■ ", "color": "#7f5af0" }, { "text": "■ ", "color": "#ffb86b" }, { "text": "■ ■ ", "color": "#ff5ca8" }, { "text": "■ ", "color": "#3b2f6e" }, { "text": "■ ■ ", "color": "#7f5af0" }, { "text": "■ ", "color": "#ffb86b" }],
+          [{ "text": "Fri ", "dim": true }, { "text": "■ ■ ■ ", "color": "#24263a" }, { "text": "■ ", "color": "#7f5af0" }, { "text": "■ ", "color": "#3b2f6e" }, { "text": "■ ■ ", "color": "#ff5ca8" }, { "text": "■ ■ ", "color": "#7f5af0" }, { "text": "■ ", "color": "#24263a" }, { "text": "■ ■ ", "color": "#3b2f6e" }],
+          [{ "text": "✦ ", "color": "#ffb86b" }, { "text": "6 days", "bold": true }, { "text": " current streak   ", "dim": true }, { "text": "21 days", "bold": true }, { "text": " longest", "dim": true }],
+          [{ "text": "hours ", "dim": true }, { "spark": [0, 0, 0, 0, 0, 0, 1, 3, 8, 9, 7, 6, 4, 6, 8, 9, 7, 5, 3, 2, 2, 3, 2, 1], "color": "#7f5af0" }, { "text": "  peak 09:00", "dim": true }]
+        ]
+      }
+    ]
+  }
+}

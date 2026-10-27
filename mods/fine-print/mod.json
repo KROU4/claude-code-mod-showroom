@@ -1,0 +1,49 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "fine-print",
+  "title": "Fine Print",
+  "tagline": "A small model rereads long replies and flags hidden costs, security risks and irreversible steps.",
+  "tagline_ru": "Небольшая модель перечитывает длинные ответы и отмечает скрытые расходы, риски и необратимые шаги.",
+  "description": "After a main-conversation reply over 150 words, Fine Print sends the reply (clipped to 12,000 characters) and up to 40 lines naming the turn's tool calls and targets, with secret-shaped strings masked, to `haiku` through your session's own model client. Only when it finds a cost, security, data-loss, irreversible, customer or unasked-assumption issue does a band above the prompt show a headline and up to 4 bullets with Got it (`g`), Explain more (sends a follow-up prompt marked as the plugin's) and Dismiss (`d`). `/fineprint` lists the session's notes in a pane. `watchFor` picks topics, `maxChecksPerSession` (30) caps spend. No files, processes or own network.",
+  "description_ru": "Когда основной диалог даёт ответ длиннее 150 слов, Fine Print отправляет модели `haiku` через собственный клиент сессии сам ответ (до 12 000 символов) и до 40 строк с вызовами инструментов этого хода и их целями; строки, похожие на секреты, маскируются. Только если находится что-то о расходах, безопасности, потере данных, необратимых действиях, клиентах или допущениях без спроса, над полем ввода появляется полоса с заголовком и до 4 пунктами и кнопками Got it (`g`), Explain more (отправляет уточняющий запрос от имени плагина) и Dismiss (`d`). `/fineprint` показывает все заметки сессии на панели. `watchFor` задаёт темы, `maxChecksPerSession` (30) ограничивает число проверок. Файлы, процессы и собственная сеть не используются.",
+  "author": { "name": "modmyclaude", "github": "modmyclaude", "url": "https://github.com/modmyclaude" },
+  "maintainers": ["modmyclaude"],
+  "category": "insights",
+  "tags": ["review", "second-reader", "risk", "cost", "security", "haiku"],
+  "license": "MIT",
+  "version": "0.1.1",
+  "homepage": "https://github.com/modmyclaude/claude-code-mods/tree/HEAD/mods/fine-print",
+  "source": { "type": "marketplace", "marketplace": "modmyclaude/claude-code-mods", "plugin": "fine-print", "path": "mods/fine-print" },
+  "surfaces": ["terminal", "desktop"],
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": true,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Move the user uploads from the old bucket to the new storage layout." },
+      { "role": "tool", "tool": "Bash", "input": "aws s3 sync s3://uploads-old s3://uploads-v2 --delete", "result": "upload: 18,402 objects", "status": "done" },
+      { "role": "assistant", "text": "The uploads now live under the new layout in uploads-v2, and the app reads from there. I kept the folder names, updated the CDN origin and checked a sample of 50 files..." }
+    ],
+    "caption": "A few seconds after a long reply: the second reader's note above the prompt, with its three buttons.",
+    "caption_ru": "Через несколько секунд после длинного ответа: заметка второго читателя над полем ввода и три кнопки.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [{ "text": "Fine print: ", "bold": true, "color": "warning" }, { "text": "The sync ran with --delete on the target bucket.", "bold": true }],
+          [" - Objects only in uploads-v2 were removed, and the reply does not say so."],
+          [" - The old bucket is not versioned, so a wrong sync cannot be rolled back."],
+          [{ "button": "Got it", "variant": "primary", "hotkey": "g" }, " ", { "button": "Explain more" }, " ", { "button": "Dismiss", "hotkey": "d" }]
+        ]
+      },
+      { "slot": "background", "text": "Each reply over 150 words is read once by haiku at low effort; silence when nothing matters." }
+    ]
+  }
+}

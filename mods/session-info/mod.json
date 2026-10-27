@@ -1,0 +1,52 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "session-info",
+  "title": "Session Info",
+  "tagline": "One pane, thirteen cards: context and cache, last turn, todos, CI, Jira, usage, agents, checks, git.",
+  "tagline_ru": "Одна панель, 13 карточек: контекст и кэш, последний ход, задачи, CI, Jira, лимиты, агенты, проверки, git.",
+  "description": "`/session-info` opens a pane of cards you can reorder or group as tabs: Session (context, cache countdown, Keep warm pings via a model fork, cost), Last turn, Todos (a `todo_write` tool, optional auto-continue), Autopick (off by default: answers a question left unanswered with Claude's recommended option), Skills, CI (`gh`), Jira (via your Atlassian MCP), Usage, Agents, Background shells, Checks (last build and test, a fix suggestion, an opt-in guard that skips an unchanged passed build), Git, and a tree of changed files. A cache guard holds a prompt that would re-write an expired cache. Runs git, gh, editors and diff tools; checks GitHub daily for a new version (`checkUpdates`).",
+  "description_ru": "`/session-info` открывает панель карточек, которые можно переставлять и собирать во вкладки: Session (контекст, отсчёт кэша промпта с пингами Keep warm через форк модели, стоимость), Last turn, Todos (инструмент `todo_write`, по желанию автопродолжение), Autopick (выключен: отвечает на вопрос без ответа рекомендованным вариантом Claude), Skills, CI (`gh`), Jira (через ваш Atlassian MCP), Usage, Agents, фоновые shell-команды, Checks (последняя сборка и тесты, предложение исправить, необязательный пропуск уже прошедшей сборки без изменений), Git с подмодулями и дерево изменённых файлов. Защита кэша придерживает сообщение, которое перезаписало бы истёкший кэш. Мод запускает git, gh, редакторы и diff-инструменты и раз в день проверяет новую версию на raw.githubusercontent.com (`checkUpdates`).",
+  "author": { "name": "Douglas Cunha", "github": "dougcunha", "url": "https://github.com/dougcunha" },
+  "maintainers": ["dougcunha"],
+  "category": "insights",
+  "tags": ["pane", "context", "prompt-cache", "todos", "ci", "git", "jira", "usage"],
+  "license": "MIT",
+  "version": "0.37.3",
+  "homepage": "https://github.com/dougcunha/claude-mods/tree/HEAD/session-info",
+  "source": { "type": "github", "repo": "dougcunha/claude-mods", "path": "session-info", "sha": "49337f5ffa1a2670737a882b480b412ddb128fdd" },
+  "capabilities": { "network": true, "processes": true, "filesystem": "write", "model": true, "promptRewrite": true, "blocksTools": true },
+  "preview": {
+    "surface": "terminal",
+    "scene": "coding",
+    "caption": "A few of the cards: the session with its cache countdown, the last turn, a todo list and the git state.",
+    "caption_ru": "Несколько карточек: сессия с отсчётом кэша, последний ход, список задач и состояние git.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "Session info",
+        "width": "wide",
+        "rows": [
+          [{ "text": "Session", "bold": true }],
+          [{ "text": "context ", "dim": true }, { "bar": 0.42, "width": 18, "color": "claude" }, " 84k / 200k  42%"],
+          [{ "text": "cache   ", "dim": true }, { "text": "warm · 41:20 left", "color": "success" }, "  ", { "button": "Keep warm" }],
+          [{ "text": "cost $1.84 · 38m · 12 turns", "dim": true }],
+          [{ "text": "Last turn", "bold": true }],
+          [{ "text": "✓ answer · 1m 12s · $0.21 · opus · high · 9 tools", "dim": true }],
+          [{ "text": "Todos", "bold": true }, { "text": "  2/4", "dim": true }],
+          [{ "text": "✓", "color": "success" }, " Add discount type"],
+          [{ "text": "◐", "color": "warning" }, " Apply discounts in total.ts"],
+          [{ "text": "○", "dim": true }, " Update checkout tests"],
+          [{ "text": "Git", "bold": true }],
+          [{ "text": "⎇ feature/discounts", "color": "suggestion" }, { "text": " ↑2 · 3 modified · 1 untracked", "dim": true }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/dougcunha/claude-mods/49337f5ffa1a2670737a882b480b412ddb128fdd/session-info/images/overview.png",
+      "alt": "The session-info pane with its section cards beside the transcript"
+    }
+  ]
+}

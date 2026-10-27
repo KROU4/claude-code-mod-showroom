@@ -1,0 +1,53 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "snippets",
+  "title": "Snippets",
+  "tagline": "Saved prompts that fill the prompt box with the branch, your selection and extra text filled in.",
+  "tagline_ru": "Сохранённые запросы попадают в поле ввода с подставленной веткой, выделением и вашим текстом.",
+  "description": "`/snip <name> [extra]` expands a saved snippet into the prompt box and stops, so you can edit it before pressing Enter; over a draft it inserts at the cursor. Placeholders: `{{args}}` (the extra text), `{{selection}}` (your last mouse selection, fullscreen terminal), `{{branch}}` (from `git`), `{{date}}` and `{{name|default}}`; a line whose placeholders are all empty is dropped. Five starters ship: review, explain, tests, commit-msg and plan; save your own with `/snip save <name>` and remove one with `/snip rm`. Snippets live in the mod's store and follow you into every project. In `claude -p`, where there is no prompt box, the text is printed instead.",
+  "description_ru": "`/snip <имя> [текст]` разворачивает сохранённую заготовку в поле ввода и останавливается: перед Enter её можно поправить; если в поле уже есть черновик, текст вставляется в позицию курсора. Подстановки: `{{args}}` (дополнительный текст), `{{selection}}` (последнее выделение мышью, полноэкранный терминал), `{{branch}}` (из `git`), `{{date}}` и `{{name|default}}`; строка, где все подстановки оказались пустыми, выбрасывается. В комплекте пять заготовок: review, explain, tests, commit-msg и plan; свои сохраняются через `/snip save <имя>`, удаляются через `/snip rm`. Заготовки лежат в хранилище мода и доступны во всех проектах. В `claude -p`, где поля ввода нет, текст просто печатается.",
+  "author": { "name": "Amrit Preet Singh", "github": "Singh-AP", "url": "https://github.com/Singh-AP" },
+  "maintainers": ["Singh-AP"],
+  "category": "productivity",
+  "tags": ["snippets", "prompts", "templates", "placeholders"],
+  "license": "MIT",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Singh-AP/awesome-claude-mods/tree/HEAD/mods/productivity/snippets",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "Singh-AP/awesome-claude-mods",
+    "plugin": "snippets",
+    "path": "mods/productivity/snippets"
+  },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "review",
+    "caption": "/snip review fills the prompt box with the starter, the branch and your extra words; nothing is sent yet.",
+    "caption_ru": "/snip review заполняет поле ввода заготовкой, веткой и вашими словами; ничего ещё не отправлено.",
+    "elements": [
+      {
+        "slot": "command",
+        "command": "/snip",
+        "args": "review the token refresh",
+        "output": [["Review the changes on branch feat/oauth: the uncommitted ones and the commits not yet on the main branch. Pay extra attention to: the token refresh …"]]
+      },
+      { "slot": "toast", "text": "/snip review is in the prompt: edit it or press Enter" }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/Singh-AP/awesome-claude-mods/b82b96062224abc66f3509cff95731e9924c607e/assets/screens/snippets.svg",
+      "alt": "snippets in a Claude Code session: a saved review prompt expanded into the prompt box",
+      "surface": "terminal"
+    }
+  ]
+}

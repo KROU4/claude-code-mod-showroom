@@ -1,0 +1,48 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "ci-budget",
+  "title": "CI Budget",
+  "tagline": "GitHub Actions minutes, cost and budget in view while Claude writes workflows and pushes.",
+  "tagline_ru": "Минуты, расходы и бюджет GitHub Actions на виду, пока Claude пишет workflow и пушит.",
+  "description": "Reads GitHub through your logged-in `gh` (`gh api`) and `git remote`: this month's Actions minutes by runner, the share of the plan's included minutes, cost, the repo's share and whether a GitHub budget stops usage; without billing access it estimates from the repo's own finished jobs. A status entry shows `Actions 62% · acme` from 50% and `CI 2 running` while the runs of a `git push` or `gh workflow run` are polled, with a toast for a job that hangs. Writing a `.github/workflows` file sends spend risks back to Claude as a note. From `blockAt` (100%) `gh workflow run` is refused until you type `/ci-budget off`. `/ci-budget` prints the full report.",
+  "description_ru": "Читает GitHub через ваш `gh` (`gh api`) и `git remote`: минуты Actions за месяц по раннерам, долю включённых в тариф минут, стоимость, долю текущего репозитория и то, останавливает ли бюджет GitHub расходы; без доступа к биллингу оценивает по завершённым задачам самого репозитория. В строке статуса с 50% видно `Actions 62% · acme`, а пока мод опрашивает запуски после `git push` или `gh workflow run`, там `CI 2 running`; о зависшей задаче скажет уведомление. Когда пишется файл в `.github/workflows`, риски перерасхода уходят Claude заметкой. С порога `blockAt` (100%) `gh workflow run` запрещён, пока вы не наберёте `/ci-budget off`. `/ci-budget` выводит полный отчёт.",
+  "author": { "name": "Stanislav Kozachenko", "github": "StanislavKozachenko", "url": "https://github.com/StanislavKozachenko" },
+  "maintainers": ["StanislavKozachenko"],
+  "category": "git",
+  "tags": ["github-actions", "ci", "billing", "budget", "workflows", "gh"],
+  "license": "MIT",
+  "version": "0.2.0",
+  "homepage": "https://github.com/StanislavKozachenko/claude-mods/tree/HEAD/plugins/ci-budget",
+  "source": { "type": "marketplace", "marketplace": "StanislavKozachenko/claude-mods", "plugin": "ci-budget", "path": "plugins/ci-budget" },
+  "capabilities": {
+    "network": true,
+    "processes": true,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": true
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "After a push: the Actions share and watched runs in the status row, a hanging job flagged, and the /ci-budget report.",
+    "caption_ru": "После пуша: доля Actions и отслеживаемые запуски в строке статуса, предупреждение о зависшей задаче и отчёт /ci-budget.",
+    "elements": [
+      { "slot": "status", "text": "Actions 62% · acme · CI 2 running" },
+      { "slot": "toast", "text": "ci-budget: \"e2e\" in CI has run 34 min. Cancel: gh run cancel 9182736451" },
+      {
+        "slot": "command",
+        "command": "/ci-budget",
+        "output": [
+          ["acme (organisation) · 2026-10 · from GitHub billing"],
+          ["Actions: 1860 minutes of 3000 included (62%) · Linux 1420, macOS 44"],
+          ["Cost: $0.00 gross, $0.00 charged beyond the included minutes"],
+          ["acme/shop (private): 610 of those minutes"],
+          ["Storage: cache 1.4 GB of 10 GB, artifacts 320 MB"],
+          ["gh workflow run is blocked from 100% (billing data only)."]
+        ]
+      },
+      { "slot": "tool-deny", "tool": "Bash", "input": "gh workflow run deploy.yml", "message": "ci-budget blocked this: acme has used 100% of its included Actions minutes this month (block at 100%). Ask the user; they can allow it with /ci-budget off." }
+    ]
+  }
+}

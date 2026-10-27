@@ -1,0 +1,51 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "mercat",
+  "title": "mercat",
+  "tagline": "Mermaid blocks in replies drawn as text diagrams, plus a pane for markdown and mermaid files.",
+  "tagline_ru": "Блоки mermaid в ответах Claude рисуются текстовыми диаграммами, плюс панель для файлов markdown и mermaid.",
+  "description": "When Claude writes a ```mermaid block, the reply shows it drawn as a text diagram by the mercat command-line tool; the raw block shows first and the drawing replaces it once mercat finishes, and a block it cannot draw stays as written. A diagram wider than the reply is cut at `»` marks with a warning line. Only the screen changes: the stored message keeps Claude's text. `/mercat <file>` renders a markdown or mermaid file in a side pane, `/mercat` lists the ones Claude edited this session, `/mercat off|on` toggles the drawings. Needs `mercat` on your PATH (`brew install tawago/tap/mercat`); the mod runs it locally and makes no network calls.",
+  "description_ru": "Когда Claude пишет блок ```mermaid, ответ показывает его текстовой диаграммой, которую рисует консольная утилита mercat: сначала виден исходный блок, а когда mercat закончит, его сменяет рисунок; блок, который не удалось нарисовать, остаётся как есть. Диаграмма шире ответа обрезается по меткам `»` со строкой предупреждения. Меняется только экран: в сохранённом сообщении остаётся текст Claude. `/mercat <файл>` показывает файл markdown или mermaid в боковой панели, `/mercat` перечисляет такие файлы, изменённые Claude в этой сессии, `/mercat off|on` выключает и включает рисунки. Нужен `mercat` в PATH (`brew install tawago/tap/mercat`); мод запускает его локально и в сеть не ходит.",
+  "author": { "name": "tawago", "github": "tawago", "url": "https://github.com/tawago" },
+  "maintainers": ["tawago"],
+  "category": "interface",
+  "tags": ["mermaid", "diagrams", "markdown", "ascii", "pane"],
+  "license": "GPL-3.0-or-later",
+  "version": "0.3.4",
+  "homepage": "https://github.com/tawago/mercat/tree/HEAD/mods/mercat",
+  "source": { "type": "marketplace", "marketplace": "tawago/mercat", "plugin": "mercat", "path": "mods/mercat" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Sketch how a login request flows through the services." }
+    ],
+    "caption": "A ```mermaid block in the reply, drawn in place as a text diagram by mercat.",
+    "caption_ru": "Блок ```mermaid в ответе, прямо на месте нарисованный mercat как текстовая диаграмма.",
+    "elements": [
+      {
+        "slot": "message",
+        "role": "assistant",
+        "rows": [
+          ["The gateway checks the session first and only calls auth on a miss:"],
+          [" "],
+          ["  ", { "text": "┌─────────┐", "dim": true }, "     ", { "text": "┌─────────┐", "dim": true }, "     ", { "text": "┌─────────┐", "dim": true }],
+          ["  ", { "text": "│", "dim": true }, " client  ", { "text": "│", "dim": true }, { "text": "────▶", "color": "claude" }, { "text": "│", "dim": true }, " gateway ", { "text": "│", "dim": true }, { "text": "────▶", "color": "claude" }, { "text": "│", "dim": true }, "  auth   ", { "text": "│", "dim": true }],
+          ["  ", { "text": "└─────────┘", "dim": true }, "     ", { "text": "└────┬────┘", "dim": true }, " miss", { "text": "└─────────┘", "dim": true }],
+          ["                       ", { "text": "│", "color": "claude" }, " lookup"],
+          ["                       ", { "text": "▼", "color": "claude" }],
+          ["                  ", { "text": "┌─────────┐", "dim": true }],
+          ["                  ", { "text": "│", "dim": true }, " session ", { "text": "│", "dim": true }],
+          ["                  ", { "text": "└─────────┘", "dim": true }]
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "cc-zh",
+  "title": "Simplified Chinese UI",
+  "tagline": "Claude Code's slash commands, /config rows, spinner, hints and notices in Simplified Chinese.",
+  "tagline_ru": "Слэш-команды, строки /config, индикатор работы, подсказки и уведомления Claude Code на упрощённом китайском.",
+  "description": "Translates Claude Code's interface text into Simplified Chinese from a static dictionary shipped with the mod (about 1,900 entries plus patterns for text with live values): slash-command descriptions, `/config` rows, the working spinner's word, the hint line, notices, command output, task notifications and the `ctrl+b` hint. Folded tool groups and the turn-duration line are redrawn in Chinese (`✻ 耗时 2 分 3 秒`). Text the dictionary doesn't know stays in English; a hint line is replaced only when it translates whole. Untranslated strings are collected, and `/cc-zh-dump` lists them ready to add to `dict.json`. No network, no model calls, nothing written outside the plugin store.",
+  "description_ru": "Переводит текст интерфейса Claude Code на упрощённый китайский по статическому словарю, который поставляется с модом (около 1900 записей и шаблоны для строк с живыми значениями): описания слэш-команд, строки `/config`, слово индикатора работы, строку подсказки, уведомления, вывод команд, уведомления о задачах и подсказку `ctrl+b`. Свёрнутые группы инструментов и строка длительности хода перерисованы по-китайски (`✻ 耗时 2 分 3 秒`). Неизвестный словарю текст остаётся английским; строка подсказки заменяется, только если переведена целиком. Непереведённые строки собираются, а `/cc-zh-dump` выводит их в виде, готовом для `dict.json`. Без сети и вызовов модели, ничего не пишет за пределами хранилища плагина.",
+  "author": { "name": "jnq", "github": "jiangnanquan", "url": "https://github.com/jiangnanquan" },
+  "maintainers": ["jiangnanquan"],
+  "category": "accessibility",
+  "tags": ["chinese", "zh-cn", "localization", "i18n", "translation"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/jiangnanquan/claude-code-zh/tree/HEAD/mods/cc-zh",
+  "source": { "type": "marketplace", "marketplace": "jiangnanquan/claude-code-zh", "plugin": "cc-zh", "path": "mods/cc-zh" },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "The working line, a folded tool group, the turn's end and the hint line, all in Simplified Chinese.",
+    "caption_ru": "Индикатор работы, свёрнутая группа инструментов, конец хода и строка подсказки на упрощённом китайском.",
+    "elements": [
+      { "slot": "spinner", "verb": "思考中" },
+      { "slot": "tool-row", "tool": "Read", "input": "src/cart/total.ts", "row": [{ "text": "● 读取 3 个文件，执行 1 条命令", "dim": true }, { "text": "（ctrl+o 展开）", "dim": true }] },
+      { "slot": "turn-duration", "text": "✻ 耗时 2 分 3 秒" },
+      { "slot": "prompt-hint", "row": [{ "text": "? 查看快捷键", "dim": true }] },
+      { "slot": "command", "command": "/cc-zh-dump", "output": [["未译项：命令 2，配置 1，屏幕文案 4"], ["把上面的英文原样作为 key 加进 dict.json 的 exact 即可（值填中文）。"]] }
+    ]
+  }
+}

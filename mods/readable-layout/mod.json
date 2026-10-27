@@ -1,0 +1,62 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "readable-layout",
+  "title": "Readable Layout",
+  "tagline": "Your messages and Claude's answers in labeled boxes, notes as quiet lines, bold text in color.",
+  "tagline_ru": "Ваши сообщения и ответы Claude в подписанных рамках, заметки тихими строками, жирный текст в цвете.",
+  "description": "Redraws the terminal transcript so a turn reads like a conversation: your message in a box labeled **You** in your theme's blue, Claude's answers of more than a line or two in a box labeled **Claude** in its orange (headings, lists, tables and code render as before), short notes between steps as quiet indented lines, bold text in a soft teal, and a rule with the turn's duration at the end of each turn. The boxes have rules above and below only, so copied text carries no borders. Options: `boxes` (answers or all) and `bold` (color, highlight or off). Terminal only; nothing is changed in what is saved.",
+  "description_ru": "Перерисовывает историю разговора в терминале, чтобы ход читался как диалог: ваше сообщение в рамке с подписью **You** синим цветом темы, ответы Claude длиннее пары строк в рамке **Claude** его оранжевым (заголовки, списки, таблицы и код выглядят как раньше), короткие заметки между шагами — тихими строками с отступом, жирный текст — мягким бирюзовым, а в конце каждого хода черта с его длительностью. У рамок только линии сверху и снизу, поэтому скопированный текст получается без рамок. Настройки: `boxes` (answers или all) и `bold` (color, highlight или off). Только в терминале; сохранённая история не меняется.",
+  "author": { "name": "Garvit Nangru", "github": "GarvitNangru", "url": "https://github.com/GarvitNangru" },
+  "maintainers": ["GarvitNangru"],
+  "category": "interface",
+  "tags": ["readability", "layout", "transcript", "boxes", "markdown"],
+  "license": "MIT",
+  "version": "0.2.2",
+  "homepage": "https://github.com/GarvitNangru/claude-code-mods/tree/HEAD/mods/readable-layout",
+  "source": { "type": "marketplace", "marketplace": "GarvitNangru/claude-code-mods", "plugin": "readable-layout", "path": "mods/readable-layout" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "caption": "Your prompt and Claude's answer in labeled boxes, a note as a quiet line, bold names in teal and a closing rule.",
+    "caption_ru": "Запрос и ответ Claude в подписанных рамках, заметка тихой строкой, жирные слова бирюзовым и черта в конце хода.",
+    "elements": [
+      {
+        "slot": "message",
+        "role": "user",
+        "rows": [
+          [{ "text": "── You ─────────────────────────────────────────────", "color": "suggestion" }],
+          ["Why does the session expire after a refresh?"],
+          [{ "text": "────────────────────────────────────────────────────", "color": "suggestion" }]
+        ]
+      },
+      { "slot": "message", "role": "note", "rows": [[{ "text": "   I'll check how the refresh token is stored first.", "dim": true }]] },
+      {
+        "slot": "message",
+        "role": "assistant",
+        "rows": [
+          [{ "text": "── Claude ──────────────────────────────────────────", "color": "claude" }],
+          [{ "text": "The cause:", "bold": true, "color": "#5fb3a1" }, " ", { "text": "refreshSession()", "color": "suggestion" }, " writes the new token to memory only,"],
+          ["so a reload falls back to the expired one."],
+          [{ "text": "The fix:", "bold": true, "color": "#5fb3a1" }, " persist it in the same place as the access token."],
+          [{ "text": "────────────────────────────────────────────────────", "color": "claude" }]
+        ]
+      },
+      { "slot": "turn-duration", "text": "── Worked for 38s ─────────────────────────────────" }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/GarvitNangru/claude-code-mods/f58af1a43847aeadf2302023dad3adce1ab38bc2/docs/screenshots/readable-layout-after.png",
+      "alt": "A conversation with the prompt and answer in boxes labeled You and Claude, quiet note lines, teal bold names and a rule ending the turn",
+      "surface": "terminal"
+    }
+  ]
+}
