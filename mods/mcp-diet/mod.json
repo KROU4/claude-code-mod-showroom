@@ -1,0 +1,52 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "mcp-diet",
+  "title": "MCP Diet",
+  "tagline": "Pick, per project, which MCP tools and subagent types Claude sees, with the token size of each.",
+  "tagline_ru": "Выбор для каждого проекта, какие MCP-инструменты и типы субагентов видит Claude, с размером каждого в токенах.",
+  "description": "`/mcp-diet` opens a pane listing every MCP server and tool in the session, and the subagent types offered, with roughly how many tokens each description costs. Press a row's button to cycle it on → defer → hide: a deferred tool reaches Claude by name only until it searches for it, a hidden tool or agent type is withheld (a hidden tool's description is replaced with \"Not available in this project.\"). A server-wide choice covers all its tools. Choices are saved per project and apply from the next session. `/mcp-diet list` prints the same list; `/mcp-diet defer|hide|show <name>` sets one from the prompt.",
+  "description_ru": "`/mcp-diet` открывает панель со всеми MCP-серверами и инструментами сессии, а также предлагаемыми типами субагентов, и примерно показывает, сколько токенов стоит описание каждого. Кнопка в строке переключает режим по кругу: on → defer → hide. Отложенный инструмент виден Claude только по имени, пока тот его не поищет, а скрытый инструмент или тип агента не предлагается вовсе (описание скрытого инструмента заменяется на «Not available in this project.»). Выбор для сервера действует на все его инструменты. Настройки хранятся для каждого проекта и применяются со следующей сессии. `/mcp-diet list` выводит тот же список, `/mcp-diet defer|hide|show <имя>` задаёт режим прямо из поля ввода.",
+  "author": { "name": "Mohammed Mubarak", "github": "MDmubarak786", "url": "https://github.com/MDmubarak786" },
+  "maintainers": ["MDmubarak786"],
+  "category": "productivity",
+  "tags": ["mcp", "context", "tokens", "subagents", "pane"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/MDmubarak786/claude-mods/tree/HEAD/mods/mcp-diet",
+  "source": { "type": "marketplace", "marketplace": "MDmubarak786/claude-mods", "plugin": "mcp-diet", "path": "mods/mcp-diet" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "idle",
+    "surface": "terminal",
+    "caption": "The pane after deferring the whole Notion server and hiding one GitHub tool for this repo.",
+    "caption_ru": "Панель после того, как для этого репозитория весь сервер Notion отложен, а один инструмент GitHub скрыт.",
+    "elements": [
+      { "slot": "command", "command": "/mcp-diet" },
+      {
+        "slot": "pane",
+        "title": "MCP diet",
+        "width": "wide",
+        "rows": [
+          [{ "text": "MCP tools and subagent types for this project.", "bold": true }],
+          [{ "text": "Changes apply next session.", "bold": true }],
+          [{ "button": "on" }, " ", { "text": "mcp__github  ~3120 tokens", "bold": true }],
+          ["  ", { "button": "on" }, " create_issue  ~410"],
+          ["  ", { "button": "hide" }, " ", { "text": "search_code  ~690", "dim": true }],
+          ["  ", { "button": "on" }, " get_pull_request  ~350"],
+          [{ "button": "defer" }, " ", { "text": "mcp__notion  ~5840 tokens", "bold": true }],
+          ["  ", { "button": "on" }, " ", { "text": "search  ~1220", "dim": true }],
+          ["  ", { "button": "on" }, " ", { "text": "create_page  ~980", "dim": true }],
+          [{ "button": "on" }, " agent Explore  ~180"],
+          [{ "text": "Press a button to cycle on → defer → hide. Esc closes.", "dim": true }]
+        ]
+      }
+    ]
+  }
+}

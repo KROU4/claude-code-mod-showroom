@@ -1,0 +1,34 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "search-meter",
+  "title": "Search Meter",
+  "tagline": "Counts Claude's searches under the prompt: found first try, found after misses, or found nothing.",
+  "tagline_ru": "Считает поиски Claude под полем ввода: нашёл с первого раза, после промахов или ничего не нашёл.",
+  "description": "From the first search on, a status entry under the prompt reads `🔍 🟢 8 🟡 2 🔴 3 · last 🟢🟡🟢🟢🔴`. A search is a shell command with a step starting with `grep`, `egrep`, `fgrep`, `rg`, `ag`, `ack`, `find`, `fd` or `git grep`, a WebSearch or a ToolSearch. Green found something on the first try, yellow found it after one or more empty searches, red found nothing (no output, an error, no links, no tools matched). It judges by output, not meaning, counts subagents too, skips refused, interrupted and background runs, and starts over on `/clear`.",
+  "description_ru": "С первого поиска под полем ввода появляется запись статуса `🔍 🟢 8 🟡 2 🔴 3 · last 🟢🟡🟢🟢🔴`. Поиском считается shell-команда, где шаг начинается с `grep`, `egrep`, `fgrep`, `rg`, `ag`, `ack`, `find`, `fd` или `git grep`, а также WebSearch и ToolSearch. Зелёный — нашёл с первого раза, жёлтый — нашёл после одного или нескольких пустых поисков, красный — ничего (нет вывода, ошибка, нет ссылок, не нашлось инструментов). Судит по выводу, а не по смыслу, учитывает и субагентов, пропускает отклонённые, прерванные и фоновые запуски и обнуляется после `/clear`.",
+  "author": { "name": "Mehmet Aras", "github": "arasovic", "url": "https://github.com/arasovic" },
+  "maintainers": ["arasovic"],
+  "category": "insights",
+  "tags": ["search", "grep", "websearch", "status", "efficiency"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/arasovic/claude-code-mods/tree/HEAD/search-meter",
+  "source": { "type": "github", "repo": "arasovic/claude-code-mods", "path": "search-meter", "sha": "3c3f25ee3a12b982fd63ee858297baab9385dd33" },
+  "capabilities": { "network": false, "processes": false, "filesystem": "none", "model": false, "promptRewrite": false, "blocksTools": false },
+  "preview": {
+    "surface": "terminal",
+    "scene": "debugging",
+    "caption": "Thirteen searches so far: 8 hit at once, 2 after misses, 3 found nothing; the last five on the right.",
+    "caption_ru": "Пока 13 поисков: 8 нашли сразу, 2 после промахов, 3 ничего; справа последние пять.",
+    "elements": [
+      { "slot": "status", "text": "🔍 🟢 8 🟡 2 🔴 3 · last 🟢🟡🟢🟢🔴" }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/arasovic/claude-code-mods/3c3f25ee3a12b982fd63ee858297baab9385dd33/docs/search-meter.png",
+      "alt": "search-meter's status entry with colored search counts under the prompt"
+    }
+  ]
+}

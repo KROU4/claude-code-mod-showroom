@@ -1,0 +1,66 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "wrapped",
+  "title": "Wrapped",
+  "tagline": "A yearly recap of your Claude Code use: stats, streaks, a coding persona and a share card.",
+  "tagline_ru": "Годовой итог работы с Claude Code: статистика, серии дней, ваш «типаж» и карточка, чтобы поделиться.",
+  "description": "Counts, as you work, your prompts, sessions, turns and time with Claude, tool calls by tool, failures, unique files edited (by hash), lines written, successful `git commit`s and cost. `/wrapped` opens a pane with the totals, top tools, your current and longest daily streak, busiest hour, longest turn, top project and a persona such as 🦉 The Night Owl or 🧙 Shell Wizard; `/wrapped 2025` or `/wrapped all` pick the range. Press `c` (or run `/wrapped text`) to copy a compact share card; cost stays off it unless `shareCost` is on. Only aggregate counters are stored, one record per session in the mod's store, folded per year; no prompts, transcripts or paths.",
+  "description_ru": "По ходу работы считает ваши запросы, сессии, ходы и время с Claude, вызовы инструментов по видам, ошибки, уникальные изменённые файлы (по хешу), написанные строки, успешные `git commit` и стоимость. `/wrapped` открывает панель с итогами, любимыми инструментами, текущей и самой длинной серией дней, самым активным часом, самым долгим ходом, главным проектом и «личностью» вроде 🦉 The Night Owl или 🧙 Shell Wizard; `/wrapped 2025` или `/wrapped all` выбирают период. Клавиша `c` (или `/wrapped text`) копирует короткую карточку для соцсетей; стоимость в неё попадает только с опцией `shareCost`. Хранятся лишь агрегированные счётчики, по записи на сессию в хранилище мода, свёрнутые по годам; ни запросов, ни транскриптов, ни путей.",
+  "author": { "name": "Amrit Preet Singh", "github": "Singh-AP", "url": "https://github.com/Singh-AP" },
+  "maintainers": ["Singh-AP"],
+  "category": "fun",
+  "tags": ["stats", "recap", "streaks", "persona", "share-card", "pane"],
+  "license": "MIT",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Singh-AP/awesome-claude-mods/tree/HEAD/mods/fun/wrapped",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "Singh-AP/awesome-claude-mods",
+    "plugin": "wrapped",
+    "path": "mods/fun/wrapped"
+  },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "idle",
+    "caption": "/wrapped after a few months (illustrative numbers), with the copy button for the share card.",
+    "caption_ru": "/wrapped через несколько месяцев (цифры для примера) и кнопка копирования карточки.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "Wrapped",
+        "width": "wide",
+        "rows": [
+          [{ "text": "✦ CLAUDE CODE WRAPPED · 2026 ✦", "bold": true, "color": "claude" }],
+          ["You are ", { "text": "🦉 The Night Owl", "bold": true }],
+          [{ "text": "Your best ideas show up after dark. Peak hour: 11pm.", "dim": true }],
+          [" "],
+          ["1,284 prompts   312 sessions   96h with Claude"],
+          ["18,422 tool calls   41,200 lines written   128 commits"],
+          [" "],
+          ["Bash  ", { "bar": 1, "width": 24, "color": "claude" }, " 6,201"],
+          ["Edit  ", { "bar": 0.66, "width": 24, "color": "claude" }, " 4,102"],
+          ["Read  ", { "bar": 0.49, "width": 24, "color": "claude" }, " 3,050"],
+          [" "],
+          ["🔥 14-day streak · best 31   🕐 busiest hour 11pm"],
+          [{ "button": "Copy share card", "variant": "primary", "hotkey": "c" }, " ", { "button": "Close", "hotkey": "x" }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/Singh-AP/awesome-claude-mods/b82b96062224abc66f3509cff95731e9924c607e/assets/screens/wrapped.svg",
+      "alt": "The /wrapped card in a Claude Code session on a fresh install",
+      "surface": "terminal"
+    }
+  ]
+}

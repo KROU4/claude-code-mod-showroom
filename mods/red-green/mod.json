@@ -1,0 +1,39 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "red-green",
+  "title": "Red Green",
+  "tagline": "Runs your tests after each turn that edited files; /fix sends a failure back to Claude.",
+  "tagline_ru": "Запускает тесты после каждого хода с правками и пишет итог; /fix отправляет ошибку обратно Claude.",
+  "description": "Set the project's test command with `/red-green npm test`, or `/red-green detect` to pick one from package.json, pyproject.toml, Cargo.toml, go.mod or a Makefile. After a main-conversation turn in which Claude edited a file, the command runs through `sh -c` in the project root (3-minute timeout) and a line under the answer says `tests passed` or `tests FAILED, exit 1`. If Claude changed a file that defines what the command runs (package.json, a Makefile, a test config…) you are asked first. `/fix` submits a prompt with the last 30 lines of the failure and asks Claude to fix it. `/red-green off|on`; the command is kept per project.",
+  "description_ru": "Задайте команду тестов проекта через `/red-green npm test` или `/red-green detect`, чтобы мод выбрал её сам по package.json, pyproject.toml, Cargo.toml, go.mod или Makefile. После хода основного диалога, в котором Claude правил файлы, команда запускается через `sh -c` в корне проекта (таймаут 3 минуты), а строка под ответом сообщает `tests passed` или `tests FAILED, exit 1`. Если Claude изменил файл, от которого зависит, что запустит команда (package.json, Makefile, конфиг тестов…), мод сначала спросит вас. `/fix` отправляет запрос с последними 30 строками ошибки и просит Claude всё починить. `/red-green off|on`; команда хранится для каждого проекта.",
+  "author": { "name": "Mohammed Mubarak", "github": "MDmubarak786", "url": "https://github.com/MDmubarak786" },
+  "maintainers": ["MDmubarak786"],
+  "category": "productivity",
+  "tags": ["tests", "tdd", "feedback", "commands"],
+  "license": "MIT",
+  "version": "0.1.1",
+  "homepage": "https://github.com/MDmubarak786/claude-mods/tree/HEAD/mods/red-green",
+  "source": { "type": "marketplace", "marketplace": "MDmubarak786/claude-mods", "plugin": "red-green", "path": "mods/red-green" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Make discount codes case-insensitive." },
+      { "role": "tool", "tool": "Edit", "input": "src/cart/discount.ts", "status": "done" },
+      { "role": "assistant", "text": "Codes are now compared in upper case, so save10 works like SAVE10." }
+    ],
+    "caption": "After the edit the tests ran by themselves and failed; /fix sends the failure back to Claude.",
+    "caption_ru": "После правки тесты запустились сами и упали; /fix отправляет ошибку обратно Claude.",
+    "elements": [
+      { "slot": "message", "role": "note", "rows": [[{ "text": "red-green: tests FAILED, exit 1 (npm test, 4.2s). /fix sends the failure to Claude.", "color": "error" }]] },
+      { "slot": "command", "command": "/fix", "output": [["Sending the failure to Claude."]] }
+    ]
+  }
+}

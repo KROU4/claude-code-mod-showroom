@@ -1,0 +1,47 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "quiet-transcript",
+  "title": "Quiet Transcript",
+  "tagline": "Narration, tool calls and command output fade; Claude's answers stay as they are.",
+  "tagline_ru": "Пояснения по ходу, вызовы инструментов и вывод команд бледнеют; ответы Claude остаются как есть.",
+  "description": "Text Claude writes before a tool call, the tool calls themselves, grouped reads and searches, and slash-command output are drawn in a faint, tinted italic, while the answer that ends each turn keeps its normal look. A tool call shrinks to one line such as `Edited src/app.ts +2 -1`, keeping added and removed counts green and red and a red `failed`; its details button brings back the app's own card with the full output and diff. Your messages, question cards and the working indicator are left alone. It reads the session's messages to tell narration from answers, keeps only row ids and paragraph hashes, never changes or blocks a row, and uses no network or files. Tried on Windows.",
+  "description_ru": "Текст, который Claude пишет перед вызовом инструмента, сами вызовы, сгруппированные чтения и поиски и вывод слеш-команд рисуются бледным тонированным курсивом, а ответ, завершающий ход, выглядит как обычно. Вызов инструмента сжимается до одной строки вроде `Edited src/app.ts +2 -1`, где счётчики добавленных и удалённых строк остаются зелёными и красными, а `failed` — красным; кнопка details возвращает родную карточку приложения с полным выводом и диффом. Ваши сообщения, карточки вопросов и индикатор работы не трогаются. Мод читает сообщения сессии, чтобы отличить пояснения от ответов, и хранит только идентификаторы строк и хеши абзацев; он ничего не меняет и не блокирует, не ходит в сеть и не пишет файлов. Проверен на Windows в терминале и десктопном приложении.",
+  "author": { "name": "kevlar10x", "github": "kevlar10x", "url": "https://github.com/kevlar10x" },
+  "maintainers": ["kevlar10x"],
+  "category": "interface",
+  "tags": ["transcript", "readability", "focus", "tool-rows", "narration"],
+  "license": "MIT",
+  "version": "0.1.4",
+  "homepage": "https://github.com/kevlar10x/quiet-transcript",
+  "source": { "type": "marketplace", "marketplace": "kevlar10x/quiet-transcript", "plugin": "quiet-transcript" },
+  "surfaces": ["terminal", "desktop"],
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "The cart total ignores quantities. Fix it." }
+    ],
+    "caption": "Narration and tool rows in a faint tinted italic; the edit keeps its +/− colours and the answer reads as usual.",
+    "caption_ru": "Пояснения и строки инструментов бледным курсивом; правка сохраняет цвета +/−, а ответ выглядит как обычно.",
+    "elements": [
+      { "slot": "message", "role": "assistant", "rows": [[{ "text": "Let me look at how the total is computed.", "color": "suggestion", "dim": true, "italic": true }]] },
+      { "slot": "tool-row", "tool": "Read", "input": "src/cart.ts", "row": [{ "text": "Read src/cart.ts", "color": "suggestion", "dim": true, "italic": true }, " ", { "text": "details", "dim": true }] },
+      { "slot": "tool-row", "tool": "Edit", "input": "src/cart.ts", "row": [{ "text": "Edited src/cart.ts", "color": "suggestion", "dim": true, "italic": true }, " ", { "text": "+5", "color": "success" }, " ", { "text": "-2", "color": "error" }, " ", { "text": "details", "dim": true }] },
+      { "slot": "message", "role": "assistant", "markdown": "Fixed: `total()` now multiplies each item's price by its `qty`, so a cart with two of the same item counts both." }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/kevlar10x/quiet-transcript/041204ea3e25cb2f3f17950e8ff35b06890dbb28/docs/screenshot.png",
+      "alt": "A Claude Code session with narration and tool lines faded, an edit line showing +5 -2, and Claude's answer in normal text"
+    }
+  ]
+}

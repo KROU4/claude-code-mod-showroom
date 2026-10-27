@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "copy-back",
+  "title": "copy-back",
+  "tagline": "Copy part of a reply from the terminal, type /cc, and the clipboard gets Claude's original text.",
+  "tagline_ru": "Скопируйте кусок ответа из терминала, наберите /cc, и в буфере окажется исходный текст Claude.",
+  "description": "Text copied out of the terminal arrives as the screen drew it: a two-space margin, padded rows and hard line breaks at the terminal width. Copy a region of a reply as usual, type `/cc` on an empty prompt, and the mod reads the clipboard once with `pbpaste`, finds those words in the newest 40 replies of the session, and puts Claude's own text for that selection back on the clipboard, with a toast naming the reply it came from. When the match is missing or ambiguous it says why and leaves the clipboard as it was. Starts no turn and keeps nothing. Experimental, macOS only.",
+  "description_ru": "Текст, скопированный из терминала, приходит таким, каким его нарисовал экран: с отступом в два пробела, добивкой строк и жёсткими переносами по ширине терминала. Выделите и скопируйте кусок ответа как обычно, наберите `/cc` в пустом поле ввода, и мод один раз прочитает буфер через `pbpaste`, найдёт эти слова в последних 40 ответах сессии и положит в буфер исходный текст Claude для этого выделения, а уведомление назовёт ответ, откуда он взят. Если совпадения нет или оно неоднозначно, мод объяснит причину и оставит буфер как был. Ход не запускает и ничего не хранит. Экспериментальный, только macOS.",
+  "author": { "name": "Sairam Ugge", "github": "sairam0424", "url": "https://github.com/sairam0424" },
+  "maintainers": ["sairam0424"],
+  "category": "productivity",
+  "tags": ["clipboard", "copy", "terminal", "macos"],
+  "license": "MIT",
+  "version": "0.1.1",
+  "homepage": "https://github.com/sairam0424/claude-copy-back",
+  "source": { "type": "marketplace", "marketplace": "sairam0424/claude-copy-back", "plugin": "copy-back" },
+  "surfaces": ["terminal"],
+  "requires": { "claudeCode": ">=2.1.299" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "review",
+    "caption": "After copying four wrapped terminal rows, /cc puts the original one-line paragraph on the clipboard.",
+    "caption_ru": "После копирования четырёх перенесённых строк /cc кладёт в буфер исходный абзац одной строкой.",
+    "elements": [
+      { "slot": "command", "command": "/cc" },
+      { "slot": "toast", "text": "copy-back: copied 182 chars from reply 1 (1 = newest)" }
+    ]
+  }
+}

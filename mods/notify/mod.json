@@ -1,0 +1,35 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "notify",
+  "title": "Notify",
+  "tagline": "Desktop and phone notifications for a finished long turn, a waiting permission prompt or a question.",
+  "tagline_ru": "Уведомления на компьютер и телефон: долгий ход закончен, ждёт запрос разрешения или вопрос.",
+  "description": "Notifies you when a turn longer than `minSeconds` (30) finishes, with the answer's first line; when a permission prompt or an `AskUserQuestion` is still open after 10 s; and, with the ci-budget mod, when the repo owner's Actions usage reaches `budgetPercent`. The title names the project folder. On the desktop it runs a local notifier with the text as arguments or stdin: a WinRT toast through Windows PowerShell (also from WSL), `osascript` on macOS, `notify-send` on Linux. Each one also goes through Claude Code's own `PushNotification` tool, which reaches the Claude app on your phone when Remote Control is on. `speak` reads it aloud; `/notify test` sends a sample.",
+  "description_ru": "Присылает уведомление, когда закончился ход длиннее `minSeconds` (30 секунд), с первой строкой ответа; когда запрос разрешения или `AskUserQuestion` всё ещё открыт через `permissionDelaySeconds` (10 секунд); а вместе с модом ci-budget ещё и когда расход Actions у владельца репозитория доходит до `budgetPercent`. В заголовке стоит имя папки проекта. Для уведомлений на рабочем столе запускается локальная программа, текст передаётся аргументами или через stdin: WinRT-уведомление через Windows PowerShell (и из WSL), `osascript` на macOS, `notify-send` в Linux. Каждое уведомление также уходит через собственный инструмент Claude Code `PushNotification` и приходит в приложение Claude на телефоне, если включён Remote Control. Опция `speak` зачитывает его вслух; `/notify test` присылает пример.",
+  "author": { "name": "Stanislav Kozachenko", "github": "StanislavKozachenko", "url": "https://github.com/StanislavKozachenko" },
+  "maintainers": ["StanislavKozachenko"],
+  "category": "productivity",
+  "tags": ["notifications", "push", "permission", "desktop", "mobile"],
+  "license": "MIT",
+  "version": "0.3.0",
+  "homepage": "https://github.com/StanislavKozachenko/claude-mods/tree/HEAD/plugins/notify",
+  "source": { "type": "marketplace", "marketplace": "StanislavKozachenko/claude-mods", "plugin": "notify", "path": "plugins/notify" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "debugging",
+    "surface": "terminal",
+    "caption": "A long turn finished while you were away: a native notification with the project and the answer's first line.",
+    "caption_ru": "Долгий ход закончился, пока вас не было: системное уведомление с именем проекта и первой строкой ответа.",
+    "elements": [
+      { "slot": "notification", "title": "Claude Code · my-app", "text": "Done in 2m 3s: All 42 tests pass." },
+      { "slot": "background", "text": "A permission prompt still open after 10 s: \"Needs permission: Claude needs your permission to use Bash\"" }
+    ]
+  }
+}

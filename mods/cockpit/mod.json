@@ -1,0 +1,62 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "cockpit",
+  "title": "Cockpit",
+  "tagline": "One live dashboard pane: agents, cache, context, tokens, limits, files, permission checks and a log.",
+  "tagline_ru": "Одна живая панель: агенты, кэш, контекст, токены, лимиты, файлы, проверки разрешений и журнал.",
+  "description": "A bundle of 13 mods in one `/cockpit` pane, each switchable in the plugin config: agents and background tasks, a cache countdown with `/keepwarm` (pings the model to keep the cache warm, at a token cost) and a cold-send dialog, context health with `/ctx-handoff` and `/autohandoff`, tokens and cost (it reads this project's past transcripts for a total), 5h and 7d limits, a file tree with git status, three next prompts suggested by a Haiku call after each answer, an architect consult timeline, permission checks, model loops, a turn receipt, a session log and guardrails' decision counts. Runs `git`; no network of its own. Look and several panels adapted from claude-flightdeck.",
+  "description_ru": "Набор из 13 модов в одной панели `/cockpit`, каждый включается и выключается в настройках плагина: агенты и фоновые задачи, обратный отсчёт кэша с `/keepwarm` (пингует модель, чтобы кэш не остыл, это стоит токенов) и диалог перед отправкой в холодный кэш, состояние контекста с `/ctx-handoff` и `/autohandoff`, токены и стоимость (для итога по проекту читает прошлые транскрипты), лимиты на 5 часов и 7 дней, дерево файлов со статусом git, три следующих запроса, которые после каждого ответа предлагает вызов Haiku, хронология консультаций с архитектором, проверки разрешений, циклы модели, итог хода, журнал сессии и счётчики решений из guardrails. Запускает `git`; своих сетевых запросов не делает. Внешний вид и несколько панелей взяты из claude-flightdeck.",
+  "author": { "name": "Bharath G P", "github": "bharath-gp", "url": "https://github.com/bharath-gp" },
+  "maintainers": ["bharath-gp"],
+  "category": "insights",
+  "tags": ["dashboard", "pane", "agents", "cache", "context", "usage-limits", "filetree"],
+  "license": "MIT",
+  "version": "0.4.0",
+  "homepage": "https://github.com/bharath-gp/ai-harness/tree/HEAD/plugins/cockpit",
+  "source": { "type": "marketplace", "marketplace": "bharath-gp/ai-harness", "plugin": "cockpit", "path": "plugins/cockpit" },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "read",
+    "model": true,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "The /cockpit pane docked beside the transcript, with three suggested next prompts above the input.",
+    "caption_ru": "Панель /cockpit рядом с перепиской и три предложенных следующих запроса над полем ввода.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "Cockpit",
+        "width": "wide",
+        "rows": [
+          [{ "text": "● working", "color": "success" }, "  ", { "text": "Opus 5.5", "bold": true }, "  ", { "text": "turn 0:42", "dim": true }],
+          [{ "text": "CONTEXT ", "color": "inactive" }, { "bar": 0.38, "width": 16, "color": "claude" }, " 38%  76k/200k"],
+          [{ "text": "CACHE   ", "color": "inactive" }, "warm · cold in 3m 10s"],
+          [{ "text": "LIMITS  ", "color": "inactive" }, "5h ", { "bar": 0.41, "width": 8, "color": "success" }, " 41%  7d ", { "bar": 0.63, "width": 8, "color": "warning" }, " 63%"],
+          [{ "text": "TOKENS  ", "color": "inactive" }, "212k · $1.84 session"],
+          [" "],
+          [{ "text": "AGENTS", "bold": true }],
+          [{ "text": "◐", "color": "warning" }, " Explore  find callers of total()  ", { "text": "0:18", "dim": true }],
+          [{ "text": "✓", "color": "success" }, " test-runner  14 passed  ", { "text": "0:31", "dim": true }],
+          [" "],
+          [{ "text": "GATE", "bold": true }, "  ", { "text": "■", "color": "success" }, { "text": "■", "color": "success" }, { "text": "■", "color": "warning" }, { "text": "■", "color": "success" }, "  4 checks · 1 pending"],
+          [{ "text": "LOG", "bold": true }],
+          [{ "text": "0:12", "dim": true }, " prompt  Count item.qty in total()"],
+          [{ "text": "0:20", "dim": true }, " edit    src/cart.js +3 −1"],
+          [{ "text": "0:31", "dim": true }, " done    test-runner"]
+        ]
+      },
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [{ "button": "Add a test for an empty cart", "hotkey": "1" }, "  ", { "button": "Update the README example", "hotkey": "2" }, "  ", { "button": "Commit the fix", "hotkey": "3" }]
+        ]
+      }
+    ]
+  }
+}

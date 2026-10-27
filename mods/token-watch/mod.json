@@ -1,0 +1,45 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "token-watch",
+  "title": "Token Watch",
+  "tagline": "Plan usage with burn rates, context by category and a prompt-cache countdown above the prompt.",
+  "tagline_ru": "Расход тарифа с темпом, контекст по категориям и отсчёт кэша промпта в баннере над полем ввода.",
+  "description": "A banner above the prompt shows the 5-hour and weekly windows with reset countdowns, burn rates and when each would fill at that pace (`Safe` when it resets first), the context window split by what fills it, and the prompt cache's time to live. Right-click cycles three views. The cache button turns on keep-warm: by default a reminder before the cache expires; with pings on, a capped one-word `$.model.fork` request. TW Settings sets what shows, alerts and per-session overrides; TW Monitor lists every Claude Code session on the machine with its context and cache, from files each session writes to `~/.claude/token-watch/`. `/token-watch` hides the banner or prints it as text.",
+  "description_ru": "Баннер над полем ввода показывает 5-часовое и недельное окна с отсчётом до сброса, темпом расхода и тем, когда окно заполнится при таком темпе (`Safe`, если раньше сбросится), контекстное окно по категориям и время жизни кэша промпта. Правый клик переключает развёрнутый, однострочный и минимальный вид. Кнопка кэша включает keep-warm: по умолчанию это напоминание до истечения кэша, а с включёнными пингами ограниченный по числу запрос из одного слова через `$.model.fork`. TW Settings задаёт, что показывать, оповещения и настройки для отдельной сессии; TW Monitor перечисляет все сессии Claude Code на машине с их контекстом и кэшем по файлам, которые каждая сессия пишет в `~/.claude/token-watch/`. `/token-watch` скрывает баннер или выводит его текстом.",
+  "author": { "name": "Kadir Mert Okumus", "github": "nevermemo", "url": "https://github.com/nevermemo" },
+  "maintainers": ["nevermemo"],
+  "category": "insights",
+  "tags": ["usage", "rate-limits", "context", "prompt-cache", "keep-warm", "banner"],
+  "license": "Apache-2.0",
+  "version": "1.4.1",
+  "homepage": "https://github.com/nevermemo/token-watch",
+  "source": { "type": "marketplace", "marketplace": "nevermemo/token-watch", "plugin": "token-watch" },
+  "requires": { "claudeCode": ">=2.1.308" },
+  "surfaces": ["terminal", "desktop"],
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "write",
+    "model": true,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "The expanded banner: both plan windows with burn rates, the context by category and the cache's time to live.",
+    "caption_ru": "Развёрнутый баннер: оба окна тарифа с темпом, контекст по категориям и время жизни кэша.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [{ "text": "5H  ", "bold": true }, { "bar": 0.62, "width": 28, "color": "warning" }, "  62%  2h 14m   28%/h  ", { "text": "1h 20m", "color": "error" }, "  ", { "button": "≡" }],
+          [{ "text": "WK  ", "bold": true }, { "bar": 0.31, "width": 28, "color": "success" }, "  31%  3d 4h    0.4%/h ", { "text": "Safe", "color": "success" }, "    ", { "button": "#" }],
+          [{ "text": "CTX ", "bold": true }, { "bar": 0.21, "width": 28, "color": "claude" }, "  21%  212k / 1M"],
+          ["    ", { "text": "▄", "color": "claude" }, " messages 186k  ", { "text": "▄", "color": "suggestion" }, " tools 12k  ", { "text": "▄", "color": "plan" }, " memory 4.9k  ", { "text": "▄", "color": "success" }, " skills 3k"],
+          [{ "text": "TTL ", "bold": true }, " 52:50 / 60:00  ", { "button": "Remind Me", "variant": "primary" }]
+        ]
+      }
+    ]
+  }
+}

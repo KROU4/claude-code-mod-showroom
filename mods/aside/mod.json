@@ -1,0 +1,52 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "aside",
+  "title": "aside",
+  "tagline": "Queue prompts, ideas and comments while Claude works, then send them when it is done.",
+  "tagline_ru": "Копите запросы, идеи и комментарии, пока Claude работает, и отправляйте их, когда он закончит.",
+  "description": "Start or end a message with `+` and it goes to a per-project queue instead of to Claude (`+?` question, `+!` change, `+-` drop); a comment takes whatever you last copied as its quote, read from the clipboard with `pbpaste`, `wl-paste`, `xclip` or PowerShell, and is pinned to the file and line it found the text in. A line above the prompt counts what waits, with list and run buttons. `/aside plan` has Claude (or one call to sonnet/haiku/opus) turn the queue into steps; `/aside run all` sends them one at a time and sums up at the end. Also global and named queues, `pop`, `edit`, `undo`, `find`, `export`. With `tidy` on (default) a small model fixes what you type; copied text is never sent.",
+  "description_ru": "Начните или закончите сообщение знаком `+`, и оно уйдёт не Claude, а в очередь проекта (`+?` вопрос, `+!` правка, `+-` удалить); комментарий берёт цитатой то, что вы скопировали последним (буфер обмена читается через `pbpaste`, `wl-paste`, `xclip` или PowerShell), и привязывается к файлу и строке, где нашёлся текст. Строка над полем ввода показывает, сколько всего ждёт, с кнопками списка и запуска. `/aside plan` просит Claude (или один вызов sonnet/haiku/opus) превратить очередь в шаги; `/aside run all` отправляет их по одному и в конце подводит итог. Есть общие и именованные очереди, `pop`, `edit`, `undo`, `find`, `import`, `export`. С включённым `tidy` (по умолчанию) небольшая модель исправляет опечатки в набранном вами тексте; скопированный текст не отправляется.",
+  "author": { "name": "gravityXX", "github": "gravityXX", "url": "https://github.com/gravityXX" },
+  "maintainers": ["gravityXX"],
+  "category": "productivity",
+  "tags": ["queue", "prompts", "ideas", "comments", "clipboard", "plan"],
+  "license": "Apache-2.0",
+  "version": "0.37.4",
+  "homepage": "https://github.com/gravityXX/aside",
+  "source": { "type": "marketplace", "marketplace": "gravityXX/aside", "plugin": "aside" },
+  "surfaces": ["terminal"],
+  "requires": { "claudeCode": ">=2.1.301" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "write",
+    "model": true,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Write the quarterly report into docs/report.md." },
+      { "role": "tool", "tool": "Write", "input": "docs/report.md", "status": "done" },
+      { "role": "user", "text": "+? why is churn up here when signups grew" }
+    ],
+    "caption": "A +? comment queued while Claude works, pinned to the copied sentence; the line above the prompt counts the queue.",
+    "caption_ru": "Комментарий +? попал в очередь, пока Claude работает, с привязкой к скопированной фразе; строка над полем ввода считает очередь.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [[{ "text": "aside: 1 idea, 4 comments · ", "dim": true }, { "button": "list" }]]
+      },
+      { "slot": "toast", "text": "Queued a question on docs/report.md:42" }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/gravityXX/aside/62508c426739dd97d60f8b05a75140abc7ef31ec/assets/how-it-works-dark.svg",
+      "alt": "While Claude works, ideas and comments go to a queue; /aside plan hands the queue over as steps that Claude sums up after the last one",
+      "surface": "terminal"
+    }
+  ]
+}

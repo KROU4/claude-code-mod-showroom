@@ -1,0 +1,40 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "bang-commands",
+  "title": "Bang Commands",
+  "tagline": "When Claude asks you to run `! command` yourself, click the command and it lands in the prompt.",
+  "tagline_ru": "Когда Claude просит выполнить `! команду` самому, щёлкните по ней, и она окажется в поле ввода.",
+  "description": "When a reply asks you to run `! command` (a login, something that needs your own shell), that line becomes a button in the reply, `▶ ! gcloud auth login   ← click: to the prompt`; the same buttons sit above the prompt, and the first command is ghost text in the empty prompt box. A click on macOS types `!` through `osascript` (System Events, needs the Accessibility right) so Claude Code enters its bash mode, then adds the command; press Enter. Elsewhere `!command` goes in as text, and on Enter the mod itself runs it with your login shell in the session folder (2 minute limit) and sends Claude the command with its output, but only for a command Claude asked for in a recent reply.",
+  "description_ru": "Когда в ответе Claude просит выполнить `! команду` (вход в аккаунт, что-то в вашем shell), эта строка становится кнопкой прямо в ответе: `▶ ! gcloud auth login   ← click: to the prompt`; такие же кнопки стоят над полем ввода, а первая команда видна подсказкой в пустом поле. На macOS щелчок набирает `!` через `osascript` (System Events, нужно право Accessibility), Claude Code переходит в режим bash, и мод дописывает команду; остаётся нажать Enter. В остальных случаях в поле попадает текст `!команда`, и по Enter мод сам выполняет её вашим login-shell в папке сессии (до 2 минут) и отдаёт Claude команду с выводом — но только если Claude просил её в одном из последних ответов.",
+  "author": { "name": "Benjamin Benoudis", "github": "benjaminb10", "url": "https://github.com/benjaminb10" },
+  "maintainers": ["benjaminb10"],
+  "category": "productivity",
+  "tags": ["shell", "bash-mode", "buttons", "commands", "osascript"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/benjaminb10/encore-mods/tree/HEAD/plugins/bang-commands",
+  "source": { "type": "marketplace", "marketplace": "benjaminb10/encore-mods", "plugin": "bang-commands", "path": "plugins/bang-commands" },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": { "network": false, "processes": true, "filesystem": "none", "model": false, "promptRewrite": true, "blocksTools": false },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Deploy the preview build to Cloud Run." },
+      { "role": "assistant", "text": "The gcloud CLI isn't logged in, and the login opens a browser, so please run it yourself:\n\n! gcloud auth login\n\nThen tell me and I'll deploy." }
+    ],
+    "caption": "The command Claude asked you to run is a button in the reply and above the prompt; a click puts it in bash mode.",
+    "caption_ru": "Команда, которую Claude просит выполнить, — кнопка в ответе и над полем ввода; щелчок кладёт её в режим bash.",
+    "elements": [
+      {
+        "slot": "message",
+        "role": "assistant",
+        "rows": [
+          ["The gcloud CLI isn't logged in, and the login opens a browser, so please run it yourself:"],
+          ["  ", { "button": "▶ ! gcloud auth login" }, { "text": "   ← click: to the prompt", "dim": true }],
+          ["Then tell me and I'll deploy."]
+        ]
+      },
+      { "slot": "above-prompt", "rows": [[{ "button": "▶ ! gcloud auth login" }]] }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "firelight",
+  "title": "Firelight",
+  "tagline": "Three Firelight themes (Coal, Smoulder, Ash) that also repaint the terminal's background to match.",
+  "tagline_ru": "Три темы Firelight (Coal, Smoulder, Ash), которые заодно перекрашивают фон терминала под себя.",
+  "description": "Claude Code themes in the three variants of ridusaini's Firelight palette: Coal (dark, most contrast), Smoulder (softer dark) and Ash (light). Text falls into three levels, your messages sit on a raised block and accents follow the palette (coral for Claude, cornflower for permissions, verdigris for plan mode). When you pick a Firelight theme in a terminal, the mod sets the terminal's background, foreground and 16 colors to match with escape sequences (on Windows through a bundled PowerShell script) and resets them when you leave the theme or the session. Comes with Windows Terminal schemes and an optional install script.",
+  "description_ru": "Темы Claude Code в трёх вариантах палитры Firelight от ridusaini: Coal (тёмная, самая контрастная), Smoulder (мягче) и Ash (светлая). Текст разделён на три уровня, ваши сообщения стоят на приподнятом блоке, акценты взяты из палитры (коралловый для Claude, васильковый для запросов разрешений, ярь-медянка для режима плана). Когда в терминале выбрана тема Firelight, мод управляющими последовательностями выставляет фон, цвет текста и 16 цветов терминала под неё (в Windows через встроенный скрипт PowerShell) и возвращает их, когда вы уходите с темы или из сессии. В комплекте схемы для Windows Terminal и необязательный скрипт установки.",
+  "author": { "name": "Garvit Nangru", "github": "GarvitNangru", "url": "https://github.com/GarvitNangru" },
+  "maintainers": ["GarvitNangru"],
+  "category": "interface",
+  "tags": ["theme", "skin", "dark", "light", "windows-terminal", "palette"],
+  "license": "MIT",
+  "version": "0.2.0",
+  "homepage": "https://github.com/GarvitNangru/claude-code-mods/tree/HEAD/skins/firelight",
+  "source": { "type": "marketplace", "marketplace": "GarvitNangru/claude-code-mods", "plugin": "firelight", "path": "skins/firelight" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "scene": "coding",
+    "caption": "Firelight Coal: the theme picks the colors, and the mod paints the terminal background to match.",
+    "caption_ru": "Firelight Coal: цвета задаёт тема, а мод перекрашивает фон терминала под неё.",
+    "elements": [
+      { "slot": "background", "text": "With a Firelight theme picked in /theme, sets the terminal background and 16 colors to match; restores them on exit" }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/GarvitNangru/claude-code-mods/f58af1a43847aeadf2302023dad3adce1ab38bc2/docs/screenshots/firelight-coal.png",
+      "alt": "Claude Code with Firelight Coal in Windows Terminal: the prompt on a raised block, an edit with its diff and a reply",
+      "surface": "terminal"
+    }
+  ]
+}

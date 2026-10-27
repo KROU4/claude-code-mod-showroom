@@ -1,0 +1,46 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "hatchling",
+  "title": "Hatchling",
+  "tagline": "A collectible pixel pet above the prompt: an egg hatches after 25 tool calls into one of 9 species.",
+  "tagline_ru": "Коллекционный пиксельный питомец над полем ввода: после 25 вызовов из яйца вылупляется один из 9 видов.",
+  "description": "An egg in the band above the prompt wobbles while Claude works and hatches after 25 tool calls into one of 8 original species by rarity (up to a legendary star dragon) or a 1-in-100 secret, any of them possibly shiny. The roll is saved, so restarts never reroll. The pet bounces on a successful tool call, sweats on a failure, cheers when a Bash test run passes, sleeps after 5 idle minutes and grows to teen (200 XP) and adult (800 XP) with a toast. `/pet` shows its card; `/pet name`, `hide`, `show` and `card` (with a Copy button). One pet across sessions, kept in the plugin's own store; no files, processes, network or model calls.",
+  "description_ru": "Яйцо в полосе над полем ввода покачивается, пока Claude работает, и после 25 вызовов инструментов вылупляется в одного из 8 оригинальных видов по редкости (вплоть до легендарного звёздного дракончика) или в секретного с шансом 1 из 100; любой может оказаться shiny. Результат сохраняется, перезапуск его не меняет. Питомец подпрыгивает при успешном вызове, потеет при ошибке, радуется прошедшим тестам в Bash, засыпает через 5 минут простоя и растёт до подростка (200 XP) и взрослого (800 XP) с уведомлением. `/pet` показывает карточку; есть `/pet name`, `hide`, `show` и `card` (с кнопкой копирования). Один питомец на все сессии в собственном хранилище плагина; файлы, процессы, сеть и модель не используются.",
+  "author": { "name": "modmyclaude", "github": "modmyclaude", "url": "https://github.com/modmyclaude" },
+  "maintainers": ["modmyclaude"],
+  "category": "fun",
+  "tags": ["pet", "pixel-art", "collectible", "band", "tests"],
+  "license": "MIT",
+  "version": "0.1.2",
+  "homepage": "https://github.com/modmyclaude/claude-code-mods/tree/HEAD/mods/hatchling",
+  "source": { "type": "marketplace", "marketplace": "modmyclaude/claude-code-mods", "plugin": "hatchling", "path": "mods/hatchling" },
+  "surfaces": ["terminal", "desktop"],
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "The egg wobbling while Claude works, 16 of 25 tool calls on the way; the toast is what you get when it hatches.",
+    "caption_ru": "Яйцо покачивается, пока Claude работает: 16 из 25 вызовов позади; уведомление появится, когда питомец вылупится.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          ["    ", { "text": "▀▀", "color": "#FF5C8A", "bg": "#9BC21A" }, "    "],
+          ["  ", { "text": "▄", "color": "#C8F53C" }, { "text": "▀", "color": "#C8F53C", "bg": "#FBFBF8" }, { "text": "▀", "color": "#FBFBF8", "bg": "#C8F53C" }, { "text": "██", "color": "#C8F53C" }, { "text": "▄", "color": "#C8F53C" }, "  ", "  ", { "text": "Egg", "bold": true }, "  ", { "text": "hatches in 9 tool calls", "dim": true }],
+          [" ", { "text": "▄", "color": "#C8F53C" }, { "text": "██████", "color": "#C8F53C" }, { "text": "▄", "color": "#C8F53C" }, " ", "  ", "The egg is wobbling..."],
+          [" ", { "text": "███████", "color": "#C8F53C" }, { "text": "▀", "color": "#C8F53C", "bg": "#9BC21A" }, " ", "  ", { "bar": 0.64, "width": 16, "color": "#C8F53C" }, { "text": " 16/25 to hatch", "dim": true }],
+          ["  ", { "text": "▀", "color": "#C8F53C" }, { "text": "▀▀▀▀", "color": "#C8F53C", "bg": "#9BC21A" }, { "text": "▀", "color": "#9BC21A" }, "  "]
+        ]
+      },
+      { "slot": "toast", "text": "Your egg hatched! Meet Pip, a Lampwing." }
+    ]
+  }
+}

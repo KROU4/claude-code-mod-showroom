@@ -1,0 +1,43 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "jr-explain",
+  "title": "jr explain",
+  "tagline": "Each shell command Claude asks to run comes with a plain-English explanation and a risk level.",
+  "tagline_ru": "Каждая команда, которую Claude просит запустить, получает объяснение простыми словами и уровень риска.",
+  "description": "When a Bash call is about to be put to you, the question gets a plain-English line and a risk mark from a built-in table of about thirty patterns (deleting files, force pushes, hard resets, installs, `curl | bash`, `sudo`, Docker, remote copies…); a compound command lists each step and takes the highest risk. Since the terminal dialog does not print reasons, a toast beside it shows the explanation and the command for 15 seconds. Optional, off by default: unknown commands go to a small model (Haiku, through the session's client), marked as a guess and never below medium risk. Commands that run without asking are left alone.",
+  "description_ru": "Когда вызов Bash вот-вот будет вынесен вам на подтверждение, к причине вопроса добавляется строка простыми словами и отметка риска из встроенной таблицы примерно на тридцать шаблонов (удаление файлов, force-push, hard reset, установки, `curl | bash`, `sudo`, Docker, службы, копирование на другие машины…); у составной команды перечисляется каждый шаг и берётся наивысший риск. Причина от самого движка остаётся в скобках, а поскольку терминальный диалог причины не печатает, рядом на 15 секунд появляется уведомление с объяснением и командой. По желанию (по умолчанию выключено) незнакомые команды объясняет небольшая модель (по умолчанию Haiku, через клиент сессии); её ответ помечен как догадка и никогда не ниже среднего риска. Команды, которые выполняются без вопроса, не трогаются.",
+  "author": { "name": "jrlprost", "github": "jrlprost", "url": "https://github.com/jrlprost" },
+  "maintainers": ["jrlprost"],
+  "category": "safety",
+  "tags": ["permissions", "shell", "beginners", "risk"],
+  "license": "MIT",
+  "version": "0.1.4",
+  "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-explain",
+  "source": {
+    "type": "github",
+    "repo": "jrlprost/claude-code-mods",
+    "path": "plugins/jr-explain",
+    "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+  },
+  "surfaces": ["terminal"],
+  "requires": { "claudeCode": ">=2.1.301" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": true,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "transcript": [
+      { "role": "user", "text": "Clean out the old build and rebuild." },
+      { "role": "tool", "tool": "Bash", "input": "rm -rf build", "status": "running" }
+    ],
+    "caption": "A permission question for rm -rf: the toast beside the dialog says what it does and how risky it is.",
+    "caption_ru": "Вопрос о разрешении для rm -rf: уведомление рядом с диалогом объясняет, что делает команда и насколько она рискованна.",
+    "elements": [
+      { "slot": "toast", "text": "🔴 high risk · Deletes files and folders, including everything inside them · $ rm -rf build" }
+    ]
+  }
+}

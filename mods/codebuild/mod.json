@@ -1,0 +1,62 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "codebuild",
+  "title": "CodeBuild",
+  "tagline": "Build the repo on AWS CodeBuild from Claude Code: pick a profile, press Build, watch it live.",
+  "tagline_ru": "Сборка репозитория в AWS CodeBuild прямо из Claude Code: выберите профиль, нажмите Build и следите за ходом.",
+  "description": "`/codebuild` checks your AWS CLI profiles and shows account, region and role. The first build creates a private S3 bucket (sources expire in 7 days), a least-privilege IAM role and a CodeBuild project. Each build zips the working tree with git (uncommitted files in, `.env`, keys and `.npmrc` out), uploads it with the `aws` CLI and follows the phases in a pane with a log tail, a status line and a cost toast. It writes a buildspec when the repo has none. Claude gets a `build` tool that asks you first, and a failed build can be handed to Claude. `/codebuild teardown` deletes what it made after you confirm. Needs the AWS CLI and Unix tools (`zip`, `mkdir`, `rm`).",
+  "description_ru": "`/codebuild` проверяет профили AWS CLI и показывает аккаунт, регион и роль. Первая сборка создаёт приватный бакет S3 (исходники удаляются через 7 дней), одну IAM-роль с минимальными правами и проект CodeBuild с тегом `created-by=claude-codebuild-mod`. Каждая сборка упаковывает рабочее дерево через git (с незакоммиченными файлами, но без `.env`, ключей и `.npmrc`), загружает его через `aws` CLI и показывает фазы в панели с хвостом лога, строкой статуса и уведомлением о стоимости. Если в репозитории нет buildspec, мод его сгенерирует. Claude получает инструмент `build`, который сначала спрашивает вас, а упавшую сборку можно одной кнопкой отдать Claude на исправление. `/codebuild teardown` после подтверждения удаляет всё созданное. Нужен AWS CLI; используются `zip`, `mkdir`, `rm`.",
+  "author": { "name": "Amrit Preet Singh", "github": "Singh-AP", "url": "https://github.com/Singh-AP" },
+  "maintainers": ["Singh-AP"],
+  "category": "integrations",
+  "tags": ["aws", "codebuild", "ci", "build", "pane", "cloud"],
+  "license": "MIT",
+  "version": "1.3.0",
+  "homepage": "https://github.com/Singh-AP/awesome-claude-mods/tree/HEAD/mods/cloud/codebuild",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "Singh-AP/awesome-claude-mods",
+    "plugin": "codebuild",
+    "path": "mods/cloud/codebuild"
+  },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": true,
+    "processes": true,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "debugging",
+    "caption": "A failed build in the pane with its phases and log tail; Ask Claude to fix hands it the failing lines.",
+    "caption_ru": "Упавшая сборка в панели с фазами и хвостом лога; Ask Claude to fix передаёт Claude строки с ошибкой.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "codebuild",
+        "width": "wide",
+        "rows": [
+          [{ "text": "☁️ ❌ #3 failed in BUILD · 1m 30s", "bold": true, "color": "error" }],
+          [{ "text": "claude-todo-api-4f2a1c · started by claude · BUILD: COMMAND_EXECUTION_ERROR", "dim": true }],
+          [{ "text": "✓", "color": "success" }, " submitted 1s  ", { "text": "✓", "color": "success" }, " provisioning 9s  ", { "text": "✓", "color": "success" }, " install 12s  ", { "text": "✗", "color": "error" }, " build 41s"],
+          [{ "text": "[Container] Running command npm test", "dim": true }],
+          [{ "text": "not ok 1 - adds a todo", "color": "error" }],
+          [{ "button": "Ask Claude to fix", "variant": "primary" }, " ", { "button": "Build again" }, " ", { "button": "Settings" }, " ", { "button": "Close" }],
+          [{ "link": "Open in the AWS console", "href": "https://console.aws.amazon.com/codesuite/codebuild/home" }]
+        ]
+      },
+      { "slot": "status", "text": "☁️ #3 · BUILD · 1m 20s" },
+      { "slot": "toast", "text": "Build #3 failed in BUILD after 1m 30s · ~$0.008" }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/Singh-AP/awesome-claude-mods/b82b96062224abc66f3509cff95731e9924c607e/assets/screens/codebuild.svg",
+      "alt": "A Claude Code session where Claude fixed a failing test and the CodeBuild rebuild passed",
+      "surface": "terminal"
+    }
+  ]
+}

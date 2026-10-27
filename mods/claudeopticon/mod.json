@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "claudeopticon",
+  "title": "Claudeopticon",
+  "tagline": "Your todo files as a live ticket board beside the chat, linked to what Claude and its agents do.",
+  "tagline_ru": "Файлы задач как живая доска тикетов рядом с чатом, связанная с тем, что делают Claude и его агенты.",
+  "description": "Turns the checkbox lists in `.claude_todo/` into a ticket board in a pane: each item gets an ID like `#T0001`, and Open, Queued, In progress and done columns. Send a ticket to Claude, ask for a status update, or move it yourself; Claude keeps the ticket marks up to date as it works, and each helper agent's card is linked to the tickets it works on. A graph shows the tokens of the conversation and all agents since the last compact, and sessions on one repo see each other's tickets. It writes your todo files (IDs, checkboxes, archive) and `categories.json`, adds about 1,250 tokens of instructions per conversation, and calls Haiku to group tickets and match agents.",
+  "description_ru": "Превращает списки с флажками из `.claude_todo/` в доску тикетов в боковой панели: у каждого пункта появляется номер вида `#T0001` и колонки Open, Queued, In progress и done. Тикет можно отправить Claude, спросить о ходе работы или передвинуть самому; Claude по ходу работы обновляет отметки тикетов, а карточка каждого агента-помощника связана с тикетами, над которыми он работает. График показывает токены разговора и всех агентов с последнего сжатия, а сессии в одном репозитории видят тикеты друг друга. Мод пишет в ваши файлы задач (номера, флажки, архив) и в `categories.json`, добавляет около 1250 токенов инструкций на разговор и вызывает Haiku, чтобы разложить тикеты по группам и сопоставить их с агентами.",
+  "author": { "name": "Marceux-Croix", "github": "Marceux-Croix", "url": "https://github.com/Marceux-Croix" },
+  "maintainers": ["Marceux-Croix"],
+  "category": "productivity",
+  "tags": ["todo", "tickets", "kanban", "agents", "pane", "tokens"],
+  "license": "MIT",
+  "version": "1.0.1",
+  "homepage": "https://github.com/Marceux-Croix/Claudeopticon",
+  "source": { "type": "marketplace", "marketplace": "Marceux-Croix/Claudeopticon", "plugin": "claudeopticon" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "write",
+    "model": true,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "desktop",
+    "caption": "The work pane: the token graph, the orchestrator, an agent linked to its ticket and the todo board.",
+    "caption_ru": "Рабочая панель: график токенов, оркестратор, агент, связанный со своим тикетом, и доска задач.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "Claudeopticon",
+        "width": "wide",
+        "rows": [
+          [{ "text": "Tokens since compact  ", "color": "inactive" }, { "spark": [2, 3, 3, 5, 8, 7, 9, 12, 10, 14], "color": "claude" }, "  148k · 6.2k/min"],
+          [" "],
+          [{ "text": "Orchestrator", "bold": true }, "  ", { "text": "editing src/config/v2.ts", "dim": true }],
+          [{ "text": "Agents", "bold": true }],
+          [{ "text": "◐ ", "color": "warning" }, "general-purpose  ", { "text": "→ #T0001", "color": "claude" }, "  ", { "text": "12 tools · 31k", "dim": true }],
+          [" "],
+          [{ "text": "Open", "bold": true }],
+          ["  #T0002  Document the plugin API", "   ", { "button": "⋙" }],
+          [{ "text": "In progress", "bold": true, "color": "warning" }],
+          ["  #T0001  Write the migration for the v2 config format"],
+          [{ "text": "Done", "bold": true, "color": "success" }],
+          [{ "text": "  #T0000  Pin the Node version in CI", "dim": true }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/Marceux-Croix/Claudeopticon/6ea315770c2102023171cb87a4efae4106be3edc/docs/images/social-preview.png",
+      "alt": "Claudeopticon's live pane with the graph of agents and tokens and the ticket board",
+      "surface": "desktop"
+    }
+  ]
+}

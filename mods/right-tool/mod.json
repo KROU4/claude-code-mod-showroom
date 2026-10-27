@@ -1,0 +1,43 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "right-tool",
+  "title": "Right Tool",
+  "tagline": "Turns away plain cat, head, sed -n, grep and find in Bash with the Read, Grep or Glob call to use.",
+  "tagline_ru": "Отклоняет простые cat, head, sed -n, grep и find в Bash и подсказывает точный вызов Read, Grep или Glob.",
+  "description": "When Claude runs a simple `cat file`, `head`/`tail`, `sed -n 'A,Bp' file`, `grep`/`rg` or `find <path> -name` in Bash, the call is refused and Claude is told the equivalent call to make instead, such as `Read with file_path=\"src/app.ts\", limit=20`. Those tools need no permission prompt and keep raw shell output out of context. Anything with a pipe, redirection, chain, substitution, glob or an unknown flag runs untouched, and a parsing failure lets the command through. A note under the answer counts the redirects of the turn. `/right-tool` shows the count; `/right-tool off|on`, kept across sessions.",
+  "description_ru": "Когда Claude запускает в Bash простой `cat файл`, `head`/`tail`, `sed -n 'A,Bp' файл`, `grep`/`rg` или `find <путь> -name`, вызов отклоняется, а Claude получает равноценный вызов взамен, например `Read with file_path=\"src/app.ts\", limit=20`. Эти инструменты не требуют запроса разрешения и не засоряют контекст сырым выводом оболочки. Всё, где есть конвейер, перенаправление, цепочка, подстановка, шаблон пути или незнакомый флаг, выполняется как есть, а при ошибке разбора команда тоже проходит. Строка под ответом показывает, сколько вызовов за ход перенаправлено. `/right-tool` показывает счётчик, `/right-tool off|on` переключает мод (настройка сохраняется).",
+  "author": { "name": "Mohammed Mubarak", "github": "MDmubarak786", "url": "https://github.com/MDmubarak786" },
+  "maintainers": ["MDmubarak786"],
+  "category": "productivity",
+  "tags": ["bash", "tools", "permissions", "context"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/MDmubarak786/claude-mods/tree/HEAD/mods/right-tool",
+  "source": { "type": "marketplace", "marketplace": "MDmubarak786/claude-mods", "plugin": "right-tool", "path": "mods/right-tool" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": true
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Where do we set the session timeout?" }
+    ],
+    "caption": "A plain grep in Bash is turned away with the Grep call to make instead.",
+    "caption_ru": "Простой grep в Bash отклонён с подсказкой, какой вызов Grep сделать вместо него.",
+    "elements": [
+      {
+        "slot": "tool-deny",
+        "tool": "Bash",
+        "input": "grep -rn sessionTimeout src",
+        "message": "right-tool: do not use Bash for this. Call the Grep with pattern=\"sessionTimeout\", path=\"src\", output_mode=\"content\" tool instead. It needs no permission prompt and its output is formatted for you. Use Bash only for commands that run something."
+      },
+      { "slot": "tool-row", "tool": "Grep", "input": "sessionTimeout in src", "result": [["src/auth/session.ts:12:  sessionTimeout: 30 * 60 * 1000,"]] },
+      { "slot": "message", "role": "note", "rows": [[{ "text": "right-tool redirected 1 Bash call(s) to Read, Grep, or Glob this turn.", "dim": true }]] }
+    ]
+  }
+}

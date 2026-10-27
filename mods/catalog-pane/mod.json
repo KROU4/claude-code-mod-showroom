@@ -1,0 +1,59 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "catalog-pane",
+  "title": "Catalog Pane",
+  "tagline": "/catalog lists every skill, command, agent, mod, plugin, hook, MCP server and tool, with usage.",
+  "tagline_ru": "/catalog показывает все навыки, команды, агенты, моды, плагины, хуки, MCP-серверы и инструменты.",
+  "description": "`/catalog` opens a pane with a tab per kind: skills, commands, agents, mods, plugins, settings hooks, MCP servers and tools. Each row shows its origin, uses over 7 and 30 days (counted from install) and, for plugin parts, tokens added to every session. A detail view adds versions, what a mod hooks, the repository and buttons to insert, run, update, disable or uninstall (removal asks first). Runs `claude plugin details`, `validate`, `update`, `disable` or `uninstall`; once a day fetches stars and forks from the public GitHub API (`githubStats` off stops it); Explain asks Haiku once per entry.",
+  "description_ru": "`/catalog` открывает панель с вкладкой на каждый вид: навыки, команды, агенты, моды, плагины, хуки из настроек, MCP-серверы и инструменты. В строке — откуда пришла запись, сколько раз её использовали за 7 и 30 дней (с момента установки мода) и, для частей плагинов, сколько токенов она добавляет в каждую сессию. В карточке — версии, на что подписан мод, репозиторий и кнопки вставить, запустить, обновить, отключить или удалить (удаление спрашивает подтверждение). Мод запускает `claude plugin details`, `validate`, `update`, `disable` и `uninstall`; раз в день берёт звёзды и форки из открытого API GitHub (отключается `githubStats`); кнопка Explain один раз на запись спрашивает Haiku.",
+  "author": { "name": "T-AI-Labs", "github": "T-AI-Labs", "url": "https://github.com/T-AI-Labs" },
+  "maintainers": ["T-AI-Labs"],
+  "category": "productivity",
+  "tags": ["catalog", "skills", "plugins", "mcp", "pane", "usage"],
+  "license": "MIT",
+  "version": "0.6.2",
+  "homepage": "https://github.com/T-AI-Labs/claude-code-mods/tree/HEAD/catalog-pane",
+  "source": { "type": "marketplace", "marketplace": "T-AI-Labs/claude-code-mods", "plugin": "catalog-pane", "path": "catalog-pane" },
+  "capabilities": {
+    "network": true,
+    "processes": true,
+    "filesystem": "read",
+    "model": true,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "scene": "idle",
+    "caption": "The Skills tab of /catalog, sorted by most used, with each entry's origin, uses and token cost.",
+    "caption_ru": "Вкладка Skills в /catalog по частоте использования: откуда запись, сколько раз использована и сколько стоит в токенах.",
+    "elements": [
+      { "slot": "command", "command": "/catalog", "args": "skills" },
+      {
+        "slot": "pane",
+        "title": "Catalog",
+        "width": "wide",
+        "rows": [
+          [{ "text": "Skills 24", "bold": true, "color": "claude" }, { "text": "  Commands 18  Agents 9  Mods 3  Plugins 12", "dim": true }],
+          [{ "text": "Hooks 4  MCP 5  Tools 21", "dim": true }],
+          [" "],
+          [{ "text": "code-review", "bold": true }, { "text": "  built-in · 42× (11 in 30d)", "dim": true }],
+          ["  Review the current diff for correctness bugs."],
+          [{ "text": "pdf", "bold": true }, { "text": "  anthropic-skills · 17× · ~95 tok/session", "dim": true }],
+          ["  Read, create, merge, split and fill PDF files."],
+          [{ "text": "release-notes", "bold": true }, { "text": "  user · 9× (3 in 30d)", "dim": true }],
+          ["  Draft release notes from the commits since the last tag."],
+          [{ "text": "xlsx", "bold": true }, { "text": "  anthropic-skills · never used · ~110 tok/session", "color": "warning" }],
+          ["  Open, edit and create spreadsheets."]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/T-AI-Labs/claude-code-mods/4fbcf8ba2b1996a685497d06a89d06feeaeaf46c/.docs/catalog-pane.svg",
+      "alt": "Illustration of the catalog pane: category tabs with counts, a filter and sort, and five skills with origin, uses and token cost"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "hero-journey",
+  "title": "Hero Journey",
+  "tagline": "A cozy RPG HUD: Clawd crab classes act out each tool, with quests, turn receipts and a file guard.",
+  "tagline_ru": "Уютный RPG-интерфейс: крабы Clawd разных классов изображают инструменты, есть панель квестов и итог хода.",
+  "description": "Each kind of tool call wears one of 19 Clawd crab classes (Mage reads, Rune Caster edits, Engineer runs commands, King commits). It redraws tool rows, the spinner and a band above the prompt with the class at work, closes each turn with a receipt (`Mission complete · 3 actions · +6 −2 · 1min 04s`), and `/hero` opens a pane with an animated stage, the session's objective, plan, subagents, git inventory and context and usage bars. A guard asks before Claude edits or shell-writes `.env`, keys, pipelines or Terraform state. A grimoire saves decisions to `AGENTS.md`, notes or an ai-memory MCP only on your click. Runs git and folder pickers; Haiku only on two optional buttons. English and pt-BR.",
+  "description_ru": "Каждый вид вызова получает один из 19 классов краба Clawd (Маг читает, Рунист правит код, Инженер запускает команды, Король коммитит). Мод перерисовывает строки инструментов, индикатор работы и полосу над полем ввода с классом за работой, закрывает каждый ход итоговой строкой (`Mission complete · 3 actions · +6 −2 · 1min 04s`), а `/hero` открывает панель с анимированной сценой, целью сессии, планом, субагентами, файлами из git и полосами контекста и лимитов. Страж спрашивает, прежде чем Claude изменит `.env`, ключи, пайплайны или состояние Terraform, в том числе командой в терминале. Гримуар сохраняет решения в `AGENTS.md`, заметки или MCP ai-memory только по вашему нажатию. Запускает git и выбор папки; Haiku только по двум кнопкам по желанию. Английский и португальский.",
+  "author": { "name": "Saulo Rocha", "github": "soulrocha", "url": "https://github.com/soulrocha" },
+  "maintainers": ["soulrocha"],
+  "category": "fun",
+  "tags": ["rpg", "hud", "pixel-art", "guard", "pane", "receipt", "spinner"],
+  "license": "MIT",
+  "version": "1.0.0",
+  "homepage": "https://github.com/soulrocha/Claude-code-hero-journey/tree/HEAD/mods/hero-journey",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "soulrocha/Claude-code-hero-journey",
+    "plugin": "hero-journey",
+    "path": "mods/hero-journey"
+  },
+  "surfaces": ["terminal", "desktop"],
+  "requires": { "claudeCode": ">=2.1.295" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "write",
+    "model": true,
+    "promptRewrite": false,
+    "blocksTools": true
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Bring the HUD to the terminal" }
+    ],
+    "caption": "In the terminal: class icons on tool rows, the turn receipt, the class spinner, the band and the /hero pane with resources.",
+    "caption_ru": "В терминале: значки классов в строках инструментов, итог хода, индикатор с классом, полоса и панель /hero с ресурсами.",
+    "elements": [
+      {
+        "slot": "tool-row",
+        "tool": "Read",
+        "input": "hooks/core/ui.tsx",
+        "row": ["🔮 ", { "text": "Mage", "bold": true, "color": "#7aa2f7" }, " ", { "text": "✓", "color": "success" }]
+      },
+      {
+        "slot": "tool-row",
+        "tool": "Edit",
+        "input": "src/painel.tsx",
+        "row": ["🎭 ", { "text": "Illusionist", "bold": true, "color": "#b48ef0" }, " ", { "text": "+3 −1", "dim": true }, " ", { "text": "✓", "color": "success" }]
+      },
+      { "slot": "turn-duration", "text": "🎭 Illusionist ✦ Mission complete: HUD in the terminal · 3 actions · +6 −2 · 1min 04s" },
+      { "slot": "spinner", "verb": "🎭 Illusionist building painel.tsx…", "color": "#b48ef0" },
+      {
+        "slot": "above-prompt",
+        "rows": [["🎭 ", { "text": "Illusionist", "bold": true, "color": "#b48ef0" }, " ", { "text": "src/painel.tsx", "color": "success" }, "   ", { "text": "●●◐○○ 2/5", "color": "warning" }, " ", { "button": "Panel ›" }]]
+      },
+      {
+        "slot": "pane",
+        "title": "Hero Journey",
+        "width": "narrow",
+        "rows": [
+          [{ "text": "Your turn", "bold": true, "color": "warning" }, " ", { "text": "waiting for the first message", "dim": true }],
+          [" "],
+          ["🎒 Backpack ", { "bar": 0.3, "width": 10, "color": "#e0a060" }, " 30% Light"],
+          ["💧 Mana     ", { "bar": 0.81, "width": 10, "color": "#5fa8e8" }, " 81% ↻ 3h56"],
+          ["💚 Vigor    ", { "bar": 0.85, "width": 10, "color": "success" }, " 85% ↻ 4d2h"],
+          ["📖 Grimoire", "            ", { "text": "⚙", "dim": true }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/soulrocha/Claude-code-hero-journey/95d8bde1f096dc5dd72183f60b019e1eecbbfb26/docs/assets/telas/terminal.png",
+      "alt": "The HUD in a terminal: class icons on tool rows, a Mission complete receipt, the band above the prompt and a pane with a pixel crab by a campfire and resource bars",
+      "surface": "terminal"
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/soulrocha/Claude-code-hero-journey/95d8bde1f096dc5dd72183f60b019e1eecbbfb26/docs/assets/telas/palco.png",
+      "alt": "The desktop pane's stage: the Illusionist crab with a feathered hat and wand in the Theater of illusions, with the file in use and the session objective below",
+      "surface": "desktop"
+    }
+  ]
+}

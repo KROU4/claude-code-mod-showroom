@@ -1,0 +1,66 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "standby",
+  "title": "Standby",
+  "tagline": "Meeting transcripts and voice calls from the Standby Mac app, with a live band above the prompt.",
+  "tagline_ru": "Расшифровка встреч и голосовые звонки из Mac-приложения Standby, с живой полосой над полем ввода.",
+  "description": "The bridge to Standby, an open-source macOS app (Apple Silicon) from the same repo, installed separately with its install.sh, that transcribes meetings and runs voice calls on the Mac. `/standby listen` puts a band above the prompt (● Listening · title · minutes, pause, end, full window, the latest line) and sends the transcript along with your prompts as context, or as notes with `live`. `/standby call` starts a voice call whose spoken requests arrive as your turns. Claude gets six tools; one that starts listening or a call asks you on the band first. It talks only to the app on 127.0.0.1 (a curl stream, a token from ~/.standby) and does nothing without it.",
+  "description_ru": "Мост к Standby — открытому приложению для macOS (Apple Silicon) из того же репозитория, которое ставится отдельно через install.sh, расшифровывает встречи и ведёт голосовые звонки прямо на Mac. `/standby listen` выводит над полем ввода полосу (● Listening · название · минуты, пауза, конец, полное окно и последняя реплика) и прикладывает расшифровку к вашим запросам как контекст, а с `live` — отдельными заметками по ходу. `/standby call` начинает голосовой звонок: сказанные просьбы приходят как ваши ходы. Claude получает шесть инструментов; если он сам хочет начать запись или звонок, полоса сначала спрашивает вас. Мод общается только с приложением на 127.0.0.1 (поток через curl, токен из ~/.standby) и без приложения ничего не делает.",
+  "author": { "name": "mksadoughi", "github": "mksadoughi", "url": "https://github.com/mksadoughi" },
+  "maintainers": ["mksadoughi"],
+  "category": "integrations",
+  "tags": ["voice", "meetings", "transcription", "calls", "macos", "band"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/mksadoughi/standby/tree/HEAD/lite",
+  "source": { "type": "marketplace", "marketplace": "mksadoughi/standby", "plugin": "standby", "path": "lite" },
+  "requires": { "claudeCode": ">=2.1.299" },
+  "capabilities": {
+    "network": true,
+    "processes": true,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "What did Nadia say about moving the launch date?" },
+      { "role": "assistant", "text": "Nadia proposed moving the launch from June 3 to June 17 so QA can finish the payments flow; Omar agreed if the beta stays on June 3." }
+    ],
+    "caption": "Listening to a meeting: the band with the minutes and keys, the last line under it; the transcript went with the question.",
+    "caption_ru": "Идёт запись встречи: полоса с минутами и клавишами, под ней последняя реплика; расшифровка ушла вместе с вопросом.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [
+            { "text": "●", "color": "error" },
+            " Listening · Weekly launch sync ",
+            { "text": "12m", "dim": true },
+            " ",
+            { "text": "p", "color": "#6d63ff", "bold": true },
+            { "text": " pause", "bold": true },
+            { "text": " · ", "dim": true },
+            { "text": "e", "color": "#6d63ff", "bold": true },
+            { "text": " end", "bold": true },
+            { "text": " | ", "dim": true },
+            { "text": "o", "color": "#6d63ff", "bold": true },
+            { "text": " full window", "bold": true }
+          ],
+          [{ "text": "Omar: Fine by me, as long as the beta still goes out on the third.", "dim": true }]
+        ]
+      },
+      {
+        "slot": "message",
+        "role": "note",
+        "rows": [[{ "text": "Standby · meeting started 14:02", "dim": true }]]
+      },
+      {
+        "slot": "background",
+        "text": "Each prompt carries the transcript Claude has not had yet, labelled [Standby · meeting · 14:02-14:14]."
+      }
+    ]
+  }
+}

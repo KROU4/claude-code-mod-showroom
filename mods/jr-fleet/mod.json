@@ -1,0 +1,54 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "jr-fleet",
+  "title": "jr fleet",
+  "tagline": "Every Claude Code session on the machine at a glance: which ones work and which wait for you.",
+  "tagline_ru": "Все сессии Claude Code на компьютере разом: какие работают, а какие ждут вас.",
+  "description": "Each session with the mod writes a small heartbeat to `~/.claude/jr-fleet/<session id>.json` every 15 seconds (folder, project, working or waiting, since when) and reads the others'. A right-aligned row above the prompt lists the sessions, this one first (● working, ○ waiting or idle); when another session has finished and waits for your next prompt, the row moves left: `▲ acme waits for you`. `/jr-fleet details` opens a pane with each session's state, how long, and its folder. Stale files are removed with `rm -f`, older than a day deleted, and a session removes its own on exit. `/jr-fleet` hides or shows the row. No network.",
+  "description_ru": "Каждая сессия с этим модом раз в 15 секунд записывает небольшой файл-пульс в `~/.claude/jr-fleet/<id сессии>.json` (папка, проект, работает или ждёт, с какого момента) и читает чужие. Строка справа над полем ввода перечисляет сессии, текущую первой (● работает, ○ ждёт или простаивает); когда другая сессия закончила и ждёт вашего запроса, строка уходит влево: `▲ acme waits for you`. `/jr-fleet details` открывает панель с состоянием каждой сессии, временем и папкой. Устаревшие файлы удаляются через `rm -f` (старше суток), сессия убирает свой файл при выходе. `/jr-fleet` прячет или показывает строку. В сеть не ходит.",
+  "author": { "name": "jrlprost", "github": "jrlprost", "url": "https://github.com/jrlprost" },
+  "maintainers": ["jrlprost"],
+  "category": "productivity",
+  "tags": ["sessions", "multi-window", "status", "pane"],
+  "license": "MIT",
+  "version": "0.4.0",
+  "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-fleet",
+  "source": {
+    "type": "github",
+    "repo": "jrlprost/claude-code-mods",
+    "path": "plugins/jr-fleet",
+    "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+  },
+  "surfaces": ["terminal"],
+  "requires": { "claudeCode": ">=2.1.301" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "caption": "Another session finished and waits for you: the alert row, and the /jr-fleet details pane.",
+    "caption_ru": "Другая сессия закончила и ждёт вас: строка-тревога и панель /jr-fleet details.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [[{ "text": "▲ ", "color": "#ff8c42" }, "acme", { "text": " waits for you", "color": "#ffb86b" }, { "text": " · 3 sessions", "dim": true }]]
+      },
+      {
+        "slot": "pane",
+        "title": "jr fleet",
+        "width": "wide",
+        "rows": [
+          [{ "text": "jr fleet", "bold": true, "color": "#ff5ca8" }, { "text": "   3 sessions · 1 working · ", "dim": true }, { "text": "1 waiting for you", "color": "#ffb86b", "bold": true }],
+          [{ "text": "● ", "color": "#ffb86b" }, { "text": "acme          ", "bold": true }, { "text": "waiting for you ", "color": "#ffb86b" }, { "text": " 4 min  ~/Code/acme", "dim": true }],
+          [{ "text": "● ", "color": "#7f5af0" }, { "text": "tokenkarma    ", "bold": true }, { "text": "working         ", "color": "#7f5af0" }, { "text": "   now  ~/Code/tokenkarma", "dim": true }, { "text": " (this one)", "color": "#ff5ca8" }],
+          [{ "text": "● ", "color": "#5c5f77" }, { "text": "northwind     ", "bold": true }, { "text": "idle            ", "color": "#5c5f77" }, { "text": "52 min  ~/Code/northwind", "dim": true }]
+        ]
+      }
+    ]
+  }
+}

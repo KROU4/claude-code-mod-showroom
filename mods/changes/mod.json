@@ -1,0 +1,59 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "changes",
+  "title": "Changes",
+  "tagline": "A turn-by-turn timeline of what Claude changed, with a diff per file and Keep or Revert.",
+  "tagline_ru": "Лента по ходам: что изменил Claude, дифф по каждому файлу и кнопки Keep или Revert.",
+  "description": "`/changes` opens a pane with every turn that changed files, newest first, including subagents' edits and, inside a git repository, files shell commands changed (found with `git status` before and after). Each file has a diff and Keep or Revert. Revert takes two presses, writes only when the file is exactly what Claude left, reads it back to check, and restores from copies saved before each turn or from git; then Claude gets a short hidden note to re-read the file. A whole turn can be reverted too. After a turn that changed code a band says `Turn #12 changed 3 files [Open] [Dismiss]`. Copies and history are kept for `keepHistoryDays` (7) in the Claude config folder.",
+  "description_ru": "`/changes` открывает панель со всеми ходами, в которых менялись файлы, от новых к старым, включая правки субагентов и, в git-репозитории, файлы, изменённые командами оболочки (по `git status` до и после). У каждого файла дифф и кнопки Keep или Revert. Откат требует двух нажатий, пишет только если файл ровно такой, каким его оставил Claude, затем перечитывает его для проверки и восстанавливает из копий, сохранённых перед каждым ходом, или из git; после этого Claude получает короткую скрытую заметку перечитать файл. Откатить можно и весь ход. После хода с правками кода полоса пишет `Turn #12 changed 3 files [Open] [Dismiss]`. Копии и история хранятся `keepHistoryDays` дней (7) в папке конфигурации Claude.",
+  "author": { "name": "candygoogy", "github": "candygoogy", "url": "https://github.com/candygoogy" },
+  "maintainers": ["candygoogy"],
+  "category": "git",
+  "tags": ["diff", "revert", "review", "timeline", "undo"],
+  "license": "MIT",
+  "version": "0.2.2",
+  "homepage": "https://github.com/candygoogy/notary/tree/HEAD/plugins/changes",
+  "source": { "type": "marketplace", "marketplace": "candygoogy/notary", "plugin": "changes", "path": "plugins/changes" },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "After a turn that changed code: the band, and the Changes pane with the turn's files, a diff and a revert waiting for confirmation.",
+    "caption_ru": "После хода с правками кода: полоса и панель Changes с файлами хода, диффом и откатом, ждущим подтверждения.",
+    "elements": [
+      { "slot": "above-prompt", "rows": [["Turn #12 changed 3 files  ", { "button": "Open", "variant": "primary" }, " ", { "button": "Dismiss" }]] },
+      {
+        "slot": "pane",
+        "title": "Changes",
+        "width": "wide",
+        "rows": [
+          [{ "text": "▾ #12", "bold": true }, " add discount codes to the total ", { "text": "3 files", "dim": true }],
+          ["   Edit src/cart/total.ts  ·  Edit src/checkout.ts"],
+          ["   ", { "text": "changed during this turn (shell or you)", "dim": true }],
+          [{ "text": "▸ #11", "dim": true }, { "text": " fix the price rounding  1 file", "dim": true }],
+          [" "],
+          [{ "text": "src/cart/total.ts", "bold": true }, "  ", { "text": "+4 −1", "dim": true }, "  ", { "button": "Keep" }, " ", { "button": "Confirm revert (#12)", "variant": "primary" }],
+          [{ "text": "-  return items.reduce((s, i) => s + i.price, 0)", "color": "error" }],
+          [{ "text": "+  const sum = items.reduce((s, i) => s + i.price * i.qty, 0)", "color": "success" }],
+          [{ "text": "+  return applyCode(sum, code)", "color": "success" }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/candygoogy/notary/8ca50c954c23eed0c1f2f25674ebec564232d05a/docs/media/changes-hero.gif",
+      "alt": "The Changes pane: a turn's files with their diffs, and a file reverted with Keep and Revert",
+      "surface": "terminal"
+    }
+  ]
+}

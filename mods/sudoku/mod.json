@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "sudoku",
+  "title": "Sudoku",
+  "tagline": "Sudoku in a pane: three levels with one solution each, undo, hints and a best time per level.",
+  "tagline_ru": "Судоку в боковой панели: три уровня с единственным решением, отмена, подсказки и лучшее время по уровням.",
+  "description": "`/sudoku` deals a puzzle with exactly one solution in a pane: easy, normal or hard (40, 32 or 26 givens). Move with `w`, `a`, `s` and `d`, type a digit, `0` clears a cell; `u` undoes, `g` fills the cell you are on as a hint, `l` changes the level, `n` deals a new puzzle. Cells that clash with another turn red, the cursor sits on yellow. The clock pauses when the pane closes, and the header shows filled cells, time and your best for the level. `/sudoku level hard`, `/sudoku new`, `/sudoku stats`. Zero tokens; the puzzle and records are kept in the plugin store.",
+  "description_ru": "`/sudoku` раскладывает в панели головоломку с единственным решением: лёгкую, среднюю или сложную (40, 32 или 26 заполненных клеток). Перемещайтесь клавишами `w`, `a`, `s` и `d`, вводите цифру, `0` очищает клетку; `u` отменяет ход, `g` заполняет текущую клетку как подсказку, `l` меняет уровень, `n` раздаёт новую головоломку. Клетки, которые конфликтуют с другими, становятся красными, курсор подсвечен жёлтым. Часы останавливаются при закрытии панели, а в заголовке видно число заполненных клеток, время и ваш рекорд на уровне. Есть `/sudoku level hard`, `/sudoku new` и `/sudoku stats`. Токены не тратятся; головоломка и рекорды хранятся в хранилище плагина.",
+  "author": { "name": "Mohammed Mubarak", "github": "MDmubarak786", "url": "https://github.com/MDmubarak786" },
+  "maintainers": ["MDmubarak786"],
+  "category": "fun",
+  "tags": ["game", "sudoku", "puzzle", "pane", "zero-tokens"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/MDmubarak786/claude-mods/tree/HEAD/mods/sudoku",
+  "source": { "type": "marketplace", "marketplace": "MDmubarak786/claude-mods", "plugin": "sudoku", "path": "mods/sudoku" },
+  "surfaces": ["terminal", "desktop"],
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "A normal puzzle four minutes in, 51 of 81 cells filled.",
+    "caption_ru": "Средняя головоломка, прошло четыре минуты, заполнена 51 клетка из 81.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "Sudoku",
+        "width": "narrow",
+        "rows": [
+          [{ "text": "SUDOKU", "bold": true }, "  level normal  filled 51/81"],
+          [{ "text": "time 4:12", "bold": true, "color": "warning" }, { "text": "  best 11:40 · game 3", "dim": true }],
+          [{ "text": "u takes an entry back, g fills the cell.", "color": "suggestion" }],
+          [" "],
+          [" 5  3 ", { "text": " . ", "bg": "#8a6d1f" }, "| .  7  . | .  .  ."],
+          [" 6  .  . | 1  9  5 | .  .  ."],
+          [" .  9  8 | .  .  . | .  ", { "text": "6", "color": "suggestion" }, "  ."],
+          ["---------+---------+---------"],
+          [" 8  .  . | .  6  . | .  .  3"],
+          [" 4  .  . | 8  .  3 | .  .  1"],
+          [" 7  .  . | .  2  . | .  .  6"],
+          ["---------+---------+---------"],
+          [" .  6  . | .  .  . | 2  8  ."],
+          [" .  .  . | 4  1  9 | .  .  5"],
+          [" .  .  . | .  8  . | .  7  9"],
+          [" "],
+          [{ "button": "New puzzle", "hotkey": "n" }, " ", { "button": "Undo", "hotkey": "u" }, " ", { "button": "Hint", "hotkey": "g" }],
+          [{ "button": "Level: normal", "hotkey": "l" }, " ", { "button": "Help", "hotkey": "h" }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/MDmubarak786/claude-mods/808996691ca39af660249d926053a836e63349cc/mods/sudoku/screenshots/sudoku.gif",
+      "alt": "Sudoku in a Claude Code pane: the cursor moves with w, a, s and d and digits fill the grid",
+      "surface": "terminal"
+    }
+  ]
+}

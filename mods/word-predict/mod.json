@@ -1,0 +1,52 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "word-predict",
+  "title": "Word Predict",
+  "tagline": "Phone-keyboard word prediction in the prompt box: finish a word or take the next with Option+1/2/3.",
+  "tagline_ru": "Подсказки слов как на клавиатуре телефона: дописать слово или взять следующее через Option+1/2/3.",
+  "description": "A strip above the prompt offers three words: ways to finish the word you type, or likely next words after a space. Option+1, 2 or 3 (read by the character your Mac layout types: US, Danish, German, British) or a click inserts one; the same key again types its own character. No AI: on first start it downloads Peter Norvig's English word and word-pair counts (about 10 MB, once) from norvig.com in ranges, checks them against pinned SHA-256 hashes and builds the list locally. It learns words and pairs from the prompts you send (code and paths skipped); `/predict import` runs a bundled Python script over your past transcripts in `~/.claude/projects` and keeps only counts.",
+  "description_ru": "Полоса над полем ввода предлагает три слова: как дописать текущее слово или какое вероятно следующее после пробела. Option+1, 2 или 3 (мод узнаёт их по символу, который печатает ваша раскладка Mac: US, Danish, German, British) или клик вставляет слово; та же клавиша сразу ещё раз печатает свой символ. Без ИИ: при первом запуске мод один раз скачивает с norvig.com частоты английских слов и пар слов Питера Норвига (около 10 МБ) частями, сверяет их с закреплёнными SHA-256 и строит список у себя. Он учится на словах и парах из ваших запросов (код и пути пропускает); `/predict import` запускает Python-скрипт из мода по вашим прошлым транскриптам в `~/.claude/projects` и сохраняет только счётчики. Есть `/predict forget`, `off` и `layout`.",
+  "author": { "name": "Peter Jørgensen", "github": "tehwave", "url": "https://github.com/tehwave" },
+  "maintainers": ["tehwave"],
+  "category": "productivity",
+  "tags": ["autocomplete", "prediction", "typing", "keyboard", "prompt"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/tehwave/claude-word-predict",
+  "source": { "type": "marketplace", "marketplace": "tehwave/claude-word-predict", "plugin": "word-predict" },
+  "capabilities": {
+    "network": true,
+    "processes": true,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "idle",
+    "caption": "Typing \"i want to \": the strip offers three next words; Option+1 inserts \"be\".",
+    "caption_ru": "Набрано «i want to »: полоса предлагает три следующих слова, Option+1 вставит «be».",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [{ "text": "next", "dim": true }, "   ", { "text": "⌥1", "dim": true }, " ", { "button": "be" }, "   ", { "text": "⌥2", "dim": true }, " ", { "button": "make" }, "   ", { "text": "⌥3", "dim": true }, " ", { "button": "a" }, "                        ", { "text": "US", "dim": true }]
+        ]
+      },
+      {
+        "slot": "command",
+        "command": "/predict",
+        "args": "import",
+        "output": [["Learned from 1,284 prompts in past sessions."]]
+      },
+      { "slot": "toast", "text": "Word prediction is ready. Run /predict layout to pick your keyboard, /predict import to learn from past prompts." }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/tehwave/claude-word-predict/a5d9a0aad9ef341a563666a74014b5ef9e61f743/.github/social-preview.jpg",
+      "alt": "A suggestion strip reading ⌥1 be, ⌥2 make, ⌥3 a above a prompt box containing \"i want to\""
+    }
+  ]
+}

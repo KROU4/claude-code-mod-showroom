@@ -1,0 +1,42 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "topic-guard",
+  "title": "Topic Guard",
+  "tagline": "Holds a prompt that starts a new topic, so you can send it to a fresh session or keep it here.",
+  "tagline_ru": "Придерживает сообщение на новую тему: можно отправить его в новую сессию или оставить здесь.",
+  "description": "Before a message you type enters the session, a small model (Haiku by default, through the session's own client, up to 8 seconds) reads the end of the conversation and your message and answers related or new-topic. A new topic is held: the message goes back into the prompt box and a band shows the reason with New session (runs `/clear` and leaves your message in the box) and Dismiss; Enter keeps it here. It judges only once the context is at least `minContextPercent` (20%) full. With `judge: jev` it asks a connected Jev MCP server instead, which sends the conversation's end and your prompt to the Jev provider. A status line says who judges; an optional debug log holds no prompt text.",
+  "description_ru": "Прежде чем ваше сообщение попадёт в сессию, небольшая модель (по умолчанию Haiku, через клиент самой сессии, до 8 секунд) читает конец диалога и сообщение и отвечает: та же тема или новая. Новая тема придерживается: сообщение возвращается в поле ввода, а полоса показывает причину и кнопки New session (выполняет `/clear` и оставляет сообщение в поле) и Dismiss; Enter оставляет его здесь. Проверка идёт, только когда контекст заполнен хотя бы на `minContextPercent` (20%). С `judge: jev` мод спрашивает подключённый MCP-сервер Jev, который отправляет конец диалога и сообщение провайдеру Jev. Строка статуса показывает, кто судит; необязательный отладочный журнал не хранит текст сообщений.",
+  "author": { "name": "Douglas Cunha", "github": "dougcunha", "url": "https://github.com/dougcunha" },
+  "maintainers": ["dougcunha"],
+  "category": "productivity",
+  "tags": ["topics", "context", "clear", "haiku", "prompt"],
+  "license": "MIT",
+  "version": "0.5.0",
+  "homepage": "https://github.com/dougcunha/claude-mods/tree/HEAD/topic-guard",
+  "source": { "type": "github", "repo": "dougcunha/claude-mods", "path": "topic-guard", "sha": "49337f5ffa1a2670737a882b480b412ddb128fdd" },
+  "capabilities": { "network": false, "processes": false, "filesystem": "write", "model": true, "promptRewrite": true, "blocksTools": false },
+  "preview": {
+    "surface": "terminal",
+    "scene": "coding",
+    "caption": "A message about another subject is held: start a new session for it, or press Enter to keep it here.",
+    "caption_ru": "Сообщение на другую тему придержано: начните для него новую сессию или нажмите Enter, чтобы оставить здесь.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [{ "text": "◇ topic-guard", "bold": true }, " this looks like a new topic", { "text": "                 34% context", "dim": true }],
+          [{ "text": "The session is about cart discounts; this asks how to set up a VPN on the laptop.", "dim": true }],
+          [{ "button": "New session", "variant": "primary" }, " ", { "button": "Dismiss" }, { "text": "  or press Enter to keep it here", "dim": true }]
+        ]
+      },
+      { "slot": "status", "text": "haiku · held a new topic at 34%" }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/dougcunha/claude-mods/49337f5ffa1a2670737a882b480b412ddb128fdd/topic-guard/images/band.png",
+      "alt": "A held prompt with the topic-guard band above the prompt box and the New session button"
+    }
+  ]
+}

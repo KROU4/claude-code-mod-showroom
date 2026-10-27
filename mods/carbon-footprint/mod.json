@@ -1,0 +1,45 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "carbon-footprint",
+  "title": "Claude Carbon",
+  "tagline": "The estimated CO2 of each answer and of the session, with a pixel molecule pane in the desktop app.",
+  "tagline_ru": "Оценка выбросов CO2 каждого ответа и всей сессии и панель с пиксельной молекулой в десктопном приложении.",
+  "description": "Estimates CO2 locally from token counts with published factors. In the terminal each answer's closing line ends with its gCO₂; an unusual answer shows its ratio to your median. Under the prompt sits the session total with its API-price cost. `/carbon-panel` opens a pane with a molecule colored against your past sessions, the last 30 days as tiles and warming stripes, and a yearly card. The plugin also brings shell hooks that record sessions to a local SQLite database once the installer set it up, a status line, report skills, and a daily update check against GitHub. Its status line reads your Claude Code OAuth token to fetch the 5-hour quota from Anthropic's usage endpoint.",
+  "description_ru": "Считает выбросы CO2 у вас на компьютере по числу токенов и опубликованным коэффициентам. В терминале строка, которой заканчивается ответ, показывает его gCO₂; для необычно тяжёлого ответа — во сколько раз он больше вашей медианы. Под полем ввода — итог сессии и его стоимость по ценам API. `/carbon-panel` открывает панель с молекулой, окрашенной относительно ваших прошлых сессий, последними 30 днями плитками и полосами потепления, и годовую карточку. Плагин также ставит хуки оболочки, которые пишут сессии в локальную базу SQLite (если её создал установщик), строку состояния, навыки отчётов и ежедневную проверку обновлений на GitHub. Строка состояния читает OAuth-токен Claude Code, чтобы получить пятичасовую квоту с адреса usage у Anthropic.",
+  "author": { "name": "Gaetan Wittebolle", "github": "gwittebolle", "url": "https://github.com/gwittebolle" },
+  "maintainers": ["gwittebolle"],
+  "category": "insights",
+  "tags": ["carbon", "co2", "sustainability", "cost", "pane", "mascot"],
+  "license": "MIT",
+  "version": "1.18.2",
+  "homepage": "https://github.com/gwittebolle/claude-carbon",
+  "source": { "type": "marketplace", "marketplace": "gwittebolle/claude-carbon", "plugin": "claude-carbon" },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "surfaces": ["terminal", "desktop"],
+  "capabilities": {
+    "network": true,
+    "processes": true,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "scene": "coding",
+    "caption": "Each answer's CO2 at the end of its closing line, and the session total with its API-price cost under the prompt.",
+    "caption_ru": "CO2 каждого ответа в конце его последней строки и итог сессии со стоимостью по ценам API под полем ввода.",
+    "elements": [
+      { "slot": "turn-duration", "text": "✻ Worked for 38s · done 10:32 PM                         16 gCO₂" },
+      { "slot": "above-prompt", "rows": [[{ "text": "This session: 142 gCO₂ · $3.41 · Use 23% ↻14:00", "dim": true }]] }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/gwittebolle/claude-carbon/171d10b7f17ac870aacc3e9e31975cea6819c9ad/docs/desktop-pane.png",
+      "alt": "The claude-carbon pane in the desktop app: a blue pixel molecule, this session's CO2, the last 30 days as tiles and warming stripes",
+      "surface": "desktop"
+    }
+  ]
+}

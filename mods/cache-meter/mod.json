@@ -1,0 +1,55 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "cache-meter",
+  "title": "Cache Meter",
+  "tagline": "Prompt-cache hit rate and time left warm above the prompt, with a Keep warm switch for breaks.",
+  "tagline_ru": "Доля попаданий в кэш промпта и время до его остывания над полем ввода, с переключателем Keep warm.",
+  "description": "One row above the prompt: the share of the last turn's input served from the prompt cache (yellow below 40%) with tokens read and total input, then how long the cache stays warm (5 minutes, or an hour once the session uses the hour-long cache) or `cold`. Keep warm, off by default, refreshes the cache shortly before it lapses for up to `keepWarmMinutes` (60) after your last turn: each refresh is a forked model request answered with one word, read at the cache price and counted against plan limits. It stops when a refresh finds the cache already gone.",
+  "description_ru": "Одна строка над полем ввода: какая доля входа последнего хода пришла из кэша промпта (жёлтым ниже 40%), с числом прочитанных токенов и всего входа, затем сколько кэш ещё будет тёплым (5 минут или час, если сессия уже использует часовой кэш) или `cold`. Переключатель Keep warm (по умолчанию выключен) обновляет кэш незадолго до истечения в течение `keepWarmMinutes` (60) минут после вашего последнего хода: каждое обновление — отдельный запрос к модели с ответом в одно слово, читается по цене кэша и учитывается в лимитах подписки. Останавливается, если кэш к моменту обновления уже истёк.",
+  "author": { "name": "T-AI-Labs", "github": "T-AI-Labs", "url": "https://github.com/T-AI-Labs" },
+  "maintainers": ["T-AI-Labs"],
+  "category": "insights",
+  "tags": ["cache", "prompt-cache", "keep-warm", "tokens", "cost"],
+  "license": "MIT",
+  "version": "0.4.3",
+  "homepage": "https://github.com/T-AI-Labs/claude-code-mods/tree/HEAD/cache-meter",
+  "source": { "type": "marketplace", "marketplace": "T-AI-Labs/claude-code-mods", "plugin": "cache-meter", "path": "cache-meter" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": true,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "scene": "coding",
+    "caption": "92% of the last turn came from the cache, which stays warm for another 3:12.",
+    "caption_ru": "92% входа последнего хода пришло из кэша, он останется тёплым ещё 3:12.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [
+            "Cache ",
+            { "text": "▮▮▮▮▮", "color": "success" },
+            " 92% ",
+            { "text": "(92k/100k)", "dim": true },
+            "  ",
+            { "text": "warm 3:12", "color": "success" },
+            "  ",
+            { "button": "Keep warm" }
+          ]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/T-AI-Labs/claude-code-mods/4fbcf8ba2b1996a685497d06a89d06feeaeaf46c/.docs/cache-meter.svg",
+      "alt": "Illustration of the cache-meter row: Cache 92% (92k/100k), warm 3:12 and the Keep warm button"
+    }
+  ]
+}

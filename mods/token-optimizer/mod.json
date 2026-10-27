@@ -1,0 +1,82 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "token-optimizer",
+  "title": "Token Optimizer",
+  "tagline": "Audits and trims what fills your context, with a session-health bar and Clawd in the desktop app.",
+  "tagline_ru": "Проверяет и урезает то, чем забит контекст; в десктопном приложении — полоса здоровья сессии с Clawd.",
+  "description": "A large plugin of Python command hooks, skills and commands (`/token-optimizer`, health, quick) that audits context usage, compresses Bash output, guards against re-reading files, saves checkpoints before compaction and keeps a local session database and HTML dashboard (an optional localhost server). Its mod draws a band above the prompt in the desktop app: quality grade, context fill, cache countdown and both usage limits, one sentence on what needs attention, Clean up, Start fresh and a manual Keep warm (one model request), and Clawd acting out the session. Needs Python 3. Licensed PolyForm Noncommercial (a small-business license is offered separately).",
+  "description_ru": "Большой плагин из командных хуков на Python, навыков и команд (`/token-optimizer`, health, quick): проверяет, чем занят контекст, сжимает вывод Bash, не даёт перечитывать одни и те же файлы, сохраняет контрольные точки перед сжатием и ведёт локальную базу сессий и HTML-панель (по желанию с сервером на localhost). Мод рисует над полем ввода в десктопном приложении полосу: оценку качества, заполнение контекста, отсчёт до остывания кэша и оба лимита, одну фразу о том, что требует внимания, кнопки Clean up, Start fresh и ручной Keep warm (один запрос к модели), а Clawd изображает, что происходит в сессии. Нужен Python 3. Лицензия PolyForm Noncommercial (для малого бизнеса есть отдельная лицензия).",
+  "author": {
+    "name": "Alex Greenshpun",
+    "github": "alexgreensh",
+    "url": "https://github.com/alexgreensh"
+  },
+  "maintainers": [
+    "alexgreensh"
+  ],
+  "category": "insights",
+  "tags": [
+    "tokens",
+    "context",
+    "compaction",
+    "audit",
+    "dashboard",
+    "cache"
+  ],
+  "license": "PolyForm-Noncommercial-1.0.0",
+  "version": "5.13.58",
+  "homepage": "https://github.com/alexgreensh/token-optimizer",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "alexgreensh/token-optimizer",
+    "plugin": "token-optimizer"
+  },
+  "requires": {
+    "claudeCode": ">=2.1.287"
+  },
+  "surfaces": [
+    "desktop"
+  ],
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "write",
+    "model": true,
+    "promptRewrite": true,
+    "blocksTools": true
+  },
+  "preview": {
+    "surface": "desktop",
+    "scene": "coding",
+    "caption": "The desktop status bar: five marks, one sentence on what needs attention and the one button that fixes it.",
+    "caption_ru": "Полоса в десктопном приложении: пять показателей, одна фраза о главном и одна кнопка, которая это исправляет.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [
+            {
+              "text": "Quality B+",
+              "bold": true
+            },
+            {
+              "text": "  ·  Context 71%  ·  Cache 38m  ·  5h 44%  ·  Week 21%",
+              "dim": true
+            }
+          ],
+          [
+            {
+              "text": "Context is getting heavy: compact with guidance before quality drops.",
+              "color": "warning"
+            },
+            "  ",
+            {
+              "button": "Clean up",
+              "variant": "primary"
+            }
+          ]
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "cccc",
+  "title": "Command Clock",
+  "tagline": "How long each foreground Bash command has been running, on a dim line under its row.",
+  "tagline_ru": "Сколько уже идёт каждая команда Bash на переднем плане — тусклой строкой под её вызовом.",
+  "description": "Claude Code Command Clock adds a dim `⏱ Running 3s` line under each foreground Bash call that counts up once a second, then turns into `⏱ Took 5s` when the command ends (whole seconds: `<1s`, `45s`, `2m 5s`, `1h 3m`). A command moved to the background with ctrl+b shows `⏱ Backgrounded after 8s`; `run_in_background` commands are not timed. A call that waited on a permission dialog says `(incl. approval wait)`, since no event marks when the dialog was answered. It only watches Bash calls and redraws their row; nothing is stored or sent.",
+  "description_ru": "Claude Code Command Clock добавляет под каждым вызовом Bash на переднем плане тусклую строку `⏱ Running 3s`, которая растёт раз в секунду, а когда команда закончилась, превращается в `⏱ Took 5s` (целые секунды: `<1s`, `45s`, `2m 5s`, `1h 3m`). Для команды, отправленной в фон через ctrl+b, — `⏱ Backgrounded after 8s`; команды с `run_in_background` не замеряются. Если вызов ждал окна с разрешением, добавляется `(incl. approval wait)`: момент ответа на это окно ничем не отмечен. Мод только наблюдает за вызовами Bash и перерисовывает их строку; ничего не сохраняет и никуда не отправляет.",
+  "author": { "name": "xchacha20-poly1305", "github": "xchacha20-poly1305", "url": "https://github.com/xchacha20-poly1305" },
+  "maintainers": ["xchacha20-poly1305"],
+  "category": "insights",
+  "tags": ["bash", "timer", "duration", "tool-rows"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/xchacha20-poly1305/cccc",
+  "source": { "type": "github", "repo": "xchacha20-poly1305/cccc", "sha": "803a67a8310997746d1181ca58fca8dfd790a145" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "caption": "The finished build shows how long it took; the test run is still counting.",
+    "caption_ru": "У законченной сборки видно, сколько она шла; прогон тестов ещё считает время.",
+    "elements": [
+      { "slot": "tool-row", "tool": "Bash", "input": "npm run build", "result": [[{ "text": "  ⏱ Took 48s", "dim": true }]] },
+      { "slot": "tool-row", "tool": "Bash", "input": "npm test", "result": [[{ "text": "  ⏱ Running 1m 12s", "dim": true }]] }
+    ]
+  }
+}

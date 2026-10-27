@@ -1,0 +1,53 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "inline-images",
+  "title": "Inline Images",
+  "tagline": "A show_image tool for Claude, plus pasted images and images Claude reads drawn in the transcript.",
+  "tagline_ru": "Инструмент show_image для Claude, а вставленные и прочитанные Claude картинки рисуются прямо в ленте.",
+  "description": "Gives Claude a `show_image` tool: ask it to show you a file and the picture is drawn in the transcript without going into Claude's context. Images you paste are drawn 40 columns wide under your message, and images Claude opens with Read 60 columns wide under the Read line (both switchable in `/config`). Ghostty and kitty get the real picture through the kitty graphics protocol, Orca too with `CLAUDE_CODE_FORCE_TERMINAL_IMAGES=1`; other terminals and tmux get colored half blocks. It reads sizes and converts formats with `sips`, ImageMagick or ffmpeg, writing copies to `$TMPDIR/claude-inline-images`. Adapted from Mechazawa's claude-inline-images (MIT).",
+  "description_ru": "Даёт Claude инструмент `show_image`: попросите показать файл, и картинка появится в ленте, не попадая в контекст Claude. Вставленные вами картинки рисуются шириной 40 колонок под сообщением, а открытые Claude через Read — шириной 60 колонок под строкой Read (обе функции отключаются в `/config`). В Ghostty и kitty это настоящая картинка через протокол графики kitty, в Orca тоже — с `CLAUDE_CODE_FORCE_TERMINAL_IMAGES=1`; в остальных терминалах и в tmux — цветные полублоки. Размеры и форматы обрабатываются через `sips`, ImageMagick или ffmpeg, копии пишутся в `$TMPDIR/claude-inline-images`. Основан на claude-inline-images от Mechazawa (MIT).",
+  "author": { "name": "Benjamin Benoudis", "github": "benjaminb10", "url": "https://github.com/benjaminb10" },
+  "maintainers": ["benjaminb10"],
+  "category": "interface",
+  "tags": ["images", "kitty-graphics", "half-blocks", "orca", "paste", "screenshots"],
+  "license": "MIT",
+  "version": "1.1.1",
+  "homepage": "https://github.com/benjaminb10/encore-mods/tree/HEAD/plugins/inline-images",
+  "source": { "type": "marketplace", "marketplace": "benjaminb10/encore-mods", "plugin": "inline-images", "path": "plugins/inline-images" },
+  "requires": { "claudeCode": ">=2.1.275" },
+  "capabilities": { "network": false, "processes": true, "filesystem": "write", "model": false, "promptRewrite": false, "blocksTools": false },
+  "preview": {
+    "surface": "terminal",
+    "scene": "idle",
+    "caption": "Claude calls show_image and the picture is drawn in the transcript (half blocks here, a real image in Ghostty).",
+    "caption_ru": "Claude вызывает show_image, и картинка рисуется в ленте (здесь полублоками, в Ghostty — настоящим изображением).",
+    "elements": [
+      {
+        "slot": "model-tool",
+        "name": "mcp__inline-images__show_image",
+        "input": "path: \"~/Downloads/dashboard.png\"",
+        "result": [
+          [{ "text": "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀", "color": "#2f3e5c" }],
+          [{ "text": "▄▄▄▄▄▄", "color": "#5f9ea0" }, { "text": "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀", "color": "#e8e8e8" }],
+          [{ "text": "██████", "color": "#5f9ea0" }, { "text": "  ▄▄  ▄▄▄▄  ▄▄▄▄▄▄  ", "color": "#c08a5a" }],
+          [{ "text": "██████", "color": "#5f9ea0" }, { "text": "  ██  ████  ██████  ", "color": "#c08a5a" }],
+          [{ "text": "dashboard.png · 1280×800", "dim": true }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/benjaminb10/encore-mods/cd94493919dc3ac362e8847e923c640f6f0f4ee1/plugins/inline-images/docs/screenshot.png",
+      "alt": "Claude Code in Ghostty showing a JPEG inline with show_image",
+      "surface": "terminal"
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/benjaminb10/encore-mods/cd94493919dc3ac362e8847e923c640f6f0f4ee1/plugins/inline-images/docs/screenshot-iterm2.png",
+      "alt": "The same image in iTerm2, drawn as colored half blocks",
+      "surface": "terminal"
+    }
+  ]
+}

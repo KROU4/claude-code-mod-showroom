@@ -1,0 +1,51 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "pixpal",
+  "title": "Pixpal",
+  "tagline": "A pixel-art friend above the prompt that acts out Claude's tools and reacts to each answer.",
+  "tagline_ru": "Пиксельный приятель над полем ввода разыгрывает инструменты Claude и реагирует на каждый ответ.",
+  "description": "A pixel character in the band above the prompt (robot, cat, Claude, owl or ghost, dark or light look) follows each turn. Between turns it rests, peeks over a fence while you type and falls asleep after a minute. While Claude works it acts out the tool: a book for Read, a lens for Grep, a keyboard for Edit, a checklist for tests. When the answer lands it shows one of 15 emotions, picked by keyword rules or, with `/pixpal emotions ai`, by Claude Haiku from the start of your message and the answer. Running subagents stand beside it as mini robots. Speech bubbles in 12 built-in languages; others are translated once by Haiku. On macOS `theme auto` runs `defaults read` once a minute.",
+  "description_ru": "Пиксельный персонаж в полосе над полем ввода (робот, кот, Claude, сова или призрак, тёмный или светлый вид) следит за каждым ходом. Между ходами отдыхает, выглядывает из-за забора, пока вы печатаете, и засыпает через минуту тишины. Пока Claude работает, изображает инструмент: книгу для Read, лупу для Grep, клавиатуру для Edit, чек-лист для тестов. Когда приходит ответ, показывает одну из 15 эмоций — по правилам из ключевых слов или, с `/pixpal emotions ai`, по решению Claude Haiku на основе начала вашего сообщения и ответа. Работающие субагенты стоят рядом мини-роботами. Реплики в облачках на 12 встроенных языках, остальные один раз переводит Haiku. На macOS `theme auto` раз в минуту запускает `defaults read`.",
+  "author": { "name": "Krzysztof Romanowski", "github": "castus", "url": "https://github.com/castus" },
+  "maintainers": ["castus"],
+  "category": "fun",
+  "tags": ["pet", "pixel-art", "mascot", "emotions", "subagents", "band"],
+  "license": "MIT",
+  "version": "1.0.0",
+  "homepage": "https://github.com/castus/pixpal",
+  "source": { "type": "marketplace", "marketplace": "castus/pixpal", "plugin": "pixpal" },
+  "requires": { "claudeCode": ">=2.1.299" },
+  "capabilities": { "network": false, "processes": true, "filesystem": "none", "model": true, "promptRewrite": false, "blocksTools": false },
+  "preview": {
+    "surface": "terminal",
+    "scene": "coding",
+    "caption": "While Claude reads a file the robot holds a book; a subagent stands beside it as a mini robot.",
+    "caption_ru": "Пока Claude читает файл, робот держит книгу; рядом стоит субагент в виде мини-робота.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [{ "text": "   ▄█▄       ", "color": "#8fa3b8" }, { "text": "╭────────────╮", "dim": true }],
+          [{ "text": "  █", "color": "#8fa3b8" }, { "text": "◉ ◉", "color": "#5fd7ff" }, { "text": "█      ", "color": "#8fa3b8" }, { "text": "│ Reading…   │", "dim": true }],
+          [{ "text": "  █", "color": "#8fa3b8" }, { "text": "▔▔▔", "color": "#5fd7ff" }, { "text": "█      ", "color": "#8fa3b8" }, { "text": "╰────────────╯", "dim": true }],
+          [{ "text": " ▐", "color": "#8fa3b8" }, { "text": "▓▓▓▓", "color": "#c08a5a" }, { "text": "▌    ", "color": "#8fa3b8" }, { "text": "▗▄▖", "color": "#8fa3b8" }],
+          [{ "text": "  ▀ ▀        ", "color": "#8fa3b8" }, { "text": "▝▀▘", "color": "#8fa3b8" }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/castus/pixpal/b771fe42eee03f00bb114960b693652bc4acb33e/docs/emotions.gif",
+      "alt": "Pixpal searches and reads while Claude answers, then reacts to the answer and to a thank-you",
+      "surface": "terminal"
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/castus/pixpal/b771fe42eee03f00bb114960b693652bc4acb33e/docs/demo.gif",
+      "alt": "Pixpal falls asleep, then wakes up when the user starts typing",
+      "surface": "terminal"
+    }
+  ]
+}

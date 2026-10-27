@@ -1,0 +1,57 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "standup",
+  "title": "Standup",
+  "tagline": "Journals every turn and writes your Yesterday / Today / Blockers standup with one command.",
+  "tagline_ru": "Записывает каждый ход в журнал и одной командой пишет стендап: вчера, сегодня, блокеры.",
+  "description": "Each main-thread turn is journaled in the mod's store: time, project, the prompt you typed, files changed by successful Edit/Write/NotebookEdit calls, `git commit` subjects and duration (14 days kept, fields size-capped). `/standup` hands the last working day and today to a small model (`haiku` by default, one call of up to ~600 tokens) that writes Yesterday (or Friday) / Today / Blockers grouped by project, with blockers inferred only from the journal. `/standup raw [days]` prints the journal with no model, `/standup copy` puts the last standup on your clipboard, `/standup clear` wipes it. If the model is unavailable, the raw journal is shown instead.",
+  "description_ru": "Каждый ход основного диалога записывается в журнал в хранилище мода: время, проект, ваш запрос, файлы, изменённые успешными Edit/Write/NotebookEdit, темы `git commit` и длительность (хранится 14 дней, размер полей ограничен). `/standup` отдаёт последний рабочий день и сегодняшний небольшой модели (по умолчанию `haiku`, один вызов до ~600 токенов), и она пишет «Вчера» (или «Пятница») / «Сегодня» / «Блокеры» по проектам, а блокеры выводит только из журнала. `/standup raw [дни]` печатает журнал без модели, `/standup copy` копирует последний стендап в буфер обмена, `/standup clear` стирает журнал. Если модель недоступна, показывается сам журнал.",
+  "author": {
+    "name": "Amrit Preet Singh",
+    "github": "Singh-AP",
+    "url": "https://github.com/Singh-AP"
+  },
+  "maintainers": [
+    "Singh-AP"
+  ],
+  "category": "productivity",
+  "tags": [
+    "standup",
+    "journal",
+    "summary",
+    "haiku",
+    "clipboard"
+  ],
+  "license": "MIT",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Singh-AP/awesome-claude-mods/tree/HEAD/mods/productivity/standup",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "Singh-AP/awesome-claude-mods",
+    "plugin": "standup",
+    "path": "mods/productivity/standup"
+  },
+  "requires": {
+    "claudeCode": ">=2.1.287"
+  },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": true,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "idle",
+    "caption": "/standup on a Monday morning, written from the journal of Friday and today.",
+    "caption_ru": "/standup в понедельник утром, по журналу за пятницу и сегодня.",
+    "elements": [
+      {
+        "slot": "command",
+        "command": "/standup",
+        "markdown": "**Friday**\n- [api] Fixed the login redirect loop; committed \"Fix login redirect\".\n- [api] Added retry with backoff to the payments client and its tests.\n\n**Today**\n- [web] Finished dark mode and wired it into settings; committed \"Add dark mode\".\n\n**Blockers**\n- [api] The flaky checkout test failed again after two attempts.\n\n(/standup copy puts it on your clipboard)"
+      }
+    ]
+  }
+}

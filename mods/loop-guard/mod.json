@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "loop-guard",
+  "title": "Loop Guard",
+  "tagline": "When the same tool call fails twice with the same error, Claude is told to stop and change approach.",
+  "tagline_ru": "Если один и тот же вызов дважды падает с той же ошибкой, Claude получает указание сменить подход.",
+  "description": "Watches every tool call. When a call with the same input (its id and description aside) fails again with exactly the same error, the mod adds a note to that tool result that you do not see: do not run it a third time, re-read the error, question the assumption, try something else or ask you. A toast says it happened. A success of that call, an interrupted turn or a new session clears the memory, and a subagent's failures count on their own. Nothing is blocked and nothing leaves the machine.",
+  "description_ru": "Следит за каждым вызовом инструмента. Когда вызов с теми же входными данными (без учёта id и описания) снова падает ровно с той же ошибкой, мод добавляет к результату этого вызова невидимую вам заметку: не запускать его в третий раз, перечитать ошибку, усомниться в исходном предположении, попробовать иначе или спросить вас. Об этом сообщает всплывающее уведомление. Успех того же вызова, прерванный ход или новая сессия сбрасывают память, а ошибки субагента считаются отдельно. Ничего не блокируется и ничего не уходит с компьютера.",
+  "author": { "name": "Mehmet Aras", "github": "arasovic", "url": "https://github.com/arasovic" },
+  "maintainers": ["arasovic"],
+  "category": "safety",
+  "tags": ["loops", "errors", "retries", "tool-calls", "hidden-note"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/arasovic/claude-code-mods/tree/HEAD/loop-guard",
+  "source": { "type": "github", "repo": "arasovic/claude-code-mods", "path": "loop-guard", "sha": "3c3f25ee3a12b982fd63ee858297baab9385dd33" },
+  "capabilities": { "network": false, "processes": false, "filesystem": "none", "model": false, "promptRewrite": false, "blocksTools": false },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Run the migration." },
+      { "role": "tool", "tool": "Bash", "input": "npm run migrate", "result": "Error: relation \"orders\" does not exist", "status": "error" },
+      { "role": "tool", "tool": "Bash", "input": "npm run migrate", "result": "Error: relation \"orders\" does not exist", "status": "error" },
+      { "role": "assistant", "text": "Running it again won't help: the orders table is never created. Checking the earlier migrations first." }
+    ],
+    "caption": "The second identical failure: Claude gets a hidden note to change approach, and a toast tells you.",
+    "caption_ru": "Второй одинаковый провал: Claude получает скрытую заметку сменить подход, а вам приходит уведомление.",
+    "elements": [
+      { "slot": "toast", "text": "loop-guard: the same Bash call failed twice; Claude was told to change approach" },
+      { "slot": "background", "text": "Adds a note you don't see to the repeated failure's tool result" }
+    ]
+  }
+}

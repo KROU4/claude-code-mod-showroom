@@ -1,0 +1,55 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "crossroads",
+  "title": "Crossroads",
+  "tagline": "Three clickable next prompts above the input after each turn, risky ones marked (deploys, pushes).",
+  "tagline_ru": "После каждого хода над полем ввода три кликабельных следующих запроса, рискованные помечены (deploys, pushes).",
+  "description": "When a turn ends with an answer, one small-model call (`haiku`, low effort, about $0.0002) gets a compact digest, not the transcript: your first and last prompt, names of files touched, first lines of commands with pass/fail, Claude's closing question, up to 12 slash command names, secret-looking text replaced by `[REDACTED]`. Three next prompts appear as buttons above the input; a click drafts one into your prompt box, never sent. Risky ones get an amber note such as `(pushes)`. Claude Code's own ghost-text guess becomes option 1. On the desktop app a click copies the prompt and offers Send. It backs off when ignored and keeps per-project counts (no prompts) in its store.",
+  "description_ru": "Когда ход заканчивается ответом, один вызов небольшой модели (`haiku`, низкое усилие, около $0.0002) получает краткую выжимку, а не всю историю: ваш первый и последний запрос, имена затронутых файлов, первые строки команд с итогом, заключительный вопрос Claude, до 12 названий слеш-команд; всё похожее на секреты заменено на `[REDACTED]`. Над полем ввода появляются три следующих запроса-кнопки; клик вставляет запрос в поле как черновик и не отправляет его. Рискованные помечены янтарной пометкой вроде `(pushes)`. Собственная подсказка Claude Code становится вариантом 1. В десктопном приложении клик копирует запрос и предлагает кнопку Send. Если списки игнорируют, мод показывает их реже, а в своём хранилище держит счётчики по проектам (без текстов запросов).",
+  "author": { "name": "modmyclaude", "github": "modmyclaude", "url": "https://github.com/modmyclaude" },
+  "maintainers": ["modmyclaude"],
+  "category": "productivity",
+  "tags": ["next-prompt", "suggestions", "workflow", "band", "safety", "small-model"],
+  "license": "MIT",
+  "version": "0.1.2",
+  "homepage": "https://github.com/modmyclaude/claude-code-mods/tree/HEAD/mods/crossroads",
+  "source": { "type": "marketplace", "marketplace": "modmyclaude/claude-code-mods", "plugin": "crossroads", "path": "mods/crossroads" },
+  "surfaces": ["terminal", "desktop"],
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": true,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Add a rate-limit guard to the login handler in auth.ts." },
+      { "role": "tool", "tool": "Edit", "input": "src/auth.ts", "status": "done" },
+      { "role": "tool", "tool": "Bash", "input": "npm test -- auth", "result": "Tests  9 passed (9)", "status": "done" },
+      { "role": "assistant", "text": "The login handler now rejects more than 5 attempts a minute per IP, and the auth tests pass. Want the same guard on signup?" }
+    ],
+    "caption": "After the turn: three next prompts as buttons, the risky one marked in amber.",
+    "caption_ru": "После хода: три следующих запроса в виде кнопок, рискованный помечен янтарным.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [
+            { "button": "run the auth tests with coverage" },
+            { "text": " · ", "dim": true },
+            { "button": "add the same guard to signup.ts" },
+            { "text": " · ", "dim": true },
+            { "button": "push to main" },
+            { "text": " (pushes)", "color": "warning" },
+            { "text": " · ", "dim": true },
+            { "button": "dismiss", "hotkey": "0" }
+          ]
+        ]
+      }
+    ]
+  }
+}

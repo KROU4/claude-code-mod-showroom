@@ -1,0 +1,46 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "watch-command",
+  "title": "Watch Command",
+  "tagline": "/watch reruns a command on a timer and shows whether it passes in the status line.",
+  "tagline_ru": "/watch перезапускает команду по таймеру и показывает в строке состояния, проходит ли она.",
+  "description": "`/watch [seconds] <command>` runs the command at once and then every 30 seconds by default (5 at the least), as a process with a time limit: directly on macOS and Linux, so pipes and `&&` do not work there, and through `cmd` on Windows. The status line under the prompt shows `watch npm: ok · Tests 42 passed`, the result and the last line of output, and a toast appears when the exit code changes. `/watch stop` ends it. One of the templates shipped with the givememod skill. No network or model calls.",
+  "description_ru": "`/watch [секунды] <команда>` сразу запускает команду, а потом повторяет её по умолчанию каждые 30 секунд (не чаще чем раз в 5), как отдельный процесс с ограничением по времени: в macOS и Linux напрямую, поэтому конвейеры и `&&` там не работают, а в Windows через `cmd`. В строке состояния под полем ввода видно `watch npm: ok · Tests 42 passed`, то есть результат и последнюю строку вывода, а когда код выхода меняется, всплывает уведомление. `/watch stop` останавливает наблюдение. Это один из шаблонов, которые идут со скиллом givememod. Сеть и вызовы модели не используются.",
+  "author": { "name": "timoncool", "github": "timoncool", "url": "https://github.com/timoncool" },
+  "maintainers": ["timoncool"],
+  "category": "productivity",
+  "tags": ["watch", "tests", "status-line", "toast", "timer"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/timoncool/givememod/tree/HEAD/plugins/givememod/skills/givememod/templates/watch-command",
+  "source": {
+    "type": "github",
+    "repo": "timoncool/givememod",
+    "path": "plugins/givememod/skills/givememod/templates/watch-command",
+    "sha": "197200ab39d2d0c22246ac5ceec40c3fbbefb945"
+  },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "debugging",
+    "surface": "terminal",
+    "caption": "npm test rerun every 20 seconds: its state in the status line and a toast when it starts failing.",
+    "caption_ru": "npm test перезапускается каждые 20 секунд: состояние в строке состояния и уведомление, когда тесты начинают падать.",
+    "elements": [
+      {
+        "slot": "command",
+        "command": "/watch",
+        "args": "20 npm test",
+        "output": [["Watching `npm test` every 20s. /watch stop ends it."]]
+      },
+      { "slot": "status", "text": "watch npm: exit 1 · Tests  1 failed | 41 passed (42)" },
+      { "slot": "toast", "text": "watch: npm test → exit 1" }
+    ]
+  }
+}

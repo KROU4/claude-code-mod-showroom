@@ -1,0 +1,66 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "figures",
+  "title": "Figures",
+  "tagline": "Mermaid, Graphviz, D2 and SVG diagrams, LaTeX math and tool images drawn inline in kitty terminals.",
+  "tagline_ru": "Диаграммы mermaid, Graphviz, D2 и SVG, формулы LaTeX и картинки инструментов в терминале с kitty-графикой.",
+  "description": "In a terminal with the kitty graphics protocol, a `mermaid`, `dot`, `d2` or `svg` block in a reply is rendered and drawn under the reply, with the code kept above it, and LaTeX display math is typeset by a bundled MathJax. Images from Read, MCP screenshots and `SendUserFile` are drawn under their row. It runs the renderers you have installed (`mmdr` or `mmdc`, Graphviz `dot`, `d2`, `resvg`, `magick` or `sips`); a block with none installed stays code. PNGs are cached in `$TMPDIR/claude-figures/` for seven days. `/figures` opens a pane to step through the session's pictures and open one in the system viewer. Ships a `diagrams` skill that tells Claude how to write blocks that render.",
+  "description_ru": "В терминале с протоколом kitty-графики блок `mermaid`, `dot`, `d2` или `svg` в ответе рендерится и рисуется под ответом, а код остаётся над картинкой; выносные формулы LaTeX набирает встроенный MathJax. Изображения из Read, скриншоты MCP-инструментов и `SendUserFile` рисуются под своей строкой. Мод запускает установленные у вас рендереры (`mmdr` или `mmdc`, `dot` из Graphviz, `d2`, `resvg`, `magick` или `sips`); если ни одного нет, блок остаётся кодом. Готовые PNG кэшируются в `$TMPDIR/claude-figures/` и удаляются через семь дней. `/figures` открывает панель, где можно листать картинки сессии и открыть любую через `open` или `xdg-open`. В комплекте навык `diagrams`, который объясняет Claude, как писать блоки, чтобы они рисовались.",
+  "author": { "name": "natsukium", "github": "natsukium", "url": "https://github.com/natsukium" },
+  "maintainers": ["natsukium"],
+  "category": "interface",
+  "tags": ["diagrams", "mermaid", "graphviz", "latex", "kitty-graphics", "images"],
+  "license": "Apache-2.0",
+  "version": "0.1.0",
+  "homepage": "https://github.com/natsukium/claude-code-figures-plugin",
+  "source": { "type": "marketplace", "marketplace": "natsukium/claude-code-figures-plugin", "plugin": "figures" },
+  "requires": { "claudeCode": ">=2.1.288" },
+  "surfaces": ["terminal"],
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Sketch how a login request flows through the services." }
+    ],
+    "caption": "The mermaid source stays in the reply and the rendered flowchart appears under it (a real picture in kitty or Ghostty).",
+    "caption_ru": "Исходник mermaid остаётся в ответе, а под ним появляется нарисованная схема (настоящей картинкой в kitty или Ghostty).",
+    "elements": [
+      {
+        "slot": "message",
+        "role": "assistant",
+        "rows": [
+          [{ "text": "```mermaid", "dim": true }],
+          [{ "text": "flowchart LR", "dim": true }],
+          [{ "text": "  Browser --> Gateway --> Auth --> DB", "dim": true }],
+          [{ "text": "```", "dim": true }],
+          [" "],
+          [{ "text": "┌─────────┐   ┌─────────┐   ┌──────┐   ┌────┐", "color": "claude" }],
+          [{ "text": "│ Browser │──▶│ Gateway │──▶│ Auth │──▶│ DB │", "color": "claude" }],
+          [{ "text": "└─────────┘   └─────────┘   └──────┘   └────┘", "color": "claude" }]
+        ]
+      },
+      { "slot": "background", "text": "Drawn as a PNG through the kitty graphics protocol; the text above stands in for the picture." }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/natsukium/claude-code-figures-plugin/5d3bf3d97bd5a67816d2f578f9a41b2830c73293/docs/demo.png",
+      "alt": "A reply with a mermaid flowchart and a LaTeX formula, each drawn as a picture under its source",
+      "surface": "terminal"
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/natsukium/claude-code-figures-plugin/5d3bf3d97bd5a67816d2f578f9a41b2830c73293/docs/figures-pane.png",
+      "alt": "The /figures pane beside the transcript, showing the formula from the reply",
+      "surface": "terminal"
+    }
+  ]
+}

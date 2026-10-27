@@ -1,0 +1,56 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "jr-deslop",
+  "title": "jr deslop",
+  "tagline": "Flags AI-writing tells in the prose files Claude writes: em dashes, \"delve\", stock openers.",
+  "tagline_ru": "Отмечает приметы машинного текста в файлах, которые пишет Claude: длинные тире, «delve», штампы.",
+  "description": "After Claude writes or edits a `.md`, `.mdx`, `.markdown`, `.txt` or `.rst` file, the mod reads it and looks for tells of machine-written prose: em dashes, \"delve\", filler transitions, \"not X, but Y\" framing, stock openers and closers, throat-clearing, inflated words, adverb triplets, plus a few French ones. Code fences and inline code are skipped. A toast gives the count; `/jr-deslop` opens a pane listing each tell by file and line with an excerpt, and `/jr-deslop <file>` checks one file now. It never rewrites anything. Reads only those files; runs nothing, no network.",
+  "description_ru": "Когда Claude пишет или правит файл `.md`, `.mdx`, `.markdown`, `.txt` или `.rst`, мод читает его и ищет приметы машинного текста: длинные тире, «delve», пустые связки, конструкцию «не X, а Y», шаблонные вступления и концовки, раскачку перед мыслью, раздутые слова, тройки наречий и несколько французских штампов. Блоки кода и инлайн-код пропускаются. Уведомление сообщает число находок; `/jr-deslop` открывает панель со списком по файлам и строкам с цитатой, `/jr-deslop <файл>` проверяет один файл сразу. Сам ничего не переписывает. Читает только эти файлы, ничего не запускает, в сеть не ходит.",
+  "author": { "name": "jrlprost", "github": "jrlprost", "url": "https://github.com/jrlprost" },
+  "maintainers": ["jrlprost"],
+  "category": "productivity",
+  "tags": ["writing", "prose", "markdown", "lint"],
+  "license": "MIT",
+  "version": "0.2.0",
+  "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-deslop",
+  "source": {
+    "type": "github",
+    "repo": "jrlprost/claude-code-mods",
+    "path": "plugins/jr-deslop",
+    "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+  },
+  "surfaces": ["terminal"],
+  "requires": { "claudeCode": ">=2.1.301" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "transcript": [
+      { "role": "user", "text": "Draft launch notes for v2 in docs/launch-notes.md." },
+      { "role": "tool", "tool": "Write", "input": "docs/launch-notes.md", "status": "done" }
+    ],
+    "caption": "The toast after the file is written, and the /jr-deslop list.",
+    "caption_ru": "Уведомление после записи файла и список /jr-deslop.",
+    "elements": [
+      { "slot": "toast", "text": "jr deslop · 4 AI-writing tells in launch-notes.md · /jr-deslop to see them" },
+      {
+        "slot": "pane",
+        "title": "jr deslop",
+        "width": "wide",
+        "rows": [
+          [{ "text": "jr deslop", "bold": true, "color": "#ff5ca8" }, { "text": "   4 tells in 1 file · hints, not rules", "dim": true }],
+          [{ "text": "docs/launch-notes.md", "bold": true, "color": "#ffb86b" }],
+          [{ "text": "     2  ", "color": "#ff5ca8" }, { "text": "stock opener            ", "color": "#7f5af0" }, { "text": "In today's fast-paced world, we delve…", "dim": true }],
+          [{ "text": "     2  ", "color": "#ff5ca8" }, { "text": "\"delve\"                 ", "color": "#7f5af0" }, { "text": "…world, we delve into the details.", "dim": true }],
+          [{ "text": "     3  ", "color": "#ff5ca8" }, { "text": "filler transition       ", "color": "#7f5af0" }, { "text": "It's worth noting that this is not…", "dim": true }],
+          [{ "text": "     3  ", "color": "#ff5ca8" }, { "text": "\"not X, but Y\" framing  ", "color": "#7f5af0" }, { "text": "…not just a tool, but a platform.", "dim": true }]
+        ]
+      }
+    ]
+  }
+}

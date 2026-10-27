@@ -1,0 +1,40 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "worktrees",
+  "title": "Worktrees",
+  "tagline": "Every editing agent gets its own git worktree from your commit, and is cleaned up once you merge.",
+  "tagline_ru": "Каждый агент, который правит код, получает свой git worktree от вашего коммита и убирается после слияния.",
+  "description": "Sets `isolation: \"worktree\"` on Agent calls in a git repo (read-only types like Explore and Plan are skipped) and creates the worktree itself from your current HEAD, copying `.worktreeinclude` files and running `.claude/worktree-setup.sh`/`.ps1` with a port slot. When an agent stops it kills processes left in its worktree, sends it back once to stop background tasks or commit, and otherwise commits leftovers as a WIP commit with `--no-verify`. After a `merge` command it removes merged worktrees and runs `git branch -d`; `/tidy` also deletes merged remote branches on demand (`/tidy dry-run` first).",
+  "description_ru": "Ставит `isolation: \"worktree\"` вызовам Agent в git-репозитории (агенты только для чтения, вроде Explore и Plan, пропускаются) и сам создаёт worktree от вашего текущего HEAD, копирует файлы из `.worktreeinclude` и запускает `.claude/worktree-setup.sh`/`.ps1` со своим диапазоном портов. Когда агент останавливается, мод завершает оставленные в его worktree процессы, один раз возвращает агента остановить фоновые задачи или закоммитить работу, а иначе сам коммитит остатки как WIP с `--no-verify`. После команды с `merge` удаляет слитые worktree и выполняет `git branch -d`; `/tidy` по запросу удаляет и слитые удалённые ветки (сначала можно `/tidy dry-run`).",
+  "author": { "name": "Abhiram Dwivedi", "github": "AbhiramDwivedi", "url": "https://github.com/AbhiramDwivedi" },
+  "maintainers": ["AbhiramDwivedi"],
+  "category": "git",
+  "tags": ["worktrees", "subagents", "isolation", "cleanup", "ports"],
+  "license": "MIT",
+  "version": "0.6.0",
+  "homepage": "https://github.com/AbhiramDwivedi/claude-ops/tree/HEAD/plugins/worktrees",
+  "source": { "type": "marketplace", "marketplace": "AbhiramDwivedi/claude-ops", "plugin": "worktrees", "path": "plugins/worktrees" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": true
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Have two agents fix the cart rounding and the receipt email in parallel, then merge both." },
+      { "role": "tool", "tool": "Agent", "input": "fix cart rounding (worktree-agent-a1)", "result": "Done: 2 commits on worktree-agent-a1", "status": "done" },
+      { "role": "tool", "tool": "Agent", "input": "fix receipt email (worktree-agent-b2)", "result": "Done: 1 commit on worktree-agent-b2", "status": "done" },
+      { "role": "tool", "tool": "Bash", "input": "git merge --ff-only worktree-agent-a1 && git merge worktree-agent-b2", "result": "Merge made by the 'ort' strategy.", "status": "done" }
+    ],
+    "caption": "After the merge the mod removes both agents' worktrees and branches, and says so in a toast.",
+    "caption_ru": "После слияния мод удаляет worktree и ветки обоих агентов и сообщает об этом уведомлением.",
+    "elements": [
+      { "slot": "toast", "text": "worktrees: removed merged worktree-agent-a1, worktree-agent-b2" },
+      { "slot": "command", "command": "/tidy", "args": "dry-run", "output": [["would remove worktree and branch fix/old-banner (merged)"], ["unmerged agent work: worktree-agent-c3 (2 commits)"]] }
+    ]
+  }
+}

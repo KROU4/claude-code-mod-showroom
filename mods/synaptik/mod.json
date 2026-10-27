@@ -1,0 +1,51 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "synaptik",
+  "title": "Synaptik",
+  "tagline": "Accept, reject or comment on any part of Claude's reply; your marks become one prompt you send.",
+  "tagline_ru": "Принимайте, отклоняйте или комментируйте любую часть ответа Claude; пометки собираются в один запрос.",
+  "description": "After a reply, a band above the prompt offers to review it. In the navigator (fullscreen: in place beside a block map; classic: the selected block above the prompt) move between paragraphs, plan steps and list items with ↑/↓, then accept (`a`), reject (`x`) or comment (`c`). Your marks are compiled into one plain prompt, each marked block quoted as `✓ \"…\"`, `✗ \"…\"` or `✎ \"…\" → your note`, nested under its parent, and shown as a dim suggestion: Tab takes it, Enter sends it. Nothing reaches Claude until you send. Only the last reply can be marked; marks are not saved. `/synaptik config` can add better keys to your `~/.claude/keybindings.json` after showing the change.",
+  "description_ru": "После ответа полоса над полем ввода предлагает его разобрать. В навигаторе (в полноэкранном режиме — прямо в ответе рядом с картой блоков, в классическом — выбранный блок над полем ввода) стрелками ↑/↓ переходите между абзацами, шагами плана и пунктами списков, затем принимайте (`a`), отклоняйте (`x`) или комментируйте (`c`). Пометки собираются в один обычный запрос: каждый блок цитируется как `✓ \"…\"`, `✗ \"…\"` или `✎ \"…\" → ваша заметка`, с вложенностью под родителем, и появляется приглушённой подсказкой: Tab берёт её, Enter отправляет. До отправки Claude ничего не получает. Помечать можно только последний ответ, пометки не сохраняются. `/synaptik config` может добавить удобные клавиши в `~/.claude/keybindings.json`, предварительно показав изменения.",
+  "author": { "name": "Synaptik", "github": "synaptik-app", "url": "https://github.com/synaptik-app" },
+  "maintainers": ["synaptik-app"],
+  "category": "productivity",
+  "tags": ["review", "feedback", "markup", "replies", "prompt"],
+  "license": "Apache-2.0",
+  "version": "0.1.0",
+  "homepage": "https://github.com/synaptik-app/synaptik",
+  "source": { "type": "marketplace", "marketplace": "synaptik-app/synaptik", "plugin": "synaptik", "path": "hosts/claude-code" },
+  "surfaces": ["terminal"],
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": { "network": false, "processes": false, "filesystem": "write", "model": false, "promptRewrite": false, "blocksTools": false },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Plan the move from REST to tRPC for the cart API." },
+      { "role": "assistant", "text": "1. Add a tRPC router next to the REST routes.\n2. Port the cart endpoints one by one.\n3. Delete the REST routes once the client is switched.\n4. Add end-to-end tests for the new procedures." }
+    ],
+    "caption": "Two plan steps marked: one accepted, one with a note. The marks become the dim suggestion in the prompt box.",
+    "caption_ru": "Помечены два шага плана: один принят, к другому заметка. Пометки становятся приглушённой подсказкой в поле ввода.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          ["Synaptik", { "text": " · respond to the reply in place", "dim": true }],
+          ["⎿  ✓ 1 · ✎ 1 · ⏎ sends your feedback"],
+          [{ "text": "⎿  ↑/↓ block · a accept · x reject · c comment · esc done", "dim": true }]
+        ]
+      },
+      {
+        "slot": "prompt-hint",
+        "row": [{ "text": "✓ \"Add a tRPC router next to the REST routes.\"  ✎ \"Delete the REST routes…\" → keep them behind a flag for a week", "dim": true }]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/synaptik-app/synaptik/6785a6ce509ddac31250dc0c32f8b533e50e0b63/.github/assets/demo.gif",
+      "alt": "Marking up a reply with Synaptik, then sending the marks as one prompt",
+      "surface": "terminal"
+    }
+  ]
+}

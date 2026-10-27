@@ -1,0 +1,51 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "desk-slack",
+  "title": "Desk Slack",
+  "tagline": "Slack DMs sent to you as conversations in a side pane, with replies and new-message notifications.",
+  "tagline_ru": "Личные сообщения из Slack как переписки в боковой панели: с ответами и уведомлениями о новых.",
+  "description": "`/desk-slack` lists the Slack DMs and group DMs sent to you, newest first with `●` for unread, read through the Slack MCP server Claude Code already has connected. Open one for its latest 30 messages and threads, reply from the box at the bottom, close conversations, or press `Hand to Claude` to put the messages into the prompt. While a session runs it checks once a minute and sends a notification per conversation with a new message (`slackNotify`). It calls Slack only once its Slack tools have allow rules in `permissions.allow`, and those rules also let Claude send Slack messages without asking. Pairs with desk-look's `✉ N` chip.",
+  "description_ru": "`/desk-slack` показывает личные и групповые сообщения, которые вам прислали в Slack: новые сверху, непрочитанные с `●`. Данные идут через MCP-сервер Slack, уже подключённый к Claude Code. Откройте переписку, чтобы увидеть последние 30 сообщений и ветки, ответьте из поля внизу, закройте переписку или нажмите `Hand to Claude`, чтобы положить сообщения в поле ввода. Пока идёт сессия, мод раз в минуту проверяет новые сообщения и присылает уведомление на каждую переписку с новым сообщением (`slackNotify`). Slack вызывается только после того, как для его инструментов добавлены правила в `permissions.allow`, и эти же правила разрешают Claude отправлять сообщения в Slack без вопроса. Хорошо работает вместе с чипом `✉ N` из desk-look.",
+  "author": { "name": "KyongSik-Yoon", "github": "KyongSik-Yoon", "url": "https://github.com/KyongSik-Yoon" },
+  "maintainers": ["KyongSik-Yoon"],
+  "category": "integrations",
+  "tags": ["slack", "dm", "pane", "notifications", "mcp"],
+  "license": "MIT",
+  "version": "0.65.0",
+  "homepage": "https://github.com/KyongSik-Yoon/cc-desktop-mod/tree/HEAD/desk-slack",
+  "source": { "type": "marketplace", "marketplace": "KyongSik-Yoon/cc-desktop-mod", "plugin": "desk-slack", "path": "desk-slack" },
+  "surfaces": ["terminal"],
+  "capabilities": {
+    "network": true,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "/desk-slack beside the conversation: your DMs, unread ones marked, and a notification for a new one.",
+    "caption_ru": "/desk-slack рядом с перепиской: ваши личные сообщения, непрочитанные отмечены, и уведомление о новом.",
+    "elements": [
+      { "slot": "command", "command": "/desk-slack" },
+      {
+        "slot": "pane",
+        "title": "Slack",
+        "width": "narrow",
+        "rows": [
+          [{ "text": "Conversations", "bold": true }, "          ", { "text": "↻", "dim": true }],
+          [" "],
+          [{ "text": "● ", "color": "claude" }, { "text": "Mina Park", "bold": true }, "            ", { "text": "2m", "dim": true }],
+          ["  ", { "text": "Can you check the staging deploy?", "dim": true }],
+          [{ "text": "● ", "color": "claude" }, { "text": "Jun, Alex", "bold": true }, "            ", { "text": "18m", "dim": true }],
+          ["  ", { "text": "Alex: release notes are in the doc", "dim": true }],
+          ["  ", "Sam Lee", "               ", { "text": "1h", "dim": true }],
+          ["  ", { "text": "You: thanks, merged", "dim": true }]
+        ]
+      },
+      { "slot": "notification", "title": "desk-slack", "text": "Mina Park: Can you check the staging deploy?" }
+    ]
+  }
+}

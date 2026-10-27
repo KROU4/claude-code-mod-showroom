@@ -1,0 +1,49 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "noted",
+  "title": "Noted",
+  "tagline": "When you correct Claude, offers one short house rule to save in CLAUDE.md, without duplicates.",
+  "tagline_ru": "Когда вы поправляете Claude, предлагает короткое правило для CLAUDE.md и не плодит дубликатов.",
+  "description": "Correct Claude as usual (\"no, use pnpm\", \"stop adding emojis\") and your prompt goes through untouched. When an English keyword filter spots a correction, one `haiku` call (the correction, the tail of Claude's last reply and up to 60 existing rules) drafts a general rule, and a band above the prompt offers Save to project (`./CLAUDE.md`), Save globally (`~/.claude/CLAUDE.md`), Edit or Skip. Rules go under `## House rules`; one already there shows as already a rule, a contradicting one can be replaced in place. Nothing is written until you press a button. `/rules` lists what it learned, with Remove. No network or processes of its own.",
+  "description_ru": "Поправляйте Claude как обычно («no, use pnpm», «stop adding emojis»), запрос уходит без изменений. Если фильтр по английским ключевым словам распознал поправку, один вызов `haiku` (поправка, хвост последнего ответа Claude и до 60 уже записанных правил) составляет общее правило, а полоса над полем ввода предлагает Save to project (`./CLAUDE.md`), Save globally (`~/.claude/CLAUDE.md`), Edit или Skip. Правила попадают под заголовок `## House rules`; если такое уже есть, полоса так и скажет, а противоречащее старое правило можно заменить на месте. Пока вы не нажали кнопку, ничего не записывается. `/rules` показывает выученные правила с кнопкой Remove. Своих сетевых запросов и процессов нет.",
+  "author": { "name": "modmyclaude", "github": "modmyclaude", "url": "https://github.com/modmyclaude" },
+  "maintainers": ["modmyclaude"],
+  "category": "productivity",
+  "tags": ["claude-md", "rules", "memory", "corrections", "haiku"],
+  "license": "MIT",
+  "version": "0.1.2",
+  "homepage": "https://github.com/modmyclaude/claude-code-mods/tree/HEAD/mods/noted",
+  "source": { "type": "marketplace", "marketplace": "modmyclaude/claude-code-mods", "plugin": "noted", "path": "mods/noted" },
+  "surfaces": ["terminal", "desktop"],
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "write",
+    "model": true,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Add date-fns and format the order dates." },
+      { "role": "tool", "tool": "Bash", "input": "npm install date-fns", "result": "added 1 package in 2s", "status": "done" },
+      { "role": "assistant", "text": "Installed date-fns with npm and formatted the dates in src/orders.ts." },
+      { "role": "user", "text": "no, we use pnpm here, not npm" }
+    ],
+    "caption": "A correction becomes a proposed house rule in the band; nothing is written until you press Save.",
+    "caption_ru": "Поправка превращается в предложенное правило в полосе над полем ввода; без нажатия Save ничего не записывается.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [{ "text": "Noted - save this as a house rule?", "bold": true }],
+          ["Use pnpm, not npm, in this repo."],
+          [{ "button": "Save to project", "variant": "primary" }, " ", { "button": "Save globally" }, " ", { "button": "Edit", "hotkey": "e" }, " ", { "button": "Skip", "hotkey": "s" }]
+        ]
+      },
+      { "slot": "background", "text": "Save appends \"- Use pnpm, not npm, in this repo.\" under ## House rules in ./CLAUDE.md" }
+    ]
+  }
+}

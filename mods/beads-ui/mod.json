@@ -1,0 +1,54 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "beads-ui",
+  "title": "Beads UI",
+  "tagline": "Beads tasks in Claude Code: session counts above the prompt and a board, backlog and timeline pane.",
+  "tagline_ru": "Задачи Beads в Claude Code: счётчики сессии над полем ввода и панель с доской, бэклогом и хронологией.",
+  "description": "For repositories with a Beads (`bd`) issue store. A band above the prompt counts the session's own issues: `[bd] 15 tasks (2 in progress, 1 blocked, 12 open, 4 done last 24h)`, each count a button that lists its tasks. `/bu` (or `/show-beads-ui`) opens a pane on the session's tasks, with a board, backlog, task detail with comments, a timeline picture and settings; ⟳ marks an agent at work, ⊘ a blocked task. It runs `bd` to read and write issues. A session also starts a detached Node refresher (`refresher/refresher.mjs`, Node 22.18+) that outlives the session, polls every store once a minute and writes snapshots under your state folder; stop it by the pid in `lease.json`.",
+  "description_ru": "Для репозиториев с хранилищем задач Beads (`bd`). Полоса над полем ввода считает задачи текущей сессии: `[bd] 15 tasks (2 in progress, 1 blocked, 12 open, 4 done last 24h)`, и каждое число это кнопка со списком задач. `/bu` (или `/show-beads-ui`) открывает панель с задачами сессии, доской, бэклогом, карточкой задачи с комментариями, картинкой-хронологией, настройками и быстрым добавлением; значки в строках показывают ⟳ работающего агента и ⊘ блокировку. Задачи читаются и пишутся запуском `bd`. Чтобы реже вызывать `bd`, сессия запускает отдельный фоновый процесс Node (`refresher/refresher.mjs`, Node 22.18+), который переживает сессию, раз в минуту опрашивает все хранилища и пишет снимки в папку состояния; остановить его можно по pid из `lease.json`.",
+  "author": { "name": "Sergei Wallace", "github": "sergeiwallace", "url": "https://github.com/sergeiwallace" },
+  "maintainers": ["sergeiwallace"],
+  "category": "productivity",
+  "tags": ["beads", "tasks", "kanban", "backlog", "band", "pane"],
+  "license": "MIT",
+  "version": "0.19.0",
+  "homepage": "https://github.com/sergeiwallace/beads-ui/tree/HEAD/plugins/beads-ui",
+  "source": { "type": "marketplace", "marketplace": "sergeiwallace/beads-ui", "plugin": "beads-ui", "path": "plugins/beads-ui" },
+  "requires": { "claudeCode": ">=2.1.299" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "The band's task counts and the pane open on the session's own tasks.",
+    "caption_ru": "Счётчики задач в полосе и панель, открытая на задачах этой сессии.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [[{ "text": "[bd]", "color": "claude" }, " 15 tasks (", { "text": "[2 in progress]", "color": "warning" }, ", ", { "text": "[1 blocked]", "color": "error" }, ", ", { "text": "[12 open]", "color": "suggestion" }, ", ", { "text": "[4 done last 24h]", "color": "success" }, ") ", { "text": "[◨]", "color": "claude" }]]
+      },
+      {
+        "slot": "pane",
+        "title": "beads",
+        "width": "wide",
+        "rows": [
+          [{ "text": "[Tasks]", "bold": true, "color": "claude" }, " [Board] [Backlog] [Timeline] [Settings]"],
+          [{ "text": "15 tasks: 2 in progress, 1 blocked, 12 open", "dim": true }],
+          [" "],
+          [{ "text": "⟳ ◐", "color": "warning" }, " BU-mg2.3  P1  Band counts per store"],
+          [{ "text": "  ◐", "color": "warning" }, " BU-mg2.5  P2  Timeline picture in tmux"],
+          [{ "text": "⊘ ●", "color": "error" }, " BU-mg2.4  P1  Review items in detail"],
+          ["  ○ BU-mh1    P2  Quick add from the band"],
+          ["  ○ BU-mh2    P3  ASCII glyph mode"],
+          [{ "text": "  +10 more", "dim": true }]
+        ]
+      }
+    ]
+  }
+}

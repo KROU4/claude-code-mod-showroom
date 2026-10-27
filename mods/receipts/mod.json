@@ -1,0 +1,43 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "receipts",
+  "title": "Receipts",
+  "tagline": "Claude says the tests pass; Receipts checks that a test or build actually ran after the last edit.",
+  "tagline_ru": "Claude пишет, что тесты проходят, а Receipts проверяет, был ли после правки реальный прогон.",
+  "description": "At the end of a turn whose answer claims success (\"All tests pass\", \"I've fixed…\") after code edits, Receipts looks for a qualifying test or build run after the last edit: ✅ Verified when it passed, ⚠️ Unverified when none ran, ❌ Contradicted when it failed. The verdict shows in a band above the prompt with Details and Dismiss, a 🧾 stamp under the answer and the `/receipts` pane. In mode B (default) a contradicted claim sends Claude back once and an unverified tests claim adds a reminder to your next prompt; mode C sends it back on any unbacked claim, mode A only warns. Opt-in `smartCheck` asks Haiku about sentences the phrase rules can't settle.",
+  "description_ru": "Если в конце хода с правками кода ответ заявляет об успехе («All tests pass», «I've fixed…»), Receipts ищет прогон тестов или сборки после последней правки: ✅ Verified, если он прошёл, ⚠️ Unverified, если его не было, ❌ Contradicted, если он упал. Вердикт виден в полосе над полем ввода с кнопками Details и Dismiss, штампом 🧾 под ответом и в панели `/receipts`. В режиме B (по умолчанию) опровергнутое утверждение один раз возвращает Claude к работе, а непроверенное утверждение о тестах добавляет напоминание к вашему следующему запросу; режим C возвращает при любом неподтверждённом утверждении, режим A только предупреждает. Включаемый `smartCheck` спрашивает Haiku о фразах, которые правила не смогли разобрать.",
+  "author": { "name": "candygoogy", "github": "candygoogy", "url": "https://github.com/candygoogy" },
+  "maintainers": ["candygoogy"],
+  "category": "safety",
+  "tags": ["verification", "tests", "claims", "build", "trust"],
+  "license": "MIT",
+  "version": "0.3.0",
+  "homepage": "https://github.com/candygoogy/notary/tree/HEAD/plugins/receipts",
+  "source": { "type": "marketplace", "marketplace": "candygoogy/notary", "plugin": "receipts", "path": "plugins/receipts" },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "read",
+    "model": true,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Make discount codes apply to the cart total." },
+      { "role": "tool", "tool": "Edit", "input": "src/cart/total.ts", "status": "done" },
+      { "role": "tool", "tool": "Bash", "input": "npm test", "result": "Tests  1 failed | 13 passed (14)", "status": "error" },
+      { "role": "tool", "tool": "Edit", "input": "src/cart/total.ts", "status": "done" },
+      { "role": "assistant", "text": "Fixed the rounding. All tests pass now." }
+    ],
+    "caption": "Claude claims a pass after its last edit with no new run: the band and the stamp say so.",
+    "caption_ru": "Claude заявляет об успехе после последней правки без нового прогона: полоса и штамп это показывают.",
+    "elements": [
+      { "slot": "message", "role": "note", "rows": [[{ "text": "🧾 ⚠️ Unverified: no receipts · no check ran after the last edit", "color": "warning" }]] },
+      { "slot": "above-prompt", "rows": [[{ "text": "⚠️ Unverified: no receipts · no check ran after the last edit", "color": "warning" }, "  ", { "button": "Details" }, " ", { "button": "Dismiss" }]] },
+      { "slot": "background", "text": "With your next prompt (mode B): \"Receipts: your previous claim 'All tests pass now' was not verified by any check run after your last edit. Verify before claiming success.\"" }
+    ]
+  }
+}

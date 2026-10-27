@@ -1,0 +1,44 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "jr-commit-coach",
+  "title": "jr commit coach",
+  "tagline": "When uncommitted changes pile up past a threshold, a band and a toast suggest a split by folder.",
+  "tagline_ru": "Когда незакоммиченных правок становится слишком много, полоса и уведомление предлагают разбить их по папкам.",
+  "description": "After each main-loop turn it runs `git diff --numstat HEAD` and `git ls-files --others --exclude-standard` in the session's repository (skipping any repo whose config could make git run a program). Once added plus removed lines pass the threshold (300 by default), a row above the prompt shows the count and new files with the top folders to split by, and a toast suggests small commits, e.g. `src (320 lines, 2 files), docs (40 lines, 1 file)`. The toast repeats only when the pile grows by half; the row leaves after you commit. Never commits anything. `/jr-commit-coach` hides or shows the row. No network.",
+  "description_ru": "После каждого хода основного диалога мод запускает в репозитории сессии `git diff --numstat HEAD` и `git ls-files --others --exclude-standard` (репозитории, чьи настройки могут заставить git запустить программу, пропускаются). Когда сумма добавленных и удалённых строк превышает порог (по умолчанию 300), над полем ввода появляется строка с числом строк, новыми файлами и главными папками для разбиения, а уведомление советует мелкие коммиты, например `src (320 lines, 2 files), docs (40 lines, 1 file)`. Повторно уведомление приходит, только если объём вырос в полтора раза; строка исчезает после коммита. Сам ничего не коммитит. `/jr-commit-coach` прячет или показывает строку. В сеть не ходит.",
+  "author": { "name": "jrlprost", "github": "jrlprost", "url": "https://github.com/jrlprost" },
+  "maintainers": ["jrlprost"],
+  "category": "git",
+  "tags": ["commits", "git", "atomic-commits", "toast"],
+  "license": "MIT",
+  "version": "0.4.0",
+  "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-commit-coach",
+  "source": {
+    "type": "github",
+    "repo": "jrlprost/claude-code-mods",
+    "path": "plugins/jr-commit-coach",
+    "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+  },
+  "surfaces": ["terminal"],
+  "requires": { "claudeCode": ">=2.1.301" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "caption": "364 lines uncommitted: the reminder above the prompt and the toast with a split.",
+    "caption_ru": "364 незакоммиченные строки: напоминание над полем ввода и уведомление с разбиением.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [[{ "text": "▲ ", "color": "#ff8c42" }, { "text": "364", "bold": true }, " lines uncommitted + 1 new", { "text": " · split: src/ docs/ root/", "dim": true }]]
+      },
+      { "slot": "toast", "text": "jr commit coach · 364 lines uncommitted, 1 new file: commit in small steps, e.g. src (320 lines, 2 files)…" }
+    ]
+  }
+}

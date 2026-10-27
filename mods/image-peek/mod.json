@@ -1,0 +1,50 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "image-peek",
+  "title": "Image Peek",
+  "tagline": "Thumbnails of pasted images above the prompt, and larger pictures under each sent message.",
+  "tagline_ru": "Миниатюры вставленных картинок над полем ввода и картинки покрупнее под каждым отправленным сообщением.",
+  "description": "While you write, each `[Image #n]` tag in the draft becomes a framed thumbnail above the prompt, labelled `#n`, kept to the picture's shape and at most 6 rows tall; it reads the draft four times a second, since pasting raises no event. After you send, the same pictures sit under your message in the chat, up to 120 columns wide and 20 rows tall. It draws from the PNG copies Claude Code keeps in its temp folder (`$CLAUDE_CODE_TMPDIR`, else `/tmp/claude-<uid>`, found with `id -u`) and keeps none of its own. Terminal only, and pictures need the kitty graphics protocol (Ghostty, kitty); elsewhere the tile shows its tag.",
+  "description_ru": "Пока вы пишете, каждый тег `[Image #n]` в черновике превращается в миниатюру в рамке над полем ввода с подписью `#n`, с сохранением пропорций и высотой не больше 6 строк; черновик читается четыре раза в секунду, потому что вставка не даёт события. После отправки те же картинки стоят под вашим сообщением в чате, до 120 колонок в ширину и 20 строк в высоту. Мод берёт PNG-копии, которые Claude Code держит во временной папке (`$CLAUDE_CODE_TMPDIR`, иначе `/tmp/claude-<uid>`, uid через `id -u`), и своих копий не хранит. Только в терминале; для картинок нужен протокол графики kitty (Ghostty, kitty), иначе в рамке виден тег.",
+  "author": { "name": "Mehmet Aras", "github": "arasovic", "url": "https://github.com/arasovic" },
+  "maintainers": ["arasovic"],
+  "category": "interface",
+  "tags": ["images", "paste", "thumbnails", "kitty-graphics", "ghostty"],
+  "license": "MIT",
+  "version": "0.1.3",
+  "homepage": "https://github.com/arasovic/claude-code-mods/tree/HEAD/image-peek",
+  "source": { "type": "github", "repo": "arasovic/claude-code-mods", "path": "image-peek", "sha": "3c3f25ee3a12b982fd63ee858297baab9385dd33" },
+  "capabilities": { "network": false, "processes": true, "filesystem": "read", "model": false, "promptRewrite": false, "blocksTools": false },
+  "preview": {
+    "surface": "terminal",
+    "scene": "idle",
+    "caption": "Two pasted screenshots as framed tiles above the prompt; after sending they show larger under the message.",
+    "caption_ru": "Два вставленных скриншота плитками в рамке над полем ввода; после отправки они крупнее под сообщением.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [{ "text": "╭────────────╮ ╭────────╮", "dim": true }],
+          [{ "text": "│", "dim": true }, { "text": "▓▓▒▒░░▒▒▓▓▒▒", "color": "#5f9ea0" }, { "text": "│ │", "dim": true }, { "text": "▒▒▓▓▓▓▒▒", "color": "#c08a5a" }, { "text": "│", "dim": true }],
+          [{ "text": "│", "dim": true }, { "text": "▒▒░░▓▓▓▓░░▒▒", "color": "#5f9ea0" }, { "text": "│ │", "dim": true }, { "text": "▓▓▒▒▒▒▓▓", "color": "#c08a5a" }, { "text": "│", "dim": true }],
+          [{ "text": "│     #1     │ │   #2   │", "dim": true }],
+          [{ "text": "╰────────────╯ ╰────────╯", "dim": true }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/arasovic/claude-code-mods/3c3f25ee3a12b982fd63ee858297baab9385dd33/docs/image-peek-draft.png",
+      "alt": "Thumbnails of two pasted images above the prompt",
+      "surface": "terminal"
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/arasovic/claude-code-mods/3c3f25ee3a12b982fd63ee858297baab9385dd33/docs/image-peek.png",
+      "alt": "The same two images, larger, under the sent message",
+      "surface": "terminal"
+    }
+  ]
+}

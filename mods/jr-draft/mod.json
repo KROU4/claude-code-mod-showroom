@@ -1,0 +1,52 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "jr-draft",
+  "title": "jr draft",
+  "tagline": "A scratch pane to write your next prompt while Claude works, sent to the prompt box when ready.",
+  "tagline_ru": "Черновик следующего запроса в отдельной панели, пока Claude работает; по готовности он уходит в поле ввода.",
+  "description": "`/jr-draft` opens a focused pane with a multi-line input where you can write the next prompt while Claude is still busy. The draft is kept per project in the mod's own store, across sessions, until you send or clear it. Enter or the Send to prompt box button (`s`) puts it in the prompt box, replacing what is there, and empties the scratch area; you still press Enter to send it. If the prompt box is busy the draft stays and a toast says so. `c` clears, Esc closes. Reads no files, runs nothing, no network.",
+  "description_ru": "`/jr-draft` открывает панель с многострочным полем, где можно писать следующий запрос, пока Claude ещё занят. Черновик хранится по проекту в собственном хранилище мода, между сессиями, пока вы его не отправите или не очистите. Enter или кнопка «Send to prompt box» (`s`) переносит его в поле ввода, заменяя то, что там было, и очищает черновик; отправляете вы сами, нажав Enter. Если поле ввода занято, черновик остаётся, а уведомление сообщает об этом. `c` очищает, Esc закрывает. Файлов не читает, ничего не запускает, в сеть не ходит.",
+  "author": { "name": "jrlprost", "github": "jrlprost", "url": "https://github.com/jrlprost" },
+  "maintainers": ["jrlprost"],
+  "category": "productivity",
+  "tags": ["prompt", "draft", "scratchpad", "pane"],
+  "license": "MIT",
+  "version": "0.2.0",
+  "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-draft",
+  "source": {
+    "type": "github",
+    "repo": "jrlprost/claude-code-mods",
+    "path": "plugins/jr-draft",
+    "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+  },
+  "surfaces": ["terminal"],
+  "requires": { "claudeCode": ">=2.1.301" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "caption": "Drafting the next prompt in /jr-draft while Claude is still working.",
+    "caption_ru": "Черновик следующего запроса в /jr-draft, пока Claude ещё работает.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "jr draft",
+        "width": "wide",
+        "rows": [
+          [{ "text": "jr draft", "bold": true, "color": "#ff5ca8" }, { "text": "   acme-site · 6 words · kept until you send it", "dim": true }],
+          [{ "text": "┌────────────────────────────────────────────┐", "dim": true }],
+          [{ "text": "│", "dim": true }, " then add tests for the parser               ", { "text": "│", "dim": true }],
+          [{ "text": "│", "dim": true }, "                                            ", { "text": "│", "dim": true }],
+          [{ "text": "└────────────────────────────────────────────┘", "dim": true }],
+          [{ "button": "Send to prompt box", "variant": "primary", "hotkey": "s" }, "  ", { "button": "Clear", "hotkey": "c" }]
+        ]
+      }
+    ]
+  }
+}

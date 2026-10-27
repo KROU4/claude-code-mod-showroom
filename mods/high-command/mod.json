@@ -1,0 +1,46 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "high-command",
+  "title": "High Command",
+  "tagline": "One inbox for messages from teammates, named subagents and other sessions, with unread counts.",
+  "tagline_ru": "Один почтовый ящик для сообщений от напарников, именованных субагентов и других сессий, с непрочитанными.",
+  "description": "Records each message reaching your main conversation from agent-team teammates, named subagents and your other sessions, and each plain-text SendMessage Claude makes with its result. While messages are unread, a row above the prompt shows the count and up to three peers with Open, Read all and Hide, and the status line says `high-command: 5 unread`. The pane lists peers, unread first, with threads; each message gets a sender label from Claude Code's own record of where it came from, and a `suspicious` mark if it asks to ignore instructions, change the permission mode, pipe a download into a shell or read credential files. `/highcommand` prints a summary. Read-only; no files, no network.",
+  "description_ru": "Записывает каждое сообщение, пришедшее в основной диалог от напарников по команде агентов, именованных субагентов и других ваших сессий, а также каждое текстовое SendMessage от Claude с результатом. Пока есть непрочитанные, строка над полем ввода показывает их число и до трёх отправителей с кнопками Open, Read all и Hide, а строка состояния пишет `high-command: 5 unread`. Панель перечисляет отправителей (сначала с непрочитанными) и переписку; у сообщения есть метка отправителя по данным самого Claude Code о том, откуда оно пришло, и отметка `suspicious`, если оно просит игнорировать инструкции, сменить режим разрешений, передать скачанное в shell или прочитать файлы с учётными данными. `/highcommand` выводит сводку. Только читает; без файлов и сети.",
+  "author": { "name": "dot-agi", "github": "dot-agi", "url": "https://github.com/dot-agi" },
+  "maintainers": ["dot-agi"],
+  "category": "productivity",
+  "tags": ["agent-teams", "messaging", "inbox", "subagents", "pane"],
+  "license": "MIT",
+  "version": "1.3.1",
+  "homepage": "https://github.com/dot-agi/high-command",
+  "source": { "type": "marketplace", "marketplace": "dot-agi/high-command", "plugin": "high-command" },
+  "requires": { "claudeCode": ">=2.1.288" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "caption": "Five unread messages from three agents: the band above the prompt and the status entry.",
+    "caption_ru": "Пять непрочитанных сообщений от трёх агентов: полоса над полем ввода и строка состояния.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [[{ "text": "✉ 5 unread", "bold": true, "color": "warning" }, { "text": " from scout, tester, helper  ", "dim": true }, { "button": "Open", "variant": "primary" }, " ", { "button": "Read all" }, " ", { "button": "Hide" }]]
+      },
+      { "slot": "status", "text": "high-command: 5 unread" }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/dot-agi/high-command/2c943f495b70efd1728fa3859385a19b7135b820/docs/images/pane.svg",
+      "alt": "The High Command roster: three peers with unread counts, one marked suspicious, with agent lanes below",
+      "surface": "terminal"
+    }
+  ]
+}

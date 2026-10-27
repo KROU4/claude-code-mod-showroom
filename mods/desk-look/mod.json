@@ -1,0 +1,84 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "desk-look",
+  "title": "Desk Look",
+  "tagline": "The terminal transcript redrawn like the desktop app's Code tab, with diff, PR and context panes.",
+  "tagline_ru": "Переписка в терминале выглядит как вкладка Code в десктопном приложении, плюс панели диффа, PR и контекста.",
+  "description": "Redraws the terminal transcript like the Code tab of the Claude desktop app: prompt bubbles, markdown with full-width tables, mermaid diagrams as boxes, tool calls folded into one clickable line, agent, plan and question cards, and an edited-files card per turn. A band above the prompt shows repo, branch, `+N −M`, PR checks, context and background tasks. Seven panes: `/desk-diff` (line comments go with your next prompt; a two-press revert), `/desk-activity`, `/desk-tasks`, `/desk-pr` (with a merge button), `/desk-preview`, `/desk-context` and `/desk-sessions`. It runs `git`, and `gh` or `glab` for PRs; `/desk-update` updates it with `claude plugin update`. English or Korean.",
+  "description_ru": "Перерисовывает переписку в терминале как вкладку Code десктопного приложения Claude: запросы в «пузырях», markdown с таблицами во всю ширину, диаграммы mermaid из рамок, вызовы инструментов, свёрнутые в одну кликабельную строку, карточки агентов, плана и вопросов и карточка изменённых за ход файлов. Полоса над полем ввода показывает репозиторий, ветку, `+N −M`, проверки PR, контекст и фоновые задачи. Семь панелей: `/desk-diff` (комментарии к строкам уходят со следующим запросом; откат файла двумя нажатиями), `/desk-activity`, `/desk-tasks`, `/desk-pr` (с кнопкой слияния), `/desk-preview`, `/desk-context` и `/desk-sessions`. Мод запускает `git`, а для PR — `gh` или `glab`; `/desk-update` обновляет его через `claude plugin update`. Подписи на английском или корейском.",
+  "author": { "name": "KyongSik-Yoon", "github": "KyongSik-Yoon", "url": "https://github.com/KyongSik-Yoon" },
+  "maintainers": ["KyongSik-Yoon"],
+  "category": "interface",
+  "tags": ["desktop-look", "markdown", "mermaid", "diff", "pull-request", "panes", "context"],
+  "license": "MIT",
+  "version": "0.65.0",
+  "homepage": "https://github.com/KyongSik-Yoon/cc-desktop-mod",
+  "source": { "type": "marketplace", "marketplace": "KyongSik-Yoon/cc-desktop-mod", "plugin": "desk-look", "path": "desk-look" },
+  "surfaces": ["terminal"],
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Count item.qty in total() and run the tests." }
+    ],
+    "caption": "Folded tool calls, the edited-files card, the chin band with PR and context chips, and the diff pane.",
+    "caption_ru": "Свёрнутые вызовы инструментов, карточка изменённых файлов, полоса с чипами PR и контекста и панель диффа.",
+    "elements": [
+      {
+        "slot": "tool-row",
+        "tool": "Bash",
+        "input": "npm test",
+        "row": [{ "text": "Ran 2 commands, edited a file ", "color": "inactive" }, { "text": "+3", "color": "success" }, " ", { "text": "−1", "color": "error" }, { "text": " ›", "color": "inactive" }]
+      },
+      {
+        "slot": "message",
+        "role": "assistant",
+        "rows": [
+          [{ "text": "Edited 1 file ", "bold": true }, { "text": "+3", "color": "success" }, " ", { "text": "−1", "color": "error" }, "                          ", { "text": "⧉ copy", "dim": true }, "  ", { "text": "❝ quote", "dim": true }],
+          ["  src/cart.js  ", { "text": "+3", "color": "success" }, " ", { "text": "−1", "color": "error" }]
+        ]
+      },
+      {
+        "slot": "above-prompt",
+        "rows": [[{ "text": " shop-api ", "bg": "#3a3a3a" }, " ", { "text": "fix/cart-total", "color": "inactive" }, "   ", { "text": "+3 −1", "color": "inactive" }, "   ", { "text": "#12 ✓ 5/5", "color": "success" }, "  ", { "text": "◑ 62%", "color": "warning" }]]
+      },
+      {
+        "slot": "pane",
+        "title": "Diff",
+        "width": "wide",
+        "rows": [
+          [{ "text": "● Uncommitted", "bold": true }, "  ", { "text": "○ Branch  ○ Commits", "dim": true }],
+          [" "],
+          [{ "text": "▾ src/cart.js", "bold": true }, "  ", { "text": "+3 −1", "color": "inactive" }, "   ", { "text": "↺ revert", "dim": true }],
+          [{ "text": " 14 ", "dim": true }, "  export function total(items) {"],
+          [{ "text": " 15 ", "dim": true }, { "text": "-   return items.reduce((sum, item) => sum + item.price, 0)", "color": "error" }],
+          [{ "text": " 15 ", "dim": true }, { "text": "+   return items.reduce(", "color": "success" }],
+          [{ "text": " 16 ", "dim": true }, { "text": "+     (sum, item) => sum + item.price * item.qty,", "color": "success" }],
+          [{ "text": " 17 ", "dim": true }, { "text": "+     0)", "color": "success" }],
+          [{ "text": "✎ 1 comment goes with your next prompt", "color": "claude" }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/KyongSik-Yoon/cc-desktop-mod/2e149247b77c29c02c663b6470cc53699fe8e9a4/docs/demo.gif",
+      "alt": "desk-look in a session: the progress band, folded tool calls, the edited-files card, the Markdown preview, a diff line comment and the context pane",
+      "surface": "terminal"
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/KyongSik-Yoon/cc-desktop-mod/2e149247b77c29c02c663b6470cc53699fe8e9a4/docs/screenshot.png",
+      "alt": "A prompt bubble, folded tool calls, a markdown table, a mermaid flowchart, a note box and the edited-files card in the terminal",
+      "surface": "terminal"
+    }
+  ]
+}

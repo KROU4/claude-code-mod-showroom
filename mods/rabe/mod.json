@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "rabe",
+  "title": "Rabe",
+  "tagline": "See Claude Code's background work: subagents, Codex jobs, shells, monitors, cron jobs and workflows.",
+  "tagline_ru": "Вся фоновая работа Claude Code: субагенты, задачи Codex, оболочки, мониторы, cron-задачи и workflow.",
+  "description": "A one-line band above the prompt counts what runs in the background, one chip per kind with recent failures first, and the session cost. `/rabe` opens a pane with four tabs: Items (agents, workflows, Codex jobs, shells with output and ports, monitors, cron jobs; stop, message or remove them), Cost (tokens and a dollar estimate per worker), Effects (files each worker changed, with the diff, and open ports) and Timeline. It reads transcripts and task output files under `~/.claude` and `/tmp`, runs `git worktree list`, `ls` and `tail` (and `ps`, `ss` and `fuser` on Linux), and makes no network requests. Stop and message actions add a short note to your next prompt.",
+  "description_ru": "Полоса в одну строку над полем ввода считает, что работает в фоне: по чипу на каждый вид, недавние сбои первыми, и стоимость сессии. `/rabe` открывает панель с четырьмя вкладками: Items (агенты, workflow, задачи Codex, оболочки с выводом и портами, мониторы и cron-задачи, у каждого подробности; их можно остановить, написать им или убрать), Cost (токены и оценка в долларах по каждому исполнителю, подозрительно застрявшие), Effects (какие файлы изменил каждый исполнитель, с диффом, worktree и открытыми портами) и Timeline. Мод читает транскрипты и файлы вывода задач в `~/.claude` и `/tmp`, запускает `git worktree list`, `ls` и `tail` (в Linux ещё `ps`, `ss` и `fuser`) и не делает сетевых запросов. Остановка и сообщения добавляют короткую заметку к вашему следующему запросу.",
+  "author": { "name": "Lorenz Hilpert", "github": "lorenzh", "url": "https://github.com/lorenzh" },
+  "maintainers": ["lorenzh"],
+  "category": "insights",
+  "tags": ["background-tasks", "subagents", "codex", "shells", "cron", "cost", "pane"],
+  "license": "MIT",
+  "version": "0.10.1",
+  "homepage": "https://github.com/lorenzh/rabe",
+  "source": { "type": "marketplace", "marketplace": "lorenzh/rabe", "plugin": "rabe" },
+  "surfaces": ["terminal"],
+  "requires": { "claudeCode": ">=2.1.296" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "The band counting one agent and three shells with the session cost, and the Items tab of /rabe.",
+    "caption_ru": "Полоса считает одного агента и три оболочки со стоимостью сессии, ниже вкладка Items в /rabe.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [" "],
+          [{ "text": " ◐ 1 claude ", "color": "background", "bg": "#a78bfa" }, " ", { "text": " ▶ 3 shell ", "color": "background", "bg": "#e0a050" }, "   ", { "text": "session ≈ $0.31", "bold": true }, " ", { "text": "· bg 91k tok, 20% cached", "dim": true }]
+        ]
+      },
+      {
+        "slot": "pane",
+        "title": "rabe",
+        "width": "wide",
+        "rows": [
+          [{ "text": "Items", "bold": true, "underline": true }, "   Cost   Effects   Timeline"],
+          [{ "text": "Search…", "dim": true }],
+          [{ "text": "Agents", "bold": true }, { "text": "  1 running", "dim": true }],
+          [{ "text": "◐", "color": "warning" }, " Explore  find callers of total()   ", { "text": "haiku-5-5·medium", "dim": true }],
+          [{ "text": "Shells", "bold": true }, { "text": "  2 running · 1 ended", "dim": true }],
+          [{ "text": "› ▶", "color": "claude" }, " npm run dev  ", { "text": "b3k9x", "dim": true }, "  ", { "text": ":5173", "color": "success" }],
+          ["  ▶ npm test -- --watch  ", { "text": "c81fq", "dim": true }],
+          [{ "text": "  ✓ npm run build  b7d2m · exit 0", "dim": true }],
+          [" "],
+          [{ "text": "c copy · m message · s stop · Esc close", "dim": true }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/lorenzh/rabe/cb5c542a59a19b4deabfe5efe02873d0f549deaf/docs/assets/demo.gif",
+      "alt": "Rabe's band counting one agent and three shells, then the /rabe pane's Items, Cost, Effects and Timeline tabs",
+      "surface": "terminal"
+    }
+  ]
+}

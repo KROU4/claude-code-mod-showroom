@@ -1,0 +1,71 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "owner-rep",
+  "title": "Owner Rep",
+  "tagline": "Watches your agent and says in plain English what is done, what was left out and what to send next.",
+  "tagline_ru": "Следит за агентом и простыми словами говорит, что готово, что упущено и что ему написать дальше.",
+  "description": "A row above the prompt holds the result you want, as the model reads it from your messages, and what the agent does. Every eighth model request and at each stop a quiet look raises a `Heads up` when work was dropped, a test never ran or a claim was not shown. `1` Brief me opens a card: where the work stands, what was left out and a message for the agent that one press puts in the prompt. `3` Check it runs a sandboxed `claude -p` in a throwaway copy under `~/.cache/owner-rep` that runs your tests and marks each claim holds, false or not shown. Text after `Owner rep:` in a prompt goes to the rep and is cut before the agent sees it. Its model calls use your account; it reads your transcripts.",
+  "description_ru": "Строка над полем ввода показывает нужный вам результат (модель выводит его из ваших сообщений) и то, чем агент занят сейчас. Каждый восьмой запрос к модели и на каждой остановке мод тихо проверяет работу и показывает `Heads up`, только если что-то выкинуто, тесты не запускались или заявление ничем не подтверждено. `1` Brief me открывает карточку: где стоит работа, что упущено и готовое сообщение агенту, которое одним нажатием попадает в поле ввода. `3` Check it запускает отдельный `claude -p` в песочнице на одноразовой копии проекта в `~/.cache/owner-rep`: он гоняет ваши тесты и помечает каждое заявление как holds, false или not shown. Запрос, начатый с `Owner rep:`, — заметка для мода, агент её не видит. Свои вызовы модели идут с вашего аккаунта; мод читает ваши транскрипты.",
+  "author": { "name": "Maxwell Collins", "github": "macollins27", "url": "https://github.com/macollins27" },
+  "maintainers": ["macollins27"],
+  "category": "insights",
+  "tags": ["agent-oversight", "verification", "briefing", "plain-english", "review"],
+  "license": "MIT",
+  "version": "0.5.0",
+  "homepage": "https://github.com/macollins27/owner-rep",
+  "source": { "type": "marketplace", "marketplace": "macollins27/owner-rep", "plugin": "owner-rep" },
+  "surfaces": ["terminal", "desktop", "vscode"],
+  "requires": { "claudeCode": ">=2.1.286" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "write",
+    "model": true,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Build a small word-count tool people can pip install, with a README and tests. Start with the README and stop." },
+      { "role": "tool", "tool": "Write", "input": "README.md", "status": "done" },
+      { "role": "assistant", "text": "The README is written. The tool is documented and ready to go." }
+    ],
+    "caption": "After the agent stops: the briefing card with the result wanted, the count, what was left out and a message ready to send.",
+    "caption_ru": "Агент остановился: карточка с нужным результатом, счётом, упущенным и готовым сообщением агенту.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [{ "text": "◆ ", "color": "warning" }, { "text": "Owner rep · ", "dim": true }, "A word-count tool anyone can pip install, with tests and a README"],
+          ["  ", { "text": "Done means 6 things: 1 shown, 5 open", "dim": true }],
+          ["  ", { "text": "Stands:", "bold": true }, " only the README exists; nothing installs or runs yet."],
+          ["  ", { "text": "Left out:", "bold": true }],
+          ["  · no package setup, so pip install fails"],
+          ["  · no tests and no test run"],
+          ["  · no licence"],
+          ["  ", { "text": "Next:", "bold": true }, " build the package and tests, and show them passing."],
+          ["  ", { "button": "Put message in prompt", "hotkey": "1" }, "   ", { "button": "Check it", "hotkey": "3" }, "   ", { "button": "Tell the rep", "hotkey": "4" }, "   ", { "button": "Fine, close", "hotkey": "2" }]
+        ]
+      },
+      {
+        "slot": "background",
+        "text": "Check it: a sandboxed claude -p in a throwaway copy runs the tests and marks each claim holds, false, not shown or since then."
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/macollins27/owner-rep/3c4d11ac8c880aa3fe445e3fbb7abf6a0fe20b91/docs/demo.gif",
+      "alt": "A real session: the agent builds a small tool and says it is done, the rep's row and briefing follow, and Check it marks one claim false",
+      "surface": "terminal"
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/macollins27/owner-rep/3c4d11ac8c880aa3fe445e3fbb7abf6a0fe20b91/docs/checked.png",
+      "alt": "The briefing card after Check it: one claim not shown, one marked since then, nine that held counted",
+      "surface": "terminal"
+    }
+  ]
+}

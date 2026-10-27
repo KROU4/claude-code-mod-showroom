@@ -1,0 +1,37 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "scope-cop",
+  "title": "Scope Cop",
+  "tagline": "Say which files a task may touch; edits outside that scope are flagged, told to Claude or blocked.",
+  "tagline_ru": "Задайте, какие файлы можно менять в задаче; правки за этой границей отмечаются или блокируются.",
+  "description": "`/scope src/auth/** tests/auth/**` sets gitignore-style patterns for the task; every prompt you send then carries a line telling Claude the scope, so it survives compaction. In mode A edits outside it are only flagged, in mode B (default) Claude is also told on the edit's result, and in mode C Edit, Write and NotebookEdit outside the scope are refused. A band above the prompt shows the scope and edits outside it with Allow file, Details and Dismiss; `/scope` opens a pane. A scope includes its own tests, and Claude's own files, temp and scratch folders are always allowed. With the Changes mod in a git repository, shell writes outside the scope are flagged too.",
+  "description_ru": "`/scope src/auth/** tests/auth/**` задаёт для задачи шаблоны в стиле gitignore; после этого каждый ваш запрос несёт строку, сообщающую Claude границы, так что они переживают сжатие диалога. В режиме A правки за границей только отмечаются, в режиме B (по умолчанию) об этом ещё и говорится Claude в результате правки, а в режиме C Edit, Write и NotebookEdit за границей отклоняются. Полоса над полем ввода показывает границы и правки за ними с кнопками Allow file, Details и Dismiss; `/scope` открывает панель. Границы включают свои тесты, а собственные файлы Claude, временные и черновые папки разрешены всегда. Вместе с модом Changes в git-репозитории отмечаются и записи командами оболочки. Это ограждение, а не защита.",
+  "author": { "name": "candygoogy", "github": "candygoogy", "url": "https://github.com/candygoogy" },
+  "maintainers": ["candygoogy"],
+  "category": "safety",
+  "tags": ["scope", "guardrails", "edits", "glob", "focus"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/candygoogy/notary/tree/HEAD/plugins/scope-cop",
+  "source": { "type": "marketplace", "marketplace": "candygoogy/notary", "plugin": "scope-cop", "path": "plugins/scope-cop" },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": true
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "A scope on src/auth: an edit to the database pool is flagged on the band (mode B) or refused (mode C).",
+    "caption_ru": "Границы на src/auth: правка пула базы данных отмечена в полосе (режим B) или отклонена (режим C).",
+    "elements": [
+      { "slot": "command", "command": "/scope", "args": "src/auth/** tests/auth/**", "output": [["Scope set: edit only src/auth/**, tests/auth/**. Ask before touching other files."]] },
+      { "slot": "above-prompt", "rows": [["Scope: src/auth/** · ", { "text": "1 edit outside: src/db/pool.ts", "color": "warning" }, "  ", { "button": "Allow file" }, " ", { "button": "Details" }, " ", { "button": "Dismiss" }]] },
+      { "slot": "tool-deny", "tool": "Edit", "input": "src/db/pool.ts", "message": "Scope Cop (a mod the user installed): src/db/pool.ts is outside the scope the user set for this task (src/auth/**, tests/auth/**). The edit was not made. Ask the user before editing outside the scope; they can widen it with /scope add." }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "compact-keeper",
+  "title": "Compact Keeper",
+  "tagline": "Saves each compaction's summary and the files edited before it to ~/.claude/handoffs.",
+  "tagline_ru": "Сохраняет сводку каждого сжатия контекста и файлы, правленные до него, в ~/.claude/handoffs.",
+  "description": "Whenever the conversation is compacted (`/compact`, automatic, or by a plugin), the mod writes a Markdown handoff to `~/.claude/handoffs/<date>-<time>-<project>-<session>.md`: when and how it compacted, tokens before and after, the folder, the session id with its `claude --resume` command, any `/compact` instructions, the files Edit and Write touched since the last compaction, and the summary the engine wrote. A toast names the file. Subagent compactions and precomputed summaries are skipped. Where Claude Code's Security default plugin hides the compaction hook, it notices the compaction afterwards; `skipCompactHook` relies on that alone.",
+  "description_ru": "Каждый раз, когда диалог сжимается (`/compact`, автоматически или плагином), мод пишет Markdown-файл передачи в `~/.claude/handoffs/<дата>-<время>-<проект>-<сессия>.md`: когда и как прошло сжатие, токены до и после, папка, id сессии с командой `claude --resume`, инструкции `/compact`, если были, файлы, которые трогали Edit и Write с прошлого сжатия, и сводка, которую написал движок. Всплывающее уведомление называет файл. Сжатия субагентов и заранее подготовленные сводки пропускаются. Если встроенный плагин Security default скрывает хук сжатия, мод замечает сжатие постфактум; опция `skipCompactHook` полагается только на это.",
+  "author": { "name": "Mehmet Aras", "github": "arasovic", "url": "https://github.com/arasovic" },
+  "maintainers": ["arasovic"],
+  "category": "productivity",
+  "tags": ["compact", "handoff", "summary", "context", "resume"],
+  "license": "MIT",
+  "version": "0.1.6",
+  "homepage": "https://github.com/arasovic/claude-code-mods/tree/HEAD/compact-keeper",
+  "source": { "type": "github", "repo": "arasovic/claude-code-mods", "path": "compact-keeper", "sha": "3c3f25ee3a12b982fd63ee858297baab9385dd33" },
+  "capabilities": { "network": false, "processes": false, "filesystem": "write", "model": false, "promptRewrite": false, "blocksTools": false },
+  "preview": {
+    "surface": "terminal",
+    "scene": "coding",
+    "caption": "After /compact: the summary and the edited files are saved as a handoff file, and a toast names it.",
+    "caption_ru": "После /compact: сводка и правленые файлы сохраняются в файл передачи, уведомление называет его.",
+    "elements": [
+      { "slot": "toast", "text": "Handoff saved: ~/.claude/handoffs/2026-10-27-1432-shop-3f9a1c2e.md" },
+      { "slot": "background", "text": "Writes each compaction's summary and edited files to ~/.claude/handoffs/" }
+    ]
+  }
+}

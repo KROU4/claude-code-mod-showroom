@@ -1,0 +1,55 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "big-output",
+  "title": "Big Output",
+  "tagline": "Huge shell output stays out of context: Claude sees the head and tail and pages the rest on demand.",
+  "tagline_ru": "Огромный вывод команд не забивает контекст: Claude видит начало и конец, а остальное листает по запросу.",
+  "description": "When a Bash result is longer than the threshold (20,000 characters by default), the full output is saved to a scratch folder made with `mktemp -d` (up to 4 MB) and Claude gets its first and last 40 lines plus a note naming a `slice` tool. Claude calls `slice` with the output's id and either a regex (`grep`, with up to 5 lines of context) or a `from`/`to` line range, at most 400 lines a call. `/big-output` shows the threshold and what was saved this session; `/big-output 50000` changes the threshold, kept across sessions. If trimming fails, Claude gets the untrimmed result.",
+  "description_ru": "Если результат Bash длиннее порога (по умолчанию 20 000 символов), полный вывод сохраняется во временную папку, созданную через `mktemp -d` (до 4 МБ), а Claude получает первые и последние 40 строк и пометку с инструментом `slice`. Claude вызывает `slice` с номером вывода и регулярным выражением (`grep`, до 5 строк контекста) или диапазоном строк `from`/`to`, не больше 400 строк за вызов. `/big-output` показывает порог и что сохранено в этой сессии, `/big-output 50000` меняет порог (он запоминается между сессиями). Если обрезать не удалось, Claude получает вывод целиком.",
+  "author": { "name": "Mohammed Mubarak", "github": "MDmubarak786", "url": "https://github.com/MDmubarak786" },
+  "maintainers": ["MDmubarak786"],
+  "category": "productivity",
+  "tags": ["context", "bash", "tokens", "output"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/MDmubarak786/claude-mods/tree/HEAD/mods/big-output",
+  "source": { "type": "marketplace", "marketplace": "MDmubarak786/claude-mods", "plugin": "big-output", "path": "mods/big-output" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Run the full test suite and tell me what fails." },
+      { "role": "tool", "tool": "Bash", "input": "npm test -- --reporter verbose", "result": "… first 40 lines …\n[big-output: this output is 8214 lines and 512 KB, so only its head and tail are shown. To read more, call the slice tool with id \"1\" …]\n… last 40 lines …", "status": "done" }
+    ],
+    "caption": "A 512 KB test log reaches Claude as its head and tail; Claude greps the saved copy with the slice tool.",
+    "caption_ru": "Лог тестов на 512 КБ доходит до Claude только началом и концом; остальное Claude ищет в сохранённой копии инструментом slice.",
+    "elements": [
+      {
+        "slot": "model-tool",
+        "name": "slice",
+        "input": "id: \"1\", grep: \"FAIL\", context: 2",
+        "result": [
+          ["3 matching line(s):"],
+          [{ "text": "  4102", "dim": true }, "  ", { "text": "FAIL", "color": "error" }, " src/cart/total.test.ts > applies SAVE10"],
+          [{ "text": "  4103", "dim": true }, "    expected 90 to equal 81"],
+          [{ "text": "  7731", "dim": true }, "  ", { "text": "FAIL", "color": "error" }, " src/checkout.test.ts > rounds tax"]
+        ]
+      },
+      {
+        "slot": "command",
+        "command": "/big-output",
+        "output": [
+          ["Trimming output longer than 20000 characters. Saved this session:"],
+          ["  id 1: 8214 lines, 512 KB, from: npm test -- --reporter verbose"]
+        ]
+      }
+    ]
+  }
+}

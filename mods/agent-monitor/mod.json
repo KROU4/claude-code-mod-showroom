@@ -1,0 +1,71 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "agent-monitor",
+  "title": "Agent Monitor",
+  "tagline": "A progress bar above the prompt that fills as Claude works through its plan, plus a subagent panel.",
+  "tagline_ru": "Полоса прогресса над полем ввода, которая заполняется по ходу плана Claude, и панель субагентов.",
+  "description": "Gives Claude a `progress` tool and two sentences of system-prompt guidance: it sends its plan once, then marks each finished step. A bar above the prompt shows the task, steps done, the current step, running subagents and the time; it turns green when done and clears on your next message. `/agent-monitor` or Panel opens a side panel with the plan as a checklist and every subagent's model, effort, steps, context use, an estimated API-price cost and run time. In the desktop app the bar and rows are drawn as graphics with a small walking crab. The tool and guidance add a few hundred cached tokens per request.",
+  "description_ru": "Даёт Claude инструмент `progress` и пару предложений в системный промпт: Claude один раз присылает план, а потом отмечает каждый законченный шаг. Над полем ввода полоса показывает задачу, сколько шагов готово, текущий шаг, работающих субагентов и время; в конце она зеленеет и исчезает со следующим вашим сообщением. `/agent-monitor` или кнопка Panel открывает боковую панель: план списком и для каждого субагента модель, усилие, число шагов, заполнение контекста, примерную стоимость по ценам API и время работы. В десктопном приложении полоса и строки нарисованы графикой с маленьким шагающим крабом. Инструмент и подсказка добавляют к каждому запросу несколько сотен кэшируемых токенов.",
+  "author": { "name": "Garvit Nangru", "github": "GarvitNangru", "url": "https://github.com/GarvitNangru" },
+  "maintainers": ["GarvitNangru"],
+  "category": "insights",
+  "tags": ["progress", "plan", "subagents", "cost", "panel", "band"],
+  "license": "MIT",
+  "version": "0.2.1",
+  "homepage": "https://github.com/GarvitNangru/claude-code-mods/tree/HEAD/mods/agent-monitor",
+  "source": { "type": "marketplace", "marketplace": "GarvitNangru/claude-code-mods", "plugin": "agent-monitor", "path": "mods/agent-monitor" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Write a temps.py module with C/F conversion, tests and a README, then run the tests." },
+      { "role": "tool", "tool": "Write", "input": "temps.py", "status": "done" },
+      { "role": "tool", "tool": "Write", "input": "test_temps.py", "status": "done" },
+      { "role": "tool", "tool": "Write", "input": "README.md", "status": "running" }
+    ],
+    "caption": "Two of four plan steps done, with the current step and elapsed time; the panel lists the plan and a subagent.",
+    "caption_ru": "Готово два шага плана из четырёх, видны текущий шаг и время; в панели план и субагент.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [
+            { "text": "●", "color": "claude" },
+            " temps.py module + tests ",
+            { "bar": 0.5, "width": 24, "color": "claude" },
+            " 2/4 ",
+            { "text": "Write README.md · 0:41", "dim": true },
+            "  ",
+            { "button": "Panel" },
+            " ",
+            { "button": "✕" }
+          ]
+        ]
+      },
+      {
+        "slot": "pane",
+        "title": "Agent Monitor",
+        "width": "narrow",
+        "rows": [
+          [{ "text": "temps.py module + tests · 2/4", "bold": true }],
+          [{ "text": "✓", "color": "success" }, " Write temps.py"],
+          [{ "text": "✓", "color": "success" }, " Write test_temps.py"],
+          [{ "text": "▸", "color": "claude" }, " Write README.md"],
+          [{ "text": "○ Run tests", "dim": true }],
+          [" "],
+          [{ "text": "Subagents · 1 running · ≈$0.09", "bold": true }],
+          [{ "text": "●", "color": "claude" }, " Scan the auth module"],
+          [{ "text": "  Explore · Opus 5.5 · high · 14 steps", "dim": true }],
+          [{ "text": "  ctx 48k (5%) · ≈$0.09 · 1:12", "dim": true }]
+        ]
+      }
+    ]
+  }
+}

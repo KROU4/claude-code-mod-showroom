@@ -1,0 +1,63 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "st-code-display",
+  "title": "Code Display",
+  "tagline": "A read-only OLED-style pane: model and limits, agents, architect consults, tools, files and a log.",
+  "tagline_ru": "Панель в стиле OLED для чтения: модель и лимиты, агенты, советы архитектора, инструменты, файлы и журнал.",
+  "description": "Opens a black, OLED-style pane beside the transcript (`/st-code-display`) with five blocks drawn only from real session events: INFO (model, state, effort, context and plan-limit gauges, spend), AGENTS (each subagent with a bar and its clock), ARCHITECT (advisor consults on a timeline with their verdict), TOOLS & FILES (call counts and the files read and edited) and a LOG timed from the session's start. Two columns from about 120 docked columns; on the main screen an 8-row summary sits above the prompt; the desktop app and VS Code get the same design as pictures. Read-only: no files, processes, network or model calls.",
+  "description_ru": "Открывает рядом с перепиской чёрную панель в стиле OLED (`/st-code-display`) из пяти блоков, собранных только из настоящих событий сессии: INFO (модель, состояние, усилие, шкалы контекста и лимитов тарифа, расходы), AGENTS (каждый субагент с полосой и своими часами), ARCHITECT (консультации с советником на шкале времени и их вывод), TOOLS & FILES (счётчики вызовов, прочитанные и изменённые файлы) и LOG с отсчётом от начала сессии. От примерно 120 колонок панель рисуется в две колонки; на основном экране над полем ввода появляется сводка до 8 строк; в десктопном приложении и VS Code тот же дизайн рисуется картинками. Только чтение: файлы, процессы, сеть и вызовы модели не используются.",
+  "author": { "name": "Sergio's Tech", "github": "sergios-tech", "url": "https://github.com/sergios-tech" },
+  "maintainers": ["sergios-tech"],
+  "category": "insights",
+  "tags": ["dashboard", "pane", "subagents", "observability", "log"],
+  "license": "MIT",
+  "version": "0.6.1",
+  "homepage": "https://github.com/sergios-tech/code-display",
+  "source": { "type": "marketplace", "marketplace": "sergios-tech/code-display", "plugin": "st-code-display" },
+  "requires": { "claudeCode": ">=2.1.300" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "The docked pane through a run with three subagents and an architect consult.",
+    "caption_ru": "Закреплённая панель во время работы трёх субагентов и консультации с архитектором.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "SERGIO'S TECH · CODE DISPLAY",
+        "width": "wide",
+        "rows": [
+          [{ "text": "▌SERGIO'S TECH · CODE DISPLAY", "color": "#ffffff", "bg": "#000000" }, "  ", { "text": "● OPUS 5.5", "color": "#e5484d" }, { "text": " · ARCHITECT ON CALL", "color": "inactive" }],
+          [{ "text": "INFO", "bold": true }, "  ", { "text": "working", "color": "#ff8a3d" }, "  effort high  ", { "text": "$1.08", "bold": true }],
+          ["ctx ", { "bar": 0.06, "width": 14, "color": "success" }, " 6%   7d ", { "bar": 0.59, "width": 10, "color": "warning" }, " 59%"],
+          [{ "text": "AGENTS", "bold": true }],
+          [{ "text": "✓", "color": "success" }, " docstrings parser.py ", { "bar": 1, "width": 10, "color": "success" }, " 0:21"],
+          [{ "text": "✓", "color": "success" }, " docstrings utils.py  ", { "bar": 1, "width": 10, "color": "success" }, " 0:19"],
+          [{ "text": "◐", "color": "warning" }, " docstrings cli.py    ", { "bar": 0.4, "width": 10, "color": "warning" }, " 0:12"],
+          [{ "text": "ARCHITECT", "bold": true }, "  1 consult · 11s · before a plan"],
+          [{ "text": "  keep normalize in tally/utils.py", "dim": true }],
+          [{ "text": "TOOLS & FILES", "bold": true }, "  17 calls · Read 8 · Edit 6 · Bash 3"],
+          [{ "text": "LOG", "bold": true }],
+          [{ "text": "0:24", "dim": true }, " prompt   add docstrings to tally"],
+          [{ "text": "0:31", "dim": true }, " spawn    3 agents"],
+          [{ "text": "0:46", "dim": true }, " advice   keep normalize in utils.py"]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/sergios-tech/code-display/016a65cb5f5f279179306e393e7ad2be49a88e55/docs/media/demo.gif",
+      "alt": "The docked pane through a real run: INFO turns green, three agents finish, an architect consult is timed and the log fills",
+      "surface": "terminal"
+    }
+  ]
+}

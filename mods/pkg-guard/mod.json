@@ -1,0 +1,42 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "pkg-guard",
+  "title": "Package Guard",
+  "tagline": "Holds installs of packages that don't exist, are brand new or barely used, with the registry facts.",
+  "tagline_ru": "Задерживает установку несуществующих, совсем новых или почти не скачиваемых пакетов, с фактами из реестра.",
+  "description": "When Claude runs `npm`/`pnpm`/`yarn`/`bun` add or install, `pip`/`uv`/`pipx`/`poetry`, or `cargo add`/`install` for a package not already in the project's lockfile, pkg-guard looks it up on registry.npmjs.org and api.npmjs.org, pypi.org and pypistats.org, or crates.io, sending only the package name (cached a day). A package that doesn't exist, was first published under 30 days ago, or has under about 100 weekly downloads is held with the facts in a question; refuse is the default, and Claude is told to check the exact name. Installs from a URL, git or a custom index are held too. If the registry can't be reached, the install is refused. `/pkg-guard off|on`.",
+  "description_ru": "Когда Claude запускает установку через `npm`/`pnpm`/`yarn`/`bun`, `pip`/`uv`/`pipx`/`poetry` или `cargo add`/`install` для пакета, которого ещё нет в lock-файле проекта, pkg-guard ищет его на registry.npmjs.org и api.npmjs.org, pypi.org и pypistats.org или crates.io, отправляя по HTTPS только имя пакета (ответы кешируются на сутки). Если пакета нет, он опубликован меньше 30 дней назад или его скачивают реже примерно 100 раз в неделю, установка задерживается вопросом с этими фактами; по умолчанию ответ «отказать», и Claude просят проверить точное имя. Установки по URL, из git или стороннего индекса тоже задерживаются. Видны и установки через `sudo`, конвейеры и `$(…)`. Если реестр недоступен, установка отклоняется. `/pkg-guard off|on`.",
+  "author": { "name": "Mohammed Mubarak", "github": "MDmubarak786", "url": "https://github.com/MDmubarak786" },
+  "maintainers": ["MDmubarak786"],
+  "category": "safety",
+  "tags": ["supply-chain", "npm", "pypi", "crates", "typosquat", "guard"],
+  "license": "MIT",
+  "version": "0.1.1",
+  "homepage": "https://github.com/MDmubarak786/claude-mods/tree/HEAD/mods/pkg-guard",
+  "source": { "type": "marketplace", "marketplace": "MDmubarak786/claude-mods", "plugin": "pkg-guard", "path": "mods/pkg-guard" },
+  "capabilities": {
+    "network": true,
+    "processes": false,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": true
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Add left-pad style string padding to the CLI output." }
+    ],
+    "caption": "Claude guessed a package name that isn't on npm; the install is held, and refused by default.",
+    "caption_ru": "Claude угадал имя пакета, которого нет в npm; установка задержана и по умолчанию отклонена.",
+    "elements": [
+      { "slot": "background", "text": "Asks first: pkg-guard: npm package \"left-padd\" does not exist on the registry. Install anyway? [Refuse] [Install]" },
+      {
+        "slot": "tool-deny",
+        "tool": "Bash",
+        "input": "npm install left-padd",
+        "message": "pkg-guard: this install was refused. npm package \"left-padd\" does not exist on the registry. Check the exact package name on the registry before trying again, prefer a well-known package, or ask the user."
+      }
+    ]
+  }
+}

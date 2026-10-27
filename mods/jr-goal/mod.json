@@ -1,0 +1,44 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "jr-goal",
+  "title": "jr goal",
+  "tagline": "One goal per project with steps you tick off, always in view above the prompt with a gauge.",
+  "tagline_ru": "Одна цель на проект с шагами, которые вы отмечаете; всегда видна над полем ввода со шкалой.",
+  "description": "Set a goal for the project with `/jr-goal Ship the billing page`, add steps with `/jr-goal step <text>`, tick them with `/jr-goal done <n>` (`undo <n>` unticks, `clear` removes the goal). A right-aligned row above the prompt shows the goal, a small gauge of steps done, the count and the next open step. The goal is kept per project (the session's root folder) in the mod's own store and comes back in every session opened there. `/jr-goal` alone prints the goal and its steps; `/jr-goal hide` and `show` toggle the row for every session. Reads nothing else, runs nothing, no network.",
+  "description_ru": "Задайте цель проекта командой `/jr-goal Ship the billing page`, добавьте шаги через `/jr-goal step <текст>`, отмечайте их `/jr-goal done <n>` (`undo <n>` снимает отметку, `clear` удаляет цель). Строка справа над полем ввода показывает цель, небольшую шкалу выполненных шагов, их число и следующий открытый шаг. Цель хранится по проекту (корневой папке сессии) в собственном хранилище мода и возвращается в каждой сессии, открытой там. `/jr-goal` без аргументов выводит цель и шаги; `/jr-goal hide` и `show` прячут и показывают строку во всех сессиях. Больше ничего не читает, ничего не запускает, в сеть не ходит.",
+  "author": { "name": "jrlprost", "github": "jrlprost", "url": "https://github.com/jrlprost" },
+  "maintainers": ["jrlprost"],
+  "category": "productivity",
+  "tags": ["goal", "focus", "checklist", "progress"],
+  "license": "MIT",
+  "version": "0.4.0",
+  "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-goal",
+  "source": {
+    "type": "github",
+    "repo": "jrlprost/claude-code-mods",
+    "path": "plugins/jr-goal",
+    "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+  },
+  "surfaces": ["terminal"],
+  "requires": { "claudeCode": ">=2.1.301" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "caption": "Two of five steps done: the goal row above the prompt.",
+    "caption_ru": "Сделано два шага из пяти: строка цели над полем ввода.",
+    "elements": [
+      { "slot": "command", "command": "/jr-goal", "args": "done 2", "output": [["jr goal · 2/5"]] },
+      {
+        "slot": "above-prompt",
+        "rows": [["                    ", { "text": "goal ", "dim": true }, "Ship the billing page ", { "bar": 0.4, "width": 6, "color": "#2cb67d" }, " 2/5", { "text": " · next: Wire Stripe webhooks", "dim": true }]]
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "cactus-pane",
+  "title": "Cactus Pane",
+  "tagline": "Your agent's cactus questions in a side pane: answer in place and the agent picks the answer up.",
+  "tagline_ru": "Вопросы агента из cactus в боковой панели: отвечаете прямо там, и агент получает ответ.",
+  "description": "A live inbox for [cactus](https://github.com/eighteyes/cactus), a decision queue where agents post questions and keep working. Needs the `cactus` CLI. The pane polls `cactus feed` every few seconds and shows open rows with a card for the focused one: a digit picks an option, `i` types an answer, `r` runs a run row's command. After a cooldown (15s by default, `u` takes it back) the pane submits a prompt with the answer so the agent acts on it. It adds a cactus section to the system prompt and appends `--no-wait` to the agent's `cactus ask`/`run` Bash commands so it never blocks. `o` previews an attached file with `git diff`, `f` opens it (macOS).",
+  "description_ru": "Живой ящик входящих для [cactus](https://github.com/eighteyes/cactus) — очереди решений, куда агенты складывают вопросы и продолжают работу. Нужна утилита `cactus`. Панель каждые несколько секунд опрашивает `cactus feed` и показывает открытые вопросы с карточкой выбранного: цифра выбирает вариант, `i` — ввести ответ, `r` — выполнить команду из строки run. После паузы (по умолчанию 15 секунд, `u` отменяет ответ) панель отправляет промпт с ответом, и агент берёт его в работу. Мод добавляет в системный промпт раздел о cactus и дописывает `--no-wait` к командам агента `cactus ask`/`run` в Bash, чтобы тот не ждал. `o` показывает прикреплённый файл через `git diff`, `f` открывает его (macOS).",
+  "author": { "name": "eighteyes", "github": "eighteyes", "url": "https://github.com/eighteyes" },
+  "maintainers": ["eighteyes"],
+  "category": "integrations",
+  "tags": ["questions", "inbox", "human-in-the-loop", "pane", "agents"],
+  "license": "MIT",
+  "version": "0.3.0",
+  "homepage": "https://github.com/eighteyes/cactus/tree/HEAD/mods/cactus-pane",
+  "source": { "type": "github", "repo": "eighteyes/cactus", "path": "mods/cactus-pane", "sha": "33b94684b4cf37db2e3c00e648f5ccbf606d3cbb" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": true
+  },
+  "preview": {
+    "surface": "terminal",
+    "scene": "coding",
+    "caption": "An agent's question waits in the pane; a digit answers it, and after the cooldown the answer goes back to the agent.",
+    "caption_ru": "Вопрос агента ждёт в панели; цифра отвечает на него, а после паузы ответ уходит агенту.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "cactus",
+        "width": "wide",
+        "rows": [
+          [{ "text": "▸ ", "color": "claude" }, { "text": "Which auth backend?", "bold": true }],
+          [{ "text": "  Run migrations on staging", "dim": true }],
+          [" "],
+          [{ "text": "Which auth backend?", "bold": true }],
+          [{ "text": "Staging tenant is provisioned.", "dim": true }],
+          [{ "button": "Keycloak", "hotkey": "1" }, " ", { "button": "Auth0", "hotkey": "2" }],
+          [{ "text": "  ✓ already provisioned  ✗ self-hosted upkeep", "dim": true }],
+          [" "],
+          [{ "button": "type", "hotkey": "i" }, " ", { "button": "skip", "hotkey": "s" }, " ", { "button": "dismiss", "hotkey": "d" }]
+        ]
+      }
+    ]
+  }
+}

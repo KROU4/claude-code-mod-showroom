@@ -1,0 +1,55 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "paste-peek",
+  "title": "Paste Peek",
+  "tagline": "Windows Terminal: thumbnails of the images you paste, in a small strip until you send.",
+  "tagline_ru": "Windows Terminal: миниатюры вставленных картинок в маленькой полоске, пока вы не отправите запрос.",
+  "description": "Windows only. Claude Code shows a pasted or dropped image as `[Image #1]`; paste-peek opens a small strip at the bottom right of your Windows Terminal window with a thumbnail of each `[Image #N]` in the draft. Click one to enlarge it, delete its tag and it leaves, send and the strip closes. It reads the draft every 250 ms, takes the pictures from the folder under `%TEMP%\\claude` where Claude Code saves pasted images (undocumented), and keeps a small state file in `%TEMP%`. On first use it compiles the bundled `native/peek.cs` with the C# compiler of .NET Framework 4 into `%LOCALAPPDATA%\\paste-peek` and runs it. Options: en/th labels, dark/light theme, offsets.",
+  "description_ru": "Только для Windows. Claude Code показывает вставленную или перетащенную картинку как `[Image #1]`; paste-peek открывает в правом нижнем углу окна Windows Terminal маленькую полоску с миниатюрой каждой `[Image #N]` из черновика. Нажмите на миниатюру, чтобы увеличить её; удалите метку, и картинка исчезнет; отправьте запрос, и полоска закроется. Мод раз в 250 мс читает черновик, берёт картинки из папки в `%TEMP%\\claude`, куда Claude Code сохраняет вставленные изображения (это недокументированное поведение), и держит небольшой файл состояния в `%TEMP%`. При первом запуске он компилирует приложенный `native/peek.cs` компилятором C# из .NET Framework 4 в `%LOCALAPPDATA%\\paste-peek` и запускает результат. Настройки: подписи en/th, тёмная или светлая тема, отступы.",
+  "author": { "name": "MankhongGarden", "github": "MankhongGarden", "url": "https://github.com/MankhongGarden" },
+  "maintainers": ["MankhongGarden"],
+  "category": "interface",
+  "tags": ["images", "paste", "windows", "windows-terminal", "thumbnails"],
+  "license": "MIT",
+  "version": "0.2.0",
+  "homepage": "https://github.com/MankhongGarden/claude-code-mods-field-notes/tree/HEAD/mods/paste-peek",
+  "source": {
+    "type": "github",
+    "repo": "MankhongGarden/claude-code-mods-field-notes",
+    "path": "mods/paste-peek",
+    "sha": "ff1b640d75c38b3b4359faba2b01ff10e34ea839"
+  },
+  "surfaces": ["terminal"],
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "idle",
+    "surface": "terminal",
+    "caption": "The strip is a small native window over Windows Terminal, so the mock can only describe it.",
+    "caption_ru": "Полоска — маленькое отдельное окно поверх Windows Terminal, поэтому макет может только описать её.",
+    "elements": [
+      {
+        "slot": "background",
+        "text": "Bottom right of Windows Terminal: a strip \"Attached · 2\" with thumbnails #1 1600×1000 and #2 1440×900 from your draft; click one to enlarge it."
+      },
+      {
+        "slot": "background",
+        "text": "First use: compiles native/peek.cs with the Windows C# compiler into %LOCALAPPDATA%\\paste-peek and starts it."
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/MankhongGarden/claude-code-mods-field-notes/ff1b640d75c38b3b4359faba2b01ff10e34ea839/docs/img/paste-peek.png",
+      "alt": "The paste-peek strip: Attached · 3 with thumbnails #1 to #3 and their sizes, and #1 enlarged beside it",
+      "surface": "terminal"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "ai-harness-guardrails",
+  "title": "Guardrails",
+  "tagline": "Ten safety and review mods: a risky-command hold, a secret block, critique, a prompt coach and more.",
+  "tagline_ru": "Десять модов для безопасности и проверки: удержание опасных команд, блок секретов, критика, коуч запросов.",
+  "description": "Ten mods, all on by default and each switchable in the plugin config: blast-radius asks before destructive shell commands, secret-sentry blocks keys being written into files, reflect asks Haiku about each short prompt and offers to save corrections as rules in CLAUDE.md, assumption-tracker, `/critique` reviews the last answer, prompt-coach rewrites your first prompt so Claude asks the open questions first, and merge-sweep offers to remove branches and worktrees after a merged PR. With a local Ollama decision model (`ollamaUrl`), decision-gate approves tool calls it is sure are safe, auto-answer answers Claude's multiple-choice questions and model-picker picks subagent models.",
+  "description_ru": "Десять модов, все включены по умолчанию и каждый отключается в настройках плагина: blast-radius спрашивает перед разрушительными командами оболочки, secret-sentry не даёт записать ключи в файлы, reflect спрашивает Haiku о каждом коротком запросе и предлагает сохранить ваши поправки как правила в CLAUDE.md, assumption-tracker собирает допущения Claude, `/critique` разбирает последний ответ, prompt-coach переписывает первый запрос так, чтобы Claude сначала задал открытые вопросы, а merge-sweep после слияния PR предлагает удалить ветки и worktree. С локальной моделью решений в Ollama (`ollamaUrl`) decision-gate одобряет вызовы инструментов, в безопасности которых уверен, auto-answer отвечает на вопросы Claude с вариантами, а model-picker выбирает модели для субагентов.",
+  "author": { "name": "Bharath G P", "github": "bharath-gp", "url": "https://github.com/bharath-gp" },
+  "maintainers": ["bharath-gp"],
+  "category": "safety",
+  "tags": ["guard", "secrets", "destructive-commands", "critique", "prompt-coach", "ollama", "claude-md"],
+  "license": "MIT",
+  "version": "0.6.2",
+  "homepage": "https://github.com/bharath-gp/ai-harness/tree/HEAD/plugins/guardrails",
+  "source": { "type": "marketplace", "marketplace": "bharath-gp/ai-harness", "plugin": "guardrails", "path": "plugins/guardrails" },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": true,
+    "processes": true,
+    "filesystem": "write",
+    "model": true,
+    "promptRewrite": true,
+    "blocksTools": true
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "secret-sentry refuses a key written into a file; reflect offers to save a correction as a rule.",
+    "caption_ru": "secret-sentry не даёт записать ключ в файл; reflect предлагает сохранить поправку как правило.",
+    "elements": [
+      {
+        "slot": "tool-deny",
+        "tool": "Write",
+        "input": "src/config.ts",
+        "message": "secret-sentry: this write contains what looks like an API key (sk-live-…). Read it from an environment variable instead."
+      },
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [{ "text": "reflect", "color": "claude", "bold": true }, "  Use pnpm, not npm, in this repo", "   ", { "button": "Save", "variant": "primary" }, " ", { "button": "Global instead" }, " ", { "button": "Skip" }]
+        ]
+      },
+      { "slot": "background", "text": "With a local Ollama decision model, routine tool calls it is sure are safe are approved without asking you." }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "bline",
+  "title": "bline",
+  "tagline": "Model, reasoning effort and context fill on the hint line under the prompt, each one clickable.",
+  "tagline_ru": "Модель, уровень рассуждений и заполнение контекста в строке подсказки под полем ввода, всё кликабельно.",
+  "description": "Redraws the hint line under the prompt. On the left, the model as `/model` names it (without `claude-`), colored and marked by family: mythos 🐉 red, fable 📖 gold, opus 🐱 blue, sonnet 🎵 pink, haiku 🥺 green, with ⚡ while fast mode is on; then the effort in brackets, colored from green (low) to red (xhigh) and in rainbow letters for max and above. On the right, a 14-cell context bar with the share used and the window size, green under 50%, yellow under 80%, red with 🈵 from 80%. Click the model for `/model`, the effort for `/effort`, the bar for `/usage`. It reads settings and session usage only; nothing leaves the machine.",
+  "description_ru": "Перерисовывает строку подсказки под полем ввода. Слева — модель так, как её называет `/model` (без `claude-`), с цветом и значком семейства: mythos 🐉 красный, fable 📖 золотой, opus 🐱 синий, sonnet 🎵 розовый, haiku 🥺 зелёный, и ⚡ при включённом быстром режиме; затем в скобках уровень рассуждений, от зелёного (low) до красного (xhigh) и радугой для max и выше. Справа — шкала контекста из 14 клеток с долей заполнения и размером окна: зелёная до 50%, жёлтая до 80%, красная с 🈵 от 80%. Щелчок по модели запускает `/model`, по уровню — `/effort`, по шкале — `/usage`. Мод читает только настройки и расход сессии; ничего не уходит с компьютера.",
+  "author": { "name": "xchacha20-poly1305", "github": "xchacha20-poly1305", "url": "https://github.com/xchacha20-poly1305" },
+  "maintainers": ["xchacha20-poly1305"],
+  "category": "interface",
+  "tags": ["model", "effort", "context", "hint-line", "statusline"],
+  "license": "MIT",
+  "version": "0.2.0",
+  "homepage": "https://github.com/xchacha20-poly1305/bline",
+  "source": { "type": "github", "repo": "xchacha20-poly1305/bline", "sha": "36ec420ff2d422803cc7c583461a2a81029c6e29" },
+  "capabilities": { "network": false, "processes": false, "filesystem": "none", "model": false, "promptRewrite": false, "blocksTools": false },
+  "preview": {
+    "surface": "terminal",
+    "scene": "coding",
+    "caption": "Opus at medium effort on the left, the context bar at 15% of a 1M window on the right; each part is a button.",
+    "caption_ru": "Слева Opus со средним уровнем рассуждений, справа шкала контекста: 15% окна в 1M; каждая часть — кнопка.",
+    "elements": [
+      {
+        "slot": "prompt-hint",
+        "row": [
+          "🐱 ", { "text": "opus-5-5", "color": "#9DC1FF" }, "⚡", " (", { "text": "medium", "color": "#FFD84D" }, ")",
+          "  ", { "text": "? for shortcuts", "dim": true }, "                    ",
+          { "text": "██", "color": "#5FD75F" }, { "text": "░░░░░░░░░░░░", "dim": true }, " (", { "text": "15%", "color": "#5FD75F" }, " ", { "text": "of 1M", "dim": true }, ")"
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/xchacha20-poly1305/bline/36ec420ff2d422803cc7c583461a2a81029c6e29/assets/screenshot.png",
+      "alt": "bline's hint line with the model, its effort and the context bar"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "usage-stats",
+  "title": "Usage Stats",
+  "tagline": "/usage-stats opens a token heat map, history by model, an hour-of-day chart and a Wrapped card.",
+  "tagline_ru": "/usage-stats открывает тепловую карту токенов, историю по моделям, график по часам и карточку в стиле Wrapped.",
+  "description": "`/usage-stats` opens a dashboard pane in the desktop app with Overview (a calendar heat map of tokens per day, totals, streak and fun facts), Trends (daily bars by model with a 7-day average), Models (a donut, cache/input/output split and a 24-hour chart) and Wrapped (a year-in-review card). Ranges 7d, 30d, 90d and All, and chips to toggle each model. It reads `~/.claude/stats-cache.json` (kept by `/stats`) and runs a bundled `scan.py` with `python3` over `~/.claude/projects` for the days since. Save card writes `claude-code-wrapped.svg` to Downloads. The terminal shows a short note instead of charts.",
+  "description_ru": "`/usage-stats` открывает в десктопном приложении панель с вкладками Overview (календарная тепловая карта токенов по дням, итоги, серия дней и забавные факты), Trends (столбики по дням с разбивкой по моделям и средним за 7 дней), Models (кольцевая диаграмма, доли кэша, входа и выхода и график по часам суток) и Wrapped (карточка с итогами года). Периоды 7d, 30d, 90d и All, у каждой модели — переключатель. Мод читает `~/.claude/stats-cache.json` (его ведёт `/stats`) и за недостающие дни запускает встроенный `scan.py` через `python3` по `~/.claude/projects`. Кнопка Save card сохраняет `claude-code-wrapped.svg` в папку Downloads. В терминале вместо графиков короткая подсказка.",
+  "author": { "name": "Connor Chuang", "github": "connorchuang32", "url": "https://github.com/connorchuang32" },
+  "maintainers": ["connorchuang32"],
+  "category": "insights",
+  "tags": ["usage", "heatmap", "stats", "models", "wrapped", "dashboard"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/connorchuang32/claude-usage-stats",
+  "source": { "type": "marketplace", "marketplace": "connorchuang32/claude-usage-stats", "plugin": "usage-stats" },
+  "surfaces": ["desktop"],
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "desktop",
+    "scene": "idle",
+    "caption": "The Overview tab: tokens per day for the last 30 days, totals and a few fun facts.",
+    "caption_ru": "Вкладка Overview: токены по дням за последние 30 дней, итоги и несколько забавных фактов.",
+    "elements": [
+      { "slot": "command", "command": "/usage-stats" },
+      {
+        "slot": "pane",
+        "title": "Usage stats",
+        "width": "wide",
+        "rows": [
+          [{ "text": "Overview", "bold": true, "color": "claude" }, { "text": "  Trends  Models  Wrapped", "dim": true }, "   ", { "button": "7d" }, { "button": "30d", "variant": "primary" }, { "button": "90d" }, { "button": "All" }],
+          [" "],
+          [{ "spark": [2, 5, 3, 0, 1, 6, 8, 4, 7, 9, 3, 0, 2, 5, 6, 8, 7, 4, 9, 10, 6, 1, 0, 4, 7, 8, 5, 6, 9, 7], "color": "#d97757" }],
+          [" "],
+          ["Tokens ", { "text": "182.4M", "bold": true }, "   Sessions ", { "text": "214", "bold": true }, "   Active days ", { "text": "26", "bold": true }, "   Streak ", { "text": "9d", "bold": true }],
+          [{ "text": "Biggest day Oct 14 · 14.2M tokens · peak hour 22:00", "dim": true }],
+          [{ "text": "● Opus 5.5", "color": "#d97757" }, "  ", { "text": "● Sonnet 5.5", "color": "#5f9ea0" }, "  ", { "text": "● Haiku 4.5", "color": "#b4a7d6" }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/connorchuang32/claude-usage-stats/e8c3c915c50b7d588946fa702ae393892efe501a/docs/overview.png",
+      "alt": "The usage dashboard's Overview tab: a calendar heat map of tokens per day with totals and fun facts (sample data)",
+      "surface": "desktop"
+    }
+  ]
+}

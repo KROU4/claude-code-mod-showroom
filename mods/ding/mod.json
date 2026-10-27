@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "ding",
+  "title": "Ding",
+  "tagline": "Two sounds and a desktop notification: one when Claude finishes, another when it needs you.",
+  "tagline_ru": "Два разных звука и системное уведомление: один, когда Claude закончил, другой, когда ему нужны вы.",
+  "description": "\"Done\" fires at the end of every main-conversation turn with the first line of the answer; \"needs you\" fires when Claude asks a question (AskUserQuestion) or a tool call is about to show a permission prompt. Each has its own sound so you can tell them apart from across the room. On macOS it runs `afplay` with the system Glass and Ping sounds and `osascript` for the notification; on Linux `paplay` with freedesktop sounds and `notify-send`; elsewhere it shows a toast. Subagent turns and calls are ignored. `/ding off`, `/ding on` (kept across sessions) and `/ding test`. It dings even when the terminal has focus.",
+  "description_ru": "Сигнал «готово» звучит в конце каждого хода основного диалога и показывает первую строку ответа; сигнал «нужны вы» звучит, когда Claude задаёт вопрос (AskUserQuestion) или вызов инструмента вот-вот покажет запрос разрешения. У каждого свой звук, так что их можно различить с другого конца комнаты. На macOS запускаются `afplay` с системными звуками Glass и Ping и `osascript` для уведомления, на Linux `paplay` со звуками freedesktop и `notify-send`, в остальных системах показывается всплывающее сообщение. Ходы и вызовы субагентов не учитываются. Команды `/ding off`, `/ding on` (настройка сохраняется между сессиями) и `/ding test`. Звучит, даже если терминал в фокусе.",
+  "author": { "name": "Mohammed Mubarak", "github": "MDmubarak786", "url": "https://github.com/MDmubarak786" },
+  "maintainers": ["MDmubarak786"],
+  "category": "productivity",
+  "tags": ["notifications", "sound", "permissions", "questions"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/MDmubarak786/claude-mods/tree/HEAD/mods/ding",
+  "source": { "type": "marketplace", "marketplace": "MDmubarak786/claude-mods", "plugin": "ding", "path": "mods/ding" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "A permission prompt rings the \"needs you\" sound; the end of the turn rings the \"done\" sound.",
+    "caption_ru": "Запрос разрешения звучит сигналом «нужны вы», конец хода сигналом «готово».",
+    "elements": [
+      { "slot": "notification", "title": "Claude needs permission", "text": "Bash" },
+      { "slot": "notification", "title": "Claude finished", "text": "Discount codes now apply in src/cart/total.ts and all 14 tests pass." },
+      { "slot": "background", "text": "Plays Ping for \"needs you\" and Glass for \"done\" (macOS), or the freedesktop sounds on Linux." }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "limits-meter",
+  "title": "Limits Meter",
+  "tagline": "Model, plan limits, a prompt-cache countdown and context by group in one band above the prompt.",
+  "tagline_ru": "Модель, лимиты тарифа, обратный отсчёт кэша промпта и контекст по группам в одной полосе над вводом.",
+  "description": "After the first response a band above the prompt shows the model and effort, the 5-hour and weekly windows with reset times, a countdown of the prompt cache (`⏱ 52:10`, turning to `❄ cold` with one toast when it lapses) and the context split by group (system, MCP, messages) with tokens per turn. From 85% context it offers `compact`, which only drafts `/compact` in the prompt. A switch to a bigger model or effort `max` with the 5-hour window at 70% or more raises a toast with the minutes left at the current pace. `/limits` opens a pane with the windows, context per category and the last 20 turns. Opt-in keep-warm sends one short message before the cache goes cold, which spends plan.",
+  "description_ru": "После первого ответа над полем ввода появляется полоса: модель и уровень усилий, 5-часовое и недельное окна с временем сброса, обратный отсчёт кэша промпта (`⏱ 52:10`, а когда кэш остыл, `❄ cold` и одно уведомление) и контекст по группам (система, MCP, сообщения) с токенами за ход. С 85% контекста появляется кнопка `compact`, которая только вписывает `/compact` в поле ввода. Если при 5-часовом окне от 70% переключиться на более крупную модель или на усилия `max`, всплывёт уведомление, на сколько минут хватит окна в текущем темпе. `/limits` открывает панель с окнами, контекстом по категориям и MCP-серверам и последними 20 ходами. Включаемый вручную keep-warm отправляет одно короткое сообщение перед тем, как кэш остынет, и тратит лимит тарифа.",
+  "author": { "name": "Lucas Fernandes", "github": "ice-lfernandes", "url": "https://github.com/ice-lfernandes" },
+  "maintainers": ["ice-lfernandes"],
+  "category": "insights",
+  "tags": ["rate-limits", "prompt-cache", "context", "usage", "band", "keep-warm"],
+  "license": "MIT",
+  "version": "0.8.0",
+  "homepage": "https://github.com/ice-lfernandes/claude-code-mods/tree/HEAD/limits-meter",
+  "source": { "type": "marketplace", "marketplace": "ice-lfernandes/claude-code-mods", "plugin": "limits-meter", "path": "limits-meter" },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": true,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "The band after a reply: model and effort, both plan windows, the cache clock and context by group.",
+    "caption_ru": "Полоса после ответа: модель и усилия, оба окна тарифа, часы кэша и контекст по группам.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [{ "text": "opus · high", "bold": true, "color": "claude" }, "   5h ", { "bar": 0.42, "width": 10, "color": "success" }, " 42% ↻ 2h 10m   wk ", { "bar": 0.61, "width": 10, "color": "warning" }, " 61% ↻ Thu   cache ", { "text": "⏱ 52:10", "color": "success" }],
+          ["ctx ", { "bar": 0.38, "width": 24, "color": "claude" }, " 76k/200k  ", { "text": "■", "color": "inactive" }, " system 18k  ", { "text": "■", "color": "suggestion" }, " MCP 9k  ", { "text": "■", "color": "claude" }, " messages 49k   ", { "button": "details" }]
+        ]
+      },
+      { "slot": "toast", "text": "5h at 78%: at this pace the window runs out in ~40m · /limits" }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/ice-lfernandes/claude-code-mods/82c3ab9c7fa0e92828cc51205b906a9a9b08b6b0/screenshots/limits-meter-demo.gif",
+      "alt": "limits-meter through a request: the band above the prompt, the /limits pane and the toast on a costly switch to opus",
+      "surface": "terminal"
+    }
+  ]
+}

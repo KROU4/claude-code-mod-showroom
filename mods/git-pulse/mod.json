@@ -1,0 +1,53 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "git-pulse",
+  "title": "Git Pulse",
+  "tagline": "Branch, ahead/behind, conflicts, staged, modified and untracked counts under the prompt, kept fresh.",
+  "tagline_ru": "Ветка, опережение и отставание, конфликты, staged, изменённые и неотслеживаемые файлы под полем ввода.",
+  "description": "A status entry such as `⎇ feat/login ↑2 ↓1 ●3 +1 ?2` (or `⎇ main ✓` when clean), from `git --no-optional-locks status --porcelain=v2 --branch`. It refreshes at session start, at each turn's start and end, and 750 ms after Bash, Edit, Write or NotebookEdit calls settle. Toasts say when the branch changes under you and when a turn made commits (`2 new commits on feat/login this turn`). `/git-pulse` prints the branch, upstream sync, working-tree counts, stash and the last three commits. It never fetches; if git is missing or keeps timing out it goes quiet.",
+  "description_ru": "Строка статуса вида `⎇ feat/login ↑2 ↓1 ●3 +1 ?2` (или `⎇ main ✓`, когда всё чисто) по выводу `git --no-optional-locks status --porcelain=v2 --branch`. Обновляется при старте сессии, в начале и в конце каждого хода и через 750 мс после того, как стихнут вызовы Bash, Edit, Write или NotebookEdit. Всплывающие уведомления сообщают, что ветка сменилась, и что за ход появились коммиты (`2 new commits on feat/login this turn`). `/git-pulse` показывает ветку, синхронизацию с upstream, счётчики рабочего дерева, stash и три последних коммита. Сам fetch не делает; если git нет или он постоянно не отвечает, мод замолкает.",
+  "author": { "name": "Amrit Preet Singh", "github": "Singh-AP", "url": "https://github.com/Singh-AP" },
+  "maintainers": ["Singh-AP"],
+  "category": "git",
+  "tags": ["git", "status-line", "branch", "commits", "toast"],
+  "license": "MIT",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Singh-AP/awesome-claude-mods/tree/HEAD/mods/awareness/git-pulse",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "Singh-AP/awesome-claude-mods",
+    "plugin": "git-pulse",
+    "path": "mods/awareness/git-pulse"
+  },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "caption": "The status entry after a turn that committed twice, the toast, and the /git-pulse summary.",
+    "caption_ru": "Строка статуса после хода с двумя коммитами, уведомление и сводка /git-pulse.",
+    "elements": [
+      { "slot": "status", "text": "⎇ feat/login ↑2 ↓1 ●3 +1 ?2" },
+      { "slot": "toast", "text": "2 new commits on feat/login this turn" },
+      {
+        "slot": "command",
+        "command": "/git-pulse",
+        "output": [
+          ["Branch: feat/login"],
+          ["Upstream: origin/feat/login (2 ahead, 1 behind)"],
+          ["Working tree: 1 staged, 3 modified, 2 untracked"],
+          ["Stash: 1 entry"],
+          ["Last commits:"],
+          [{ "text": "  a1b2c3d Add login redirect (4 minutes ago)", "dim": true }],
+          [{ "text": "  d4e5f6a Extract session helper (9 minutes ago)", "dim": true }]
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "cc-split-diff-view",
+  "title": "Split Diff View",
+  "tagline": "Edit and Write diffs in two side-by-side columns, and /diffsplit to review every uncommitted change.",
+  "tagline_ru": "Диффы Edit и Write в две колонки рядом, а /diffsplit показывает так же все незакоммиченные изменения.",
+  "description": "Redraws the result of every `Edit` and `Write` as a split diff: removed lines in the left column, added lines in the right, each side with its own line numbers, a changed line next to its replacement, long unchanged runs folded to `⋯ N unchanged lines`, in Claude Code's own diff colors and syntax highlighting. Errors, held edits and brand-new files keep the normal drawing. `/diffsplit` opens a Split Diff pane with every uncommitted change against `HEAD`, untracked files included: a file list with `+n -n`, then each file foldable, `r` to reload. The pane runs read-only `git diff` and `git ls-files` and refreshes while open; nothing leaves the machine.",
+  "description_ru": "Перерисовывает результат каждого `Edit` и `Write` как дифф в две колонки: удалённые строки слева, добавленные справа, у каждой стороны свои номера строк, изменённая строка стоит напротив своей замены, длинные неизменённые участки свёрнуты в `⋯ N unchanged lines`, цвета диффа и подсветка синтаксиса берутся у самого Claude Code. Ошибки, отложенные правки и новые файлы рисуются как обычно. `/diffsplit` открывает панель Split Diff со всеми незакоммиченными изменениями относительно `HEAD`, включая неотслеживаемые файлы: сначала список файлов с `+n -n`, затем каждый файл, который можно свернуть, `r` перезагружает. Панель запускает только читающие `git diff` и `git ls-files` и обновляется, пока открыта; ничего не уходит с компьютера.",
+  "author": { "name": "NetEye Platform", "github": "neteye-platform", "url": "https://github.com/neteye-platform" },
+  "maintainers": ["neteye-platform"],
+  "category": "git",
+  "tags": ["diff", "split-view", "review", "git", "pane", "tool-rows"],
+  "license": "MIT OR Apache-2.0",
+  "version": "1.1.0",
+  "homepage": "https://github.com/neteye-platform/cc-split-diff-view",
+  "source": { "type": "marketplace", "marketplace": "neteye-platform/cc-split-diff-view", "plugin": "cc-split-diff-view" },
+  "surfaces": ["terminal", "desktop"],
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Make add() take any number of values." }
+    ],
+    "caption": "An Edit drawn as two columns, then the /diffsplit pane with every uncommitted change.",
+    "caption_ru": "Правка Edit в две колонки, затем панель /diffsplit со всеми незакоммиченными изменениями.",
+    "elements": [
+      {
+        "slot": "tool-row",
+        "tool": "Update",
+        "input": "src/math.ts",
+        "row": [{ "text": "Added 7 lines, removed 2 lines", "dim": true }],
+        "result": [
+          [{ "text": " 6  ", "dim": true }, "                                ", { "text": "│", "dim": true }, { "text": " 6  ", "dim": true }],
+          [{ "text": " 7 -export function add(a: number, b: number) {", "bg": "#4a1515" }, { "text": "│", "dim": true }, { "text": " 7 +export function add(...values: number[]) {", "bg": "#123d1a" }],
+          [{ "text": " 8 -  return a + b", "bg": "#4a1515" }, "                       ", { "text": "│", "dim": true }, { "text": " 8 +  let total = 0", "bg": "#123d1a" }],
+          ["                                    ", { "text": "│", "dim": true }, { "text": " 9 +  for (const v of values) total += v", "bg": "#123d1a" }],
+          ["                                    ", { "text": "│", "dim": true }, { "text": "10 +  return total", "bg": "#123d1a" }],
+          [{ "text": " 9  }", "dim": true }, "                               ", { "text": "│", "dim": true }, { "text": "11  }", "dim": true }],
+          [{ "text": "   ⋯ 14 unchanged lines", "dim": true }]
+        ]
+      },
+      { "slot": "command", "command": "/diffsplit", "output": [["Split diff opened: 2 changed files."]] },
+      {
+        "slot": "pane",
+        "title": "Split Diff",
+        "width": "wide",
+        "rows": [
+          [{ "text": "Uncommitted changes", "bold": true }, { "text": " · 2 files · ", "dim": true }, { "text": "+9", "color": "success" }, " ", { "text": "-2", "color": "error" }],
+          [{ "text": "↑↓ move · Enter jump to a file, or fold it · r refresh · Esc close", "dim": true }],
+          ["src/math.ts                              ", { "text": "+7", "color": "success" }, " ", { "text": "-2", "color": "error" }],
+          ["src/math.test.ts      ", { "text": "untracked ", "dim": true }, { "text": "+2", "color": "success" }, " ", { "text": "-0", "color": "error" }],
+          [{ "text": "──────────────────────────────────────────────", "dim": true }],
+          [{ "text": "src/math.ts", "bold": true }, "                              ", { "text": "+7", "color": "success" }, " ", { "text": "-2", "color": "error" }],
+          [{ "text": "──────────────────────────────────────────────", "dim": true }],
+          [{ "text": "7 -return a + b", "bg": "#4a1515" }, "    ", { "text": "│", "dim": true }, { "text": "8 +let total = 0", "bg": "#123d1a" }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/neteye-platform/cc-split-diff-view/d380d88f8541e615db4d1ec72ecc0c7054861156/docs/split-diff-view.png",
+      "alt": "An Edit result drawn as a split diff: removed lines in red on the left, added lines in green on the right, each side with its own line numbers",
+      "surface": "terminal"
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/neteye-platform/cc-split-diff-view/d380d88f8541e615db4d1ec72ecc0c7054861156/docs/diffsplit-pane.png",
+      "alt": "The /diffsplit pane: the changed files with their counts, then each file open under its name with its diff in two columns",
+      "surface": "terminal"
+    }
+  ]
+}

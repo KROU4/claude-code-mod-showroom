@@ -1,0 +1,58 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "redline",
+  "title": "Redline",
+  "tagline": "Context fill, plan windows, session cost and pace in the status line, with a toast at 80% context.",
+  "tagline_ru": "Заполнение контекста, окна тарифа, стоимость и темп в строке статуса; уведомление при 80% контекста.",
+  "description": "One status line, updated on every model request: context fill with a bar, `AMBER` from 60% and `RED` from 80%, and when it would be full at the last 10 minutes' pace; your 5-hour and weekly windows with when they run out or reset; the session's cost at list prices (Claude Code's own estimate where it keeps one); tokens per minute. One toast at 80% suggests `/compact` or `/clear`, re-armed under 75%. `/redline` opens a pane with aligned bars and the limit closest to its wall; `/redline spend` splits the cost by kind of work (prompt, reading, editing, shell, subagents, MCP), model and costliest turns. `/redline band` puts the gauge in colour above the prompt. Reads only session usage.",
+  "description_ru": "Одна строка статуса, обновляется на каждом запросе к модели: заполнение контекста с полосой, `AMBER` с 60% и `RED` с 80%, и когда он заполнится при темпе последних 10 минут; пятичасовое и недельное окна тарифа с прогнозом, когда кончатся или сбросятся; стоимость сессии по прайсу (оценка самого Claude Code, если она есть); токены в минуту. При 80% контекста одно уведомление советует `/compact` или `/clear` и снова взводится ниже 75%. `/redline` открывает панель с ровными полосами и самым близким к пределу лимитом; `/redline spend` раскладывает стоимость по видам работы (запрос, чтение, правки, shell, субагенты, MCP), моделям и самым дорогим ходам. `/redline band` выводит цветную шкалу над полем ввода. Читает только данные об использовании сессии.",
+  "author": { "name": "modmyclaude", "github": "modmyclaude", "url": "https://github.com/modmyclaude" },
+  "maintainers": ["modmyclaude"],
+  "category": "insights",
+  "tags": ["context", "cost", "rate-limits", "tokens", "status-line", "pane", "compact"],
+  "license": "MIT",
+  "version": "0.3.1",
+  "homepage": "https://github.com/modmyclaude/claude-code-mods/tree/HEAD/mods/redline",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "modmyclaude/claude-code-mods",
+    "plugin": "redline",
+    "path": "mods/redline"
+  },
+  "surfaces": ["terminal", "desktop"],
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "Past 80% context: the status line gauge, the one-time toast and the /redline spend view.",
+    "caption_ru": "Контекст за 80%: шкала в строке статуса, разовое уведомление и вид /redline spend.",
+    "elements": [
+      { "slot": "status", "text": "context ████████░░ 82% RED, full in ≈7m · 5h █░░░░ 11% · week ████░ 83% AMBER, out in ≈21h · ≈$4.12 · 3.9k tokens/min" },
+      { "slot": "toast", "text": "Context is 82% full. Run /compact to summarize it, or /clear to start a fresh session." },
+      { "slot": "command", "command": "/redline", "args": "spend" },
+      {
+        "slot": "pane",
+        "title": "Redline",
+        "width": "wide",
+        "rows": [
+          [{ "text": "≈$2.36 in 9 requests", "bold": true }, { "text": " since 1:47pm", "dim": true }],
+          [" "],
+          ["editing    ", { "bar": 0.41, "width": 12, "color": "claude" }, "  ≈$0.97  41%"],
+          ["reading    ", { "bar": 0.27, "width": 12, "color": "claude" }, "  ≈$0.64  27%"],
+          ["shell      ", { "bar": 0.18, "width": 12, "color": "claude" }, "  ≈$0.42  18%"],
+          ["other      ", { "bar": 0.14, "width": 12, "color": "claude" }, "  ≈$0.33  14%"],
+          [" "],
+          [{ "button": "Back" }, " ", { "button": "Hide band" }, " ", { "button": "Close" }]
+        ]
+      }
+    ]
+  }
+}

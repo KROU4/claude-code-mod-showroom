@@ -1,0 +1,52 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "agent-tree",
+  "title": "Agent Tree",
+  "tagline": "A side pane that draws a session's agents as a tree of boxes, with stop and model choice by click.",
+  "tagline_ru": "Боковая панель рисует агентов сессии деревом блоков; остановить агента или сменить модель можно кликом.",
+  "description": "`/agent-tree` opens a docked pane that draws the session as boxes: the main session with its phase, model, effort and context; a box per sub-agent with type, model, status and tools; the way back to the main session; the advisor model when one is on call; and a session log. Click a type for its task, tools and latest answer. Clicking a model switches a running agent from its next step, \"Model\" sets one for new sub-agents (applied on spawn), and stop makes the agent's next step hand back a short report while further tool calls are declined. Keys: ctrl+x tab focuses the pane, m picks a model, s stops, x closes. English or German. Keeps everything in memory, writes no files, sends nothing.",
+  "description_ru": "`/agent-tree` открывает закреплённую панель, где сессия нарисована блоками: основная сессия с фазой, моделью, уровнем усилий и контекстом; по блоку на каждого субагента с типом, моделью, статусом и инструментами; путь обратно в основную сессию; модель-советник, если она подключена; и журнал сессии. Клик по типу показывает задачу, инструменты и последний ответ. Клик по модели переключает работающего агента со следующего шага, «Model» задаёт модель для новых субагентов (при запуске), а остановка заставляет следующий шаг агента вернуть короткий отчёт, отклоняя дальнейшие вызовы инструментов. Клавиши: ctrl+x tab переводит фокус на панель, m выбирает модель, s останавливает, x закрывает. Английский или немецкий. Всё хранится в памяти, файлы не пишутся, ничего не отправляется.",
+  "author": { "name": "Mike Pollow, Digitalroots", "github": "MikeGT4", "url": "https://github.com/MikeGT4" },
+  "maintainers": ["MikeGT4"],
+  "category": "insights",
+  "tags": ["subagents", "agents", "tree", "pane", "models"],
+  "license": "MIT",
+  "version": "0.3.0",
+  "homepage": "https://github.com/MikeGT4/agent-tree",
+  "source": { "type": "marketplace", "marketplace": "MikeGT4/agent-tree", "plugin": "agent-tree" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": true
+  },
+  "preview": {
+    "scene": "review",
+    "surface": "terminal",
+    "caption": "Two sub-agents under the main session in the docked pane; one is picked for a model switch.",
+    "caption_ru": "Два субагента под основной сессией в закреплённой панели; для одного выбирается другая модель.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "Agent Tree",
+        "width": "wide",
+        "rows": [
+          [{ "text": "WORKING", "color": "warning", "bold": true }, { "text": "  ADVISOR opus ON CALL", "dim": true }],
+          [{ "text": "╭ Main session ──────────────────────────╮", "color": "claude" }],
+          [{ "text": "│", "color": "claude" }, " opus · high · waits for sub-agents     ", { "text": "│", "color": "claude" }],
+          [{ "text": "│", "color": "claude" }, " Context ", { "bar": 0.34, "width": 14, "color": "claude" }, " 68k        ", { "text": "│", "color": "claude" }],
+          [{ "text": "╰───────────────────┬────────────────────╯", "color": "claude" }],
+          ["        ", { "text": "╭───────────┴──────────╮", "dim": true }],
+          [{ "text": " ╭ code-review ─────╮  ╭ test-runner ──────╮", "color": "suggestion" }],
+          [{ "text": " │", "color": "suggestion" }, " sonnet · ", { "text": "running", "color": "warning" }, " ", { "text": "│", "color": "suggestion" }, { "text": "  │", "color": "suggestion" }, " haiku · ", { "text": "done", "color": "success" }, "     ", { "text": "│", "color": "suggestion" }],
+          [{ "text": " │", "color": "suggestion" }, " Tools 14  1m 40s ", { "text": "│", "color": "suggestion" }, { "text": "  │", "color": "suggestion" }, " Tools 6  took 52s ", { "text": "│", "color": "suggestion" }],
+          [{ "text": " ╰──────────────────╯  ╰──────────────────╯", "color": "suggestion" }],
+          [{ "text": "Model for code-review:", "bold": true }, " 1 haiku  2 sonnet  3 opus  0 Default"],
+          [{ "text": "Session log", "bold": true }, { "text": "  agent code-review started · main sonnet", "dim": true }]
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "tldr",
+  "title": "TL;DR",
+  "tagline": "A one-sentence TL;DR under every long answer, written by a small, fast model.",
+  "tagline_ru": "Краткое резюме в одно предложение под каждым длинным ответом, его пишет небольшая быстрая модель.",
+  "description": "When a main-thread answer has at least `minWords` words of prose (200 by default; code blocks don't count), tldr sends it to a small model (`haiku` by default: one low-effort call, ~120 tokens, 15 s timeout; long answers are cut to head and tail) and shows `TL;DR: …`, one sentence of at most 25 words, under the answer. The answer and what the model remembers of it are untouched. Subagent, interrupted and failed turns and headless runs are skipped. `/tldr` summarizes the last answer on demand; `/tldr off`, `/tldr on` and `/tldr status` control the automatic line, kept across sessions. Each TL;DR is an extra small billed request.",
+  "description_ru": "Если ответ основного диалога содержит не меньше `minWords` слов текста (по умолчанию 200, блоки кода не считаются), tldr отправляет его небольшой модели (по умолчанию `haiku`: один вызов с низким усилием, ~120 токенов, таймаут 15 секунд; длинные ответы обрезаются до начала и конца) и показывает под ответом `TL;DR: …` — одно предложение не длиннее 25 слов. Сам ответ и то, что о нём помнит модель, не меняются. Ходы субагентов, прерванные, завершившиеся ошибкой и запуски без интерфейса пропускаются. `/tldr` кратко пересказывает последний ответ по запросу; `/tldr off`, `/tldr on` и `/tldr status` управляют автоматической строкой, настройка сохраняется между сессиями. Каждое резюме — отдельный небольшой платный запрос.",
+  "author": { "name": "Amrit Preet Singh", "github": "Singh-AP", "url": "https://github.com/Singh-AP" },
+  "maintainers": ["Singh-AP"],
+  "category": "productivity",
+  "tags": ["summary", "tldr", "haiku", "answers"],
+  "license": "MIT",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Singh-AP/awesome-claude-mods/tree/HEAD/mods/productivity/tldr",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "Singh-AP/awesome-claude-mods",
+    "plugin": "tldr",
+    "path": "mods/productivity/tldr"
+  },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": true,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Explain how a trie works and when I'd pick one over a hash table." },
+      { "role": "assistant", "text": "A trie stores strings as paths of shared character nodes: each edge is one character, and a word is the path from the root to a marked node. Lookups cost O(m) for a key of length m, independent of how many keys are stored … (300 more words)" }
+    ],
+    "caption": "The one-line TL;DR shown under a long answer.",
+    "caption_ru": "Строка TL;DR под длинным ответом.",
+    "elements": [
+      {
+        "slot": "message",
+        "role": "note",
+        "markdown": "TL;DR: A trie is a tree for fast prefix lookups, at the cost of more memory than a hash table."
+      }
+    ]
+  }
+}

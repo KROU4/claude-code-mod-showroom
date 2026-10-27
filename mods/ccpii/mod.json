@@ -1,0 +1,46 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "ccpii",
+  "title": "ccpii",
+  "tagline": "Names, emails, phones and other personal data reach the model as numbered placeholders.",
+  "tagline_ru": "Имена, почта, телефоны и другие личные данные доходят до модели как пронумерованные заглушки.",
+  "description": "Before the model reads a prompt or a tool result, a local openai/privacy-filter model replaces each detected span with a placeholder such as `⟦EMAIL_0⟧` or `⟦PERSON_1⟧`, the same one for the same value all session. Real values go back into tool arguments just before the tool runs, and you see them in the transcript. If the filter cannot check something, the prompt is not sent and tool output is withheld. Needs `uv`: `/ccpii install` downloads Python packages and the 1.6 GB model, and a sidecar process serves it on a Unix socket under /tmp. The placeholder table is saved in `~/.claude/ccpii`. A data-minimisation aid, not an anonymisation guarantee.",
+  "description_ru": "Прежде чем модель прочитает запрос или результат инструмента, локальная модель openai/privacy-filter заменяет каждый найденный фрагмент заглушкой вроде `⟦EMAIL_0⟧` или `⟦PERSON_1⟧`, одинаковой для одного и того же значения всю сессию. Настоящие значения подставляются в аргументы инструмента прямо перед его запуском, а в переписке вы видите их как есть. Если фильтр не может что-то проверить, запрос не отправляется, а вывод инструмента скрывается от модели. Нужен `uv`: `/ccpii install` скачивает пакеты Python и модель на 1,6 ГБ, а отдельный процесс обслуживает её через Unix-сокет в /tmp. Таблица заглушек сохраняется в `~/.claude/ccpii`. Это средство сокращения передаваемых данных, а не гарантия анонимности.",
+  "author": { "name": "xchacha20-poly1305", "github": "xchacha20-poly1305", "url": "https://github.com/xchacha20-poly1305" },
+  "maintainers": ["xchacha20-poly1305"],
+  "category": "safety",
+  "tags": ["privacy", "pii", "redaction", "local-model", "placeholders"],
+  "license": "MIT",
+  "version": "0.2.0",
+  "homepage": "https://github.com/xchacha20-poly1305/ccpii",
+  "source": {
+    "type": "github",
+    "repo": "xchacha20-poly1305/ccpii",
+    "sha": "c243e2019b56b29cdfd8b907cbc4201fd2e08312"
+  },
+  "capabilities": {
+    "network": true,
+    "processes": true,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": true
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Email anna.berg@example.com the invoice for order 4471 and copy Lars Holm." }
+    ],
+    "caption": "What the model receives: placeholders instead of the email and the names; you still see the real values.",
+    "caption_ru": "Что получает модель: заглушки вместо адреса и имён; вы по-прежнему видите настоящие значения.",
+    "elements": [
+      {
+        "slot": "prompt-rewrite",
+        "before": "Email anna.berg@example.com the invoice for order 4471 and copy Lars Holm.",
+        "after": "Email ⟦EMAIL_0⟧ the invoice for order 4471 and copy ⟦PERSON_1⟧."
+      },
+      { "slot": "status", "text": "2 placeholders" },
+      { "slot": "background", "text": "Tool calls get the real values back just before they run; their output is filtered again before the model reads it." }
+    ]
+  }
+}

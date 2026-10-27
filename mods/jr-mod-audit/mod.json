@@ -1,0 +1,54 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "jr-mod-audit",
+  "title": "jr mod audit",
+  "tagline": "Look at a mod before you install it: what it can reach, with a green, amber or red verdict.",
+  "tagline_ru": "Посмотрите на мод до установки: до чего он дотягивается, с зелёной, жёлтой или красной оценкой.",
+  "description": "`/jr-mod-audit owner/repo` (or a git URL, or a local folder) shallow-clones the repository into `/tmp/jr-mod-audit` (symlinks off, git config that could run programs disabled), runs `claude plugin validate --json` on every plugin in it and reads up to 60 source files for the hosts they name and the programs they run. A pane lists each plugin with the API calls the validator reports and a verdict: red (fails validation, reads local data and talks to the network, or runs a shell, curl, python, node or osascript), amber (network, programs, writes, prompts or agents) or green (draws and keeps its own state).",
+  "description_ru": "`/jr-mod-audit owner/repo` (или git-адрес, или локальная папка) делает неглубокий `git clone` репозитория в `/tmp/jr-mod-audit` (без символических ссылок и с отключёнными настройками, способными запускать программы), находит в нём каждый `.claude-plugin/plugin.json`, запускает для каждого `claude plugin validate --json` и читает до 60 его исходных файлов в поисках упомянутых хостов и запускаемых программ. Панель показывает каждый плагин с вызовами API из отчёта валидатора и оценкой: красная (не проходит проверку, или читает локальные данные и ходит в сеть, или запускает shell, curl, python, node, osascript), жёлтая (сеть, программы, запись, запросы или агенты) или зелёная (рисует и хранит своё состояние). Текст из репозитория перед выводом очищается от управляющих символов.",
+  "author": { "name": "jrlprost", "github": "jrlprost", "url": "https://github.com/jrlprost" },
+  "maintainers": ["jrlprost"],
+  "category": "safety",
+  "tags": ["audit", "security", "mods", "review"],
+  "license": "MIT",
+  "version": "0.2.0",
+  "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-mod-audit",
+  "source": {
+    "type": "github",
+    "repo": "jrlprost/claude-code-mods",
+    "path": "plugins/jr-mod-audit",
+    "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+  },
+  "surfaces": ["terminal"],
+  "requires": { "claudeCode": ">=2.1.301" },
+  "capabilities": {
+    "network": true,
+    "processes": true,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "idle",
+    "caption": "Auditing a repository with two mods before installing either.",
+    "caption_ru": "Проверка репозитория с двумя модами до установки.",
+    "elements": [
+      { "slot": "command", "command": "/jr-mod-audit", "args": "someone/claude-mods", "output": [["jr mod audit · someone/claude-mods: 🔴 spy-mod, 🟢 pretty-band"]] },
+      {
+        "slot": "pane",
+        "title": "jr mod audit",
+        "width": "wide",
+        "rows": [
+          [{ "text": "jr mod audit", "bold": true, "color": "#ff5ca8" }, { "text": "  someone/claude-mods", "dim": true }],
+          [{ "text": "● ", "color": "#ef4565", "bold": true }, { "text": "spy-mod", "bold": true }, { "text": "  read the code before installing", "color": "#ef4565" }],
+          [{ "text": "    · reads local data or runs programs, and talks to the network", "dim": true }],
+          [{ "text": "    · network: collect.example.net", "dim": true }],
+          [{ "text": "    calls $.fs.read $.http.fetch $.ui.toast", "dim": true }],
+          [{ "text": "● ", "color": "#2cb67d", "bold": true }, { "text": "pretty-band", "bold": true }, { "text": "  low reach", "color": "#2cb67d" }],
+          [{ "text": "    calls $.ui.resolve", "dim": true }]
+        ]
+      }
+    ]
+  }
+}

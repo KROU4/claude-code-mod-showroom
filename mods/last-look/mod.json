@@ -1,0 +1,70 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "last-look",
+  "title": "Last Look",
+  "tagline": "Holds destructive shell commands for your OK and shows the files, unsaved work and commits at stake.",
+  "tagline_ru": "Задерживает разрушительные команды до вашего решения и показывает, какие файлы, правки и коммиты под угрозой.",
+  "description": "Before Claude runs `rm -r`, `find -delete`, `xargs rm`, `git clean -f`, `git reset --hard`, `git checkout`/`restore` over changes, a force push, `git branch -D`, `git worktree remove -f` or a `>` redirect over an existing file (via Bash or Monitor), it holds the command in a Last Look pane, or a band above the prompt on narrow terminals: files and size it would delete, files with unsaved work first, commits that would be lost. It reads through `cd`, `bash -c`, `$(...)`, `sudo`, globs and braces. Cancel has the focus; Proceed takes a click or Tab, never a stray key. Measuring runs read-only `find`, `du` and git; `alwaysAllow` lists folders that pass.",
+  "description_ru": "Прежде чем Claude выполнит `rm -r`, `find -delete`, `xargs rm`, `git clean -f`, `git reset --hard`, `git checkout`/`restore` поверх изменений, принудительный пуш, `git branch -D`, `git worktree remove -f` или перенаправление `>` в существующий файл (через Bash или Monitor), мод задерживает команду в панели Last Look, а в узком терминале — в полосе над полем ввода: какие файлы и сколько мегабайт будут удалены, файлы с несохранённой работой — первыми, какие коммиты пропадут. Он разбирает `cd`, `bash -c`, `$(...)`, `sudo`, маски и фигурные скобки. Фокус стоит на Cancel; Proceed нажимается только мышью или через Tab, случайной клавишей не подтвердить. Для замеров запускаются только читающие `find`, `du` и git; в `alwaysAllow` перечисляются папки, которые пропускаются без вопроса.",
+  "author": { "name": "modmyclaude", "github": "modmyclaude", "url": "https://github.com/modmyclaude" },
+  "maintainers": ["modmyclaude"],
+  "category": "safety",
+  "tags": ["bash", "rm-rf", "git", "force-push", "confirm", "guard"],
+  "license": "MIT",
+  "version": "0.1.3",
+  "homepage": "https://github.com/modmyclaude/claude-code-mods/tree/HEAD/mods/last-look",
+  "source": { "type": "marketplace", "marketplace": "modmyclaude/claude-code-mods", "plugin": "last-look", "path": "mods/last-look" },
+  "surfaces": ["terminal", "desktop"],
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": true
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "The rebase went sideways. Put the branch back to origin/main and start over." },
+      { "role": "assistant", "text": "I'll reset the branch to origin/main." }
+    ],
+    "caption": "git reset --hard held in the Last Look pane: the unsaved files and the commits it would drop, with Cancel focused.",
+    "caption_ru": "git reset --hard задержан в панели Last Look: файлы с несохранённой работой и коммиты, которые пропадут; фокус на Cancel.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "Last Look",
+        "width": "wide",
+        "rows": [
+          [{ "text": "Held: this command can destroy work", "color": "warning", "bold": true }],
+          ["$ git reset --hard origin/main"],
+          [" "],
+          [{ "text": "3 files have unsaved work you would lose", "color": "error", "bold": true }],
+          [" "],
+          [{ "text": "git reset --hard origin/main", "bold": true }],
+          [{ "text": "Discards uncommitted changes in 3 files (+48 -12 lines) and drops 2 commits from feature/discounts", "color": "error" }],
+          [{ "text": "3 files with uncommitted changes git cannot bring back:", "color": "error" }],
+          [{ "text": "  src/cart/total.ts  +31 -9", "color": "error" }],
+          [{ "text": "  src/checkout.ts  +14 -3", "color": "error" }],
+          [{ "text": "  tests/total.test.ts  +3 -0", "color": "error" }],
+          [{ "text": "2 commits would leave feature/discounts:", "color": "error" }],
+          [{ "text": "  a41c9e2 Apply percentage codes at checkout", "dim": true }],
+          [{ "text": "  7d02f1b Add SAVE10 discount code", "dim": true }],
+          [{ "text": "git reflog can still find dropped commits for a while.", "dim": true }],
+          [" "],
+          [{ "button": "Cancel", "variant": "primary", "hotkey": "c" }, "  ", { "button": "Proceed" }],
+          [{ "text": "A safety net, not a permission system. Proceed passes it on to Claude Code's own checks.", "dim": true }]
+        ]
+      },
+      { "slot": "status", "text": "holding a command: Cancel or Proceed" },
+      {
+        "slot": "tool-deny",
+        "tool": "Bash",
+        "input": "git reset --hard origin/main",
+        "message": "last-look: the person reviewed this command and chose Cancel, so it did not run (3 files have unsaved work you would lose). Do not retry it or reach the same result another way; ask the person what they want instead."
+      }
+    ]
+  }
+}

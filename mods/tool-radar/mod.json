@@ -1,0 +1,61 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "tool-radar",
+  "title": "Tool Radar",
+  "tagline": "A live pane of every tool call with status, arguments, duration and why it failed, subagents too.",
+  "tagline_ru": "Панель со всеми вызовами инструментов: статус, аргументы, длительность и причина ошибки, включая субагентов.",
+  "description": "`/radar` opens a newest-first pane of the session's tool calls: a status glyph (◐ running, ✓ done, ✗ failed, ⊘ denied), the tool, a short look at its arguments (command, file, pattern, URL, subagent task, MCP tool), the failure reason inline and the duration. Calls a subagent made carry `↳`. A header sums calls, failures, denials, running calls, the average duration and the busiest tools. Buttons: Clear (`c`), Errors only (`e`), Close (`x`). `/radar summary` prints counts per tool, recent failures and the five slowest calls. Keeps the latest 300 calls; the `autoOpen` option opens the pane at session start.",
+  "description_ru": "`/radar` открывает панель с вызовами инструментов сессии, новые сверху: значок статуса (◐ идёт, ✓ готово, ✗ ошибка, ⊘ отклонён), инструмент, краткие аргументы (команда, файл, шаблон, URL, задача субагента, инструмент MCP), причина ошибки прямо в строке и длительность. Вызовы субагентов помечены `↳`. В шапке итоги: вызовы, ошибки, отказы, выполняющиеся, средняя длительность и самые частые инструменты. Кнопки: Clear (`c`), Errors only (`e`), Close (`x`). `/radar summary` выводит счёт по инструментам, недавние ошибки и пять самых медленных вызовов. Хранит последние 300 вызовов; опция `autoOpen` открывает панель при старте сессии.",
+  "author": { "name": "Amrit Preet Singh", "github": "Singh-AP", "url": "https://github.com/Singh-AP" },
+  "maintainers": ["Singh-AP"],
+  "category": "insights",
+  "tags": ["tools", "timeline", "pane", "subagents", "errors", "mcp"],
+  "license": "MIT",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Singh-AP/awesome-claude-mods/tree/HEAD/mods/awareness/tool-radar",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "Singh-AP/awesome-claude-mods",
+    "plugin": "tool-radar",
+    "path": "mods/awareness/tool-radar"
+  },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "debugging",
+    "caption": "The /radar pane mid-task: a running call, failures with their reasons, a subagent's read and a denied push.",
+    "caption_ru": "Панель /radar посреди работы: идущий вызов, ошибки с причинами, чтение субагента и отклонённый push.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "Tool radar",
+        "width": "wide",
+        "rows": [
+          [{ "text": "42 calls · 3 failed · 1 running · avg 1.2s · Bash 20 Edit 12 Read 8", "bold": true }],
+          [{ "button": "Clear", "hotkey": "c" }, " ", { "button": "Errors only", "hotkey": "e" }, " ", { "button": "Close", "hotkey": "x" }],
+          [{ "text": "◐", "color": "warning" }, " Bash       npm run test -- --watch=false     …"],
+          [{ "text": "✓", "color": "success" }, " Edit       hooks/register.ts              38ms"],
+          [{ "text": "✗", "color": "error" }, " Bash       pytest -q — exit code 1        4.1s"],
+          [{ "text": "✓", "color": "success" }, " ↳ Read     src/auth.ts                    12ms"],
+          [{ "text": "⊘", "color": "inactive" }, " Bash       git push --force — blocked      0ms"],
+          [{ "text": "✓", "color": "success" }, " mcp:github search_issues is:open           1.9s"]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/Singh-AP/awesome-claude-mods/b82b96062224abc66f3509cff95731e9924c607e/assets/screens/tool-radar.svg",
+      "alt": "The tool-radar pane beside a Claude Code session listing tool calls with status, arguments and durations",
+      "surface": "terminal"
+    }
+  ]
+}

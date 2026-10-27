@@ -1,0 +1,56 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "brainrot-break",
+  "title": "Brainrot Break",
+  "tagline": "A TikTok-style feed of 450+ pixel-art mini-videos to scroll while Claude answers.",
+  "tagline_ru": "Лента в стиле TikTok из 450+ пиксельных мини-видео, которую можно листать, пока Claude отвечает.",
+  "description": "When an answer takes more than about 2.5 seconds, a For you feed opens in a pane beside the conversation: pixel-art loops drawn locally (half-block characters at ~15 fps in the terminal, SVG in the desktop app) across themes such as animals, arcade, physics, food or memes. Scroll with the wheel or keys, like a video, and tick the themes you want; kinds you like come back sooner. When Claude has answered, the video dims and a card says so with what you watched, then closes after 15 seconds. `/brainrot` opens it on demand. Six languages. Draws only: no files, no programs, no model calls, no network.",
+  "description_ru": "Когда ответ готовится дольше примерно 2,5 секунды, рядом с диалогом открывается лента «For you»: пиксельные зацикленные ролики, которые рисуются локально (полублоками примерно на 15 кадрах в секунду в терминале, SVG в десктопном приложении), по темам вроде животных, аркад, физики, еды или мемов. Листайте колесом или клавишами, ставьте лайки и выбирайте темы; понравившееся показывается чаще. Когда Claude ответил, видео тускнеет, карточка сообщает об этом и о просмотренном, а через 15 секунд лента закрывается. `/brainrot` открывает её по запросу. Шесть языков. Только рисует: без файлов, программ, вызовов модели и сети.",
+  "author": { "name": "BordyV", "github": "BordyV", "url": "https://github.com/BordyV" },
+  "maintainers": ["BordyV"],
+  "category": "fun",
+  "tags": ["pixel-art", "feed", "videos", "waiting", "pane"],
+  "license": "MIT",
+  "version": "1.5.2",
+  "homepage": "https://github.com/BordyV/brainrot-break/tree/HEAD/plugin",
+  "source": { "type": "marketplace", "marketplace": "BordyV/brainrot-break", "plugin": "brainrot-break", "path": "plugin" },
+  "surfaces": ["terminal", "desktop"],
+  "requires": { "claudeCode": ">=2.1.305" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "caption": "Claude has answered: the feed dims its video and says so.",
+    "caption_ru": "Claude ответил: лента приглушает видео и сообщает об этом.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "For you",
+        "width": "narrow",
+        "rows": [
+          [{ "text": "      ▄▄▄▄▄▄          ", "color": "#ffb347" }],
+          [{ "text": "    ▄█▀▀██▀▀█▄   ★    ", "color": "#ffb347" }],
+          [{ "text": "    ██  ██  ██        ", "color": "#ffb347" }],
+          [{ "text": "  ▄▄▀▀▀▀▀▀▀▀▀▀▄▄      ", "color": "#7fd1a8" }],
+          [{ "text": "  ▀▀▀▀▀▀▀▀▀▀▀▀▀▀      ", "color": "#5c5f77" }],
+          [{ "text": "✓ Claude has answered", "color": "success", "bold": true }],
+          [{ "text": "6 videos watched · closes in 15 s", "dim": true }],
+          [{ "text": "♥ like   ↓ next   ⚙ themes", "dim": true }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/BordyV/brainrot-break/fcd7d0e751dfe436120f12948af39e1b4673c3ca/assets/feed.gif",
+      "alt": "Six of the feed's pixel-art videos playing"
+    }
+  ]
+}

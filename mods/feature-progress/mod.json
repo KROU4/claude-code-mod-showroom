@@ -1,0 +1,52 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "feature-progress",
+  "title": "Feature Progress",
+  "tagline": "A report tool any spec-driven flow calls, with a progress band above the prompt and a task pane.",
+  "tagline_ru": "Инструмент отчёта для любого процесса по спецификации: полоса прогресса над полем ввода и панель задач.",
+  "description": "It reads no flow's files: it gives Claude one tool, `mcp__feature-progress__report`, that an SDD skill, another skill or a prompt calls at each change of state (pending, planning, active, review, fixing, qa, waiting, blocked, done). A band above the prompt shows the open feature, its stage chip and a meter of done tasks (`✎ Checkout  fixing #1  ━━━━━─── 12/17`), with `⚠ stale` after `staleMinutes`. `/feature-progress` opens a pane with a card per feature: each task's state, round, steps, run time, note and an open button (VS Code or the default program). Each feature is a JSON file in `.claude/feature-progress/`; `/feature-progress clean` deletes done ones.",
+  "description_ru": "Мод не читает файлы процессов: он даёт Claude один инструмент `mcp__feature-progress__report`, который вызывает навык SDD, другой навык или обычный запрос при каждой смене состояния (pending, planning, active, review, fixing, qa, waiting, blocked, done). Полоса над полем ввода показывает открытую фичу, плашку этапа и шкалу готовых задач (`✎ Checkout  fixing #1  ━━━━━─── 12/17`), а после `staleMinutes` без отчётов — `⚠ stale`. `/feature-progress` открывает панель с карточкой на каждую фичу: состояние задачи, раунд, шкала шагов, время, заметка и кнопка открытия ссылки в VS Code или программе по умолчанию. Прогресс хранится JSON-файлом на фичу в `.claude/feature-progress/`; `/feature-progress clean` удаляет готовые.",
+  "author": { "name": "Douglas Cunha", "github": "dougcunha", "url": "https://github.com/dougcunha" },
+  "maintainers": ["dougcunha"],
+  "category": "productivity",
+  "tags": ["progress", "tasks", "spec-driven", "sdd", "pane", "band"],
+  "license": "MIT",
+  "version": "0.3.1",
+  "homepage": "https://github.com/dougcunha/claude-mods/tree/HEAD/feature-progress",
+  "source": { "type": "github", "repo": "dougcunha/claude-mods", "path": "feature-progress", "sha": "49337f5ffa1a2670737a882b480b412ddb128fdd" },
+  "capabilities": { "network": false, "processes": true, "filesystem": "write", "model": false, "promptRewrite": false, "blocksTools": false },
+  "preview": {
+    "surface": "terminal",
+    "scene": "coding",
+    "caption": "The flow reports through the tool; the band shows the open feature's stage and done tasks, the pane each task.",
+    "caption_ru": "Процесс отчитывается через инструмент; полоса показывает этап и готовые задачи, панель — каждую задачу.",
+    "elements": [
+      { "slot": "model-tool", "name": "mcp__feature-progress__report", "input": "feature: Checkout, state: fixing, task: 13 done", "result": [["Reported: Checkout · fixing #1 · 13/17"]] },
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [{ "text": "✎ ", "color": "warning" }, { "text": "Checkout", "bold": true }, "  ", { "text": " fixing #1 ", "color": "warning", "inverse": true }, "  ", { "text": "━━━━━━", "color": "success" }, { "text": "──", "dim": true }, " 13/17"]
+        ]
+      },
+      {
+        "slot": "pane",
+        "title": "Feature progress",
+        "width": "narrow",
+        "rows": [
+          [{ "button": "↻ Refresh" }, { "text": "  1 open · 2 done", "dim": true }],
+          [{ "text": "Checkout", "bold": true }, "  ", { "text": "fixing", "color": "warning" }, { "text": "  76%", "dim": true }],
+          [{ "text": "✓ done   ", "color": "success" }, "Cart totals"],
+          [{ "text": "◐ fixing ", "color": "warning" }, "Discount codes  ", { "text": "━━━──", "color": "warning" }, " 3/5"],
+          [{ "text": "○ pending", "dim": true }, " Receipt email"]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/dougcunha/claude-mods/49337f5ffa1a2670737a882b480b412ddb128fdd/feature-progress/images/band.png",
+      "alt": "The band above the prompt with the feature title, its stage chip, a meter and the task count"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "jr-decisions",
+  "title": "jr decisions",
+  "tagline": "A decision journal per project: record a decision as you take it, list it, export it as Markdown.",
+  "tagline_ru": "Журнал решений по проекту: запишите решение в момент принятия, посмотрите список, выгрузите в Markdown.",
+  "description": "Keeps a journal of decisions per project (the session's root folder) in the mod's own store. Record one with `/jr-decisions Keep Postgres`, or start a prompt with `decision:` (or the French `décision :`): the decision is recorded with a toast and the prompt still goes to Claude unchanged. `/jr-decisions` opens a pane listing them newest first with their dates; `/jr-decisions export` writes `docs/decisions.md` in the project, one numbered ADR-style entry per decision, and refuses if `docs/` or the file is a symbolic link. Nothing else is written; no network.",
+  "description_ru": "Ведёт журнал решений по каждому проекту (корневой папке сессии) в собственном хранилище мода. Записать решение: `/jr-decisions Keep Postgres` или запрос, начинающийся с `decision:` (или французского `décision :`); решение записывается с уведомлением, а запрос уходит Claude без изменений. `/jr-decisions` открывает панель со списком решений и датами, новые сверху; `/jr-decisions export` записывает `docs/decisions.md` в проекте, по пронумерованной записи в стиле ADR на решение, и отказывается, если `docs/` или сам файл оказались символической ссылкой. Больше ничего не пишет, в сеть не ходит.",
+  "author": { "name": "jrlprost", "github": "jrlprost", "url": "https://github.com/jrlprost" },
+  "maintainers": ["jrlprost"],
+  "category": "productivity",
+  "tags": ["decisions", "adr", "journal", "markdown"],
+  "license": "MIT",
+  "version": "0.2.0",
+  "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-decisions",
+  "source": {
+    "type": "github",
+    "repo": "jrlprost/claude-code-mods",
+    "path": "plugins/jr-decisions",
+    "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+  },
+  "surfaces": ["terminal"],
+  "requires": { "claudeCode": ">=2.1.301" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "idle",
+    "caption": "/jr-decisions opens the project's journal, newest first.",
+    "caption_ru": "/jr-decisions открывает журнал проекта, новые решения сверху.",
+    "elements": [
+      { "slot": "command", "command": "/jr-decisions", "output": [["jr decisions · 3 in this project"]] },
+      {
+        "slot": "pane",
+        "title": "jr decisions",
+        "width": "wide",
+        "rows": [
+          [{ "text": "jr decisions", "bold": true, "color": "#ff5ca8" }, { "text": "  shop · 3", "dim": true }],
+          [{ "text": "  #3 ", "color": "#ff5ca8", "bold": true }, { "text": "2026-10-16  ", "dim": true }, "Never deploy on Fridays"],
+          [{ "text": "  #2 ", "color": "#ff5ca8", "bold": true }, { "text": "2026-10-15  ", "dim": true }, "Use Stripe Checkout rather than Elements"],
+          [{ "text": "  #1 ", "color": "#ff5ca8", "bold": true }, { "text": "2026-10-15  ", "dim": true }, "Keep Postgres"],
+          [{ "text": "/jr-decisions export writes docs/decisions.md", "dim": true }]
+        ]
+      }
+    ]
+  }
+}

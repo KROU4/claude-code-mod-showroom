@@ -1,0 +1,41 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "prompt-lift",
+  "title": "Prompt Lift",
+  "tagline": "Enhance, Send and Undo above the prompt: rewrite a vague draft from your project's instructions.",
+  "tagline_ru": "Enhance, Send и Undo над полем ввода: размытый черновик переписывается по инструкциям вашего проекта.",
+  "description": "A band above the prompt with Enhance (`ctrl+x b`, or `/prompt-lift <text>`). One press makes one model call (a fallback chain, Fable then Sonnet then Haiku by default) that rewrites the draft in the box from the `CLAUDE.md` and rules files the session loaded and the skill listing; `~/.claude/CLAUDE.md` is left out by default. The new words are highlighted, the band shows the cost, tokens and model, and nothing is sent until you press Send or Enter; Undo and Redo swap the drafts. Guards keep your prompt when a rewrite flips intent, invents a file or adds a command or URL you did not write. Optional session and daily spend caps. `/prompt-lift status` and `probe` explain what it did.",
+  "description_ru": "Полоса над полем ввода с кнопкой Enhance (`ctrl+x b` или `/prompt-lift <текст>`). Одно нажатие — один вызов модели (цепочка запасных моделей, по умолчанию Fable, затем Sonnet, затем Haiku), который переписывает черновик в поле по файлам `CLAUDE.md` и правилам, загруженным сессией, и списку навыков; `~/.claude/CLAUDE.md` по умолчанию не отправляется. Новые слова подсвечиваются, полоса показывает стоимость, токены и модель, и ничего не отправляется, пока вы не нажмёте Send или Enter; Undo и Redo меняют черновики местами. Проверки оставляют ваш вариант, если переписанный меняет смысл, выдумывает файл или добавляет команду или URL, которых вы не писали. Есть необязательные лимиты трат на сессию и на день. `/prompt-lift status` и `probe` объясняют, что произошло.",
+  "author": { "name": "Sairam Ugge", "github": "sairam0424", "url": "https://github.com/sairam0424" },
+  "maintainers": ["sairam0424"],
+  "category": "productivity",
+  "tags": ["prompt", "rewrite", "enhance", "claude-md", "skills", "undo"],
+  "license": "MIT",
+  "version": "0.6.1",
+  "homepage": "https://github.com/sairam0424/claude-prompt-lift",
+  "source": { "type": "marketplace", "marketplace": "sairam0424/claude-prompt-lift", "plugin": "prompt-lift" },
+  "capabilities": { "network": false, "processes": false, "filesystem": "read", "model": true, "promptRewrite": true, "blocksTools": false },
+  "preview": {
+    "surface": "terminal",
+    "scene": "idle",
+    "caption": "After Enhance: the draft in the box is rewritten from the project's CLAUDE.md, and nothing is sent until Send.",
+    "caption_ru": "После Enhance: черновик в поле переписан по CLAUDE.md проекта, и ничего не уходит до нажатия Send.",
+    "elements": [
+      { "slot": "prompt-rewrite", "before": "fix the checkout tests", "after": "Fix the failing tests in tests/checkout.test.ts. Use pnpm test, keep the existing fixtures, and run the suite before and after the change." },
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [{ "text": "✓ Enhanced", "color": "success", "bold": true }, " ", { "text": "$0.03", "bold": true }, " ", { "button": "Enhance", "hotkey": "e" }, " ", { "button": "Send", "hotkey": "s", "variant": "primary" }, " ", { "button": "Undo", "hotkey": "u" }, { "text": " fable 5.1 · 1 of 3 · 2.3s · +12 words", "dim": true }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/sairam0424/claude-prompt-lift/3012e0a6e6609c317ec423949e229fda72d03447/docs/demo.gif",
+      "alt": "prompt-lift demo: Enhance rewrites the draft, Undo and Redo swap it back, /prompt-lift status shows the chain",
+      "surface": "terminal"
+    }
+  ]
+}

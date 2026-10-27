@@ -1,0 +1,51 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "jr-done-check",
+  "title": "jr done-check",
+  "tagline": "Flags replies that say \"tested\" or \"it works\" when nothing was run in the turn to check it.",
+  "tagline_ru": "Отмечает ответы со словами «проверено» или «всё работает», если за ход ничего не запускалось.",
+  "description": "At the end of each main-loop turn the mod reads Claude's final reply for claims of a check in English or French (\"tested\", \"all tests pass\", \"it works now\", \"testé\", \"ça marche\"…), leaving out negated ones such as \"not tested\". If the turn ran nothing that could back the claim (no Bash call and no tool whose name speaks of tests, a browser, a screenshot or an audit), a toast quotes the claim and an orange warning line is drawn under the reply block that holds it. The warning is on screen only: the conversation and what Claude reads are unchanged. Never blocks anything, runs nothing, no network.",
+  "description_ru": "В конце каждого хода основного диалога мод ищет в итоговом ответе Claude заявления о проверке на английском или французском («tested», «all tests pass», «it works now», «testé», «ça marche»…), пропуская отрицания вроде «not tested». Если за ход не было ничего, что могло бы это подтвердить (ни вызова Bash, ни инструмента, чьё имя говорит о тестах, браузере, скриншоте или аудите), уведомление цитирует заявление, а под блоком ответа с ним появляется оранжевая строка-предупреждение. Предупреждение только на экране: разговор и то, что читает Claude, не меняются. Ничего не блокирует, не запускает, в сеть не ходит.",
+  "author": { "name": "jrlprost", "github": "jrlprost", "url": "https://github.com/jrlprost" },
+  "maintainers": ["jrlprost"],
+  "category": "safety",
+  "tags": ["testing", "claims", "reliability", "warning"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-done-check",
+  "source": {
+    "type": "github",
+    "repo": "jrlprost/claude-code-mods",
+    "path": "plugins/jr-done-check",
+    "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+  },
+  "surfaces": ["terminal"],
+  "requires": { "claudeCode": ">=2.1.301" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "transcript": [
+      { "role": "user", "text": "Fix the checkout total rounding." },
+      { "role": "tool", "tool": "Edit", "input": "src/checkout.ts", "status": "done" }
+    ],
+    "caption": "The reply claims a test that never ran in the turn: a warning under it and a toast.",
+    "caption_ru": "Ответ заявляет о проверке, которой за ход не было: предупреждение под ним и уведомление.",
+    "elements": [
+      {
+        "slot": "message",
+        "role": "assistant",
+        "rows": [
+          ["I updated the checkout rounding. Tested, it works now."],
+          [{ "text": "  ⚠ ", "color": "#ff8c42", "bold": true }, { "text": "claims a check, but nothing was run in this turn to verify it", "color": "#ff8c42" }]
+        ]
+      },
+      { "slot": "toast", "text": "jr done-check · the reply says \"Tested, it works now.\" but nothing was run this turn to check it" }
+    ]
+  }
+}

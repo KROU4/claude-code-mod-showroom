@@ -1,0 +1,62 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "rich-ui",
+  "title": "Rich UI",
+  "tagline": "Mermaid diagrams drawn in the transcript, markdown previews in a pane and more, each switchable.",
+  "tagline_ru": "Диаграммы Mermaid прямо в переписке, просмотр markdown-файлов в панели и не только; каждое можно выключить.",
+  "description": "A set of terminal add-ons, each with its own switch in `/rich-ui`. Mermaid: complete mermaid blocks in replies are drawn as text diagrams (flowchart, sequence, class, state, ER, XY, pie, C4, architecture) with a dim `show source` toggle, using a bundled MIT renderer. Status band: context and plan usage under the prompt, only past 60% / 75%. Markdown preview: click a link to a .md file to open it rendered in a pane; a system-prompt section asks Claude to link the markdown files it writes. Experimental: image thumbnails above the prompt (made with `sips` on macOS), a big \"welcome\" sweep, a quiet one-line spinner and a zen-saying footer (off by default). No network.",
+  "description_ru": "Набор дополнений для терминала, у каждого свой переключатель в `/rich-ui`. Mermaid: готовые блоки mermaid в ответах рисуются текстовыми диаграммами (flowchart, sequence, class, state, ER, XY, pie, C4, architecture) с приглушённым переключателем `show source`; рендерер встроен, под лицензией MIT. Полоса состояния: заполненность контекста и лимиты тарифа под полем ввода, только выше 60% / 75%. Просмотр markdown: щелчок по ссылке на .md-файл открывает его отрисованным в панели; раздел системного промпта просит Claude давать ссылки на markdown-файлы, которые он пишет. Экспериментальное: миниатюры картинок над полем ввода (на macOS через `sips`), большое приветствие «welcome», тихий однострочный индикатор работы и дзен-цитаты в нижней строке (по умолчанию выключены). Сеть не используется.",
+  "author": { "name": "Emergent AI", "github": "emergentai", "url": "https://github.com/emergentai" },
+  "maintainers": ["emergentai"],
+  "category": "interface",
+  "tags": ["mermaid", "diagrams", "markdown", "preview", "spinner", "status"],
+  "license": "MIT",
+  "version": "0.6.0",
+  "homepage": "https://github.com/emergentai/claude-code-rich-ui",
+  "source": { "type": "marketplace", "marketplace": "emergentai/claude-code-rich-ui", "plugin": "rich-ui" },
+  "surfaces": ["terminal"],
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Sketch how a login request flows through the services." }
+    ],
+    "caption": "A mermaid block in the reply drawn as a diagram, with the status band once context passes 60%.",
+    "caption_ru": "Блок mermaid в ответе нарисован диаграммой, а под полем ввода появилась полоса, когда контекст перевалил за 60%.",
+    "elements": [
+      {
+        "slot": "message",
+        "role": "assistant",
+        "rows": [
+          ["The gateway checks the session before anything reaches the API:"],
+          [{ "text": "show source", "dim": true }],
+          ["┌─────────┐     ┌─────────┐     ┌──────────┐"],
+          ["│ Browser │────►│ Gateway │────►│ Auth svc │"],
+          ["└─────────┘     └────┬────┘     └──────────┘"],
+          ["                     │ valid session"],
+          ["                     ▼"],
+          ["                ┌─────────┐     ┌──────────┐"],
+          ["                │   API   │────►│ Postgres │"],
+          ["                └─────────┘     └──────────┘"]
+        ]
+      },
+      { "slot": "status", "text": "context ██████░░ 72%  ·  5h 81% (resets in 1h 20m)" }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/emergentai/claude-code-rich-ui/2661c0e23d6382da96373ecaa909f599f45b064f/docs/assets/demo.gif",
+      "alt": "rich-ui drawing a mermaid diagram in the Claude Code transcript",
+      "surface": "terminal"
+    }
+  ]
+}

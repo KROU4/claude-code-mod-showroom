@@ -1,0 +1,45 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "foundry",
+  "title": "Foundry",
+  "tagline": "Runs a big goal as parallel crews of agents in worktrees, each checked by a judge before it merges.",
+  "tagline_ru": "Выполняет большую задачу параллельными командами агентов в worktree; каждую проверяет судья перед слиянием.",
+  "description": "`/foundry:run` turns the main session into a foreman: an architect agent plans crews and waves into `plan.json`, each crew's lead delegates to your project's agents in its own worktree, and a judge must report `VERDICT: PASS` before a crew's branch merges. Ships agents (architect, cynic, lead, judge, writer, devops) and skills (`init`, `run`, `retro`, principle packs). The mod refuses Agent calls inside a crew without an explicit model or effort and messages that cross crews, logs spawns and stalls to `events.jsonl`, toasts and nudges a stalled lead, and wakes an idle lead with a prompt. Pairs with the `worktrees` mod.",
+  "description_ru": "`/foundry:run` превращает основную сессию в бригадира: агент-архитектор раскладывает работу на команды и волны в `plan.json`, лид каждой команды раздаёт задачи агентам вашего проекта в своём worktree, а ветка команды сливается только после `VERDICT: PASS` от судьи. В комплекте агенты (architect, cynic, lead, judge, writer, devops) и навыки (`init`, `run`, `retro`, наборы принципов). Мод отклоняет вызовы Agent внутри команды без явной модели или усилия и сообщения между командами в обход лидов, пишет запуски и простои в `events.jsonl`, уведомляет о зависшем лиде и будит простаивающего лида промптом. Хорошо сочетается с модом `worktrees`.",
+  "author": { "name": "Abhiram Dwivedi", "github": "AbhiramDwivedi", "url": "https://github.com/AbhiramDwivedi" },
+  "maintainers": ["AbhiramDwivedi"],
+  "category": "productivity",
+  "tags": ["agents", "crews", "orchestration", "worktrees", "judge", "planning"],
+  "license": "MIT",
+  "version": "0.4.1",
+  "homepage": "https://github.com/AbhiramDwivedi/claude-ops/tree/HEAD/plugins/foundry",
+  "source": { "type": "marketplace", "marketplace": "AbhiramDwivedi/claude-ops", "plugin": "foundry", "path": "plugins/foundry" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": true
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "/foundry:run add CSV export to the reports page and move staffing to the new API" },
+      { "role": "tool", "tool": "Agent", "input": "foundry:architect (plan mode)", "result": "plan.json: 2 crews, 1 wave, design extends", "status": "done" },
+      { "role": "tool", "tool": "Agent", "input": "export-lead (foundry:lead)", "status": "running" },
+      { "role": "tool", "tool": "Agent", "input": "staffing-lead (foundry:lead)", "status": "running" }
+    ],
+    "caption": "A crew member started without a model is refused, and a lead with no activity raises a stall toast.",
+    "caption_ru": "Участник команды без указанной модели получает отказ, а о лиде без активности сообщает уведомление.",
+    "elements": [
+      {
+        "slot": "tool-deny",
+        "tool": "Agent",
+        "input": "export-builder-2: write the CSV serializer",
+        "message": "[foundry] Refused: inside a crew, every Agent call sets `model`: \"opus\" for judgment-heavy work, \"sonnet\" for mechanical or well-specified work. Call Agent again with a model."
+      },
+      { "slot": "toast", "text": "[foundry] stalled: staffing-lead (crew staffing), no activity for 12m" }
+    ]
+  }
+}

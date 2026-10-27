@@ -1,0 +1,57 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "bookmarks",
+  "title": "Bookmarks",
+  "tagline": "Vim-style marks, a reading position and a numbered prompt list to jump around a long conversation.",
+  "tagline_ru": "Метки в стиле Vim, позиция чтения и нумерованный список запросов для навигации по длинному диалогу.",
+  "description": "A band above the prompt (`bm:` field, then mark, jump, prompts, read) answers a leader key bound once to `Ctrl+]`. Mark any line of the conversation with a letter and jump back to it from anywhere, swap to your reading position and back, and browse every prompt you typed in a numbered pane with a filter. A mark can be promoted to a bookmark: a Markdown file per message and a JSON register per conversation under `~/claude/bookmarks/`. It also gives Claude a `bookmark` tool, so replies can cite earlier places as clickable ⚓ links. To search long transcripts it runs `grep` through `sh`, or bundled PowerShell scripts on Windows. Nothing is sent anywhere. Pre-alpha; needs the fullscreen renderer.",
+  "description_ru": "Полоса над полем ввода (поле `bm:` и кнопки mark, jump, prompts, read) откликается на ведущую клавишу, которую один раз привязывают к `Ctrl+]`. Пометьте любую строку диалога буквой и возвращайтесь к ней откуда угодно, переключайтесь на позицию чтения и обратно, листайте все свои запросы в пронумерованной панели с фильтром. Метку можно превратить в закладку: по Markdown-файлу на сообщение и JSON-реестр на диалог в `~/claude/bookmarks/`. Мод также даёт Claude инструмент `bookmark`, чтобы ответы ссылались на прежние места кликабельными ссылками ⚓. Для поиска по длинному транскрипту он запускает `grep` через `sh`, а в Windows встроенные скрипты PowerShell. Ничего никуда не отправляется. Ранняя альфа; нужен полноэкранный режим отрисовки.",
+  "author": { "name": "DazzleML", "github": "DazzleML", "url": "https://github.com/DazzleML" },
+  "maintainers": ["DazzleML"],
+  "category": "productivity",
+  "tags": ["bookmarks", "navigation", "vim", "marks", "prompts", "history"],
+  "license": "GPL-3.0",
+  "version": "0.6.28",
+  "homepage": "https://github.com/DazzleML/claude-bookmarks",
+  "source": { "type": "marketplace", "marketplace": "DazzleML/claude-bookmarks", "plugin": "bookmarks", "path": "plugin" },
+  "requires": { "claudeCode": ">=2.1.288" },
+  "surfaces": ["terminal"],
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "review",
+    "surface": "terminal",
+    "caption": "The band waiting for a prompt number, the prompts pane on the right and a bookmark link Claude wrote in a reply.",
+    "caption_ru": "Полоса ждёт номер запроса, справа панель запросов, а в ответе Claude ссылка на закладку.",
+    "elements": [
+      { "slot": "above-prompt", "rows": [[{ "text": "bm:", "color": "warning" }, " ", { "text": "p 12_", "inverse": true }, "  ", { "button": "mark", "hotkey": "m" }, " ", { "button": "jump", "hotkey": "j" }, " ", { "button": "prompts", "hotkey": "p" }, " ", { "button": "read", "hotkey": "r" }, "  ", { "text": "? more", "dim": true }]] },
+      {
+        "slot": "pane",
+        "title": "Prompts",
+        "width": "narrow",
+        "rows": [
+          [{ "text": "10", "dim": true }, " add the cart total tests"],
+          [{ "text": "11", "dim": true }, " why does the cache miss…"],
+          [{ "text": "12", "color": "warning", "bold": true }, { "text": " move tax into its own module", "color": "warning" }],
+          [{ "text": "13", "dim": true }, " ok, now the checkout page", { "text": " …", "dim": true }],
+          [{ "text": "filter: /cache", "dim": true }]
+        ]
+      },
+      { "slot": "message", "role": "assistant", "markdown": "As we settled earlier (**⚓ c: tax rounding**), rounding happens once, on the order total." }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/DazzleML/claude-bookmarks/bc26340988a71fbfaf7a2da9bed05b5bada183a5/plugin/images/prompts-pane-marked-line-and-bookmark-link.png",
+      "alt": "The prompts pane on the right, a marked line with its c tag, a bookmark link in a reply and the band waiting for a number",
+      "surface": "terminal"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "snake",
+  "title": "Snake",
+  "tagline": "Snake in a pane: steer with w a s d, eat the food, pause with p, pick the speed, best score kept.",
+  "tagline_ru": "«Змейка» в боковой панели: управление w a s d, ешьте еду, пауза на p, выбор скорости и рекорд.",
+  "description": "`/snake` opens a pane with a 20×10 board. Press `w`, `a`, `s` or `d` to start and steer; the snake keeps moving, grows when it eats the `*` and the game ends when it hits a wall or itself. `p` pauses, and closing the pane pauses too. `n` starts a new game, `h` shows help. The header shows the score, your best, the length and the speed. `/snake speed 100` sets milliseconds between moves (60-500, 150 by default), `/snake new`, `/snake stats`. Zero tokens: no model calls; the best score is kept in the plugin store.",
+  "description_ru": "`/snake` открывает панель с полем 20×10. Нажмите `w`, `a`, `s` или `d`, чтобы начать и управлять; змейка движется сама, растёт, когда съедает `*`, а игра заканчивается, если она врезается в стену или в себя. `p` ставит паузу, закрытие панели тоже. `n` начинает новую игру, `h` показывает справку. В заголовке счёт, рекорд, длина и скорость. `/snake speed 100` задаёт интервал между шагами в миллисекундах (60–500, по умолчанию 150), есть `/snake new` и `/snake stats`. Токены не тратятся: модель не вызывается; рекорд хранится в хранилище плагина.",
+  "author": { "name": "Mohammed Mubarak", "github": "MDmubarak786", "url": "https://github.com/MDmubarak786" },
+  "maintainers": ["MDmubarak786"],
+  "category": "fun",
+  "tags": ["game", "snake", "pane", "zero-tokens"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/MDmubarak786/claude-mods/tree/HEAD/mods/snake",
+  "source": { "type": "marketplace", "marketplace": "MDmubarak786/claude-mods", "plugin": "snake", "path": "mods/snake" },
+  "surfaces": ["terminal", "desktop"],
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "Score 4, the snake heading right toward the food.",
+    "caption_ru": "Счёт 4, змейка ползёт вправо к еде.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "Snake",
+        "width": "wide",
+        "rows": [
+          [{ "text": "SNAKE", "bold": true }, "  score 4  ", { "text": "best 12 · length 7 · 150 ms", "dim": true }],
+          [{ "text": "Eat the * and don't hit the walls or yourself.", "color": "suggestion" }],
+          ["┌────────────────────────────────────────┐"],
+          ["│", { "text": " . . . . . . . . . . . . . . . . . . . .", "dim": true }, "│"],
+          ["│", { "text": " . . . . . . . . . . . . ", "dim": true }, { "text": "*", "color": "error", "bold": true }, { "text": " . . . . . . .", "dim": true }, "│"],
+          ["│", { "text": " . . . . . . . . . . . . . . . . . . . .", "dim": true }, "│"],
+          ["│", { "text": " . . . . .", "dim": true }, " ", { "text": "            ", "bg": "#3f8f4f" }, { "text": ">", "bg": "#3f8f4f", "bold": true }, { "text": " . . . . . . . .", "dim": true }, "│"],
+          ["│", { "text": " . . . . . . . . . . . . . . . . . . . .", "dim": true }, "│"],
+          ["│", { "text": " . . . . . . . . . . . . . . . . . . . .", "dim": true }, "│"],
+          ["│", { "text": " . . . . . . . . . . . . . . . . . . . .", "dim": true }, "│"],
+          ["└────────────────────────────────────────┘"],
+          [{ "button": "Up", "hotkey": "w" }, " ", { "button": "Left", "hotkey": "a" }, " ", { "button": "Down", "hotkey": "s" }, " ", { "button": "Right", "hotkey": "d" }, " ", { "button": "Pause", "hotkey": "p" }],
+          [{ "button": "New game", "hotkey": "n" }, " ", { "text": "Esc closes and pauses", "dim": true }]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/MDmubarak786/claude-mods/808996691ca39af660249d926053a836e63349cc/mods/snake/screenshots/snake.gif",
+      "alt": "Snake in a Claude Code pane: the snake steered with w, a, s and d eats food and grows",
+      "surface": "terminal"
+    }
+  ]
+}

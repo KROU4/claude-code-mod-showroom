@@ -1,0 +1,57 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "buddy-chat",
+  "title": "Buddy Chat",
+  "tagline": "End-to-end encrypted chat with other Claude Code users in a pane, relayed through ntfy.sh.",
+  "tagline_ru": "Чат со сквозным шифрованием с другими пользователями Claude Code в панели, через ретранслятор ntfy.sh.",
+  "description": "A `/buddy` pane for direct messages and groups of up to 8, friend requests, files up to 3 MB, read receipts, typing and linked devices. Messages are sealed with nacl.box (X25519), plus an ML-KEM-768 hybrid key after a friend handshake, and posted to the public ntfy.sh relay; incoming ones arrive over a `curl` stream. Files land in `~/Downloads/buddy-chat/`, older messages in `~/.claude/buddy-chat/history/` (unencrypted). Claude gets a `send_to_buddy` tool that asks you before each send, and sees an incoming message only when you press ↗. Each install also pings a public counter (abacus.jasoncameron.dev) once and daily; Settings → Usage count turns it off. English and Turkish.",
+  "description_ru": "Панель `/buddy` для личных сообщений и групп до 8 человек, запросов в друзья, файлов до 3 МБ, отметок о прочтении, индикатора набора и связанных устройств. Сообщения шифруются nacl.box (X25519), а после рукопожатия с другом — ещё и гибридным ключом ML-KEM-768, и отправляются через публичный ретранслятор ntfy.sh; входящие приходят по потоку `curl`. Файлы сохраняются в `~/Downloads/buddy-chat/`, старые сообщения — в `~/.claude/buddy-chat/history/` (без шифрования). Claude получает инструмент `send_to_buddy`, который спрашивает вас перед каждой отправкой, а входящее сообщение видит, только если вы нажмёте ↗. Каждая установка также один раз и затем ежедневно отмечается в публичном счётчике (abacus.jasoncameron.dev); отключается в Settings → Usage count. Английский и турецкий.",
+  "author": { "name": "MrMirhan", "github": "MrMirhan", "url": "https://github.com/MrMirhan" },
+  "maintainers": ["MrMirhan"],
+  "category": "integrations",
+  "tags": ["chat", "messaging", "encryption", "post-quantum", "ntfy", "pane"],
+  "license": "MIT",
+  "version": "0.21.1",
+  "homepage": "https://github.com/MrMirhan/claude-buddy-chat",
+  "source": { "type": "marketplace", "marketplace": "MrMirhan/claude-buddy-chat", "plugin": "buddy-chat" },
+  "surfaces": ["terminal", "desktop", "vscode"],
+  "requires": { "claudeCode": ">=2.1.299" },
+  "capabilities": {
+    "network": true,
+    "processes": true,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "idle",
+    "caption": "A direct chat in the /buddy pane: incoming messages on the left, yours with their read state.",
+    "caption_ru": "Личный чат в панели /buddy: входящие слева, ваши — с отметкой о прочтении.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "Buddy chat",
+        "width": "wide",
+        "rows": [
+          [{ "text": " 1 Alex ", "inverse": true }, "  2 Backend team (3)  3 Sam"],
+          [" "],
+          [{ "text": "▍", "color": "suggestion" }, { "text": "Alex", "bold": true }, { "text": " 14:02", "dim": true }],
+          [{ "text": "▍", "color": "suggestion" }, "Did the migration finish on staging?"],
+          [" "],
+          ["                    Yes, all green. Pushing now ", { "text": "✓✓", "color": "suggestion" }],
+          [" "],
+          [{ "text": "▍", "color": "suggestion" }, "Nice, I'll review the PR after lunch  ", { "text": "↗", "color": "claude" }],
+          [" "],
+          [{ "text": "i type · k/j mark · f send to Claude · a file · m mute", "dim": true }]
+        ]
+      },
+      {
+        "slot": "model-tool",
+        "name": "send_to_buddy",
+        "input": "to: \"Alex\", text: \"Running 10 minutes late\"",
+        "result": [["Sent to Alex after you pressed Send."]]
+      }
+    ]
+  }
+}

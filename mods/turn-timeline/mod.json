@@ -1,0 +1,52 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "turn-timeline",
+  "title": "Turn Timeline",
+  "tagline": "A /timeline pane: the current turn as lanes of model requests and tool calls, and its slowest steps.",
+  "tagline_ru": "Панель /timeline: текущий ход дорожками запросов к модели и вызовов инструментов, с самыми медленными шагами.",
+  "description": "`/timeline` opens a Timeline pane for the current turn. A glance row gives how long it has run and the share spent in model requests, tools and idle. The timeline has one lane for the main loop and one per subagent: green blocks are tool calls, red ones failed, shaded blocks are model requests, dots are idle time; background subagents keep drawing after the main loop ends. Below it, Where time went splits the main loop's time between the model, each tool and idle, and Slowest lists the three longest steps with their target or request number. Everything is measured in memory from the session's own events.",
+  "description_ru": "`/timeline` открывает панель Timeline для текущего хода. Верхняя строка показывает, сколько он идёт и какая доля ушла на запросы к модели, инструменты и простой. На временной шкале — дорожка основного цикла и по дорожке на каждого субагента: зелёные блоки — вызовы инструментов, красные — упавшие, штрихованные — запросы к модели, точки — простой; фоновые субагенты продолжают рисоваться и после конца основного цикла. Ниже Where time went делит время основного цикла между моделью, каждым инструментом и простоем, а Slowest показывает три самых долгих шага с целью или номером запроса. Всё считается в памяти по событиям самой сессии.",
+  "author": { "name": "Mehmet Aras", "github": "arasovic", "url": "https://github.com/arasovic" },
+  "maintainers": ["arasovic"],
+  "category": "insights",
+  "tags": ["timeline", "turns", "subagents", "pane", "latency"],
+  "license": "MIT",
+  "version": "0.1.8",
+  "homepage": "https://github.com/arasovic/claude-code-mods/tree/HEAD/turn-timeline",
+  "source": { "type": "github", "repo": "arasovic/claude-code-mods", "path": "turn-timeline", "sha": "3c3f25ee3a12b982fd63ee858297baab9385dd33" },
+  "capabilities": { "network": false, "processes": false, "filesystem": "none", "model": false, "promptRewrite": false, "blocksTools": false },
+  "preview": {
+    "surface": "terminal",
+    "scene": "debugging",
+    "caption": "One lane per loop: tool calls in green (failed in red), model requests shaded, idle as dots, then the slowest steps.",
+    "caption_ru": "По дорожке на цикл: инструменты зелёным (упавшие красным), запросы к модели штриховкой, простой точками, затем самые медленные шаги.",
+    "elements": [
+      {
+        "slot": "pane",
+        "title": "Timeline",
+        "width": "wide",
+        "rows": [
+          [{ "text": "1m 42s", "bold": true }, { "text": "   model 58%  tools 37%  idle 5%", "dim": true }],
+          [""],
+          [{ "text": "main       ", "dim": true }, { "text": "▒▒▒", "color": "suggestion" }, { "text": "██", "color": "success" }, { "text": "▒▒", "color": "suggestion" }, { "text": "█", "color": "error" }, { "text": "▒▒", "color": "suggestion" }, { "text": "████", "color": "success" }, { "text": "·", "dim": true }, { "text": "▒▒▒", "color": "suggestion" }],
+          [{ "text": "Explore 1  ", "dim": true }, { "text": "     ", "dim": true }, { "text": "▒", "color": "suggestion" }, { "text": "███", "color": "success" }, { "text": "▒", "color": "suggestion" }, { "text": "██", "color": "success" }, { "text": "▒", "color": "suggestion" }],
+          [""],
+          [{ "text": "Where time went", "bold": true }],
+          [{ "text": "model  ", "dim": true }, { "bar": 0.58, "width": 16, "color": "suggestion" }, "  59s"],
+          [{ "text": "Bash   ", "dim": true }, { "bar": 0.3, "width": 16, "color": "success" }, "  31s"],
+          [""],
+          [{ "text": "Slowest", "bold": true }],
+          [{ "text": "Bash   ", "bold": true }, { "text": "npm test", "dim": true }, "            24s"],
+          [{ "text": "model  ", "bold": true }, { "text": "request 4", "dim": true }, "           17s"]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/arasovic/claude-code-mods/3c3f25ee3a12b982fd63ee858297baab9385dd33/docs/turn-timeline.png",
+      "alt": "The turn-timeline pane with a timeline, time breakdown and slowest steps"
+    }
+  ]
+}

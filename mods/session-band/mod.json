@@ -1,0 +1,68 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "session-band",
+  "title": "Session Band",
+  "tagline": "Turn, cache countdown, speed, context and 5h/weekly limits above the prompt, plus an activity pane.",
+  "tagline_ru": "Ход, обратный отсчёт кеша, скорость, контекст и лимиты 5 ч/неделя над полем ввода, плюс панель активности.",
+  "description": "A band above the prompt shows the turn number, time left on the prompt cache, output speed in tok/s, a context bar and the 5-hour and weekly limits. `☰` beside Context (or `/activity`) opens an activity pane: each prompt with the requests it sent (tokens, timing, model, effort, cost), their tool calls with whole input and output, subagents with their prompt and report, background shells, and session totals with cache hit and cache tax. Ten and five minutes before the cache expires it sends a PushNotification. Tool inputs and outputs are written to a per-session temp folder, removed (via `rm -rf` or `rmdir`) when the session ends.",
+  "description_ru": "Полоса над полем ввода показывает номер хода, сколько осталось жить кешу промпта, скорость вывода в tok/s, шкалу контекста и лимиты на 5 часов и неделю. Кнопка `☰` рядом с Context (или `/activity`) открывает панель активности: каждый запрос с отправленными к модели обращениями (токены, ожидание и запись, модель и усилия, оценка стоимости), их вызовы инструментов с полным вводом и выводом, субагенты с их заданием и отчётом, фоновые оболочки и итоги сессии с долей попаданий в кеш и ценой его прогрева. За десять и за пять минут до истечения кеша мод отправляет PushNotification. Ввод и вывод инструментов пишутся во временную папку сессии, которая удаляется (через `rm -rf` или `rmdir`) в конце сессии. Необязательный `statusline.js` (полная установка) даёт точный срок кеша и общие лимиты.",
+  "author": { "name": "KhoaaTran", "github": "KhoaaTran", "url": "https://github.com/KhoaaTran" },
+  "maintainers": ["KhoaaTran"],
+  "category": "insights",
+  "tags": ["prompt-cache", "context", "rate-limits", "subagents", "activity", "pane"],
+  "license": "MIT",
+  "version": "1.1.1",
+  "homepage": "https://github.com/KhoaaTran/session-band",
+  "source": { "type": "marketplace", "marketplace": "KhoaaTran/session-band", "plugin": "session-band" },
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "The band mid-session; ☰ opens the activity pane of prompts, requests and tool calls.",
+    "caption_ru": "Полоса в середине сессии; ☰ открывает панель активности с запросами, обращениями к модели и вызовами инструментов.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [{ "text": "Turn: ", "color": "#f5c2e7" }, { "text": "14", "bold": true }, "  ·  ", { "text": "Cache: ", "color": "#94e2d5" }, { "text": "52:10", "bold": true }, "  ·  ", { "text": "Speed: ", "color": "#b4befe" }, { "text": "68 tok/s", "bold": true }, "   ", { "text": "5h limit: ", "color": "#cba6f7" }, { "bar": 0.34, "width": 10, "color": "#cba6f7" }, { "text": " 34%", "bold": true }, { "text": " resets 16:40", "color": "#7f849c" }],
+          [{ "text": "Context: ", "color": "#74c7ec" }, { "bar": 0.41, "width": 12, "color": "#74c7ec" }, { "text": " 41%", "bold": true }, " (82k/200k)  ", { "text": "☰", "bold": true, "color": "#74c7ec" }, "   ", { "text": "Weekly limit: ", "color": "#eba0ac" }, { "bar": 0.22, "width": 10, "color": "#eba0ac" }, { "text": " 22%", "bold": true }]
+        ]
+      },
+      {
+        "slot": "pane",
+        "title": "Activity",
+        "width": "wide",
+        "rows": [
+          [{ "text": "Session", "color": "#f5c2e7" }, " 31 requests · 87 tool calls · 1 failed"],
+          [{ "text": "Time", "color": "#cba6f7" }, " 42:18 · ", { "text": "Cost", "color": "#eba0ac" }, " ≈$3.12"],
+          [{ "text": "Token", "color": "#94e2d5" }, " 8.3M · Out 42k · Cache hit ", { "text": "97%", "color": "#a6e3a1" }],
+          [{ "text": "────────────────────────────────────────────", "color": "#45475a" }],
+          [{ "text": "14:21", "bold": true, "color": "#f5c2e7" }, " Add discount codes to the cart   ≈$0.41 · 01:39"],
+          ["  ", { "text": "#1", "color": "#b4befe" }, " opus · high   68k · 14s"],
+          ["    Read  src/cart/total.ts            0s"],
+          ["    Edit  src/cart/total.ts            0s"],
+          ["  ", { "text": "#2", "color": "#b4befe" }, " opus · high   71k · 41s"],
+          ["    Bash  npm test                    ", { "text": "36s", "color": "#fab387" }],
+          ["    Agent  Explore: find tax rules     22s"]
+        ]
+      },
+      { "slot": "notification", "title": "Claude Code", "text": "shop: the prompt cache expires in 5 min" }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/KhoaaTran/session-band/22d108e463a5580de6e36ce2f4cf600bd2904deb/docs/preview.png",
+      "alt": "Illustration of session-band: the band and status line on the left, the activity pane docked on the right",
+      "surface": "terminal"
+    }
+  ]
+}

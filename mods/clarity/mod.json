@@ -1,0 +1,72 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "clarity",
+  "title": "Clarity",
+  "tagline": "Boxed prompts and replies, colour-coded tool badges, a live status band and a session panel.",
+  "tagline_ru": "Запросы и ответы в рамках, цветные значки инструментов, живая полоса состояния и панель сессии.",
+  "description": "Restyles the terminal transcript: your prompt in a box labelled `you` with cards for attached files and images, Claude's reply in a `claude` frame wrapped at 80 columns, code in frames with a copy button, each tool as one tinted badge (`+12 −3` on edits) with back-to-back calls folded into a clickable strip, and failures in a red box. A status band replaces the spinner with what Claude is doing, time, tokens, the plan step and context, with Pip, a pixel sprout that reacts. `/clarity` opens settings: palettes (colour-blind too), ASCII symbols, line width, alerts. Opt-in only: it can set your Cursor or VS Code terminal font in that editor's `settings.json`. No network.",
+  "description_ru": "Перерисовывает переписку в терминале: ваш запрос в рамке с подписью `you` и карточками приложенных файлов и картинок, ответ Claude в рамке `claude` с переносом строк на 80 колонках, код в рамках с кнопкой копирования, каждый инструмент одним цветным значком (`+12 −3` у правок), вызовы подряд свёрнуты в кликабельную полосу, ошибки в красной рамке. Полоса состояния вместо спиннера показывает, чем занят Claude, время, токены, шаг плана и контекст, а по ней ходит Pip, пиксельный росток, который реагирует на происходящее. `/clarity` открывает настройки: палитры (в том числе для дальтоников), ASCII-символы, ширину строк, оповещения. Только по вашему выбору мод может прописать шрифт терминала в `settings.json` Cursor или VS Code. Сеть не используется.",
+  "author": { "name": "CircularBlox", "github": "CircularBlox", "url": "https://github.com/CircularBlox" },
+  "maintainers": ["CircularBlox"],
+  "category": "interface",
+  "tags": ["readability", "theme", "tool-rows", "status-band", "companion", "accessibility"],
+  "license": "MIT",
+  "version": "1.0.0",
+  "homepage": "https://github.com/CircularBlox/Clarity",
+  "source": { "type": "marketplace", "marketplace": "CircularBlox/Clarity", "plugin": "clarity" },
+  "surfaces": ["terminal"],
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Run the tests and fix the failing one." }
+    ],
+    "caption": "Tool badges with a folded strip, a failure in a red box, and the status band in place of the spinner.",
+    "caption_ru": "Значки инструментов со свёрнутой полосой, ошибка в красной рамке и полоса состояния вместо спиннера.",
+    "elements": [
+      {
+        "slot": "tool-row",
+        "tool": "Bash",
+        "input": "npm test",
+        "row": [{ "text": " Bash ×2 ", "color": "background", "bg": "#d08c4a" }, " ", { "text": " Edit ", "color": "background", "bg": "#5fa35f" }, " ", { "text": "3 tools", "dim": true }, "  ", { "text": "+4 −1", "color": "success" }],
+        "result": [
+          [{ "text": "╭─ failed ─────────────────────────────────╮", "color": "error" }],
+          [{ "text": "│", "color": "error" }, " ✗ total() counts quantities  expected 30 ", { "text": "│", "color": "error" }],
+          [{ "text": "╰──────────────────────────────────────────╯", "color": "error" }]
+        ]
+      },
+      {
+        "slot": "spinner",
+        "verb": "Running npm test · 0:42 · 1.2k tokens · step 2/3 · ctx 38%",
+        "glyphs": ["❀", "✿"],
+        "color": "claude"
+      },
+      {
+        "slot": "turn-duration",
+        "text": "──────────────────────────── 1m 05s ────────────────────────────"
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/CircularBlox/Clarity/45805e834240e4150bee3a69c2a1096bd8d685c5/docs/screenshots/reply-and-settings.png",
+      "alt": "Clarity in Cursor's terminal: a boxed reply, a folded run of Bash calls, the status band and the settings menu",
+      "surface": "terminal"
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/CircularBlox/Clarity/45805e834240e4150bee3a69c2a1096bd8d685c5/docs/previews/companion.gif",
+      "alt": "Pip, a pixel sprout, peeking over the status band through a turn: thinking, walking, waiting with a question mark, asleep",
+      "surface": "terminal"
+    }
+  ]
+}

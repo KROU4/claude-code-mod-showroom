@@ -1,0 +1,37 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "copy-last",
+  "title": "Copy Last",
+  "tagline": "Copy Claude's last reply or its last code block to the clipboard as clean Markdown with /copy-last.",
+  "tagline_ru": "Копирует последний ответ Claude или его последний блок кода в буфер обмена чистым Markdown по /copy-last.",
+  "description": "Copying from the terminal picks up gutter indentation, wrapped lines and trailing spaces. `/copy-last` reads the last reply from the session's messages and puts its Markdown source on the clipboard; `/copy-last code` copies the last fenced code block, and `/copy-last code 2` the one before it, looking back through the last five replies. The answer says what was copied, for example `Copied code block: 412 characters, 18 lines`. Markdown syntax such as `**bold**` is copied as written.",
+  "description_ru": "При копировании из терминала захватываются отступы, переносы строк и пробелы в конце. `/copy-last` берёт последний ответ из сообщений сессии и кладёт в буфер обмена его исходный Markdown; `/copy-last code` копирует последний блок кода, а `/copy-last code 2` предпоследний, просматривая до пяти последних ответов. В ответе команда сообщает, что скопировано, например `Copied code block: 412 characters, 18 lines`. Разметка Markdown вроде `**bold**` копируется как есть.",
+  "author": { "name": "Mohammed Mubarak", "github": "MDmubarak786", "url": "https://github.com/MDmubarak786" },
+  "maintainers": ["MDmubarak786"],
+  "category": "productivity",
+  "tags": ["clipboard", "copy", "markdown", "code-blocks"],
+  "license": "MIT",
+  "version": "0.2.0",
+  "homepage": "https://github.com/MDmubarak786/claude-mods/tree/HEAD/mods/copy-last",
+  "source": { "type": "marketplace", "marketplace": "MDmubarak786/claude-mods", "plugin": "copy-last", "path": "mods/copy-last" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Write a bash one-liner that lists the 10 largest files in this repo." },
+      { "role": "assistant", "text": "Here it is:\n\n```bash\ngit ls-files -z | xargs -0 du -h | sort -rh | head -10\n```\n\nIt only counts tracked files." }
+    ],
+    "caption": "/copy-last code puts the one-liner on the clipboard without the terminal's indentation.",
+    "caption_ru": "/copy-last code кладёт эту команду в буфер обмена без отступов терминала.",
+    "elements": [
+      { "slot": "command", "command": "/copy-last", "args": "code", "output": [["Copied code block: 54 characters, 1 line"]] }
+    ]
+  }
+}

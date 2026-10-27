@@ -1,0 +1,51 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "usage-limits",
+  "title": "Usage Limits",
+  "tagline": "5-hour and weekly limits with burn rate and a run-out forecast, plus context, cost and cache drops.",
+  "tagline_ru": "Лимиты на 5 часов и неделю со скоростью расхода и прогнозом, плюс контекст, стоимость и сбросы кэша.",
+  "description": "A dim line above the prompt: each limit window's percent, how fast it is climbing (`+38%/h`), and `out in 1h33m` when you would run out before the reset at that pace, marked ⚠ in the warning color. Then context fill, session cost and `cache drops`: requests of 100K+ context that had to rebuild their prompt cache after a pause of over 4 minutes. A toast fires once when a window passes `warnAtPercent` (90). `rateWindowMinutes` (30) sets how far back the burn rate looks. In VS Code and on a phone it falls back to the status entry. Reads only figures Claude Code already has.",
+  "description_ru": "Тусклая строка над полем ввода: процент каждого окна лимита, скорость роста (`+38%/h`) и `out in 1h33m`, если при таком темпе лимит кончится раньше сброса, — такое окно помечено ⚠ и цветом предупреждения. Дальше заполнение контекста, стоимость сессии и `cache drops`: запросы с контекстом от 100K, которым после паузы больше 4 минут пришлось заново строить кэш промпта. Когда окно переходит `warnAtPercent` (90), один раз всплывает уведомление. `rateWindowMinutes` (30) задаёт, за какой период считать скорость. В VS Code и на телефоне строка переезжает в статус. Читает только цифры, которые уже есть у Claude Code.",
+  "author": { "name": "Abhiram Dwivedi", "github": "AbhiramDwivedi", "url": "https://github.com/AbhiramDwivedi" },
+  "maintainers": ["AbhiramDwivedi"],
+  "category": "insights",
+  "tags": ["usage", "limits", "burn-rate", "forecast", "cache", "cost"],
+  "license": "MIT",
+  "version": "0.3.0",
+  "homepage": "https://github.com/AbhiramDwivedi/claude-ops/tree/HEAD/plugins/usage-limits",
+  "source": { "type": "marketplace", "marketplace": "AbhiramDwivedi/claude-ops", "plugin": "usage-limits", "path": "plugins/usage-limits" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "scene": "coding",
+    "caption": "The 5-hour window would run out before it resets at this pace, so it carries ⚠ and the warning color.",
+    "caption_ru": "При таком темпе пятичасовое окно кончится раньше сброса, поэтому оно помечено ⚠ и цветом предупреждения.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [
+            { "text": "⚠ 5h 41% +38%/h out in 1h33m", "color": "warning" },
+            { "text": " · 7d 18% +6%/d (resets 4d2h) · ctx 22% · $14.10 · cache drops 3 (1.9M)", "dim": true }
+          ]
+        ]
+      },
+      { "slot": "toast", "text": "5h window passed 90%" }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/AbhiramDwivedi/claude-ops/573f8ad3721b23172d743da3631180bb8fe324e9/assets/approaching-limit.png",
+      "alt": "usage-limits warning that the 5-hour window runs out in 57 minutes at the current pace, under the session-models line",
+      "surface": "terminal"
+    }
+  ]
+}

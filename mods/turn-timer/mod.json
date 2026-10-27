@@ -1,0 +1,39 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "turn-timer",
+  "title": "Turn Timer",
+  "tagline": "A ticking timer above the prompt while Claude works, then how long the reply took.",
+  "tagline_ru": "Тикающий таймер над полем ввода, пока Claude работает, а затем время, за которое пришёл ответ.",
+  "description": "While Claude works on a reply, a dim line above the prompt counts up every second: `⏱ Working · 1m 12s`. When the reply finishes it reads `✓ Done in 9s`, or `✓ Stopped after 42s` if you interrupted it, until the next turn starts. Only the main conversation is timed, so subagents don't reset it. No commands or settings. Works in the terminal and the desktop app.",
+  "description_ru": "Пока Claude готовит ответ, приглушённая строка над полем ввода отсчитывает время каждую секунду: `⏱ Working · 1m 12s`. Когда ответ готов, там написано `✓ Done in 9s`, а если вы прервали работу, то `✓ Stopped after 42s`; строка держится до начала следующего хода. Засекается только основной диалог, так что субагенты таймер не сбрасывают. Ни команд, ни настроек. Работает в терминале и в десктопном приложении.",
+  "author": { "name": "thecodefeels", "github": "thecodefeels", "url": "https://github.com/thecodefeels" },
+  "maintainers": ["thecodefeels"],
+  "category": "insights",
+  "tags": ["timer", "duration", "turns"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/thecodefeels/claude-code-turn-timer",
+  "source": { "type": "marketplace", "marketplace": "thecodefeels/claude-code-turn-timer", "plugin": "turn-timer" },
+  "surfaces": ["terminal", "desktop"],
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Add percentage discount codes to the cart total and make the tests pass." },
+      { "role": "tool", "tool": "Edit", "input": "src/cart/total.ts", "status": "done" },
+      { "role": "tool", "tool": "Bash", "input": "npm test", "status": "running" }
+    ],
+    "caption": "Mid-turn: the timer ticks above the prompt; when the reply lands it switches to \"✓ Done in 1m 40s\".",
+    "caption_ru": "В середине хода таймер тикает над полем ввода; когда ответ готов, строка меняется на «✓ Done in 1m 40s».",
+    "elements": [
+      { "slot": "above-prompt", "rows": [[{ "text": "⏱ Working · 1m 12s", "dim": true }]] }
+    ]
+  }
+}

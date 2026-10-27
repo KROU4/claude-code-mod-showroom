@@ -1,0 +1,35 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "pin-board",
+  "title": "Pin Board",
+  "tagline": "Notes you /pin that Claude keeps following after /compact and /clear, shown above the prompt.",
+  "tagline_ru": "Постоянные заметки через /pin, которым Claude следует и после /compact и /clear, видны над полем ввода.",
+  "description": "`/pin <note>` pins a standing instruction, `/pin` lists them, `/unpin <n|all>` removes them; `--keep` stores a pin for the folder (plugin store) so it returns on the next start, with a toast saying how many came back. Pins go into the system prompt, rebuilt at start, after `/compact` and `/clear`; where Claude Code's Security default plugin keeps them out, they ride the first message and the first after a compaction or `/clear`. Pinning and unpinning also leave Claude a note at once. All pins share one row above the prompt (`📌 1 use pnpm · 2 no force push`), or with `display: counter` a `📌 2 pins` label under it.",
+  "description_ru": "`/pin <заметка>` закрепляет постоянную инструкцию, `/pin` показывает список, `/unpin <n|all>` убирает; с `--keep` заметка сохраняется для папки (в хранилище плагина) и возвращается при следующем запуске, а уведомление говорит, сколько их вернулось. Заметки попадают в системный промпт, который пересобирается при старте, после `/compact` и `/clear`; если встроенный плагин Security default их туда не пускает, они идут с первым сообщением и с первым после сжатия или `/clear`. Закрепление и снятие сразу оставляют Claude заметку. Все заметки занимают одну строку над полем ввода (`📌 1 use pnpm · 2 no force push`), а с `display: counter` — метку `📌 2 pins` под ним.",
+  "author": { "name": "Mehmet Aras", "github": "arasovic", "url": "https://github.com/arasovic" },
+  "maintainers": ["arasovic"],
+  "category": "productivity",
+  "tags": ["pins", "notes", "instructions", "system-prompt", "compact"],
+  "license": "MIT",
+  "version": "0.1.3",
+  "homepage": "https://github.com/arasovic/claude-code-mods/tree/HEAD/pin-board",
+  "source": { "type": "github", "repo": "arasovic/claude-code-mods", "path": "pin-board", "sha": "3c3f25ee3a12b982fd63ee858297baab9385dd33" },
+  "capabilities": { "network": false, "processes": false, "filesystem": "none", "model": false, "promptRewrite": true, "blocksTools": false },
+  "preview": {
+    "surface": "terminal",
+    "scene": "coding",
+    "caption": "Two pins in one row above the prompt; Claude gets them in the system prompt after /compact and /clear too.",
+    "caption_ru": "Две заметки одной строкой над полем ввода; Claude получает их в системном промпте и после /compact и /clear.",
+    "elements": [
+      { "slot": "command", "command": "/pin", "args": "no force push --keep", "output": [["Pinned 2: no force push (kept)"]] },
+      { "slot": "above-prompt", "rows": [["📌 1 use pnpm · 2 no force push"]] }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/arasovic/claude-code-mods/3c3f25ee3a12b982fd63ee858297baab9385dd33/docs/pin-board.png",
+      "alt": "Two pins in one row above the prompt"
+    }
+  ]
+}

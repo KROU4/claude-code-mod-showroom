@@ -1,0 +1,49 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "clear-resume",
+  "title": "Clear Resume",
+  "tagline": "Claude writes a handover before /clear, and the fresh session starts with it loaded.",
+  "tagline_ru": "Перед /clear Claude пишет записку-передачу, и новая сессия начинается с неё.",
+  "description": "`/clear-resume:handover` has Claude write a short note (goal, next action, decisions, what failed) saved as plain text in `~/.clear-resume`; after `/clear` a SessionStart hook loads it, so you type `go`. Off by default: a nudge to hand over once context passes 250k tokens; the relay mod, which runs `/clear` and submits the continue prompt by itself within a budget of clears and stops after two sessions without a new commit; and an idle handover shortly before the prompt cache expires. Hooks run Node scripts and read-only `git`. Opt-in sync pushes the store to a private git remote you set up; nothing else leaves the machine.",
+  "description_ru": "`/clear-resume:handover` просит Claude написать короткую записку (цель, следующий шаг, принятые решения, что не сработало), она сохраняется обычным текстом в `~/.clear-resume`; после `/clear` хук SessionStart загружает её, и достаточно написать `go`. По умолчанию выключены: напоминание сделать передачу, когда контекст превысил 250k токенов; мод relay, который сам выполняет `/clear` и отправляет промпт на продолжение в пределах заданного числа очисток и останавливается после двух сессий без нового коммита; и передача перед самым истечением кэша промпта, пока вас нет. Хуки запускают скрипты на Node и `git` только на чтение. По желанию синхронизация отправляет хранилище в ваш приватный git-репозиторий; больше ничего не уходит с компьютера.",
+  "author": { "name": "Macdara Ó Murchú", "github": "m4cd4r4", "url": "https://github.com/m4cd4r4" },
+  "maintainers": ["m4cd4r4"],
+  "category": "productivity",
+  "tags": ["handover", "clear", "context", "resume", "relay", "cache"],
+  "license": "MIT",
+  "version": "0.5.0",
+  "homepage": "https://github.com/m4cd4r4/clear-resume/tree/HEAD/plugin",
+  "source": { "type": "marketplace", "marketplace": "m4cd4r4/clear-resume", "plugin": "clear-resume", "path": "plugin" },
+  "requires": { "claudeCode": ">=2.1.275" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "/clear-resume:handover" },
+      { "role": "assistant", "text": "Saved handover \"Cart totals rounding\" (id 31c9af7). Type /clear to continue from it." },
+      { "role": "user", "text": "/clear" },
+      { "role": "assistant", "text": "clear-resume: loaded handover \"Cart totals rounding\" (saved just now)." }
+    ],
+    "caption": "A handover saved, the chat cleared and the fresh session holding it; the relay's clears left sit in the status row.",
+    "caption_ru": "Записка сохранена, чат очищен, новая сессия начинается с неё; в строке статуса — сколько очисток осталось у relay.",
+    "elements": [
+      { "slot": "status", "text": "relay: 2 of 3 left" },
+      { "slot": "command", "command": "/relay", "args": "3", "output": [["relay: 3 of 3 left"]] }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/m4cd4r4/clear-resume/9ecf42e173e6b5fcba9613baee43fc03d23464fd/docs/media/windows.png",
+      "alt": "One window saves a handover and clears; a second window on the same branch says a handover is waiting",
+      "surface": "terminal"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "memory-lint",
+  "title": "Memory Lint",
+  "tagline": "Tells you whether your MEMORY.md auto-memory index fits a line limit, and which entries are past it.",
+  "tagline_ru": "Проверяет, укладывается ли индекс автопамяти MEMORY.md в лимит строк, и называет записи за его пределами.",
+  "description": "Claude Code reads the project's `MEMORY.md` index (`~/.claude/projects/<project>/memory/MEMORY.md`) at session start up to a limit, and a session cannot tell whether it got the whole file. memory-lint measures it at start, after compaction, `/clear` or a resume, and after each Edit or Write to it, against a line limit you set (200 by default). When list entries sit past the limit, a status entry under the prompt says how many may not load. `/memory-lint` reports lines, entries and size and lists the entries past the cut; `/memory-lint limit 300` and `/memory-lint path <file>` change the limit or the file. It finds your home folder with `printenv HOME`.",
+  "description_ru": "Claude Code читает индекс `MEMORY.md` проекта (`~/.claude/projects/<проект>/memory/MEMORY.md`) при старте сессии лишь до некоторого предела, и сессия не может узнать, прочитан ли файл целиком. memory-lint измеряет его при старте, после сжатия, `/clear` или возобновления и после каждого Edit или Write этого файла, сравнивая с заданным лимитом строк (по умолчанию 200). Если пункты списка оказались за лимитом, запись в строке состояния под полем ввода говорит, сколько из них может не загрузиться. `/memory-lint` показывает число строк, записей и размер и перечисляет записи за границей; `/memory-lint limit 300` и `/memory-lint path <файл>` меняют лимит или файл. Домашнюю папку мод находит через `printenv HOME`.",
+  "author": { "name": "Mohammed Mubarak", "github": "MDmubarak786", "url": "https://github.com/MDmubarak786" },
+  "maintainers": ["MDmubarak786"],
+  "category": "insights",
+  "tags": ["memory", "context", "lint", "status"],
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/MDmubarak786/claude-mods/tree/HEAD/mods/memory-lint",
+  "source": { "type": "marketplace", "marketplace": "MDmubarak786/claude-mods", "plugin": "memory-lint", "path": "mods/memory-lint" },
+  "capabilities": {
+    "network": false,
+    "processes": true,
+    "filesystem": "read",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "idle",
+    "surface": "terminal",
+    "caption": "At session start the index is 231 lines; three entries sit past line 200 and may not have loaded.",
+    "caption_ru": "При старте сессии в индексе 231 строка; три записи за 200-й строкой могли не загрузиться.",
+    "elements": [
+      { "slot": "status", "text": "memory-lint: 231 lines, 3 entries past line 200 may not load. /memory-lint lists them." },
+      {
+        "slot": "command",
+        "command": "/memory-lint",
+        "output": [
+          ["MEMORY.md: 231 lines, 64 entries, 14 KB. Limit 200 lines. 3 entries are past the limit and may not have loaded."],
+          [{ "text": "Path: /home/alex/.claude/projects/-home-alex-shop/memory/MEMORY.md", "dim": true }],
+          ["Past the limit:"],
+          ["  - [Deploy checklist](deploy.md): staging first, then prod"],
+          ["  - [Stripe webhooks](stripe.md): verify signatures in tests"],
+          ["  - [Locale rules](locale.md): dates as DD.MM.YYYY"]
+        ]
+      }
+    ]
+  }
+}

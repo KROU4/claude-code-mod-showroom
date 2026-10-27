@@ -1,0 +1,71 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "context-usage",
+  "title": "Context Usage",
+  "tagline": "Context fill with an auto-compact threshold, Compact and Clear, and the 5-hour and weekly limits.",
+  "tagline_ru": "Заполнение контекста с порогом автосжатия, кнопки Compact и Clear и лимиты на 5 часов и неделю.",
+  "description": "Two rows above the prompt. The first: context fill as a five-segment gauge with tokens used out of the window, an `Auto` threshold (Off, 97, 90, 70, 60 or 50%) at which the mod runs `/compact` by itself after a turn, and Compact and Clear buttons. The second: the 5-hour and weekly limits with the time until each resets, yellow from 75% and red from 90%. Sessions running side by side share limit readings through a file on your machine. Options: `display` (gauge or text), `details`, `usagePosition`. The same publisher's context-meter and usage-limits are these two rows on their own.",
+  "description_ru": "Две строки над полем ввода. Первая: заполнение контекста пятисегментной шкалой с числом токенов из окна, порог `Auto` (Off, 97, 90, 70, 60 или 50%), при котором мод сам запускает `/compact` после хода, и кнопки Compact и Clear. Вторая: лимиты на 5 часов и неделю со временем до сброса, жёлтым от 75% и красным от 90%. Параллельные сессии делятся показаниями лимитов через файл на вашем компьютере. Настройки: `display` (шкала или текст), `details`, `usagePosition`. Моды context-meter и usage-limits того же автора — это те же две строки по отдельности.",
+  "author": { "name": "T-AI-Labs", "github": "T-AI-Labs", "url": "https://github.com/T-AI-Labs" },
+  "maintainers": ["T-AI-Labs"],
+  "category": "insights",
+  "tags": ["context", "compact", "usage", "limits", "gauge"],
+  "license": "MIT",
+  "version": "0.2.4",
+  "homepage": "https://github.com/T-AI-Labs/claude-code-mods/tree/HEAD/context-usage",
+  "source": { "type": "marketplace", "marketplace": "T-AI-Labs/claude-code-mods", "plugin": "context-usage", "path": "context-usage" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "scene": "coding",
+    "caption": "The context row with its Auto threshold and buttons, and the limits row under it with the weekly limit in yellow.",
+    "caption_ru": "Строка контекста с порогом Auto и кнопками, под ней строка лимитов: недельный лимит жёлтым.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [
+            "Context ",
+            { "text": "▮", "color": "success" },
+            { "text": "▯▯▯▯", "dim": true },
+            " 10% ",
+            { "text": "(100k/1M)", "dim": true },
+            "  ",
+            { "button": "Auto 97%" },
+            " ",
+            { "button": "Compact" },
+            " ",
+            { "button": "Clear" }
+          ],
+          [
+            "5h      ",
+            { "text": "▮▮", "color": "success" },
+            { "text": "▯▯▯", "dim": true },
+            " 42% ",
+            { "text": "(2h 13m)", "dim": true },
+            "   Week ",
+            { "text": "▮▮▮▮", "color": "warning" },
+            { "text": "▯", "dim": true },
+            { "text": " 78%", "color": "warning" },
+            " ",
+            { "text": "(3d 4h)", "dim": true }
+          ]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/T-AI-Labs/claude-code-mods/4fbcf8ba2b1996a685497d06a89d06feeaeaf46c/.docs/context-usage.svg",
+      "alt": "Illustration of the two rows: context 10% of 1M with Auto 97%, Compact and Clear; 5h 42% and Week 78% in yellow"
+    }
+  ]
+}

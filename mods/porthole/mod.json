@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "porthole",
+  "title": "Porthole",
+  "tagline": "A screenshot of your local dev server in a pane beside the chat, refreshed after Claude's edits.",
+  "tagline_ru": "Скриншот вашего локального dev-сервера в панели рядом с чатом, обновляется после правок Claude.",
+  "description": "`/porthole http://localhost:5173` (or `/porthole 3000`) opens a pane with a picture of the page, taken by the Chrome or Chromium you already have, run headless with a fresh throwaway profile in its own `mktemp` folder that is deleted afterwards. While the pane is open, each Edit or Write by Claude refreshes it 2 seconds later. When a Bash result names a local server, a toast offers it. Refresh and Mobile/Desktop (390 or 1280 px) buttons. Chrome loads the page and whatever it fetches; other sites open only when you type the full URL yourself. The picture is a kitty-graphics image: terminal only (kitty, Ghostty), macOS and Linux.",
+  "description_ru": "`/porthole http://localhost:5173` (или `/porthole 3000`) открывает панель со снимком страницы. Снимает его уже установленный у вас Chrome или Chromium в режиме headless, с новым одноразовым профилем в отдельной папке от `mktemp`, которая потом удаляется. Пока панель открыта, каждая правка Claude через Edit или Write обновляет снимок через 2 секунды. Если в выводе Bash встречается адрес локального сервера, всплывает подсказка. В панели есть кнопки Refresh и Mobile/Desktop (390 или 1280 px). Chrome загружает страницу и всё, что она подтягивает; другие сайты открываются, только если вы сами ввели полный URL. Картинка выводится по протоколу kitty graphics: только терминал (kitty, Ghostty), macOS и Linux.",
+  "author": { "name": "modmyclaude", "github": "modmyclaude", "url": "https://github.com/modmyclaude" },
+  "maintainers": ["modmyclaude"],
+  "category": "productivity",
+  "tags": ["preview", "screenshot", "dev-server", "localhost", "headless-chrome", "pane", "kitty-graphics"],
+  "license": "MIT",
+  "version": "0.1.1",
+  "homepage": "https://github.com/modmyclaude/claude-code-mods/tree/HEAD/mods/porthole",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "modmyclaude/claude-code-mods",
+    "plugin": "porthole",
+    "path": "mods/porthole"
+  },
+  "surfaces": ["terminal"],
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": true,
+    "processes": true,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Start the dev server and make the pricing cards stack on narrow screens." },
+      { "role": "tool", "tool": "Bash", "input": "npm run dev", "result": "VITE ready in 412 ms  ➜  Local: http://localhost:5173/", "status": "done" },
+      { "role": "tool", "tool": "Edit", "input": "src/components/Pricing.tsx", "status": "done" }
+    ],
+    "caption": "The Porthole pane after an edit: the page's screenshot refreshed, with Refresh and Mobile buttons.",
+    "caption_ru": "Панель Porthole после правки: снимок страницы обновился, рядом кнопки Refresh и Mobile.",
+    "elements": [
+      { "slot": "toast", "text": "Ready to preview http://localhost:5173/ - type /porthole" },
+      {
+        "slot": "pane",
+        "title": "Porthole",
+        "width": "wide",
+        "rows": [
+          [{ "text": "localhost:5173 - desktop 1280px - shot 3", "dim": true }, "  ", { "button": "Refresh" }, " ", { "button": "Mobile" }],
+          [{ "text": "                                              ", "bg": "#f4f4f5" }],
+          [{ "text": "  Acme   ", "color": "#18181b", "bg": "#f4f4f5", "bold": true }, { "text": "Product  Pricing  Docs              ", "color": "#52525b", "bg": "#f4f4f5" }],
+          [{ "text": "                                              ", "bg": "#f4f4f5" }],
+          [{ "text": "  ", "bg": "#f4f4f5" }, { "text": " Starter  ", "color": "#18181b", "bg": "#ffffff" }, { "text": "  ", "bg": "#f4f4f5" }, { "text": "   Pro    ", "color": "#ffffff", "bg": "#4f46e5" }, { "text": "  ", "bg": "#f4f4f5" }, { "text": "   Team   ", "color": "#18181b", "bg": "#ffffff" }, { "text": "    ", "bg": "#f4f4f5" }],
+          [{ "text": "  ", "bg": "#f4f4f5" }, { "text": "  $0/mo   ", "color": "#18181b", "bg": "#ffffff" }, { "text": "  ", "bg": "#f4f4f5" }, { "text": "  $12/mo  ", "color": "#ffffff", "bg": "#4f46e5" }, { "text": "  ", "bg": "#f4f4f5" }, { "text": "  $40/mo  ", "color": "#18181b", "bg": "#ffffff" }, { "text": "    ", "bg": "#f4f4f5" }],
+          [{ "text": "                                              ", "bg": "#f4f4f5" }]
+        ]
+      },
+      { "slot": "background", "text": "In kitty or Ghostty the pane holds a real PNG from headless Chrome; elsewhere it shows a text stand-in." }
+    ]
+  }
+}

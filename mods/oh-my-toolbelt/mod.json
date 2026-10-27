@@ -1,0 +1,70 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "oh-my-toolbelt",
+  "title": "Oh My Toolbelt",
+  "tagline": "A toolbelt above the prompt: clock, weather, pomodoro, prompt buttons, file attach, notes, export.",
+  "tagline_ru": "Панель над полем ввода: часы, погода, помидор, кнопки промптов, вложение файлов, заметки и экспорт.",
+  "description": "One row above the prompt: clock, date, optional weather and a pomodoro on the left; on the right your saved prompts and commands as buttons, Attach (opens the system file picker), Voice, Hide (covers the transcript), Export (Markdown, HTML or PDF via a Chromium browser you pick) and Notes. A panel holds your prompts sent this session (read from the session's transcript file), notes, an optional clipboard of in-app selections and settings. Weather is off until you pick a city; then the city's coordinates go to api.open-meteo.com. It runs `osascript`, PowerShell or zenity/kdialog for the picker, `tail` for large transcripts and `afplay` for the pomodoro sound. English, Korean and Japanese.",
+  "description_ru": "Одна строка над полем ввода: слева часы, дата, погода (по желанию) и помидор-таймер; справа ваши сохранённые промпты и команды в виде кнопок, Attach (открывает системный выбор файлов), Voice, Hide (закрывает переписку), Export (Markdown, HTML или PDF через выбранный вами браузер на Chromium) и Notes. В панели есть промпты, отправленные в этой сессии (из файла переписки), заметки, необязательный буфер выделений внутри приложения и настройки. Погода выключена, пока вы не выберете город; после этого его координаты уходят на api.open-meteo.com. Мод запускает `osascript`, PowerShell или zenity/kdialog для выбора файлов, `tail` для больших файлов переписки и `afplay` для звука помидора. Английский, корейский и японский интерфейс.",
+  "author": { "name": "calmtiger86", "github": "calmtiger86", "url": "https://github.com/calmtiger86" },
+  "maintainers": ["calmtiger86"],
+  "category": "productivity",
+  "tags": ["toolbar", "pomodoro", "weather", "prompts", "notes", "export"],
+  "license": "Apache-2.0",
+  "version": "0.1.1",
+  "homepage": "https://github.com/calmtiger86/oh-my-toolbelt",
+  "source": { "type": "marketplace", "marketplace": "calmtiger86/oh-my-toolbelt", "plugin": "oh-my-toolbelt" },
+  "surfaces": ["terminal", "desktop"],
+  "requires": { "claudeCode": ">=2.1.309" },
+  "capabilities": {
+    "network": true,
+    "processes": true,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "The toolbelt above the prompt with a pomodoro running and the weather for Seoul.",
+    "caption_ru": "Панель над полем ввода: идёт помидор-таймер, рядом погода в Сеуле.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          [
+            "🕒 14:32  📅 10/27 Tue  ☀ 18°C  ",
+            { "text": "🍅 18:42", "color": "#d77757", "bold": true },
+            "   ",
+            { "button": "Review" },
+            " ",
+            { "button": "Commit" },
+            " ",
+            { "button": "📎 Attach" },
+            " ",
+            { "button": "🎤 Voice" },
+            " ",
+            { "button": "Hide" },
+            " ",
+            { "button": "Export" },
+            " ",
+            { "button": "📝 Notes" }
+          ]
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/calmtiger86/oh-my-toolbelt/0eaf8ed5af0381c2891f2b7ec6d260591127e89b/assets/screenshot-toolbelt.png",
+      "alt": "The toolbelt under a conversation: clock, date, weather and a pomodoro on the left; prompt buttons, Attach, Voice, Hide, Export and Notes on the right"
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/calmtiger86/oh-my-toolbelt/0eaf8ed5af0381c2891f2b7ec6d260591127e89b/assets/screenshot-panel.png",
+      "alt": "The Oh My Toolbelt panel with its tabs for prompts, notes, clipboard and settings"
+    }
+  ]
+}

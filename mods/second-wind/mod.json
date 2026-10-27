@@ -1,0 +1,48 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "second-wind",
+  "title": "Second Wind",
+  "tagline": "A breath, a 20-20-20 eye rest or a stretch above the prompt while Claude works, sized to the wait.",
+  "tagline_ru": "Пока Claude работает, над полем ввода дыхание, отдых для глаз 20-20-20 или разминка, по длине ожидания.",
+  "description": "When a turn runs past 3 seconds, a band above the prompt opens with one physiological sigh, then slow paced breathing (5.5 s in and out) or box breathing, with a countdown and a bar that fills from the middle; the spinner verb follows the breath. On turns over a minute it swaps in a 20-20-20 eye rest or a one-line stretch every couple of minutes. When Claude answers, the breath finishes and folds into `4 breaths while Claude worked · 37 today · 6-day streak`. Optional movement card (Did it / Skip) every fifth long turn. In the desktop app it is an animated SVG guide. `/breathe` shows stats, `off`, `on`, `snooze`, `card` copies a stats card to the clipboard.",
+  "description_ru": "Если ход длится дольше 3 секунд, над полем ввода появляется полоса: сначала физиологический вздох, затем медленное дыхание (5,5 с вдох и выдох) или квадратное дыхание, с обратным отсчётом и полосой, которая растёт от центра; глагол спиннера следует за дыханием. На ходах длиннее минуты раз в пару минут вместо дыхания предлагается отдых для глаз 20-20-20 или короткая разминка. Когда Claude отвечает, вдох-выдох доводится до конца и сворачивается в строку `4 breaths while Claude worked · 37 today · 6-day streak`. По желанию каждый пятый долгий ход предлагает карточку движения (Did it / Skip). В десктопном приложении это анимированная SVG-подсказка. `/breathe` показывает статистику, `off`, `on`, `snooze`, `card` копирует карточку со статистикой в буфер обмена.",
+  "author": { "name": "modmyclaude", "github": "modmyclaude", "url": "https://github.com/modmyclaude" },
+  "maintainers": ["modmyclaude"],
+  "category": "fun",
+  "tags": ["wellness", "breathing", "eye-rest", "stretch", "streak", "band", "spinner"],
+  "license": "MIT",
+  "version": "0.1.2",
+  "homepage": "https://github.com/modmyclaude/claude-code-mods/tree/HEAD/mods/second-wind",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "modmyclaude/claude-code-mods",
+    "plugin": "second-wind",
+    "path": "mods/second-wind"
+  },
+  "surfaces": ["terminal", "desktop"],
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "scene": "coding",
+    "surface": "terminal",
+    "caption": "Mid-turn: the opening physiological sigh, its countdown and the breathing bar; the spinner follows.",
+    "caption_ru": "Во время хода: первый физиологический вздох, обратный отсчёт и полоса дыхания; спиннер следует за ней.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [
+          ["Breathe in 4  ", { "text": "physiological sigh", "dim": true }],
+          [{ "text": "──────────", "dim": true }, "▐████████████████████▌", { "text": "──────────", "dim": true }]
+        ]
+      },
+      { "slot": "spinner", "verb": "Breathing in" }
+    ]
+  }
+}

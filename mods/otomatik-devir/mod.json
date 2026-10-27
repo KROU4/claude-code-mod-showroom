@@ -1,0 +1,43 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "otomatik-devir",
+  "title": "Otomatik Devir",
+  "tagline": "Splits a long task into a chain of fresh chats that hand off at a context threshold (Turkish).",
+  "tagline_ru": "Делит долгую задачу на цепочку новых чатов, передающих работу у порога контекста (на турецком).",
+  "description": "`/otomatik-devir:devir-otonom <task>` makes the chat a main chat that does no work itself: through the desktop app's session tools it opens sub-chats one after another. When a sub-chat's context passes the threshold (60% by default, `/devir esik`), the mod has Claude finish the step and write `.workflow/handoff/<session>.md`, refuses new subagents and workflows and keeps the turn open until running ones finish; the main chat opens the next sub-chat from that file and sums up when the chain ends. It adds a system-prompt section in sub-chats, keeps small records in `~/.claude/plugins/data/otomatik-devir/` and once deletes its own old scheduled tasks. Turkish interface.",
+  "description_ru": "`/otomatik-devir:devir-otonom <задача>` превращает чат в главный, который сам ничего не делает: через инструменты сессий десктопного приложения он по очереди открывает подчаты. Когда контекст подчата превышает порог (по умолчанию 60%, `/devir esik`), мод просит Claude закончить текущий шаг и записать файл передачи в `.workflow/handoff/<сессия>.md`, отклоняет новые субагенты и workflow, пока не завершатся запущенные, и не даёт ходу закончиться, пока они работают; затем главный чат открывает следующий подчат по этому файлу, а в конце цепочки пишет сводку. В подчатах добавляет раздел в системный промпт, хранит небольшие записи в `~/.claude/plugins/data/otomatik-devir/` и один раз удаляет свои старые запланированные задачи. Интерфейс на турецком.",
+  "author": { "name": "Mustafa Dikmen", "github": "muctebadikmen", "url": "https://github.com/muctebadikmen" },
+  "maintainers": ["muctebadikmen"],
+  "category": "productivity",
+  "tags": ["handoff", "context", "orchestration", "sessions", "turkish"],
+  "license": "MIT",
+  "version": "1.1.0",
+  "homepage": "https://github.com/muctebadikmen/claude-code-araclari/tree/HEAD/modlar/otomatik-devir",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "muctebadikmen/claude-code-araclari",
+    "plugin": "otomatik-devir",
+    "path": "modlar/otomatik-devir"
+  },
+  "surfaces": ["desktop"],
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "write",
+    "model": false,
+    "promptRewrite": true,
+    "blocksTools": true
+  },
+  "preview": {
+    "scene": "coding",
+    "caption": "A sub-chat nearing its threshold, and the main chat's status while sub-chat 2 works.",
+    "caption_ru": "Подчат приближается к порогу, а главный чат показывает, что работает подчат 2.",
+    "elements": [
+      { "slot": "status", "text": "Devir: %54 / eşik %60" },
+      { "slot": "above-prompt", "rows": [[{ "text": "Orkestra: alt sohbet 2 çalışıyor", "color": "claude" }]] },
+      { "slot": "toast", "text": "Orkestra: alt sohbet 2 açıldı" },
+      { "slot": "background", "text": "At the threshold Claude finishes its step and writes .workflow/handoff/<session>.md; new subagents are refused until running ones end" }
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "ant-farm",
+  "title": "Ant Farm",
+  "tagline": "Mission control for subagents: a live card per agent with status, tokens, estimated cost and ETA.",
+  "tagline_ru": "Пульт сабагентов: живая карточка на каждого со статусом, токенами, оценкой стоимости и временем до конца.",
+  "description": "While a turn runs, a band above the prompt shows the elapsed time, how many subagents are running and done, and the session's spend (Claude Code's own estimate). `/antfarm` opens a pane (it also opens itself once where it can dock): one card per running subagent with its task, model, a status read from the engine (`WORKING · Bash npm test`, `THINKING`, `WAITING`), a token sparkline, estimated cost from a built-in price table and an ETA, a pixel ant per subagent, a heat strip and an activity timeline. `budgetUsd` adds a toast and amber/red marks when spend crosses it. It only watches: no files, processes, network or model calls; credential-looking text is redacted before it is shown.",
+  "description_ru": "Пока идёт ход, над полем ввода видна полоса: сколько прошло времени, сколько сабагентов работает и закончило, сколько потрачено за сессию (по оценке самого Claude Code). `/antfarm` открывает панель (там, где её можно пристыковать, она один раз открывается сама): карточка на каждого работающего сабагента с задачей, моделью, статусом от движка (`WORKING · Bash npm test`, `THINKING`, `WAITING`), графиком токенов, оценкой стоимости по встроенной таблице цен и временем до конца, пиксельный муравей на каждого, тепловая полоса и лента событий. С `budgetUsd` при превышении бюджета появляется уведомление и янтарная или красная отметка. Мод только наблюдает: без файлов, процессов, сети и вызовов модели; всё похожее на секреты скрывается перед показом.",
+  "author": { "name": "modmyclaude", "github": "modmyclaude", "url": "https://github.com/modmyclaude" },
+  "maintainers": ["modmyclaude"],
+  "category": "insights",
+  "tags": ["subagents", "cost", "tokens", "budget", "pane", "eta"],
+  "license": "MIT",
+  "version": "0.3.5",
+  "homepage": "https://github.com/modmyclaude/claude-code-mods/tree/HEAD/mods/ant-farm",
+  "source": { "type": "marketplace", "marketplace": "modmyclaude/claude-code-mods", "plugin": "ant-farm", "path": "mods/ant-farm" },
+  "surfaces": ["terminal", "desktop"],
+  "requires": { "claudeCode": ">=2.1.287" },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      { "role": "user", "text": "Audit the auth, billing and search modules in parallel and report the risky spots." },
+      { "role": "tool", "tool": "Agent", "input": "Audit auth module", "status": "running" },
+      { "role": "tool", "tool": "Agent", "input": "Audit billing module", "status": "running" },
+      { "role": "tool", "tool": "Agent", "input": "Audit search module", "status": "done" }
+    ],
+    "caption": "Three subagents at work: the band above the prompt and the /antfarm pane with a card per running agent.",
+    "caption_ru": "Три сабагента в работе: полоса над полем ввода и панель /antfarm с карточкой на каждого работающего.",
+    "elements": [
+      {
+        "slot": "above-prompt",
+        "rows": [[{ "text": "▚▞", "color": "claude" }, { "text": " 2m 14s · 2 running / 1 done · Claude Code's estimate ≈$1.86", "dim": true }]]
+      },
+      {
+        "slot": "pane",
+        "title": "Ant farm",
+        "width": "wide",
+        "rows": [
+          [{ "text": "Working · 2 running", "bold": true, "color": "claude" }, "  ", { "text": "T+02:14", "dim": true }],
+          [{ "text": "agents ≈$0.41 · session ≈$1.86 / $5.00 ", "dim": true }, { "bar": 0.37, "width": 10, "color": "success" }],
+          [" "],
+          [{ "text": "#1 Audit auth module", "bold": true }, { "text": "  sonnet · 1m 52s", "dim": true }],
+          [{ "text": "WORKING", "color": "success" }, " · Bash npm test · 4s"],
+          [{ "spark": [2, 4, 3, 6, 5, 7, 4], "color": "claude" }, { "text": "  9 req · 48.2k tok · ≈$0.23 · ~1m left", "dim": true }],
+          [" "],
+          [{ "text": "#2 Audit billing module", "bold": true }, { "text": "  haiku · 1m 40s", "dim": true }],
+          [{ "text": "THINKING", "color": "suggestion" }, " · 12s"],
+          [{ "spark": [1, 2, 2, 3, 2], "color": "#5f9ea0" }, { "text": "  5 req · 21.0k tok · ≈$0.04", "dim": true }],
+          [" "],
+          [{ "text": "01:58", "dim": true }, "  #3 done in 1m 31s"],
+          [{ "text": "01:52", "dim": true }, "  #1 Bash npm test"]
+        ]
+      }
+    ]
+  }
+}
