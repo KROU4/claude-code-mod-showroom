@@ -1,0 +1,61 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=agent-monitor}",
+    "tool.describe{tool=mcp__agent-monitor__progress}",
+    "tool.check{tool=mcp__agent-monitor__progress}",
+    "prompt.compose",
+    "tool.call{tool=mcp__agent-monitor__progress}",
+    "turn.start",
+    "agent.spawn",
+    "turn.step",
+    "turn.complete",
+    "prompt.submit",
+    "ui.render{component=ToolUse, props has {tool=mcp__agent-monitor__progress}}",
+    "ui.render{component=ToolResult, props has {tool=mcp__agent-monitor__progress}}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane, requestId=agent-monitor}"
+  ],
+  "calls": [
+    "$.agent.list",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.state.get",
+    "$.state.set",
+    "$.tool.register",
+    "$.ui.close",
+    "$.ui.open",
+    "$.ui.panes",
+    "$.ui.resolve"
+  ],
+  "gating": [
+    {
+      "hook": "tool.check{tool=mcp__agent-monitor__progress}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=mcp__agent-monitor__progress}",
+      "hasCatch": false
+    },
+    {
+      "hook": "agent.spawn",
+      "hasCatch": false
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "agent-monitor.isDoneCollapsed",
+    "agent-monitor.now",
+    "agent-monitor.plan",
+    "agent-monitor.runs",
+    "agent-monitor.wave"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

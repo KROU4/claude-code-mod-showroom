@@ -1,0 +1,146 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "session.end",
+    "command.run{command=proxy}",
+    "ui.render{component=Pane, requestId=proxy}",
+    "tool.call{tool=mcp__wirepane__track_domains}",
+    "tool.call{tool=mcp__wirepane__list_rules}",
+    "tool.call{tool=mcp__wirepane__add_rule}",
+    "tool.call{tool=mcp__wirepane__update_rule}",
+    "tool.call{tool=mcp__wirepane__remove_rule}",
+    "tool.call{tool=mcp__wirepane__resume_request}",
+    "tool.call{tool=mcp__wirepane__send_ws_message}",
+    "tool.call{tool=mcp__wirepane__close_websocket}",
+    "tool.call{tool=mcp__wirepane__list_requests}",
+    "tool.call{tool=mcp__wirepane__get_request}",
+    "tool.call{tool=mcp__wirepane__diagnose}",
+    "tool.call{tool=mcp__wirepane__search_requests}",
+    "tool.call{tool=mcp__wirepane__wait_for_request}",
+    "tool.call{tool=mcp__wirepane__replay_request}",
+    "tool.call{tool=mcp__wirepane__diff_requests}",
+    "tool.call{tool=mcp__wirepane__export_har}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.now",
+    "$.clock.sleep",
+    "$.command.register",
+    "$.config.set",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.list",
+    "$.fs.read",
+    "$.fs.write",
+    "$.process.run",
+    "$.process.spawn",
+    "$.prompt.fill",
+    "$.session.id",
+    "$.session.root",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.tool.register",
+    "$.ui.copy",
+    "$.ui.log",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call{tool=mcp__wirepane__track_domains}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=mcp__wirepane__list_rules}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=mcp__wirepane__add_rule}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=mcp__wirepane__update_rule}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=mcp__wirepane__remove_rule}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=mcp__wirepane__resume_request}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=mcp__wirepane__send_ws_message}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=mcp__wirepane__close_websocket}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=mcp__wirepane__list_requests}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=mcp__wirepane__get_request}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=mcp__wirepane__diagnose}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=mcp__wirepane__search_requests}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=mcp__wirepane__wait_for_request}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=mcp__wirepane__replay_request}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=mcp__wirepane__diff_requests}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=mcp__wirepane__export_har}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "wirepane.busy",
+    "wirepane.caSimulators",
+    "wirepane.devices",
+    "wirepane.emulators",
+    "wirepane.expanded",
+    "wirepane.filter",
+    "wirepane.flows",
+    "wirepane.health",
+    "wirepane.held",
+    "wirepane.macTrust",
+    "wirepane.nextId",
+    "wirepane.notice",
+    "wirepane.pinned",
+    "wirepane.rules",
+    "wirepane.sessions",
+    "wirepane.skipped",
+    "wirepane.status",
+    "wirepane.systemProxy",
+    "wirepane.tracking",
+    "wirepane.version",
+    "wirepane.view",
+    "wirepane.wanted"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

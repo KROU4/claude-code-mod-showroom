@@ -1,0 +1,69 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "session.attach",
+    "command.run{command=ctx}",
+    "session.measure",
+    "prompt.submit",
+    "tool.call{tool=mcp__session-meter__context_reset}",
+    "tool.call{tool=Bash}",
+    "turn.complete",
+    "tool.call",
+    "turn.step",
+    "ui.render{component=Pane, requestId=ctx}"
+  ],
+  "calls": [
+    "$.agent.list",
+    "$.clock.now",
+    "$.command.register",
+    "$.command.run",
+    "$.env.get",
+    "$.fs.write",
+    "$.prompt.submit",
+    "$.session.compact",
+    "$.session.cwd",
+    "$.session.id",
+    "$.session.surfaces",
+    "$.session.usage",
+    "$.state.get",
+    "$.state.set",
+    "$.tool.register",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=mcp__session-meter__context_reset}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=Bash}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "session-meter.breakdown",
+    "session-meter.fired",
+    "session-meter.history",
+    "session-meter.notes",
+    "session-meter.pending",
+    "session-meter.reading",
+    "session-meter.requests",
+    "session-meter.resume",
+    "session-meter.samples",
+    "session-meter.tools"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

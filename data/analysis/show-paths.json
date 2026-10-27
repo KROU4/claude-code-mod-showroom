@@ -1,0 +1,22 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=show-paths}",
+    "ui.render{component=ToolUse}"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.session.root",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.invalidate",
+    "$.ui.log",
+    "$.ui.resolve"
+  ],
+  "gating": [],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

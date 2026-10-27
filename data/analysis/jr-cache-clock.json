@@ -1,0 +1,30 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.end",
+    "session.start",
+    "turn.complete",
+    "command.run{command=jr-cache-clock}",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [],
+  "stateKeys": [
+    "jr-cache-clock.clock",
+    "jr-cache-clock.isBandHidden"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

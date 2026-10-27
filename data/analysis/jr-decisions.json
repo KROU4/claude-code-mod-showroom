@@ -1,0 +1,36 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=jr-decisions}",
+    "prompt.submit",
+    "ui.render{component=Pane, requestId=jr-decisions}"
+  ],
+  "calls": [
+    "$.clock.now",
+    "$.command.register",
+    "$.fs.list",
+    "$.fs.write",
+    "$.session.root",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "prompt.submit",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "jr-decisions.decisions",
+    "jr-decisions.project"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

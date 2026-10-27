@@ -1,0 +1,47 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "tool.call{tool=Bash}",
+    "tool.call{tool=Write}",
+    "tool.call{tool=Edit}",
+    "command.run{command=ci-budget}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.list",
+    "$.command.register",
+    "$.fs.read",
+    "$.process.run",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call{tool=Bash}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=Write}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=Edit}",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "ci-budget.isPaused",
+    "ci-budget.snapshot",
+    "ci-budget.watch"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

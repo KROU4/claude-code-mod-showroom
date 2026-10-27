@@ -1,0 +1,28 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "ui.render{component=AbovePrompt}",
+    "command.run{command=jr-mod-audit}",
+    "ui.render{component=Pane, requestId=jr-mod-audit}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.now",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.read",
+    "$.process.run",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.open",
+    "$.ui.resolve"
+  ],
+  "gating": [],
+  "stateKeys": [
+    "jr-mod-audit.report"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

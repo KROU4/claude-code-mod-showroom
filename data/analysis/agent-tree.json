@@ -1,0 +1,51 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=agent-tree}",
+    "turn.start",
+    "turn.step",
+    "agent.spawn",
+    "tool.call",
+    "turn.complete",
+    "session.measure",
+    "session.end",
+    "ui.render{component=Pane, requestId=agent-tree}",
+    "ui.press{component=Pane, requestId=agent-tree}"
+  ],
+  "calls": [
+    "$.agent.list",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.session.messages",
+    "$.settings.read",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.close",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.status"
+  ],
+  "gating": [
+    {
+      "hook": "command.run{command=agent-tree}",
+      "hasCatch": true
+    },
+    {
+      "hook": "agent.spawn",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "agent-tree.frame",
+    "agent-tree.tree"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

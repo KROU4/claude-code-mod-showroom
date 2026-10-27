@@ -1,0 +1,91 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "classic.SessionStart",
+    "classic.UserPromptSubmit",
+    "classic.PostToolUse",
+    "classic.PostCompact",
+    "classic.Stop",
+    "classic.SubagentStart",
+    "classic.StopFailure",
+    "session.end",
+    "session.measure",
+    "turn.step",
+    "turn.complete",
+    "prompt.submit",
+    "agent.spawn",
+    "tool.call",
+    "command.run{command=agent-guard}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.now",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.read",
+    "$.prompt.fill",
+    "$.prompt.read",
+    "$.prompt.submit",
+    "$.session.compact",
+    "$.session.id",
+    "$.session.usage",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.keys",
+    "$.store.set",
+    "$.ui.ask",
+    "$.ui.log",
+    "$.ui.status"
+  ],
+  "gating": [
+    {
+      "hook": "classic.SessionStart",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.UserPromptSubmit",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.PostToolUse",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.PostCompact",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.Stop",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.SubagentStart",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.StopFailure",
+      "hasCatch": true
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": true
+    },
+    {
+      "hook": "agent.spawn",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": true
+    },
+    {
+      "hook": "command.run{command=agent-guard}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

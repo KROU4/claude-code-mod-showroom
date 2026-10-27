@@ -1,0 +1,34 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "tool.call{tool=Edit|Write|NotebookEdit}",
+    "tool.call{tool=Bash}",
+    "command.run{command=tests|test-pulse}"
+  ],
+  "calls": [
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.session.root",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call{tool=Edit|Write|NotebookEdit}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=Bash}",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

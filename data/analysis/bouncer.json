@@ -1,0 +1,41 @@
+{
+  "ok": true,
+  "hooks": [
+    "plugin.register",
+    "session.start",
+    "command.run{command=bouncer}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane, requestId=bouncer}"
+  ],
+  "calls": [
+    "$.clock.now",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.read",
+    "$.process.run",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.log",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "plugin.register",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "bouncer.checkedAt",
+    "bouncer.isChecking",
+    "bouncer.news",
+    "bouncer.open",
+    "bouncer.rows"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

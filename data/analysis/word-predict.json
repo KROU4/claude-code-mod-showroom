@@ -1,0 +1,38 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "prompt.edit",
+    "prompt.submit",
+    "command.run{command=predict}",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.http.fetch",
+    "$.process.run",
+    "$.prompt.fill",
+    "$.prompt.read",
+    "$.state.get",
+    "$.state.set",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.resolve",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "word-predict.prediction",
+    "word-predict.settings"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

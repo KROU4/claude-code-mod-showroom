@@ -1,0 +1,115 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=hero}",
+    "command.run{command=grimorio}",
+    "classic.SessionStart{source=clear|resume|fork}",
+    "session.compact",
+    "classic.UserPromptSubmit",
+    "config.set{key=theme}",
+    "prompt.submit",
+    "turn.start",
+    "agent.spawn",
+    "tool.call",
+    "tool.call{tool=Edit|Write|NotebookEdit}",
+    "tool.call{tool=/\"^(Bash|PowerShell)$\"/}",
+    "turn.complete",
+    "session.measure",
+    "ui.render{component=Pane, requestId=hero-journey}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Spinner}",
+    "ui.render{component=ToolUse}",
+    "ui.render{component=TurnDuration}",
+    "ui.render{component=PromptHint}",
+    "ui.render{component=AskUserQuestion}"
+  ],
+  "calls": [
+    "$.clock.every",
+    "$.clock.sleep",
+    "$.command.register",
+    "$.config.list",
+    "$.config.set",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.list",
+    "$.fs.read",
+    "$.fs.stat",
+    "$.fs.write",
+    "$.mcp.call",
+    "$.model.complete",
+    "$.process.run",
+    "$.prompt.fill",
+    "$.session.compact",
+    "$.session.cwd",
+    "$.session.id"
+  ],
+  "gating": [
+    {
+      "hook": "classic.SessionStart{source=clear|resume|fork}",
+      "hasCatch": true
+    },
+    {
+      "hook": "session.compact",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.UserPromptSubmit",
+      "hasCatch": true
+    },
+    {
+      "hook": "config.set{key=theme}",
+      "hasCatch": true
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": true
+    },
+    {
+      "hook": "agent.spawn",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=Edit|Write|NotebookEdit}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=/\"^(Bash|PowerShell)$\"/}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "hero-journey.campaign",
+    "hero-journey.cards",
+    "hero-journey.diary",
+    "hero-journey.guard",
+    "hero-journey.inscriptions",
+    "hero-journey.inventory",
+    "hero-journey.lang",
+    "hero-journey.party",
+    "hero-journey.prefs",
+    "hero-journey.progress",
+    "hero-journey.quests",
+    "hero-journey.refusals",
+    "hero-journey.remembered",
+    "hero-journey.resources",
+    "hero-journey.setup",
+    "hero-journey.theme",
+    "hero-journey.tick",
+    "hero-journey.turn",
+    "hero-journey.turnId",
+    "hero-journey.view",
+    "hero-journey.warned",
+    "hero-journey.working"
+  ],
+  "errors": [],
+  "warnings": [
+    "./register.tsx: notes truncated by claude plugin validate; calls/hooks may be incomplete"
+  ],
+  "validatedWith": "2.1.302",
+  "truncated": true
+}

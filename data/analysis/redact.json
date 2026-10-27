@@ -1,0 +1,28 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "session.append",
+    "command.run{command=redact}"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "session.append",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "redact.hits",
+    "redact.isPaused"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

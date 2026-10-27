@@ -1,0 +1,37 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "classic.SessionStart{source=clear|resume|fork}",
+    "command.run{command=aim}",
+    "prompt.compose",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.session.root",
+    "$.state.get",
+    "$.state.set",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.invalidate",
+    "$.ui.log",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "classic.SessionStart{source=clear|resume|fork}",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "aim.goal"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

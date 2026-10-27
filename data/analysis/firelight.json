@@ -1,0 +1,25 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "config.set{key=theme}",
+    "session.end"
+  ],
+  "calls": [
+    "$.config.list",
+    "$.env.get",
+    "$.fs.read",
+    "$.process.run",
+    "$.ui.log"
+  ],
+  "gating": [
+    {
+      "hook": "config.set{key=theme}",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

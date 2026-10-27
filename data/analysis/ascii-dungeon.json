@@ -1,0 +1,59 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=dungeon}",
+    "command.run{command=dungeon-bench}",
+    "command.run{command=dungeon-frames}",
+    "prompt.submit",
+    "tool.call",
+    "session.end",
+    "turn.complete",
+    "ui.message",
+    "ui.close",
+    "ui.render{component=Pane, requestId=dungeon}"
+  ],
+  "calls": [
+    "$.audio.play",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.read",
+    "$.fs.write",
+    "$.session.id",
+    "$.state.get",
+    "$.state.set",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.blit",
+    "$.ui.copy",
+    "$.ui.invalidate",
+    "$.ui.open",
+    "$.ui.panes",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "prompt.submit",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.close",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "ascii-dungeon.game"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

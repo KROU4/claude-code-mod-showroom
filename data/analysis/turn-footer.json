@@ -1,0 +1,31 @@
+{
+  "ok": true,
+  "hooks": [
+    "turn.start",
+    "tool.call",
+    "turn.step",
+    "turn.complete",
+    "ui.render{component=TurnDuration}",
+    "ui.render{component=Spinner}"
+  ],
+  "calls": [
+    "$.clock.now",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.resolve"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "turn-footer.done",
+    "turn-footer.live",
+    "turn-footer.running"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

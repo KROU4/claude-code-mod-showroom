@@ -1,0 +1,82 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "turn.start",
+    "prompt.edit",
+    "tool.call",
+    "classic.PermissionRequest",
+    "turn.complete",
+    "agent.spawn",
+    "command.run{command=pixpal}",
+    "ui.render{component=Pane, requestId=pixpal-picker}",
+    "ui.focus",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.agent.list",
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.model.complete",
+    "$.process.run",
+    "$.session.id",
+    "$.session.version",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.ask",
+    "$.ui.close",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    },
+    {
+      "hook": "classic.PermissionRequest",
+      "hasCatch": false
+    },
+    {
+      "hook": "agent.spawn",
+      "hasCatch": false
+    },
+    {
+      "hook": "ui.focus",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "pixpal.agents",
+    "pixpal.bubbles",
+    "pixpal.debug",
+    "pixpal.demo",
+    "pixpal.lang",
+    "pixpal.language",
+    "pixpal.pending",
+    "pixpal.phrasebook",
+    "pixpal.picker",
+    "pixpal.pickerFocus",
+    "pixpal.pickerTop",
+    "pixpal.rest",
+    "pixpal.scene",
+    "pixpal.seq",
+    "pixpal.skin",
+    "pixpal.smart",
+    "pixpal.source",
+    "pixpal.systemTheme",
+    "pixpal.theme",
+    "pixpal.visible",
+    "pixpal.workflowAgents"
+  ],
+  "errors": [],
+  "warnings": [
+    "root: CLAUDE.md at the plugin root is not loaded as project context. To ship context with your plugin, use a skill (skills/<name>/SKILL.md) instead."
+  ],
+  "validatedWith": "2.1.302"
+}

@@ -1,0 +1,52 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "session.measure",
+    "classic.SessionStart",
+    "session.compact",
+    "turn.start",
+    "turn.complete",
+    "turn.step",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.env.get",
+    "$.process.run",
+    "$.session.model",
+    "$.session.usage",
+    "$.settings.read",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "classic.SessionStart",
+      "hasCatch": false
+    },
+    {
+      "hook": "session.compact",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "usage-bar.cacheSeen",
+    "usage-bar.lastRequest",
+    "usage-bar.minute",
+    "usage-bar.reading",
+    "usage-bar.resumed",
+    "usage-bar.transcript",
+    "usage-bar.working",
+    "usage-bar.written"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

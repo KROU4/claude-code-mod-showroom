@@ -1,0 +1,21 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "turn.complete",
+    "command.run{command=tldr}"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.model.complete",
+    "$.session.messages",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.log"
+  ],
+  "gating": [],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

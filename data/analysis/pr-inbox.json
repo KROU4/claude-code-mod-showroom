@@ -1,0 +1,71 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=pr-inbox}",
+    "turn.start",
+    "turn.complete",
+    "tool.call",
+    "ui.close",
+    "prompt.submit",
+    "command.run",
+    "ui.render{component=PromptHint}",
+    "ui.render{component=Pane}",
+    "ui.scroll{requestId=pr-inbox}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.clock.sleep",
+    "$.command.register",
+    "$.env.get",
+    "$.model.complete",
+    "$.process.run",
+    "$.prompt.fill",
+    "$.prompt.read",
+    "$.prompt.submit",
+    "$.settings.read",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.keys",
+    "$.store.set",
+    "$.ui.close",
+    "$.ui.invalidate",
+    "$.ui.log",
+    "$.ui.open",
+    "$.ui.panes",
+    "$.ui.resolve",
+    "$.ui.scroll",
+    "$.ui.status"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    },
+    {
+      "hook": "ui.close",
+      "hasCatch": false
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run",
+      "hasCatch": false
+    },
+    {
+      "hook": "ui.scroll{requestId=pr-inbox}",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [
+    "./register.ts: notes truncated by claude plugin validate; calls/hooks may be incomplete"
+  ],
+  "validatedWith": "2.1.302",
+  "truncated": true
+}

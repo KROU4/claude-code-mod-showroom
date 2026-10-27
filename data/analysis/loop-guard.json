@@ -1,0 +1,21 @@
+{
+  "ok": true,
+  "hooks": [
+    "tool.call",
+    "turn.complete",
+    "session.end"
+  ],
+  "calls": [
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

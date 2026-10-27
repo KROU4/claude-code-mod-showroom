@@ -1,0 +1,35 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "classic.SessionStart{source=clear|resume|fork}",
+    "command.run{command=\"2048\"}",
+    "ui.render{component=Pane}"
+  ],
+  "calls": [
+    "$.clock.now",
+    "$.command.register",
+    "$.session.surfaces",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.invalidate",
+    "$.ui.log",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "classic.SessionStart{source=clear|resume|fork}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "game-2048.game"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

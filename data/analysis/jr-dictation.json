@@ -1,0 +1,31 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "ui.render{component=AbovePrompt}",
+    "command.run{command=jr-dictation}",
+    "prompt.submit",
+    "ui.render{component=UserMessage, props.origin has {kind=composer}}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.command.register",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.resolve"
+  ],
+  "gating": [
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "jr-dictation.edits"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

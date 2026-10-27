@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "tool.call",
+    "command.run{command=injection-guard}"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

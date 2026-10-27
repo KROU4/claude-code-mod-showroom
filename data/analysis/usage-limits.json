@@ -1,0 +1,27 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "session.end{reason=clear}",
+    "turn.step",
+    "session.measure",
+    "session.attach",
+    "session.detach",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.clock.every",
+    "$.clock.now",
+    "$.session.surfaces",
+    "$.session.usage",
+    "$.ui.invalidate",
+    "$.ui.resolve",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

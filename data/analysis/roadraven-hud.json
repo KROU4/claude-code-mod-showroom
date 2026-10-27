@@ -1,0 +1,74 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=roadraven}",
+    "tool.call",
+    "agent.spawn",
+    "turn.complete",
+    "ui.render{component=Spinner}",
+    "ui.render{component=Pane, requestId=roadraven}"
+  ],
+  "calls": [
+    "$.agent.spawn",
+    "$.clock.every",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.read",
+    "$.mcp.call",
+    "$.prompt.submit",
+    "$.session.append",
+    "$.settings.read",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.log",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    },
+    {
+      "hook": "agent.spawn",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "roadraven-hud.activity",
+    "roadraven-hud.agents",
+    "roadraven-hud.autoOpened",
+    "roadraven-hud.confirmRun",
+    "roadraven-hud.decisions",
+    "roadraven-hud.error",
+    "roadraven-hud.isSending",
+    "roadraven-hud.itemNotes",
+    "roadraven-hud.lastTry",
+    "roadraven-hud.motion",
+    "roadraven-hud.note",
+    "roadraven-hud.offlineSince",
+    "roadraven-hud.openNotes",
+    "roadraven-hud.owners",
+    "roadraven-hud.palette",
+    "roadraven-hud.refreshing",
+    "roadraven-hud.roadmapPath",
+    "roadraven-hud.runNotes",
+    "roadraven-hud.seenRevision",
+    "roadraven-hud.seenUat",
+    "roadraven-hud.sent",
+    "roadraven-hud.showBacklog",
+    "roadraven-hud.snapshot",
+    "roadraven-hud.startedAt",
+    "roadraven-hud.starting",
+    "roadraven-hud.uatNotes"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

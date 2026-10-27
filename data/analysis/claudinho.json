@@ -1,0 +1,55 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "session.attach",
+    "session.detach",
+    "turn.start",
+    "turn.complete",
+    "ui.render{component=AbovePrompt}",
+    "command.run{command=claudinho}",
+    "ui.close{id=match}",
+    "ui.render{component=Pane, requestId=match}",
+    "prompt.submit"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.clock.sleep",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.list",
+    "$.process.run",
+    "$.session.surfaces",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.invalidate",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "ui.close{id=match}",
+      "hasCatch": false
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "claudinho.band",
+    "claudinho.baseline",
+    "claudinho.celebration",
+    "claudinho.context",
+    "claudinho.pace",
+    "claudinho.pane",
+    "claudinho.paneGen"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

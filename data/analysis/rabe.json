@@ -1,0 +1,172 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start{cwd=/\"^\"/}",
+    "agent.spawn{subagentType=/\"^\"/}",
+    "classic.SubagentStart{agent_id=/\"^\"/}",
+    "turn.step{agentId=/\"^\"/}",
+    "turn.step{model=/\"^\"/}",
+    "tool.call{tool=Edit|Write}",
+    "tool.call{tool=Bash}",
+    "turn.complete{agentId=/\"^\"/}",
+    "tool.call{tool=Workflow}",
+    "prompt.submit{origin has {kind=task-notification}}",
+    "session.start{isInteractive=true|false}",
+    "command.run{command=rabe-stop}",
+    "classic.Stop{stop_hook_active=true|false}",
+    "tool.call{tool=Monitor}",
+    "session.start{isInteractive=true}",
+    "tool.call{tool=CronCreate}",
+    "tool.call{tool=CronDelete}",
+    "tool.call{tool=ScheduleWakeup}",
+    "prompt.submit{origin has {kind=scheduled-trigger}}",
+    "session.append{door=prompt}"
+  ],
+  "calls": [
+    "$.agent.list",
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.clock.sleep",
+    "$.command.register",
+    "$.command.run",
+    "$.env.get",
+    "$.fs.list",
+    "$.fs.read",
+    "$.fs.stat",
+    "$.process.run",
+    "$.session.cwd",
+    "$.session.id",
+    "$.session.root",
+    "$.session.send",
+    "$.session.surfaces",
+    "$.session.usage",
+    "$.session.version",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.tool.call",
+    "$.ui.close"
+  ],
+  "gating": [
+    {
+      "hook": "agent.spawn{subagentType=/\"^\"/}",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.SubagentStart{agent_id=/\"^\"/}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=Edit|Write}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=Bash}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=Workflow}",
+      "hasCatch": true
+    },
+    {
+      "hook": "prompt.submit{origin has {kind=task-notification}}",
+      "hasCatch": true
+    },
+    {
+      "hook": "prompt.submit{origin has {kind=task-notification}}",
+      "hasCatch": false
+    },
+    {
+      "hook": "classic.Stop{stop_hook_active=true|false}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=Monitor}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=CronCreate}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=CronDelete}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=ScheduleWakeup}",
+      "hasCatch": false
+    },
+    {
+      "hook": "prompt.submit{origin has {kind=scheduled-trigger}}",
+      "hasCatch": false
+    },
+    {
+      "hook": "session.append{door=prompt}",
+      "hasCatch": false
+    },
+    {
+      "hook": "ui.close{id=rabe, origin has {kind=person}}",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.close{id=rabe}",
+      "hasCatch": true
+    },
+    {
+      "hook": "prompt.submit{origin has {kind=/\"^\"/}}",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.focus{requestId=rabe, origin has {kind=plugin}}",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.focus{requestId=rabe, origin has {kind=person}}",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.scroll{requestId=rabe}",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=rabe:report-bug}",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "rabe.actions",
+    "rabe.agentFiles",
+    "rabe.codexFiles",
+    "rabe.cronTranscript",
+    "rabe.cronTurn",
+    "rabe.diag",
+    "rabe.diffs",
+    "rabe.edits",
+    "rabe.folded",
+    "rabe.grouping",
+    "rabe.items",
+    "rabe.lines",
+    "rabe.mainUsage",
+    "rabe.open",
+    "rabe.openFrom",
+    "rabe.order",
+    "rabe.picked",
+    "rabe.query",
+    "rabe.removed",
+    "rabe.rollouts",
+    "rabe.selected",
+    "rabe.tab",
+    "rabe.turns",
+    "rabe.window",
+    "rabe.worktrees"
+  ],
+  "errors": [],
+  "warnings": [
+    "root: CLAUDE.md at the plugin root is not loaded as project context. To ship context with your plugin, use a skill (skills/<name>/SKILL.md) instead.",
+    "./register.tsx: notes truncated by claude plugin validate; calls/hooks may be incomplete"
+  ],
+  "validatedWith": "2.1.302",
+  "truncated": true
+}

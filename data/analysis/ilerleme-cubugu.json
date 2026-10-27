@@ -1,0 +1,60 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=ilerleme}",
+    "tool.call",
+    "prompt.submit",
+    "skill.prompt",
+    "classic.TaskCreated",
+    "classic.TaskCompleted",
+    "turn.complete",
+    "session.end",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.fs.list",
+    "$.fs.read",
+    "$.fs.stat",
+    "$.session.id",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.invalidate",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    },
+    {
+      "hook": "classic.TaskCreated",
+      "hasCatch": false
+    },
+    {
+      "hook": "classic.TaskCompleted",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "ilerleme-cubugu.engagedSid",
+    "ilerleme-cubugu.isExpanded",
+    "ilerleme-cubugu.isHidden",
+    "ilerleme-cubugu.isUnread",
+    "ilerleme-cubugu.job",
+    "ilerleme-cubugu.plan",
+    "ilerleme-cubugu.tasks"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

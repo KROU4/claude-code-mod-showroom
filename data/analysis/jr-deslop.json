@@ -1,0 +1,32 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "ui.render{component=AbovePrompt}",
+    "tool.call{tool=Write|Edit}",
+    "command.run{command=jr-deslop}",
+    "ui.render{component=Pane, requestId=jr-deslop}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.command.register",
+    "$.fs.read",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call{tool=Write|Edit}",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "jr-deslop.hits"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

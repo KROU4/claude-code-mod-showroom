@@ -1,0 +1,87 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "classic.SessionStart",
+    "prompt.submit",
+    "classic.UserPromptSubmit",
+    "classic.Stop",
+    "turn.start",
+    "turn.step",
+    "tool.call",
+    "agent.spawn",
+    "classic.PermissionRequest",
+    "session.compact",
+    "turn.complete",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.run",
+    "$.env.get",
+    "$.fs.list",
+    "$.fs.read",
+    "$.fs.stat",
+    "$.model.fork",
+    "$.process.run",
+    "$.session.cwd",
+    "$.session.id",
+    "$.session.usage",
+    "$.state.get",
+    "$.state.set",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.log",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "classic.SessionStart",
+      "hasCatch": false
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    },
+    {
+      "hook": "classic.UserPromptSubmit",
+      "hasCatch": false
+    },
+    {
+      "hook": "classic.Stop",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    },
+    {
+      "hook": "agent.spawn",
+      "hasCatch": false
+    },
+    {
+      "hook": "classic.PermissionRequest",
+      "hasCatch": false
+    },
+    {
+      "hook": "session.compact",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "token-optimizer.clock",
+    "token-optimizer.engineCall",
+    "token-optimizer.frame",
+    "token-optimizer.handoff",
+    "token-optimizer.pose",
+    "token-optimizer.session",
+    "token-optimizer.ui"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

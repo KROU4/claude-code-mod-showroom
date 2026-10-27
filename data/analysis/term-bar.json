@@ -1,0 +1,43 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "prompt.submit",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=SessionMode}"
+  ],
+  "calls": [
+    "$.clock.now",
+    "$.command.list",
+    "$.command.run",
+    "$.config.list",
+    "$.config.set",
+    "$.process.run",
+    "$.session.cwd",
+    "$.session.id",
+    "$.session.model",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "term-bar.effort",
+    "term-bar.history",
+    "term-bar.model",
+    "term-bar.picking"
+  ],
+  "errors": [],
+  "warnings": [
+    "author: No author information provided. Consider adding author details for plugin attribution"
+  ],
+  "validatedWith": "2.1.302"
+}

@@ -1,0 +1,55 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "tool.call{tool=Bash}",
+    "tool.call{tool=Read}",
+    "tool.call{tool=Edit}",
+    "tool.call{tool=Write}",
+    "tool.call{tool=NotebookEdit}",
+    "tool.call",
+    "command.run{command=guard}"
+  ],
+  "calls": [
+    "$.clock.now",
+    "$.command.register",
+    "$.fs.stat",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call{tool=Bash}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=Read}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=Edit}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=Write}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=NotebookEdit}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "guard.blocks",
+    "guard.isPaused"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

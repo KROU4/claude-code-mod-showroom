@@ -1,0 +1,52 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=porthole}",
+    "tool.call{tool=Bash}",
+    "tool.call{tool=/\"^(Edit|Write|MultiEdit|NotebookEdit)$\"/}",
+    "ui.close{id=porthole}",
+    "session.end",
+    "ui.render{component=Pane, requestId=porthole}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.exists",
+    "$.process.run",
+    "$.process.spawn",
+    "$.session.surfaces",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.blit",
+    "$.ui.log",
+    "$.ui.open",
+    "$.ui.panes",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call{tool=Bash}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=/\"^(Edit|Write|MultiEdit|NotebookEdit)$\"/}",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.close{id=porthole}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "porthole.images",
+    "porthole.lastSeen",
+    "porthole.toasted",
+    "porthole.view"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

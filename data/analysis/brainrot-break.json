@@ -1,0 +1,53 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=brainrot}",
+    "turn.start",
+    "turn.complete",
+    "ui.close{id=brainrot-break}",
+    "ui.message",
+    "ui.scroll",
+    "ui.render{component=Pane, requestId=brainrot-break}",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.command.register",
+    "$.state.get",
+    "$.state.set",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.blit",
+    "$.ui.close",
+    "$.ui.invalidate",
+    "$.ui.open",
+    "$.ui.panes",
+    "$.ui.resolve",
+    "$.ui.scroll",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "ui.close{id=brainrot-break}",
+      "hasCatch": false
+    },
+    {
+      "hook": "ui.scroll",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "brainrot-break.endCard",
+    "brainrot-break.feed",
+    "brainrot-break.index",
+    "brainrot-break.liked",
+    "brainrot-break.mode",
+    "brainrot-break.session"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

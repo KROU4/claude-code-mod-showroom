@@ -1,0 +1,34 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "prompt.submit",
+    "turn.complete",
+    "ui.render{component=AssistantMessage}",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.env.get",
+    "$.process.run",
+    "$.prompt.fill",
+    "$.prompt.read",
+    "$.prompt.suggest",
+    "$.session.cwd",
+    "$.session.messages",
+    "$.ui.invalidate",
+    "$.ui.resolve",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "prompt.submit",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

@@ -1,0 +1,39 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "prompt.submit",
+    "turn.complete",
+    "tool.call",
+    "command.run{command=jr-heatmap}",
+    "ui.render{component=Pane, requestId=jr-heatmap}"
+  ],
+  "calls": [
+    "$.clock.now",
+    "$.command.register",
+    "$.session.root",
+    "$.session.usage",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.open",
+    "$.ui.resolve"
+  ],
+  "gating": [
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "jr-heatmap.view"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

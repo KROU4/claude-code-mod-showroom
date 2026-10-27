@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "hooks": [
+    "turn.complete"
+  ],
+  "calls": [
+    "$.env.get",
+    "$.process.run",
+    "$.session.id"
+  ],
+  "gating": [],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

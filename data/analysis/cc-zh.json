@@ -1,0 +1,35 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=cc-zh-dump}",
+    "command.describe",
+    "config.describe",
+    "ui.render{component=Spinner}",
+    "ui.render{component=PromptHint}",
+    "ui.render{component=InfoNotice}",
+    "ui.render{component=SessionMode}",
+    "ui.render{component=ToolProgress}",
+    "ui.render{component=CommandOutput}",
+    "ui.render{component=UserMessage, props.origin has {kind=task-notification}}",
+    "ui.render{component=ToolGroup}",
+    "ui.render{component=TurnDuration}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.command.list",
+    "$.command.register",
+    "$.config.list",
+    "$.fs.read",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.invalidate",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

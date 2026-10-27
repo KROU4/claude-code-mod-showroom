@@ -1,0 +1,26 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=pin}",
+    "prompt.submit"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.session.root",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.log"
+  ],
+  "gating": [
+    {
+      "hook": "prompt.submit",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

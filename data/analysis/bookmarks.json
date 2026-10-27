@@ -1,0 +1,194 @@
+{
+  "ok": true,
+  "hooks": [
+    "config.set{key=/\"^bookmarks\\\\.\"/}",
+    "config.describe{key=/\"^bookmarks\\\\.\"/}",
+    "config.set{key=theme}",
+    "session.start",
+    "session.end",
+    "prompt.submit",
+    "prompt.edit",
+    "ui.focus{component=AbovePrompt}",
+    "ui.close{id=bm-pane}",
+    "command.run{command=bm-diag-keys}",
+    "turn.start",
+    "turn.complete",
+    "ui.focus",
+    "session.append",
+    "ui.render{component=ToolUse}",
+    "ui.render{component=ToolResult}",
+    "ui.render{component=ToolGroup}",
+    "ui.render{component=CommandOutput}",
+    "ui.render{component=TurnDuration}",
+    "ui.render{component=InfoNotice}",
+    "ui.render{component=UserMessage}",
+    "ui.render{component=AssistantMessage}",
+    "command.run{command=bm-ids}",
+    "command.run{command=bm-pin}",
+    "command.run{command=bm-jump}",
+    "command.run{command=bm-mark}",
+    "command.run{command=bm-goto}",
+    "command.run{command=bm-prompts}",
+    "command.run{command=bm-bookmarks}",
+    "command.run{command=bm-promote}",
+    "command.run{command=bm-read}",
+    "command.run{command=bm-pane}",
+    "command.run{command=bm-delmarks}",
+    "command.run{command=bm-marks}",
+    "command.run{command=bm-sel}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.config.list",
+    "$.env.get",
+    "$.env.set",
+    "$.fs.exists",
+    "$.fs.list",
+    "$.fs.read",
+    "$.fs.stat",
+    "$.fs.write",
+    "$.process.run",
+    "$.prompt.read",
+    "$.session.cwd",
+    "$.session.id",
+    "$.session.version",
+    "$.state.get",
+    "$.state.set",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.keys",
+    "$.store.set"
+  ],
+  "gating": [
+    {
+      "hook": "config.set{key=/\"^bookmarks\\\\.\"/}",
+      "hasCatch": false
+    },
+    {
+      "hook": "config.set{key=theme}",
+      "hasCatch": false
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    },
+    {
+      "hook": "ui.focus{component=AbovePrompt}",
+      "hasCatch": false
+    },
+    {
+      "hook": "ui.close{id=bm-pane}",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=bm-diag-keys}",
+      "hasCatch": false
+    },
+    {
+      "hook": "ui.focus",
+      "hasCatch": false
+    },
+    {
+      "hook": "session.append",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=bm-ids}",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=bm-pin}",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=bm-jump}",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=bm-mark}",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=bm-goto}",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=bm-prompts}",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=bm-bookmarks}",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=bm-promote}",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=bm-read}",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=bm-pane}",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=bm-delmarks}",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=bm-marks}",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=bm-sel}",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=bm-timeline}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=/\"^mcp__bookmarks__bookmark$\"/}",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=bm-debug}",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=bm-config}",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=bm-env}",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=bm-check}",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "bookmarks.bandFieldRev",
+    "bookmarks.bandGroup",
+    "bookmarks.bandMode",
+    "bookmarks.bandNum",
+    "bookmarks.cmdRev",
+    "bookmarks.paneMode",
+    "bookmarks.pinsRev",
+    "bookmarks.rows",
+    "bookmarks.settingsRev",
+    "bookmarks.shown",
+    "bookmarks.viewRev"
+  ],
+  "errors": [],
+  "warnings": [
+    "./register.tsx: notes truncated by claude plugin validate; calls/hooks may be incomplete"
+  ],
+  "validatedWith": "2.1.302",
+  "truncated": true
+}

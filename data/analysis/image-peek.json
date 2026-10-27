@@ -1,0 +1,26 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "session.end",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=UserMessage}"
+  ],
+  "calls": [
+    "$.clock.every",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.list",
+    "$.fs.read",
+    "$.process.run",
+    "$.prompt.read",
+    "$.session.id",
+    "$.ui.invalidate",
+    "$.ui.resolve"
+  ],
+  "gating": [],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

@@ -1,0 +1,93 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "prompt.submit",
+    "prompt.submit{origin has {kind=/\"^(composer|bridge)$\"/}}",
+    "prompt.submit{origin has {kind=task-notification}}",
+    "prompt.change",
+    "prompt.autocomplete",
+    "tool.call",
+    "tool.call{tool=/\"^(Workflow|Agent|Bash|TaskStop)$\"/}",
+    "tool.call{tool=Write}",
+    "tool.call{tool=Edit}",
+    "tool.call{tool=/\"__plan$\"/}",
+    "tool.call{tool=/\"__wait$\"/}",
+    "turn.start",
+    "turn.complete",
+    "session.end",
+    "command.run{command=aside}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane, requestId=aside}",
+    "ui.render{component=CommandOutput}",
+    "ui.render{component=ToolUse}",
+    "ui.render{component=ToolResult}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.now",
+    "$.command.register",
+    "$.fs.exists",
+    "$.fs.list",
+    "$.fs.read",
+    "$.fs.write",
+    "$.model.complete",
+    "$.process.run",
+    "$.prompt.fill",
+    "$.prompt.read",
+    "$.prompt.submit",
+    "$.session.id"
+  ],
+  "gating": [
+    {
+      "hook": "prompt.submit",
+      "hasCatch": true
+    },
+    {
+      "hook": "prompt.submit{origin has {kind=/\"^(composer|bridge)$\"/}}",
+      "hasCatch": true
+    },
+    {
+      "hook": "prompt.submit{origin has {kind=task-notification}}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=/\"^(Workflow|Agent|Bash|TaskStop)$\"/}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=Write}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=Edit}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=/\"__plan$\"/}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=/\"__wait$\"/}",
+      "hasCatch": true
+    },
+    {
+      "hook": "command.run{command=aside}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "aside.band",
+    "aside.files"
+  ],
+  "errors": [],
+  "warnings": [
+    "./register.tsx: notes truncated by claude plugin validate; calls/hooks may be incomplete"
+  ],
+  "validatedWith": "2.1.302",
+  "truncated": true
+}

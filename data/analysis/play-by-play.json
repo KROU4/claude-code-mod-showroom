@@ -1,0 +1,47 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "turn.start",
+    "turn.complete",
+    "tool.call",
+    "command.run{command=replay}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane, requestId=play-by-play}",
+    "ui.scroll{component=Pane, requestId=play-by-play}",
+    "ui.message{requestId=play-by-play}"
+  ],
+  "calls": [
+    "$.clock.now",
+    "$.command.register",
+    "$.process.run",
+    "$.session.cwd",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.close",
+    "$.ui.log",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.scroll{component=Pane, requestId=play-by-play}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "play-by-play.current",
+    "play-by-play.hint",
+    "play-by-play.shellPaused",
+    "play-by-play.turns",
+    "play-by-play.view"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

@@ -1,0 +1,38 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "session.end",
+    "command.run{command=fineprint}",
+    "ui.render{component=Pane, requestId=fineprint}",
+    "turn.complete",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.now",
+    "$.command.register",
+    "$.model.complete",
+    "$.prompt.submit",
+    "$.session.messages",
+    "$.session.surfaces",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.log",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [],
+  "stateKeys": [
+    "fine-print.capNoticed",
+    "fine-print.checks",
+    "fine-print.notes",
+    "fine-print.shown",
+    "fine-print.warned"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

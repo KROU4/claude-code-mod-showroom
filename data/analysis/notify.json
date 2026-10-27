@@ -1,0 +1,46 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "prompt.submit",
+    "turn.start",
+    "tool.call",
+    "classic.Notification",
+    "turn.complete",
+    "state.set",
+    "command.run{command=notify}"
+  ],
+  "calls": [
+    "$.audio.speak",
+    "$.clock.after",
+    "$.command.register",
+    "$.env.get",
+    "$.process.run",
+    "$.session.cwd",
+    "$.store.get",
+    "$.store.set",
+    "$.tool.call"
+  ],
+  "gating": [
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    },
+    {
+      "hook": "classic.Notification",
+      "hasCatch": false
+    },
+    {
+      "hook": "state.set",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

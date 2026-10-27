@@ -1,0 +1,35 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "turn.start",
+    "tool.call",
+    "turn.complete",
+    "session.append",
+    "ui.render{component=TurnDuration}"
+  ],
+  "calls": [
+    "$.session.usage",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.resolve"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    },
+    {
+      "hook": "session.append",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "turn-stats.lines"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

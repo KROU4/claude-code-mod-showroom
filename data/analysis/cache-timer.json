@@ -1,0 +1,36 @@
+{
+  "ok": true,
+  "hooks": [
+    "turn.step",
+    "session.measure",
+    "ui.render{component=AbovePrompt}",
+    "session.start",
+    "session.end",
+    "session.compact",
+    "command.run{command=compact}"
+  ],
+  "calls": [
+    "$.clock.every",
+    "$.clock.now",
+    "$.env.get",
+    "$.settings.read",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.invalidate",
+    "$.ui.resolve"
+  ],
+  "gating": [
+    {
+      "hook": "session.compact",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=compact}",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

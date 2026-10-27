@@ -1,0 +1,114 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "session.end{reason=clear|resume}",
+    "config.set{key=theme}",
+    "tool.call{tool=/\"^mcp__ostrakon__jot$\"/}",
+    "tool.call{tool=/\"^mcp__ostrakon__notes$\"/}",
+    "tool.call{tool=/\"^mcp__ostrakon__archive$\"/}",
+    "command.run{command=jot}",
+    "prompt.edit",
+    "ui.render{component=PromptHint}",
+    "prompt.submit",
+    "session.append",
+    "prompt.change",
+    "turn.start",
+    "turn.complete",
+    "ui.render{component=AbovePrompt}",
+    "ui.close",
+    "ui.focus{component=Pane, requestId=ostrakon}",
+    "ui.render{component=Pane, requestId=ostrakon}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.clock.sleep",
+    "$.command.register",
+    "$.config.list",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.list",
+    "$.fs.read",
+    "$.fs.stat",
+    "$.fs.write",
+    "$.http.fetch",
+    "$.model.complete",
+    "$.model.fork",
+    "$.process.run",
+    "$.prompt.fill",
+    "$.prompt.read",
+    "$.prompt.submit",
+    "$.session.cwd",
+    "$.session.id",
+    "$.session.repo",
+    "$.session.root",
+    "$.session.version",
+    "$.state.get",
+    "$.state.set",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.set",
+    "$.tool.register",
+    "$.ui.close",
+    "$.ui.copy",
+    "$.ui.focus",
+    "$.ui.invalidate",
+    "$.ui.log"
+  ],
+  "gating": [
+    {
+      "hook": "config.set{key=theme}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=/\"^mcp__ostrakon__jot$\"/}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=/\"^mcp__ostrakon__notes$\"/}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=/\"^mcp__ostrakon__archive$\"/}",
+      "hasCatch": false
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    },
+    {
+      "hook": "session.append",
+      "hasCatch": false
+    },
+    {
+      "hook": "ui.close",
+      "hasCatch": false
+    },
+    {
+      "hook": "ui.focus{component=Pane, requestId=ostrakon}",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "ostrakon.fresh",
+    "ostrakon.harvest",
+    "ostrakon.harvestHint",
+    "ostrakon.isJotDraft",
+    "ostrakon.isOpen",
+    "ostrakon.mirror",
+    "ostrakon.notes",
+    "ostrakon.pane",
+    "ostrakon.problems",
+    "ostrakon.savedAt",
+    "ostrakon.sync",
+    "ostrakon.turns"
+  ],
+  "errors": [],
+  "warnings": [
+    "./register.tsx: notes truncated by claude plugin validate; calls/hooks may be incomplete"
+  ],
+  "validatedWith": "2.1.302",
+  "truncated": true
+}

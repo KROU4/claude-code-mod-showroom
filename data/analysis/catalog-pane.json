@@ -1,0 +1,73 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.end",
+    "command.run",
+    "skill.prompt",
+    "agent.spawn",
+    "tool.call",
+    "agent.offer",
+    "session.start",
+    "command.run{command=catalog}",
+    "ui.render{component=Pane, requestId=catalog}"
+  ],
+  "calls": [
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.list",
+    "$.command.register",
+    "$.command.run",
+    "$.env.get",
+    "$.fs.list",
+    "$.fs.read",
+    "$.http.fetch",
+    "$.model.complete",
+    "$.process.run",
+    "$.prompt.fill",
+    "$.settings.read",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.tool.list",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "command.run",
+      "hasCatch": false
+    },
+    {
+      "hook": "agent.spawn",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    },
+    {
+      "hook": "agent.offer",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "catalog-pane.confirming",
+    "catalog-pane.costs",
+    "catalog-pane.daily",
+    "catalog-pane.entries",
+    "catalog-pane.explaining",
+    "catalog-pane.explanations",
+    "catalog-pane.isLoading",
+    "catalog-pane.pending",
+    "catalog-pane.repos",
+    "catalog-pane.scans",
+    "catalog-pane.usage",
+    "catalog-pane.view",
+    "catalog-pane.working"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

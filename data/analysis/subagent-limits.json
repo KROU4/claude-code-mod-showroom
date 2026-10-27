@@ -1,0 +1,29 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.end{reason=clear}",
+    "prompt.compose",
+    "agent.spawn",
+    "turn.step",
+    "tool.call"
+  ],
+  "calls": [
+    "$.agent.list",
+    "$.clock.now",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "agent.spawn",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

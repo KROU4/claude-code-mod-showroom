@@ -1,0 +1,56 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=ccpii}",
+    "prompt.compose",
+    "prompt.submit",
+    "session.append",
+    "tool.call",
+    "ui.render{component=UserMessage}",
+    "ui.render{component=AssistantMessage}",
+    "ui.render{component=ToolUse}"
+  ],
+  "calls": [
+    "$.clock.sleep",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.read",
+    "$.fs.write",
+    "$.http.fetch",
+    "$.process.run",
+    "$.process.spawn",
+    "$.session.append",
+    "$.session.id",
+    "$.session.messages",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.log",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "prompt.submit",
+      "hasCatch": true
+    },
+    {
+      "hook": "session.append",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "ccpii.sidecarDir",
+    "ccpii.vault"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

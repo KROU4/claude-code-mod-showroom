@@ -1,0 +1,26 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=fence}",
+    "tool.call{tool=Edit|Write|NotebookEdit}"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.session.root",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.log"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call{tool=Edit|Write|NotebookEdit}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

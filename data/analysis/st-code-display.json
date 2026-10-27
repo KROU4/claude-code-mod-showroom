@@ -1,0 +1,80 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "session.end",
+    "command.run{command=st-code-display}",
+    "classic.UserPromptSubmit",
+    "turn.start",
+    "turn.step",
+    "turn.complete",
+    "agent.offer",
+    "agent.spawn",
+    "session.append",
+    "tool.call{tool=/\"^SubagentHandback$\"/}",
+    "tool.call",
+    "session.measure",
+    "session.compact",
+    "ui.render{component=Pane, requestId=st-code-display}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.now",
+    "$.command.register",
+    "$.session.usage",
+    "$.state.get",
+    "$.state.set",
+    "$.tool.check",
+    "$.ui.close",
+    "$.ui.invalidate",
+    "$.ui.open",
+    "$.ui.resolve"
+  ],
+  "gating": [
+    {
+      "hook": "classic.UserPromptSubmit",
+      "hasCatch": false
+    },
+    {
+      "hook": "agent.offer",
+      "hasCatch": false
+    },
+    {
+      "hook": "agent.spawn",
+      "hasCatch": false
+    },
+    {
+      "hook": "session.append",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=/\"^SubagentHandback$\"/}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    },
+    {
+      "hook": "session.compact",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "st-code-display.activity",
+    "st-code-display.agents",
+    "st-code-display.architect",
+    "st-code-display.log",
+    "st-code-display.loops",
+    "st-code-display.main",
+    "st-code-display.meta",
+    "st-code-display.roster",
+    "st-code-display.session",
+    "st-code-display.turn",
+    "st-code-display.usage",
+    "st-code-display.view"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

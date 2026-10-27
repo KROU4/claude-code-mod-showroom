@@ -1,0 +1,41 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=changes}",
+    "tool.call{tool=Edit}",
+    "tool.call{tool=Write}",
+    "turn.complete",
+    "ui.render{component=Pane, requestId=changes}"
+  ],
+  "calls": [
+    "$.agent.list",
+    "$.clock.now",
+    "$.command.register",
+    "$.fs.read",
+    "$.process.run",
+    "$.session.cwd",
+    "$.session.repo",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.open",
+    "$.ui.resolve"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call{tool=Edit}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=Write}",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "change-ledger.files",
+    "change-ledger.git"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

@@ -1,0 +1,54 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=?}",
+    "tool.call{tool=?}",
+    "turn.start",
+    "agent.spawn",
+    "turn.complete",
+    "session.end"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.now",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.read",
+    "$.fs.write",
+    "$.process.run",
+    "$.process.spawn",
+    "$.prompt.submit",
+    "$.session.cwd",
+    "$.session.id",
+    "$.state.get",
+    "$.state.set",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.keys",
+    "$.store.set",
+    "$.tool.register",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "command.run{command=?}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=?}",
+      "hasCatch": true
+    },
+    {
+      "hook": "agent.spawn",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "visual-review.pendingRun"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

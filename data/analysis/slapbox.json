@@ -1,0 +1,39 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "turn.start",
+    "prompt.submit",
+    "ui.message",
+    "command.run{command=slap}",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.clock.now",
+    "$.command.register",
+    "$.env.get",
+    "$.process.run",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.log",
+    "$.ui.resolve"
+  ],
+  "gating": [
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "slapbox.board",
+    "slapbox.isHidden",
+    "slapbox.isOpen",
+    "slapbox.isPrefsLoaded",
+    "slapbox.prefs"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

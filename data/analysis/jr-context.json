@@ -1,0 +1,37 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.end",
+    "session.start",
+    "command.run{command=jr-context}",
+    "ui.render{component=Pane, requestId=jr-context}",
+    "tool.call",
+    "turn.complete",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.now",
+    "$.command.register",
+    "$.session.usage",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.open",
+    "$.ui.resolve"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "jr-context.fill",
+    "jr-context.isBandHidden"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

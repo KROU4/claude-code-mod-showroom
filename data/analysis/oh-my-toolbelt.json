@@ -1,0 +1,102 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "session.attach",
+    "classic.SessionStart{source=clear|resume|fork}",
+    "command.run{command=toolbelt|tb}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane, requestId=oh-my-toolbelt}",
+    "ui.render{component=UserMessage}",
+    "ui.render{component=AssistantMessage|ToolUse|ToolResult|ToolGroup|CommandOutput|TurnDuration|InfoNotice|ToolProgress}",
+    "prompt.submit",
+    "classic.SessionStart",
+    "session.receive",
+    "session.append{door=prompt|command|response}",
+    "turn.start",
+    "turn.complete"
+  ],
+  "calls": [
+    "$.audio.play",
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.list",
+    "$.command.register",
+    "$.command.run",
+    "$.config.list",
+    "$.config.set",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.read",
+    "$.fs.stat",
+    "$.fs.write",
+    "$.http.fetch",
+    "$.process.run",
+    "$.process.spawn",
+    "$.prompt.fill",
+    "$.prompt.submit",
+    "$.session.cwd",
+    "$.session.id",
+    "$.session.messages",
+    "$.session.surfaces",
+    "$.session.version",
+    "$.state.get"
+  ],
+  "gating": [
+    {
+      "hook": "classic.SessionStart{source=clear|resume|fork}",
+      "hasCatch": true
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.SessionStart",
+      "hasCatch": true
+    },
+    {
+      "hook": "session.receive",
+      "hasCatch": true
+    },
+    {
+      "hook": "session.append{door=prompt|command|response}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "oh-my-toolbelt.bandFolded",
+    "oh-my-toolbelt.bandHidden",
+    "oh-my-toolbelt.buttons",
+    "oh-my-toolbelt.clipBoard",
+    "oh-my-toolbelt.clockLabel",
+    "oh-my-toolbelt.curtain",
+    "oh-my-toolbelt.editDraft",
+    "oh-my-toolbelt.exportFormat",
+    "oh-my-toolbelt.guideSection",
+    "oh-my-toolbelt.iconGroup",
+    "oh-my-toolbelt.icons",
+    "oh-my-toolbelt.lastError",
+    "oh-my-toolbelt.layout",
+    "oh-my-toolbelt.notes",
+    "oh-my-toolbelt.openPicker",
+    "oh-my-toolbelt.paneStarted",
+    "oh-my-toolbelt.paneTab",
+    "oh-my-toolbelt.pomodoro",
+    "oh-my-toolbelt.settings",
+    "oh-my-toolbelt.settingsSource",
+    "oh-my-toolbelt.soundPick",
+    "oh-my-toolbelt.themeRow",
+    "oh-my-toolbelt.tocMoved",
+    "oh-my-toolbelt.turnRunning",
+    "oh-my-toolbelt.voice",
+    "oh-my-toolbelt.weather"
+  ],
+  "errors": [],
+  "warnings": [
+    "./register.tsx: notes truncated by claude plugin validate; calls/hooks may be incomplete"
+  ],
+  "validatedWith": "2.1.302",
+  "truncated": true
+}

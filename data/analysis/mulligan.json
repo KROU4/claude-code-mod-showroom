@@ -1,0 +1,50 @@
+{
+  "ok": true,
+  "hooks": [
+    "config.set{key=\"mulligan.enabled\"}",
+    "session.start",
+    "tool.call",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane, requestId=mulligan}",
+    "command.run{command=mulligan}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.now",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.list",
+    "$.fs.read",
+    "$.fs.write",
+    "$.process.run",
+    "$.session.append",
+    "$.session.cwd",
+    "$.session.root",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.invalidate",
+    "$.ui.log",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "config.set{key=\"mulligan.enabled\"}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "mulligan.band",
+    "mulligan.snapshots",
+    "mulligan.view"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

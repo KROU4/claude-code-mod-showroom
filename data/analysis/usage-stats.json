@@ -1,0 +1,33 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=usage-stats}",
+    "ui.render{component=Pane, requestId=usage-stats}"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.env.get",
+    "$.fs.read",
+    "$.fs.write",
+    "$.process.run",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [],
+  "stateKeys": [
+    "usage-stats.hidden",
+    "usage-stats.live",
+    "usage-stats.range",
+    "usage-stats.status",
+    "usage-stats.tab"
+  ],
+  "errors": [],
+  "warnings": [
+    "description: No marketplace description provided. Adding a description helps users understand what this marketplace offers"
+  ],
+  "validatedWith": "2.1.302"
+}

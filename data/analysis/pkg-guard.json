@@ -1,0 +1,28 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=pkg-guard}",
+    "tool.call{tool=Bash}"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.fs.exists",
+    "$.fs.read",
+    "$.http.fetch",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.ask",
+    "$.ui.log"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call{tool=Bash}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

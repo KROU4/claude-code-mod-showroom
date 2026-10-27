@@ -1,0 +1,31 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "tool.describe",
+    "agent.offer",
+    "command.run{command=mcp-diet}",
+    "ui.render{component=Pane}"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.session.root",
+    "$.store.get",
+    "$.store.set",
+    "$.tool.list",
+    "$.ui.invalidate",
+    "$.ui.log",
+    "$.ui.open",
+    "$.ui.resolve"
+  ],
+  "gating": [
+    {
+      "hook": "agent.offer",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

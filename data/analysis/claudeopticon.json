@@ -1,0 +1,66 @@
+{
+  "ok": true,
+  "hooks": [
+    "prompt.context",
+    "session.start",
+    "command.run{command=claudeopticon}",
+    "agent.spawn",
+    "tool.call{tool=mcp__claudeopticon__report_progress}",
+    "tool.call{tool=mcp__claudeopticon__move_ticket}",
+    "tool.call",
+    "prompt.submit",
+    "session.compact",
+    "turn.step",
+    "turn.complete",
+    "ui.render{component=Pane, requestId=claudeopticon}"
+  ],
+  "calls": [
+    "$.agent.list",
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.fs.exists",
+    "$.fs.list",
+    "$.fs.read",
+    "$.fs.stat",
+    "$.fs.write",
+    "$.model.complete",
+    "$.process.run",
+    "$.prompt.submit",
+    "$.session.id"
+  ],
+  "gating": [
+    {
+      "hook": "agent.spawn",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=mcp__claudeopticon__report_progress}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=mcp__claudeopticon__move_ticket}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    },
+    {
+      "hook": "session.compact",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [
+    "./register.tsx: notes truncated by claude plugin validate; calls/hooks may be incomplete"
+  ],
+  "validatedWith": "2.1.302",
+  "truncated": true
+}

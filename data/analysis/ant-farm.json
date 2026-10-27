@@ -1,0 +1,59 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "session.end",
+    "command.run{command=antfarm}",
+    "agent.spawn",
+    "turn.start",
+    "turn.step",
+    "tool.call",
+    "turn.complete",
+    "ui.close{id=ant-farm}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane, requestId=ant-farm}",
+    "ui.render{component=SessionMode}"
+  ],
+  "calls": [
+    "$.agent.list",
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.session.usage",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.invalidate",
+    "$.ui.open",
+    "$.ui.panes",
+    "$.ui.resolve",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "agent.spawn",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.close{id=ant-farm}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "ant-farm.alarm",
+    "ant-farm.ants",
+    "ant-farm.engineUsd",
+    "ant-farm.events",
+    "ant-farm.loops",
+    "ant-farm.turn",
+    "ant-farm.view"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

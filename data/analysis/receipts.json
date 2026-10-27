@@ -1,0 +1,76 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "turn.start",
+    "tool.call",
+    "state.set{plugin=changes, key=index}",
+    "classic.Stop",
+    "turn.complete",
+    "prompt.submit",
+    "session.end",
+    "command.run{command=receipts}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane, requestId=receipts}",
+    "ui.close{id=receipts}"
+  ],
+  "calls": [
+    "$.clock.now",
+    "$.command.register",
+    "$.config.set",
+    "$.fs.stat",
+    "$.model.complete",
+    "$.session.append",
+    "$.session.cwd",
+    "$.session.version",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.invalidate",
+    "$.ui.log",
+    "$.ui.open",
+    "$.ui.panes",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call",
+      "hasCatch": true
+    },
+    {
+      "hook": "state.set{plugin=changes, key=index}",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.Stop",
+      "hasCatch": true
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.close{id=receipts}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "changes.index",
+    "receipts.bandHidden",
+    "receipts.currentTurn",
+    "receipts.history",
+    "receipts.inactive",
+    "receipts.judged",
+    "receipts.last",
+    "receipts.ledger",
+    "receipts.overrides",
+    "receipts.pendingNudge",
+    "receipts.reminded",
+    "receipts.sentBack",
+    "receipts.shellSeen",
+    "receipts.stamped"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

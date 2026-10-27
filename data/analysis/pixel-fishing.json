@@ -1,0 +1,38 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=pixel-fishing}",
+    "command.run{command=pixel-fishing-demo}",
+    "ui.press{plugin=pixel-fishing}",
+    "turn.start",
+    "turn.complete",
+    "ui.render{component=Pane, requestId=pixel-fishing}"
+  ],
+  "calls": [
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.settings.read",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.open",
+    "$.ui.resolve"
+  ],
+  "gating": [],
+  "stateKeys": [
+    "pixel-fishing.activeTurnId",
+    "pixel-fishing.dexOpen",
+    "pixel-fishing.lang",
+    "pixel-fishing.lastElapsedMs",
+    "pixel-fishing.log",
+    "pixel-fishing.phase",
+    "pixel-fishing.turnStartedAt",
+    "pixel-fishing.world"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

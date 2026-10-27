@@ -1,0 +1,73 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "prompt.compose",
+    "skill.prompt",
+    "session.end",
+    "session.measure",
+    "prompt.submit",
+    "turn.start",
+    "turn.complete",
+    "tool.call",
+    "agent.spawn",
+    "classic.Stop",
+    "command.run{command=devir}",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.agent.list",
+    "$.clock.after",
+    "$.clock.now",
+    "$.clock.sleep",
+    "$.command.list",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.read",
+    "$.fs.stat",
+    "$.fs.write",
+    "$.session.cwd",
+    "$.session.id",
+    "$.session.root",
+    "$.session.usage",
+    "$.state.get",
+    "$.state.set",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.keys",
+    "$.store.set",
+    "$.tool.call",
+    "$.tool.check",
+    "$.tool.list",
+    "$.ui.invalidate",
+    "$.ui.log",
+    "$.ui.resolve",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": true
+    },
+    {
+      "hook": "agent.spawn",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.Stop",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "otomatik-devir.conv"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

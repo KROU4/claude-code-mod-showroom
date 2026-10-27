@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=snip}"
+  ],
+  "calls": [
+    "$.clock.now",
+    "$.command.register",
+    "$.process.run",
+    "$.prompt.fill",
+    "$.prompt.read",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.log",
+    "$.ui.selection",
+    "$.ui.toast"
+  ],
+  "gating": [],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

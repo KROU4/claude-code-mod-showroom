@@ -13,6 +13,7 @@
   "calls": [
     "$.agent.list",
     "$.clock.every",
+    "$.clock.now",
     "$.command.register",
     "$.env.get",
     "$.fs.exists",

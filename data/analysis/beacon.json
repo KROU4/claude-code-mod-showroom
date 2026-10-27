@@ -1,0 +1,57 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "prompt.submit",
+    "turn.start",
+    "tool.call",
+    "tool.check",
+    "classic.PermissionRequest",
+    "classic.Stop",
+    "turn.complete",
+    "session.end"
+  ],
+  "calls": [
+    "$.agent.list",
+    "$.clock.every",
+    "$.env.get",
+    "$.fs.read",
+    "$.fs.write",
+    "$.mcp.call",
+    "$.model.classify",
+    "$.session.cwd",
+    "$.session.id",
+    "$.session.messages",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.log"
+  ],
+  "gating": [
+    {
+      "hook": "prompt.submit",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.check",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.PermissionRequest",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.Stop",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "beacon.pending"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

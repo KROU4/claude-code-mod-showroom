@@ -1,0 +1,34 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "classic.SessionStart{source=compact|clear|resume}",
+    "tool.call{tool=Edit|Write}",
+    "command.run{command=memory-lint}"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.fs.exists",
+    "$.fs.read",
+    "$.process.run",
+    "$.session.root",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.log",
+    "$.ui.status"
+  ],
+  "gating": [
+    {
+      "hook": "classic.SessionStart{source=compact|clear|resume}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=Edit|Write}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

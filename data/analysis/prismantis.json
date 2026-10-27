@@ -1,0 +1,84 @@
+{
+  "ok": true,
+  "hooks": [
+    "engine.create",
+    "ui.render{component=ToolGroup}",
+    "ui.render{component=ToolUse}",
+    "ui.render{component=ToolResult}",
+    "tool.call",
+    "session.start",
+    "command.run{command=prismantis}",
+    "ui.render{component=TurnDuration}",
+    "turn.complete",
+    "prompt.submit",
+    "ui.focus",
+    "ui.scroll{component=Pane, requestId=prismantis-setup}",
+    "ui.render{component=Pane, requestId=prismantis-setup}",
+    "ui.render{component=InfoNotice}",
+    "ui.render{component=CommandOutput}",
+    "ui.render{component=UserMessage}",
+    "ui.render{component=AssistantMessage}",
+    "prismantis.markdown"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.now",
+    "$.command.register",
+    "$.config.set",
+    "$.env.get",
+    "$.fs.read",
+    "$.fs.stat",
+    "$.process.run",
+    "$.session.id",
+    "$.session.messages",
+    "$.session.root",
+    "$.session.surfaces",
+    "$.session.version",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.close",
+    "$.ui.copy",
+    "$.ui.focus",
+    "$.ui.invalidate",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    },
+    {
+      "hook": "ui.focus",
+      "hasCatch": false
+    },
+    {
+      "hook": "ui.scroll{component=Pane, requestId=prismantis-setup}",
+      "hasCatch": false
+    },
+    {
+      "hook": "prismantis.markdown",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "prismantis.dir",
+    "prismantis.drawn",
+    "prismantis.formulas",
+    "prismantis.foundPaths",
+    "prismantis.sent",
+    "prismantis.setupAt",
+    "prismantis.setupFocus",
+    "prismantis.setupLand",
+    "prismantis.turnEnds",
+    "prismantis.unfolded"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

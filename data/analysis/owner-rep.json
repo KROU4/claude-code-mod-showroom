@@ -1,0 +1,72 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "classic.SessionStart",
+    "classic.UserPromptSubmit",
+    "prompt.submit",
+    "turn.start",
+    "tool.call",
+    "agent.spawn",
+    "turn.step",
+    "turn.complete",
+    "ui.render{component=AbovePrompt}",
+    "session.end"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.now",
+    "$.env.get",
+    "$.model.complete",
+    "$.model.fork",
+    "$.process.run",
+    "$.process.spawn",
+    "$.prompt.fill",
+    "$.prompt.read",
+    "$.session.cwd",
+    "$.session.id",
+    "$.session.messages",
+    "$.session.usage",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "classic.SessionStart",
+      "hasCatch": false
+    },
+    {
+      "hook": "classic.UserPromptSubmit",
+      "hasCatch": false
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    },
+    {
+      "hook": "agent.spawn",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "owner-rep.brief",
+    "owner-rep.helperIds",
+    "owner-rep.note",
+    "owner-rep.now",
+    "owner-rep.reading",
+    "owner-rep.view"
+  ],
+  "errors": [],
+  "warnings": [
+    "root: CLAUDE.md at the plugin root is not loaded as project context. To ship context with your plugin, use a skill (skills/<name>/SKILL.md) instead."
+  ],
+  "validatedWith": "2.1.302"
+}

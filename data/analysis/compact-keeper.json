@@ -1,0 +1,44 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "tool.call",
+    "session.compact",
+    "command.run{command=compact}",
+    "turn.start",
+    "turn.complete",
+    "session.end"
+  ],
+  "calls": [
+    "$.clock.every",
+    "$.clock.now",
+    "$.env.get",
+    "$.fs.write",
+    "$.session.cwd",
+    "$.session.id",
+    "$.session.messages",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    },
+    {
+      "hook": "session.compact",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=compact}",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "compact-keeper.edited"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

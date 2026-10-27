@@ -10,6 +10,47 @@
   },
   "plugins": [
     {
+      "name": "agent-mobile-observer",
+      "source": {
+        "source": "git-subdir",
+        "url": "Coolkidlab-Yin/agent-mobile-control",
+        "path": "mods/observer",
+        "sha": "48ebc6c244f409791af65388cbd53007b3fa1c72"
+      },
+      "description": "Companion for the agent-mobile-control phone chat server: reports turn starts and ends to it.",
+      "author": {
+        "name": "Coolkidlab-Yin",
+        "url": "https://github.com/Coolkidlab-Yin"
+      },
+      "homepage": "https://github.com/Coolkidlab-Yin/agent-mobile-control/tree/HEAD/mods/observer",
+      "repository": "https://github.com/Coolkidlab-Yin/agent-mobile-control",
+      "license": "MIT",
+      "keywords": [
+        "mobile",
+        "remote",
+        "self-hosted",
+        "observer"
+      ],
+      "category": "integrations",
+      "metadata": {
+        "showroom": {
+          "title": "Agent Mobile Observer",
+          "tagline": "Companion for the agent-mobile-control phone chat server: reports turn starts and ends to it.",
+          "tagline_ru": "Спутник сервера agent-mobile-control для чата с телефона: сообщает ему о начале и конце ходов локально.",
+          "slots": [
+            "background"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop",
+            "vscode"
+          ],
+          "requires": ">=2.1.288",
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/agent-mobile-observer"
+        }
+      }
+    },
+    {
       "name": "blast-radius",
       "source": {
         "source": "git-subdir",
@@ -54,6 +95,291 @@
       }
     },
     {
+      "name": "bline",
+      "source": {
+        "source": "github",
+        "repo": "xchacha20-poly1305/bline",
+        "sha": "36ec420ff2d422803cc7c583461a2a81029c6e29"
+      },
+      "description": "Model, reasoning effort and context fill on the hint line under the prompt, each one clickable.",
+      "author": {
+        "name": "xchacha20-poly1305",
+        "url": "https://github.com/xchacha20-poly1305"
+      },
+      "homepage": "https://github.com/xchacha20-poly1305/bline",
+      "repository": "https://github.com/xchacha20-poly1305/bline",
+      "license": "MIT",
+      "keywords": [
+        "model",
+        "effort",
+        "context",
+        "hint-line",
+        "statusline"
+      ],
+      "category": "interface",
+      "metadata": {
+        "showroom": {
+          "title": "bline",
+          "tagline": "Model, reasoning effort and context fill on the hint line under the prompt, each one clickable.",
+          "tagline_ru": "Модель, уровень рассуждений и заполнение контекста в строке подсказки под полем ввода, всё кликабельно.",
+          "slots": [
+            "prompt-hint"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/bline"
+        }
+      }
+    },
+    {
+      "name": "cache-timer",
+      "source": {
+        "source": "git-subdir",
+        "url": "arasovic/claude-code-mods",
+        "path": "cache-timer",
+        "sha": "3c3f25ee3a12b982fd63ee858297baab9385dd33"
+      },
+      "description": "A countdown above the prompt to when the prompt cache expires, and what a cold cache will re-write.",
+      "author": {
+        "name": "Mehmet Aras",
+        "url": "https://github.com/arasovic"
+      },
+      "homepage": "https://github.com/arasovic/claude-code-mods/tree/HEAD/cache-timer",
+      "repository": "https://github.com/arasovic/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "prompt-cache",
+        "cache",
+        "countdown",
+        "cost",
+        "ttl"
+      ],
+      "category": "insights",
+      "metadata": {
+        "showroom": {
+          "title": "Cache Timer",
+          "tagline": "A countdown above the prompt to when the prompt cache expires, and what a cold cache will re-write.",
+          "tagline_ru": "Обратный отсчёт над полем ввода до истечения кэша промпта и сколько токенов перезапишет холодный кэш.",
+          "slots": [
+            "above-prompt"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/cache-timer"
+        }
+      }
+    },
+    {
+      "name": "cactus-pane",
+      "source": {
+        "source": "git-subdir",
+        "url": "eighteyes/cactus",
+        "path": "mods/cactus-pane",
+        "sha": "33b94684b4cf37db2e3c00e648f5ccbf606d3cbb"
+      },
+      "description": "Your agent's cactus questions in a side pane: answer in place and the agent picks the answer up.",
+      "author": {
+        "name": "eighteyes",
+        "url": "https://github.com/eighteyes"
+      },
+      "homepage": "https://github.com/eighteyes/cactus/tree/HEAD/mods/cactus-pane",
+      "repository": "https://github.com/eighteyes/cactus",
+      "license": "MIT",
+      "keywords": [
+        "questions",
+        "inbox",
+        "human-in-the-loop",
+        "pane",
+        "agents"
+      ],
+      "category": "integrations",
+      "metadata": {
+        "showroom": {
+          "title": "Cactus Pane",
+          "tagline": "Your agent's cactus questions in a side pane: answer in place and the agent picks the answer up.",
+          "tagline_ru": "Вопросы агента из cactus в боковой панели: отвечаете прямо там, и агент получает ответ.",
+          "slots": [
+            "pane",
+            "toast",
+            "command"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/cactus-pane"
+        }
+      }
+    },
+    {
+      "name": "cccc",
+      "source": {
+        "source": "github",
+        "repo": "xchacha20-poly1305/cccc",
+        "sha": "803a67a8310997746d1181ca58fca8dfd790a145"
+      },
+      "description": "How long each foreground Bash command has been running, on a dim line under its row.",
+      "author": {
+        "name": "xchacha20-poly1305",
+        "url": "https://github.com/xchacha20-poly1305"
+      },
+      "homepage": "https://github.com/xchacha20-poly1305/cccc",
+      "repository": "https://github.com/xchacha20-poly1305/cccc",
+      "license": "MIT",
+      "keywords": [
+        "bash",
+        "timer",
+        "duration",
+        "tool-rows"
+      ],
+      "category": "insights",
+      "metadata": {
+        "showroom": {
+          "title": "Command Clock",
+          "tagline": "How long each foreground Bash command has been running, on a dim line under its row.",
+          "tagline_ru": "Сколько уже идёт каждая команда Bash на переднем плане — тусклой строкой под её вызовом.",
+          "slots": [
+            "tool-row"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop",
+            "vscode"
+          ],
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/cccc"
+        }
+      }
+    },
+    {
+      "name": "ccpii",
+      "source": {
+        "source": "github",
+        "repo": "xchacha20-poly1305/ccpii",
+        "sha": "c243e2019b56b29cdfd8b907cbc4201fd2e08312"
+      },
+      "description": "Names, emails, phones and other personal data reach the model as numbered placeholders.",
+      "author": {
+        "name": "xchacha20-poly1305",
+        "url": "https://github.com/xchacha20-poly1305"
+      },
+      "homepage": "https://github.com/xchacha20-poly1305/ccpii",
+      "repository": "https://github.com/xchacha20-poly1305/ccpii",
+      "license": "MIT",
+      "keywords": [
+        "privacy",
+        "pii",
+        "redaction",
+        "local-model",
+        "placeholders"
+      ],
+      "category": "safety",
+      "metadata": {
+        "showroom": {
+          "title": "ccpii",
+          "tagline": "Names, emails, phones and other personal data reach the model as numbered placeholders.",
+          "tagline_ru": "Имена, почта, телефоны и другие личные данные доходят до модели как пронумерованные заглушки.",
+          "slots": [
+            "prompt-rewrite",
+            "status",
+            "background",
+            "toast",
+            "command"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/ccpii"
+        }
+      }
+    },
+    {
+      "name": "change-ledger",
+      "source": {
+        "source": "git-subdir",
+        "url": "arasovic/claude-code-mods",
+        "path": "change-ledger",
+        "sha": "3c3f25ee3a12b982fd63ee858297baab9385dd33"
+      },
+      "description": "A /changes pane of every file this session edited, with line counts and who edited it, beside git.",
+      "author": {
+        "name": "Mehmet Aras",
+        "url": "https://github.com/arasovic"
+      },
+      "homepage": "https://github.com/arasovic/claude-code-mods/tree/HEAD/change-ledger",
+      "repository": "https://github.com/arasovic/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "pane",
+        "edits",
+        "git-status",
+        "diffstat",
+        "files"
+      ],
+      "category": "git",
+      "metadata": {
+        "showroom": {
+          "title": "Change Ledger",
+          "tagline": "A /changes pane of every file this session edited, with line counts and who edited it, beside git.",
+          "tagline_ru": "Панель /changes со всеми файлами, которые правила сессия: сколько строк, кто правил, и рядом git.",
+          "slots": [
+            "pane",
+            "command"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/change-ledger"
+        }
+      }
+    },
+    {
+      "name": "ci-watch",
+      "source": {
+        "source": "git-subdir",
+        "url": "arasovic/claude-code-mods",
+        "path": "ci-watch",
+        "sha": "3c3f25ee3a12b982fd63ee858297baab9385dd33"
+      },
+      "description": "GitHub Actions runs above the prompt after Claude pushes or opens a PR, until they pass or fail.",
+      "author": {
+        "name": "Mehmet Aras",
+        "url": "https://github.com/arasovic"
+      },
+      "homepage": "https://github.com/arasovic/claude-code-mods/tree/HEAD/ci-watch",
+      "repository": "https://github.com/arasovic/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "ci",
+        "github-actions",
+        "gh",
+        "push",
+        "pull-request"
+      ],
+      "category": "git",
+      "metadata": {
+        "showroom": {
+          "title": "CI Watch",
+          "tagline": "GitHub Actions runs above the prompt after Claude pushes or opens a PR, until they pass or fail.",
+          "tagline_ru": "После push или PR от Claude запуски GitHub Actions видны над полем ввода с полосой, затем успех или провал.",
+          "slots": [
+            "above-prompt",
+            "toast"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/ci-watch"
+        }
+      }
+    },
+    {
       "name": "command-buttons",
       "source": {
         "source": "github",
@@ -93,6 +419,47 @@
           ],
           "requires": ">=2.1.273",
           "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/command-buttons"
+        }
+      }
+    },
+    {
+      "name": "compact-keeper",
+      "source": {
+        "source": "git-subdir",
+        "url": "arasovic/claude-code-mods",
+        "path": "compact-keeper",
+        "sha": "3c3f25ee3a12b982fd63ee858297baab9385dd33"
+      },
+      "description": "Saves each compaction's summary and the files edited before it to ~/.claude/handoffs.",
+      "author": {
+        "name": "Mehmet Aras",
+        "url": "https://github.com/arasovic"
+      },
+      "homepage": "https://github.com/arasovic/claude-code-mods/tree/HEAD/compact-keeper",
+      "repository": "https://github.com/arasovic/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "compact",
+        "handoff",
+        "summary",
+        "context",
+        "resume"
+      ],
+      "category": "productivity",
+      "metadata": {
+        "showroom": {
+          "title": "Compact Keeper",
+          "tagline": "Saves each compaction's summary and the files edited before it to ~/.claude/handoffs.",
+          "tagline_ru": "Сохраняет сводку каждого сжатия контекста и файлы, правленные до него, в ~/.claude/handoffs.",
+          "slots": [
+            "toast",
+            "background"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/compact-keeper"
         }
       }
     },
@@ -259,6 +626,51 @@
       }
     },
     {
+      "name": "feature-progress",
+      "source": {
+        "source": "git-subdir",
+        "url": "dougcunha/claude-mods",
+        "path": "feature-progress",
+        "sha": "49337f5ffa1a2670737a882b480b412ddb128fdd"
+      },
+      "description": "A report tool any spec-driven flow calls, with a progress band above the prompt and a task pane.",
+      "author": {
+        "name": "Douglas Cunha",
+        "url": "https://github.com/dougcunha"
+      },
+      "homepage": "https://github.com/dougcunha/claude-mods/tree/HEAD/feature-progress",
+      "repository": "https://github.com/dougcunha/claude-mods",
+      "license": "MIT",
+      "keywords": [
+        "progress",
+        "tasks",
+        "spec-driven",
+        "sdd",
+        "pane",
+        "band"
+      ],
+      "category": "productivity",
+      "metadata": {
+        "showroom": {
+          "title": "Feature Progress",
+          "tagline": "A report tool any spec-driven flow calls, with a progress band above the prompt and a task pane.",
+          "tagline_ru": "Инструмент отчёта для любого процесса по спецификации: полоса прогресса над полем ввода и панель задач.",
+          "slots": [
+            "model-tool",
+            "above-prompt",
+            "pane",
+            "toast",
+            "command"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/feature-progress"
+        }
+      }
+    },
+    {
       "name": "fm",
       "source": {
         "source": "git-subdir",
@@ -381,6 +793,1085 @@
       }
     },
     {
+      "name": "goal-pin",
+      "source": {
+        "source": "git-subdir",
+        "url": "timoncool/givememod",
+        "path": "plugins/givememod/skills/givememod/templates/goal-pin",
+        "sha": "197200ab39d2d0c22246ac5ceec40c3fbbefb945"
+      },
+      "description": "Pin the goal of the conversation above the prompt, with how long you have been at it.",
+      "author": {
+        "name": "timoncool",
+        "url": "https://github.com/timoncool"
+      },
+      "homepage": "https://github.com/timoncool/givememod/tree/HEAD/plugins/givememod/skills/givememod/templates/goal-pin",
+      "repository": "https://github.com/timoncool/givememod",
+      "license": "MIT",
+      "keywords": [
+        "goal",
+        "focus",
+        "band",
+        "timer"
+      ],
+      "category": "productivity",
+      "metadata": {
+        "showroom": {
+          "title": "Goal Pin",
+          "tagline": "Pin the goal of the conversation above the prompt, with how long you have been at it.",
+          "tagline_ru": "Цель разговора закреплена над полем ввода вместе со временем, которое вы над ней работаете.",
+          "slots": [
+            "command",
+            "above-prompt"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/goal-pin"
+        }
+      }
+    },
+    {
+      "name": "guardrails",
+      "source": {
+        "source": "git-subdir",
+        "url": "arasovic/claude-code-mods",
+        "path": "guardrails",
+        "sha": "3c3f25ee3a12b982fd63ee858297baab9385dd33"
+      },
+      "description": "Refuses shell commands you switch on in /config: cf deploys, attribution lines, claude/ branches.",
+      "author": {
+        "name": "Mehmet Aras",
+        "url": "https://github.com/arasovic"
+      },
+      "homepage": "https://github.com/arasovic/claude-code-mods/tree/HEAD/guardrails",
+      "repository": "https://github.com/arasovic/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "guard",
+        "bash",
+        "git",
+        "commits",
+        "branches",
+        "cloudflare"
+      ],
+      "category": "safety",
+      "metadata": {
+        "showroom": {
+          "title": "Guardrails",
+          "tagline": "Refuses shell commands you switch on in /config: cf deploys, attribution lines, claude/ branches.",
+          "tagline_ru": "Отклоняет shell-команды, которые вы включите в /config: деплой cf, строки атрибуции, ветки claude/.",
+          "slots": [
+            "tool-deny"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop",
+            "vscode"
+          ],
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/guardrails"
+        }
+      }
+    },
+    {
+      "name": "image-peek",
+      "source": {
+        "source": "git-subdir",
+        "url": "arasovic/claude-code-mods",
+        "path": "image-peek",
+        "sha": "3c3f25ee3a12b982fd63ee858297baab9385dd33"
+      },
+      "description": "Thumbnails of pasted images above the prompt, and larger pictures under each sent message.",
+      "author": {
+        "name": "Mehmet Aras",
+        "url": "https://github.com/arasovic"
+      },
+      "homepage": "https://github.com/arasovic/claude-code-mods/tree/HEAD/image-peek",
+      "repository": "https://github.com/arasovic/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "images",
+        "paste",
+        "thumbnails",
+        "kitty-graphics",
+        "ghostty"
+      ],
+      "category": "interface",
+      "metadata": {
+        "showroom": {
+          "title": "Image Peek",
+          "tagline": "Thumbnails of pasted images above the prompt, and larger pictures under each sent message.",
+          "tagline_ru": "Миниатюры вставленных картинок над полем ввода и картинки покрупнее под каждым отправленным сообщением.",
+          "slots": [
+            "above-prompt"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/image-peek"
+        }
+      }
+    },
+    {
+      "name": "jr-awake",
+      "source": {
+        "source": "git-subdir",
+        "url": "jrlprost/claude-code-mods",
+        "path": "plugins/jr-awake",
+        "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+      },
+      "description": "Keeps the Mac awake while Claude works in any session, and warns a minute before it sleeps.",
+      "author": {
+        "name": "jrlprost",
+        "url": "https://github.com/jrlprost"
+      },
+      "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-awake",
+      "repository": "https://github.com/jrlprost/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "macos",
+        "caffeinate",
+        "sleep",
+        "sessions"
+      ],
+      "category": "productivity",
+      "metadata": {
+        "showroom": {
+          "title": "jr awake",
+          "tagline": "Keeps the Mac awake while Claude works in any session, and warns a minute before it sleeps.",
+          "tagline_ru": "Не даёт Mac уснуть, пока Claude работает в любой сессии, и предупреждает за минуту до сна.",
+          "slots": [
+            "above-prompt",
+            "toast",
+            "command"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "requires": ">=2.1.301",
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/jr-awake"
+        }
+      }
+    },
+    {
+      "name": "jr-badge",
+      "source": {
+        "source": "git-subdir",
+        "url": "jrlprost/claude-code-mods",
+        "path": "plugins/jr-badge",
+        "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+      },
+      "description": "A colored project badge and its branch above the prompt, so you know which window you type in.",
+      "author": {
+        "name": "jrlprost",
+        "url": "https://github.com/jrlprost"
+      },
+      "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-badge",
+      "repository": "https://github.com/jrlprost/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "badge",
+        "branch",
+        "multi-window",
+        "git"
+      ],
+      "category": "interface",
+      "metadata": {
+        "showroom": {
+          "title": "jr badge",
+          "tagline": "A colored project badge and its branch above the prompt, so you know which window you type in.",
+          "tagline_ru": "Цветной значок проекта и его ветка над полем ввода, чтобы не перепутать окна.",
+          "slots": [
+            "above-prompt",
+            "command"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "requires": ">=2.1.301",
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/jr-badge"
+        }
+      }
+    },
+    {
+      "name": "jr-cache-clock",
+      "source": {
+        "source": "git-subdir",
+        "url": "jrlprost/claude-code-mods",
+        "path": "plugins/jr-cache-clock",
+        "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+      },
+      "description": "A toast 30 seconds before the prompt cache goes cold, and an optional countdown above the prompt.",
+      "author": {
+        "name": "jrlprost",
+        "url": "https://github.com/jrlprost"
+      },
+      "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-cache-clock",
+      "repository": "https://github.com/jrlprost/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "prompt-cache",
+        "countdown",
+        "cost",
+        "toast"
+      ],
+      "category": "insights",
+      "metadata": {
+        "showroom": {
+          "title": "jr cache clock",
+          "tagline": "A toast 30 seconds before the prompt cache goes cold, and an optional countdown above the prompt.",
+          "tagline_ru": "Уведомление за 30 секунд до остывания кэша промптов и обратный отсчёт над полем ввода по желанию.",
+          "slots": [
+            "above-prompt",
+            "toast",
+            "command"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "requires": ">=2.1.301",
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/jr-cache-clock"
+        }
+      }
+    },
+    {
+      "name": "jr-commit-coach",
+      "source": {
+        "source": "git-subdir",
+        "url": "jrlprost/claude-code-mods",
+        "path": "plugins/jr-commit-coach",
+        "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+      },
+      "description": "When uncommitted changes pile up past a threshold, a band and a toast suggest a split by folder.",
+      "author": {
+        "name": "jrlprost",
+        "url": "https://github.com/jrlprost"
+      },
+      "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-commit-coach",
+      "repository": "https://github.com/jrlprost/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "commits",
+        "git",
+        "atomic-commits",
+        "toast"
+      ],
+      "category": "git",
+      "metadata": {
+        "showroom": {
+          "title": "jr commit coach",
+          "tagline": "When uncommitted changes pile up past a threshold, a band and a toast suggest a split by folder.",
+          "tagline_ru": "Когда незакоммиченных правок становится слишком много, полоса и уведомление предлагают разбить их по папкам.",
+          "slots": [
+            "above-prompt",
+            "toast",
+            "command"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "requires": ">=2.1.301",
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/jr-commit-coach"
+        }
+      }
+    },
+    {
+      "name": "jr-context",
+      "source": {
+        "source": "git-subdir",
+        "url": "jrlprost/claude-code-mods",
+        "path": "plugins/jr-context",
+        "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+      },
+      "description": "The context window in one quiet row above the prompt that turns into an alert before compaction.",
+      "author": {
+        "name": "jrlprost",
+        "url": "https://github.com/jrlprost"
+      },
+      "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-context",
+      "repository": "https://github.com/jrlprost/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "context",
+        "compaction",
+        "tokens",
+        "pane"
+      ],
+      "category": "insights",
+      "metadata": {
+        "showroom": {
+          "title": "jr context",
+          "tagline": "The context window in one quiet row above the prompt that turns into an alert before compaction.",
+          "tagline_ru": "Окно контекста одной тихой строкой над полем ввода, которая становится тревогой перед сжатием.",
+          "slots": [
+            "above-prompt",
+            "pane",
+            "command"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "requires": ">=2.1.301",
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/jr-context"
+        }
+      }
+    },
+    {
+      "name": "jr-decisions",
+      "source": {
+        "source": "git-subdir",
+        "url": "jrlprost/claude-code-mods",
+        "path": "plugins/jr-decisions",
+        "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+      },
+      "description": "A decision journal per project: record a decision as you take it, list it, export it as Markdown.",
+      "author": {
+        "name": "jrlprost",
+        "url": "https://github.com/jrlprost"
+      },
+      "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-decisions",
+      "repository": "https://github.com/jrlprost/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "decisions",
+        "adr",
+        "journal",
+        "markdown"
+      ],
+      "category": "productivity",
+      "metadata": {
+        "showroom": {
+          "title": "jr decisions",
+          "tagline": "A decision journal per project: record a decision as you take it, list it, export it as Markdown.",
+          "tagline_ru": "Журнал решений по проекту: запишите решение в момент принятия, посмотрите список, выгрузите в Markdown.",
+          "slots": [
+            "command",
+            "pane",
+            "toast"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "requires": ">=2.1.301",
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/jr-decisions"
+        }
+      }
+    },
+    {
+      "name": "jr-deploy-guard",
+      "source": {
+        "source": "git-subdir",
+        "url": "jrlprost/claude-code-mods",
+        "path": "plugins/jr-deploy-guard",
+        "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+      },
+      "description": "Production deploys and pushes to main always come to you for a yes, whatever your rules allow.",
+      "author": {
+        "name": "jrlprost",
+        "url": "https://github.com/jrlprost"
+      },
+      "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-deploy-guard",
+      "repository": "https://github.com/jrlprost/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "deploy",
+        "permissions",
+        "git-push",
+        "production"
+      ],
+      "category": "safety",
+      "metadata": {
+        "showroom": {
+          "title": "jr deploy guard",
+          "tagline": "Production deploys and pushes to main always come to you for a yes, whatever your rules allow.",
+          "tagline_ru": "Деплой в прод и пуш в main всегда ждут вашего «да», что бы ни разрешали правила.",
+          "slots": [
+            "tool-deny"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop",
+            "vscode"
+          ],
+          "requires": ">=2.1.301",
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/jr-deploy-guard"
+        }
+      }
+    },
+    {
+      "name": "jr-deslop",
+      "source": {
+        "source": "git-subdir",
+        "url": "jrlprost/claude-code-mods",
+        "path": "plugins/jr-deslop",
+        "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+      },
+      "description": "Flags AI-writing tells in the prose files Claude writes: em dashes, \"delve\", stock openers.",
+      "author": {
+        "name": "jrlprost",
+        "url": "https://github.com/jrlprost"
+      },
+      "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-deslop",
+      "repository": "https://github.com/jrlprost/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "writing",
+        "prose",
+        "markdown",
+        "lint"
+      ],
+      "category": "productivity",
+      "metadata": {
+        "showroom": {
+          "title": "jr deslop",
+          "tagline": "Flags AI-writing tells in the prose files Claude writes: em dashes, \"delve\", stock openers.",
+          "tagline_ru": "Отмечает приметы машинного текста в файлах, которые пишет Claude: длинные тире, «delve», штампы.",
+          "slots": [
+            "toast",
+            "pane",
+            "command"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "requires": ">=2.1.301",
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/jr-deslop"
+        }
+      }
+    },
+    {
+      "name": "jr-dictation",
+      "source": {
+        "source": "git-subdir",
+        "url": "jrlprost/claude-code-mods",
+        "path": "plugins/jr-dictation",
+        "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+      },
+      "description": "Fixes what dictation mishears (\"type script\" → TypeScript) before Claude reads your prompt.",
+      "author": {
+        "name": "jrlprost",
+        "url": "https://github.com/jrlprost"
+      },
+      "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-dictation",
+      "repository": "https://github.com/jrlprost/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "dictation",
+        "voice",
+        "speech-to-text",
+        "prompt"
+      ],
+      "category": "accessibility",
+      "metadata": {
+        "showroom": {
+          "title": "jr dictation",
+          "tagline": "Fixes what dictation mishears (\"type script\" → TypeScript) before Claude reads your prompt.",
+          "tagline_ru": "Исправляет ошибки диктовки («type script» → TypeScript) до того, как Claude прочтёт запрос.",
+          "slots": [
+            "prompt-rewrite",
+            "message",
+            "command"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "requires": ">=2.1.301",
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/jr-dictation"
+        }
+      }
+    },
+    {
+      "name": "jr-done-check",
+      "source": {
+        "source": "git-subdir",
+        "url": "jrlprost/claude-code-mods",
+        "path": "plugins/jr-done-check",
+        "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+      },
+      "description": "Flags replies that say \"tested\" or \"it works\" when nothing was run in the turn to check it.",
+      "author": {
+        "name": "jrlprost",
+        "url": "https://github.com/jrlprost"
+      },
+      "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-done-check",
+      "repository": "https://github.com/jrlprost/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "testing",
+        "claims",
+        "reliability",
+        "warning"
+      ],
+      "category": "safety",
+      "metadata": {
+        "showroom": {
+          "title": "jr done-check",
+          "tagline": "Flags replies that say \"tested\" or \"it works\" when nothing was run in the turn to check it.",
+          "tagline_ru": "Отмечает ответы со словами «проверено» или «всё работает», если за ход ничего не запускалось.",
+          "slots": [
+            "message",
+            "toast"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "requires": ">=2.1.301",
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/jr-done-check"
+        }
+      }
+    },
+    {
+      "name": "jr-draft",
+      "source": {
+        "source": "git-subdir",
+        "url": "jrlprost/claude-code-mods",
+        "path": "plugins/jr-draft",
+        "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+      },
+      "description": "A scratch pane to write your next prompt while Claude works, sent to the prompt box when ready.",
+      "author": {
+        "name": "jrlprost",
+        "url": "https://github.com/jrlprost"
+      },
+      "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-draft",
+      "repository": "https://github.com/jrlprost/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "prompt",
+        "draft",
+        "scratchpad",
+        "pane"
+      ],
+      "category": "productivity",
+      "metadata": {
+        "showroom": {
+          "title": "jr draft",
+          "tagline": "A scratch pane to write your next prompt while Claude works, sent to the prompt box when ready.",
+          "tagline_ru": "Черновик следующего запроса в отдельной панели, пока Claude работает; по готовности он уходит в поле ввода.",
+          "slots": [
+            "pane",
+            "toast",
+            "command"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "requires": ">=2.1.301",
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/jr-draft"
+        }
+      }
+    },
+    {
+      "name": "jr-explain",
+      "source": {
+        "source": "git-subdir",
+        "url": "jrlprost/claude-code-mods",
+        "path": "plugins/jr-explain",
+        "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+      },
+      "description": "Each shell command Claude asks to run comes with a plain-English explanation and a risk level.",
+      "author": {
+        "name": "jrlprost",
+        "url": "https://github.com/jrlprost"
+      },
+      "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-explain",
+      "repository": "https://github.com/jrlprost/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "permissions",
+        "shell",
+        "beginners",
+        "risk"
+      ],
+      "category": "safety",
+      "metadata": {
+        "showroom": {
+          "title": "jr explain",
+          "tagline": "Each shell command Claude asks to run comes with a plain-English explanation and a risk level.",
+          "tagline_ru": "Каждая команда, которую Claude просит запустить, получает объяснение простыми словами и уровень риска.",
+          "slots": [
+            "toast"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "requires": ">=2.1.301",
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/jr-explain"
+        }
+      }
+    },
+    {
+      "name": "jr-fleet",
+      "source": {
+        "source": "git-subdir",
+        "url": "jrlprost/claude-code-mods",
+        "path": "plugins/jr-fleet",
+        "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+      },
+      "description": "Every Claude Code session on the machine at a glance: which ones work and which wait for you.",
+      "author": {
+        "name": "jrlprost",
+        "url": "https://github.com/jrlprost"
+      },
+      "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-fleet",
+      "repository": "https://github.com/jrlprost/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "sessions",
+        "multi-window",
+        "status",
+        "pane"
+      ],
+      "category": "productivity",
+      "metadata": {
+        "showroom": {
+          "title": "jr fleet",
+          "tagline": "Every Claude Code session on the machine at a glance: which ones work and which wait for you.",
+          "tagline_ru": "Все сессии Claude Code на компьютере разом: какие работают, а какие ждут вас.",
+          "slots": [
+            "above-prompt",
+            "pane",
+            "command"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "requires": ">=2.1.301",
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/jr-fleet"
+        }
+      }
+    },
+    {
+      "name": "jr-goal",
+      "source": {
+        "source": "git-subdir",
+        "url": "jrlprost/claude-code-mods",
+        "path": "plugins/jr-goal",
+        "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+      },
+      "description": "One goal per project with steps you tick off, always in view above the prompt with a gauge.",
+      "author": {
+        "name": "jrlprost",
+        "url": "https://github.com/jrlprost"
+      },
+      "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-goal",
+      "repository": "https://github.com/jrlprost/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "goal",
+        "focus",
+        "checklist",
+        "progress"
+      ],
+      "category": "productivity",
+      "metadata": {
+        "showroom": {
+          "title": "jr goal",
+          "tagline": "One goal per project with steps you tick off, always in view above the prompt with a gauge.",
+          "tagline_ru": "Одна цель на проект с шагами, которые вы отмечаете; всегда видна над полем ввода со шкалой.",
+          "slots": [
+            "command",
+            "above-prompt"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "requires": ">=2.1.301",
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/jr-goal"
+        }
+      }
+    },
+    {
+      "name": "jr-heatmap",
+      "source": {
+        "source": "git-subdir",
+        "url": "jrlprost/claude-code-mods",
+        "path": "plugins/jr-heatmap",
+        "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+      },
+      "description": "Your last 26 weeks with Claude Code as a GitHub-style heatmap, with streaks and peak hours.",
+      "author": {
+        "name": "jrlprost",
+        "url": "https://github.com/jrlprost"
+      },
+      "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-heatmap",
+      "repository": "https://github.com/jrlprost/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "heatmap",
+        "stats",
+        "streak",
+        "history"
+      ],
+      "category": "insights",
+      "metadata": {
+        "showroom": {
+          "title": "jr heatmap",
+          "tagline": "Your last 26 weeks with Claude Code as a GitHub-style heatmap, with streaks and peak hours.",
+          "tagline_ru": "Последние 26 недель с Claude Code в виде тепловой карты как на GitHub, с сериями и пиковыми часами.",
+          "slots": [
+            "pane",
+            "command"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "requires": ">=2.1.301",
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/jr-heatmap"
+        }
+      }
+    },
+    {
+      "name": "jr-image-guard",
+      "source": {
+        "source": "git-subdir",
+        "url": "jrlprost/claude-code-mods",
+        "path": "plugins/jr-image-guard",
+        "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+      },
+      "description": "Keeps oversized images out of the conversation: Claude reads a resized copy instead.",
+      "author": {
+        "name": "jrlprost",
+        "url": "https://github.com/jrlprost"
+      },
+      "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-image-guard",
+      "repository": "https://github.com/jrlprost/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "images",
+        "screenshots",
+        "resize",
+        "macos"
+      ],
+      "category": "safety",
+      "metadata": {
+        "showroom": {
+          "title": "jr image guard",
+          "tagline": "Keeps oversized images out of the conversation: Claude reads a resized copy instead.",
+          "tagline_ru": "Не пускает в разговор слишком большие картинки: Claude читает уменьшенную копию.",
+          "slots": [
+            "tool-row",
+            "toast"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "requires": ">=2.1.301",
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/jr-image-guard"
+        }
+      }
+    },
+    {
+      "name": "jr-limits",
+      "source": {
+        "source": "git-subdir",
+        "url": "jrlprost/claude-code-mods",
+        "path": "plugins/jr-limits",
+        "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+      },
+      "description": "Your 5-hour and 7-day plan limits in one quiet row above the prompt, with toasts at 80% and 95%.",
+      "author": {
+        "name": "jrlprost",
+        "url": "https://github.com/jrlprost"
+      },
+      "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-limits",
+      "repository": "https://github.com/jrlprost/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "rate-limits",
+        "usage",
+        "plan",
+        "toast"
+      ],
+      "category": "insights",
+      "metadata": {
+        "showroom": {
+          "title": "jr limits",
+          "tagline": "Your 5-hour and 7-day plan limits in one quiet row above the prompt, with toasts at 80% and 95%.",
+          "tagline_ru": "Лимиты плана на 5 часов и 7 дней одной тихой строкой над полем ввода, с уведомлениями на 80% и 95%.",
+          "slots": [
+            "above-prompt",
+            "toast",
+            "pane",
+            "command"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "requires": ">=2.1.301",
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/jr-limits"
+        }
+      }
+    },
+    {
+      "name": "jr-mod-audit",
+      "source": {
+        "source": "git-subdir",
+        "url": "jrlprost/claude-code-mods",
+        "path": "plugins/jr-mod-audit",
+        "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+      },
+      "description": "Look at a mod before you install it: what it can reach, with a green, amber or red verdict.",
+      "author": {
+        "name": "jrlprost",
+        "url": "https://github.com/jrlprost"
+      },
+      "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-mod-audit",
+      "repository": "https://github.com/jrlprost/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "audit",
+        "security",
+        "mods",
+        "review"
+      ],
+      "category": "safety",
+      "metadata": {
+        "showroom": {
+          "title": "jr mod audit",
+          "tagline": "Look at a mod before you install it: what it can reach, with a green, amber or red verdict.",
+          "tagline_ru": "Посмотрите на мод до установки: до чего он дотягивается, с зелёной, жёлтой или красной оценкой.",
+          "slots": [
+            "command",
+            "pane"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "requires": ">=2.1.301",
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/jr-mod-audit"
+        }
+      }
+    },
+    {
+      "name": "jr-mods",
+      "source": {
+        "source": "git-subdir",
+        "url": "jrlprost/claude-code-mods",
+        "path": "plugins/jr-mods",
+        "sha": "9f789939f4b0fabbc9309b8c84df358536a2619b"
+      },
+      "description": "Every installed plugin and mod in one list: tick several on or off and apply them at once.",
+      "author": {
+        "name": "jrlprost",
+        "url": "https://github.com/jrlprost"
+      },
+      "homepage": "https://github.com/jrlprost/claude-code-mods/tree/HEAD/plugins/jr-mods",
+      "repository": "https://github.com/jrlprost/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "plugins",
+        "mods",
+        "toggle",
+        "manager"
+      ],
+      "category": "productivity",
+      "metadata": {
+        "showroom": {
+          "title": "jr mods",
+          "tagline": "Every installed plugin and mod in one list: tick several on or off and apply them at once.",
+          "tagline_ru": "Все установленные плагины и моды одним списком: отметьте несколько и примените разом.",
+          "slots": [
+            "pane",
+            "toast",
+            "command"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "requires": ">=2.1.301",
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/jr-mods"
+        }
+      }
+    },
+    {
+      "name": "loop-guard",
+      "source": {
+        "source": "git-subdir",
+        "url": "arasovic/claude-code-mods",
+        "path": "loop-guard",
+        "sha": "3c3f25ee3a12b982fd63ee858297baab9385dd33"
+      },
+      "description": "When the same tool call fails twice with the same error, Claude is told to stop and change approach.",
+      "author": {
+        "name": "Mehmet Aras",
+        "url": "https://github.com/arasovic"
+      },
+      "homepage": "https://github.com/arasovic/claude-code-mods/tree/HEAD/loop-guard",
+      "repository": "https://github.com/arasovic/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "loops",
+        "errors",
+        "retries",
+        "tool-calls",
+        "hidden-note"
+      ],
+      "category": "safety",
+      "metadata": {
+        "showroom": {
+          "title": "Loop Guard",
+          "tagline": "When the same tool call fails twice with the same error, Claude is told to stop and change approach.",
+          "tagline_ru": "Если один и тот же вызов дважды падает с той же ошибкой, Claude получает указание сменить подход.",
+          "slots": [
+            "toast",
+            "background"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/loop-guard"
+        }
+      }
+    },
+    {
+      "name": "paste-peek",
+      "source": {
+        "source": "git-subdir",
+        "url": "MankhongGarden/claude-code-mods-field-notes",
+        "path": "mods/paste-peek",
+        "sha": "ff1b640d75c38b3b4359faba2b01ff10e34ea839"
+      },
+      "description": "Windows Terminal: thumbnails of the images you paste, in a small strip until you send.",
+      "author": {
+        "name": "MankhongGarden",
+        "url": "https://github.com/MankhongGarden"
+      },
+      "homepage": "https://github.com/MankhongGarden/claude-code-mods-field-notes/tree/HEAD/mods/paste-peek",
+      "repository": "https://github.com/MankhongGarden/claude-code-mods-field-notes",
+      "license": "MIT",
+      "keywords": [
+        "images",
+        "paste",
+        "windows",
+        "windows-terminal",
+        "thumbnails"
+      ],
+      "category": "interface",
+      "metadata": {
+        "showroom": {
+          "title": "Paste Peek",
+          "tagline": "Windows Terminal: thumbnails of the images you paste, in a small strip until you send.",
+          "tagline_ru": "Windows Terminal: миниатюры вставленных картинок в маленькой полоске, пока вы не отправите запрос.",
+          "slots": [
+            "background",
+            "toast"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/paste-peek"
+        }
+      }
+    },
+    {
+      "name": "pin-board",
+      "source": {
+        "source": "git-subdir",
+        "url": "arasovic/claude-code-mods",
+        "path": "pin-board",
+        "sha": "3c3f25ee3a12b982fd63ee858297baab9385dd33"
+      },
+      "description": "Notes you /pin that Claude keeps following after /compact and /clear, shown above the prompt.",
+      "author": {
+        "name": "Mehmet Aras",
+        "url": "https://github.com/arasovic"
+      },
+      "homepage": "https://github.com/arasovic/claude-code-mods/tree/HEAD/pin-board",
+      "repository": "https://github.com/arasovic/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "pins",
+        "notes",
+        "instructions",
+        "system-prompt",
+        "compact"
+      ],
+      "category": "productivity",
+      "metadata": {
+        "showroom": {
+          "title": "Pin Board",
+          "tagline": "Notes you /pin that Claude keeps following after /compact and /clear, shown above the prompt.",
+          "tagline_ru": "Постоянные заметки через /pin, которым Claude следует и после /compact и /clear, видны над полем ввода.",
+          "slots": [
+            "command",
+            "above-prompt",
+            "toast"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/pin-board"
+        }
+      }
+    },
+    {
+      "name": "pinboard",
+      "source": {
+        "source": "git-subdir",
+        "url": "timoncool/givememod",
+        "path": "plugins/givememod/skills/givememod/templates/pinboard",
+        "sha": "197200ab39d2d0c22246ac5ceec40c3fbbefb945"
+      },
+      "description": "A pinboard of decisions, todos and links beside the chat; Claude pins them with its own tool.",
+      "author": {
+        "name": "timoncool",
+        "url": "https://github.com/timoncool"
+      },
+      "homepage": "https://github.com/timoncool/givememod/tree/HEAD/plugins/givememod/skills/givememod/templates/pinboard",
+      "repository": "https://github.com/timoncool/givememod",
+      "license": "MIT",
+      "keywords": [
+        "pins",
+        "notes",
+        "todo",
+        "pane",
+        "model-tool"
+      ],
+      "category": "productivity",
+      "metadata": {
+        "showroom": {
+          "title": "Pinboard",
+          "tagline": "A pinboard of decisions, todos and links beside the chat; Claude pins them with its own tool.",
+          "tagline_ru": "Доска с решениями, задачами и ссылками рядом с чатом; Claude закрепляет их своим инструментом.",
+          "slots": [
+            "model-tool",
+            "pane",
+            "above-prompt",
+            "command"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/pinboard"
+        }
+      }
+    },
+    {
       "name": "prompt-snippets",
       "source": "./mods/prompt-snippets/plugin",
       "description": "Save a prompt once, insert it anywhere with /snip, and quote your selection with /quote.",
@@ -462,6 +1953,85 @@
       }
     },
     {
+      "name": "reply-choices",
+      "source": {
+        "source": "git-subdir",
+        "url": "timoncool/givememod",
+        "path": "plugins/givememod/skills/givememod/templates/reply-choices",
+        "sha": "197200ab39d2d0c22246ac5ceec40c3fbbefb945"
+      },
+      "description": "Numbered options at the end of Claude's answer become buttons above the prompt.",
+      "author": {
+        "name": "timoncool",
+        "url": "https://github.com/timoncool"
+      },
+      "homepage": "https://github.com/timoncool/givememod/tree/HEAD/plugins/givememod/skills/givememod/templates/reply-choices",
+      "repository": "https://github.com/timoncool/givememod",
+      "license": "MIT",
+      "keywords": [
+        "buttons",
+        "options",
+        "prompt",
+        "band"
+      ],
+      "category": "productivity",
+      "metadata": {
+        "showroom": {
+          "title": "Reply Choices",
+          "tagline": "Numbered options at the end of Claude's answer become buttons above the prompt.",
+          "tagline_ru": "Пронумерованные варианты в конце ответа Claude превращаются в кнопки над полем ввода.",
+          "slots": [
+            "above-prompt"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/reply-choices"
+        }
+      }
+    },
+    {
+      "name": "search-meter",
+      "source": {
+        "source": "git-subdir",
+        "url": "arasovic/claude-code-mods",
+        "path": "search-meter",
+        "sha": "3c3f25ee3a12b982fd63ee858297baab9385dd33"
+      },
+      "description": "Counts Claude's searches under the prompt: found first try, found after misses, or found nothing.",
+      "author": {
+        "name": "Mehmet Aras",
+        "url": "https://github.com/arasovic"
+      },
+      "homepage": "https://github.com/arasovic/claude-code-mods/tree/HEAD/search-meter",
+      "repository": "https://github.com/arasovic/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "search",
+        "grep",
+        "websearch",
+        "status",
+        "efficiency"
+      ],
+      "category": "insights",
+      "metadata": {
+        "showroom": {
+          "title": "Search Meter",
+          "tagline": "Counts Claude's searches under the prompt: found first try, found after misses, or found nothing.",
+          "tagline_ru": "Считает поиски Claude под полем ввода: нашёл с первого раза, после промахов или ничего не нашёл.",
+          "slots": [
+            "status"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/search-meter"
+        }
+      }
+    },
+    {
       "name": "secret-guard",
       "source": "./mods/secret-guard/plugin",
       "description": "Stops Claude from reading .env files, private keys and credentials.",
@@ -502,6 +2072,137 @@
       }
     },
     {
+      "name": "session-info",
+      "source": {
+        "source": "git-subdir",
+        "url": "dougcunha/claude-mods",
+        "path": "session-info",
+        "sha": "49337f5ffa1a2670737a882b480b412ddb128fdd"
+      },
+      "description": "One pane, thirteen cards: context and cache, last turn, todos, CI, Jira, usage, agents, checks, git.",
+      "author": {
+        "name": "Douglas Cunha",
+        "url": "https://github.com/dougcunha"
+      },
+      "homepage": "https://github.com/dougcunha/claude-mods/tree/HEAD/session-info",
+      "repository": "https://github.com/dougcunha/claude-mods",
+      "license": "MIT",
+      "keywords": [
+        "pane",
+        "context",
+        "prompt-cache",
+        "todos",
+        "ci",
+        "git",
+        "jira",
+        "usage"
+      ],
+      "category": "insights",
+      "metadata": {
+        "showroom": {
+          "title": "Session Info",
+          "tagline": "One pane, thirteen cards: context and cache, last turn, todos, CI, Jira, usage, agents, checks, git.",
+          "tagline_ru": "Одна панель, 13 карточек: контекст и кэш, последний ход, задачи, CI, Jira, лимиты, агенты, проверки, git.",
+          "slots": [
+            "pane",
+            "command"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/session-info"
+        }
+      }
+    },
+    {
+      "name": "session-meter",
+      "source": {
+        "source": "git-subdir",
+        "url": "arasovic/claude-code-mods",
+        "path": "session-meter",
+        "sha": "3c3f25ee3a12b982fd63ee858297baab9385dd33"
+      },
+      "description": "A /ctx pane with context by category, usage limits and their pace, tool calls and model requests.",
+      "author": {
+        "name": "Mehmet Aras",
+        "url": "https://github.com/arasovic"
+      },
+      "homepage": "https://github.com/arasovic/claude-code-mods/tree/HEAD/session-meter",
+      "repository": "https://github.com/arasovic/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "context",
+        "usage-limits",
+        "pane",
+        "requests",
+        "compact",
+        "cache"
+      ],
+      "category": "insights",
+      "metadata": {
+        "showroom": {
+          "title": "Session Meter",
+          "tagline": "A /ctx pane with context by category, usage limits and their pace, tool calls and model requests.",
+          "tagline_ru": "Панель /ctx: контекст по категориям, лимиты и темп их расхода, вызовы инструментов и запросы к модели.",
+          "slots": [
+            "pane",
+            "background",
+            "toast",
+            "command",
+            "model-tool"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/session-meter"
+        }
+      }
+    },
+    {
+      "name": "show-me",
+      "source": {
+        "source": "git-subdir",
+        "url": "arasovic/claude-code-mods",
+        "path": "show-me",
+        "sha": "3c3f25ee3a12b982fd63ee858297baab9385dd33"
+      },
+      "description": "Mermaid diagrams in an answer are drawn as pictures in a pane once the turn ends.",
+      "author": {
+        "name": "Mehmet Aras",
+        "url": "https://github.com/arasovic"
+      },
+      "homepage": "https://github.com/arasovic/claude-code-mods/tree/HEAD/show-me",
+      "repository": "https://github.com/arasovic/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "mermaid",
+        "diagrams",
+        "pane",
+        "images",
+        "mmdc"
+      ],
+      "category": "interface",
+      "metadata": {
+        "showroom": {
+          "title": "Show Me",
+          "tagline": "Mermaid diagrams in an answer are drawn as pictures in a pane once the turn ends.",
+          "tagline_ru": "Диаграммы mermaid из ответа рисуются картинками в панели, как только ход заканчивается.",
+          "slots": [
+            "pane",
+            "toast",
+            "command"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/show-me"
+        }
+      }
+    },
+    {
       "name": "spinner-pack",
       "source": "./mods/spinner-pack/plugin",
       "description": "Themed spinner packs: moon, braille or coffee verbs and glyphs that follow each phase of a turn.",
@@ -536,6 +2237,49 @@
           ],
           "requires": ">=2.1.299",
           "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/spinner-pack"
+        }
+      }
+    },
+    {
+      "name": "term-bar",
+      "source": {
+        "source": "git-subdir",
+        "url": "hyun8935181-ux/claude-code-mods",
+        "path": "term-bar",
+        "sha": "82f32f6d92ecb8984ef8f10fe9a74ab6b68ab964"
+      },
+      "description": "Footer buttons in the terminal: resume a recent conversation, pick the model, pick the effort.",
+      "author": {
+        "name": "hyun8935181-ux",
+        "url": "https://github.com/hyun8935181-ux"
+      },
+      "homepage": "https://github.com/hyun8935181-ux/claude-code-mods/tree/HEAD/term-bar",
+      "repository": "https://github.com/hyun8935181-ux/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "model",
+        "effort",
+        "resume",
+        "history",
+        "buttons"
+      ],
+      "category": "productivity",
+      "metadata": {
+        "showroom": {
+          "title": "Term Bar",
+          "tagline": "Footer buttons in the terminal: resume a recent conversation, pick the model, pick the effort.",
+          "tagline_ru": "Кнопки в нижней строке терминала: вернуться к недавнему разговору, выбрать модель и уровень усилий.",
+          "slots": [
+            "above-prompt",
+            "session-mode",
+            "toast"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "requires": ">=2.1.287",
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/term-bar"
         }
       }
     },
@@ -619,6 +2363,90 @@
       }
     },
     {
+      "name": "topic-guard",
+      "source": {
+        "source": "git-subdir",
+        "url": "dougcunha/claude-mods",
+        "path": "topic-guard",
+        "sha": "49337f5ffa1a2670737a882b480b412ddb128fdd"
+      },
+      "description": "Holds a prompt that starts a new topic, so you can send it to a fresh session or keep it here.",
+      "author": {
+        "name": "Douglas Cunha",
+        "url": "https://github.com/dougcunha"
+      },
+      "homepage": "https://github.com/dougcunha/claude-mods/tree/HEAD/topic-guard",
+      "repository": "https://github.com/dougcunha/claude-mods",
+      "license": "MIT",
+      "keywords": [
+        "topics",
+        "context",
+        "clear",
+        "haiku",
+        "prompt"
+      ],
+      "category": "productivity",
+      "metadata": {
+        "showroom": {
+          "title": "Topic Guard",
+          "tagline": "Holds a prompt that starts a new topic, so you can send it to a fresh session or keep it here.",
+          "tagline_ru": "Придерживает сообщение на новую тему: можно отправить его в новую сессию или оставить здесь.",
+          "slots": [
+            "above-prompt",
+            "status",
+            "toast"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/topic-guard"
+        }
+      }
+    },
+    {
+      "name": "turn-footer",
+      "source": {
+        "source": "git-subdir",
+        "url": "arasovic/claude-code-mods",
+        "path": "turn-footer",
+        "sha": "3c3f25ee3a12b982fd63ee858297baab9385dd33"
+      },
+      "description": "Tools, requests, tokens and cache hit under each answer; the spinner names the running tool.",
+      "author": {
+        "name": "Mehmet Aras",
+        "url": "https://github.com/arasovic"
+      },
+      "homepage": "https://github.com/arasovic/claude-code-mods/tree/HEAD/turn-footer",
+      "repository": "https://github.com/arasovic/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "turns",
+        "tokens",
+        "cache",
+        "spinner",
+        "summary"
+      ],
+      "category": "insights",
+      "metadata": {
+        "showroom": {
+          "title": "Turn Footer",
+          "tagline": "Tools, requests, tokens and cache hit under each answer; the spinner names the running tool.",
+          "tagline_ru": "Итог под каждым ответом (инструменты, запросы, токены, попадание в кэш) и текущий инструмент в спиннере.",
+          "slots": [
+            "spinner",
+            "message"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop",
+            "vscode"
+          ],
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/turn-footer"
+        }
+      }
+    },
+    {
       "name": "turn-meter",
       "source": "./mods/turn-meter/plugin",
       "description": "Each turn's duration, tool calls and tokens in a band above the prompt, with a 12-turn sparkline.",
@@ -654,6 +2482,176 @@
           ],
           "requires": ">=2.1.299",
           "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/turn-meter"
+        }
+      }
+    },
+    {
+      "name": "turn-timeline",
+      "source": {
+        "source": "git-subdir",
+        "url": "arasovic/claude-code-mods",
+        "path": "turn-timeline",
+        "sha": "3c3f25ee3a12b982fd63ee858297baab9385dd33"
+      },
+      "description": "A /timeline pane: the current turn as lanes of model requests and tool calls, and its slowest steps.",
+      "author": {
+        "name": "Mehmet Aras",
+        "url": "https://github.com/arasovic"
+      },
+      "homepage": "https://github.com/arasovic/claude-code-mods/tree/HEAD/turn-timeline",
+      "repository": "https://github.com/arasovic/claude-code-mods",
+      "license": "MIT",
+      "keywords": [
+        "timeline",
+        "turns",
+        "subagents",
+        "pane",
+        "latency"
+      ],
+      "category": "insights",
+      "metadata": {
+        "showroom": {
+          "title": "Turn Timeline",
+          "tagline": "A /timeline pane: the current turn as lanes of model requests and tool calls, and its slowest steps.",
+          "tagline_ru": "Панель /timeline: текущий ход дорожками запросов к модели и вызовов инструментов, с самыми медленными шагами.",
+          "slots": [
+            "pane",
+            "command"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/turn-timeline"
+        }
+      }
+    },
+    {
+      "name": "usage-bar",
+      "source": {
+        "source": "git-subdir",
+        "url": "andrej-kolic/claude-mods",
+        "path": "plugins/usage-bar",
+        "sha": "8e8a80ff8736ee8e482e929b69073dc9ec3db3d0"
+      },
+      "description": "Context, session cost and plan limits on one quiet line above the prompt, with a cache-cold warning.",
+      "author": {
+        "name": "andrej-kolic",
+        "url": "https://github.com/andrej-kolic"
+      },
+      "homepage": "https://github.com/andrej-kolic/claude-mods/tree/HEAD/plugins/usage-bar",
+      "repository": "https://github.com/andrej-kolic/claude-mods",
+      "license": "MIT",
+      "keywords": [
+        "usage",
+        "limits",
+        "context",
+        "cost",
+        "cache",
+        "alerts"
+      ],
+      "category": "insights",
+      "metadata": {
+        "showroom": {
+          "title": "Usage Bar",
+          "tagline": "Context, session cost and plan limits on one quiet line above the prompt, with a cache-cold warning.",
+          "tagline_ru": "Контекст, стоимость и лимиты подписки тихой строкой над полем ввода, с предупреждением об остывшем кэше.",
+          "slots": [
+            "above-prompt",
+            "toast"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "requires": ">=2.1.275",
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/usage-bar"
+        }
+      }
+    },
+    {
+      "name": "visual-review",
+      "source": {
+        "source": "git-subdir",
+        "url": "dougcunha/claude-mods",
+        "path": "visual-review",
+        "sha": "49337f5ffa1a2670737a882b480b412ddb128fdd"
+      },
+      "description": "Your branch's design as a diagram in the browser; comment on it and send the review back to Claude.",
+      "author": {
+        "name": "Douglas Cunha",
+        "url": "https://github.com/dougcunha"
+      },
+      "homepage": "https://github.com/dougcunha/claude-mods/tree/HEAD/visual-review",
+      "repository": "https://github.com/dougcunha/claude-mods",
+      "license": "MIT",
+      "keywords": [
+        "code-review",
+        "diagram",
+        "design",
+        "browser",
+        "diff",
+        "subagent"
+      ],
+      "category": "git",
+      "metadata": {
+        "showroom": {
+          "title": "Visual Review",
+          "tagline": "Your branch's design as a diagram in the browser; comment on it and send the review back to Claude.",
+          "tagline_ru": "/visual-review рисует дизайн изменений ветки диаграммой в браузере; комментарии уходят обратно в сессию.",
+          "slots": [
+            "command",
+            "model-tool",
+            "toast",
+            "status"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/visual-review"
+        }
+      }
+    },
+    {
+      "name": "watch-command",
+      "source": {
+        "source": "git-subdir",
+        "url": "timoncool/givememod",
+        "path": "plugins/givememod/skills/givememod/templates/watch-command",
+        "sha": "197200ab39d2d0c22246ac5ceec40c3fbbefb945"
+      },
+      "description": "/watch reruns a command on a timer and shows whether it passes in the status line.",
+      "author": {
+        "name": "timoncool",
+        "url": "https://github.com/timoncool"
+      },
+      "homepage": "https://github.com/timoncool/givememod/tree/HEAD/plugins/givememod/skills/givememod/templates/watch-command",
+      "repository": "https://github.com/timoncool/givememod",
+      "license": "MIT",
+      "keywords": [
+        "watch",
+        "tests",
+        "status-line",
+        "toast",
+        "timer"
+      ],
+      "category": "productivity",
+      "metadata": {
+        "showroom": {
+          "title": "Watch Command",
+          "tagline": "/watch reruns a command on a timer and shows whether it passes in the status line.",
+          "tagline_ru": "/watch перезапускает команду по таймеру и показывает в строке состояния, проходит ли она.",
+          "slots": [
+            "command",
+            "status",
+            "toast"
+          ],
+          "surfaces": [
+            "terminal",
+            "desktop"
+          ],
+          "site": "https://krou4.github.io/claude-code-mod-showroom/#/mod/watch-command"
         }
       }
     }

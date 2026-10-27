@@ -1,0 +1,33 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=big-output}",
+    "tool.call{tool=Bash}",
+    "tool.call{tool=mcp__big-output__slice}"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.fs.read",
+    "$.fs.write",
+    "$.process.run",
+    "$.store.get",
+    "$.store.set",
+    "$.tool.register",
+    "$.ui.log"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call{tool=Bash}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=mcp__big-output__slice}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

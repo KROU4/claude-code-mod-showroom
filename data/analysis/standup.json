@@ -1,0 +1,36 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "prompt.submit",
+    "tool.call{tool=Edit|Write|NotebookEdit|Bash}",
+    "turn.complete",
+    "command.run{command=standup}"
+  ],
+  "calls": [
+    "$.clock.now",
+    "$.command.register",
+    "$.model.complete",
+    "$.session.repo",
+    "$.session.root",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.keys",
+    "$.store.set",
+    "$.ui.copy"
+  ],
+  "gating": [
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=Edit|Write|NotebookEdit|Bash}",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

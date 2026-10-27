@@ -1,0 +1,23 @@
+{
+  "ok": true,
+  "hooks": [
+    "turn.start",
+    "turn.complete",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.clock.every",
+    "$.clock.now",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.resolve"
+  ],
+  "gating": [],
+  "stateKeys": [
+    "turn-timer.now",
+    "turn-timer.timing"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

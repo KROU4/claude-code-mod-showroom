@@ -1,0 +1,87 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=?}",
+    "agent.spawn",
+    "turn.step",
+    "tool.call",
+    "turn.complete",
+    "config.set{key=theme}",
+    "prompt.submit",
+    "ui.scroll{component=Pane, requestId=agent-watch}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane, requestId=agent-watch}"
+  ],
+  "calls": [
+    "$.agent.list",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.config.list",
+    "$.config.set",
+    "$.env.get",
+    "$.prompt.fill",
+    "$.session.usage",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.close",
+    "$.ui.log",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "command.run{command=?}",
+      "hasCatch": false
+    },
+    {
+      "hook": "agent.spawn",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": true
+    },
+    {
+      "hook": "config.set{key=theme}",
+      "hasCatch": true
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.scroll{component=Pane, requestId=agent-watch}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "agent-watch.agents",
+    "agent-watch.bandDone",
+    "agent-watch.dropped",
+    "agent-watch.expanded",
+    "agent-watch.folded",
+    "agent-watch.lastRun",
+    "agent-watch.lead",
+    "agent-watch.live",
+    "agent-watch.message",
+    "agent-watch.offset",
+    "agent-watch.orphans",
+    "agent-watch.sortBy",
+    "agent-watch.standDownAt",
+    "agent-watch.tick",
+    "agent-watch.waveStart",
+    "agent-watch.waveStartWeek",
+    "agent-watch.windowNow",
+    "plain-view.agents",
+    "plain-view.cardOn"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

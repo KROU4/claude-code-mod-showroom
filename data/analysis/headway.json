@@ -1,0 +1,61 @@
+{
+  "ok": true,
+  "hooks": [
+    "config.set{key=\"headway.enabled\"}",
+    "session.start",
+    "tool.call{tool=mcp__headway__plan}",
+    "ui.render{component=ToolUse}",
+    "session.end",
+    "session.attach",
+    "turn.start",
+    "turn.complete",
+    "agent.spawn",
+    "tool.call{tool=TodoWrite|TaskCreate|TaskUpdate|TaskList|ExitPlanMode}",
+    "command.run{command=headway}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane, requestId=headway}"
+  ],
+  "calls": [
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.session.root",
+    "$.session.surfaces",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.tool.list",
+    "$.tool.register",
+    "$.ui.invalidate",
+    "$.ui.log",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "config.set{key=\"headway.enabled\"}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=mcp__headway__plan}",
+      "hasCatch": true
+    },
+    {
+      "hook": "agent.spawn",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=TodoWrite|TaskCreate|TaskUpdate|TaskList|ExitPlanMode}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "headway.done",
+    "headway.run"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

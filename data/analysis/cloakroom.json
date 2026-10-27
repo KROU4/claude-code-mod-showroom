@@ -1,0 +1,68 @@
+{
+  "ok": true,
+  "hooks": [
+    "config.set{key=\"cloakroom.enabled\"}",
+    "session.start",
+    "tool.call",
+    "prompt.submit",
+    "prompt.attachment",
+    "prompt.context",
+    "prompt.compose",
+    "skill.prompt",
+    "session.append",
+    "session.send",
+    "session.receive",
+    "telemetry.log{to=collector}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane, requestId=cloakroom-audit}",
+    "command.run{command=cloakroom}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.now",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.list",
+    "$.fs.read",
+    "$.prompt.submit",
+    "$.session.surfaces",
+    "$.ui.invalidate",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "config.set{key=\"cloakroom.enabled\"}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": true
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": true
+    },
+    {
+      "hook": "session.append",
+      "hasCatch": true
+    },
+    {
+      "hook": "session.send",
+      "hasCatch": true
+    },
+    {
+      "hook": "session.receive",
+      "hasCatch": true
+    },
+    {
+      "hook": "telemetry.log{to=collector}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

@@ -1,0 +1,73 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=?}",
+    "tool.call",
+    "classic.PermissionRequest",
+    "classic.PostToolUse",
+    "classic.PostToolUseFailure",
+    "ui.scroll{component=Pane, requestId=allowlist}",
+    "ui.render{component=Pane, requestId=allowlist}"
+  ],
+  "calls": [
+    "$.clock.now",
+    "$.command.register",
+    "$.config.set",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.read",
+    "$.fs.stat",
+    "$.fs.write",
+    "$.prompt.fill",
+    "$.session.root",
+    "$.settings.read",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.ask",
+    "$.ui.close",
+    "$.ui.log",
+    "$.ui.notice",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "command.run{command=?}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.PermissionRequest",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.PostToolUse",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.PostToolUseFailure",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.scroll{component=Pane, requestId=allowlist}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "allowlist-coach.configured",
+    "allowlist-coach.entries",
+    "allowlist-coach.filter",
+    "allowlist-coach.offset",
+    "allowlist-coach.tab"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

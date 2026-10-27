@@ -1,0 +1,41 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=red-green}",
+    "command.run{command=fix}",
+    "tool.call{tool=Edit|Write|MultiEdit|NotebookEdit}",
+    "turn.complete"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.command.register",
+    "$.fs.exists",
+    "$.fs.read",
+    "$.process.run",
+    "$.prompt.submit",
+    "$.session.root",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.ask",
+    "$.ui.log"
+  ],
+  "gating": [
+    {
+      "hook": "command.run{command=red-green}",
+      "hasCatch": true
+    },
+    {
+      "hook": "command.run{command=fix}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=Edit|Write|MultiEdit|NotebookEdit}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

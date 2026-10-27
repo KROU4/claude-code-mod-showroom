@@ -1,0 +1,118 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "prompt.edit",
+    "classic.SessionStart{source=clear|resume|fork}",
+    "turn.complete",
+    "session.append",
+    "prompt.compose",
+    "ui.render{component=UserMessage}",
+    "ui.render{component=AssistantMessage}",
+    "ui.render{component=ToolUse}",
+    "ui.render{component=ToolResult}",
+    "ui.render{component=Spinner}",
+    "ui.render{component=SessionMode}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=ToolGroup}",
+    "command.run{command=?}",
+    "command.run{command=veneer-settings}",
+    "command.run{command=syntax}",
+    "ui.focus{component=Pane, requestId=?}",
+    "ui.close{id=?}",
+    "ui.scroll{requestId=?}",
+    "ui.render{component=Pane, requestId=?}",
+    "config.set"
+  ],
+  "calls": [
+    "$.clock.every",
+    "$.command.register",
+    "$.command.run",
+    "$.config.list",
+    "$.config.set",
+    "$.env.get",
+    "$.fs.list",
+    "$.fs.read",
+    "$.fs.write",
+    "$.http.fetch",
+    "$.process.run",
+    "$.prompt.read",
+    "$.session.cwd",
+    "$.session.id",
+    "$.session.messages",
+    "$.state.get",
+    "$.state.set",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.close",
+    "$.ui.copy",
+    "$.ui.focus",
+    "$.ui.open",
+    "$.ui.resolve"
+  ],
+  "gating": [
+    {
+      "hook": "classic.SessionStart{source=clear|resume|fork}",
+      "hasCatch": false
+    },
+    {
+      "hook": "session.append",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=?}",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=veneer-settings}",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=syntax}",
+      "hasCatch": false
+    },
+    {
+      "hook": "ui.focus{component=Pane, requestId=?}",
+      "hasCatch": false
+    },
+    {
+      "hook": "ui.close{id=?}",
+      "hasCatch": false
+    },
+    {
+      "hook": "ui.scroll{requestId=?}",
+      "hasCatch": false
+    },
+    {
+      "hook": "config.set",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "veneer.draftImages",
+    "veneer.editsCollapsed",
+    "veneer.expanded",
+    "veneer.flippedEdits",
+    "veneer.flippedGroups",
+    "veneer.focus",
+    "veneer.focusView",
+    "veneer.groupsExpanded",
+    "veneer.off",
+    "veneer.options",
+    "veneer.palette",
+    "veneer.plainIcons",
+    "veneer.plainLinks",
+    "veneer.settingsPane",
+    "veneer.syntax",
+    "veneer.syntaxPane",
+    "veneer.syntaxPreview",
+    "veneer.tab"
+  ],
+  "errors": [],
+  "warnings": [
+    "./register.tsx: notes truncated by claude plugin validate; calls/hooks may be incomplete"
+  ],
+  "validatedWith": "2.1.302",
+  "truncated": true
+}

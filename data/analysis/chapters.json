@@ -1,0 +1,48 @@
+{
+  "ok": true,
+  "hooks": [
+    "config.set{key=\"chapters.enabled\"}",
+    "session.start",
+    "tool.call",
+    "turn.start",
+    "turn.complete",
+    "command.run{command=chapters}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane, requestId=chapters}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.read",
+    "$.model.complete",
+    "$.process.run",
+    "$.prompt.fill",
+    "$.prompt.read",
+    "$.session.root",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.invalidate",
+    "$.ui.log",
+    "$.ui.open",
+    "$.ui.panes",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "config.set{key=\"chapters.enabled\"}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "chapters.review"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

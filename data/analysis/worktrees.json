@@ -1,0 +1,64 @@
+{
+  "ok": true,
+  "hooks": [
+    "classic.PreToolUse{tool=Agent}",
+    "classic.WorktreeCreate",
+    "classic.WorktreeRemove",
+    "classic.SubagentStop",
+    "classic.SubagentStart",
+    "classic.SessionStart",
+    "classic.PostToolUse",
+    "session.start",
+    "command.run{command=tidy}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.now",
+    "$.clock.sleep",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.list",
+    "$.fs.read",
+    "$.fs.stat",
+    "$.fs.write",
+    "$.process.run",
+    "$.session.cwd",
+    "$.ui.log",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "classic.PreToolUse{tool=Agent}",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.WorktreeCreate",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.WorktreeRemove",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.SubagentStop",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.SubagentStart",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.SessionStart",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.PostToolUse",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

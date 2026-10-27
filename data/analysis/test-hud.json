@@ -1,0 +1,50 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=?}",
+    "tool.call{tool=Bash}",
+    "ui.render{component=PromptHint}",
+    "ui.render{component=Pane, requestId=test-hud}"
+  ],
+  "calls": [
+    "$.clock.now",
+    "$.command.register",
+    "$.config.set",
+    "$.env.get",
+    "$.fs.read",
+    "$.fs.stat",
+    "$.prompt.fill",
+    "$.session.root",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.close",
+    "$.ui.invalidate",
+    "$.ui.log",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "command.run{command=?}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=Bash}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "test-hud.opened",
+    "test-hud.runs",
+    "test-hud.selected",
+    "test-hud.tab"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

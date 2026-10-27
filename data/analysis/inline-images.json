@@ -1,0 +1,49 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "tool.call{tool=mcp__inline-images__show_image}",
+    "ui.render{component=ToolResult, props has {tool=mcp__inline-images__show_image}}",
+    "tool.call{tool=Read}",
+    "ui.render{component=ToolUse, props has {tool=Read}}",
+    "ui.render{component=ToolGroup}",
+    "session.append{door=prompt}",
+    "session.append{door=note}",
+    "ui.render{component=UserMessage}"
+  ],
+  "calls": [
+    "$.env.get",
+    "$.fs.read",
+    "$.fs.stat",
+    "$.process.run",
+    "$.state.get",
+    "$.state.set",
+    "$.tool.register",
+    "$.ui.resolve"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call{tool=mcp__inline-images__show_image}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=Read}",
+      "hasCatch": true
+    },
+    {
+      "hook": "session.append{door=prompt}",
+      "hasCatch": false
+    },
+    {
+      "hook": "session.append{door=note}",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "inline-images.pasted",
+    "inline-images.reads"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

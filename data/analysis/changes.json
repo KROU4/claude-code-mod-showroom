@@ -1,0 +1,76 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "turn.start",
+    "tool.call",
+    "turn.complete",
+    "prompt.submit",
+    "session.end",
+    "command.run{command=changes}",
+    "ui.close{id=changes}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=PromptHint}",
+    "ui.render{component=Pane, requestId=changes}",
+    "ui.focus{requestId=changes}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.list",
+    "$.fs.read",
+    "$.fs.stat",
+    "$.fs.write",
+    "$.process.run",
+    "$.session.append",
+    "$.session.id",
+    "$.session.root",
+    "$.session.version",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.invalidate",
+    "$.ui.log",
+    "$.ui.open",
+    "$.ui.panes",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call",
+      "hasCatch": true
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.close{id=changes}",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.focus{requestId=changes}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "changes.autoOpened",
+    "changes.band",
+    "changes.historyNote",
+    "changes.inactive",
+    "changes.index",
+    "changes.paused",
+    "changes.session",
+    "changes.shellOff",
+    "changes.shellUnseen",
+    "changes.storeFull",
+    "changes.view"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

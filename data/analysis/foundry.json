@@ -1,0 +1,80 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.end{reason=clear}",
+    "agent.spawn",
+    "tool.call{tool=SendMessage}",
+    "tool.call{tool=Agent}",
+    "tool.call",
+    "turn.step",
+    "tool.call{tool=Write|Edit}",
+    "classic.SubagentStop",
+    "session.measure",
+    "classic.StopFailure",
+    "classic.SessionStart",
+    "session.start",
+    "command.run{command=foundry}"
+  ],
+  "calls": [
+    "$.agent.list",
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.list",
+    "$.fs.read",
+    "$.fs.stat",
+    "$.fs.write",
+    "$.process.run",
+    "$.prompt.submit",
+    "$.session.cwd",
+    "$.session.id",
+    "$.session.usage",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.log",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "agent.spawn",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=SendMessage}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=Agent}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=Write|Edit}",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.SubagentStop",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.StopFailure",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.SessionStart",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "foundry.limitReset"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

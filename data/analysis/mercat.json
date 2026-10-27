@@ -1,0 +1,39 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "session.end",
+    "command.run{command=mercat}",
+    "tool.call{tool=Edit|Write}",
+    "ui.render{component=AssistantMessage}",
+    "ui.render{component=Pane, requestId=mercat}"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.fs.stat",
+    "$.process.run",
+    "$.session.cwd",
+    "$.session.messages",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.invalidate",
+    "$.ui.open",
+    "$.ui.panes",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call{tool=Edit|Write}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "mercat.edited",
+    "mercat.isOff",
+    "mercat.shown"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

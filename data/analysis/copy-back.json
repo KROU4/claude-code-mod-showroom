@@ -1,0 +1,19 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=cc}"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.process.run",
+    "$.session.messages",
+    "$.ui.copy",
+    "$.ui.toast"
+  ],
+  "gating": [],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

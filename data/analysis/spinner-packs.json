@@ -1,0 +1,22 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "turn.start",
+    "ui.render{component=Spinner}",
+    "ui.render{component=TurnDuration}",
+    "command.run{command=spinner}"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.invalidate"
+  ],
+  "gating": [],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

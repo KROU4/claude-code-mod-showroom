@@ -1,0 +1,33 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=timeline}",
+    "turn.start",
+    "turn.complete",
+    "tool.call",
+    "turn.step",
+    "ui.render{component=Pane, requestId=timeline}"
+  ],
+  "calls": [
+    "$.agent.list",
+    "$.clock.now",
+    "$.command.register",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.open",
+    "$.ui.resolve"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "turn-timeline.turn"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

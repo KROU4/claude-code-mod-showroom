@@ -1,0 +1,45 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "turn.start",
+    "turn.step",
+    "session.measure",
+    "session.compact",
+    "session.end",
+    "command.run{command=redline}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane, requestId=redline}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.now",
+    "$.command.register",
+    "$.session.usage",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.close",
+    "$.ui.invalidate",
+    "$.ui.log",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "session.compact",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "redline.gauge",
+    "redline.isBandOn",
+    "redline.view"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}
