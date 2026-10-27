@@ -1,0 +1,44 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "session.end{reason=clear}",
+    "turn.step",
+    "classic.PostModelSwitch",
+    "classic.CwdChanged",
+    "session.attach",
+    "session.detach",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.agent.list",
+    "$.clock.every",
+    "$.clock.now",
+    "$.env.get",
+    "$.session.cwd",
+    "$.session.model",
+    "$.session.surfaces",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.invalidate",
+    "$.ui.resolve",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "classic.PostModelSwitch",
+      "hasCatch": false
+    },
+    {
+      "hook": "classic.CwdChanged",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "session-models.agents"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

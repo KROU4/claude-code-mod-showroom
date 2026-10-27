@@ -1,0 +1,54 @@
+{
+  "ok": true,
+  "hooks": [
+    "config.set{key=\"rain-check.enabled\"}",
+    "session.start",
+    "session.measure",
+    "classic.StopFailure",
+    "prompt.submit",
+    "turn.complete",
+    "session.end",
+    "command.run{command=rain-check}",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.prompt.fill",
+    "$.prompt.read",
+    "$.prompt.submit",
+    "$.session.surfaces",
+    "$.session.usage",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.invalidate",
+    "$.ui.log",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "config.set{key=\"rain-check.enabled\"}",
+      "hasCatch": false
+    },
+    {
+      "hook": "classic.StopFailure",
+      "hasCatch": false
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "rain-check.lastSent",
+    "rain-check.limit",
+    "rain-check.now",
+    "rain-check.queued"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

@@ -1,0 +1,30 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.end",
+    "session.start",
+    "turn.complete",
+    "command.run{command=jr-commit-coach}",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.command.register",
+    "$.process.run",
+    "$.session.root",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [],
+  "stateKeys": [
+    "jr-commit-coach.isBandHidden",
+    "jr-commit-coach.nudge"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

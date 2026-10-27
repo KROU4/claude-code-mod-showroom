@@ -1,0 +1,31 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "tool.call{tool=Edit|Write|MultiEdit|NotebookEdit}",
+    "turn.complete",
+    "command.run{command=standup}"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.fs.write",
+    "$.model.complete",
+    "$.session.id",
+    "$.session.root",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.keys",
+    "$.store.set",
+    "$.ui.log"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call{tool=Edit|Write|MultiEdit|NotebookEdit}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

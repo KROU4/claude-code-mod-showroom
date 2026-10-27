@@ -1,0 +1,22 @@
+{
+  "ok": true,
+  "hooks": [
+    "turn.start",
+    "turn.complete",
+    "session.receive"
+  ],
+  "calls": [
+    "$.http.fetch",
+    "$.session.id"
+  ],
+  "gating": [
+    {
+      "hook": "session.receive",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

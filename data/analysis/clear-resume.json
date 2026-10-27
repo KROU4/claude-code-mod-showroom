@@ -1,0 +1,53 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=relay}",
+    "tool.call",
+    "tool.call{tool=AskUserQuestion}",
+    "turn.start",
+    "tool.call{tool=Bash}",
+    "turn.complete",
+    "session.compact",
+    "session.end"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.command.run",
+    "$.env.get",
+    "$.fs.read",
+    "$.fs.write",
+    "$.process.run",
+    "$.prompt.submit",
+    "$.session.cwd",
+    "$.session.id",
+    "$.session.usage",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=AskUserQuestion}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=Bash}",
+      "hasCatch": false
+    },
+    {
+      "hook": "session.compact",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

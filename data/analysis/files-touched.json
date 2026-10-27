@@ -1,0 +1,39 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "turn.start",
+    "tool.call",
+    "command.run{command=touched}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane, requestId=files-touched}"
+  ],
+  "calls": [
+    "$.clock.now",
+    "$.command.register",
+    "$.fs.exists",
+    "$.fs.read",
+    "$.process.run",
+    "$.prompt.fill",
+    "$.session.root",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.close",
+    "$.ui.copy",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "files-touched.files"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

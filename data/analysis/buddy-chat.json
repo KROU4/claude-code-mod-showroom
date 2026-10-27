@@ -1,0 +1,75 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=buddy}",
+    "ui.close{id=buddy-chat}",
+    "command.run{command=buddy-id}",
+    "command.run{command=buddy-name}",
+    "command.run{command=buddy-username}",
+    "command.run{command=buddy-add}",
+    "command.run{command=buddy-lang}",
+    "command.run{command=buddy-link}",
+    "command.run{command=buddy-backup}",
+    "command.run{command=buddy-list}",
+    "command.run{command=buddy-send}",
+    "command.run{command=buddy-group}",
+    "tool.call{tool=mcp__buddy-chat__send_to_buddy}",
+    "ui.scroll{requestId=buddy-chat}",
+    "ui.message{requestId=buddy-chat}",
+    "ui.render{component=Pane, requestId=buddy-chat}"
+  ],
+  "calls": [
+    "$.audio.play",
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.clock.sleep",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.list",
+    "$.fs.read",
+    "$.fs.stat",
+    "$.fs.write",
+    "$.http.fetch",
+    "$.process.run",
+    "$.process.spawn",
+    "$.prompt.submit",
+    "$.session.id",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.keys",
+    "$.store.set",
+    "$.tool.register",
+    "$.ui.ask",
+    "$.ui.copy",
+    "$.ui.focus",
+    "$.ui.invalidate",
+    "$.ui.log",
+    "$.ui.notify",
+    "$.ui.open",
+    "$.ui.panes",
+    "$.ui.resolve",
+    "$.ui.scroll",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "ui.close{id=buddy-chat}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=mcp__buddy-chat__send_to_buddy}",
+      "hasCatch": false
+    },
+    {
+      "hook": "ui.scroll{requestId=buddy-chat}",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

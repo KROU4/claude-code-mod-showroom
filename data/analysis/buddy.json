@@ -1,0 +1,44 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "classic.SessionStart",
+    "turn.start",
+    "tool.call",
+    "turn.complete",
+    "session.end",
+    "command.run{command=buddy}",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.command.register",
+    "$.state.get",
+    "$.state.set",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "classic.SessionStart",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "buddy.frame",
+    "buddy.isHidden",
+    "buddy.look",
+    "buddy.pet"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

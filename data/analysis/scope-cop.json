@@ -1,0 +1,69 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "turn.start",
+    "tool.check",
+    "tool.call",
+    "turn.complete",
+    "prompt.submit",
+    "session.end",
+    "command.run{command=scope}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane, requestId=scope}",
+    "ui.close{id=scope}"
+  ],
+  "calls": [
+    "$.clock.now",
+    "$.command.register",
+    "$.config.set",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.stat",
+    "$.session.cwd",
+    "$.session.version",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.invalidate",
+    "$.ui.log",
+    "$.ui.open",
+    "$.ui.panes",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.check",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": true
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.close{id=scope}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "changes.index",
+    "scope-cop.currentTurn",
+    "scope-cop.inactive",
+    "scope-cop.log",
+    "scope-cop.mode",
+    "scope-cop.named",
+    "scope-cop.outside",
+    "scope-cop.pendingTell",
+    "scope-cop.scope",
+    "scope-cop.session",
+    "scope-cop.shellSeen",
+    "scope-cop.told"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

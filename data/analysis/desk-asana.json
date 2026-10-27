@@ -1,0 +1,71 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "session.end",
+    "state.set{plugin=desk-look, key=lang}",
+    "state.set{plugin=desk-look, key=folded}",
+    "ui.open{id=desk-asana}",
+    "ui.close{id=desk-asana}",
+    "command.run{command=desk-asana}",
+    "ui.render{component=Pane, requestId=desk-asana}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.now",
+    "$.command.register",
+    "$.config.list",
+    "$.http.fetch",
+    "$.mcp.call",
+    "$.prompt.fill",
+    "$.prompt.read",
+    "$.state.get",
+    "$.state.set",
+    "$.tool.check",
+    "$.tool.list",
+    "$.ui.close",
+    "$.ui.focus",
+    "$.ui.invalidate",
+    "$.ui.open",
+    "$.ui.panes",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "state.set{plugin=desk-look, key=lang}",
+      "hasCatch": true
+    },
+    {
+      "hook": "state.set{plugin=desk-look, key=folded}",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.open{id=desk-asana}",
+      "hasCatch": false
+    },
+    {
+      "hook": "ui.close{id=desk-asana}",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "desk-asana.asana",
+    "desk-asana.asanaEdit",
+    "desk-asana.asanaProject",
+    "desk-asana.asanaProjects",
+    "desk-asana.asanaSearch",
+    "desk-asana.asanaTab",
+    "desk-asana.asanaUsers",
+    "desk-asana.asanaView",
+    "desk-asana.folded",
+    "desk-asana.open",
+    "desk-asana.ready",
+    "desk-asana.shown",
+    "desk-look.folded",
+    "desk-look.lang"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

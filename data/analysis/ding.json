@@ -1,0 +1,32 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=ding}",
+    "turn.complete",
+    "tool.call{tool=AskUserQuestion}",
+    "tool.check"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.process.run",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.log",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call{tool=AskUserQuestion}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.check",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

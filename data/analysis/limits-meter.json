@@ -1,0 +1,73 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=?}",
+    "session.measure",
+    "turn.complete",
+    "classic.PostModelSwitch",
+    "turn.step",
+    "classic.Stop",
+    "prompt.submit",
+    "ui.render{component=UserMessage}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane, requestId=limits}"
+  ],
+  "calls": [
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.config.list",
+    "$.config.set",
+    "$.env.get",
+    "$.prompt.fill",
+    "$.prompt.submit",
+    "$.session.model",
+    "$.session.usage",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.ask",
+    "$.ui.close",
+    "$.ui.invalidate",
+    "$.ui.log",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "command.run{command=?}",
+      "hasCatch": false
+    },
+    {
+      "hook": "classic.PostModelSwitch",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.Stop",
+      "hasCatch": true
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "limits-meter.cache",
+    "limits-meter.effort",
+    "limits-meter.fired",
+    "limits-meter.groups",
+    "limits-meter.isHidden",
+    "limits-meter.keepWarm",
+    "limits-meter.model",
+    "limits-meter.samples",
+    "limits-meter.snapshot",
+    "limits-meter.switchAt",
+    "limits-meter.turns"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

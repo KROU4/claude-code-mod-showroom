@@ -1,0 +1,31 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "session.end",
+    "turn.step",
+    "turn.complete",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.clock.every",
+    "$.clock.now",
+    "$.model.fork",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [],
+  "stateKeys": [
+    "cache-meter.cache",
+    "cache-meter.keepWarm",
+    "cache-meter.now",
+    "cache-meter.warmth"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

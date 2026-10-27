@@ -1,0 +1,77 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "session.end",
+    "state.set{plugin=desk-look, key=lang}",
+    "state.set{plugin=desk-look, key=folded}",
+    "state.set{plugin=desk-look, key=slackOpen}",
+    "ui.open{id=desk-slack}",
+    "ui.close{id=desk-slack}",
+    "command.run{command=desk-slack}",
+    "ui.render{component=Pane, requestId=desk-slack}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.config.list",
+    "$.mcp.call",
+    "$.prompt.fill",
+    "$.prompt.read",
+    "$.session.id",
+    "$.session.surfaces",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.tool.check",
+    "$.tool.list",
+    "$.ui.close",
+    "$.ui.focus",
+    "$.ui.invalidate",
+    "$.ui.notify",
+    "$.ui.open",
+    "$.ui.panes",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "state.set{plugin=desk-look, key=lang}",
+      "hasCatch": true
+    },
+    {
+      "hook": "state.set{plugin=desk-look, key=folded}",
+      "hasCatch": true
+    },
+    {
+      "hook": "state.set{plugin=desk-look, key=slackOpen}",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.open{id=desk-slack}",
+      "hasCatch": false
+    },
+    {
+      "hook": "ui.close{id=desk-slack}",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "desk-look.folded",
+    "desk-look.lang",
+    "desk-look.slackOpen",
+    "desk-slack.folded",
+    "desk-slack.open",
+    "desk-slack.ready",
+    "desk-slack.shown",
+    "desk-slack.slack",
+    "desk-slack.slackView",
+    "desk-slack.unread"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

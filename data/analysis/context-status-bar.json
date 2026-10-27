@@ -1,0 +1,91 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "tool.call",
+    "command.run{command=contextbar}",
+    "turn.step",
+    "session.compact",
+    "command.run{command=compact}",
+    "command.run{command=clear}",
+    "turn.start",
+    "agent.spawn",
+    "turn.complete",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane, requestId=context-bar-context}",
+    "ui.render{component=Pane, requestId=context-bar-usage}"
+  ],
+  "calls": [
+    "$.agent.list",
+    "$.audio.play",
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.command.run",
+    "$.process.run",
+    "$.session.usage",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.copy",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    },
+    {
+      "hook": "session.compact",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=compact}",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=clear}",
+      "hasCatch": false
+    },
+    {
+      "hook": "agent.spawn",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "context-bar.agents",
+    "context-bar.autoCompactOn",
+    "context-bar.breakdown",
+    "context-bar.compactAt",
+    "context-bar.costUsd",
+    "context-bar.fill",
+    "context-bar.fiveHist",
+    "context-bar.git",
+    "context-bar.gitAt",
+    "context-bar.isHidden",
+    "context-bar.lastGrowth",
+    "context-bar.lastTurnMs",
+    "context-bar.limits",
+    "context-bar.modelInUse",
+    "context-bar.now",
+    "context-bar.resetNoticed",
+    "context-bar.running",
+    "context-bar.soundOn",
+    "context-bar.startedAt",
+    "context-bar.stepsByModel",
+    "context-bar.themeName",
+    "context-bar.tickOwner",
+    "context-bar.tokHist",
+    "context-bar.toolsTotal",
+    "context-bar.toolsTurn",
+    "context-bar.turnStartedAt",
+    "context-bar.warned"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

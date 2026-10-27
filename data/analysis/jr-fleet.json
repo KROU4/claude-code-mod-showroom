@@ -1,0 +1,45 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "prompt.submit",
+    "turn.complete",
+    "session.end",
+    "command.run{command=jr-fleet}",
+    "ui.render{component=Pane, requestId=jr-fleet}",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.list",
+    "$.fs.read",
+    "$.fs.write",
+    "$.process.run",
+    "$.session.cwd",
+    "$.session.id",
+    "$.session.root",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.open",
+    "$.ui.resolve"
+  ],
+  "gating": [
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "jr-fleet.fleet",
+    "jr-fleet.isBandHidden"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

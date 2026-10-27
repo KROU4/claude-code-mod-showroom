@@ -1,0 +1,73 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "session.end",
+    "classic.SessionStart{source=clear|resume|fork}",
+    "tool.call{tool=Bash}",
+    "tool.call{tool=Monitor}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane, requestId=sandbox-tuner}",
+    "command.run{command=sandbox-tuner}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.clock.sleep",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.list",
+    "$.fs.read",
+    "$.fs.stat",
+    "$.fs.write",
+    "$.session.cwd",
+    "$.session.id",
+    "$.session.root",
+    "$.session.surfaces",
+    "$.settings.read",
+    "$.state.get",
+    "$.state.set",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.keys",
+    "$.store.set"
+  ],
+  "gating": [
+    {
+      "hook": "classic.SessionStart{source=clear|resume|fork}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=Bash}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=Monitor}",
+      "hasCatch": true
+    },
+    {
+      "hook": "command.run{command=sandbox-tuner}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "sandbox-tuner.applied",
+    "sandbox-tuner.appliedOffset",
+    "sandbox-tuner.backgroundTasks",
+    "sandbox-tuner.dismissed",
+    "sandbox-tuner.evidenceIncomplete",
+    "sandbox-tuner.fault",
+    "sandbox-tuner.latest",
+    "sandbox-tuner.notice",
+    "sandbox-tuner.records"
+  ],
+  "errors": [],
+  "warnings": [
+    "root: CLAUDE.md at the plugin root is not loaded as project context. To ship context with your plugin, use a skill (skills/<name>/SKILL.md) instead.",
+    "./register.tsx: notes truncated by claude plugin validate; calls/hooks may be incomplete"
+  ],
+  "validatedWith": "2.1.302",
+  "truncated": true
+}

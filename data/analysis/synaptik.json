@@ -1,0 +1,79 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=synaptik}",
+    "turn.start",
+    "turn.complete",
+    "ui.render{component=TurnDuration}",
+    "ui.message{component=AbovePrompt}",
+    "ui.render{component=AssistantMessage}",
+    "ui.message{component=AssistantMessage}",
+    "ui.focus{component=AbovePrompt}",
+    "prompt.edit",
+    "prompt.change",
+    "ui.close{id=?}",
+    "ui.scroll{component=Pane, requestId=?}",
+    "ui.focus{component=Pane, requestId=?}",
+    "ui.render{component=Pane, requestId=?}",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.clock.sleep",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.read",
+    "$.fs.stat",
+    "$.fs.write",
+    "$.prompt.read",
+    "$.prompt.suggest",
+    "$.session.messages",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.close",
+    "$.ui.focus",
+    "$.ui.invalidate",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.scroll",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "command.run{command=synaptik}",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.focus{component=AbovePrompt}",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.close{id=?}",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.scroll{component=Pane, requestId=?}",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.focus{component=Pane, requestId=?}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "synaptik.commentSeed",
+    "synaptik.commentSeq",
+    "synaptik.comments",
+    "synaptik.focusedVerb",
+    "synaptik.isCommenting",
+    "synaptik.isOn",
+    "synaptik.isPaneShown",
+    "synaptik.isWorking",
+    "synaptik.lastText",
+    "synaptik.marks",
+    "synaptik.selected"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

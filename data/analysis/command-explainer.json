@@ -1,0 +1,32 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "tool.call{tool=Bash}",
+    "ui.render{component=ToolGroup}",
+    "ui.render{component=ToolUse, props has {tool=Bash}}",
+    "command.run{command=explain}"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.model.complete",
+    "$.session.model",
+    "$.state.get",
+    "$.state.set",
+    "$.tool.check",
+    "$.ui.notice",
+    "$.ui.resolve"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call{tool=Bash}",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "command-explainer.lines"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

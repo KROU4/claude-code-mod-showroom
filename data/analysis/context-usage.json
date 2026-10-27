@@ -1,0 +1,43 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "classic.SessionStart",
+    "session.end",
+    "session.measure",
+    "session.compact",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.run",
+    "$.session.usage",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "classic.SessionStart",
+      "hasCatch": false
+    },
+    {
+      "hook": "session.compact",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "context-usage.context",
+    "context-usage.now",
+    "context-usage.threshold",
+    "context-usage.windows"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

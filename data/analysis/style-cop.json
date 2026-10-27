@@ -1,0 +1,32 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=style-cop}",
+    "prompt.submit",
+    "tool.call{tool=Edit|Write|MultiEdit}"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.fs.exists",
+    "$.fs.read",
+    "$.session.root",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.log"
+  ],
+  "gating": [
+    {
+      "hook": "prompt.submit",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=Edit|Write|MultiEdit}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

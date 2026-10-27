@@ -1,0 +1,53 @@
+{
+  "ok": true,
+  "hooks": [
+    "command.run{command=editor-context-demo}",
+    "session.start",
+    "session.attach",
+    "prompt.submit",
+    "ui.render{component=UserMessage}",
+    "ui.message",
+    "ui.close",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.clock.sleep",
+    "$.command.register",
+    "$.http.fetch",
+    "$.process.run",
+    "$.process.spawn",
+    "$.session.cwd",
+    "$.session.surfaces",
+    "$.session.turns",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.resolve"
+  ],
+  "gating": [
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    },
+    {
+      "hook": "ui.close",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "editor-context.attached",
+    "editor-context.ide",
+    "editor-context.isDemo",
+    "editor-context.isDirty",
+    "editor-context.isNoticeHidden",
+    "editor-context.isPaused",
+    "editor-context.isShown",
+    "editor-context.notice",
+    "editor-context.pins",
+    "editor-context.selection"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

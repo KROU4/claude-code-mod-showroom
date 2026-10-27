@@ -1,0 +1,93 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "session.end",
+    "classic.SessionStart",
+    "session.receive",
+    "prompt.submit{origin has {kind=peer}}",
+    "session.send",
+    "tool.call{tool=ListAgents}",
+    "agent.spawn",
+    "turn.complete",
+    "command.run",
+    "config.set",
+    "command.run{command=highcommand}",
+    "ui.render{component=Pane, requestId=high-command}",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.agent.list",
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.session.id",
+    "$.session.surfaces",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.focus",
+    "$.ui.log",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "classic.SessionStart",
+      "hasCatch": false
+    },
+    {
+      "hook": "session.receive",
+      "hasCatch": false
+    },
+    {
+      "hook": "prompt.submit{origin has {kind=peer}}",
+      "hasCatch": false
+    },
+    {
+      "hook": "session.send",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=ListAgents}",
+      "hasCatch": false
+    },
+    {
+      "hook": "agent.spawn",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run",
+      "hasCatch": false
+    },
+    {
+      "hook": "config.set",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "high-command.agentStatus",
+    "high-command.agents",
+    "high-command.capture",
+    "high-command.entries",
+    "high-command.hiddenLanes",
+    "high-command.hiddenThrough",
+    "high-command.inboundThrough",
+    "high-command.lanePage",
+    "high-command.laneView",
+    "high-command.lanes",
+    "high-command.openThread",
+    "high-command.peers",
+    "high-command.readThrough",
+    "high-command.rosterPage",
+    "high-command.selectedLane",
+    "high-command.view"
+  ],
+  "errors": [],
+  "warnings": [
+    "root: CLAUDE.md at the plugin root is not loaded as project context. To ship context with your plugin, use a skill (skills/<name>/SKILL.md) instead."
+  ],
+  "validatedWith": "2.1.302"
+}

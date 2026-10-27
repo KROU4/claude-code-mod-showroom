@@ -1,0 +1,47 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=?}",
+    "prompt.submit",
+    "ui.render{component=Pane, requestId=?}",
+    "ui.render{component=AssistantMessage}",
+    "ui.render{component=ToolResult}",
+    "ui.render{component=ToolUse}",
+    "ui.render{component=ToolGroup}"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.config.list",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.read",
+    "$.fs.write",
+    "$.process.run",
+    "$.session.messages",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.close",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.selection",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "command.run{command=?}",
+      "hasCatch": false
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "figures.opened",
+    "figures.selected"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

@@ -1,0 +1,37 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=hunt}",
+    "command.run{command=hunt-demo}",
+    "ui.press{plugin=pixel-hunter}",
+    "turn.start",
+    "turn.complete",
+    "ui.render{component=Pane, requestId=pixel-hunter}"
+  ],
+  "calls": [
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.settings.read",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.open",
+    "$.ui.resolve"
+  ],
+  "gating": [],
+  "stateKeys": [
+    "pixel-hunter.lang",
+    "pixel-hunter.lastElapsedMs",
+    "pixel-hunter.log",
+    "pixel-hunter.phase",
+    "pixel-hunter.terminalCells",
+    "pixel-hunter.turnStartedAt",
+    "pixel-hunter.world"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

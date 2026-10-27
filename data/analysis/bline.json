@@ -1,0 +1,39 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "session.measure",
+    "turn.step",
+    "command.run{command=effort}",
+    "settings.read",
+    "ui.render{component=PromptHint}"
+  ],
+  "calls": [
+    "$.command.run",
+    "$.session.model",
+    "$.session.usage",
+    "$.settings.read",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.resolve"
+  ],
+  "gating": [
+    {
+      "hook": "command.run{command=effort}",
+      "hasCatch": false
+    },
+    {
+      "hook": "settings.read",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "bline.context",
+    "bline.effort"
+  ],
+  "errors": [],
+  "warnings": [
+    "root: CLAUDE.md at the plugin root is not loaded as project context. To ship context with your plugin, use a skill (skills/<name>/SKILL.md) instead."
+  ],
+  "validatedWith": "2.1.302"
+}

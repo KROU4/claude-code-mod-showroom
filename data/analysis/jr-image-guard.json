@@ -1,0 +1,26 @@
+{
+  "ok": true,
+  "hooks": [
+    "tool.call{tool=Read}",
+    "tool.call{tool=mcp__playwright__browser_resize}"
+  ],
+  "calls": [
+    "$.clock.now",
+    "$.process.run",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call{tool=Read}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=mcp__playwright__browser_resize}",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

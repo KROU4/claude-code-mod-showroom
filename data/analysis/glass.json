@@ -1,0 +1,84 @@
+{
+  "ok": true,
+  "hooks": [
+    "config.set{key=\"glass.palette\"}",
+    "command.run{command=glass-theme}",
+    "config.set{key=\"glass.notify\"}",
+    "session.start",
+    "command.run{command=expand}",
+    "command.run{command=collapse}",
+    "command.run{command=fold}",
+    "command.run{command=unfold}",
+    "ui.render{component=AssistantMessage}",
+    "ui.render{component=UserMessage}",
+    "ui.render{component=ToolUse}",
+    "ui.render{component=ToolGroup}",
+    "ui.render{component=ToolResult}",
+    "prompt.submit",
+    "turn.start",
+    "tool.call",
+    "turn.step",
+    "agent.spawn",
+    "turn.complete",
+    "ui.render{component=TurnDuration}",
+    "ui.render{component=PromptHint}",
+    "ui.render{component=Spinner}",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.list",
+    "$.command.register",
+    "$.config.list",
+    "$.config.set",
+    "$.env.get",
+    "$.fs.list",
+    "$.fs.write",
+    "$.session.cwd",
+    "$.session.usage",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.blit",
+    "$.ui.copy",
+    "$.ui.invalidate",
+    "$.ui.notify",
+    "$.ui.resolve",
+    "$.ui.status",
+    "$.ui.toast",
+    "$.ui.view"
+  ],
+  "gating": [
+    {
+      "hook": "config.set{key=\"glass.palette\"}",
+      "hasCatch": false
+    },
+    {
+      "hook": "config.set{key=\"glass.notify\"}",
+      "hasCatch": false
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    },
+    {
+      "hook": "agent.spawn",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "glass.agents",
+    "glass.band",
+    "glass.calls",
+    "glass.liveTurn",
+    "glass.prompts",
+    "glass.turns"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

@@ -1,0 +1,68 @@
+{
+  "ok": true,
+  "hooks": [
+    "engine.create",
+    "session.start",
+    "session.end",
+    "classic.SessionStart{source=clear|resume|fork}",
+    "command.run{command=tts}",
+    "ui.render{component=Pane, requestId=tts-picker}",
+    "prompt.submit",
+    "prompt.compose",
+    "turn.start",
+    "turn.complete",
+    "tool.call",
+    "classic.PermissionRequest",
+    "turn.step"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.now",
+    "$.command.register",
+    "$.config.set",
+    "$.env.get",
+    "$.http.fetch",
+    "$.process.run",
+    "$.process.spawn",
+    "$.session.cwd",
+    "$.session.messages",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.close",
+    "$.ui.log",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "classic.SessionStart{source=clear|resume|fork}",
+      "hasCatch": true
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.PermissionRequest",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "tts.audioDirectory",
+    "tts.engine",
+    "tts.floorId",
+    "tts.picker",
+    "tts.speech"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

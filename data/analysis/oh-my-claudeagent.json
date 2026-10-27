@@ -1,0 +1,119 @@
+{
+  "ok": true,
+  "hooks": [
+    "tool.check{tool=/\"^(?:Bash|PowerShell)$\"/}",
+    "tool.call{agentId=/\".\"/}",
+    "session.start",
+    "turn.start",
+    "turn.step",
+    "turn.complete",
+    "agent.spawn",
+    "prompt.edit",
+    "prompt.change",
+    "prompt.autocomplete",
+    "ui.close",
+    "ui.focus",
+    "ui.scroll{component=Pane}",
+    "command.run{command=omca}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane}",
+    "ui.render{component=Spinner}",
+    "ui.render{component=TurnDuration}",
+    "ui.render{component=UserMessage}",
+    "ui.render{component=ToolUse, props has {tool=Agent}}",
+    "ui.render{component=ToolGroup}",
+    "session.compact"
+  ],
+  "calls": [
+    "$.agent.list",
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.list",
+    "$.fs.read",
+    "$.fs.stat",
+    "$.fs.write",
+    "$.mcp.connect",
+    "$.process.run",
+    "$.prompt.fill",
+    "$.session.cwd",
+    "$.session.id",
+    "$.session.messages",
+    "$.session.root",
+    "$.session.surfaces",
+    "$.session.usage",
+    "$.session.version",
+    "$.settings.read",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.ask",
+    "$.ui.blit",
+    "$.ui.copy",
+    "$.ui.focus",
+    "$.ui.invalidate",
+    "$.ui.log",
+    "$.ui.notify",
+    "$.ui.open",
+    "$.ui.panes",
+    "$.ui.resolve"
+  ],
+  "gating": [
+    {
+      "hook": "tool.check{tool=/\"^(?:Bash|PowerShell)$\"/}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{agentId=/\".\"/}",
+      "hasCatch": true
+    },
+    {
+      "hook": "agent.spawn",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.close",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.focus",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.scroll{component=Pane}",
+      "hasCatch": true
+    },
+    {
+      "hook": "command.run{command=omca}",
+      "hasCatch": true
+    },
+    {
+      "hook": "session.compact",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "oh-my-claudeagent.agentPage",
+    "oh-my-claudeagent.agents",
+    "oh-my-claudeagent.band",
+    "oh-my-claudeagent.costSample",
+    "oh-my-claudeagent.doctor",
+    "oh-my-claudeagent.lanes",
+    "oh-my-claudeagent.ledger",
+    "oh-my-claudeagent.nextActions",
+    "oh-my-claudeagent.notices",
+    "oh-my-claudeagent.pages",
+    "oh-my-claudeagent.pane",
+    "oh-my-claudeagent.plan",
+    "oh-my-claudeagent.stats",
+    "oh-my-claudeagent.turns"
+  ],
+  "errors": [],
+  "warnings": [
+    "./register.ts: notes truncated by claude plugin validate; calls/hooks may be incomplete"
+  ],
+  "validatedWith": "2.1.302",
+  "truncated": true
+}

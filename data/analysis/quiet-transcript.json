@@ -1,0 +1,34 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "session.append",
+    "turn.step",
+    "ui.render{component=AssistantMessage}",
+    "ui.render{component=ToolUse}",
+    "ui.render{component=ToolResult}",
+    "ui.render{component=ToolGroup}",
+    "ui.render{component=CommandOutput}"
+  ],
+  "calls": [
+    "$.session.messages",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.resolve"
+  ],
+  "gating": [
+    {
+      "hook": "session.append",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "quiet-transcript.answers",
+    "quiet-transcript.asides",
+    "quiet-transcript.isOpen",
+    "quiet-transcript.narration"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

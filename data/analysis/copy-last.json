@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=copy-last}"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.session.messages",
+    "$.ui.copy",
+    "$.ui.log"
+  ],
+  "gating": [],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

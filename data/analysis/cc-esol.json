@@ -1,0 +1,95 @@
+{
+  "ok": true,
+  "hooks": [
+    "tool.describe{tool=mcp__cc-esol__english_log}",
+    "tool.call{tool=mcp__cc-esol__english_log}",
+    "command.run{command=voice}",
+    "session.start",
+    "session.end",
+    "command.run{command=esol}",
+    "ui.render{component=Pane, requestId=?}",
+    "ui.close{id=?}",
+    "ui.open",
+    "ui.scroll{requestId=?}",
+    "ui.focus{requestId=?}",
+    "ui.render{component=PromptHint}",
+    "prompt.submit",
+    "turn.complete"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.command.run",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.read",
+    "$.fs.stat",
+    "$.fs.write",
+    "$.model.complete",
+    "$.process.run",
+    "$.session.cwd",
+    "$.session.model",
+    "$.settings.read",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.tool.register",
+    "$.ui.close",
+    "$.ui.invalidate",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call{tool=mcp__cc-esol__english_log}",
+      "hasCatch": true
+    },
+    {
+      "hook": "command.run{command=voice}",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.close{id=?}",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.open",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.scroll{requestId=?}",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.focus{requestId=?}",
+      "hasCatch": true
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "cc-esol.englishEnCutoff",
+    "cc-esol.englishLog",
+    "cc-esol.englishMinWords",
+    "cc-esol.englishNative",
+    "cc-esol.englishOn",
+    "cc-esol.englishPending",
+    "cc-esol.esolOpen",
+    "cc-esol.esolReview",
+    "cc-esol.esolReviewBusy",
+    "cc-esol.esolReviewError",
+    "cc-esol.esolReviewScroll",
+    "cc-esol.esolScroll",
+    "cc-esol.esolView",
+    "cc-esol.lang",
+    "cc-esol.menu",
+    "cc-esol.restored",
+    "cc-esol.voiceOn"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

@@ -1,0 +1,54 @@
+{
+  "ok": true,
+  "hooks": [
+    "config.set{key=\"second-wind.enabled\"}",
+    "session.start",
+    "command.run{command=breathe}",
+    "session.attach",
+    "session.detach",
+    "turn.start",
+    "turn.complete",
+    "ui.render{component=PromptHint}",
+    "prompt.edit",
+    "prompt.submit",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Spinner}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.session.surfaces",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.copy",
+    "$.ui.invalidate",
+    "$.ui.log",
+    "$.ui.resolve",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "config.set{key=\"second-wind.enabled\"}",
+      "hasCatch": false
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "second-wind.card",
+    "second-wind.desk",
+    "second-wind.isTyping",
+    "second-wind.now",
+    "second-wind.run"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

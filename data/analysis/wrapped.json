@@ -1,0 +1,47 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "prompt.submit",
+    "tool.call",
+    "turn.complete",
+    "session.end",
+    "command.run{command=wrapped}",
+    "ui.render{component=Pane, requestId=wrapped}"
+  ],
+  "calls": [
+    "$.clock.now",
+    "$.command.register",
+    "$.session.id",
+    "$.session.root",
+    "$.session.usage",
+    "$.state.get",
+    "$.state.set",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.keys",
+    "$.store.set",
+    "$.ui.ask",
+    "$.ui.close",
+    "$.ui.copy",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "wrapped.summary"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

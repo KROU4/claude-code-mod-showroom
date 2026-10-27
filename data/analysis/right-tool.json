@@ -1,0 +1,25 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=right-tool}",
+    "tool.call{tool=Bash}",
+    "turn.complete"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.log"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call{tool=Bash}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

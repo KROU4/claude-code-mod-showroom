@@ -1,0 +1,31 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "turn.complete",
+    "classic.Notification",
+    "command.run{command=ding}"
+  ],
+  "calls": [
+    "$.audio.play",
+    "$.audio.speak",
+    "$.clock.after",
+    "$.clock.now",
+    "$.command.register",
+    "$.http.fetch",
+    "$.process.run",
+    "$.session.repo",
+    "$.session.root",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "classic.Notification",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

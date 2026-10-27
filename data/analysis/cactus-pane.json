@@ -1,0 +1,69 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=cactus-pane}",
+    "prompt.compose",
+    "tool.call{tool=Bash}",
+    "ui.render{component=Pane, requestId=cactus-pane}",
+    "ui.scroll",
+    "ui.input",
+    "turn.start",
+    "turn.complete",
+    "ui.focus"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.stat",
+    "$.process.run",
+    "$.prompt.submit",
+    "$.session.id",
+    "$.session.root",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.copy",
+    "$.ui.focus",
+    "$.ui.open",
+    "$.ui.panes",
+    "$.ui.resolve",
+    "$.ui.scroll",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call{tool=Bash}",
+      "hasCatch": false
+    },
+    {
+      "hook": "ui.scroll",
+      "hasCatch": false
+    },
+    {
+      "hook": "ui.focus",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "cactus-pane.drafts",
+    "cactus-pane.error",
+    "cactus-pane.flips",
+    "cactus-pane.held",
+    "cactus-pane.modes",
+    "cactus-pane.picks",
+    "cactus-pane.previews",
+    "cactus-pane.rows",
+    "cactus-pane.selected",
+    "cactus-pane.settings",
+    "cactus-pane.settingsOpen",
+    "cactus-pane.undo"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

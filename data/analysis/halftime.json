@@ -1,0 +1,69 @@
+{
+  "ok": true,
+  "hooks": [
+    "config.set{key=\"halftime.enabled\"}",
+    "session.start",
+    "command.run{command=halftime}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=CommandOutput, props has {command=halftime}}",
+    "ui.render{component=PromptHint}",
+    "ui.message",
+    "turn.start",
+    "turn.complete",
+    "classic.PermissionRequest",
+    "classic.Elicitation",
+    "classic.Notification",
+    "tool.call{tool=AskUserQuestion}",
+    "classic.PostToolBatch",
+    "session.end"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.session.surfaces",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.copy",
+    "$.ui.invalidate",
+    "$.ui.log",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "config.set{key=\"halftime.enabled\"}",
+      "hasCatch": false
+    },
+    {
+      "hook": "classic.PermissionRequest",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.Elicitation",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.Notification",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=AskUserQuestion}",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.PostToolBatch",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "halftime.session",
+    "halftime.stats"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

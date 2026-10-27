@@ -1,0 +1,63 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "turn.start",
+    "tool.call",
+    "turn.step",
+    "turn.complete",
+    "command.run{command=tldr}",
+    "ui.render{component=ToolGroup}",
+    "ui.render{component=ToolUse}",
+    "ui.render{component=ToolResult}",
+    "ui.render{component=AssistantMessage}",
+    "ui.render{component=Spinner}",
+    "ui.render{component=AbovePrompt}",
+    "session.compact",
+    "ui.render{component=Pane, requestId=?}",
+    "ui.render{component=TurnDuration}",
+    "ui.render{component=PromptHint}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.fs.read",
+    "$.session.id",
+    "$.session.root",
+    "$.session.usage",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.blit",
+    "$.ui.close",
+    "$.ui.copy",
+    "$.ui.invalidate",
+    "$.ui.notify",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.status"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call",
+      "hasCatch": true
+    },
+    {
+      "hook": "session.compact",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "tldr.current",
+    "tldr.kept",
+    "tldr.live",
+    "tldr.plan",
+    "tldr.turns"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

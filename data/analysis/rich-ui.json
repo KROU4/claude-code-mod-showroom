@@ -1,0 +1,91 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=rich-ui}",
+    "ui.render{component=Pane, requestId=rich-ui}",
+    "ui.focus{component=Pane, requestId=rich-ui}",
+    "ui.scroll{component=Pane, requestId=rich-ui}",
+    "ui.render{component=AssistantMessage}",
+    "prompt.compose",
+    "tool.call",
+    "ui.render{component=Pane, requestId=rich-ui-preview}",
+    "ui.render{component=AbovePrompt}",
+    "prompt.submit",
+    "ui.render{component=Spinner}",
+    "ui.render{component=TurnDuration}",
+    "ui.render{component=ToolProgress}",
+    "turn.complete",
+    "ui.render{component=PromptHint}",
+    "ui.render{component=InfoNotice}",
+    "session.measure",
+    "session.end"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.clock.sleep",
+    "$.command.register",
+    "$.config.list",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.list",
+    "$.fs.read",
+    "$.fs.stat",
+    "$.process.run",
+    "$.prompt.read",
+    "$.session.cwd",
+    "$.session.id",
+    "$.session.turns",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.blit",
+    "$.ui.focus",
+    "$.ui.invalidate",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "command.run{command=rich-ui}",
+      "hasCatch": false
+    },
+    {
+      "hook": "ui.focus{component=Pane, requestId=rich-ui}",
+      "hasCatch": false
+    },
+    {
+      "hook": "ui.scroll{component=Pane, requestId=rich-ui}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "rich-ui.enabled",
+    "rich-ui.peek-view",
+    "rich-ui.preview",
+    "rich-ui.saveFailed",
+    "rich-ui.shown",
+    "rich-ui.status",
+    "rich-ui.usage",
+    "rich-ui.welcome",
+    "rich-ui.welcome-played",
+    "rich-ui.welcomeRev",
+    "rich-ui.zen-quote"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

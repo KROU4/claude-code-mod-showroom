@@ -1,0 +1,51 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=codebuild}",
+    "turn.complete",
+    "tool.call{tool=mcp__codebuild__build}",
+    "ui.render{component=Pane, requestId=codebuild}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.list",
+    "$.fs.read",
+    "$.fs.stat",
+    "$.fs.write",
+    "$.process.run",
+    "$.prompt.submit",
+    "$.session.root",
+    "$.state.get",
+    "$.state.set",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.set",
+    "$.tool.register",
+    "$.ui.ask",
+    "$.ui.close",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call{tool=mcp__codebuild__build}",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "codebuild.build",
+    "codebuild.log",
+    "codebuild.mode",
+    "codebuild.wizard"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

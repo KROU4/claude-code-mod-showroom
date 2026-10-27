@@ -1,0 +1,87 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run",
+    "tool.call{tool=Bash}",
+    "turn.complete",
+    "classic.CwdChanged",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane, requestId=gh-status}",
+    "ui.focus",
+    "ui.close{id=gh-status}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.now",
+    "$.clock.sleep",
+    "$.command.list",
+    "$.command.register",
+    "$.process.run",
+    "$.prompt.fill",
+    "$.session.cwd",
+    "$.state.get",
+    "$.state.set",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.close",
+    "$.ui.copy",
+    "$.ui.focus",
+    "$.ui.open",
+    "$.ui.panes",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "command.run",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=Bash}",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.CwdChanged",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.focus",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.close{id=gh-status}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "gh-status.actionsTab",
+    "gh-status.counts",
+    "gh-status.etags",
+    "gh-status.issueSnapshot",
+    "gh-status.issues",
+    "gh-status.issuesTab",
+    "gh-status.jobs",
+    "gh-status.lastSeen",
+    "gh-status.list",
+    "gh-status.listHideDrafts",
+    "gh-status.listPage",
+    "gh-status.mainStatus",
+    "gh-status.outcome",
+    "gh-status.paneFocus",
+    "gh-status.paneRing",
+    "gh-status.paneTab",
+    "gh-status.paneView",
+    "gh-status.pending",
+    "gh-status.rateLimit",
+    "gh-status.runSnapshot",
+    "gh-status.runs",
+    "gh-status.selected",
+    "gh-status.selectedSnapshot",
+    "gh-status.snapshot"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

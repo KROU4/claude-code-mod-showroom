@@ -1,0 +1,34 @@
+{
+  "ok": true,
+  "hooks": [
+    "tool.check{tool=Bash}",
+    "tool.call{tool=Bash}",
+    "ui.render{component=ToolUse}"
+  ],
+  "calls": [
+    "$.clock.every",
+    "$.clock.now",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.resolve"
+  ],
+  "gating": [
+    {
+      "hook": "tool.check{tool=Bash}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=Bash}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "cccc.now",
+    "cccc.runs"
+  ],
+  "errors": [],
+  "warnings": [
+    "root: CLAUDE.md at the plugin root is not loaded as project context. To ship context with your plugin, use a skill (skills/<name>/SKILL.md) instead."
+  ],
+  "validatedWith": "2.1.302"
+}

@@ -1,0 +1,112 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "session.end",
+    "classic.Notification",
+    "session.measure",
+    "turn.step",
+    "turn.start",
+    "prompt.submit",
+    "tool.check",
+    "tool.call",
+    "turn.complete",
+    "command.run{command=knife}",
+    "command.run{command=pin}",
+    "command.run{command=pins}",
+    "command.run{command=budget}",
+    "command.run{command=report}",
+    "command.run{command=handoff}",
+    "ui.render{component=Pane, requestId=swiss-knife}",
+    "ui.render{component=Pane, requestId=swiss-knife-handoff}",
+    "ui.render{component=Pane, requestId=swiss-knife-pins}",
+    "ui.render{component=Pane, requestId=swiss-knife-settings}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=AssistantMessage}",
+    "ui.render{component=?}",
+    "prompt.edit",
+    "ui.close"
+  ],
+  "calls": [
+    "$.audio.play",
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.write",
+    "$.model.complete",
+    "$.process.run",
+    "$.prompt.fill",
+    "$.prompt.suggest",
+    "$.session.cwd",
+    "$.session.id",
+    "$.session.messages",
+    "$.session.model",
+    "$.session.usage",
+    "$.settings.read",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.keys",
+    "$.store.set",
+    "$.ui.blit",
+    "$.ui.copy",
+    "$.ui.invalidate",
+    "$.ui.notify",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.scroll",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "classic.Notification",
+      "hasCatch": false
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.check",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": true
+    },
+    {
+      "hook": "command.run{command=knife}",
+      "hasCatch": true
+    },
+    {
+      "hook": "command.run{command=pin}",
+      "hasCatch": true
+    },
+    {
+      "hook": "command.run{command=pins}",
+      "hasCatch": true
+    },
+    {
+      "hook": "command.run{command=budget}",
+      "hasCatch": true
+    },
+    {
+      "hook": "command.run{command=report}",
+      "hasCatch": true
+    },
+    {
+      "hook": "command.run{command=handoff}",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.close",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

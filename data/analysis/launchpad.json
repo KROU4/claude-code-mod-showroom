@@ -1,0 +1,71 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=pad}",
+    "command.describe",
+    "classic.SessionStart",
+    "turn.step",
+    "ui.render{component=CommandOutput}",
+    "ui.render{component=PromptHint}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=AskUserQuestion}",
+    "ui.render{component=Pane, requestId=launchpad-panel}",
+    "ui.render{component=Pane, requestId=launchpad-menu}",
+    "ui.scroll{component=Pane, requestId=launchpad}",
+    "ui.render{component=Pane, requestId=launchpad}"
+  ],
+  "calls": [
+    "$.clock.now",
+    "$.command.list",
+    "$.command.register",
+    "$.command.run",
+    "$.config.list",
+    "$.config.set",
+    "$.env.get",
+    "$.fs.list",
+    "$.fs.read",
+    "$.prompt.fill",
+    "$.session.messages",
+    "$.session.model",
+    "$.session.usage",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.ask",
+    "$.ui.close",
+    "$.ui.log",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "classic.SessionStart",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.scroll{component=Pane, requestId=launchpad}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "launchpad.catalog",
+    "launchpad.effort",
+    "launchpad.eyes",
+    "launchpad.filter",
+    "launchpad.isOff",
+    "launchpad.menu",
+    "launchpad.model",
+    "launchpad.offs",
+    "launchpad.offset",
+    "launchpad.placement",
+    "launchpad.project",
+    "launchpad.rev",
+    "launchpad.tab"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

@@ -1,0 +1,27 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "tool.call{tool=Bash|Edit|Write|NotebookEdit}",
+    "turn.start",
+    "turn.complete",
+    "command.run{command=git-pulse}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.command.register",
+    "$.process.run",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call{tool=Bash|Edit|Write|NotebookEdit}",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

@@ -1,0 +1,30 @@
+{
+  "ok": true,
+  "hooks": [
+    "tool.call{tool=Bash}",
+    "tool.call{tool=WebSearch}",
+    "tool.call{tool=ToolSearch}",
+    "session.end"
+  ],
+  "calls": [
+    "$.ui.status"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call{tool=Bash}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=WebSearch}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=ToolSearch}",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

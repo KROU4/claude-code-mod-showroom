@@ -1,0 +1,42 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "classic.SessionStart",
+    "classic.UserPromptSubmit",
+    "turn.complete",
+    "classic.Notification",
+    "command.run{command=pager}"
+  ],
+  "calls": [
+    "$.audio.play",
+    "$.clock.now",
+    "$.command.register",
+    "$.http.fetch",
+    "$.session.root",
+    "$.session.surfaces",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.log",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "classic.SessionStart",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.UserPromptSubmit",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.Notification",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

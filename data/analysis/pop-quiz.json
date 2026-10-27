@@ -1,0 +1,53 @@
+{
+  "ok": true,
+  "hooks": [
+    "config.set{key=\"pop-quiz.enabled\"}",
+    "session.start",
+    "tool.call",
+    "turn.start",
+    "turn.complete",
+    "prompt.submit",
+    "ui.render{component=AbovePrompt}",
+    "command.run{command=pop-quiz}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.command.register",
+    "$.env.get",
+    "$.model.complete",
+    "$.session.root",
+    "$.session.surfaces",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.invalidate",
+    "$.ui.log",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "config.set{key=\"pop-quiz.enabled\"}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "pop-quiz.every",
+    "pop-quiz.isOn",
+    "pop-quiz.quiz",
+    "pop-quiz.score",
+    "pop-quiz.usd"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

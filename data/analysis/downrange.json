@@ -1,0 +1,121 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "session.end",
+    "classic.SessionStart{source=clear|resume|fork}",
+    "command.run{command=downrange}",
+    "command.run",
+    "config.set",
+    "tool.call{tool=Bash}",
+    "tool.call{tool=Monitor}",
+    "tool.call{tool=Agent}",
+    "tool.call{tool=Workflow}",
+    "tool.call{tool=ScheduleWakeup}",
+    "tool.call{tool=TaskStop}",
+    "tool.call",
+    "session.append",
+    "turn.complete",
+    "prompt.submit",
+    "classic.Stop",
+    "classic.SubagentStop",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane, requestId=downrange}"
+  ],
+  "calls": [
+    "$.agent.list",
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.fs.read",
+    "$.fs.stat",
+    "$.process.run",
+    "$.session.cwd",
+    "$.session.id",
+    "$.session.surfaces",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.close",
+    "$.ui.invalidate",
+    "$.ui.log",
+    "$.ui.open",
+    "$.ui.panes",
+    "$.ui.resolve"
+  ],
+  "gating": [
+    {
+      "hook": "classic.SessionStart{source=clear|resume|fork}",
+      "hasCatch": true
+    },
+    {
+      "hook": "command.run{command=downrange}",
+      "hasCatch": true
+    },
+    {
+      "hook": "command.run",
+      "hasCatch": true
+    },
+    {
+      "hook": "config.set",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=Bash}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=Monitor}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=Agent}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=Workflow}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=ScheduleWakeup}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=TaskStop}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": true
+    },
+    {
+      "hook": "session.append",
+      "hasCatch": true
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.Stop",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.SubagentStop",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "downrange.bandHiddenAt",
+    "downrange.jobs",
+    "downrange.lastAnswered",
+    "downrange.wakeup"
+  ],
+  "errors": [],
+  "warnings": [
+    "root: CLAUDE.md at the plugin root is not loaded as project context. To ship context with your plugin, use a skill (skills/<name>/SKILL.md) instead."
+  ],
+  "validatedWith": "2.1.302"
+}

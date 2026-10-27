@@ -1,0 +1,32 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=pin}",
+    "command.run{command=unpin}",
+    "session.end",
+    "prompt.submit",
+    "prompt.compose",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=SessionMode}"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.session.messages",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.invalidate",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

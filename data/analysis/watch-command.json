@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=watch}"
+  ],
+  "calls": [
+    "$.clock.every",
+    "$.command.register",
+    "$.env.get",
+    "$.process.run",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [],
+  "stateKeys": [
+    "watch-command.watch"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

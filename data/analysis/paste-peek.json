@@ -1,0 +1,32 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "prompt.edit",
+    "prompt.submit"
+  ],
+  "calls": [
+    "$.clock.every",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.list",
+    "$.fs.write",
+    "$.process.run",
+    "$.process.spawn",
+    "$.prompt.read",
+    "$.session.cwd",
+    "$.session.id",
+    "$.ui.log",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "prompt.submit",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

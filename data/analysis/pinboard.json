@@ -1,0 +1,34 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "tool.call{tool=mcp__pinboard__pin}",
+    "command.run{command=pin}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane, requestId=pinboard}"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.session.root",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.tool.register",
+    "$.ui.log",
+    "$.ui.open",
+    "$.ui.resolve"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call{tool=mcp__pinboard__pin}",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "pinboard.pins"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

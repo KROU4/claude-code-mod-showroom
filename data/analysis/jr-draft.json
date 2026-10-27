@@ -1,0 +1,29 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "ui.render{component=AbovePrompt}",
+    "command.run{command=jr-draft}",
+    "ui.render{component=Pane, requestId=jr-draft}"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.prompt.fill",
+    "$.session.root",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [],
+  "stateKeys": [
+    "jr-draft.project",
+    "jr-draft.text"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

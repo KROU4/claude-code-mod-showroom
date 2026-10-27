@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "hooks": [
+    "tool.call{tool=Bash}"
+  ],
+  "calls": [],
+  "gating": [
+    {
+      "hook": "tool.call{tool=Bash}",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

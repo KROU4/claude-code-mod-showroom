@@ -1,0 +1,87 @@
+{
+  "ok": true,
+  "hooks": [
+    "config.set",
+    "session.start",
+    "classic.CwdChanged",
+    "session.end",
+    "command.run{command=pr-watch}",
+    "tool.check{tool=mcp__pr-watch__watch}",
+    "tool.call",
+    "prompt.submit",
+    "ui.render{component=Pane, requestId=pr-watch}",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.clock.sleep",
+    "$.command.register",
+    "$.config.list",
+    "$.config.set",
+    "$.env.get",
+    "$.fs.list",
+    "$.fs.read",
+    "$.fs.write",
+    "$.process.run",
+    "$.prompt.fill",
+    "$.prompt.read",
+    "$.prompt.submit",
+    "$.session.root",
+    "$.state.get",
+    "$.state.set",
+    "$.tool.register",
+    "$.ui.blit",
+    "$.ui.close",
+    "$.ui.focus",
+    "$.ui.invalidate",
+    "$.ui.open",
+    "$.ui.panes",
+    "$.ui.resolve",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "config.set",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.CwdChanged",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.check{tool=mcp__pr-watch__watch}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": true
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "pr-watch.addressing",
+    "pr-watch.commenting",
+    "pr-watch.companion",
+    "pr-watch.dropped",
+    "pr-watch.fixing",
+    "pr-watch.ghHelp",
+    "pr-watch.limits",
+    "pr-watch.merging",
+    "pr-watch.newer",
+    "pr-watch.now",
+    "pr-watch.prs",
+    "pr-watch.refused",
+    "pr-watch.resolving",
+    "pr-watch.retrying",
+    "pr-watch.suggested"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

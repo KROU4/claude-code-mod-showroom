@@ -1,0 +1,45 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "session.end",
+    "command.run{command=footprints}",
+    "tool.call",
+    "ui.render{component=Pane, requestId=footprints}"
+  ],
+  "calls": [
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.fs.exists",
+    "$.fs.list",
+    "$.fs.stat",
+    "$.process.run",
+    "$.session.cwd",
+    "$.session.root",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.log",
+    "$.ui.open",
+    "$.ui.panes",
+    "$.ui.resolve",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "footprints.marks",
+    "footprints.phase",
+    "footprints.shellPaused",
+    "footprints.touchedOnly",
+    "footprints.tree"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

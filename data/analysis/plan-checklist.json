@@ -1,0 +1,53 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "classic.SessionStart",
+    "tool.call{tool=ExitPlanMode}",
+    "tool.call{tool=mcp__plan-checklist__plan_check}",
+    "command.run{command=checklist}",
+    "classic.UserPromptSubmit",
+    "classic.Stop",
+    "session.end",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.session.messages",
+    "$.state.get",
+    "$.state.set",
+    "$.tool.register",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "classic.SessionStart",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=ExitPlanMode}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=mcp__plan-checklist__plan_check}",
+      "hasCatch": false
+    },
+    {
+      "hook": "classic.UserPromptSubmit",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.Stop",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "plan-checklist.isExpanded",
+    "plan-checklist.nudgedAt",
+    "plan-checklist.plan"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

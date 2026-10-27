@@ -1,0 +1,29 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "tool.call",
+    "command.run{command=file-guard}"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.env.get",
+    "$.fs.stat",
+    "$.session.cwd",
+    "$.session.root",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.ask",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

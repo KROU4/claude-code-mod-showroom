@@ -1,0 +1,180 @@
+{
+  "ok": true,
+  "hooks": [
+    "config.describe{key=?}",
+    "session.start",
+    "classic.SessionStart",
+    "classic.PostModelSwitch",
+    "ui.render{component=AbovePrompt}",
+    "session.end",
+    "command.run{command=session-info}",
+    "command.run{command=changes}",
+    "command.run{command=autopick}",
+    "prompt.submit",
+    "session.append{door=queue}",
+    "prompt.compose",
+    "tool.call{tool=?}",
+    "classic.Stop",
+    "tool.call{tool=Skill}",
+    "skill.prompt",
+    "turn.start",
+    "tool.check",
+    "turn.step",
+    "session.measure",
+    "turn.complete",
+    "prompt.suggest",
+    "agent.spawn",
+    "session.compact",
+    "command.run{command=compact}",
+    "tool.call{tool=Bash}",
+    "tool.call{tool=PowerShell}",
+    "tool.call",
+    "tool.call{tool=AskUserQuestion}",
+    "ui.scroll{component=Pane, requestId=session-info}",
+    "ui.render{component=Pane, requestId=session-info}"
+  ],
+  "calls": [
+    "$.agent.list",
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.clock.sleep",
+    "$.command.list",
+    "$.command.register",
+    "$.command.run",
+    "$.config.set",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.read",
+    "$.fs.write",
+    "$.http.fetch",
+    "$.mcp.call",
+    "$.model.fork",
+    "$.process.run",
+    "$.process.spawn",
+    "$.prompt.fill",
+    "$.prompt.read",
+    "$.prompt.suggest",
+    "$.session.cwd",
+    "$.session.id",
+    "$.session.messages",
+    "$.session.turns",
+    "$.session.usage",
+    "$.settings.read",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set"
+  ],
+  "gating": [
+    {
+      "hook": "classic.SessionStart",
+      "hasCatch": false
+    },
+    {
+      "hook": "classic.PostModelSwitch",
+      "hasCatch": true
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    },
+    {
+      "hook": "session.append{door=queue}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=?}",
+      "hasCatch": false
+    },
+    {
+      "hook": "classic.Stop",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=Skill}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.check",
+      "hasCatch": true
+    },
+    {
+      "hook": "agent.spawn",
+      "hasCatch": false
+    },
+    {
+      "hook": "session.compact",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=compact}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=Bash}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=PowerShell}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=AskUserQuestion}",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.scroll{component=Pane, requestId=session-info}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "session-info.agentModels",
+    "session-info.alerted",
+    "session-info.autoContinue",
+    "session-info.autoContinueOn",
+    "session-info.autopick",
+    "session-info.autopickConflict",
+    "session-info.autopickLast",
+    "session-info.autopickWaits",
+    "session-info.background",
+    "session-info.breakdown",
+    "session-info.cache",
+    "session-info.cacheHold",
+    "session-info.cacheMove",
+    "session-info.changesTop",
+    "session-info.checks",
+    "session-info.ci",
+    "session-info.collapsed",
+    "session-info.compactions",
+    "session-info.context",
+    "session-info.detail",
+    "session-info.files",
+    "session-info.gitTop",
+    "session-info.guard",
+    "session-info.guardOn",
+    "session-info.inline",
+    "session-info.jiraIssues",
+    "session-info.jiraServer",
+    "session-info.keepWarm",
+    "session-info.lastTurn",
+    "session-info.layout",
+    "session-info.now",
+    "session-info.repo",
+    "session-info.skills",
+    "session-info.tabs",
+    "session-info.todos",
+    "session-info.turns",
+    "session-info.version"
+  ],
+  "errors": [],
+  "warnings": [
+    "./register.tsx: notes truncated by claude plugin validate; calls/hooks may be incomplete"
+  ],
+  "validatedWith": "2.1.302",
+  "truncated": true
+}

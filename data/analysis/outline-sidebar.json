@@ -1,0 +1,102 @@
+{
+  "ok": true,
+  "hooks": [
+    "classic.SessionStart",
+    "classic.UserPromptSubmit",
+    "session.start",
+    "command.run{command=outline}",
+    "command.run{command=agenda}",
+    "command.run{command=btw}",
+    "session.append",
+    "prompt.edit",
+    "prompt.submit",
+    "turn.start",
+    "tool.call",
+    "turn.complete",
+    "ui.scroll{requestId=outline}",
+    "ui.message{requestId=outline}",
+    "ui.render{component=Pane, requestId=outline, surface=terminal}",
+    "ui.render{component=Pane, requestId=outline}",
+    "ui.render{component=Pane, requestId=agenda}"
+  ],
+  "calls": [
+    "$.agent.list",
+    "$.clock.after",
+    "$.clock.now",
+    "$.command.register",
+    "$.fs.write",
+    "$.model.complete",
+    "$.process.run",
+    "$.prompt.submit",
+    "$.session.id",
+    "$.state.get",
+    "$.state.set",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.keys",
+    "$.store.set",
+    "$.ui.copy",
+    "$.ui.focus",
+    "$.ui.log",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.scroll"
+  ],
+  "gating": [
+    {
+      "hook": "classic.SessionStart",
+      "hasCatch": false
+    },
+    {
+      "hook": "classic.UserPromptSubmit",
+      "hasCatch": false
+    },
+    {
+      "hook": "command.run{command=btw}",
+      "hasCatch": false
+    },
+    {
+      "hook": "session.append",
+      "hasCatch": false
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    },
+    {
+      "hook": "ui.scroll{requestId=outline}",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "outline-sidebar.agenda",
+    "outline-sidebar.anchor",
+    "outline-sidebar.blocks",
+    "outline-sidebar.changes",
+    "outline-sidebar.corrections",
+    "outline-sidebar.cursor",
+    "outline-sidebar.folded",
+    "outline-sidebar.legend",
+    "outline-sidebar.level",
+    "outline-sidebar.lingering",
+    "outline-sidebar.metricsAll",
+    "outline-sidebar.open",
+    "outline-sidebar.query",
+    "outline-sidebar.recap",
+    "outline-sidebar.scope",
+    "outline-sidebar.searching",
+    "outline-sidebar.sessionTitle",
+    "outline-sidebar.staleSkipped",
+    "outline-sidebar.unfolded",
+    "outline-sidebar.view",
+    "outline-sidebar.wheel",
+    "outline-sidebar.zoom"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

@@ -1,0 +1,41 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=suggest}",
+    "prompt.submit",
+    "turn.complete",
+    "prompt.suggest{origin has {kind=suggestion}}",
+    "ui.render{component=PromptHint}",
+    "ui.render{component=AssistantMessage}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.command.register",
+    "$.command.run",
+    "$.config.set",
+    "$.model.complete",
+    "$.prompt.fill",
+    "$.prompt.read",
+    "$.prompt.submit",
+    "$.prompt.suggest",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.resolve",
+    "$.ui.status"
+  ],
+  "gating": [
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "suggest.buttons",
+    "suggest.lastReply",
+    "suggest.recent"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

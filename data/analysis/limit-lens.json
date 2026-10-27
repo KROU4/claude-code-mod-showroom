@@ -1,0 +1,51 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "session.measure",
+    "turn.step",
+    "ui.render{component=AbovePrompt}",
+    "command.run{command=limits}",
+    "ui.render{component=Pane, requestId=limit-lens}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.list",
+    "$.http.fetch",
+    "$.process.run",
+    "$.session.id",
+    "$.session.model",
+    "$.session.usage",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.invalidate",
+    "$.ui.open",
+    "$.ui.resolve"
+  ],
+  "gating": [
+    {
+      "hook": "command.run{command=limits}",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "limit-lens.breakdown",
+    "limit-lens.expanded",
+    "limit-lens.limits",
+    "limit-lens.models",
+    "limit-lens.prices",
+    "limit-lens.requests",
+    "limit-lens.shares",
+    "limit-lens.usd"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

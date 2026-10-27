@@ -1,0 +1,49 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "prompt.submit",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.clock.now",
+    "$.clock.sleep",
+    "$.command.run",
+    "$.config.set",
+    "$.env.get",
+    "$.fs.read",
+    "$.fs.write",
+    "$.mcp.call",
+    "$.model.complete",
+    "$.prompt.fill",
+    "$.prompt.read",
+    "$.session.id",
+    "$.session.messages",
+    "$.session.usage",
+    "$.state.get",
+    "$.state.set",
+    "$.tool.check",
+    "$.tool.list",
+    "$.ui.invalidate",
+    "$.ui.resolve",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "prompt.submit",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "topic-guard.held",
+    "topic-guard.isBusy",
+    "topic-guard.isJevDown",
+    "topic-guard.jevBlocked",
+    "topic-guard.keptAt",
+    "topic-guard.lastJudgment"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

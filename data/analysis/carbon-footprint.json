@@ -1,0 +1,76 @@
+{
+  "ok": false,
+  "hooks": [
+    "session.start",
+    "agent.spawn",
+    "tool.call{tool=Agent}",
+    "turn.start",
+    "turn.step",
+    "turn.complete",
+    "session.end",
+    "command.run{command=carbon-panel|?}",
+    "ui.close",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane, requestId=carbon}",
+    "ui.render{component=TurnDuration}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.now",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.read",
+    "$.prompt.fill",
+    "$.prompt.read",
+    "$.session.id",
+    "$.session.surfaces",
+    "$.session.usage",
+    "$.settings.read",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.blit",
+    "$.ui.close",
+    "$.ui.invalidate",
+    "$.ui.open",
+    "$.ui.panes",
+    "$.ui.resolve",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "agent.spawn",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=Agent}",
+      "hasCatch": true
+    },
+    {
+      "hook": "command.run{command=carbon-panel|?}",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.close",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "claude-carbon.answers",
+    "claude-carbon.band",
+    "claude-carbon.blocks",
+    "claude-carbon.session",
+    "claude-carbon.view",
+    "claude-carbon.working"
+  ],
+  "errors": [
+    "plugins[0].name: Plugin name \"claude-carbon\" is reserved: it passes as one of Anthropic's own. A third party's plugin name cannot start with \"claude-\", \"anthropic-\", \"anthropics-\", or \"cc-plugin-\", be \"claude\", \"anthropic\", \"anthropics\", \"claude-code\", or \"claude-mods\", or put \"official\" beside \"claude\" or \"anthropic\". Name it for what it does.",
+    "name: Plugin name \"claude-carbon\" is reserved: it passes as one of Anthropic's own. A third party's plugin name cannot start with \"claude-\", \"anthropic-\", \"anthropics-\", or \"cc-plugin-\", be \"claude\", \"anthropic\", \"anthropics\", \"claude-code\", or \"claude-mods\", or put \"official\" beside \"claude\" or \"anthropic\". Name it for what it does. If this is one of Anthropic's own plugins, validate the marketplace that lists it."
+  ],
+  "warnings": [
+    "statusLine: Unknown field 'statusLine'. Claude Code ignores it at load time."
+  ],
+  "validatedWith": "2.1.302"
+}

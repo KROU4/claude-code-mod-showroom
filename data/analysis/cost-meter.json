@@ -1,0 +1,37 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "session.measure",
+    "turn.start",
+    "turn.complete",
+    "ui.render{component=TurnDuration}",
+    "prompt.submit",
+    "tool.call",
+    "command.run{command=spend}"
+  ],
+  "calls": [
+    "$.command.register",
+    "$.prompt.fill",
+    "$.session.usage",
+    "$.ui.ask",
+    "$.ui.invalidate",
+    "$.ui.resolve",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

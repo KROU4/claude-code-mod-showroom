@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "hooks": [
+    "ui.render{component=UserMessage}",
+    "ui.render{component=AssistantMessage}",
+    "ui.render{component=TurnDuration}"
+  ],
+  "calls": [
+    "$.ui.resolve"
+  ],
+  "gating": [],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

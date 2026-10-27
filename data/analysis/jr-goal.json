@@ -1,0 +1,29 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.end",
+    "session.start",
+    "command.run{command=jr-goal}",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.now",
+    "$.command.register",
+    "$.session.root",
+    "$.state.get",
+    "$.state.set",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.resolve"
+  ],
+  "gating": [],
+  "stateKeys": [
+    "jr-goal.goal",
+    "jr-goal.isBandHidden"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

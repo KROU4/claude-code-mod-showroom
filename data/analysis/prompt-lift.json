@@ -1,0 +1,72 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "session.end",
+    "classic.SessionStart{source=clear|resume|fork}",
+    "prompt.submit",
+    "ui.render{component=AbovePrompt}",
+    "command.run{command=prompt-lift}"
+  ],
+  "calls": [
+    "$.clock.now",
+    "$.command.list",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.list",
+    "$.fs.read",
+    "$.fs.stat",
+    "$.model.complete",
+    "$.prompt.fill",
+    "$.prompt.read",
+    "$.prompt.submit",
+    "$.session.messages",
+    "$.session.model",
+    "$.session.root",
+    "$.session.usage",
+    "$.state.get",
+    "$.state.set",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.keys",
+    "$.store.set",
+    "$.ui.invalidate",
+    "$.ui.log",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "classic.SessionStart{source=clear|resume|fork}",
+      "hasCatch": true
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "prompt-lift.blockHash",
+    "prompt-lift.capOverride",
+    "prompt-lift.enhanced",
+    "prompt-lift.isUndone",
+    "prompt-lift.lastDecorations",
+    "prompt-lift.lastUsage",
+    "prompt-lift.lastVerdict",
+    "prompt-lift.model",
+    "prompt-lift.noCacheStreak",
+    "prompt-lift.original",
+    "prompt-lift.phase",
+    "prompt-lift.requestId",
+    "prompt-lift.runningModel",
+    "prompt-lift.sessionPresses",
+    "prompt-lift.sessionUnpriced",
+    "prompt-lift.sessionUsd",
+    "prompt-lift.staticChars",
+    "prompt-lift.tailOverride"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

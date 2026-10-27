@@ -1,0 +1,55 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=show-beads-ui|bu}",
+    "turn.complete",
+    "ui.close{id=beads|beads-confirm}",
+    "ui.focus{requestId=beads}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane}",
+    "ui.message{requestId=beads}",
+    "ui.fault{requestId=beads}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.read",
+    "$.fs.write",
+    "$.process.run",
+    "$.process.spawn",
+    "$.prompt.submit",
+    "$.settings.read",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.blit",
+    "$.ui.close",
+    "$.ui.focus",
+    "$.ui.invalidate",
+    "$.ui.notify",
+    "$.ui.open",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "command.run{command=show-beads-ui|bu}",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.close{id=beads|beads-confirm}",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.focus{requestId=beads}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

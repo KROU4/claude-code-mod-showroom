@@ -1,0 +1,31 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.end",
+    "session.start",
+    "command.run{command=jr-badge}",
+    "turn.complete",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.read",
+    "$.process.run",
+    "$.session.cwd",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.resolve"
+  ],
+  "gating": [],
+  "stateKeys": [
+    "jr-badge.badge",
+    "jr-badge.isHidden"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

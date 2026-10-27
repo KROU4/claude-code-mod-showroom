@@ -1,0 +1,38 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=diffsplit}",
+    "ui.render{component=Pane, requestId=diffsplit}",
+    "tool.call{tool=Edit|Write|NotebookEdit|Bash}",
+    "ui.render{component=ToolResult}"
+  ],
+  "calls": [
+    "$.clock.every",
+    "$.command.register",
+    "$.process.run",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.open",
+    "$.ui.panes",
+    "$.ui.resolve",
+    "$.ui.scroll"
+  ],
+  "gating": [
+    {
+      "hook": "command.run{command=diffsplit}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=Edit|Write|NotebookEdit|Bash}",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "cc-split-diff-view.folded",
+    "cc-split-diff-view.snapshot"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

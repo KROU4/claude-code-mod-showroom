@@ -1,0 +1,87 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "session.measure",
+    "turn.start",
+    "turn.complete",
+    "prompt.submit",
+    "session.compact",
+    "session.end",
+    "command.run{command=token-watch}",
+    "ui.message",
+    "ui.render{component=Pane, requestId=token-watch-settings}",
+    "ui.render{component=Pane, requestId=token-watch-monitor}",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.list",
+    "$.fs.read",
+    "$.fs.stat",
+    "$.fs.write",
+    "$.model.fork",
+    "$.process.run",
+    "$.session.cwd",
+    "$.session.id",
+    "$.session.root",
+    "$.session.surfaces",
+    "$.session.usage",
+    "$.settings.read",
+    "$.state.get",
+    "$.state.set",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.keys",
+    "$.store.set",
+    "$.ui.close",
+    "$.ui.notify"
+  ],
+  "gating": [
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    },
+    {
+      "hook": "session.compact",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "token-watch.cache",
+    "token-watch.clearPresses",
+    "token-watch.ctxAlerted",
+    "token-watch.globalSettings",
+    "token-watch.hiddenSessions",
+    "token-watch.history",
+    "token-watch.isShown",
+    "token-watch.keepWarm",
+    "token-watch.limits",
+    "token-watch.limitsAt",
+    "token-watch.nowMs",
+    "token-watch.openSections",
+    "token-watch.override",
+    "token-watch.pingingSince",
+    "token-watch.pinned",
+    "token-watch.reading",
+    "token-watch.scope",
+    "token-watch.sessions",
+    "token-watch.sessionsClosed",
+    "token-watch.settings",
+    "token-watch.titles",
+    "token-watch.ttlInputs",
+    "token-watch.view",
+    "token-watch.working"
+  ],
+  "errors": [],
+  "warnings": [
+    "./register.tsx: notes truncated by claude plugin validate; calls/hooks may be incomplete"
+  ],
+  "validatedWith": "2.1.302",
+  "truncated": true
+}

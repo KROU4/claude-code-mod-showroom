@@ -1,0 +1,40 @@
+{
+  "ok": true,
+  "hooks": [
+    "tool.call{tool=Bash}",
+    "session.start",
+    "prompt.submit",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.clock.every",
+    "$.clock.now",
+    "$.env.get",
+    "$.fs.exists",
+    "$.process.run",
+    "$.session.cwd",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call{tool=Bash}",
+      "hasCatch": false
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "ci-watch.broken",
+    "ci-watch.watches"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

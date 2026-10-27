@@ -1,0 +1,81 @@
+{
+  "ok": true,
+  "hooks": [
+    "plugin.register{tier=user}",
+    "session.start",
+    "session.measure",
+    "turn.complete",
+    "model.complete",
+    "model.fork",
+    "ui.close",
+    "command.run{command=loadout}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=Pane, requestId=loadout}"
+  ],
+  "calls": [
+    "$.clock.after",
+    "$.command.list",
+    "$.command.register",
+    "$.command.run",
+    "$.env.get",
+    "$.fs.exists",
+    "$.fs.read",
+    "$.fs.write",
+    "$.process.run",
+    "$.prompt.submit",
+    "$.settings.read",
+    "$.state.get",
+    "$.state.set",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.close",
+    "$.ui.open",
+    "$.ui.panes",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "plugin.register{tier=user}",
+      "hasCatch": true
+    },
+    {
+      "hook": "model.complete",
+      "hasCatch": true
+    },
+    {
+      "hook": "model.fork",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.close",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "loadout.aboutOpen",
+    "loadout.bands",
+    "loadout.blocked",
+    "loadout.busy",
+    "loadout.caps",
+    "loadout.changesOpen",
+    "loadout.checking",
+    "loadout.commands",
+    "loadout.confirm",
+    "loadout.expanded",
+    "loadout.hiddenBands",
+    "loadout.mods",
+    "loadout.paneUp",
+    "loadout.spend",
+    "loadout.tab",
+    "loadout.trustConfirm",
+    "loadout.trusted",
+    "loadout.updates"
+  ],
+  "errors": [],
+  "warnings": [
+    "plugins[0].version: Entry declares version \"0.8.1\" but .claude-plugin/plugin.json says \"0.8.2\". At install time, plugin.json wins (calculatePluginVersion precedence) — the entry version is silently ignored. Update this entry to \"0.8.2\" to match."
+  ],
+  "validatedWith": "2.1.302"
+}

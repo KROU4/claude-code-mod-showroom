@@ -1,0 +1,90 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=clarity}",
+    "prompt.submit",
+    "turn.start",
+    "turn.step",
+    "tool.check",
+    "tool.call",
+    "session.compact",
+    "turn.complete",
+    "ui.render{component=Pane, requestId=clarity-menu}",
+    "ui.render{component=Pane, requestId=clarity-session}",
+    "ui.scroll{component=Pane}",
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=UserMessage}",
+    "ui.render{component=AssistantMessage}",
+    "ui.render{component=ToolUse}",
+    "ui.render{component=ToolResult}",
+    "ui.render{component=ToolGroup}",
+    "ui.render{component=TurnDuration}",
+    "ui.render{component=CommandOutput}",
+    "ui.render{component=AskUserQuestion}",
+    "ui.render{component=Spinner}",
+    "ui.render{component=InfoNotice}"
+  ],
+  "calls": [
+    "$.audio.play",
+    "$.clock.after",
+    "$.clock.every",
+    "$.clock.now",
+    "$.command.register",
+    "$.config.list",
+    "$.env.get",
+    "$.fs.read",
+    "$.fs.write",
+    "$.process.run",
+    "$.session.usage",
+    "$.state.get",
+    "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.close",
+    "$.ui.copy",
+    "$.ui.invalidate",
+    "$.ui.notify",
+    "$.ui.open",
+    "$.ui.panes",
+    "$.ui.resolve",
+    "$.ui.scroll",
+    "$.ui.status",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.check",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    },
+    {
+      "hook": "session.compact",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.scroll{component=Pane}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "clarity.activity",
+    "clarity.env",
+    "clarity.expanded",
+    "clarity.ledger",
+    "clarity.places",
+    "clarity.prefs",
+    "clarity.runs",
+    "clarity.tick"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

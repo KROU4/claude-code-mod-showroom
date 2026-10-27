@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "hooks": [
+    "tool.check{tool=Bash}"
+  ],
+  "calls": [
+    "$.model.complete",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "tool.check{tool=Bash}",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

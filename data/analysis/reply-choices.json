@@ -1,0 +1,26 @@
+{
+  "ok": true,
+  "hooks": [
+    "turn.complete",
+    "prompt.submit",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.prompt.fill",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.resolve"
+  ],
+  "gating": [
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "reply-choices.options"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

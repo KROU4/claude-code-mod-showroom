@@ -1,0 +1,55 @@
+{
+  "ok": true,
+  "hooks": [
+    "classic.SessionStart",
+    "classic.UserPromptSubmit",
+    "classic.PostToolUse",
+    "classic.PostToolUseFailure",
+    "classic.PostToolBatch",
+    "classic.PermissionRequest",
+    "classic.Stop",
+    "tool.check{tool=Bash}"
+  ],
+  "calls": [
+    "$.clock.now",
+    "$.process.run"
+  ],
+  "gating": [
+    {
+      "hook": "classic.SessionStart",
+      "hasCatch": false
+    },
+    {
+      "hook": "classic.UserPromptSubmit",
+      "hasCatch": false
+    },
+    {
+      "hook": "classic.PostToolUse",
+      "hasCatch": false
+    },
+    {
+      "hook": "classic.PostToolUseFailure",
+      "hasCatch": false
+    },
+    {
+      "hook": "classic.PostToolBatch",
+      "hasCatch": false
+    },
+    {
+      "hook": "classic.PermissionRequest",
+      "hasCatch": false
+    },
+    {
+      "hook": "classic.Stop",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.check{tool=Bash}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

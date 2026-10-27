@@ -1,0 +1,60 @@
+{
+  "ok": true,
+  "hooks": [
+    "config.set{key=\"crossroads.enabled\"}",
+    "session.start",
+    "turn.start",
+    "turn.complete",
+    "prompt.submit",
+    "prompt.suggest",
+    "session.end",
+    "command.run{command=crossroads}",
+    "ui.render{component=AbovePrompt}"
+  ],
+  "calls": [
+    "$.agent.list",
+    "$.clock.after",
+    "$.clock.now",
+    "$.command.list",
+    "$.command.register",
+    "$.config.list",
+    "$.env.get",
+    "$.model.complete",
+    "$.prompt.fill",
+    "$.prompt.read",
+    "$.prompt.submit",
+    "$.session.messages",
+    "$.session.root",
+    "$.session.surfaces",
+    "$.state.get",
+    "$.state.set",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.copy",
+    "$.ui.invalidate",
+    "$.ui.log",
+    "$.ui.resolve",
+    "$.ui.toast"
+  ],
+  "gating": [
+    {
+      "hook": "config.set{key=\"crossroads.enabled\"}",
+      "hasCatch": false
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": true
+    },
+    {
+      "hook": "command.run{command=crossroads}",
+      "hasCatch": true
+    }
+  ],
+  "stateKeys": [
+    "crossroads.view"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}

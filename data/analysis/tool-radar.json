@@ -1,0 +1,32 @@
+{
+  "ok": true,
+  "hooks": [
+    "session.start",
+    "command.run{command=radar}",
+    "tool.call",
+    "ui.render{component=Pane, requestId=tool-radar}"
+  ],
+  "calls": [
+    "$.clock.now",
+    "$.command.register",
+    "$.state.get",
+    "$.state.set",
+    "$.ui.close",
+    "$.ui.open",
+    "$.ui.resolve"
+  ],
+  "gating": [
+    {
+      "hook": "tool.call",
+      "hasCatch": false
+    }
+  ],
+  "stateKeys": [
+    "tool-radar.calls",
+    "tool-radar.errorsOnly",
+    "tool-radar.totals"
+  ],
+  "errors": [],
+  "warnings": [],
+  "validatedWith": "2.1.302"
+}
