@@ -4,8 +4,6 @@
     "session.start",
     "classic.SessionStart",
     "prompt.submit",
-    "classic.UserPromptSubmit",
-    "classic.Stop",
     "turn.start",
     "turn.step",
     "tool.call",
@@ -45,14 +43,6 @@
     },
     {
       "hook": "prompt.submit",
-      "hasCatch": false
-    },
-    {
-      "hook": "classic.UserPromptSubmit",
-      "hasCatch": false
-    },
-    {
-      "hook": "classic.Stop",
       "hasCatch": false
     },
     {

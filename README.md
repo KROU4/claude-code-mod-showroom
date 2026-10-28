@@ -96,7 +96,7 @@ claude plugin install turn-meter --marketplace KROU4/claude-code-mod-showroom
   ```
 
   </details>
-- **[Desk Look](https://krou4.github.io/claude-code-mod-showroom/#/mod/desk-look)** — Переписка в терминале выглядит как вкладка Code в десктопном приложении, плюс панели диффа, PR и контекста. <sub>рисует: строки инструментов, сообщения в переписке, полоса над полем ввода, панель, системное уведомление, слеш-команда, инструмент для Claude · автор @KyongSik-Yoon · внешний</sub>
+- **[Desk Look](https://krou4.github.io/claude-code-mod-showroom/#/mod/desk-look)** — Переписка в терминале выглядит как вкладка Code в десктопном приложении, плюс панели диффа, PR и контекста. <sub>рисует: строки инструментов, сообщения в переписке, полоса над полем ввода, панель, слеш-команда, инструмент для Claude · автор @KyongSik-Yoon · внешний</sub>
   <details><summary>Установка (из маркетплейса автора)</summary>
 
   ```text

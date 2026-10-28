@@ -69,9 +69,7 @@
     "$.tool.register",
     "$.ui.close",
     "$.ui.copy",
-    "$.ui.focus",
-    "$.ui.invalidate",
-    "$.ui.notify"
+    "$.ui.focus"
   ],
   "gating": [
     {
@@ -108,6 +106,7 @@
     "desk-asana.ready",
     "desk-asana.shown",
     "desk-look.activity",
+    "desk-look.activityAgentOpen",
     "desk-look.activityClock",
     "desk-look.activityLog",
     "desk-look.activityTop",
@@ -125,6 +124,7 @@
     "desk-look.diffWindow",
     "desk-look.folded",
     "desk-look.graphics",
+    "desk-look.herdrRemote",
     "desk-look.images",
     "desk-look.lang",
     "desk-look.lineComments",
@@ -148,10 +148,7 @@
     "desk-look.turnStartedAt",
     "desk-look.usage",
     "desk-look.usageBreakdown",
-    "desk-slack.folded",
-    "desk-slack.ready",
-    "desk-slack.shown",
-    "desk-slack.unread"
+    "desk-slack.folded"
   ],
   "errors": [],
   "warnings": [
