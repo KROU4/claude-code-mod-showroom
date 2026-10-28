@@ -96,7 +96,7 @@ Categories: [Interface](#interface) · [Insights](#insights) · [Safety](#safety
   ```
 
   </details>
-- **[Desk Look](https://krou4.github.io/claude-code-mod-showroom/#/mod/desk-look)** — The terminal transcript redrawn like the desktop app's Code tab, with diff, PR and context panes. <sub>draws: tool rows, transcript messages, band above the prompt, pane, notification, slash command, tool for Claude · by @KyongSik-Yoon · external</sub>
+- **[Desk Look](https://krou4.github.io/claude-code-mod-showroom/#/mod/desk-look)** — The terminal transcript redrawn like the desktop app's Code tab, with diff, PR and context panes. <sub>draws: tool rows, transcript messages, band above the prompt, pane, slash command, tool for Claude · by @KyongSik-Yoon · external</sub>
   <details><summary>Install (from the author’s marketplace)</summary>
 
   ```text

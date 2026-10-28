@@ -3,6 +3,7 @@
   "hooks": [
     "config.set{key=\"glass.palette\"}",
     "command.run{command=glass-theme}",
+    "config.set{key=\"glass.screenshots\"}",
     "config.set{key=\"glass.notify\"}",
     "session.start",
     "command.run{command=expand}",
@@ -28,14 +29,19 @@
   "calls": [
     "$.clock.every",
     "$.clock.now",
+    "$.clock.sleep",
     "$.command.list",
     "$.command.register",
     "$.config.list",
     "$.config.set",
     "$.env.get",
     "$.fs.list",
+    "$.fs.read",
+    "$.fs.stat",
     "$.fs.write",
+    "$.process.run",
     "$.session.cwd",
+    "$.session.messages",
     "$.session.usage",
     "$.state.get",
     "$.state.set",
@@ -51,6 +57,10 @@
   "gating": [
     {
       "hook": "config.set{key=\"glass.palette\"}",
+      "hasCatch": false
+    },
+    {
+      "hook": "config.set{key=\"glass.screenshots\"}",
       "hasCatch": false
     },
     {
