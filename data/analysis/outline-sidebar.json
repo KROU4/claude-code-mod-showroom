@@ -40,7 +40,8 @@
     "$.ui.log",
     "$.ui.open",
     "$.ui.resolve",
-    "$.ui.scroll"
+    "$.ui.scroll",
+    "$.ui.toast"
   ],
   "gating": [
     {
@@ -79,6 +80,7 @@
     "outline-sidebar.changes",
     "outline-sidebar.corrections",
     "outline-sidebar.cursor",
+    "outline-sidebar.doneFolded",
     "outline-sidebar.folded",
     "outline-sidebar.legend",
     "outline-sidebar.level",
@@ -87,10 +89,13 @@
     "outline-sidebar.open",
     "outline-sidebar.query",
     "outline-sidebar.recap",
+    "outline-sidebar.replyTo",
     "outline-sidebar.scope",
     "outline-sidebar.searching",
     "outline-sidebar.sessionTitle",
+    "outline-sidebar.shownRuns",
     "outline-sidebar.staleSkipped",
+    "outline-sidebar.undoLayout",
     "outline-sidebar.unfolded",
     "outline-sidebar.view",
     "outline-sidebar.wheel",

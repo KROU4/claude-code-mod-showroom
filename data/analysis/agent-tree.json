@@ -11,21 +11,37 @@
     "session.measure",
     "session.end",
     "ui.render{component=Pane, requestId=agent-tree}",
-    "ui.press{component=Pane, requestId=agent-tree}"
+    "ui.press{component=Pane, requestId=agent-tree}",
+    "ui.input{component=Pane, requestId=agent-tree}"
   ],
   "calls": [
     "$.agent.list",
     "$.clock.every",
     "$.clock.now",
+    "$.clock.sleep",
+    "$.command.list",
     "$.command.register",
+    "$.command.run",
+    "$.env.get",
+    "$.http.fetch",
+    "$.process.run",
+    "$.prompt.fill",
+    "$.prompt.read",
+    "$.session.append",
     "$.session.messages",
+    "$.session.send",
+    "$.session.usage",
     "$.settings.read",
     "$.state.get",
     "$.state.set",
+    "$.store.get",
+    "$.store.set",
     "$.ui.close",
+    "$.ui.focus",
     "$.ui.open",
     "$.ui.resolve",
-    "$.ui.status"
+    "$.ui.status",
+    "$.ui.toast"
   ],
   "gating": [
     {
@@ -43,7 +59,9 @@
   ],
   "stateKeys": [
     "agent-tree.frame",
-    "agent-tree.tree"
+    "agent-tree.look",
+    "agent-tree.tree",
+    "agent-tree.unread"
   ],
   "errors": [],
   "warnings": [],

@@ -96,7 +96,7 @@ claude plugin install turn-meter --marketplace KROU4/claude-code-mod-showroom
   ```
 
   </details>
-- **[Desk Look](https://krou4.github.io/claude-code-mod-showroom/#/mod/desk-look)** — Переписка в терминале выглядит как вкладка Code в десктопном приложении, плюс панели диффа, PR и контекста. <sub>рисует: строки инструментов, сообщения в переписке, полоса над полем ввода, панель, слеш-команда, инструмент для Claude · автор @KyongSik-Yoon · внешний</sub>
+- **[Desk Look](https://krou4.github.io/claude-code-mod-showroom/#/mod/desk-look)** — Переписка в терминале выглядит как вкладка Code в десктопном приложении, плюс панели диффа, PR и контекста. <sub>рисует: строки инструментов, сообщения в переписке, полоса над полем ввода, панель, слеш-команда · автор @KyongSik-Yoon · внешний</sub>
   <details><summary>Установка (из маркетплейса автора)</summary>
 
   ```text
@@ -347,7 +347,7 @@ claude plugin install turn-meter --marketplace KROU4/claude-code-mod-showroom
   ```
 
   </details>
-- **[Agent Tree](https://krou4.github.io/claude-code-mod-showroom/#/mod/agent-tree)** — Боковая панель рисует агентов сессии деревом блоков; остановить агента или сменить модель можно кликом. <sub>рисует: панель, строка статуса, слеш-команда · автор @MikeGT4 · внешний</sub>
+- **[Agent Tree](https://krou4.github.io/claude-code-mod-showroom/#/mod/agent-tree)** — Боковая панель рисует агентов сессии деревом блоков; остановить агента или сменить модель можно кликом. <sub>рисует: панель, строка статуса, всплывающее уведомление, слеш-команда · автор @MikeGT4 · внешний</sub>
   <details><summary>Установка (из маркетплейса автора)</summary>
 
   ```text
@@ -1105,7 +1105,7 @@ claude plugin install turn-meter --marketplace KROU4/claude-code-mod-showroom
   ```
 
   </details>
-- **[aside](https://krou4.github.io/claude-code-mod-showroom/#/mod/aside)** — Копите запросы, идеи и комментарии, пока Claude работает, и отправляйте их, когда он закончит. <sub>рисует: полоса над полем ввода, всплывающее уведомление, слеш-команда · автор @gravityXX · внешний</sub>
+- **[aside](https://krou4.github.io/claude-code-mod-showroom/#/mod/aside)** — Копите запросы, идеи и комментарии, пока Claude работает, и отправляйте их, когда он закончит. <sub>рисует: полоса над полем ввода, всплывающее уведомление, панель, слеш-команда, инструмент для Claude · автор @gravityXX · внешний</sub>
   <details><summary>Установка (из маркетплейса автора)</summary>
 
   ```text
@@ -1481,7 +1481,7 @@ claude plugin install turn-meter --marketplace KROU4/claude-code-mod-showroom
   ```
 
   </details>
-- **[Outline Sidebar](https://krou4.github.io/claude-code-mod-showroom/#/mod/outline-sidebar)** — Сессия как сворачиваемый план в боковой панели: выводы, что ждёт вас, и доказательства к каждому «сделано». <sub>рисует: панель, слеш-команда · автор @MatsuriMW · внешний</sub>
+- **[Outline Sidebar](https://krou4.github.io/claude-code-mod-showroom/#/mod/outline-sidebar)** — Сессия как сворачиваемый план в боковой панели: выводы, что ждёт вас, и доказательства к каждому «сделано». <sub>рисует: панель, всплывающее уведомление, слеш-команда · автор @MatsuriMW · внешний</sub>
   <details><summary>Установка (из маркетплейса автора)</summary>
 
   ```text

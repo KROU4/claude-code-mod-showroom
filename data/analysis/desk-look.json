@@ -2,6 +2,7 @@
   "ok": true,
   "hooks": [
     "tool.call{tool=AskUserQuestion}",
+    "classic.PreToolUse{tool=ExitPlanMode}",
     "session.start",
     "session.end",
     "session.compact",
@@ -63,17 +64,15 @@
     "$.state.get",
     "$.state.set",
     "$.store.get",
-    "$.store.set",
-    "$.tool.call",
-    "$.tool.list",
-    "$.tool.register",
-    "$.ui.close",
-    "$.ui.copy",
-    "$.ui.focus"
+    "$.store.set"
   ],
   "gating": [
     {
       "hook": "tool.call{tool=AskUserQuestion}",
+      "hasCatch": false
+    },
+    {
+      "hook": "classic.PreToolUse{tool=ExitPlanMode}",
       "hasCatch": false
     },
     {
@@ -131,6 +130,7 @@
     "desk-look.liveSessions",
     "desk-look.open",
     "desk-look.pendingEdits",
+    "desk-look.planAsk",
     "desk-look.pr",
     "desk-look.preview",
     "desk-look.previewWritten",
@@ -140,6 +140,7 @@
     "desk-look.sessionQuery",
     "desk-look.sessions",
     "desk-look.slackOpen",
+    "desk-look.stepEffort",
     "desk-look.surface",
     "desk-look.taskOutput",
     "desk-look.tasks",
@@ -147,8 +148,7 @@
     "desk-look.turnCards",
     "desk-look.turnStartedAt",
     "desk-look.usage",
-    "desk-look.usageBreakdown",
-    "desk-slack.folded"
+    "desk-look.usageBreakdown"
   ],
   "errors": [],
   "warnings": [

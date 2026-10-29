@@ -36,7 +36,23 @@
     "$.prompt.fill",
     "$.prompt.read",
     "$.prompt.submit",
-    "$.session.id"
+    "$.session.id",
+    "$.session.root",
+    "$.state.get",
+    "$.state.set",
+    "$.store.delete",
+    "$.store.get",
+    "$.store.keys",
+    "$.store.set",
+    "$.tool.register",
+    "$.ui.close",
+    "$.ui.invalidate",
+    "$.ui.log",
+    "$.ui.open",
+    "$.ui.panes",
+    "$.ui.resolve",
+    "$.ui.selection",
+    "$.ui.toast"
   ],
   "gating": [
     {
@@ -85,9 +101,6 @@
     "aside.files"
   ],
   "errors": [],
-  "warnings": [
-    "./register.tsx: notes truncated by claude plugin validate; calls/hooks may be incomplete"
-  ],
-  "validatedWith": "2.1.302",
-  "truncated": true
+  "warnings": [],
+  "validatedWith": "2.1.302"
 }
