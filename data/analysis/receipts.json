@@ -17,7 +17,6 @@
   "calls": [
     "$.clock.now",
     "$.command.register",
-    "$.config.set",
     "$.fs.stat",
     "$.model.complete",
     "$.session.append",

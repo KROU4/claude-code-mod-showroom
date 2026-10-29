@@ -68,6 +68,7 @@
     "pr-watch.addressing",
     "pr-watch.commenting",
     "pr-watch.companion",
+    "pr-watch.details",
     "pr-watch.dropped",
     "pr-watch.fixing",
     "pr-watch.ghHelp",
@@ -79,7 +80,8 @@
     "pr-watch.refused",
     "pr-watch.resolving",
     "pr-watch.retrying",
-    "pr-watch.suggested"
+    "pr-watch.suggested",
+    "pr-watch.tabs"
   ],
   "errors": [],
   "warnings": [],

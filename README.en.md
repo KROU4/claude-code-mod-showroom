@@ -96,7 +96,7 @@ Categories: [Interface](#interface) · [Insights](#insights) · [Safety](#safety
   ```
 
   </details>
-- **[Desk Look](https://krou4.github.io/claude-code-mod-showroom/#/mod/desk-look)** — The terminal transcript redrawn like the desktop app's Code tab, with diff, PR and context panes. <sub>draws: tool rows, transcript messages, band above the prompt, pane, slash command, tool for Claude · by @KyongSik-Yoon · external</sub>
+- **[Desk Look](https://krou4.github.io/claude-code-mod-showroom/#/mod/desk-look)** — The terminal transcript redrawn like the desktop app's Code tab, with diff, PR and context panes. <sub>draws: tool rows, transcript messages, band above the prompt, pane, slash command · by @KyongSik-Yoon · external</sub>
   <details><summary>Install (from the author’s marketplace)</summary>
 
   ```text
@@ -347,7 +347,7 @@ Categories: [Interface](#interface) · [Insights](#insights) · [Safety](#safety
   ```
 
   </details>
-- **[Agent Tree](https://krou4.github.io/claude-code-mod-showroom/#/mod/agent-tree)** — A side pane that draws a session's agents as a tree of boxes, with stop and model choice by click. <sub>draws: pane, status line, slash command · by @MikeGT4 · external</sub>
+- **[Agent Tree](https://krou4.github.io/claude-code-mod-showroom/#/mod/agent-tree)** — A side pane that draws a session's agents as a tree of boxes, with stop and model choice by click. <sub>draws: pane, status line, toast, slash command · by @MikeGT4 · external</sub>
   <details><summary>Install (from the author’s marketplace)</summary>
 
   ```text
@@ -1105,7 +1105,7 @@ Categories: [Interface](#interface) · [Insights](#insights) · [Safety](#safety
   ```
 
   </details>
-- **[aside](https://krou4.github.io/claude-code-mod-showroom/#/mod/aside)** — Queue prompts, ideas and comments while Claude works, then send them when it is done. <sub>draws: band above the prompt, toast, slash command · by @gravityXX · external</sub>
+- **[aside](https://krou4.github.io/claude-code-mod-showroom/#/mod/aside)** — Queue prompts, ideas and comments while Claude works, then send them when it is done. <sub>draws: band above the prompt, toast, pane, slash command, tool for Claude · by @gravityXX · external</sub>
   <details><summary>Install (from the author’s marketplace)</summary>
 
   ```text
@@ -1481,7 +1481,7 @@ Categories: [Interface](#interface) · [Insights](#insights) · [Safety](#safety
   ```
 
   </details>
-- **[Outline Sidebar](https://krou4.github.io/claude-code-mod-showroom/#/mod/outline-sidebar)** — Your session as a foldable outline: conclusions, what waits on you, and evidence for each done item. <sub>draws: pane, slash command · by @MatsuriMW · external</sub>
+- **[Outline Sidebar](https://krou4.github.io/claude-code-mod-showroom/#/mod/outline-sidebar)** — Your session as a foldable outline: conclusions, what waits on you, and evidence for each done item. <sub>draws: pane, toast, slash command · by @MatsuriMW · external</sub>
   <details><summary>Install (from the author’s marketplace)</summary>
 
   ```text

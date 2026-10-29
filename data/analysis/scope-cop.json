@@ -3,7 +3,6 @@
   "hooks": [
     "session.start",
     "turn.start",
-    "tool.check",
     "tool.call",
     "turn.complete",
     "prompt.submit",
@@ -16,7 +15,6 @@
   "calls": [
     "$.clock.now",
     "$.command.register",
-    "$.config.set",
     "$.env.get",
     "$.fs.exists",
     "$.fs.stat",
@@ -32,10 +30,6 @@
     "$.ui.toast"
   ],
   "gating": [
-    {
-      "hook": "tool.check",
-      "hasCatch": true
-    },
     {
       "hook": "tool.call",
       "hasCatch": true

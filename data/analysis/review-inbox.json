@@ -32,6 +32,7 @@
     "$.prompt.read",
     "$.session.cwd",
     "$.session.id",
+    "$.session.messages",
     "$.settings.read",
     "$.state.get",
     "$.state.set",
