@@ -4,10 +4,12 @@
     "session.start",
     "turn.complete",
     "session.compact",
+    "session.end",
     "command.run{command=context-bar}",
     "ui.render{component=AbovePrompt}"
   ],
   "calls": [
+    "$.clock.after",
     "$.command.register",
     "$.env.get",
     "$.fs.exists",

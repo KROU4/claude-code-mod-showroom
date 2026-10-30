@@ -10,8 +10,10 @@
     "turn.complete",
     "session.measure",
     "session.end",
+    "session.append{door=prompt|command|delivery|note|attachment}",
     "ui.render{component=Pane, requestId=agent-tree}",
     "ui.press{component=Pane, requestId=agent-tree}",
+    "prompt.edit",
     "ui.input{component=Pane, requestId=agent-tree}"
   ],
   "calls": [
@@ -28,7 +30,9 @@
     "$.prompt.fill",
     "$.prompt.read",
     "$.session.append",
+    "$.session.id",
     "$.session.messages",
+    "$.session.model",
     "$.session.send",
     "$.session.usage",
     "$.settings.read",
@@ -38,6 +42,7 @@
     "$.store.set",
     "$.ui.close",
     "$.ui.focus",
+    "$.ui.invalidate",
     "$.ui.open",
     "$.ui.resolve",
     "$.ui.status",
@@ -55,10 +60,16 @@
     {
       "hook": "tool.call",
       "hasCatch": true
+    },
+    {
+      "hook": "session.append{door=prompt|command|delivery|note|attachment}",
+      "hasCatch": true
     }
   ],
   "stateKeys": [
     "agent-tree.frame",
+    "agent-tree.intro",
+    "agent-tree.introBeat",
     "agent-tree.look",
     "agent-tree.tree",
     "agent-tree.unread"

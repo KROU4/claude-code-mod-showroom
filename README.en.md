@@ -1796,7 +1796,7 @@ Categories: [Interface](#interface) · [Insights](#insights) · [Safety](#safety
   ```
 
   </details>
-- **[Review Inbox](https://krou4.github.io/claude-code-mod-showroom/#/mod/review-inbox)** — PRs waiting for your review, each summarized in plain language, plus your own PRs and issues. <sub>draws: band above the prompt, pane, toast, slash command · by @SummerRiversound · external</sub>
+- **[Review Inbox](https://krou4.github.io/claude-code-mod-showroom/#/mod/review-inbox)** — PRs waiting for your review, each summarized in plain language, plus your own PRs and issues. <sub>draws: band above the prompt, pane, toast, slash command, tool for Claude · by @SummerRiversound · external</sub>
   <details><summary>Install (from the author’s marketplace)</summary>
 
   ```text

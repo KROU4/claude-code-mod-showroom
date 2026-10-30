@@ -8,6 +8,7 @@
     "tool.call",
     "turn.step",
     "tool.call{tool=Write|Edit}",
+    "tool.call{tool=WebFetch|WebSearch}",
     "classic.SubagentStop",
     "session.measure",
     "classic.StopFailure",
@@ -56,6 +57,10 @@
     },
     {
       "hook": "tool.call{tool=Write|Edit}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=WebFetch|WebSearch}",
       "hasCatch": true
     },
     {

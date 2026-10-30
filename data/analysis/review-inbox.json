@@ -6,6 +6,7 @@
     "turn.complete",
     "prompt.submit",
     "session.end",
+    "tool.call{tool=?}",
     "command.run{command=review-inbox}",
     "ui.close{id=review-inbox}",
     "ui.render{component=AbovePrompt}",
@@ -21,6 +22,7 @@
     "$.clock.sleep",
     "$.command.register",
     "$.command.run",
+    "$.config.set",
     "$.env.get",
     "$.fs.exists",
     "$.fs.read",
@@ -37,6 +39,7 @@
     "$.state.get",
     "$.state.set",
     "$.tool.call",
+    "$.tool.register",
     "$.ui.focus",
     "$.ui.invalidate",
     "$.ui.open",
@@ -54,6 +57,10 @@
       "hasCatch": false
     },
     {
+      "hook": "tool.call{tool=?}",
+      "hasCatch": false
+    },
+    {
       "hook": "ui.close{id=review-inbox}",
       "hasCatch": false
     }
@@ -64,6 +71,7 @@
     "review-inbox.added",
     "review-inbox.autoAsking",
     "review-inbox.autoReview",
+    "review-inbox.autoSettings",
     "review-inbox.capped",
     "review-inbox.collapsed",
     "review-inbox.confirming",
