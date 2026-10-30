@@ -1796,7 +1796,7 @@ claude plugin install turn-meter --marketplace KROU4/claude-code-mod-showroom
   ```
 
   </details>
-- **[Review Inbox](https://krou4.github.io/claude-code-mod-showroom/#/mod/review-inbox)** — PR, которые ждут вашего ревью, с понятным кратким пересказом, а также ваши PR и задачи. <sub>рисует: полоса над полем ввода, панель, всплывающее уведомление, слеш-команда · автор @SummerRiversound · внешний</sub>
+- **[Review Inbox](https://krou4.github.io/claude-code-mod-showroom/#/mod/review-inbox)** — PR, которые ждут вашего ревью, с понятным кратким пересказом, а также ваши PR и задачи. <sub>рисует: полоса над полем ввода, панель, всплывающее уведомление, слеш-команда, инструмент для Claude · автор @SummerRiversound · внешний</sub>
   <details><summary>Установка (из маркетплейса автора)</summary>
 
   ```text

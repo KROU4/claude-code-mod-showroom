@@ -2,8 +2,8 @@
   "ok": true,
   "hooks": [
     "session.start",
-    "command.run{command=hunt}",
-    "command.run{command=hunt-demo}",
+    "command.run{command=pixel-hunter}",
+    "command.run{command=pixel-hunter-demo}",
     "ui.press{plugin=pixel-hunter}",
     "turn.start",
     "turn.complete",
