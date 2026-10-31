@@ -24,7 +24,6 @@
     "command.run{command=desk-tasks}",
     "turn.step",
     "command.run{command=desk-pr}",
-    "tool.check",
     "tool.call",
     "ui.render{component=UserMessage}",
     "ui.render{component=AssistantMessage}",
@@ -91,10 +90,6 @@
     },
     {
       "hook": "tool.call{tool=?}",
-      "hasCatch": false
-    },
-    {
-      "hook": "tool.check",
       "hasCatch": false
     },
     {

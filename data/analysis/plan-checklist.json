@@ -3,6 +3,7 @@
   "hooks": [
     "session.start",
     "classic.SessionStart",
+    "prompt.attachment{type=plan_mode}",
     "tool.call{tool=ExitPlanMode}",
     "tool.call{tool=mcp__plan-checklist__plan_check}",
     "command.run{command=checklist}",
@@ -13,6 +14,7 @@
   ],
   "calls": [
     "$.command.register",
+    "$.fs.read",
     "$.session.messages",
     "$.state.get",
     "$.state.set",
@@ -45,7 +47,9 @@
   "stateKeys": [
     "plan-checklist.isExpanded",
     "plan-checklist.nudgedAt",
-    "plan-checklist.plan"
+    "plan-checklist.plan",
+    "plan-checklist.planFile",
+    "plan-checklist.sentBack"
   ],
   "errors": [],
   "warnings": [],
