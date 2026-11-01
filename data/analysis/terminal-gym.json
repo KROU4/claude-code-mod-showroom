@@ -48,9 +48,11 @@
     }
   ],
   "stateKeys": [
+    "terminal-gym.chartDays",
     "terminal-gym.history",
     "terminal-gym.isIntroduced",
     "terminal-gym.isWaiting",
+    "terminal-gym.ledger",
     "terminal-gym.olderStreak",
     "terminal-gym.onboardPick",
     "terminal-gym.onboardStep",

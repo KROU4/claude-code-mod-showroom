@@ -13,7 +13,8 @@
     "turn.complete",
     "ui.render{component=AbovePrompt}",
     "ui.render{component=Pane, requestId=context-bar-context}",
-    "ui.render{component=Pane, requestId=context-bar-usage}"
+    "ui.render{component=Pane, requestId=context-bar-usage}",
+    "ui.render{component=Pane, requestId=context-bar-quiz}"
   ],
   "calls": [
     "$.agent.list",
@@ -68,13 +69,17 @@
     "context-bar.gitAt",
     "context-bar.isHidden",
     "context-bar.lastGrowth",
+    "context-bar.lastPlayed",
     "context-bar.lastTurnMs",
     "context-bar.limits",
     "context-bar.modelInUse",
     "context-bar.now",
     "context-bar.place",
+    "context-bar.quiz",
+    "context-bar.quizKey",
     "context-bar.resetNoticed",
     "context-bar.running",
+    "context-bar.soundKind",
     "context-bar.soundOn",
     "context-bar.stepsByModel",
     "context-bar.themeName",
