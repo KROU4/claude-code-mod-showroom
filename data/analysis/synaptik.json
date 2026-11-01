@@ -21,10 +21,7 @@
   "calls": [
     "$.clock.sleep",
     "$.command.register",
-    "$.env.get",
-    "$.fs.read",
-    "$.fs.stat",
-    "$.fs.write",
+    "$.prompt.fill",
     "$.prompt.read",
     "$.prompt.suggest",
     "$.session.messages",
