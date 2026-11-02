@@ -23,6 +23,7 @@
     "$.fs.exists",
     "$.fs.list",
     "$.fs.read",
+    "$.fs.stat",
     "$.model.complete",
     "$.process.run",
     "$.prompt.fill",
