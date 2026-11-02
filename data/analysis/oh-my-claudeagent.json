@@ -1,9 +1,10 @@
 {
   "ok": true,
   "hooks": [
-    "tool.check{tool=/\"^(?:Bash|PowerShell)$\"/}",
+    "tool.check{tool=/\"^(?:Bash|PowerShell|Monitor)$\"/}",
     "tool.call{agentId=/\".\"/}",
     "session.start",
+    "prompt.submit",
     "turn.start",
     "turn.step",
     "turn.complete",
@@ -39,6 +40,7 @@
     "$.mcp.connect",
     "$.process.run",
     "$.prompt.fill",
+    "$.prompt.submit",
     "$.session.cwd",
     "$.session.id",
     "$.session.messages",
@@ -57,17 +59,20 @@
     "$.ui.log",
     "$.ui.notify",
     "$.ui.open",
-    "$.ui.panes",
-    "$.ui.resolve"
+    "$.ui.panes"
   ],
   "gating": [
     {
-      "hook": "tool.check{tool=/\"^(?:Bash|PowerShell)$\"/}",
+      "hook": "tool.check{tool=/\"^(?:Bash|PowerShell|Monitor)$\"/}",
       "hasCatch": true
     },
     {
       "hook": "tool.call{agentId=/\".\"/}",
       "hasCatch": true
+    },
+    {
+      "hook": "prompt.submit",
+      "hasCatch": false
     },
     {
       "hook": "agent.spawn",

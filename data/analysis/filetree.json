@@ -9,6 +9,7 @@
     "tool.call{tool=?}",
     "ui.message",
     "session.end",
+    "ui.close",
     "ui.focus{component=Pane, requestId=filetree}",
     "ui.scroll{component=Pane, requestId=filetree}",
     "prompt.submit",
@@ -59,6 +60,10 @@
       "hasCatch": false
     },
     {
+      "hook": "ui.close",
+      "hasCatch": false
+    },
+    {
       "hook": "ui.focus{component=Pane, requestId=filetree}",
       "hasCatch": false
     },
@@ -74,7 +79,8 @@
   "stateKeys": [
     "filetree.activity",
     "filetree.theme",
-    "filetree.tree"
+    "filetree.tree",
+    "filetree.visits"
   ],
   "errors": [],
   "warnings": [],
