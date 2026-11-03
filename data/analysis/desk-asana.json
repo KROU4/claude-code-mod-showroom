@@ -13,6 +13,7 @@
   "calls": [
     "$.clock.after",
     "$.clock.now",
+    "$.clock.sleep",
     "$.command.register",
     "$.config.list",
     "$.http.fetch",
@@ -29,6 +30,7 @@
     "$.ui.open",
     "$.ui.panes",
     "$.ui.resolve",
+    "$.ui.scroll",
     "$.ui.toast"
   ],
   "gating": [

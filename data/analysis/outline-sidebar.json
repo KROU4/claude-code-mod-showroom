@@ -98,6 +98,7 @@
     "outline-sidebar.undoLayout",
     "outline-sidebar.unfolded",
     "outline-sidebar.view",
+    "outline-sidebar.viewsOpen",
     "outline-sidebar.wheel",
     "outline-sidebar.zoom"
   ],

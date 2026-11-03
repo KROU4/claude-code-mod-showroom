@@ -1449,7 +1449,7 @@ Categories: [Interface](#interface) · [Insights](#insights) · [Safety](#safety
   ```
 
   </details>
-- **[Oh My ClaudeAgent](https://krou4.github.io/claude-code-mod-showroom/#/mod/oh-my-claudeagent)** — Plans with you, hands tasks to specialist agents and won't call work done until it is verified. <sub>draws: band above the prompt, transcript messages, pane, notification, slash command · by @UtsavBalar1231 · external</sub>
+- **[Oh My ClaudeAgent](https://krou4.github.io/claude-code-mod-showroom/#/mod/oh-my-claudeagent)** — Plans with you, hands tasks to specialist agents and won't call work done until it is verified. <sub>draws: band above the prompt, transcript messages, slash command · by @UtsavBalar1231 · external</sub>
   <details><summary>Install (from the author’s marketplace)</summary>
 
   ```text

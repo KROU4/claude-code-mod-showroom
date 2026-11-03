@@ -4,6 +4,8 @@
     "session.start",
     "command.run{command=standby}",
     "tool.call{tool=/\"^mcp__standby__\"/}",
+    "classic.PermissionRequest",
+    "tool.call{tool=AskUserQuestion}",
     "turn.start",
     "turn.complete",
     "tool.call",
@@ -36,6 +38,14 @@
   "gating": [
     {
       "hook": "tool.call{tool=/\"^mcp__standby__\"/}",
+      "hasCatch": false
+    },
+    {
+      "hook": "classic.PermissionRequest",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=AskUserQuestion}",
       "hasCatch": false
     },
     {
