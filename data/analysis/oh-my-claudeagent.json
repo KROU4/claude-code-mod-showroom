@@ -23,6 +23,7 @@
     "ui.render{component=UserMessage}",
     "ui.render{component=ToolUse, props has {tool=Agent}}",
     "ui.render{component=ToolGroup}",
+    "ui.render{component=Placed, props has {plugin=oh-my-claudeagent}}",
     "session.compact"
   ],
   "calls": [
@@ -40,6 +41,8 @@
     "$.mcp.connect",
     "$.process.run",
     "$.prompt.fill",
+    "$.prompt.paint",
+    "$.prompt.read",
     "$.prompt.submit",
     "$.session.cwd",
     "$.session.id",
@@ -56,10 +59,7 @@
     "$.ui.copy",
     "$.ui.focus",
     "$.ui.invalidate",
-    "$.ui.log",
-    "$.ui.notify",
-    "$.ui.open",
-    "$.ui.panes"
+    "$.ui.log"
   ],
   "gating": [
     {
@@ -112,11 +112,13 @@
     "oh-my-claudeagent.pages",
     "oh-my-claudeagent.pane",
     "oh-my-claudeagent.plan",
+    "oh-my-claudeagent.receipts",
     "oh-my-claudeagent.stats",
     "oh-my-claudeagent.turns"
   ],
   "errors": [],
   "warnings": [
+    "modules../register.ts: on ui.render{component=Placed, props has {plugin=oh-my-claudeagent}}: no component is named Placed, so it never runs",
     "./register.ts: notes truncated by claude plugin validate; calls/hooks may be incomplete"
   ],
   "validatedWith": "2.1.302",

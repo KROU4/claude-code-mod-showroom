@@ -1449,7 +1449,7 @@ claude plugin install turn-meter --marketplace KROU4/claude-code-mod-showroom
   ```
 
   </details>
-- **[Oh My ClaudeAgent](https://krou4.github.io/claude-code-mod-showroom/#/mod/oh-my-claudeagent)** — Планирует вместе с вами, раздаёт задачи агентам-специалистам и не считает работу готовой без проверки. <sub>рисует: полоса над полем ввода, сообщения в переписке, панель, системное уведомление, слеш-команда · автор @UtsavBalar1231 · внешний</sub>
+- **[Oh My ClaudeAgent](https://krou4.github.io/claude-code-mod-showroom/#/mod/oh-my-claudeagent)** — Планирует вместе с вами, раздаёт задачи агентам-специалистам и не считает работу готовой без проверки. <sub>рисует: полоса над полем ввода, сообщения в переписке, слеш-команда · автор @UtsavBalar1231 · внешний</sub>
   <details><summary>Установка (из маркетплейса автора)</summary>
 
   ```text

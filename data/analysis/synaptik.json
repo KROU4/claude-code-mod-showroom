@@ -2,6 +2,7 @@
   "ok": true,
   "hooks": [
     "session.start",
+    "session.end",
     "command.run{command=synaptik}",
     "turn.start",
     "turn.complete",
@@ -12,6 +13,10 @@
     "ui.focus{component=AbovePrompt}",
     "prompt.edit",
     "prompt.change",
+    "ui.close",
+    "ui.focus{component=Pane}",
+    "ui.scroll{component=Pane}",
+    "ui.render{component=Pane}",
     "ui.close{id=?}",
     "ui.scroll{component=Pane, requestId=?}",
     "ui.focus{component=Pane, requestId=?}",
@@ -21,9 +26,11 @@
   "calls": [
     "$.clock.sleep",
     "$.command.register",
+    "$.model.fork",
     "$.prompt.fill",
     "$.prompt.read",
     "$.prompt.suggest",
+    "$.session.id",
     "$.session.messages",
     "$.state.get",
     "$.state.set",
@@ -42,6 +49,18 @@
     },
     {
       "hook": "ui.focus{component=AbovePrompt}",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.close",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.focus{component=Pane}",
+      "hasCatch": true
+    },
+    {
+      "hook": "ui.scroll{component=Pane}",
       "hasCatch": true
     },
     {
@@ -68,7 +87,8 @@
     "synaptik.isWorking",
     "synaptik.lastText",
     "synaptik.marks",
-    "synaptik.selected"
+    "synaptik.selected",
+    "synaptik.threads"
   ],
   "errors": [],
   "warnings": [],

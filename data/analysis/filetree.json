@@ -20,6 +20,7 @@
     "$.clock.every",
     "$.clock.now",
     "$.command.register",
+    "$.command.run",
     "$.config.list",
     "$.env.get",
     "$.fs.list",

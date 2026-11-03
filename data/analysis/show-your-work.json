@@ -28,6 +28,7 @@
     "$.fs.write",
     "$.http.fetch",
     "$.process.run",
+    "$.process.spawn",
     "$.session.cwd",
     "$.session.id",
     "$.session.version",
