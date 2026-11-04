@@ -5,14 +5,18 @@
     "config.set{key=theme}",
     "command.run{command=filetree}",
     "tool.call",
+    "tool.check{tool=/\"^(Edit|Write|NotebookEdit|Bash|PowerShell)$\"/}",
     "tool.call{tool=Read}",
     "tool.call{tool=?}",
+    "turn.start",
+    "turn.complete",
     "ui.message",
     "session.end",
     "ui.close",
     "ui.focus{component=Pane, requestId=filetree}",
     "ui.scroll{component=Pane, requestId=filetree}",
     "prompt.submit",
+    "ui.render{component=AssistantMessage}",
     "ui.render{component=Pane, requestId=filetree}"
   ],
   "calls": [
@@ -23,9 +27,11 @@
     "$.command.run",
     "$.config.list",
     "$.env.get",
+    "$.fs.exists",
     "$.fs.list",
     "$.fs.read",
     "$.fs.stat",
+    "$.fs.write",
     "$.process.run",
     "$.process.spawn",
     "$.session.cwd",
@@ -33,6 +39,9 @@
     "$.session.surfaces",
     "$.state.get",
     "$.state.set",
+    "$.store.get",
+    "$.store.set",
+    "$.ui.ask",
     "$.ui.blit",
     "$.ui.close",
     "$.ui.copy",
@@ -41,6 +50,7 @@
     "$.ui.open",
     "$.ui.panes",
     "$.ui.resolve",
+    "$.ui.scroll",
     "$.ui.toast"
   ],
   "gating": [
@@ -50,6 +60,10 @@
     },
     {
       "hook": "tool.call",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.check{tool=/\"^(Edit|Write|NotebookEdit|Bash|PowerShell)$\"/}",
       "hasCatch": false
     },
     {
