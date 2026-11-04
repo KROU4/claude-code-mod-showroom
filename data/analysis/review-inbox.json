@@ -94,6 +94,7 @@
     "review-inbox.sessions",
     "review-inbox.settleErrors",
     "review-inbox.settling",
+    "review-inbox.spin",
     "review-inbox.status",
     "review-inbox.tab"
   ],

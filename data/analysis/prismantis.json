@@ -2,26 +2,22 @@
   "ok": true,
   "hooks": [
     "engine.create",
-    "ui.render{component=ToolGroup}",
-    "ui.render{component=ToolUse}",
-    "ui.render{component=ToolResult}",
+    "ui.render{component=?, ...?}",
     "tool.call",
     "session.start",
     "command.run{command=prismantis}",
-    "ui.render{component=TurnDuration}",
     "turn.complete",
+    "turn.start",
+    "turn.step",
     "prompt.submit",
     "ui.focus",
     "ui.scroll{component=Pane, requestId=prismantis-setup}",
-    "ui.render{component=Pane, requestId=prismantis-setup}",
-    "ui.render{component=InfoNotice}",
-    "ui.render{component=CommandOutput}",
-    "ui.render{component=UserMessage}",
-    "ui.render{component=AssistantMessage}",
-    "prismantis.markdown"
+    "ui.render{component=?, requestId=?, ...?}",
+    "prismantis.markdown?"
   ],
   "calls": [
     "$.clock.after",
+    "$.clock.every",
     "$.clock.now",
     "$.command.register",
     "$.config.set",
@@ -62,11 +58,13 @@
       "hasCatch": false
     },
     {
-      "hook": "prismantis.markdown",
+      "hook": "prismantis.markdown?",
       "hasCatch": false
     }
   ],
   "stateKeys": [
+    "prismantis.awaiting",
+    "prismantis.blink",
     "prismantis.dir",
     "prismantis.drawn",
     "prismantis.formulas",
