@@ -51,11 +51,7 @@
     "$.store.get",
     "$.store.set",
     "$.tool.register",
-    "$.ui.close",
-    "$.ui.copy",
-    "$.ui.focus",
-    "$.ui.invalidate",
-    "$.ui.log"
+    "$.ui.close"
   ],
   "gating": [
     {
@@ -103,7 +99,8 @@
     "ostrakon.problems",
     "ostrakon.savedAt",
     "ostrakon.sync",
-    "ostrakon.turns"
+    "ostrakon.turns",
+    "ostrakon.updateNotice"
   ],
   "errors": [],
   "warnings": [

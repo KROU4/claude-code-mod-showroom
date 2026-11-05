@@ -16,6 +16,7 @@
     "turn.abort",
     "ui.render{component=AssistantMessage}",
     "ui.render{component=ToolResult}",
+    "ui.render{component=ToolUse, props has {tool=Read}}",
     "ui.render{component=Pane, requestId=iui-page}",
     "ui.render{component=UserMessage}",
     "ui.render{component=AbovePrompt}",
