@@ -12,7 +12,7 @@
     "session.compact",
     "tool.check",
     "tool.call",
-    "session.append",
+    "session.append{door=response}",
     "agent.spawn",
     "turn.complete",
     "ui.fault",
@@ -53,7 +53,7 @@
       "hasCatch": false
     },
     {
-      "hook": "session.append",
+      "hook": "session.append{door=response}",
       "hasCatch": false
     },
     {
