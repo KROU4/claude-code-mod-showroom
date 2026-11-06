@@ -6,7 +6,6 @@
     "classic.UserPromptSubmit",
     "classic.PostToolUse",
     "classic.PostCompact",
-    "classic.Stop",
     "classic.SubagentStart",
     "classic.StopFailure",
     "session.end",
@@ -16,6 +15,7 @@
     "prompt.submit",
     "agent.spawn",
     "tool.call",
+    "ui.render{component=AbovePrompt}",
     "command.run{command=agent-guard}"
   ],
   "calls": [
@@ -24,15 +24,22 @@
     "$.command.register",
     "$.env.get",
     "$.fs.read",
+    "$.prompt.fill",
+    "$.prompt.read",
+    "$.prompt.submit",
     "$.session.compact",
     "$.session.id",
+    "$.session.messages",
     "$.session.usage",
+    "$.state.get",
+    "$.state.set",
     "$.store.delete",
     "$.store.get",
     "$.store.keys",
     "$.store.set",
     "$.ui.ask",
     "$.ui.log",
+    "$.ui.resolve",
     "$.ui.status"
   ],
   "gating": [
@@ -50,10 +57,6 @@
     },
     {
       "hook": "classic.PostCompact",
-      "hasCatch": true
-    },
-    {
-      "hook": "classic.Stop",
       "hasCatch": true
     },
     {
@@ -81,7 +84,9 @@
       "hasCatch": true
     }
   ],
-  "stateKeys": [],
+  "stateKeys": [
+    "agent-usage-guard.band"
+  ],
   "errors": [],
   "warnings": [],
   "validatedWith": "2.1.302"

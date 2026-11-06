@@ -6,7 +6,10 @@
     "session.end",
     "prompt.submit",
     "command.run{command=img}",
-    "tool.call{tool=/\"^mcp__show-your-work__show_(image|video)$\"/}",
+    "command.run{command=page}",
+    "command.run{command=audio}",
+    "command.run{command=doc}",
+    "tool.call{tool=/\"^mcp__show-your-work__show_(image|video|html|audio|document)$\"/}",
     "ui.render{component=ToolUse}",
     "ui.render{component=ToolResult}",
     "ui.render{component=Pane, requestId=show-your-work}",
@@ -57,7 +60,11 @@
       "hasCatch": false
     },
     {
-      "hook": "tool.call{tool=/\"^mcp__show-your-work__show_(image|video)$\"/}",
+      "hook": "command.run{command=doc}",
+      "hasCatch": false
+    },
+    {
+      "hook": "tool.call{tool=/\"^mcp__show-your-work__show_(image|video|html|audio|document)$\"/}",
       "hasCatch": true
     }
   ],

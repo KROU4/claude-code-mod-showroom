@@ -40,6 +40,7 @@
     "$.http.fetch",
     "$.model.complete",
     "$.process.run",
+    "$.prompt.fill",
     "$.prompt.read",
     "$.prompt.submit",
     "$.session.cwd",
