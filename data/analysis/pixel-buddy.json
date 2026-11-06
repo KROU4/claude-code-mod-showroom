@@ -7,7 +7,6 @@
     "prompt.submit",
     "turn.start",
     "turn.complete",
-    "agent.spawn",
     "tool.call",
     "ui.message",
     "ui.render{component=SessionMode}",
@@ -37,10 +36,6 @@
     },
     {
       "hook": "prompt.submit",
-      "hasCatch": true
-    },
-    {
-      "hook": "agent.spawn",
       "hasCatch": true
     },
     {
