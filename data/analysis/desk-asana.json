@@ -8,6 +8,7 @@
     "ui.open{id=desk-asana}",
     "ui.close{id=desk-asana}",
     "command.run{command=desk-asana}",
+    "ui.scroll{component=Pane, requestId=desk-asana}",
     "ui.render{component=Pane, requestId=desk-asana}"
   ],
   "calls": [
@@ -48,6 +49,10 @@
     },
     {
       "hook": "ui.close{id=desk-asana}",
+      "hasCatch": false
+    },
+    {
+      "hook": "ui.scroll{component=Pane, requestId=desk-asana}",
       "hasCatch": false
     }
   ],

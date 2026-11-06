@@ -6,7 +6,7 @@
 
 [![Sync and deploy](https://github.com/KROU4/claude-code-mod-showroom/actions/workflows/sync.yml/badge.svg?branch=main)](https://github.com/KROU4/claude-code-mod-showroom/actions/workflows/sync.yml)
 
-The catalog lists <!-- count:start -->266 mods<!-- count:end -->. The repository is also the Claude Code marketplace `mod-showroom`.
+The catalog lists <!-- count:start -->267 mods<!-- count:end -->. The repository is also the Claude Code marketplace `mod-showroom`.
 
 ## Contents
 
@@ -2071,6 +2071,14 @@ Categories: [Interface](#interface) · [Insights](#insights) · [Safety](#safety
 
   ```text
   /plugin install pairs --marketplace MDmubarak786/claude-mods
+  ```
+
+  </details>
+- **[Pixel Buddy](https://krou4.github.io/claude-code-mod-showroom/#/mod/pixel-buddy)** — A pixel pet in the footer that eats what your work drops, levels up and finds rare trophies. <sub>draws: mode label, toast, slash command · by @SimakovIgor · external</sub>
+  <details><summary>Install (from the author’s marketplace)</summary>
+
+  ```text
+  /plugin install pixel-buddy --marketplace SimakovIgor/pixel-buddy
   ```
 
   </details>

@@ -3,6 +3,7 @@
   "hooks": [
     "tool.call{tool=AskUserQuestion}",
     "state.set{plugin=desk-plan, key=preview}",
+    "state.set{plugin=desk-review, key=diffAt}",
     "session.start",
     "session.end",
     "command.run{command=advisor}",
@@ -33,9 +34,7 @@
     "ui.render{component=ToolGroup}",
     "ui.render{component=Spinner}",
     "ui.render{component=ToolProgress}",
-    "ui.render{component=SessionMode}",
-    "ui.render{component=CommandOutput}",
-    "ui.render{component=PromptHint}"
+    "ui.render{component=SessionMode}"
   ],
   "calls": [
     "$.agent.list",
@@ -69,6 +68,10 @@
     },
     {
       "hook": "state.set{plugin=desk-plan, key=preview}",
+      "hasCatch": true
+    },
+    {
+      "hook": "state.set{plugin=desk-review, key=diffAt}",
       "hasCatch": true
     },
     {
@@ -121,6 +124,7 @@
     "desk-look.diffGaps",
     "desk-look.diffView",
     "desk-look.diffWindow",
+    "desk-look.diffWrap",
     "desk-look.folded",
     "desk-look.graphics",
     "desk-look.herdrRemote",

@@ -9,6 +9,7 @@
     "ui.open{id=desk-slack}",
     "ui.close{id=desk-slack}",
     "command.run{command=desk-slack}",
+    "ui.scroll{component=Pane, requestId=desk-slack}",
     "ui.render{component=Pane, requestId=desk-slack}"
   ],
   "calls": [
@@ -35,6 +36,7 @@
     "$.ui.open",
     "$.ui.panes",
     "$.ui.resolve",
+    "$.ui.scroll",
     "$.ui.toast"
   ],
   "gating": [
@@ -56,6 +58,10 @@
     },
     {
       "hook": "ui.close{id=desk-slack}",
+      "hasCatch": false
+    },
+    {
+      "hook": "ui.scroll{component=Pane, requestId=desk-slack}",
       "hasCatch": false
     }
   ],

@@ -6,7 +6,7 @@
 
 [![Sync and deploy](https://github.com/KROU4/claude-code-mod-showroom/actions/workflows/sync.yml/badge.svg?branch=main)](https://github.com/KROU4/claude-code-mod-showroom/actions/workflows/sync.yml)
 
-Сейчас в каталоге <!-- count:start -->266 модов<!-- count:end -->. Репозиторий одновременно служит маркетплейсом Claude Code `mod-showroom`.
+Сейчас в каталоге <!-- count:start -->267 модов<!-- count:end -->. Репозиторий одновременно служит маркетплейсом Claude Code `mod-showroom`.
 
 ## Содержание
 
@@ -2071,6 +2071,14 @@ claude plugin install turn-meter --marketplace KROU4/claude-code-mod-showroom
 
   ```text
   /plugin install pairs --marketplace MDmubarak786/claude-mods
+  ```
+
+  </details>
+- **[Pixel Buddy](https://krou4.github.io/claude-code-mod-showroom/#/mod/pixel-buddy)** — Пиксельный питомец в подвале: ест то, что остается от работы, растет в уровнях и находит редкие трофеи. <sub>рисует: метка режима, всплывающее уведомление, слеш-команда · автор @SimakovIgor · внешний</sub>
+  <details><summary>Установка (из маркетплейса автора)</summary>
+
+  ```text
+  /plugin install pixel-buddy --marketplace SimakovIgor/pixel-buddy
   ```
 
   </details>
