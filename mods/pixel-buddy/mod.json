@@ -1,0 +1,97 @@
+{
+  "$schema": "../../schema/mod.schema.json",
+  "name": "pixel-buddy",
+  "title": "Pixel Buddy",
+  "tagline": "A pixel pet in the footer that eats what your work drops, levels up and finds rare trophies.",
+  "tagline_ru": "Пиксельный питомец в подвале: ест то, что остается от работы, растет в уровнях и находит редкие трофеи.",
+  "description": "A pixel pet that sits in the footer next to the status line. Claude answers, it gets a cookie. Tests pass, a fish. A commit or a finished plan, a cake. It walks over, eats it, and snacks turn into levels. 8 species, rarity and stats rolled once, 1 egg in 100 hatches shiny, and a nest keeps up to 12 buddies. 14 trophies with fireworks, 6 of them secret, and a trophy case of pixel badges (`/buddy trophies`). Click to pet it, double click for its own move, click an empty spot to throw a ball, right click for the menu. `share` copies a card of your buddy drawn in emoji squares. No network, no model calls, no tokens: every hook passes its event on unchanged.",
+  "author": {
+    "name": "Igor Simakov",
+    "github": "SimakovIgor",
+    "url": "https://github.com/SimakovIgor"
+  },
+  "maintainers": [
+    "SimakovIgor"
+  ],
+  "category": "fun",
+  "tags": [
+    "pet",
+    "pixel-art",
+    "tamagotchi",
+    "trophies",
+    "footer"
+  ],
+  "license": "MIT",
+  "version": "0.9.1",
+  "homepage": "https://github.com/SimakovIgor/pixel-buddy",
+  "source": {
+    "type": "marketplace",
+    "marketplace": "SimakovIgor/pixel-buddy",
+    "plugin": "pixel-buddy",
+    "path": "pixel-buddy"
+  },
+  "surfaces": [
+    "terminal",
+    "desktop"
+  ],
+  "requires": {
+    "claudeCode": ">=2.1.318"
+  },
+  "capabilities": {
+    "network": false,
+    "processes": false,
+    "filesystem": "none",
+    "model": false,
+    "promptRewrite": false,
+    "blocksTools": false
+  },
+  "preview": {
+    "surface": "terminal",
+    "transcript": [
+      {
+        "role": "user",
+        "text": "Fix the retry of a failed payment and commit it."
+      },
+      {
+        "role": "tool",
+        "tool": "Bash",
+        "input": "npm test",
+        "result": "Tests  54 passed (54)",
+        "status": "done"
+      },
+      {
+        "role": "tool",
+        "tool": "Bash",
+        "input": "git commit -m \"fix: retry of a failed payment\"",
+        "status": "done"
+      }
+    ],
+    "caption": "A commit drops a cake, the ninja eats it, and a commit at 3 am earns Night Owl.",
+    "caption_ru": "Коммит роняет торт, ниндзя его съедает, а коммит в 3 ночи дает трофей Night Owl.",
+    "elements": [
+      {
+        "slot": "session-mode",
+        "row": [
+          {
+            "text": "🍰 ",
+            "color": "warning"
+          },
+          {
+            "text": "▄█▀█▄",
+            "color": "#e8404f"
+          },
+          " ",
+          {
+            "text": "level 3!",
+            "color": "claude",
+            "bold": true
+          }
+        ]
+      },
+      {
+        "slot": "toast",
+        "text": "🦉 Trophy: Night Owl, rare, for a commit between 2 and 5 at night. 1 of 14 found. Menu → share to show it off"
+      }
+    ]
+  }
+}
