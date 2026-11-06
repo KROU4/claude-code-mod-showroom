@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-06T09:41:46.835Z",
+  "generatedAt": "2026-11-06T10:55:33.476Z",
   "repo": {
     "owner": "KROU4",
     "name": "claude-code-mod-showroom",
@@ -315,7 +315,6 @@
           "prompt.submit",
           "turn.start",
           "turn.complete",
-          "agent.spawn",
           "tool.call",
           "ui.message",
           "ui.render{component=SessionMode}",
@@ -348,10 +347,6 @@
             "hasCatch": true
           },
           {
-            "hook": "agent.spawn",
-            "hasCatch": true
-          },
-          {
             "hook": "tool.call",
             "hasCatch": true
           }
@@ -371,7 +366,7 @@
       "addedAt": "2026-11-06T09:34:29Z",
       "updatedAt": "2026-11-06T09:34:29Z",
       "stars": 2,
-      "pushedAt": "2026-11-06T06:34:25Z"
+      "pushedAt": "2026-11-06T10:29:08Z"
     },
     {
       "name": "agent-mobile-observer",
@@ -1100,7 +1095,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 16,
-      "pushedAt": "2026-10-31T16:50:27Z"
+      "pushedAt": "2026-11-06T09:41:11Z"
     },
     {
       "name": "agent-usage-guard",
@@ -1994,7 +1989,7 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 4,
+      "stars": 5,
       "pushedAt": "2026-11-05T13:30:16Z"
     },
     {
@@ -2843,7 +2838,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 0,
-      "pushedAt": "2026-11-03T21:28:39Z"
+      "pushedAt": "2026-11-06T10:54:45Z"
     },
     {
       "name": "aside",
@@ -3424,7 +3419,7 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 4,
+      "stars": 5,
       "pushedAt": "2026-11-05T13:30:16Z"
     },
     {
@@ -5625,7 +5620,7 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 4,
+      "stars": 5,
       "pushedAt": "2026-11-05T13:30:16Z"
     },
     {
@@ -11479,7 +11474,7 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 4,
+      "stars": 5,
       "pushedAt": "2026-11-05T13:30:16Z"
     },
     {
@@ -11630,7 +11625,7 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 4,
+      "stars": 5,
       "pushedAt": "2026-11-05T13:30:16Z"
     },
     {
@@ -12942,7 +12937,7 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 4,
+      "stars": 5,
       "pushedAt": "2026-11-05T13:30:16Z"
     },
     {
@@ -14594,7 +14589,7 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 4,
+      "stars": 5,
       "pushedAt": "2026-11-05T13:30:16Z"
     },
     {
@@ -16029,7 +16024,7 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 4,
+      "stars": 5,
       "pushedAt": "2026-11-05T13:30:16Z"
     },
     {
@@ -16244,7 +16239,7 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 4,
+      "stars": 5,
       "pushedAt": "2026-11-05T13:30:16Z"
     },
     {
@@ -17972,7 +17967,7 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 4,
+      "stars": 5,
       "pushedAt": "2026-11-05T13:30:16Z"
     },
     {
@@ -18461,7 +18456,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 9,
-      "pushedAt": "2026-11-05T10:55:44Z"
+      "pushedAt": "2026-11-06T10:52:02Z"
     },
     {
       "name": "guard",
@@ -20673,7 +20668,7 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 4,
+      "stars": 5,
       "pushedAt": "2026-11-05T13:30:16Z"
     },
     {
@@ -27175,7 +27170,7 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 4,
+      "stars": 5,
       "pushedAt": "2026-11-05T13:30:16Z"
     },
     {
@@ -30134,7 +30129,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 9,
-      "pushedAt": "2026-11-05T10:55:44Z"
+      "pushedAt": "2026-11-06T10:52:02Z"
     },
     {
       "name": "pins",
@@ -33402,8 +33397,8 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 312,
-      "pushedAt": "2026-11-06T09:21:32Z"
+      "stars": 313,
+      "pushedAt": "2026-11-06T10:05:48Z"
     },
     {
       "name": "prompt-lift",
@@ -35912,7 +35907,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 9,
-      "pushedAt": "2026-11-05T10:55:44Z"
+      "pushedAt": "2026-11-06T10:52:02Z"
     },
     {
       "name": "review-inbox",
@@ -37855,7 +37850,7 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 4,
+      "stars": 5,
       "pushedAt": "2026-11-05T13:30:16Z"
     },
     {
@@ -40246,7 +40241,7 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 4,
+      "stars": 5,
       "pushedAt": "2026-11-05T13:30:16Z"
     },
     {
@@ -40370,7 +40365,7 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 4,
+      "stars": 5,
       "pushedAt": "2026-11-05T13:30:16Z"
     },
     {
@@ -41096,7 +41091,7 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 4,
+      "stars": 5,
       "pushedAt": "2026-11-05T13:30:16Z"
     },
     {
@@ -43007,7 +43002,7 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 4,
+      "stars": 5,
       "pushedAt": "2026-11-05T13:30:16Z"
     },
     {
@@ -43136,7 +43131,7 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 4,
+      "stars": 5,
       "pushedAt": "2026-11-05T13:30:16Z"
     },
     {
@@ -43345,7 +43340,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 2907,
-      "pushedAt": "2026-11-06T08:47:22Z"
+      "pushedAt": "2026-11-06T10:43:59Z"
     },
     {
       "name": "token-watch",
@@ -43839,7 +43834,7 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 4,
+      "stars": 5,
       "pushedAt": "2026-11-05T13:30:16Z"
     },
     {
@@ -46795,7 +46790,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 9,
-      "pushedAt": "2026-11-05T10:55:44Z"
+      "pushedAt": "2026-11-06T10:52:02Z"
     },
     {
       "name": "wirepane",
@@ -47826,7 +47821,7 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 4,
+      "stars": 5,
       "pushedAt": "2026-11-05T13:30:16Z"
     },
     {
@@ -52212,7 +52207,7 @@
       "addedAt": "2026-10-20T18:50:35Z",
       "updatedAt": "2026-10-20T18:50:35Z",
       "stars": 383,
-      "pushedAt": "2026-11-06T09:25:09Z"
+      "pushedAt": "2026-11-06T10:40:59Z"
     },
     {
       "name": "glowup",
@@ -59859,7 +59854,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 26,
+      "stars": 27,
       "pushedAt": "2026-10-03T08:35:11Z"
     },
     {
@@ -60404,7 +60399,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 26,
+      "stars": 27,
       "pushedAt": "2026-10-03T08:35:11Z"
     },
     {
@@ -62286,7 +62281,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 26,
+      "stars": 27,
       "pushedAt": "2026-10-03T08:35:11Z"
     },
     {
@@ -64853,7 +64848,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 8633,
+      "stars": 8634,
       "pushedAt": "2026-11-06T07:33:25Z"
     },
     {
