@@ -4,7 +4,7 @@
   "title": "Pixel Buddy",
   "tagline": "A pixel pet in the footer that eats what your work drops, levels up and finds rare trophies.",
   "tagline_ru": "Пиксельный питомец в подвале: ест то, что остается от работы, растет в уровнях и находит редкие трофеи.",
-  "description": "A pixel pet that sits in the footer next to the status line, or above the prompt when the terminal is narrower than 130 columns. Claude answers, it gets a cookie. Tests pass, a fish. A commit or a finished plan, a cake. It walks over, eats it, and snacks turn into levels. 8 species, rarity and stats rolled once, 1 egg in 100 hatches shiny, and a nest keeps up to 12 buddies. 14 trophies with fireworks, 6 of them secret, and a trophy case of pixel badges (`/buddy trophies`). Click to pet it, double click for its own move, click an empty spot to throw a ball, right click for the menu. `share` copies a card of your buddy drawn in emoji squares. No network, no model calls, no tokens: every hook passes its event on unchanged.",
+  "description": "A pixel pet that sits in the footer next to the status line. Claude answers, it gets a cookie. Tests pass, a fish. A commit or a finished plan, a cake. It walks over, eats it, and snacks turn into levels. 8 species, rarity and stats rolled once, 1 egg in 100 hatches shiny, and a nest keeps up to 12 buddies. 14 trophies with fireworks, 6 of them secret, and a trophy case of pixel badges (`/buddy trophies`). Click to pet it, double click for its own move, click an empty spot to throw a ball, right click for the menu. `share` copies a card of your buddy drawn in emoji squares. No network, no model calls, no tokens: every hook passes its event on unchanged.",
   "author": {
     "name": "Igor Simakov",
     "github": "SimakovIgor",
