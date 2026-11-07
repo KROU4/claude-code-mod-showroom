@@ -2,7 +2,7 @@
   "ok": true,
   "hooks": [
     "session.start",
-    "config.set{key=theme}",
+    "config.set",
     "command.run{command=filetree}",
     "tool.call",
     "tool.check{tool=/\"^(Edit|Write|NotebookEdit|Bash|PowerShell)$\"/}",
@@ -23,9 +23,11 @@
     "$.clock.after",
     "$.clock.every",
     "$.clock.now",
+    "$.command.list",
     "$.command.register",
     "$.command.run",
     "$.config.list",
+    "$.config.set",
     "$.env.get",
     "$.fs.exists",
     "$.fs.list",
@@ -55,7 +57,7 @@
   ],
   "gating": [
     {
-      "hook": "config.set{key=theme}",
+      "hook": "config.set",
       "hasCatch": false
     },
     {

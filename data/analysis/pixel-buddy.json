@@ -18,6 +18,8 @@
     "$.clock.now",
     "$.clock.sleep",
     "$.command.register",
+    "$.config.list",
+    "$.config.set",
     "$.session.id",
     "$.store.delete",
     "$.store.get",
