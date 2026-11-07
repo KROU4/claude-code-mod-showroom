@@ -13,8 +13,7 @@
     "session.append{door=prompt|command|delivery|note|attachment}",
     "ui.render{component=Pane, requestId=agent-tree}",
     "ui.press{component=Pane, requestId=agent-tree}",
-    "prompt.edit",
-    "ui.input{component=Pane, requestId=agent-tree}"
+    "prompt.edit"
   ],
   "calls": [
     "$.agent.list",
@@ -41,7 +40,6 @@
     "$.store.get",
     "$.store.set",
     "$.ui.close",
-    "$.ui.focus",
     "$.ui.invalidate",
     "$.ui.open",
     "$.ui.resolve",
