@@ -22,6 +22,7 @@
     "$.clock.now",
     "$.command.register",
     "$.session.usage",
+    "$.session.version",
     "$.state.get",
     "$.state.set",
     "$.ui.close",
