@@ -3,6 +3,7 @@
   "hooks": [
     "tool.check{tool=/\"^(?:Bash|PowerShell|Monitor)$\"/}",
     "tool.call{agentId=/\".\"/}",
+    "tool.call{tool=/\"^Task(?:Create|Update)$\"/}",
     "session.start",
     "prompt.submit",
     "turn.start",
@@ -16,15 +17,14 @@
     "ui.focus",
     "ui.scroll{component=Pane}",
     "command.run{command=omca}",
+    "command.run{command=?}",
     "ui.render{component=AbovePrompt}",
     "ui.render{component=Pane}",
-    "ui.render{component=Spinner}",
     "ui.render{component=TurnDuration}",
     "ui.render{component=UserMessage}",
     "ui.render{component=ToolUse, props has {tool=Agent}}",
     "ui.render{component=ToolGroup}",
-    "ui.render{component=Placed, props has {plugin=oh-my-claudeagent}}",
-    "session.compact"
+    "ui.render{component=Placed, props has {plugin=oh-my-claudeagent}}"
   ],
   "calls": [
     "$.agent.list",
@@ -33,6 +33,7 @@
     "$.clock.now",
     "$.command.register",
     "$.env.get",
+    "$.env.set",
     "$.fs.exists",
     "$.fs.list",
     "$.fs.read",
@@ -54,12 +55,11 @@
     "$.settings.read",
     "$.state.get",
     "$.state.set",
+    "$.tool.list",
     "$.ui.ask",
     "$.ui.blit",
     "$.ui.copy",
-    "$.ui.focus",
-    "$.ui.invalidate",
-    "$.ui.log"
+    "$.ui.focus"
   ],
   "gating": [
     {
@@ -68,6 +68,10 @@
     },
     {
       "hook": "tool.call{agentId=/\".\"/}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=/\"^Task(?:Create|Update)$\"/}",
       "hasCatch": true
     },
     {
@@ -95,7 +99,7 @@
       "hasCatch": true
     },
     {
-      "hook": "session.compact",
+      "hook": "command.run{command=?}",
       "hasCatch": true
     }
   ],
@@ -111,9 +115,9 @@
     "oh-my-claudeagent.notices",
     "oh-my-claudeagent.pages",
     "oh-my-claudeagent.pane",
-    "oh-my-claudeagent.plan",
-    "oh-my-claudeagent.receipts",
+    "oh-my-claudeagent.placedRows",
     "oh-my-claudeagent.stats",
+    "oh-my-claudeagent.tasks",
     "oh-my-claudeagent.turns"
   ],
   "errors": [],

@@ -3,6 +3,8 @@
   "hooks": [
     "session.start",
     "command.run{command=buddy}",
+    "session.attach",
+    "ui.render{component=Pane, requestId=pixel-buddy}",
     "prompt.edit",
     "prompt.submit",
     "turn.start",
@@ -21,6 +23,7 @@
     "$.config.list",
     "$.config.set",
     "$.session.id",
+    "$.session.surfaces",
     "$.store.delete",
     "$.store.get",
     "$.store.keys",
@@ -28,6 +31,7 @@
     "$.ui.copy",
     "$.ui.invalidate",
     "$.ui.log",
+    "$.ui.open",
     "$.ui.resolve",
     "$.ui.toast"
   ],
