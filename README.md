@@ -2074,7 +2074,7 @@ claude plugin install turn-meter --marketplace KROU4/claude-code-mod-showroom
   ```
 
   </details>
-- **[Pixel Buddy](https://krou4.github.io/claude-code-mod-showroom/#/mod/pixel-buddy)** — Пиксельный питомец в подвале: ест то, что остается от работы, растет в уровнях и находит редкие трофеи. <sub>рисует: метка режима, всплывающее уведомление, слеш-команда · автор @SimakovIgor · внешний</sub>
+- **[Pixel Buddy](https://krou4.github.io/claude-code-mod-showroom/#/mod/pixel-buddy)** — Пиксельный питомец в подвале: ест то, что остается от работы, растет в уровнях и находит редкие трофеи. <sub>рисует: метка режима, всплывающее уведомление, панель, слеш-команда · автор @SimakovIgor · внешний</sub>
   <details><summary>Установка (из маркетплейса автора)</summary>
 
   ```text

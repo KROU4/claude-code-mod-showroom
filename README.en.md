@@ -2074,7 +2074,7 @@ Categories: [Interface](#interface) · [Insights](#insights) · [Safety](#safety
   ```
 
   </details>
-- **[Pixel Buddy](https://krou4.github.io/claude-code-mod-showroom/#/mod/pixel-buddy)** — A pixel pet in the footer that eats what your work drops, levels up and finds rare trophies. <sub>draws: mode label, toast, slash command · by @SimakovIgor · external</sub>
+- **[Pixel Buddy](https://krou4.github.io/claude-code-mod-showroom/#/mod/pixel-buddy)** — A pixel pet in the footer that eats what your work drops, levels up and finds rare trophies. <sub>draws: mode label, toast, pane, slash command · by @SimakovIgor · external</sub>
   <details><summary>Install (from the author’s marketplace)</summary>
 
   ```text

@@ -39,7 +39,7 @@
   "gating": [
     {
       "hook": "tool.call",
-      "hasCatch": false
+      "hasCatch": true
     },
     {
       "hook": "ui.close",
