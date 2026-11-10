@@ -27,7 +27,6 @@
     "$.state.set",
     "$.store.get",
     "$.store.set",
-    "$.tool.check",
     "$.tool.list",
     "$.ui.close",
     "$.ui.focus",

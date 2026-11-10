@@ -23,6 +23,7 @@
     "ui.render{component=TurnDuration}",
     "ui.render{component=UserMessage}",
     "ui.render{component=ToolUse, props has {tool=Agent}}",
+    "ui.render{component=ToolResult, props has {tool=/\"^(?:Bash|PowerShell|Monitor|TaskUpdate|Write|Edit)$\"/}}",
     "ui.render{component=ToolGroup}",
     "ui.render{component=Placed, props has {plugin=oh-my-claudeagent}}"
   ],

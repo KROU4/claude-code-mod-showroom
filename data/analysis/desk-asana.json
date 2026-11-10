@@ -23,7 +23,6 @@
     "$.prompt.read",
     "$.state.get",
     "$.state.set",
-    "$.tool.check",
     "$.tool.list",
     "$.ui.close",
     "$.ui.focus",
