@@ -24,6 +24,7 @@
   "gating": [],
   "stateKeys": [
     "pixel-fishing.activeTurnId",
+    "pixel-fishing.baseline",
     "pixel-fishing.dexOpen",
     "pixel-fishing.lang",
     "pixel-fishing.lastElapsedMs",

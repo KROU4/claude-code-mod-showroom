@@ -29,6 +29,7 @@
     "$.prompt.fill",
     "$.prompt.read",
     "$.session.append",
+    "$.session.cwd",
     "$.session.id",
     "$.session.messages",
     "$.session.model",
@@ -69,6 +70,7 @@
     "agent-tree.intro",
     "agent-tree.introBeat",
     "agent-tree.look",
+    "agent-tree.reports",
     "agent-tree.tree",
     "agent-tree.unread"
   ],
