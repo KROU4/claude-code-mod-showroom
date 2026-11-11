@@ -14,12 +14,15 @@
   "calls": [
     "$.config.list",
     "$.config.set",
+    "$.fs.read",
     "$.process.run",
+    "$.session.id",
     "$.session.messages",
     "$.session.surfaces",
     "$.state.get",
     "$.state.set",
     "$.ui.copy",
+    "$.ui.log",
     "$.ui.resolve",
     "$.ui.toast"
   ],
@@ -45,6 +48,7 @@
     "cc-stretch.ask",
     "cc-stretch.busy",
     "cc-stretch.groups",
+    "cc-stretch.guide",
     "cc-stretch.lettering",
     "cc-stretch.look",
     "cc-stretch.newest",

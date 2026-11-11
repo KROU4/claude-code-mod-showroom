@@ -8,6 +8,7 @@
     "turn.complete",
     "ui.render{component=TurnDuration}",
     "ui.message{component=AbovePrompt}",
+    "ui.fault",
     "ui.render{component=AssistantMessage}",
     "ui.message{component=AssistantMessage}",
     "ui.focus{component=AbovePrompt}",
