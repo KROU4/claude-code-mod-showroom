@@ -26,7 +26,7 @@
   },
   "CircularBlox/Clarity": {
     "marketplaceName": "clarity",
-    "pushedAt": "2026-11-10T14:58:31Z",
+    "pushedAt": "2026-11-11T14:29:26Z",
     "stars": 3
   },
   "Coolkidlab-Yin/agent-mobile-control": {
@@ -60,7 +60,7 @@
   "HeyCubit/effortless": {
     "marketplaceName": "effortless",
     "pushedAt": "2026-10-23T14:30:11Z",
-    "stars": 343
+    "stars": 345
   },
   "Jh-jaehyuk/plan-checklist": {
     "marketplaceName": "plan-checklist",
@@ -77,8 +77,8 @@
   },
   "KyongSik-Yoon/cc-desktop-mod": {
     "marketplaceName": "cc-desktop-mod",
-    "pushedAt": "2026-11-11T08:33:49Z",
-    "stars": 10
+    "pushedAt": "2026-11-12T10:49:29Z",
+    "stars": 11
   },
   "MDmubarak786/claude-mods": {
     "marketplaceName": "modhub",
@@ -87,11 +87,11 @@
   },
   "MankhongGarden/claude-code-mods-field-notes": {
     "pushedAt": "2026-10-26T18:59:18Z",
-    "stars": 2
+    "stars": 3
   },
   "Marceux-Croix/Claudeopticon": {
     "marketplaceName": "claudeopticon",
-    "pushedAt": "2026-11-09T20:26:47Z",
+    "pushedAt": "2026-11-12T02:24:20Z",
     "stars": 1
   },
   "MatsuriMW/outline-sidebar": {
@@ -101,13 +101,13 @@
   },
   "MikeGT4/agent-tree": {
     "marketplaceName": "agent-tree",
-    "pushedAt": "2026-11-11T10:05:58Z",
+    "pushedAt": "2026-11-11T16:22:01Z",
     "stars": 18
   },
   "MitchMedeiros/veneer": {
     "marketplaceName": "veneer",
     "pushedAt": "2026-10-27T08:08:07Z",
-    "stars": 1
+    "stars": 2
   },
   "MohammedSaud404/rtl-terminal": {
     "marketplaceName": "rtl-terminal",
@@ -121,8 +121,8 @@
   },
   "NahumLitvin/prismantis": {
     "marketplaceName": "prismantis",
-    "pushedAt": "2026-11-08T12:44:22Z",
-    "stars": 337
+    "pushedAt": "2026-11-11T15:31:03Z",
+    "stars": 341
   },
   "NathanAB/statusline-anywhere": {
     "marketplaceName": "statusline-anywhere",
@@ -161,7 +161,7 @@
   },
   "Singh-AP/awesome-claude-mods": {
     "marketplaceName": "awesome-claude-mods",
-    "pushedAt": "2026-11-10T13:45:13Z",
+    "pushedAt": "2026-11-11T13:03:09Z",
     "stars": 5
   },
   "StanislavKozachenko/claude-mods": {
@@ -172,7 +172,7 @@
   "SummerRiversound/review-inbox": {
     "marketplaceName": "review-inbox",
     "pushedAt": "2026-11-11T01:40:42Z",
-    "stars": 7
+    "stars": 8
   },
   "Sureffi/drawer": {
     "pushedAt": "2026-10-18T11:41:59Z",
@@ -196,12 +196,12 @@
   "YeonwooSung/my-claude-code-mods": {
     "marketplaceName": "my-claude-code-mods",
     "pushedAt": "2026-11-01T05:18:11Z",
-    "stars": 870
+    "stars": 872
   },
   "alexgreensh/token-optimizer": {
     "marketplaceName": "alexgreensh-token-optimizer",
-    "pushedAt": "2026-11-09T16:44:15Z",
-    "stars": 2958
+    "pushedAt": "2026-11-12T05:42:16Z",
+    "stars": 2964
   },
   "algonormative/subagents-plus": {
     "marketplaceName": "subagents-plus",
@@ -214,12 +214,12 @@
   },
   "anthropics/claude-code-playground": {
     "pushedAt": "2026-11-06T09:40:30Z",
-    "stars": 362
+    "stars": 366
   },
   "anthropics/claude-plugins-community": {
     "marketplaceName": "claude-community",
-    "pushedAt": "2026-11-11T07:47:52Z",
-    "stars": 4862
+    "pushedAt": "2026-11-12T07:56:31Z",
+    "stars": 4872
   },
   "arasovic/claude-code-mods": {
     "pushedAt": "2026-10-27T15:03:32Z",
@@ -227,7 +227,7 @@
   },
   "arturogarrido/claudinho": {
     "marketplaceName": "claudinho",
-    "pushedAt": "2026-11-11T10:50:57Z",
+    "pushedAt": "2026-11-12T09:34:55Z",
     "stars": 35
   },
   "benjaminb10/encore-mods": {
@@ -242,7 +242,7 @@
   },
   "cablate/ctx-handoff-mod": {
     "marketplaceName": "ctx-handoff-mod",
-    "pushedAt": "2026-11-01T09:37:47Z",
+    "pushedAt": "2026-11-12T02:07:07Z",
     "stars": 127
   },
   "calmtiger86/oh-my-toolbelt": {
@@ -272,8 +272,8 @@
   },
   "data-goblin/claude-code-filetree": {
     "marketplaceName": "claude-code-filetree",
-    "pushedAt": "2026-11-10T15:41:10Z",
-    "stars": 407
+    "pushedAt": "2026-11-11T14:56:47Z",
+    "stars": 416
   },
   "delexw/miod": {
     "marketplaceName": "miod",
@@ -283,7 +283,7 @@
   "dophamine/claude-suggest": {
     "marketplaceName": "claude-suggest",
     "pushedAt": "2026-10-25T22:15:17Z",
-    "stars": 1
+    "stars": 2
   },
   "dot-agi/downrange": {
     "marketplaceName": "downrange",
@@ -330,7 +330,7 @@
   },
   "gwittebolle/claude-carbon": {
     "marketplaceName": "claude-carbon",
-    "pushedAt": "2026-11-11T10:38:17Z",
+    "pushedAt": "2026-11-12T10:11:43Z",
     "stars": 245
   },
   "halluton/Mindful-Claude": {
@@ -340,8 +340,8 @@
   },
   "hamzafer/claude-code-mods": {
     "marketplaceName": "claude-code-mods",
-    "pushedAt": "2026-11-10T21:23:40Z",
-    "stars": 465
+    "pushedAt": "2026-11-11T21:33:05Z",
+    "stars": 468
   },
   "hashswingingslasher/model-hint": {
     "marketplaceName": "model-hint",
@@ -351,7 +351,7 @@
   "hellosverre/claude-skins": {
     "marketplaceName": "hellosverre-mods",
     "pushedAt": "2026-11-01T18:21:15Z",
-    "stars": 286
+    "stars": 292
   },
   "hellosverre/mod-store": {
     "marketplaceName": "mod-store",
@@ -369,7 +369,7 @@
   "iamumeransari/claude-show-your-work": {
     "marketplaceName": "iamumeransari",
     "pushedAt": "2026-11-05T12:19:36Z",
-    "stars": 303
+    "stars": 304
   },
   "ice-lfernandes/claude-code-mods": {
     "marketplaceName": "lfernandes-mods",
@@ -402,7 +402,7 @@
   },
   "kajidog/cc-mods-tts": {
     "marketplaceName": "cc-mods-tts",
-    "pushedAt": "2026-11-11T10:30:50Z",
+    "pushedAt": "2026-11-11T12:37:40Z",
     "stars": 0
   },
   "karanb192/time-blame": {
@@ -416,8 +416,8 @@
     "stars": 0
   },
   "kunchenguid/firstmate": {
-    "pushedAt": "2026-11-11T07:57:33Z",
-    "stars": 8774
+    "pushedAt": "2026-11-12T07:46:48Z",
+    "stars": 8805
   },
   "kushalBanda/claude-tldr": {
     "marketplaceName": "claude-tldr",
@@ -436,12 +436,12 @@
   },
   "m4cd4r4/clear-resume": {
     "marketplaceName": "cornerman",
-    "pushedAt": "2026-11-11T07:16:23Z",
+    "pushedAt": "2026-11-12T10:04:26Z",
     "stars": 1
   },
   "macollins27/owner-rep": {
     "marketplaceName": "owner-rep",
-    "pushedAt": "2026-11-11T07:30:33Z",
+    "pushedAt": "2026-11-11T22:52:55Z",
     "stars": 1
   },
   "maddiedreese/cc-storytime": {
@@ -452,17 +452,17 @@
   "midudev/better-claude": {
     "marketplaceName": "better-claude",
     "pushedAt": "2026-11-02T21:40:55Z",
-    "stars": 264
+    "stars": 273
   },
   "mksadoughi/standby": {
     "marketplaceName": "standby",
-    "pushedAt": "2026-11-04T07:55:14Z",
+    "pushedAt": "2026-11-12T03:32:23Z",
     "stars": 2
   },
   "modmyclaude/claude-code-mods": {
     "marketplaceName": "modmyclaude",
     "pushedAt": "2026-11-01T14:16:29Z",
-    "stars": 1
+    "stars": 2
   },
   "muctebadikmen/claude-code-araclari": {
     "marketplaceName": "muctebadikmen",
@@ -476,7 +476,7 @@
   },
   "neteye-platform/cc-split-diff-view": {
     "marketplaceName": "neteye-platform",
-    "pushedAt": "2026-11-11T10:46:30Z",
+    "pushedAt": "2026-11-12T10:03:05Z",
     "stars": 19
   },
   "nevermemo/token-watch": {
@@ -506,8 +506,8 @@
   },
   "pro-vi/cc-stretch": {
     "marketplaceName": "cc-stretch",
-    "pushedAt": "2026-11-11T09:50:21Z",
-    "stars": 435
+    "pushedAt": "2026-11-12T06:52:58Z",
+    "stars": 436
   },
   "qorvyx/burn-baby-burn": {
     "marketplaceName": "burn-baby-burn",
@@ -532,7 +532,7 @@
   "rbartoli/agent-usage-guard": {
     "marketplaceName": "agent-usage-guard",
     "pushedAt": "2026-11-10T01:41:55Z",
-    "stars": 96
+    "stars": 97
   },
   "reporails/arcade": {
     "marketplaceName": "reporails-arcade",
@@ -562,11 +562,11 @@
   "scasella/claude-flightdeck": {
     "marketplaceName": "claude-flightdeck",
     "pushedAt": "2026-11-07T14:33:03Z",
-    "stars": 256
+    "stars": 260
   },
   "sergeiwallace/beads-ui": {
     "marketplaceName": "beads-ui",
-    "pushedAt": "2026-11-11T11:00:44Z",
+    "pushedAt": "2026-11-12T09:59:49Z",
     "stars": 0
   },
   "sergios-tech/code-display": {
@@ -586,7 +586,7 @@
   },
   "synaptik-app/synaptik": {
     "marketplaceName": "synaptik-app",
-    "pushedAt": "2026-11-10T20:52:42Z",
+    "pushedAt": "2026-11-11T17:24:37Z",
     "stars": 2
   },
   "talbarina/claude-editor-context": {
@@ -610,7 +610,7 @@
     "stars": 0
   },
   "timoncool/givememod": {
-    "pushedAt": "2026-11-11T10:56:48Z",
+    "pushedAt": "2026-11-12T11:08:18Z",
     "stars": 9
   },
   "timoncool/slapbox": {

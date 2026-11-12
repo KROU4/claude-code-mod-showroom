@@ -23,6 +23,7 @@
     "$.command.list",
     "$.command.register",
     "$.command.run",
+    "$.config.list",
     "$.env.get",
     "$.http.fetch",
     "$.process.run",
