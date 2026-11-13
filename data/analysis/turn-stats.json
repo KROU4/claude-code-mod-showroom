@@ -9,6 +9,7 @@
     "ui.render{component=TurnDuration}"
   ],
   "calls": [
+    "$.session.cwd",
     "$.session.usage",
     "$.state.get",
     "$.state.set",

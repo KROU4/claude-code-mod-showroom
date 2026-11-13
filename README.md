@@ -347,7 +347,7 @@ claude plugin install turn-meter --marketplace KROU4/claude-code-mod-showroom
   ```
 
   </details>
-- **[Agent Tree](https://krou4.github.io/claude-code-mod-showroom/#/mod/agent-tree)** — Боковая панель рисует агентов сессии деревом блоков; остановить агента или сменить модель можно кликом. <sub>рисует: панель, строка статуса, всплывающее уведомление, слеш-команда · автор @MikeGT4 · внешний</sub>
+- **[Agent Tree](https://krou4.github.io/claude-code-mod-showroom/#/mod/agent-tree)** — Боковая панель рисует агентов сессии деревом блоков; остановить агента или сменить модель можно кликом. <sub>рисует: панель, слеш-команда · автор @MikeGT4 · внешний</sub>
   <details><summary>Установка (из маркетплейса автора)</summary>
 
   ```text

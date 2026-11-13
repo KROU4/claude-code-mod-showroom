@@ -52,7 +52,8 @@
     "ilerleme-cubugu.isUnread",
     "ilerleme-cubugu.job",
     "ilerleme-cubugu.plan",
-    "ilerleme-cubugu.tasks"
+    "ilerleme-cubugu.tasks",
+    "ilerleme-cubugu.tasksDoneAt"
   ],
   "errors": [],
   "warnings": [],

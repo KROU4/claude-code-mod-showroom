@@ -9,6 +9,7 @@
     "turn.complete",
     "tool.call",
     "prompt.submit",
+    "session.compact",
     "command.run{command=devir}"
   ],
   "calls": [
@@ -41,6 +42,10 @@
     {
       "hook": "prompt.submit",
       "hasCatch": true
+    },
+    {
+      "hook": "session.compact",
+      "hasCatch": false
     }
   ],
   "stateKeys": [],

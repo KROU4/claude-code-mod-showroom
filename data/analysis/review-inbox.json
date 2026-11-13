@@ -22,6 +22,7 @@
     "$.clock.sleep",
     "$.command.register",
     "$.command.run",
+    "$.config.list",
     "$.config.set",
     "$.env.get",
     "$.fs.exists",
@@ -42,10 +43,7 @@
     "$.tool.register",
     "$.ui.focus",
     "$.ui.invalidate",
-    "$.ui.open",
-    "$.ui.panes",
-    "$.ui.resolve",
-    "$.ui.toast"
+    "$.ui.open"
   ],
   "gating": [
     {
@@ -100,6 +98,9 @@
     "review-inbox.tab"
   ],
   "errors": [],
-  "warnings": [],
-  "validatedWith": "2.1.302"
+  "warnings": [
+    "./register.tsx: notes truncated by claude plugin validate; calls/hooks may be incomplete"
+  ],
+  "validatedWith": "2.1.302",
+  "truncated": true
 }

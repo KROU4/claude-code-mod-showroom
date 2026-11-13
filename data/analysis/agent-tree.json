@@ -42,11 +42,7 @@
     "$.store.get",
     "$.store.set",
     "$.ui.close",
-    "$.ui.invalidate",
-    "$.ui.open",
-    "$.ui.resolve",
-    "$.ui.status",
-    "$.ui.toast"
+    "$.ui.invalidate"
   ],
   "gating": [
     {
@@ -76,6 +72,9 @@
     "agent-tree.unread"
   ],
   "errors": [],
-  "warnings": [],
-  "validatedWith": "2.1.302"
+  "warnings": [
+    "./register.tsx: notes truncated by claude plugin validate; calls/hooks may be incomplete"
+  ],
+  "validatedWith": "2.1.302",
+  "truncated": true
 }

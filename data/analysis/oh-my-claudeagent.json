@@ -4,6 +4,7 @@
     "tool.check{tool=/\"^(?:Bash|PowerShell|Monitor)$\"/}",
     "tool.call{agentId=/\".\"/}",
     "tool.call{tool=/\"^Task(?:Create|Update)$\"/}",
+    "tool.call{tool=/\"^SendMessage$\"/}",
     "session.start",
     "prompt.submit",
     "turn.start",
@@ -59,8 +60,8 @@
     "$.tool.list",
     "$.ui.ask",
     "$.ui.blit",
-    "$.ui.copy",
-    "$.ui.focus"
+    "$.ui.cancelNotify",
+    "$.ui.copy"
   ],
   "gating": [
     {
@@ -73,6 +74,10 @@
     },
     {
       "hook": "tool.call{tool=/\"^Task(?:Create|Update)$\"/}",
+      "hasCatch": true
+    },
+    {
+      "hook": "tool.call{tool=/\"^SendMessage$\"/}",
       "hasCatch": true
     },
     {
