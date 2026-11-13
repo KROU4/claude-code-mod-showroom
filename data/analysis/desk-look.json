@@ -3,6 +3,7 @@
   "hooks": [
     "tool.call{tool=AskUserQuestion}",
     "state.set{plugin=desk-plan, key=preview}",
+    "state.set{plugin=desk-plan, key=sent}",
     "state.set{plugin=desk-review, key=diffAt}",
     "session.start",
     "session.end",
@@ -33,8 +34,7 @@
     "ui.render{component=ToolResult}",
     "ui.render{component=ToolGroup}",
     "ui.render{component=Spinner}",
-    "ui.render{component=ToolProgress}",
-    "ui.render{component=SessionMode}"
+    "ui.render{component=ToolProgress}"
   ],
   "calls": [
     "$.agent.list",
@@ -68,6 +68,10 @@
     },
     {
       "hook": "state.set{plugin=desk-plan, key=preview}",
+      "hasCatch": true
+    },
+    {
+      "hook": "state.set{plugin=desk-plan, key=sent}",
       "hasCatch": true
     },
     {
@@ -138,6 +142,8 @@
     "desk-look.pendingEdits",
     "desk-look.pr",
     "desk-look.preview",
+    "desk-look.previewSource",
+    "desk-look.previewWindow",
     "desk-look.previewWritten",
     "desk-look.promptOrigin",
     "desk-look.repo",
@@ -157,6 +163,8 @@
   ],
   "errors": [],
   "warnings": [
+    "engines: Unknown field 'engines' (commonly seen in a VS Code/Cursor extension manifest). Claude Code ignores unrecognized fields at load time, so it's safe to keep.",
+    "modules../register.tsx: on ui.render{component=AbovePromptList}: no component is named AbovePromptList, so it never runs",
     "./types/index.d.ts: notes truncated by claude plugin validate; calls/hooks may be incomplete",
     "./register.tsx: notes truncated by claude plugin validate; calls/hooks may be incomplete"
   ],

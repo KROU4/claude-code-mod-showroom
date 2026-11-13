@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-12T11:11:58.444Z",
+  "generatedAt": "2026-11-13T11:02:42.254Z",
   "repo": {
     "owner": "KROU4",
     "name": "claude-code-mod-showroom",
@@ -972,8 +972,6 @@
       },
       "slots": [
         "pane",
-        "status",
-        "toast",
         "command"
       ],
       "hookedSlots": [
@@ -1051,11 +1049,7 @@
           "$.store.get",
           "$.store.set",
           "$.ui.close",
-          "$.ui.invalidate",
-          "$.ui.open",
-          "$.ui.resolve",
-          "$.ui.status",
-          "$.ui.toast"
+          "$.ui.invalidate"
         ],
         "gating": [
           {
@@ -1085,8 +1079,11 @@
           "agent-tree.unread"
         ],
         "errors": [],
-        "warnings": [],
-        "validatedWith": "2.1.302"
+        "warnings": [
+          "./register.tsx: notes truncated by claude plugin validate; calls/hooks may be incomplete"
+        ],
+        "validatedWith": "2.1.302",
+        "truncated": true
       },
       "risk": {
         "calls": [
@@ -1104,7 +1101,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 18,
-      "pushedAt": "2026-11-11T16:22:01Z"
+      "pushedAt": "2026-11-13T10:07:24Z"
     },
     {
       "name": "agent-usage-guard",
@@ -1999,7 +1996,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 5,
-      "pushedAt": "2026-11-11T13:03:09Z"
+      "pushedAt": "2026-11-12T14:02:49Z"
     },
     {
       "name": "allowlist-coach",
@@ -3429,7 +3426,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 5,
-      "pushedAt": "2026-11-11T13:03:09Z"
+      "pushedAt": "2026-11-12T14:02:49Z"
     },
     {
       "name": "beacon",
@@ -3853,7 +3850,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 0,
-      "pushedAt": "2026-11-12T09:59:49Z"
+      "pushedAt": "2026-11-13T10:34:31Z"
     },
     {
       "name": "big-output",
@@ -5630,7 +5627,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 5,
-      "pushedAt": "2026-11-11T13:03:09Z"
+      "pushedAt": "2026-11-12T14:02:49Z"
     },
     {
       "name": "buddy-chat",
@@ -6218,7 +6215,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 6,
-      "pushedAt": "2026-11-11T05:51:25Z"
+      "pushedAt": "2026-11-12T20:01:43Z"
     },
     {
       "name": "cache-timer",
@@ -7095,7 +7092,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 6,
-      "pushedAt": "2026-11-11T05:51:25Z"
+      "pushedAt": "2026-11-12T20:01:43Z"
     },
     {
       "name": "cc-esol",
@@ -7767,7 +7764,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 19,
-      "pushedAt": "2026-11-12T10:03:05Z"
+      "pushedAt": "2026-11-13T09:03:52Z"
     },
     {
       "name": "cc-zh",
@@ -9337,7 +9334,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 0,
-      "pushedAt": "2026-11-11T03:08:37Z"
+      "pushedAt": "2026-11-13T07:52:33Z"
     },
     {
       "name": "ci-watch",
@@ -9965,7 +9962,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 3,
-      "pushedAt": "2026-11-11T14:29:26Z"
+      "pushedAt": "2026-11-12T15:22:20Z"
     },
     {
       "name": "claudeopticon",
@@ -10623,7 +10620,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 1,
-      "pushedAt": "2026-11-12T10:04:26Z"
+      "pushedAt": "2026-11-13T10:07:21Z"
     },
     {
       "name": "cloakroom",
@@ -11484,7 +11481,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 5,
-      "pushedAt": "2026-11-11T13:03:09Z"
+      "pushedAt": "2026-11-12T14:02:49Z"
     },
     {
       "name": "command-explainer",
@@ -11635,7 +11632,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 5,
-      "pushedAt": "2026-11-11T13:03:09Z"
+      "pushedAt": "2026-11-12T14:02:49Z"
     },
     {
       "name": "compact-keeper",
@@ -12553,7 +12550,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 6,
-      "pushedAt": "2026-11-11T05:51:25Z"
+      "pushedAt": "2026-11-12T20:01:43Z"
     },
     {
       "name": "copy-back",
@@ -12947,7 +12944,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 5,
-      "pushedAt": "2026-11-11T13:03:09Z"
+      "pushedAt": "2026-11-12T14:02:49Z"
     },
     {
       "name": "crossroads",
@@ -13550,7 +13547,9 @@
           "desk-look.lang"
         ],
         "errors": [],
-        "warnings": [],
+        "warnings": [
+          "engines: Unknown field 'engines' (commonly seen in a VS Code/Cursor extension manifest). Claude Code ignores unrecognized fields at load time, so it's safe to keep."
+        ],
         "validatedWith": "2.1.302"
       },
       "risk": {
@@ -13563,7 +13562,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 11,
-      "pushedAt": "2026-11-12T10:49:29Z"
+      "pushedAt": "2026-11-13T07:09:01Z"
     },
     {
       "name": "desk-look",
@@ -13834,7 +13833,6 @@
       ],
       "hookedSlots": [
         "spinner",
-        "session-mode",
         "tool-row",
         "message"
       ],
@@ -13871,6 +13869,7 @@
         "hooks": [
           "tool.call{tool=AskUserQuestion}",
           "state.set{plugin=desk-plan, key=preview}",
+          "state.set{plugin=desk-plan, key=sent}",
           "state.set{plugin=desk-review, key=diffAt}",
           "session.start",
           "session.end",
@@ -13901,8 +13900,7 @@
           "ui.render{component=ToolResult}",
           "ui.render{component=ToolGroup}",
           "ui.render{component=Spinner}",
-          "ui.render{component=ToolProgress}",
-          "ui.render{component=SessionMode}"
+          "ui.render{component=ToolProgress}"
         ],
         "calls": [
           "$.agent.list",
@@ -13936,6 +13934,10 @@
           },
           {
             "hook": "state.set{plugin=desk-plan, key=preview}",
+            "hasCatch": true
+          },
+          {
+            "hook": "state.set{plugin=desk-plan, key=sent}",
             "hasCatch": true
           },
           {
@@ -14006,6 +14008,8 @@
           "desk-look.pendingEdits",
           "desk-look.pr",
           "desk-look.preview",
+          "desk-look.previewSource",
+          "desk-look.previewWindow",
           "desk-look.previewWritten",
           "desk-look.promptOrigin",
           "desk-look.repo",
@@ -14025,6 +14029,8 @@
         ],
         "errors": [],
         "warnings": [
+          "engines: Unknown field 'engines' (commonly seen in a VS Code/Cursor extension manifest). Claude Code ignores unrecognized fields at load time, so it's safe to keep.",
+          "modules../register.tsx: on ui.render{component=AbovePromptList}: no component is named AbovePromptList, so it never runs",
           "./types/index.d.ts: notes truncated by claude plugin validate; calls/hooks may be incomplete",
           "./register.tsx: notes truncated by claude plugin validate; calls/hooks may be incomplete"
         ],
@@ -14047,7 +14053,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 11,
-      "pushedAt": "2026-11-12T10:49:29Z"
+      "pushedAt": "2026-11-13T07:09:01Z"
     },
     {
       "name": "desk-slack",
@@ -14306,7 +14312,9 @@
           "desk-slack.unread"
         ],
         "errors": [],
-        "warnings": [],
+        "warnings": [
+          "engines: Unknown field 'engines' (commonly seen in a VS Code/Cursor extension manifest). Claude Code ignores unrecognized fields at load time, so it's safe to keep."
+        ],
         "validatedWith": "2.1.302"
       },
       "risk": {
@@ -14318,7 +14326,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 11,
-      "pushedAt": "2026-11-12T10:49:29Z"
+      "pushedAt": "2026-11-13T07:09:01Z"
     },
     {
       "name": "ding",
@@ -14597,7 +14605,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 5,
-      "pushedAt": "2026-11-11T13:03:09Z"
+      "pushedAt": "2026-11-12T14:02:49Z"
     },
     {
       "name": "done-notify",
@@ -15894,7 +15902,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 14,
-      "pushedAt": "2026-11-10T10:10:37Z"
+      "pushedAt": "2026-11-13T04:15:37Z"
     },
     {
       "name": "file-guard",
@@ -16032,7 +16040,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 5,
-      "pushedAt": "2026-11-11T13:03:09Z"
+      "pushedAt": "2026-11-12T14:02:49Z"
     },
     {
       "name": "files-touched",
@@ -16247,7 +16255,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 5,
-      "pushedAt": "2026-11-11T13:03:09Z"
+      "pushedAt": "2026-11-12T14:02:49Z"
     },
     {
       "name": "fine-print",
@@ -17975,7 +17983,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 5,
-      "pushedAt": "2026-11-11T13:03:09Z"
+      "pushedAt": "2026-11-12T14:02:49Z"
     },
     {
       "name": "glass",
@@ -18304,7 +18312,7 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 17,
+      "stars": 18,
       "pushedAt": "2026-11-10T01:22:37Z"
     },
     {
@@ -18463,7 +18471,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 9,
-      "pushedAt": "2026-11-12T11:08:18Z"
+      "pushedAt": "2026-11-13T10:58:02Z"
     },
     {
       "name": "guard",
@@ -18629,7 +18637,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 0,
-      "pushedAt": "2026-11-11T03:08:37Z"
+      "pushedAt": "2026-11-13T07:52:33Z"
     },
     {
       "name": "guardrails",
@@ -20311,7 +20319,8 @@
           "ilerleme-cubugu.isUnread",
           "ilerleme-cubugu.job",
           "ilerleme-cubugu.plan",
-          "ilerleme-cubugu.tasks"
+          "ilerleme-cubugu.tasks",
+          "ilerleme-cubugu.tasksDoneAt"
         ],
         "errors": [],
         "warnings": [],
@@ -20329,7 +20338,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 1,
-      "pushedAt": "2026-11-10T01:09:02Z"
+      "pushedAt": "2026-11-12T19:52:01Z"
     },
     {
       "name": "image-peek",
@@ -20676,7 +20685,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 5,
-      "pushedAt": "2026-11-11T13:03:09Z"
+      "pushedAt": "2026-11-12T14:02:49Z"
     },
     {
       "name": "inline-images",
@@ -27178,7 +27187,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 5,
-      "pushedAt": "2026-11-11T13:03:09Z"
+      "pushedAt": "2026-11-12T14:02:49Z"
     },
     {
       "name": "noted",
@@ -27534,7 +27543,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 0,
-      "pushedAt": "2026-11-11T03:08:37Z"
+      "pushedAt": "2026-11-13T07:52:33Z"
     },
     {
       "name": "oh-my-claudeagent",
@@ -27683,6 +27692,7 @@
           "tool.check{tool=/\"^(?:Bash|PowerShell|Monitor)$\"/}",
           "tool.call{agentId=/\".\"/}",
           "tool.call{tool=/\"^Task(?:Create|Update)$\"/}",
+          "tool.call{tool=/\"^SendMessage$\"/}",
           "session.start",
           "prompt.submit",
           "turn.start",
@@ -27738,8 +27748,8 @@
           "$.tool.list",
           "$.ui.ask",
           "$.ui.blit",
-          "$.ui.copy",
-          "$.ui.focus"
+          "$.ui.cancelNotify",
+          "$.ui.copy"
         ],
         "gating": [
           {
@@ -27752,6 +27762,10 @@
           },
           {
             "hook": "tool.call{tool=/\"^Task(?:Create|Update)$\"/}",
+            "hasCatch": true
+          },
+          {
+            "hook": "tool.call{tool=/\"^SendMessage$\"/}",
             "hasCatch": true
           },
           {
@@ -27827,7 +27841,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 3,
-      "pushedAt": "2026-11-09T13:46:28Z"
+      "pushedAt": "2026-11-12T14:20:21Z"
     },
     {
       "name": "oh-my-toolbelt",
@@ -28374,7 +28388,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 3,
-      "pushedAt": "2026-11-07T04:35:27Z"
+      "pushedAt": "2026-11-13T08:03:40Z"
     },
     {
       "name": "otomatik-devir",
@@ -28499,6 +28513,7 @@
           "turn.complete",
           "tool.call",
           "prompt.submit",
+          "session.compact",
           "command.run{command=devir}"
         ],
         "calls": [
@@ -28531,6 +28546,10 @@
           {
             "hook": "prompt.submit",
             "hasCatch": true
+          },
+          {
+            "hook": "session.compact",
+            "hasCatch": false
           }
         ],
         "stateKeys": [],
@@ -28553,7 +28572,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 1,
-      "pushedAt": "2026-11-10T01:09:02Z"
+      "pushedAt": "2026-11-12T19:52:01Z"
     },
     {
       "name": "outline-sidebar",
@@ -30123,7 +30142,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 9,
-      "pushedAt": "2026-11-12T11:08:18Z"
+      "pushedAt": "2026-11-13T10:58:02Z"
     },
     {
       "name": "pins",
@@ -33392,8 +33411,8 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 341,
-      "pushedAt": "2026-11-11T15:31:03Z"
+      "stars": 348,
+      "pushedAt": "2026-11-13T10:37:38Z"
     },
     {
       "name": "prompt-lift",
@@ -35514,7 +35533,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 0,
-      "pushedAt": "2026-11-11T03:08:37Z"
+      "pushedAt": "2026-11-13T07:52:33Z"
     },
     {
       "name": "redline",
@@ -35902,7 +35921,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 9,
-      "pushedAt": "2026-11-12T11:08:18Z"
+      "pushedAt": "2026-11-13T10:58:02Z"
     },
     {
       "name": "review-inbox",
@@ -35940,7 +35959,7 @@
         "claudeCode": ">=2.1.287"
       },
       "capabilities": {
-        "network": false,
+        "network": true,
         "processes": true,
         "filesystem": "write",
         "model": true,
@@ -36108,6 +36127,7 @@
           "$.clock.sleep",
           "$.command.register",
           "$.command.run",
+          "$.config.list",
           "$.config.set",
           "$.env.get",
           "$.fs.exists",
@@ -36128,10 +36148,7 @@
           "$.tool.register",
           "$.ui.focus",
           "$.ui.invalidate",
-          "$.ui.open",
-          "$.ui.panes",
-          "$.ui.resolve",
-          "$.ui.toast"
+          "$.ui.open"
         ],
         "gating": [
           {
@@ -36186,8 +36203,11 @@
           "review-inbox.tab"
         ],
         "errors": [],
-        "warnings": [],
-        "validatedWith": "2.1.302"
+        "warnings": [
+          "./register.tsx: notes truncated by claude plugin validate; calls/hooks may be incomplete"
+        ],
+        "validatedWith": "2.1.302",
+        "truncated": true
       },
       "risk": {
         "calls": [
@@ -36206,7 +36226,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 8,
-      "pushedAt": "2026-11-11T01:40:42Z"
+      "pushedAt": "2026-11-13T08:52:38Z"
     },
     {
       "name": "rich-ui",
@@ -37847,7 +37867,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 5,
-      "pushedAt": "2026-11-11T13:03:09Z"
+      "pushedAt": "2026-11-12T14:02:49Z"
     },
     {
       "name": "session-band",
@@ -39808,7 +39828,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 2,
-      "pushedAt": "2026-11-11T11:01:52Z"
+      "pushedAt": "2026-11-12T11:18:26Z"
     },
     {
       "name": "snake",
@@ -40238,7 +40258,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 5,
-      "pushedAt": "2026-11-11T13:03:09Z"
+      "pushedAt": "2026-11-12T14:02:49Z"
     },
     {
       "name": "spinner-packs",
@@ -40362,7 +40382,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 5,
-      "pushedAt": "2026-11-11T13:03:09Z"
+      "pushedAt": "2026-11-12T14:02:49Z"
     },
     {
       "name": "st-code-display",
@@ -40951,7 +40971,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 2,
-      "pushedAt": "2026-11-12T03:32:23Z"
+      "pushedAt": "2026-11-12T15:43:20Z"
     },
     {
       "name": "standup",
@@ -41088,7 +41108,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 5,
-      "pushedAt": "2026-11-11T13:03:09Z"
+      "pushedAt": "2026-11-12T14:02:49Z"
     },
     {
       "name": "style-cop",
@@ -43000,7 +43020,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 5,
-      "pushedAt": "2026-11-11T13:03:09Z"
+      "pushedAt": "2026-11-12T14:02:49Z"
     },
     {
       "name": "tldr",
@@ -43129,7 +43149,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 5,
-      "pushedAt": "2026-11-11T13:03:09Z"
+      "pushedAt": "2026-11-12T14:02:49Z"
     },
     {
       "name": "token-optimizer",
@@ -43336,8 +43356,8 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 2964,
-      "pushedAt": "2026-11-12T05:42:16Z"
+      "stars": 2969,
+      "pushedAt": "2026-11-12T20:41:50Z"
     },
     {
       "name": "token-watch",
@@ -43832,7 +43852,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 5,
-      "pushedAt": "2026-11-11T13:03:09Z"
+      "pushedAt": "2026-11-12T14:02:49Z"
     },
     {
       "name": "topic-guard",
@@ -44531,6 +44551,7 @@
           "ui.render{component=TurnDuration}"
         ],
         "calls": [
+          "$.session.cwd",
           "$.session.usage",
           "$.state.get",
           "$.state.set",
@@ -44565,7 +44586,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 0,
-      "pushedAt": "2026-11-11T03:08:37Z"
+      "pushedAt": "2026-11-13T07:52:33Z"
     },
     {
       "name": "turn-timeline",
@@ -46793,7 +46814,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 9,
-      "pushedAt": "2026-11-12T11:08:18Z"
+      "pushedAt": "2026-11-13T10:58:02Z"
     },
     {
       "name": "wirepane",
@@ -47825,7 +47846,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 5,
-      "pushedAt": "2026-11-11T13:03:09Z"
+      "pushedAt": "2026-11-12T14:02:49Z"
     },
     {
       "name": "brickfall",
@@ -52211,7 +52232,7 @@
       },
       "addedAt": "2026-10-20T18:50:35Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 416,
+      "stars": 422,
       "pushedAt": "2026-11-11T14:56:47Z"
     },
     {
@@ -53557,7 +53578,7 @@
       },
       "addedAt": "2026-10-20T18:50:35Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 282,
+      "stars": 284,
       "pushedAt": "2026-10-12T10:02:19Z"
     },
     {
@@ -55018,7 +55039,7 @@
       },
       "addedAt": "2026-10-20T18:50:35Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 4,
+      "stars": 5,
       "pushedAt": "2026-10-17T22:06:28Z"
     },
     {
@@ -58740,7 +58761,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 468,
+      "stars": 475,
       "pushedAt": "2026-11-11T21:33:05Z"
     },
     {
@@ -59003,7 +59024,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 366,
+      "stars": 369,
       "pushedAt": "2026-11-06T09:40:30Z"
     },
     {
@@ -60548,7 +60569,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 468,
+      "stars": 475,
       "pushedAt": "2026-11-11T21:33:05Z"
     },
     {
@@ -62674,7 +62695,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 468,
+      "stars": 475,
       "pushedAt": "2026-11-11T21:33:05Z"
     },
     {
@@ -63822,7 +63843,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 345,
+      "stars": 347,
       "pushedAt": "2026-10-23T14:30:11Z"
     },
     {
@@ -64640,7 +64661,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 260,
+      "stars": 264,
       "pushedAt": "2026-11-07T14:33:03Z"
     },
     {
@@ -64859,8 +64880,8 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 8805,
-      "pushedAt": "2026-11-12T07:46:48Z"
+      "stars": 8838,
+      "pushedAt": "2026-11-13T10:56:42Z"
     },
     {
       "name": "focus-timer",
@@ -65610,7 +65631,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 161,
+      "stars": 163,
       "pushedAt": "2026-11-04T18:33:29Z"
     },
     {
@@ -66278,7 +66299,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 872,
+      "stars": 875,
       "pushedAt": "2026-11-01T05:18:11Z"
     },
     {
@@ -66469,7 +66490,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 4872,
+      "stars": 4883,
       "pushedAt": "2026-11-12T07:56:31Z"
     },
     {
@@ -66745,7 +66766,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 872,
+      "stars": 875,
       "pushedAt": "2026-11-01T05:18:11Z"
     },
     {
@@ -67259,7 +67280,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 366,
+      "stars": 369,
       "pushedAt": "2026-11-06T09:40:30Z"
     },
     {
@@ -68043,7 +68064,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 304,
+      "stars": 308,
       "pushedAt": "2026-11-05T12:19:36Z"
     },
     {
@@ -68604,7 +68625,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 292,
+      "stars": 295,
       "pushedAt": "2026-11-01T18:21:15Z"
     },
     {
@@ -68894,7 +68915,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 273,
+      "stars": 280,
       "pushedAt": "2026-11-02T21:40:55Z"
     },
     {
@@ -69165,7 +69186,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 345,
+      "stars": 347,
       "pushedAt": "2026-10-23T14:30:11Z"
     },
     {
@@ -69313,7 +69334,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 273,
+      "stars": 280,
       "pushedAt": "2026-11-02T21:40:55Z"
     },
     {
@@ -69504,7 +69525,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 366,
+      "stars": 369,
       "pushedAt": "2026-11-06T09:40:30Z"
     },
     {
@@ -70390,7 +70411,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 11,
+      "stars": 12,
       "pushedAt": "2026-10-04T08:49:24Z"
     }
   ]

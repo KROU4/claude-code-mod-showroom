@@ -347,7 +347,7 @@ Categories: [Interface](#interface) · [Insights](#insights) · [Safety](#safety
   ```
 
   </details>
-- **[Agent Tree](https://krou4.github.io/claude-code-mod-showroom/#/mod/agent-tree)** — A side pane that draws a session's agents as a tree of boxes, with stop and model choice by click. <sub>draws: pane, status line, toast, slash command · by @MikeGT4 · external</sub>
+- **[Agent Tree](https://krou4.github.io/claude-code-mod-showroom/#/mod/agent-tree)** — A side pane that draws a session's agents as a tree of boxes, with stop and model choice by click. <sub>draws: pane, slash command · by @MikeGT4 · external</sub>
   <details><summary>Install (from the author’s marketplace)</summary>
 
   ```text

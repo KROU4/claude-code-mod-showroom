@@ -72,6 +72,8 @@
     "desk-look.lang"
   ],
   "errors": [],
-  "warnings": [],
+  "warnings": [
+    "engines: Unknown field 'engines' (commonly seen in a VS Code/Cursor extension manifest). Claude Code ignores unrecognized fields at load time, so it's safe to keep."
+  ],
   "validatedWith": "2.1.302"
 }
