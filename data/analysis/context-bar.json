@@ -6,7 +6,8 @@
     "session.compact",
     "session.end",
     "command.run{command=context-bar}",
-    "ui.render{component=AbovePrompt}"
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=AbovePromptList}"
   ],
   "calls": [
     "$.clock.after",
@@ -32,6 +33,8 @@
     "context-bar.reading"
   ],
   "errors": [],
-  "warnings": [],
+  "warnings": [
+    "modules../register.tsx: on ui.render{component=AbovePromptList}: no component is named AbovePromptList, so it never runs"
+  ],
   "validatedWith": "2.1.302"
 }
