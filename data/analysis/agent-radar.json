@@ -8,6 +8,7 @@
     "turn.complete",
     "command.run{command=radar}",
     "ui.render{component=AbovePrompt}",
+    "ui.render{component=AbovePromptList}",
     "ui.render{component=Pane, requestId=agent-radar}"
   ],
   "calls": [
@@ -47,6 +48,8 @@
     "agent-radar.selected"
   ],
   "errors": [],
-  "warnings": [],
+  "warnings": [
+    "modules../register.tsx: on ui.render{component=AbovePromptList}: no component is named AbovePromptList, so it never runs"
+  ],
   "validatedWith": "2.1.302"
 }

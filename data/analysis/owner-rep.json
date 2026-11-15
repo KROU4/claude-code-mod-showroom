@@ -10,6 +10,7 @@
     "agent.spawn",
     "turn.step",
     "turn.complete",
+    "ui.render{component=AbovePromptList}",
     "ui.render{component=AbovePrompt}",
     "session.end"
   ],
@@ -33,6 +34,7 @@
     "$.state.set",
     "$.store.get",
     "$.store.set",
+    "$.ui.invalidate",
     "$.ui.resolve",
     "$.ui.toast"
   ],
@@ -69,7 +71,8 @@
   ],
   "errors": [],
   "warnings": [
-    "root: CLAUDE.md at the plugin root is not loaded as project context. To ship context with your plugin, use a skill (skills/<name>/SKILL.md) instead."
+    "root: CLAUDE.md at the plugin root is not loaded as project context. To ship context with your plugin, use a skill (skills/<name>/SKILL.md) instead.",
+    "modules../register.tsx: on ui.render{component=AbovePromptList}: no component is named AbovePromptList, so it never runs"
   ],
   "validatedWith": "2.1.302"
 }

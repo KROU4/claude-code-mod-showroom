@@ -10,6 +10,7 @@
     "command.run{command=claudinho}",
     "ui.close{id=match}",
     "ui.render{component=Pane, requestId=match}",
+    "ui.render{component=Backdrop}",
     "prompt.submit"
   ],
   "calls": [
@@ -25,6 +26,8 @@
     "$.session.surfaces",
     "$.state.get",
     "$.state.set",
+    "$.theme.clear",
+    "$.theme.set",
     "$.ui.invalidate",
     "$.ui.open",
     "$.ui.resolve",
@@ -45,11 +48,14 @@
     "claudinho.baseline",
     "claudinho.celebration",
     "claudinho.context",
+    "claudinho.lookOff",
     "claudinho.pace",
     "claudinho.pane",
     "claudinho.paneGen"
   ],
   "errors": [],
-  "warnings": [],
+  "warnings": [
+    "modules../register.tsx: on ui.render{component=Backdrop}: no component is named Backdrop, so it never runs"
+  ],
   "validatedWith": "2.1.302"
 }
