@@ -58,10 +58,10 @@
     "$.state.get",
     "$.state.set",
     "$.tool.list",
-    "$.ui.ask",
     "$.ui.blit",
     "$.ui.cancelNotify",
-    "$.ui.copy"
+    "$.ui.copy",
+    "$.ui.focus"
   ],
   "gating": [
     {
