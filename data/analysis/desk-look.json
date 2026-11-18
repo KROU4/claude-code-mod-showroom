@@ -57,9 +57,9 @@
     "$.prompt.read",
     "$.session.cwd",
     "$.session.id",
+    "$.session.info",
     "$.session.messages",
-    "$.session.surfaces",
-    "$.session.usage"
+    "$.session.surfaces"
   ],
   "gating": [
     {
