@@ -579,7 +579,7 @@ Categories: [Interface](#interface) · [Insights](#insights) · [Safety](#safety
   ```
 
   </details>
-- **[Owner Rep](https://krou4.github.io/claude-code-mod-showroom/#/mod/owner-rep)** — Watches your agent and says in plain English what is done, what was left out and what to send next. <sub>draws: band above the prompt, toast · by @macollins27 · external</sub>
+- **[Owner Rep](https://krou4.github.io/claude-code-mod-showroom/#/mod/owner-rep)** — Watches your agent and says in plain English what is done, what was left out and what to send next. <sub>draws: band above the prompt, toast, slash command · by @macollins27 · external</sub>
   <details><summary>Install (from the author’s marketplace)</summary>
 
   ```text

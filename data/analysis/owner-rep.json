@@ -2,6 +2,9 @@
   "ok": true,
   "hooks": [
     "session.start",
+    "command.describe",
+    "command.run{command=owner-rep-counts}",
+    "command.run{command=owner-rep-replay}",
     "classic.SessionStart",
     "classic.UserPromptSubmit",
     "prompt.submit",
@@ -17,9 +20,12 @@
   "calls": [
     "$.clock.after",
     "$.clock.now",
+    "$.command.register",
     "$.env.get",
     "$.fs.exists",
+    "$.fs.list",
     "$.fs.read",
+    "$.fs.stat",
     "$.fs.write",
     "$.model.complete",
     "$.process.run",
