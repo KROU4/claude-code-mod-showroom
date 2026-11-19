@@ -4,6 +4,7 @@
     "prompt.context",
     "session.start",
     "command.run{command=claudeopticon}",
+    "command.run{command=claudeopticon-status}",
     "agent.spawn",
     "tool.call{tool=mcp__claudeopticon__report_progress}",
     "tool.call{tool=mcp__claudeopticon__move_ticket}",
@@ -23,12 +24,7 @@
     "$.fs.exists",
     "$.fs.list",
     "$.fs.read",
-    "$.fs.stat",
-    "$.fs.write",
-    "$.model.complete",
-    "$.process.run",
-    "$.prompt.submit",
-    "$.session.id"
+    "$.fs.stat"
   ],
   "gating": [
     {

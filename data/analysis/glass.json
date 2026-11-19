@@ -2,6 +2,7 @@
   "ok": true,
   "hooks": [
     "config.set{key=\"glass.palette\"}",
+    "config.set{key=\"glass.ground\"}",
     "command.run{command=glass-theme}",
     "config.set{key=\"glass.screenshots\"}",
     "config.set{key=\"glass.notify\"}",
@@ -62,6 +63,10 @@
   "gating": [
     {
       "hook": "config.set{key=\"glass.palette\"}",
+      "hasCatch": false
+    },
+    {
+      "hook": "config.set{key=\"glass.ground\"}",
       "hasCatch": false
     },
     {
