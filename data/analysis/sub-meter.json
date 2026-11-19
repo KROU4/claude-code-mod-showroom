@@ -3,7 +3,6 @@
   "hooks": [
     "session.start",
     "session.end",
-    "classic.SessionStart",
     "session.measure",
     "ui.render{component=SessionMode}",
     "ui.render{component=PromptHint}"
@@ -19,12 +18,7 @@
     "$.ui.invalidate",
     "$.ui.resolve"
   ],
-  "gating": [
-    {
-      "hook": "classic.SessionStart",
-      "hasCatch": false
-    }
-  ],
+  "gating": [],
   "stateKeys": [
     "sub-meter.limits",
     "sub-meter.tick",

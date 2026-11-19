@@ -58,8 +58,8 @@
     "$.session.cwd",
     "$.session.id",
     "$.session.info",
-    "$.session.messages",
-    "$.session.surfaces"
+    "$.session.machine",
+    "$.session.messages"
   ],
   "gating": [
     {

@@ -41,8 +41,10 @@
     "$.state.set",
     "$.store.get",
     "$.store.set",
+    "$.tool.list",
     "$.ui.close",
-    "$.ui.invalidate"
+    "$.ui.invalidate",
+    "$.ui.open"
   ],
   "gating": [
     {
