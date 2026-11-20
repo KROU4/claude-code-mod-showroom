@@ -11,7 +11,6 @@
     "ui.fault",
     "ui.render{component=AssistantMessage}",
     "ui.message{component=AssistantMessage}",
-    "ui.focus{component=AbovePrompt}",
     "ui.focus{component=AbovePrompt, plugin=*}",
     "prompt.edit",
     "prompt.change",
@@ -47,10 +46,6 @@
   "gating": [
     {
       "hook": "command.run{command=synaptik}",
-      "hasCatch": true
-    },
-    {
-      "hook": "ui.focus{component=AbovePrompt}",
       "hasCatch": true
     },
     {

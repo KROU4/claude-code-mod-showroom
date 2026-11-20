@@ -20,10 +20,15 @@
     "$.env.get",
     "$.fs.list",
     "$.fs.read",
+    "$.fs.stat",
     "$.http.fetch",
     "$.model.complete",
     "$.process.run",
     "$.prompt.fill",
+    "$.session.model",
+    "$.session.root",
+    "$.session.surfaces",
+    "$.session.version",
     "$.settings.read",
     "$.state.get",
     "$.state.set",
@@ -59,8 +64,10 @@
     "catalog-pane.entries",
     "catalog-pane.explaining",
     "catalog-pane.explanations",
+    "catalog-pane.harness",
     "catalog-pane.isLoading",
     "catalog-pane.pending",
+    "catalog-pane.releases",
     "catalog-pane.repos",
     "catalog-pane.scans",
     "catalog-pane.usage",
@@ -68,6 +75,9 @@
     "catalog-pane.working"
   ],
   "errors": [],
-  "warnings": [],
-  "validatedWith": "2.1.302"
+  "warnings": [
+    "./register.tsx: notes truncated by claude plugin validate; calls/hooks may be incomplete"
+  ],
+  "validatedWith": "2.1.302",
+  "truncated": true
 }
