@@ -38,11 +38,9 @@
     "$.session.usage",
     "$.state.get",
     "$.state.set",
+    "$.store.delete",
     "$.store.get",
-    "$.store.set",
-    "$.ui.invalidate",
-    "$.ui.resolve",
-    "$.ui.toast"
+    "$.store.keys"
   ],
   "gating": [
     {
@@ -78,7 +76,9 @@
   "errors": [],
   "warnings": [
     "root: CLAUDE.md at the plugin root is not loaded as project context. To ship context with your plugin, use a skill (skills/<name>/SKILL.md) instead.",
-    "modules../register.tsx: on ui.render{component=AbovePromptList}: no component is named AbovePromptList, so it never runs"
+    "modules../register.tsx: on ui.render{component=AbovePromptList}: no component is named AbovePromptList, so it never runs",
+    "./register.tsx: notes truncated by claude plugin validate; calls/hooks may be incomplete"
   ],
-  "validatedWith": "2.1.302"
+  "validatedWith": "2.1.302",
+  "truncated": true
 }
