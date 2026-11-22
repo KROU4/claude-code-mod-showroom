@@ -579,7 +579,7 @@ claude plugin install turn-meter --marketplace KROU4/claude-code-mod-showroom
   ```
 
   </details>
-- **[Owner Rep](https://krou4.github.io/claude-code-mod-showroom/#/mod/owner-rep)** — Следит за агентом и простыми словами говорит, что готово, что упущено и что ему написать дальше. <sub>рисует: полоса над полем ввода, всплывающее уведомление, слеш-команда · автор @macollins27 · внешний</sub>
+- **[Owner Rep](https://krou4.github.io/claude-code-mod-showroom/#/mod/owner-rep)** — Следит за агентом и простыми словами говорит, что готово, что упущено и что ему написать дальше. <sub>рисует: полоса над полем ввода, слеш-команда · автор @macollins27 · внешний</sub>
   <details><summary>Установка (из маркетплейса автора)</summary>
 
   ```text
