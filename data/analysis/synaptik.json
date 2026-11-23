@@ -6,6 +6,9 @@
     "command.run{command=synaptik}",
     "turn.start",
     "turn.complete",
+    "session.append",
+    "prompt.submit",
+    "ui.render{component=AgentRow}",
     "ui.render{component=TurnDuration}",
     "ui.message{component=AbovePrompt}",
     "ui.fault",
@@ -25,6 +28,8 @@
     "ui.render{component=AbovePrompt}"
   ],
   "calls": [
+    "$.agent.list",
+    "$.agent.spawn",
     "$.clock.sleep",
     "$.command.register",
     "$.model.fork",
@@ -33,6 +38,7 @@
     "$.prompt.suggest",
     "$.session.id",
     "$.session.messages",
+    "$.session.send",
     "$.state.get",
     "$.state.set",
     "$.ui.close",
@@ -46,6 +52,14 @@
   "gating": [
     {
       "hook": "command.run{command=synaptik}",
+      "hasCatch": true
+    },
+    {
+      "hook": "session.append",
+      "hasCatch": true
+    },
+    {
+      "hook": "prompt.submit",
       "hasCatch": true
     },
     {
@@ -92,6 +106,8 @@
     "synaptik.threads"
   ],
   "errors": [],
-  "warnings": [],
+  "warnings": [
+    "modules../register.tsx: on ui.render{component=AgentRow}: no component is named AgentRow, so it never runs"
+  ],
   "validatedWith": "2.1.302"
 }
