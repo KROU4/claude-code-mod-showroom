@@ -5,7 +5,8 @@
     "tool.call{tool=Monitor}",
     "ui.close{id=last-look}",
     "ui.render{component=Pane, requestId=last-look}",
-    "ui.render{component=AbovePrompt}"
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=AbovePromptList}"
   ],
   "calls": [
     "$.clock.now",
@@ -43,6 +44,8 @@
     "last-look.holds"
   ],
   "errors": [],
-  "warnings": [],
+  "warnings": [
+    "modules../register.tsx: on ui.render{component=AbovePromptList}: no component is named AbovePromptList, so it never runs"
+  ],
   "validatedWith": "2.1.302"
 }
