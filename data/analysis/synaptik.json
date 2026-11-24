@@ -30,6 +30,7 @@
   "calls": [
     "$.agent.list",
     "$.agent.spawn",
+    "$.clock.every",
     "$.clock.sleep",
     "$.command.register",
     "$.model.fork",

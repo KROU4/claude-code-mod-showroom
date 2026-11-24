@@ -1,67 +1,8 @@
 {
-  "ok": true,
-  "hooks": [
-    "session.start",
-    "command.run{command=agent-tree}",
-    "turn.start",
-    "turn.step",
-    "agent.spawn",
-    "tool.call",
-    "turn.complete",
-    "session.measure",
-    "session.end",
-    "session.append{door=prompt|command|delivery|note|attachment}",
-    "ui.render{component=Pane, requestId=agent-tree}",
-    "ui.press{component=Pane, requestId=agent-tree}",
-    "prompt.edit"
-  ],
-  "calls": [
-    "$.agent.list",
-    "$.clock.every",
-    "$.clock.now",
-    "$.clock.sleep",
-    "$.command.list",
-    "$.command.register",
-    "$.command.run",
-    "$.config.list",
-    "$.env.get",
-    "$.http.fetch",
-    "$.process.run",
-    "$.prompt.fill",
-    "$.prompt.read",
-    "$.session.append",
-    "$.session.cwd",
-    "$.session.id",
-    "$.session.messages",
-    "$.session.model",
-    "$.session.send",
-    "$.session.usage",
-    "$.settings.read",
-    "$.state.get",
-    "$.state.set",
-    "$.store.get",
-    "$.store.set",
-    "$.tool.list",
-    "$.ui.close"
-  ],
-  "gating": [
-    {
-      "hook": "command.run{command=agent-tree}",
-      "hasCatch": true
-    },
-    {
-      "hook": "agent.spawn",
-      "hasCatch": true
-    },
-    {
-      "hook": "tool.call",
-      "hasCatch": true
-    },
-    {
-      "hook": "session.append{door=prompt|command|delivery|note|attachment}",
-      "hasCatch": true
-    }
-  ],
+  "ok": false,
+  "hooks": [],
+  "calls": [],
+  "gating": [],
   "stateKeys": [
     "agent-tree.frame",
     "agent-tree.intro",
@@ -71,10 +12,9 @@
     "agent-tree.tree",
     "agent-tree.unread"
   ],
-  "errors": [],
-  "warnings": [
-    "./register.tsx: notes truncated by claude plugin validate; calls/hooks may be incomplete"
+  "errors": [
+    "modules../register.tsx: mod-xWKkdT: /tmp/mod-xWKkdT/hooks/register.tsx, compiled line 1724 `on(\"tool.run\", { tool: /^mcp__agent-tree__local_model$/ }, async ($, e) => {`: \"tool.run\" is not an event; $ is always spelled $.noun.event(...) at the call site, on is always on(\"<event>\", hook), and next.to always next.to(e, \"<tier>\")"
   ],
-  "validatedWith": "2.1.302",
-  "truncated": true
+  "warnings": [],
+  "validatedWith": "2.1.302"
 }

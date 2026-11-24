@@ -1,114 +1,8 @@
 {
-  "ok": true,
-  "hooks": [
-    "tool.check{tool=/\"^(?:Bash|PowerShell|Monitor)$\"/}",
-    "tool.call{agentId=/\".\"/}",
-    "tool.call{tool=/\"^Task(?:Create|Update)$\"/}",
-    "tool.call{tool=/\"^SendMessage$\"/}",
-    "session.start",
-    "prompt.submit",
-    "turn.start",
-    "turn.step",
-    "turn.complete",
-    "agent.spawn",
-    "prompt.edit",
-    "prompt.change",
-    "prompt.autocomplete",
-    "ui.close",
-    "ui.focus",
-    "ui.scroll{component=Pane}",
-    "command.run{command=omca}",
-    "command.run{command=?}",
-    "ui.render{component=AbovePrompt}",
-    "ui.render{component=Pane}",
-    "ui.render{component=TurnDuration}",
-    "ui.render{component=UserMessage}",
-    "ui.render{component=ToolUse, props has {tool=Agent}}",
-    "ui.render{component=ToolResult, props has {tool=/\"^(?:Bash|PowerShell|Monitor|TaskUpdate|Write|Edit)$\"/}}",
-    "ui.render{component=ToolGroup}",
-    "ui.render{component=Placed, props has {plugin=oh-my-claudeagent}}"
-  ],
-  "calls": [
-    "$.agent.list",
-    "$.clock.after",
-    "$.clock.every",
-    "$.clock.now",
-    "$.command.register",
-    "$.env.get",
-    "$.env.set",
-    "$.fs.exists",
-    "$.fs.list",
-    "$.fs.read",
-    "$.fs.stat",
-    "$.fs.write",
-    "$.mcp.connect",
-    "$.process.run",
-    "$.prompt.fill",
-    "$.prompt.paint",
-    "$.prompt.read",
-    "$.prompt.submit",
-    "$.session.cwd",
-    "$.session.id",
-    "$.session.messages",
-    "$.session.root",
-    "$.session.surfaces",
-    "$.session.usage",
-    "$.session.version",
-    "$.settings.read",
-    "$.state.get",
-    "$.state.set",
-    "$.tool.list",
-    "$.ui.blit",
-    "$.ui.cancelNotify",
-    "$.ui.copy",
-    "$.ui.focus"
-  ],
-  "gating": [
-    {
-      "hook": "tool.check{tool=/\"^(?:Bash|PowerShell|Monitor)$\"/}",
-      "hasCatch": true
-    },
-    {
-      "hook": "tool.call{agentId=/\".\"/}",
-      "hasCatch": true
-    },
-    {
-      "hook": "tool.call{tool=/\"^Task(?:Create|Update)$\"/}",
-      "hasCatch": true
-    },
-    {
-      "hook": "tool.call{tool=/\"^SendMessage$\"/}",
-      "hasCatch": true
-    },
-    {
-      "hook": "prompt.submit",
-      "hasCatch": false
-    },
-    {
-      "hook": "agent.spawn",
-      "hasCatch": true
-    },
-    {
-      "hook": "ui.close",
-      "hasCatch": true
-    },
-    {
-      "hook": "ui.focus",
-      "hasCatch": true
-    },
-    {
-      "hook": "ui.scroll{component=Pane}",
-      "hasCatch": true
-    },
-    {
-      "hook": "command.run{command=omca}",
-      "hasCatch": true
-    },
-    {
-      "hook": "command.run{command=?}",
-      "hasCatch": true
-    }
-  ],
+  "ok": false,
+  "hooks": [],
+  "calls": [],
+  "gating": [],
   "stateKeys": [
     "oh-my-claudeagent.agentPage",
     "oh-my-claudeagent.agents",
@@ -126,11 +20,12 @@
     "oh-my-claudeagent.tasks",
     "oh-my-claudeagent.turns"
   ],
-  "errors": [],
-  "warnings": [
-    "modules../register.ts: on ui.render{component=Placed, props has {plugin=oh-my-claudeagent}}: no component is named Placed, so it never runs",
-    "./register.ts: notes truncated by claude plugin validate; calls/hooks may be incomplete"
+  "errors": [
+    "modules../register.ts: mod-GZelIA: /tmp/mod-GZelIA/hooks/register.ts, compiled line 216 `on(\"agent.report\", ($, e, next) => dispatch(bindHost($, options), \"agent.report\"...`: \"agent.report\" is not an event; $ is always spelled $.noun.event(...) at the call site, on is always on(\"<event>\", hook), and next.to always next.to(e, \"<tier>\")"
   ],
-  "validatedWith": "2.1.302",
-  "truncated": true
+  "warnings": [
+    "plugins[0].engines: Unknown field 'engines' (commonly seen in a VS Code/Cursor extension manifest). Claude Code ignores unrecognized fields at load time, so it's safe to keep.",
+    "engines: Unknown field 'engines' (commonly seen in a VS Code/Cursor extension manifest). Claude Code ignores unrecognized fields at load time, so it's safe to keep."
+  ],
+  "validatedWith": "2.1.302"
 }
