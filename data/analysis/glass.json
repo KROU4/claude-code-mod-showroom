@@ -27,7 +27,8 @@
     "ui.render{component=TurnDuration}",
     "ui.render{component=PromptHint}",
     "ui.render{component=Spinner}",
-    "ui.render{component=AbovePrompt}"
+    "ui.render{component=AbovePrompt}",
+    "ui.render{component=AgentRow}"
   ],
   "calls": [
     "$.clock.every",
@@ -105,6 +106,10 @@
     "glass.turns"
   ],
   "errors": [],
-  "warnings": [],
+  "warnings": [
+    "plugins[0] plugin.json → engines: Unknown field 'engines' (commonly seen in a VS Code/Cursor extension manifest). Claude Code ignores unrecognized fields at load time, so it's safe to keep.",
+    "engines: Unknown field 'engines' (commonly seen in a VS Code/Cursor extension manifest). Claude Code ignores unrecognized fields at load time, so it's safe to keep.",
+    "modules../register.ts: on ui.render{component=AgentRow}: no component is named AgentRow, so it never runs"
+  ],
   "validatedWith": "2.1.302"
 }
