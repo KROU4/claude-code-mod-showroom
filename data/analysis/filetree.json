@@ -39,21 +39,14 @@
     "$.session.cwd",
     "$.session.id",
     "$.session.surfaces",
+    "$.session.version",
     "$.state.get",
     "$.state.set",
     "$.store.get",
     "$.store.set",
     "$.ui.ask",
     "$.ui.blit",
-    "$.ui.close",
-    "$.ui.copy",
-    "$.ui.focus",
-    "$.ui.invalidate",
-    "$.ui.open",
-    "$.ui.panes",
-    "$.ui.resolve",
-    "$.ui.scroll",
-    "$.ui.toast"
+    "$.ui.close"
   ],
   "gating": [
     {
@@ -100,6 +93,9 @@
     "filetree.visits"
   ],
   "errors": [],
-  "warnings": [],
-  "validatedWith": "2.1.302"
+  "warnings": [
+    "./register.tsx: notes truncated by claude plugin validate; calls/hooks may be incomplete"
+  ],
+  "validatedWith": "2.1.302",
+  "truncated": true
 }

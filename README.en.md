@@ -120,7 +120,7 @@ Categories: [Interface](#interface) · [Insights](#insights) · [Safety](#safety
   ```
 
   </details>
-- **[Filetree](https://krou4.github.io/claude-code-mod-showroom/#/mod/filetree)** — A sidebar file tree with git status and +/- line counts; files Claude reads and writes shimmer. <sub>draws: pane, toast, slash command · by @data-goblin · external</sub>
+- **[Filetree](https://krou4.github.io/claude-code-mod-showroom/#/mod/filetree)** — A sidebar file tree with git status and +/- line counts; files Claude reads and writes shimmer. <sub>draws: pane, slash command · by @data-goblin · external</sub>
   <details><summary>Install (from the author’s marketplace)</summary>
 
   ```text
