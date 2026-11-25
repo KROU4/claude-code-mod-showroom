@@ -120,7 +120,7 @@ claude plugin install turn-meter --marketplace KROU4/claude-code-mod-showroom
   ```
 
   </details>
-- **[Filetree](https://krou4.github.io/claude-code-mod-showroom/#/mod/filetree)** — Дерево файлов сбоку: статус git, число изменённых строк, а файлы, которые Claude читает и пишет, переливаются. <sub>рисует: панель, всплывающее уведомление, слеш-команда · автор @data-goblin · внешний</sub>
+- **[Filetree](https://krou4.github.io/claude-code-mod-showroom/#/mod/filetree)** — Дерево файлов сбоку: статус git, число изменённых строк, а файлы, которые Claude читает и пишет, переливаются. <sub>рисует: панель, слеш-команда · автор @data-goblin · внешний</sub>
   <details><summary>Установка (из маркетплейса автора)</summary>
 
   ```text

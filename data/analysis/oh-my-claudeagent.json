@@ -21,7 +21,7 @@
     "oh-my-claudeagent.turns"
   ],
   "errors": [
-    "modules../register.ts: mod-GZelIA: /tmp/mod-GZelIA/hooks/register.ts, compiled line 216 `on(\"agent.report\", ($, e, next) => dispatch(bindHost($, options), \"agent.report\"...`: \"agent.report\" is not an event; $ is always spelled $.noun.event(...) at the call site, on is always on(\"<event>\", hook), and next.to always next.to(e, \"<tier>\")"
+    "modules../register.ts: mod-6VZL1D: /tmp/mod-6VZL1D/hooks/register.ts, compiled line 216 `on(\"agent.report\", ($, e, next) => dispatch(bindHost($, options), \"agent.report\"...`: \"agent.report\" is not an event; $ is always spelled $.noun.event(...) at the call site, on is always on(\"<event>\", hook), and next.to always next.to(e, \"<tier>\")"
   ],
   "warnings": [
     "plugins[0].engines: Unknown field 'engines' (commonly seen in a VS Code/Cursor extension manifest). Claude Code ignores unrecognized fields at load time, so it's safe to keep.",

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-24T13:45:29.321Z",
+  "generatedAt": "2026-11-25T12:59:23.435Z",
   "repo": {
     "owner": "KROU4",
     "name": "claude-code-mod-showroom",
@@ -1018,7 +1018,7 @@
           "agent-tree.unread"
         ],
         "errors": [
-          "modules../register.tsx: mod-xWKkdT: /tmp/mod-xWKkdT/hooks/register.tsx, compiled line 1724 `on(\"tool.run\", { tool: /^mcp__agent-tree__local_model$/ }, async ($, e) => {`: \"tool.run\" is not an event; $ is always spelled $.noun.event(...) at the call site, on is always on(\"<event>\", hook), and next.to always next.to(e, \"<tier>\")"
+          "modules../register.tsx: mod-33nqLy: /tmp/mod-33nqLy/hooks/register.tsx, compiled line 1724 `on(\"tool.run\", { tool: /^mcp__agent-tree__local_model$/ }, async ($, e) => {`: \"tool.run\" is not an event; $ is always spelled $.noun.event(...) at the call site, on is always on(\"<event>\", hook), and next.to always next.to(e, \"<tier>\")"
         ],
         "warnings": [],
         "validatedWith": "2.1.302"
@@ -1234,7 +1234,7 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 103,
+      "stars": 104,
       "pushedAt": "2026-11-19T01:55:47Z"
     },
     {
@@ -1925,7 +1925,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 6,
-      "pushedAt": "2026-11-23T16:21:25Z"
+      "pushedAt": "2026-11-24T16:11:56Z"
     },
     {
       "name": "allowlist-coach",
@@ -2497,7 +2497,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 2,
-      "pushedAt": "2026-11-24T05:16:51Z"
+      "pushedAt": "2026-11-24T15:46:09Z"
     },
     {
       "name": "ascii-dungeon",
@@ -3032,7 +3032,7 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 1,
+      "stars": 0,
       "pushedAt": "2026-10-30T13:09:06Z"
     },
     {
@@ -3355,7 +3355,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 6,
-      "pushedAt": "2026-11-23T16:21:25Z"
+      "pushedAt": "2026-11-24T16:11:56Z"
     },
     {
       "name": "beacon",
@@ -3778,8 +3778,8 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 1,
-      "pushedAt": "2026-11-24T08:47:36Z"
+      "stars": 0,
+      "pushedAt": "2026-11-25T11:56:26Z"
     },
     {
       "name": "big-output",
@@ -5143,7 +5143,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 2,
-      "pushedAt": "2026-11-24T05:16:51Z"
+      "pushedAt": "2026-11-24T15:46:09Z"
     },
     {
       "name": "brainrot-break",
@@ -5556,7 +5556,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 6,
-      "pushedAt": "2026-11-23T16:21:25Z"
+      "pushedAt": "2026-11-24T16:11:56Z"
     },
     {
       "name": "buddy-chat",
@@ -7329,7 +7329,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 4,
-      "pushedAt": "2026-11-10T18:36:21Z"
+      "pushedAt": "2026-11-25T02:19:54Z"
     },
     {
       "name": "cc-split-diff-view",
@@ -7703,7 +7703,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 19,
-      "pushedAt": "2026-11-24T08:12:10Z"
+      "pushedAt": "2026-11-25T05:31:29Z"
     },
     {
       "name": "cc-zh",
@@ -9090,7 +9090,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 2,
-      "pushedAt": "2026-11-24T05:16:51Z"
+      "pushedAt": "2026-11-24T15:46:09Z"
     },
     {
       "name": "ci-budget",
@@ -9273,7 +9273,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 0,
-      "pushedAt": "2026-11-23T07:05:12Z"
+      "pushedAt": "2026-11-25T10:49:01Z"
     },
     {
       "name": "ci-watch",
@@ -9901,7 +9901,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 3,
-      "pushedAt": "2026-11-23T18:20:40Z"
+      "pushedAt": "2026-11-24T17:53:00Z"
     },
     {
       "name": "claudeopticon",
@@ -10557,7 +10557,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 1,
-      "pushedAt": "2026-11-20T12:21:26Z"
+      "pushedAt": "2026-11-25T12:32:10Z"
     },
     {
       "name": "cloakroom",
@@ -10783,7 +10783,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 2,
-      "pushedAt": "2026-11-24T05:16:51Z"
+      "pushedAt": "2026-11-24T15:46:09Z"
     },
     {
       "name": "cockpit",
@@ -11418,7 +11418,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 6,
-      "pushedAt": "2026-11-23T16:21:25Z"
+      "pushedAt": "2026-11-24T16:11:56Z"
     },
     {
       "name": "command-explainer",
@@ -11569,7 +11569,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 6,
-      "pushedAt": "2026-11-23T16:21:25Z"
+      "pushedAt": "2026-11-24T16:11:56Z"
     },
     {
       "name": "compact-keeper",
@@ -12881,7 +12881,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 6,
-      "pushedAt": "2026-11-23T16:21:25Z"
+      "pushedAt": "2026-11-24T16:11:56Z"
     },
     {
       "name": "crossroads",
@@ -13106,7 +13106,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 2,
-      "pushedAt": "2026-11-24T05:16:51Z"
+      "pushedAt": "2026-11-24T15:46:09Z"
     },
     {
       "name": "daily-standup",
@@ -13499,7 +13499,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 12,
-      "pushedAt": "2026-11-23T22:11:29Z"
+      "pushedAt": "2026-11-25T03:37:49Z"
     },
     {
       "name": "desk-look",
@@ -13991,7 +13991,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 12,
-      "pushedAt": "2026-11-23T22:11:29Z"
+      "pushedAt": "2026-11-25T03:37:49Z"
     },
     {
       "name": "desk-slack",
@@ -14264,7 +14264,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 12,
-      "pushedAt": "2026-11-23T22:11:29Z"
+      "pushedAt": "2026-11-25T03:37:49Z"
     },
     {
       "name": "ding",
@@ -14543,7 +14543,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 6,
-      "pushedAt": "2026-11-23T16:21:25Z"
+      "pushedAt": "2026-11-24T16:11:56Z"
     },
     {
       "name": "done-notify",
@@ -15840,7 +15840,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 15,
-      "pushedAt": "2026-11-24T04:02:21Z"
+      "pushedAt": "2026-11-25T03:53:20Z"
     },
     {
       "name": "file-guard",
@@ -15978,7 +15978,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 6,
-      "pushedAt": "2026-11-23T16:21:25Z"
+      "pushedAt": "2026-11-24T16:11:56Z"
     },
     {
       "name": "files-touched",
@@ -16193,7 +16193,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 6,
-      "pushedAt": "2026-11-23T16:21:25Z"
+      "pushedAt": "2026-11-24T16:11:56Z"
     },
     {
       "name": "fine-print",
@@ -16397,7 +16397,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 2,
-      "pushedAt": "2026-11-24T05:16:51Z"
+      "pushedAt": "2026-11-24T15:46:09Z"
     },
     {
       "name": "firelight",
@@ -16823,7 +16823,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 2,
-      "pushedAt": "2026-11-24T05:16:51Z"
+      "pushedAt": "2026-11-24T15:46:09Z"
     },
     {
       "name": "foundry",
@@ -17921,7 +17921,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 6,
-      "pushedAt": "2026-11-23T16:21:25Z"
+      "pushedAt": "2026-11-24T16:11:56Z"
     },
     {
       "name": "glass",
@@ -18425,7 +18425,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 9,
-      "pushedAt": "2026-11-24T13:42:23Z"
+      "pushedAt": "2026-11-25T12:54:19Z"
     },
     {
       "name": "guard",
@@ -18591,7 +18591,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 0,
-      "pushedAt": "2026-11-23T07:05:12Z"
+      "pushedAt": "2026-11-25T10:49:01Z"
     },
     {
       "name": "guardrails",
@@ -18992,7 +18992,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 2,
-      "pushedAt": "2026-11-24T05:16:51Z"
+      "pushedAt": "2026-11-24T15:46:09Z"
     },
     {
       "name": "hatchling",
@@ -19250,7 +19250,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 2,
-      "pushedAt": "2026-11-24T05:16:51Z"
+      "pushedAt": "2026-11-24T15:46:09Z"
     },
     {
       "name": "headway",
@@ -19471,7 +19471,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 2,
-      "pushedAt": "2026-11-24T05:16:51Z"
+      "pushedAt": "2026-11-24T15:46:09Z"
     },
     {
       "name": "hero-journey",
@@ -20639,7 +20639,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 6,
-      "pushedAt": "2026-11-23T16:21:25Z"
+      "pushedAt": "2026-11-24T16:11:56Z"
     },
     {
       "name": "inline-images",
@@ -24808,7 +24808,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 2,
-      "pushedAt": "2026-11-24T05:16:51Z"
+      "pushedAt": "2026-11-24T15:46:09Z"
     },
     {
       "name": "launchpad",
@@ -26672,7 +26672,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 3,
-      "pushedAt": "2026-11-17T15:25:03Z"
+      "pushedAt": "2026-11-25T09:58:42Z"
     },
     {
       "name": "mulligan",
@@ -27011,7 +27011,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 2,
-      "pushedAt": "2026-11-24T05:16:51Z"
+      "pushedAt": "2026-11-24T15:46:09Z"
     },
     {
       "name": "net-guard",
@@ -27144,7 +27144,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 6,
-      "pushedAt": "2026-11-23T16:21:25Z"
+      "pushedAt": "2026-11-24T16:11:56Z"
     },
     {
       "name": "noted",
@@ -27348,7 +27348,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 2,
-      "pushedAt": "2026-11-24T05:16:51Z"
+      "pushedAt": "2026-11-24T15:46:09Z"
     },
     {
       "name": "notify",
@@ -27500,7 +27500,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 0,
-      "pushedAt": "2026-11-23T07:05:12Z"
+      "pushedAt": "2026-11-25T10:49:01Z"
     },
     {
       "name": "oh-my-claudeagent",
@@ -27659,7 +27659,7 @@
           "oh-my-claudeagent.turns"
         ],
         "errors": [
-          "modules../register.ts: mod-GZelIA: /tmp/mod-GZelIA/hooks/register.ts, compiled line 216 `on(\"agent.report\", ($, e, next) => dispatch(bindHost($, options), \"agent.report\"...`: \"agent.report\" is not an event; $ is always spelled $.noun.event(...) at the call site, on is always on(\"<event>\", hook), and next.to always next.to(e, \"<tier>\")"
+          "modules../register.ts: mod-6VZL1D: /tmp/mod-6VZL1D/hooks/register.ts, compiled line 216 `on(\"agent.report\", ($, e, next) => dispatch(bindHost($, options), \"agent.report\"...`: \"agent.report\" is not an event; $ is always spelled $.noun.event(...) at the call site, on is always on(\"<event>\", hook), and next.to always next.to(e, \"<tier>\")"
         ],
         "warnings": [
           "plugins[0].engines: Unknown field 'engines' (commonly seen in a VS Code/Cursor extension manifest). Claude Code ignores unrecognized fields at load time, so it's safe to keep.",
@@ -29184,7 +29184,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 2,
-      "pushedAt": "2026-11-24T05:16:51Z"
+      "pushedAt": "2026-11-24T15:46:09Z"
     },
     {
       "name": "pairs",
@@ -29984,7 +29984,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 9,
-      "pushedAt": "2026-11-24T13:42:23Z"
+      "pushedAt": "2026-11-25T12:54:19Z"
     },
     {
       "name": "pins",
@@ -31763,7 +31763,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 2,
-      "pushedAt": "2026-11-24T05:16:51Z"
+      "pushedAt": "2026-11-24T15:46:09Z"
     },
     {
       "name": "pop-quiz",
@@ -31978,7 +31978,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 2,
-      "pushedAt": "2026-11-24T05:16:51Z"
+      "pushedAt": "2026-11-24T15:46:09Z"
     },
     {
       "name": "porthole",
@@ -32282,7 +32282,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 2,
-      "pushedAt": "2026-11-24T05:16:51Z"
+      "pushedAt": "2026-11-24T15:46:09Z"
     },
     {
       "name": "pr-inbox",
@@ -33253,7 +33253,7 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 494,
+      "stars": 500,
       "pushedAt": "2026-11-24T12:37:25Z"
     },
     {
@@ -34620,7 +34620,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 2,
-      "pushedAt": "2026-11-24T05:16:51Z"
+      "pushedAt": "2026-11-24T15:46:09Z"
     },
     {
       "name": "readable-layout",
@@ -35375,7 +35375,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 0,
-      "pushedAt": "2026-11-23T07:05:12Z"
+      "pushedAt": "2026-11-25T10:49:01Z"
     },
     {
       "name": "redline",
@@ -35609,7 +35609,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 2,
-      "pushedAt": "2026-11-24T05:16:51Z"
+      "pushedAt": "2026-11-24T15:46:09Z"
     },
     {
       "name": "reply-choices",
@@ -35763,7 +35763,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 9,
-      "pushedAt": "2026-11-24T13:42:23Z"
+      "pushedAt": "2026-11-25T12:54:19Z"
     },
     {
       "name": "review-inbox",
@@ -36069,7 +36069,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 9,
-      "pushedAt": "2026-11-24T04:34:20Z"
+      "pushedAt": "2026-11-25T08:33:20Z"
     },
     {
       "name": "rich-ui",
@@ -37561,7 +37561,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 2,
-      "pushedAt": "2026-11-24T05:16:51Z"
+      "pushedAt": "2026-11-24T15:46:09Z"
     },
     {
       "name": "secret-shield",
@@ -37710,7 +37710,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 6,
-      "pushedAt": "2026-11-23T16:21:25Z"
+      "pushedAt": "2026-11-24T16:11:56Z"
     },
     {
       "name": "session-band",
@@ -39671,7 +39671,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 2,
-      "pushedAt": "2026-11-23T12:51:32Z"
+      "pushedAt": "2026-11-24T13:47:19Z"
     },
     {
       "name": "snake",
@@ -40101,7 +40101,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 6,
-      "pushedAt": "2026-11-23T16:21:25Z"
+      "pushedAt": "2026-11-24T16:11:56Z"
     },
     {
       "name": "spinner-packs",
@@ -40225,7 +40225,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 6,
-      "pushedAt": "2026-11-23T16:21:25Z"
+      "pushedAt": "2026-11-24T16:11:56Z"
     },
     {
       "name": "st-code-display",
@@ -40951,7 +40951,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 6,
-      "pushedAt": "2026-11-23T16:21:25Z"
+      "pushedAt": "2026-11-24T16:11:56Z"
     },
     {
       "name": "style-cop",
@@ -42209,7 +42209,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 2,
-      "pushedAt": "2026-11-23T19:29:08Z"
+      "pushedAt": "2026-11-24T22:25:03Z"
     },
     {
       "name": "term-bar",
@@ -42885,7 +42885,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 6,
-      "pushedAt": "2026-11-23T16:21:25Z"
+      "pushedAt": "2026-11-24T16:11:56Z"
     },
     {
       "name": "tldr",
@@ -43014,7 +43014,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 6,
-      "pushedAt": "2026-11-23T16:21:25Z"
+      "pushedAt": "2026-11-24T16:11:56Z"
     },
     {
       "name": "token-optimizer",
@@ -43221,8 +43221,8 @@
       },
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
-      "stars": 3088,
-      "pushedAt": "2026-11-24T13:29:19Z"
+      "stars": 3143,
+      "pushedAt": "2026-11-25T10:54:56Z"
     },
     {
       "name": "token-watch",
@@ -43717,7 +43717,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 6,
-      "pushedAt": "2026-11-23T16:21:25Z"
+      "pushedAt": "2026-11-24T16:11:56Z"
     },
     {
       "name": "topic-guard",
@@ -44451,7 +44451,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 0,
-      "pushedAt": "2026-11-23T07:05:12Z"
+      "pushedAt": "2026-11-25T10:49:01Z"
     },
     {
       "name": "turn-timeline",
@@ -46679,7 +46679,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 9,
-      "pushedAt": "2026-11-24T13:42:23Z"
+      "pushedAt": "2026-11-25T12:54:19Z"
     },
     {
       "name": "wirepane",
@@ -47711,7 +47711,7 @@
       "addedAt": "2026-10-27T19:58:54Z",
       "updatedAt": "2026-10-27T19:58:54Z",
       "stars": 6,
-      "pushedAt": "2026-11-23T16:21:25Z"
+      "pushedAt": "2026-11-24T16:11:56Z"
     },
     {
       "name": "brickfall",
@@ -51941,7 +51941,6 @@
       "slots": [
         "pane",
         "background",
-        "toast",
         "command"
       ],
       "hookedSlots": [
@@ -52017,21 +52016,14 @@
           "$.session.cwd",
           "$.session.id",
           "$.session.surfaces",
+          "$.session.version",
           "$.state.get",
           "$.state.set",
           "$.store.get",
           "$.store.set",
           "$.ui.ask",
           "$.ui.blit",
-          "$.ui.close",
-          "$.ui.copy",
-          "$.ui.focus",
-          "$.ui.invalidate",
-          "$.ui.open",
-          "$.ui.panes",
-          "$.ui.resolve",
-          "$.ui.scroll",
-          "$.ui.toast"
+          "$.ui.close"
         ],
         "gating": [
           {
@@ -52078,8 +52070,11 @@
           "filetree.visits"
         ],
         "errors": [],
-        "warnings": [],
-        "validatedWith": "2.1.302"
+        "warnings": [
+          "./register.tsx: notes truncated by claude plugin validate; calls/hooks may be incomplete"
+        ],
+        "validatedWith": "2.1.302",
+        "truncated": true
       },
       "risk": {
         "calls": [
@@ -52097,8 +52092,8 @@
       },
       "addedAt": "2026-10-20T18:50:35Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 481,
-      "pushedAt": "2026-11-24T11:40:13Z"
+      "stars": 482,
+      "pushedAt": "2026-11-25T06:37:34Z"
     },
     {
       "name": "glowup",
@@ -53443,7 +53438,7 @@
       },
       "addedAt": "2026-10-20T18:50:35Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 296,
+      "stars": 297,
       "pushedAt": "2026-10-12T10:02:19Z"
     },
     {
@@ -58892,7 +58887,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 399,
+      "stars": 499,
       "pushedAt": "2026-11-06T09:40:30Z"
     },
     {
@@ -64532,7 +64527,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 344,
+      "stars": 347,
       "pushedAt": "2026-11-19T00:45:25Z"
     },
     {
@@ -64751,8 +64746,8 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 9106,
-      "pushedAt": "2026-11-24T13:28:49Z"
+      "stars": 9129,
+      "pushedAt": "2026-11-25T01:14:12Z"
     },
     {
       "name": "focus-timer",
@@ -66170,8 +66165,8 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 777,
-      "pushedAt": "2026-11-01T05:18:11Z"
+      "stars": 776,
+      "pushedAt": "2026-11-24T15:47:55Z"
     },
     {
       "name": "next-steps",
@@ -66361,7 +66356,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 4949,
+      "stars": 4952,
       "pushedAt": "2026-11-23T07:01:02Z"
     },
     {
@@ -66637,8 +66632,8 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 777,
-      "pushedAt": "2026-11-01T05:18:11Z"
+      "stars": 776,
+      "pushedAt": "2026-11-24T15:47:55Z"
     },
     {
       "name": "prompt-snippets",
@@ -67151,7 +67146,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 399,
+      "stars": 499,
       "pushedAt": "2026-11-06T09:40:30Z"
     },
     {
@@ -67935,7 +67930,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 316,
+      "stars": 315,
       "pushedAt": "2026-11-24T09:08:33Z"
     },
     {
@@ -68496,7 +68491,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 330,
+      "stars": 333,
       "pushedAt": "2026-11-22T18:26:55Z"
     },
     {
@@ -68780,8 +68775,8 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 292,
-      "pushedAt": "2026-11-18T12:57:41Z"
+      "stars": 295,
+      "pushedAt": "2026-11-24T18:14:43Z"
     },
     {
       "name": "textless",
@@ -69199,8 +69194,8 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 292,
-      "pushedAt": "2026-11-18T12:57:41Z"
+      "stars": 295,
+      "pushedAt": "2026-11-24T18:14:43Z"
     },
     {
       "name": "token-weather",
@@ -69390,7 +69385,7 @@
       },
       "addedAt": "2026-10-20T15:03:58Z",
       "updatedAt": "2026-10-20T18:50:35Z",
-      "stars": 399,
+      "stars": 499,
       "pushedAt": "2026-11-06T09:40:30Z"
     },
     {
