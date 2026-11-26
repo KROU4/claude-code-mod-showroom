@@ -22,6 +22,7 @@
     "$.process.run",
     "$.process.spawn",
     "$.prompt.submit",
+    "$.session.cwd",
     "$.settings.read",
     "$.store.get",
     "$.store.set",
