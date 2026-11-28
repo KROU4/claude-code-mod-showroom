@@ -13,7 +13,7 @@
     "agent-tree.unread"
   ],
   "errors": [
-    "modules../register.tsx: mod-FpBe4s: /tmp/mod-FpBe4s/hooks/register.tsx, compiled line 1789 `on(\"tool.run\", { tool: /^mcp__agent-tree__local_model$/ }, async ($, e) => {`: \"tool.run\" is not an event; $ is always spelled $.noun.event(...) at the call site, on is always on(\"<event>\", hook), and next.to always next.to(e, \"<tier>\")"
+    "modules../register.tsx: mod-XMrFAK: /tmp/mod-XMrFAK/hooks/register.tsx, compiled line 1789 `on(\"tool.run\", { tool: /^mcp__agent-tree__local_model$/ }, async ($, e) => {`: \"tool.run\" is not an event; $ is always spelled $.noun.event(...) at the call site, on is always on(\"<event>\", hook), and next.to always next.to(e, \"<tier>\")"
   ],
   "warnings": [],
   "validatedWith": "2.1.302"

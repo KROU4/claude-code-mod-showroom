@@ -2,6 +2,9 @@
   "ok": true,
   "hooks": [
     "session.start",
+    "classic.UserPromptSubmit",
+    "classic.Stop",
+    "ui.render{component=PromptHint}",
     "session.end",
     "command.run{command=synaptik}",
     "turn.start",
@@ -51,6 +54,14 @@
     "$.ui.toast"
   ],
   "gating": [
+    {
+      "hook": "classic.UserPromptSubmit",
+      "hasCatch": true
+    },
+    {
+      "hook": "classic.Stop",
+      "hasCatch": true
+    },
     {
       "hook": "command.run{command=synaptik}",
       "hasCatch": true
